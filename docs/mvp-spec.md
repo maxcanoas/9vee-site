@@ -174,6 +174,9 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   4. O nome e as duas saídas.
 
   O drawer abre no primeiro passo sem resposta, e os passos já respondidos aparecem como um resumo que dá para editar.
+- **Serviço já escolhido ao abrir,** nesta ordem: o do botão, o que a pessoa escolheu antes na mesma página, o da página e, para quem escolheu "Para você", os cursos de idiomas (o botão dela diz "Quero estudar"). Sem nenhuma dessas pistas, a pessoa escolhe no passo 2.
+- **Título:** "Pedir orçamento"; vira "Montar suas aulas" quando o pedido é de idiomas para a própria pessoa.
+- **Avanço:** no toque, escolher o público ou o serviço já leva ao passo seguinte. No teclado, as setas só marcam a opção, e o Enter avança. Nos outros passos, o avanço é sempre pelo botão "Continuar".
 - **Campos por serviço** (seção 5 da proposta, com botões de escolha sempre que possível):
 
   | Serviço | Campos e opções |
@@ -184,7 +187,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | Idiomas, empresa | Empresa. Idioma (um dos 14). Alunos (1, 2 a 10, 11 a 50, mais de 50). Nível (iniciante, intermediário, avançado, misto ou não sei). Formato (presencial, online, híbrido) |
   | Idiomas, pessoa física | Idioma (um dos 14). Objetivo (carreira, viagem, prova de proficiência, mudança de país). Nível atual (nunca estudei, básico, intermediário, avançado, não sei). Formato (presencial, online). Cidade (as 4 ou outra), só quando o formato é presencial |
 
-  No passo final, o nome é obrigatório. A saída "receber contato" pede também telefone ou e-mail; um dos dois basta, e ele é validado. Todo campo é obrigatório, a não ser quando marcado como opcional.
+  No passo final, o nome é obrigatório. A saída "receber contato" pede também telefone ou e-mail; um dos dois basta, e ele é validado. Todo campo é obrigatório, a não ser quando marcado como opcional. Quando a cidade é "Outra", a mensagem leva só a cidade digitada.
 - **Saída "Falar agora no WhatsApp":** um link para `wa.me/5511934661917` com a mensagem montada, aberto numa nova aba (`target="_blank" rel="noopener"`). A mensagem é escrita na voz do visitante: começa pela página de origem e pelo público, lista as respostas uma por linha e termina com o nome. Depois do toque, o drawer mostra que a conversa foi aberta, com um link de reserva. Exemplo:
 
   > Olá, 9vee. Vim pela página Treinamento de NR-1 do site e falo pela minha empresa.
@@ -212,7 +215,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 
 ### Botão flutuante de WhatsApp
 
-- Aparece em todas as páginas e vai direto ao WhatsApp, numa nova aba. A mensagem cita a página de origem e o público. Por exemplo: "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero falar sobre aulas para mim."
+- Aparece em todas as páginas e vai direto ao WhatsApp, numa nova aba. A mensagem cita a página de origem e o público. Por exemplo: "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero falar sobre aulas de idioma para mim."
 - Usa a menta da marca, sem pulso, selo de notificação ou balão.
 - Reserva espaço no fim da página, some quando o drawer ou o menu estão abertos e se recolhe ao rolar para baixo no celular.
 - Na página, o WhatsApp tem só duas entradas: esse botão e a saída do drawer.

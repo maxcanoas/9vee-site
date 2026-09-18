@@ -1,0 +1,141 @@
+/* Campos do pedido de contato. O que se escolhe é pílula; o que se digita é caixa de canto reto. */
+.campo {
+  display: grid;
+  gap: var(--e-2);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.campo[hidden],
+.campo__erro[hidden],
+.campo__opcional[hidden] {
+  display: none;
+}
+
+.campo__rotulo {
+  padding: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: var(--altura-subtitulo);
+}
+
+/* A legenda fica fora da grade do fieldset: o respiro abaixo dela vem da margem. */
+legend.campo__rotulo {
+  margin-block-end: var(--e-3);
+}
+
+.campo__opcional {
+  color: var(--navy-2);
+  font-family: var(--fonte-texto);
+  font-weight: 400;
+}
+
+.campo__entrada {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding-inline: var(--e-3);
+  border: 1px solid var(--navy-2);
+  border-radius: 0;
+  background-color: var(--branco);
+  color: var(--navy);
+  font-size: var(--t-corpo);
+  transition-property: border-color;
+  transition-duration: var(--dur-rapida);
+}
+
+.campo__entrada:hover {
+  border-color: var(--navy);
+}
+
+.campo__entrada:disabled {
+  border-color: var(--linha);
+  background-color: var(--nevoa);
+  color: var(--navy-2);
+  cursor: not-allowed;
+}
+
+/* O erro dobra a borda por dentro, sem mudar o tamanho do campo. */
+.campo__entrada[aria-invalid='true'] {
+  border-color: var(--magenta);
+  box-shadow: inset 0 0 0 1px var(--magenta);
+}
+
+.campo__data {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3);
+}
+
+.campo__data .campo__entrada {
+  flex: 1 1 11rem;
+  inline-size: auto;
+}
+
+/* Texto do erro em navy (o magenta não passa de 3,2:1 no branco); a meia-lua magenta marca o erro. */
+.campo__erro {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-2);
+  color: var(--navy);
+  font-size: var(--t-pequeno);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.campo__erro::before {
+  content: '';
+  flex: none;
+  inline-size: 0.625rem;
+  block-size: 0.3125rem;
+  border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
+  background-color: var(--magenta);
+  transform: translateY(-0.15em);
+}
+
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+}
+
+.opcao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--alvo-minimo);
+  padding-block: var(--e-2);
+  padding-inline: var(--e-4);
+  border: 1px solid var(--navy-2);
+  border-radius: var(--raio-pilula);
+  background-color: var(--branco);
+  color: var(--navy);
+  font-size: 1rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--dur-rapida);
+}
+
+.opcao:hover {
+  border-color: var(--navy);
+  background-color: var(--nevoa);
+}
+
+.opcao:has(:checked) {
+  border-color: var(--navy);
+  background-color: var(--navy);
+  color: var(--branco);
+}
+
+.opcao:has(:focus-visible) {
+  outline: 2px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+.opcao:has([aria-invalid='true']) {
+  border-color: var(--magenta);
+}

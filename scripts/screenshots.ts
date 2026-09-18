@@ -14,6 +14,8 @@ interface Captura {
   altura: number;
   paginaInteira?: boolean;
   movimento?: boolean;
+  /** Público já salvo no localStorage antes de a página carregar. */
+  publico?: 'empresa' | 'voce';
   antes?: (pagina: Page) => Promise<void>;
 }
 
@@ -25,6 +27,20 @@ const rolarAte = (seletor: string, deslocamento = 0) => async (pagina: Page) => 
     },
     [seletor, deslocamento],
   );
+};
+
+const opcao = (pagina: Page, formulario: string, texto: string) =>
+  pagina.locator(`[data-formulario="${formulario}"] label.opcao`, { hasText: texto }).first().click();
+
+const preencherNr1 = async (p: Page) => {
+  await p.locator('.cabecalho__cta').click();
+  await p.fill('#campo-nr1-empresa', 'Metalúrgica Exemplo');
+  await opcao(p, 'nr1', '51 a 200');
+  await opcao(p, 'nr1', 'Até 3 meses');
+  await opcao(p, 'nr1', 'Online ao vivo');
+  await opcao(p, 'nr1', 'Em construção');
+  await p.locator('[data-continuar]').click();
+  await p.fill('#campo-final-nome', 'Maria');
 };
 
 const roteiros: Record<string, Captura[]> = {
@@ -71,6 +87,54 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'como-etapa3-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.como__etapa[data-etapa="3"]', -200) },
     { nome: 'saudacoes-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.saudacoes', -250) },
   ],
+  'etapa-3': [
+    { nome: 'flutuante-390', rota: '/', largura: 390, altura: 844 },
+    { nome: 'rodape-fim-390', rota: '/', largura: 390, altura: 844, antes: async (p) => {
+      await p.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
+      await p.evaluate(() => window.scrollBy({ top: -40, behavior: 'instant' }));
+    } },
+    { nome: 'drawer-publico-390', rota: '/', largura: 390, altura: 844, antes: (p) => p.locator('.hero__cta').click() },
+    { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: async (p) => {
+      await p.locator('.hero__cta').click();
+      await p.locator('.metade--esquerda').click();
+    } },
+    { nome: 'drawer-servico-1280', rota: '/', largura: 1280, altura: 800, antes: async (p) => {
+      await p.locator('.hero__cta').click();
+      await p.locator('.metade--esquerda').click();
+    } },
+    { nome: 'drawer-nr1-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('.cabecalho__cta').click() },
+    { nome: 'drawer-nr1-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, publico: 'empresa', antes: (p) => p.locator('.cabecalho__cta').click() },
+    { nome: 'drawer-erros-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await p.locator('.cabecalho__cta').click();
+      await p.locator('[data-continuar]').click();
+    } },
+    { nome: 'drawer-final-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: preencherNr1 },
+    { nome: 'drawer-receber-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await preencherNr1(p);
+      await p.locator('[data-abre-receber]').click();
+      await p.fill('#campo-final-contato', 'maria@exemplo');
+      await p.locator('[data-enviar-pedido]').click();
+    } },
+    { nome: 'drawer-confirmado-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await preencherNr1(p);
+      await p.locator('[data-abre-receber]').click();
+      await p.fill('#campo-final-contato', 'maria@exemplo.com.br');
+      await p.locator('[data-enviar-pedido]').click();
+    } },
+    { nome: 'drawer-aberto-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await preencherNr1(p);
+      const aba = p.context().waitForEvent('page');
+      await p.locator('[data-saida-whatsapp]').click();
+      await (await aba).close();
+    } },
+    { nome: 'drawer-aulas-390', rota: '/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('.hero__cta').click() },
+    { nome: 'drawer-traducao-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await p.locator('.cabecalho__cta').click();
+      await opcao(p, 'traducao', 'Presencial');
+      await opcao(p, 'traducao', 'Outra');
+      await p.locator('#campo-traducao-cidadeOutra').scrollIntoViewIfNeeded();
+    } },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';
@@ -95,6 +159,9 @@ try {
       hasTouch: movel,
       reducedMotion: c.movimento ? 'no-preference' : 'reduce',
     });
+    // O WhatsApp de verdade não abre durante as capturas.
+    await contexto.route('https://wa.me/**', (rota) => rota.fulfill({ contentType: 'text/plain', body: 'wa.me interceptado' }));
+    if (c.publico) await contexto.addInitScript((p) => localStorage.setItem('9vee:publico', p), c.publico);
     const pagina = await contexto.newPage();
     await pagina.goto(base + c.rota, { waitUntil: 'networkidle' });
     await pagina.evaluate(() => document.fonts.ready);

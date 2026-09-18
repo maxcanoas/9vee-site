@@ -8,6 +8,17 @@ const armazenamento = (() => {
   }
 })();
 
+const ouvintes = new Set<(publico: Publico | null) => void>();
+
+export function publicoAtual(): Publico | null {
+  return publicoValido(document.documentElement.dataset.publico);
+}
+
+/** Avisa quem depende do público (o drawer e o atalho do WhatsApp) a cada troca. */
+export function aoMudarPublico(ouvinte: (publico: Publico | null) => void): void {
+  ouvintes.add(ouvinte);
+}
+
 function aplicar(publico: Publico | null) {
   const raiz = document.documentElement;
   if (publico) raiz.dataset.publico = publico;
@@ -24,16 +35,22 @@ function aplicar(publico: Publico | null) {
       .map((el) => ({ el, ordemEmpresa: Number(el.dataset.ordemEmpresa), ordemVoce: Number(el.dataset.ordemVoce) }));
     for (const { el } of ordenarPorPublico(itens, publico)) lista.append(el);
   }
+
+  for (const ouvinte of ouvintes) ouvinte(publico);
+}
+
+/** Grava e aplica a escolha. Na home, os cartões deslizam para a nova ordem; dentro do drawer, a troca é seca. */
+export function escolherPublico(publico: Publico | null, animar = false): void {
+  gravarPublico(armazenamento, publico);
+  const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (animar && !reduzido && 'startViewTransition' in document) document.startViewTransition(() => aplicar(publico));
+  else aplicar(publico);
 }
 
 function aoEscolher(evento: Event) {
   const alvo = evento.target;
   if (!(alvo instanceof HTMLInputElement) || alvo.name !== 'publico') return;
-  const publico = publicoValido(alvo.value);
-  gravarPublico(armazenamento, publico);
-  const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduzido && 'startViewTransition' in document) document.startViewTransition(() => aplicar(publico));
-  else aplicar(publico);
+  escolherPublico(publicoValido(alvo.value), true);
 }
 
 aplicar(lerPublico(armazenamento));

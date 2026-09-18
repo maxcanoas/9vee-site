@@ -6,7 +6,7 @@ import { dadosDoSite } from '../lib/site';
 const { erro404 } = await dadosDoSite();
 ---
 
-<Base titulo={erro404.titulo} descricao={erro404.descricao}>
+<Base pagina="erro404" titulo={erro404.titulo} descricao={erro404.descricao}>
   <div class="conteiner erro">
     <h1><Texto de={erro404.h1} /></h1>
     <p class="texto-secundario"><Texto de={erro404.texto} /></p>

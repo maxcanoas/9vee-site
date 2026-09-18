@@ -10,7 +10,7 @@ const { data: pagina } = await paginaIdiomas();
 const site = await dadosDoSite();
 ---
 
-<Base titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
+<Base pagina="idiomas" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
   <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
   {
     pagina.tituloIdiomas && (

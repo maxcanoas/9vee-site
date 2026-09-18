@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import IconeSocial from './IconeSocial.astro';
 import Texto from './Texto.astro';
+import { AVISO_NOVA_ABA } from '../lib/texto';
 import type { DadosDoSite } from '../lib/site';
 
 interface Props {
@@ -75,14 +76,15 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
   <div class="conteiner rodape__base">
     <p>{rodape.direitos}</p>
     <a href={rodape.privacidade.href} target="_blank" rel="noopener">
-      {rodape.privacidade.rotulo}<span class="visualmente-oculto"> (abre em nova aba)</span>
+      {rodape.privacidade.rotulo}<span class="visualmente-oculto">{AVISO_NOVA_ABA}</span>
     </a>
   </div>
 </footer>
 
 <style>
   .rodape {
-    padding-block: var(--e-7) var(--e-5);
+    /* Embaixo, o espaço do atalho do WhatsApp: ele não cobre o fim do rodapé. */
+    padding-block: var(--e-7) calc(var(--flutuante) + 2 * var(--e-4));
     background-color: var(--noite);
     view-transition-name: rodape;
   }

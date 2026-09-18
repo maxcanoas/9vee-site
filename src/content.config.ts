@@ -15,6 +15,39 @@ const seo = z.object({
   descricao: z.string().min(140).max(160),
 });
 
+const porPublico = z.object({ neutro: z.string(), empresa: z.string(), voce: z.string() });
+
+export const servicoId = z.enum(['nr1', 'traducao', 'idiomas', 'lms']);
+
+const condicao = z.object({ campo: z.string(), valores: z.array(z.string()).min(1) });
+const campoBase = {
+  id: z.string().regex(/^[a-z][a-zA-Z]*$/),
+  rotulo: z.string(),
+  rotuloCurto: z.string(),
+  obrigatorio: z.boolean(),
+  opcionalPara: z.enum(['empresa', 'voce']).optional(),
+  mostrarSe: condicao.optional(),
+  ocultarSe: condicao.optional(),
+  minuscula: z.boolean().optional(),
+};
+const campo = z.discriminatedUnion('tipo', [
+  z.object({ ...campoBase, tipo: z.literal('texto'), autocomplete: z.string().optional() }),
+  z.object({ ...campoBase, tipo: z.literal('escolha'), opcoes: z.array(z.string()).min(2) }),
+  z.object({ ...campoBase, tipo: z.literal('multipla'), opcoes: z.array(z.string()).min(2) }),
+  z.object({ ...campoBase, tipo: z.literal('data'), semData: z.string() }),
+  z.object({ ...campoBase, tipo: z.literal('idioma') }),
+]);
+const formulario = z
+  .array(campo)
+  .min(1)
+  .refine(
+    (campos) =>
+      campos.every((c) =>
+        [c.mostrarSe, c.ocultarSe].every((cond) => !cond || campos.some((outro) => outro.id === cond.campo)),
+      ),
+    { error: 'condição aponta para um campo que não existe no formulário' },
+  );
+
 const site = defineCollection({
   loader: glob({ pattern: 'site.md', base: conteudo }),
   schema: z.object({
@@ -66,10 +99,80 @@ const site = defineCollection({
       ),
       quemSomos: link,
     }),
-    cta: z.object({
-      neutro: z.string(),
-      empresa: z.string(),
-      voce: z.string(),
+    cta: porPublico,
+    servicos: z
+      .array(
+        z.object({
+          id: servicoId,
+          nome: z.string(),
+          descricao: z.string(),
+          ordemEmpresa: z.number().int().min(1).max(4),
+          ordemVoce: z.number().int().min(1).max(4),
+        }),
+      )
+      .length(4)
+      .refine((lista) => new Set(lista.map((s) => s.id)).size === 4, { error: 'serviço repetido' })
+      .refine(
+        (lista) => [lista.map((s) => s.ordemEmpresa), lista.map((s) => s.ordemVoce)].every((o) => new Set(o).size === 4),
+        { error: 'cada público precisa de uma ordem de 1 a 4, sem repetir' },
+      ),
+    paginas: z.record(
+      z.enum(['home', 'nr1', 'idiomas', 'traducao', 'lms', 'quemSomos', 'especime', 'erro404']),
+      z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
+    ),
+    drawer: z.object({
+      titulo: z.object({ orcamento: z.string(), aulas: z.string() }),
+      fechar: z.string(),
+      voltar: z.string(),
+      continuar: z.string(),
+      opcional: z.string(),
+      passo: z.string().includes('{n}').includes('{total}'),
+      alterar: z.object({ rotulo: z.string(), publico: z.string(), servico: z.string(), detalhes: z.string() }),
+      botaoFlutuante: z.string(),
+      publico: z.object({ titulo: z.string(), opcoes: z.object({ empresa: z.string(), voce: z.string() }) }),
+      servico: z.object({ titulo: z.string() }),
+      detalhes: z.object({ titulo: z.string() }),
+      final: z.object({
+        titulo: z.string(),
+        rotuloNome: z.string(),
+        tituloPedido: z.string(),
+        whatsapp: z.string(),
+        receber: z.string(),
+        rotuloContato: z.string(),
+        enviar: z.string(),
+      }),
+      aberto: z.object({ titulo: z.string(), texto: z.string(), link: z.string() }),
+      confirmacao: z.object({
+        titulo: z.string(),
+        texto: z.string(),
+        resumo: z.string(),
+        rotuloServico: z.string(),
+        rotuloNome: z.string(),
+        rotulosContato: z.object({ telefone: z.string(), email: z.string() }),
+        simulado: z.string(),
+      }),
+      erros: z.object({
+        escolha: z.string(),
+        multipla: z.string(),
+        texto: z.string(),
+        data: z.string(),
+        nome: z.string(),
+        contato: z.string(),
+      }),
+      mensagens: z.object({
+        abertura: z.string().includes('{pagina}'),
+        publico: z.object({ empresa: z.string(), voce: z.string() }),
+        pedido: z.object({ nr1: z.string(), traducao: z.string(), idiomas: z.string(), lms: z.string() }),
+        nome: z.string().includes('{nome}'),
+        flutuante: z.string().includes('{pagina}').includes('{assunto}'),
+      }),
+    }),
+    formularios: z.object({
+      nr1: formulario,
+      traducao: formulario,
+      lms: formulario,
+      idiomasEmpresa: formulario,
+      idiomasVoce: formulario,
     }),
     rodape: z.object({
       pronuncia: z.string(),
@@ -99,8 +202,6 @@ const imagem = z.object({
   arquivo: z.string().regex(/^[a-z0-9-]+$/),
   alt: z.string().min(10),
 });
-
-export const servicoId = z.enum(['nr1', 'traducao', 'idiomas', 'lms']);
 
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
@@ -138,8 +239,6 @@ const home = defineCollection({
             publico: z.string(),
             texto: z.string(),
             link,
-            ordemEmpresa: z.number().int().min(1).max(4),
-            ordemVoce: z.number().int().min(1).max(4),
           }),
         )
         .length(4),

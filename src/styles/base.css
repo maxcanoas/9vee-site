@@ -173,6 +173,11 @@ a:hover {
   background-color: var(--nevoa);
 }
 
+/* Sem JavaScript o drawer não abre: os botões que o chamam somem, e o WhatsApp segue no atalho. */
+:root:not(.js) [data-abre-contato] {
+  display: none;
+}
+
 /* Texto por público: sem escolha, vale o neutro. */
 [data-publico-texto] {
   display: none;

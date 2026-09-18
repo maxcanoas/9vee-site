@@ -1,0 +1,757 @@
+---
+// O pedido de contato do site inteiro: um <dialog> que todo botão com data-abre-contato abre.
+// Passos: para quem é, serviço, detalhes do serviço e nome, com duas saídas (WhatsApp ou receber contato).
+// As perguntas vêm de content/site.md; a validação e a mensagem ficam em src/lib/contato.ts.
+import Texto from './Texto.astro';
+import CampoContato from './CampoContato.astro';
+import IconeWhatsApp from './IconeWhatsApp.astro';
+import { linkWhatsApp, type Campo, type DadosDoDrawer, type FormularioId } from '../lib/contato';
+import { AVISO_NOVA_ABA, jsonParaScript, textoPuro } from '../lib/texto';
+import type { DadosDoSite, PaginaId } from '../lib/site';
+
+interface Props {
+  site: DadosDoSite;
+  pagina: PaginaId;
+}
+
+const { site, pagina } = Astro.props;
+const { drawer: textos, formularios, servicos } = site;
+const idiomas = site.idiomas.map(({ slug, nome }) => ({ slug, nome }));
+const formularioIds = Object.keys(formularios) as FormularioId[];
+
+const dados: DadosDoDrawer = {
+  numero: site.contato.whatsapp,
+  pagina: site.paginas[pagina].nome,
+  servicoDaPagina: site.paginas[pagina].servico ?? null,
+  servicos: Object.fromEntries(servicos.map((s) => [s.id, textoPuro(s.nome)])) as DadosDoDrawer['servicos'],
+  formularios,
+  idiomas,
+  modelos: textos.mensagens,
+  erros: textos.erros,
+  passo: textos.passo,
+  publicos: textos.publico.opcoes,
+  confirmacao: {
+    servico: textos.confirmacao.rotuloServico,
+    nome: textos.confirmacao.rotuloNome,
+    contato: textos.confirmacao.rotulosContato,
+  },
+};
+
+const campoNome: Campo = {
+  id: 'nome',
+  tipo: 'texto',
+  rotulo: textos.final.rotuloNome,
+  rotuloCurto: textos.confirmacao.rotuloNome,
+  obrigatorio: true,
+  autocomplete: 'name',
+};
+const campoContato: Campo = {
+  id: 'contato',
+  tipo: 'texto',
+  rotulo: textos.final.rotuloContato,
+  rotuloCurto: textos.final.rotuloContato,
+  obrigatorio: true,
+};
+const linkInicial = linkWhatsApp(site.contato.whatsapp);
+---
+
+<dialog
+  class="drawer"
+  id="drawer-contato"
+  aria-labelledby="drawer-titulo"
+  data-drawer
+  data-modo="orcamento"
+  data-passo="1"
+>
+  <div class="drawer__caixa">
+    <div class="drawer__topo">
+      <h2 class="drawer__titulo" id="drawer-titulo">
+        <span data-modo-texto="orcamento"><Texto de={textos.titulo.orcamento} /></span><span data-modo-texto="aulas"
+          ><Texto de={textos.titulo.aulas} /></span
+        >
+      </h2>
+      <button class="drawer__fechar" type="button" data-fecha-contato>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+        <span class="visualmente-oculto">{textos.fechar}</span>
+      </button>
+      <div class="drawer__progresso">
+        <span class="drawer__metades" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <p class="drawer__passo" aria-live="polite" data-passo-texto></p>
+      </div>
+    </div>
+
+    <form class="drawer__form" novalidate data-form-contato>
+      <div class="drawer__corpo" data-corpo>
+        <ul class="drawer__resumo" role="list" data-resumo hidden>
+          <li class="drawer__resumo-item" data-resumo-de="publico" hidden>
+            <span class="drawer__resumo-valor" data-resumo-valor></span>
+            <button class="drawer__alterar" type="button" data-ir-para="publico">
+              {textos.alterar.rotulo}<span class="visualmente-oculto">{` ${textos.alterar.publico}`}</span>
+            </button>
+          </li>
+          <li class="drawer__resumo-item" data-resumo-de="servico" hidden>
+            <span class="drawer__resumo-valor" data-resumo-valor></span>
+            <button class="drawer__alterar" type="button" data-ir-para="servico">
+              {textos.alterar.rotulo}<span class="visualmente-oculto">{` ${textos.alterar.servico}`}</span>
+            </button>
+          </li>
+        </ul>
+
+        <section class="etapa" data-etapa="publico" aria-labelledby="etapa-publico">
+          <fieldset class="etapa__grupo" aria-describedby="erro-publico">
+            <legend class="etapa__legenda">
+              <h3 class="etapa__titulo" id="etapa-publico" tabindex="-1"><Texto de={textos.publico.titulo} /></h3>
+            </legend>
+            <div class="metades">
+              <label class="metade metade--esquerda">
+                <input class="visualmente-oculto" type="radio" name="drawer-publico" value="empresa" />
+                <span><Texto de={textos.publico.opcoes.empresa} /></span>
+              </label>
+              <label class="metade metade--direita">
+                <input class="visualmente-oculto" type="radio" name="drawer-publico" value="voce" />
+                <span><Texto de={textos.publico.opcoes.voce} /></span>
+              </label>
+            </div>
+            <p class="campo__erro" id="erro-publico" hidden></p>
+          </fieldset>
+        </section>
+
+        <section class="etapa" data-etapa="servico" aria-labelledby="etapa-servico" hidden>
+          <fieldset class="etapa__grupo" aria-describedby="erro-servico">
+            <legend class="etapa__legenda">
+              <h3 class="etapa__titulo" id="etapa-servico" tabindex="-1"><Texto de={textos.servico.titulo} /></h3>
+            </legend>
+            <div class="servicos-drawer" data-ordenavel>
+              {
+                servicos.map((servico) => (
+                  <label
+                    class="servico-opcao"
+                    data-ordem-empresa={servico.ordemEmpresa}
+                    data-ordem-voce={servico.ordemVoce}
+                  >
+                    <input
+                      class="visualmente-oculto"
+                      type="radio"
+                      name="drawer-servico"
+                      value={servico.id}
+                      aria-labelledby={`drawer-servico-${servico.id}`}
+                      aria-describedby={`drawer-servico-${servico.id}-descricao`}
+                    />
+                    <span class="servico-opcao__nome" id={`drawer-servico-${servico.id}`}>
+                      <Texto de={servico.nome} />
+                    </span>
+                    <span class="servico-opcao__descricao" id={`drawer-servico-${servico.id}-descricao`}>
+                      <Texto de={servico.descricao} />
+                    </span>
+                  </label>
+                ))
+              }
+            </div>
+            <p class="campo__erro" id="erro-servico" hidden></p>
+          </fieldset>
+        </section>
+
+        <section class="etapa" data-etapa="detalhes" aria-labelledby="etapa-detalhes" hidden>
+          <h3 class="etapa__titulo" id="etapa-detalhes" tabindex="-1"><Texto de={textos.detalhes.titulo} /></h3>
+          {
+            formularioIds.map((id) => (
+              <div class="etapa__campos" data-formulario={id} hidden>
+                {formularios[id].map((campo) => (
+                  <CampoContato campo={campo} formulario={id} idiomas={idiomas} opcional={textos.opcional} />
+                ))}
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="etapa" data-etapa="final" aria-labelledby="etapa-final" hidden>
+          <h3 class="etapa__titulo" id="etapa-final" tabindex="-1"><Texto de={textos.final.titulo} /></h3>
+          <CampoContato campo={campoNome} formulario="final" />
+          <div class="saidas">
+            <a class="botao saidas__whatsapp" href={linkInicial} target="_blank" rel="noopener" data-saida-whatsapp>
+              <IconeWhatsApp />
+              <span>{textos.final.whatsapp}<span class="visualmente-oculto">{AVISO_NOVA_ABA}</span></span>
+            </a>
+            <button
+              class="botao botao--contorno"
+              type="button"
+              aria-expanded="false"
+              aria-controls="drawer-receber"
+              data-abre-receber
+            >
+              <span><Texto de={textos.final.receber} /></span>
+            </button>
+            <div class="receber" id="drawer-receber" hidden>
+              <CampoContato campo={campoContato} formulario="final" teclaEnter="send" />
+              <button class="botao" type="submit" data-enviar-pedido>
+                <span><Texto de={textos.final.enviar} /></span>
+              </button>
+            </div>
+          </div>
+          <div class="pedido">
+            <h4 class="pedido__titulo"><Texto de={textos.final.tituloPedido} /></h4>
+            <ul class="pedido__linhas" role="list" data-linhas-pedido></ul>
+            <button class="drawer__alterar" type="button" data-ir-para="detalhes">
+              {textos.alterar.rotulo}<span class="visualmente-oculto">{` ${textos.alterar.detalhes}`}</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="etapa etapa--fim" data-etapa="aberto" aria-labelledby="etapa-aberto" hidden>
+          <span class="circulo" aria-hidden="true"
+            ><span class="circulo__meia circulo__meia--esquerda"></span><span
+              class="circulo__meia circulo__meia--direita"></span></span
+          >
+          <h3 class="etapa__titulo" id="etapa-aberto" tabindex="-1"><Texto de={textos.aberto.titulo} /></h3>
+          <p class="texto-secundario"><Texto de={textos.aberto.texto} /></p>
+          <a class="drawer__link" href={linkInicial} target="_blank" rel="noopener" data-link-whatsapp>
+            {textos.aberto.link}<span class="visualmente-oculto">{AVISO_NOVA_ABA}</span>
+          </a>
+        </section>
+
+        <section class="etapa etapa--fim" data-etapa="confirmado" aria-labelledby="etapa-confirmado" hidden>
+          <span class="circulo" aria-hidden="true"
+            ><span class="circulo__meia circulo__meia--esquerda"></span><span
+              class="circulo__meia circulo__meia--direita"></span></span
+          >
+          <h3 class="etapa__titulo" id="etapa-confirmado" tabindex="-1">
+            <Texto de={textos.confirmacao.titulo} />
+          </h3>
+          <p class="texto-secundario"><Texto de={textos.confirmacao.texto} /></p>
+          <div class="pedido">
+            <h4 class="pedido__titulo"><Texto de={textos.confirmacao.resumo} /></h4>
+            <ul class="pedido__linhas" role="list" data-linhas-confirmacao></ul>
+          </div>
+          <p class="drawer__simulado"><Texto de={textos.confirmacao.simulado} /></p>
+        </section>
+      </div>
+
+      <div class="drawer__acoes">
+        <button class="botao botao--contorno" type="button" data-voltar hidden>
+          <span><Texto de={textos.voltar} /></span>
+        </button>
+        <button class="botao drawer__avancar" type="submit" data-continuar>
+          <span><Texto de={textos.continuar} /></span>
+        </button>
+        <button class="botao drawer__avancar" type="button" data-fecha-contato data-fechar-fim hidden>
+          <span><Texto de={textos.fechar} /></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script type="application/json" id="dados-contato" is:inline set:html={jsonParaScript(dados)} />
+
+<style>
+  /* Tela cheia no celular e painel à direita no desktop. O branco separa o pedido do papel da página. */
+  .drawer {
+    position: fixed;
+    inset-block: var(--topo-visivel, 0) auto;
+    inset-inline: 0;
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: var(--altura-visivel, 100dvh);
+    max-block-size: none;
+    margin: 0;
+    padding: 0;
+    overflow: clip;
+    border: 0;
+    background-color: var(--branco);
+    color: var(--navy);
+  }
+
+  .drawer::backdrop {
+    background-color: var(--veu);
+  }
+
+  .drawer :global([hidden]) {
+    display: none;
+  }
+
+  :global(html:has(.drawer[open])) {
+    overflow: hidden;
+  }
+
+  .drawer__caixa {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    block-size: 100%;
+  }
+
+  .drawer__topo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--e-2) var(--e-4);
+    padding-block: var(--e-3);
+    padding-inline: var(--e-5) var(--e-3);
+    border-block-end: 1px solid var(--linha);
+  }
+
+  .drawer__titulo {
+    font-size: var(--t-destaque);
+    line-height: var(--altura-subtitulo);
+    letter-spacing: 0;
+  }
+
+  [data-modo-texto] {
+    display: none;
+  }
+
+  .drawer[data-modo='orcamento'] [data-modo-texto='orcamento'],
+  .drawer[data-modo='aulas'] [data-modo-texto='aulas'] {
+    display: inline;
+  }
+
+  .drawer__fechar {
+    display: grid;
+    place-items: center;
+    inline-size: var(--alvo-minimo);
+    block-size: var(--alvo-minimo);
+    padding: 0;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-pilula);
+    background-color: transparent;
+    transition-property: background-color, border-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .drawer__fechar:hover {
+    border-color: var(--navy);
+    background-color: var(--nevoa);
+  }
+
+  .drawer__fechar svg {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  /* Progresso: quatro meias-luas, que viram dois círculos inteiros quando o pedido fica pronto. */
+  .drawer__progresso {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    min-block-size: 1.5rem;
+  }
+
+  .drawer__metades {
+    display: flex;
+    gap: 2px;
+  }
+
+  .drawer__metades span {
+    inline-size: 0.5rem;
+    block-size: 1rem;
+    background-color: var(--linha);
+    transition-property: background-color;
+    transition-duration: var(--dur-media);
+  }
+
+  .drawer__metades span:nth-child(odd) {
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+  }
+
+  .drawer__metades span:nth-child(even) {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+  }
+
+  .drawer__metades span:nth-child(3) {
+    margin-inline-start: var(--e-2);
+  }
+
+  .drawer[data-passo='1'] .drawer__metades span:nth-child(-n + 1),
+  .drawer[data-passo='2'] .drawer__metades span:nth-child(-n + 2),
+  .drawer[data-passo='3'] .drawer__metades span:nth-child(-n + 3),
+  .drawer[data-passo='4'] .drawer__metades span {
+    background-color: var(--violeta);
+  }
+
+  .drawer__passo {
+    color: var(--navy-2);
+    font-size: var(--t-rotulo);
+    font-weight: 700;
+  }
+
+  .drawer__form {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    min-block-size: 0;
+  }
+
+  .drawer__corpo {
+    display: grid;
+    align-content: start;
+    gap: var(--e-5);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--e-5) var(--e-5) var(--e-6);
+  }
+
+  .drawer__resumo {
+    display: grid;
+    padding: 0;
+    border-block-end: 1px solid var(--linha);
+    list-style: none;
+  }
+
+  .drawer__resumo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--e-3);
+    font-size: var(--t-pequeno);
+  }
+
+  .drawer__resumo-item + .drawer__resumo-item {
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .drawer__resumo-valor {
+    font-weight: 700;
+  }
+
+  .drawer__alterar {
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    padding-inline: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: var(--t-pequeno);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    transition-property: text-decoration-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .drawer__alterar:hover {
+    text-decoration-color: var(--magenta);
+  }
+
+  .etapa {
+    display: grid;
+    align-content: start;
+    gap: var(--e-5);
+  }
+
+  .etapa__grupo {
+    display: grid;
+    gap: var(--e-3);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .etapa__legenda {
+    margin-block-end: var(--e-5);
+    padding: 0;
+  }
+
+  .etapa__titulo {
+    font-size: var(--t-3);
+  }
+
+  /* O título recebe o foco a cada passo só para o leitor de tela ler a pergunta; não é interativo. */
+  .etapa__titulo:focus {
+    outline: none;
+  }
+
+  .etapa__campos {
+    display: grid;
+    gap: var(--e-5);
+  }
+
+  .metades {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .metade {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 3.5rem;
+    padding-block: var(--e-2);
+    padding-inline: var(--e-4);
+    border: 1px solid var(--navy-2);
+    background-color: var(--branco);
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition-property: background-color, color, border-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .metade--esquerda {
+    padding-inline-start: var(--e-5);
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+  }
+
+  .metade--direita {
+    padding-inline-end: var(--e-5);
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+  }
+
+  .metade:hover,
+  .servico-opcao:hover {
+    border-color: var(--navy);
+    background-color: var(--nevoa);
+  }
+
+  .metade:has(:checked),
+  .servico-opcao:has(:checked) {
+    border-color: var(--navy);
+    background-color: var(--navy);
+    color: var(--branco);
+  }
+
+  .metade:has(:focus-visible),
+  .servico-opcao:has(:focus-visible) {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+  }
+
+  .metade:has([aria-invalid='true']),
+  .servico-opcao:has([aria-invalid='true']) {
+    border-color: var(--magenta);
+  }
+
+  .servicos-drawer {
+    display: grid;
+    gap: var(--e-2);
+  }
+
+  .servico-opcao {
+    position: relative;
+    display: grid;
+    gap: var(--e-1);
+    padding-block: var(--e-3);
+    padding-inline: var(--e-5);
+    border: 1px solid var(--navy-2);
+    border-radius: var(--raio-pilula);
+    background-color: var(--branco);
+    cursor: pointer;
+    transition-property: background-color, color, border-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .servico-opcao__nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .servico-opcao__descricao {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+    line-height: 1.35;
+  }
+
+  .servico-opcao:has(:checked) .servico-opcao__descricao {
+    color: var(--sobre-escuro);
+  }
+
+  .pedido {
+    display: grid;
+    gap: var(--e-2);
+    padding: var(--e-4);
+    background-color: var(--nevoa);
+  }
+
+  .pedido__titulo {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .pedido__linhas {
+    display: grid;
+    gap: var(--e-1);
+    padding: 0;
+    font-size: var(--t-pequeno);
+    list-style: none;
+  }
+
+  /* As linhas nascem no script, fora do escopo deste componente: por isso o :global. */
+  .pedido__linhas :global(.pedido__rotulo) {
+    color: var(--navy-2);
+  }
+
+  .pedido .drawer__alterar {
+    justify-self: start;
+  }
+
+  .saidas {
+    display: grid;
+    gap: var(--e-3);
+  }
+
+  .saidas .botao {
+    inline-size: 100%;
+    min-block-size: 3.25rem;
+  }
+
+  .saidas__whatsapp :global(svg) {
+    flex: none;
+    inline-size: 1.375rem;
+    block-size: 1.375rem;
+  }
+
+  .receber {
+    display: grid;
+    gap: var(--e-3);
+    padding-block-start: var(--e-2);
+  }
+
+  .etapa--fim {
+    justify-items: start;
+    gap: var(--e-4);
+  }
+
+  /* O fechamento da assinatura: as duas metades se juntam quando o pedido sai. */
+  .circulo {
+    display: flex;
+    gap: 3px;
+    inline-size: 4rem;
+    block-size: 4rem;
+  }
+
+  .circulo__meia {
+    flex: 1;
+  }
+
+  .circulo__meia--esquerda {
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .circulo__meia--direita {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--magenta);
+  }
+
+  .drawer__link {
+    display: inline-block;
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    font-weight: 700;
+  }
+
+  .drawer__simulado {
+    padding-block: var(--e-2);
+    padding-inline: var(--e-3);
+    border: 1px dashed var(--navy-2);
+    color: var(--navy-2);
+    font-size: var(--t-rotulo);
+    font-weight: 700;
+  }
+
+  .drawer__acoes {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    padding-block: var(--e-3) max(var(--e-3), env(safe-area-inset-bottom));
+    padding-inline: var(--e-5);
+    border-block-start: 1px solid var(--linha);
+    background-color: var(--branco);
+  }
+
+  .drawer__avancar {
+    margin-inline-start: auto;
+  }
+
+  @media (min-width: 48rem) {
+    .drawer {
+      inset-inline: auto 0;
+      inline-size: min(34rem, 100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .drawer,
+    .drawer::backdrop {
+      transition-property: transform, opacity, overlay, display;
+      transition-duration: var(--dur-media);
+      transition-timing-function: var(--curva);
+      transition-behavior: allow-discrete;
+    }
+
+    .drawer {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+
+    .drawer[open] {
+      opacity: 1;
+      transform: none;
+    }
+
+    .drawer::backdrop {
+      opacity: 0;
+    }
+
+    .drawer[open]::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      .drawer[open] {
+        opacity: 0;
+        transform: translateY(1.5rem);
+      }
+
+      .drawer[open]::backdrop {
+        opacity: 0;
+      }
+    }
+
+    .circulo__meia {
+      animation-duration: 700ms;
+      animation-timing-function: var(--curva);
+      animation-fill-mode: both;
+    }
+
+    .circulo__meia--esquerda {
+      animation-name: juntar-esquerda;
+    }
+
+    .circulo__meia--direita {
+      animation-name: juntar-direita;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) and (min-width: 48rem) {
+    .drawer {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+
+    @starting-style {
+      .drawer[open] {
+        opacity: 1;
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  @keyframes juntar-esquerda {
+    from {
+      transform: translateX(-45%);
+    }
+  }
+
+  @keyframes juntar-direita {
+    from {
+      transform: translateX(45%);
+    }
+  }
+</style>

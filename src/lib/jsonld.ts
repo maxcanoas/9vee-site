@@ -1,4 +1,4 @@
-import { textoPuro } from './texto';
+import { jsonParaScript, textoPuro } from './texto';
 import type { DadosDoSite } from './site';
 
 /** "5511934661917" vira "+55 11 93466-1917". */
@@ -45,5 +45,5 @@ export function serializarJsonLd(nos: Record<string, unknown>[]): string {
     nos.length === 1
       ? { '@context': 'https://schema.org', ...nos[0] }
       : { '@context': 'https://schema.org', '@graph': nos };
-  return JSON.stringify(documento).replaceAll('<', '\\u003c');
+  return jsonParaScript(documento);
 }

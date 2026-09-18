@@ -50,6 +50,7 @@
   --raio-pilula: 999px;
   --raio-arco: 999px 999px 0 0;
   --alvo-minimo: 2.75rem;
+  --flutuante: 3.5rem;
 
   /* Movimento */
   --dur-rapida: 140ms;

@@ -4,6 +4,9 @@ const NEGRITO = /\*\*(.+?)\*\*/g;
 // Siglas com hífen que o navegador quebraria no meio ("NR-" numa linha, "1" na outra).
 const SEM_QUEBRA = /(?<![\p{L}\d-])(NR-1|CELPE-Bras)(?![\p{L}\d-])/gu;
 
+/** Aviso para o leitor de tela em todo link que abre outra aba. */
+export const AVISO_NOVA_ABA = ' (abre em nova aba)';
+
 export function escaparHtml(texto: string): string {
   return texto
     .replaceAll('&', '&amp;')
@@ -27,7 +30,7 @@ function linkHtml(rotulo: string, urlEscapada: string): string {
   if (/^https?:\/\//i.test(url)) {
     return (
       `<a href="${urlEscapada}" target="_blank" rel="noopener">${rotulo}` +
-      `<span class="visualmente-oculto"> (abre em nova aba)</span></a>`
+      `<span class="visualmente-oculto">${AVISO_NOVA_ABA}</span></a>`
     );
   }
   if (/^(\/|#|mailto:|tel:)/i.test(url)) {
@@ -63,4 +66,9 @@ export function textoPuro(texto: string): string {
     .replace(/\s+([.,;:!?])/g, '$1')
     .replace(/\s{2,}/g, ' ')
     .trim();
+}
+
+/** JSON para dentro de <script>: com o "<" escapado, nenhum texto consegue fechar a tag. */
+export function jsonParaScript(valor: unknown): string {
+  return JSON.stringify(valor).replaceAll('<', '\\u003c');
 }

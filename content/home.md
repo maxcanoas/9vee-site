@@ -46,29 +46,21 @@ servicos:
       publico: "Para empresas"
       texto: "Saúde mental e riscos psicossociais para RH, SESMT e liderança. A fiscalização com multa começou em maio de 2026."
       link: { rotulo: "Conhecer o treinamento de NR-1", href: "/treinamento-nr-1/" }
-      ordemEmpresa: 1
-      ordemVoce: 3
     - id: "traducao"
       titulo: "Tradução simultânea"
       publico: "Para empresas"
       texto: "Intérpretes em cabine para congressos, reuniões e visitas. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
       link: { rotulo: "Ver como funciona a tradução simultânea", href: "/traducao-simultanea/" }
-      ordemEmpresa: 2
-      ordemVoce: 2
     - id: "idiomas"
       titulo: "Cursos de idiomas"
       publico: "Para você e para empresas"
       texto: "Aula particular, online ou para a equipe inteira, com preparação para TOEFL, DELE, DELF e CELPE-Bras."
       link: { rotulo: "Ver os cursos de idiomas", href: "/curso-de-idiomas/" }
-      ordemEmpresa: 3
-      ordemVoce: 1
     - id: "lms"
       titulo: "LMS"
       publico: "Para empresas"
       texto: "Plataforma para a equipe estudar a qualquer hora, com trilhas por nível e relatórios de frequência para o RH."
       link: { rotulo: "Conhecer o LMS", href: "/lms/" }
-      ordemEmpresa: 4
-      ordemVoce: 4
 
 destaqueNr1:
   rotulo: "Para RH, SESMT e diretoria"

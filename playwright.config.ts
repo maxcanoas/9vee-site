@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Usa o Chrome instalado na máquina (channel 'chrome'), sem baixar outro navegador.
-// O WebKit entra na etapa 3, com os testes do drawer.
+// O Chrome instalado na máquina (channel 'chrome') roda o celular Android e o desktop.
+// O WebKit do Playwright faz as vezes do iPhone. Não é o Safari: animação e teclado virtual ficam para o
+// teste no aparelho de verdade.
 export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,
@@ -19,5 +20,8 @@ export default defineConfig({
   projects: [
     { name: 'celular', use: { ...devices['Pixel 7'], channel: 'chrome' } },
     { name: 'desktop', use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    // Sem rastro no WebKit: no Windows, com vários workers, a gravação de telas do rastro trava os quadros
+    // da página e os cliques ficam esperando o elemento "parar". Com o rastro desligado, 8 de 8 passam.
+    { name: 'iphone', use: { ...devices['iPhone 15'], trace: 'off' } },
   ],
 });

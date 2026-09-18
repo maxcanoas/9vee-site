@@ -1,0 +1,96 @@
+---
+// Um campo do pedido de contato, desenhado a partir da definição em content/site.md.
+// O que se escolhe é rádio ou checkbox nativo com cara de pílula; o que se digita é caixa.
+// Os nomes levam o formulário na frente: "nr1-formato" e "traducao-formato" não viram um grupo só.
+import Texto from './Texto.astro';
+import { SEM_DATA, valorDaOpcao, type Campo, type IdiomaCurto } from '../lib/contato';
+import { textoPuro } from '../lib/texto';
+
+interface Props {
+  campo: Campo;
+  formulario: string;
+  idiomas?: IdiomaCurto[];
+  opcional?: string;
+  /** O que a tecla Enter do teclado do celular anuncia: no drawer, o Enter avança ou envia. */
+  teclaEnter?: 'next' | 'send';
+}
+
+const { campo, formulario, idiomas = [], opcional, teclaEnter = 'next' } = Astro.props;
+const nome = `${formulario}-${campo.id}`;
+const id = `campo-${nome}`;
+const erro = `${id}-erro`;
+const oculto = Boolean(campo.mostrarSe);
+const opcoes =
+  campo.tipo === 'idioma'
+    ? idiomas.map((idioma) => ({ valor: idioma.slug, rotulo: idioma.nome }))
+    : campo.tipo === 'escolha' || campo.tipo === 'multipla'
+      ? campo.opcoes.map((opcao) => ({ valor: valorDaOpcao(opcao), rotulo: opcao }))
+      : [];
+const tipoDaOpcao = campo.tipo === 'multipla' ? 'checkbox' : 'radio';
+---
+
+{
+  campo.tipo === 'texto' && (
+    <div class="campo" data-campo={campo.id} hidden={oculto}>
+      <label class="campo__rotulo" for={id}>
+        <Texto de={campo.rotulo} />
+        {campo.opcionalPara && opcional && (
+          <span class="campo__opcional" data-opcional hidden>
+            {` ${opcional}`}
+          </span>
+        )}
+      </label>
+      <input
+        class="campo__entrada"
+        type="text"
+        id={id}
+        name={nome}
+        autocomplete={campo.autocomplete}
+        enterkeyhint={teclaEnter}
+        aria-describedby={erro}
+      />
+      <p class="campo__erro" id={erro} hidden />
+    </div>
+  )
+}
+
+{
+  campo.tipo === 'data' && (
+    <fieldset class="campo" data-campo={campo.id} hidden={oculto} aria-describedby={erro}>
+      <legend class="campo__rotulo">
+        <Texto de={campo.rotulo} />
+      </legend>
+      <div class="campo__data">
+        <input class="campo__entrada" type="date" id={id} name={nome} aria-label={textoPuro(campo.rotuloCurto)} />
+        <label class="opcao">
+          <input class="visualmente-oculto" type="checkbox" name={`${nome}-sem-data`} value={SEM_DATA} data-sem-data />
+          <span>
+            <Texto de={campo.semData} />
+          </span>
+        </label>
+      </div>
+      <p class="campo__erro" id={erro} hidden />
+    </fieldset>
+  )
+}
+
+{
+  opcoes.length > 0 && (
+    <fieldset class="campo" data-campo={campo.id} hidden={oculto} aria-describedby={erro}>
+      <legend class="campo__rotulo">
+        <Texto de={campo.rotulo} />
+      </legend>
+      <div class="opcoes">
+        {opcoes.map((opcao) => (
+          <label class="opcao">
+            <input class="visualmente-oculto" type={tipoDaOpcao} name={nome} value={opcao.valor} />
+            <span>
+              <Texto de={opcao.rotulo} />
+            </span>
+          </label>
+        ))}
+      </div>
+      <p class="campo__erro" id={erro} hidden />
+    </fieldset>
+  )
+}

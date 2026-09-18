@@ -8,6 +8,6 @@ const { data: pagina } = await paginaParcial('lms');
 const site = await dadosDoSite();
 ---
 
-<Base titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
+<Base pagina="lms" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
   <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
 </Base>

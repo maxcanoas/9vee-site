@@ -4,19 +4,23 @@ import { INDEXAVEL } from 'astro:env/server';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/movimento.css';
+import '../styles/formulario.css';
 import Cabecalho from '../components/Cabecalho.astro';
 import Rodape from '../components/Rodape.astro';
-import { dadosDoSite } from '../lib/site';
+import Drawer from '../components/Drawer.astro';
+import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+import { dadosDoSite, type PaginaId } from '../lib/site';
 import { organizacao, serializarJsonLd } from '../lib/jsonld';
 import { textoPuro } from '../lib/texto';
 
 interface Props {
+  pagina: PaginaId;
   titulo: string;
   descricao: string;
   jsonLd?: Record<string, unknown>[];
 }
 
-const { titulo, descricao, jsonLd = [] } = Astro.props;
+const { pagina, titulo, descricao, jsonLd = [] } = Astro.props;
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
 const canonical = new URL(Astro.url.pathname, base).href;
@@ -76,9 +80,12 @@ const regrasDeSpeculation = JSON.stringify({
       <slot />
     </main>
     <Rodape site={site} />
+    <BotaoWhatsApp site={site} pagina={pagina} />
+    <Drawer site={site} pagina={pagina} />
     <script>
       import '../scripts/publico.ts';
       import '../scripts/movimento.ts';
+      import '../scripts/contato.ts';
     </script>
   </body>
 </html>
