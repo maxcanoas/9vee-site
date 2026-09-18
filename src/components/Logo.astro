@@ -1,0 +1,10 @@
+---
+import SvgDoKit from './SvgDoKit.astro';
+import logo from '../../assets-cliente/Vectors/Logo_5.svg?raw';
+
+interface Props {
+  class?: string;
+}
+---
+
+<SvgDoKit bruto={logo} class={Astro.props.class} />

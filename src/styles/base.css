@@ -1,0 +1,215 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--altura-cabecalho) + var(--e-4));
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+body {
+  min-height: 100svh;
+  background-color: var(--papel);
+  color: var(--navy);
+  font-family: var(--fonte-texto);
+  font-size: var(--t-corpo);
+  line-height: var(--altura-texto);
+}
+
+img,
+svg,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  line-height: var(--altura-titulo);
+  letter-spacing: var(--rastreio-titulo);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--t-1);
+}
+
+h2 {
+  font-size: var(--t-2);
+}
+
+h3 {
+  font-size: var(--t-3);
+  line-height: var(--altura-subtitulo);
+  letter-spacing: 0;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition-property: text-decoration-color, color;
+  transition-duration: var(--dur-rapida);
+}
+
+a:hover {
+  text-decoration-color: var(--magenta);
+}
+
+:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--menta);
+  color: var(--navy);
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sem-quebra {
+  white-space: nowrap;
+}
+
+.conteiner {
+  width: min(100% - 2 * var(--margem), var(--largura));
+  margin-inline: auto;
+}
+
+.prosa > * + * {
+  margin-block-start: var(--e-4);
+}
+
+.prosa p {
+  max-inline-size: var(--medida);
+}
+
+/* Botão: pílula menta com texto navy (7,8:1). No escuro, a pílula continua menta. */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  min-height: var(--alvo-minimo);
+  padding-block: var(--e-2);
+  padding-inline: var(--e-5);
+  border: 1.5px solid transparent;
+  border-radius: var(--raio-pilula);
+  background-color: var(--menta);
+  color: var(--navy);
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--dur-rapida);
+}
+
+.botao:hover {
+  background-color: var(--menta-forte);
+}
+
+.botao--contorno {
+  border-color: currentColor;
+  background-color: transparent;
+}
+
+.botao--contorno:hover {
+  background-color: var(--nevoa);
+}
+
+/* Texto por público: sem escolha, vale o neutro. */
+[data-publico-texto] {
+  display: none;
+}
+
+:root:not([data-publico]) [data-publico-texto='neutro'],
+:root[data-publico='empresa'] [data-publico-texto='empresa'],
+:root[data-publico='voce'] [data-publico-texto='voce'] {
+  display: inline;
+}
+
+/* Pendência: etiqueta discreta para a reunião com a Daniella e o Arthur. */
+mark.confirmar {
+  display: inline-block;
+  padding-block: 0.1em;
+  padding-inline: 0.5em;
+  border: 1px dashed var(--magenta);
+  border-radius: var(--raio-pilula);
+  background-color: var(--magenta-veu);
+  color: inherit;
+  font-family: var(--fonte-texto);
+  font-size: 0.78em;
+  font-weight: 700;
+  line-height: 1.35;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+
+.escuro {
+  background-color: var(--navy);
+  color: var(--papel);
+}
+
+.escuro .texto-secundario {
+  color: var(--sobre-escuro);
+}
+
+.texto-secundario {
+  color: var(--navy-2);
+}

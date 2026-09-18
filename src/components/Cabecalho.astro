@@ -1,0 +1,404 @@
+---
+import Logo from './Logo.astro';
+import Texto from './Texto.astro';
+import TextoPorPublico from './TextoPorPublico.astro';
+import type { DadosDoSite } from '../lib/site';
+
+interface Props {
+  site: DadosDoSite;
+}
+
+const { menu, cta } = Astro.props.site;
+const atual = Astro.url.pathname;
+const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
+---
+
+<header class="cabecalho">
+  <a class="pular" href="#conteudo">{menu.pularParaConteudo}</a>
+  <div class="conteiner cabecalho__linha">
+    <a class="cabecalho__marca" href="/" aria-label={menu.inicio} aria-current={ehAtual('/')}>
+      <Logo />
+    </a>
+
+    <nav class="nav-larga" aria-label={menu.rotuloNavegacao}>
+      <ul class="nav-larga__lista" role="list">
+        {
+          menu.grupos.map((grupo) => (
+            <li>
+              <button class="nav-larga__grupo" type="button" popovertarget={`painel-${grupo.id}`}>
+                {grupo.rotulo}
+              </button>
+              <div class="painel" id={`painel-${grupo.id}`} popover>
+                <div class="conteiner painel__grade">
+                  <p class="painel__rotulo" id={`rotulo-${grupo.id}`}>
+                    {grupo.rotulo}
+                  </p>
+                  <ul class="painel__lista" role="list" aria-labelledby={`rotulo-${grupo.id}`}>
+                    {grupo.itens.map((item) => (
+                      <li>
+                        <a class="painel__link" href={item.href} aria-current={ehAtual(item.href)}>
+                          <span class="painel__item"><Texto de={item.rotulo} /></span>
+                          {item.descricao && <span class="painel__descricao"><Texto de={item.descricao} /></span>}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+        <li>
+          <a class="nav-larga__link" href={menu.quemSomos.href} aria-current={ehAtual(menu.quemSomos.href)}>
+            {menu.quemSomos.rotulo}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="botao cabecalho__cta" type="button" aria-haspopup="dialog" data-abre-contato>
+      <TextoPorPublico textos={cta} />
+    </button>
+
+    <button class="botao botao--contorno cabecalho__abrir" type="button" popovertarget="menu-movel">
+      {menu.abrir}
+    </button>
+  </div>
+
+  <div class="menu-movel" id="menu-movel" popover>
+    <div class="conteiner menu-movel__topo">
+      <a class="cabecalho__marca" href="/" aria-label={menu.inicio}>
+        <Logo />
+      </a>
+      <button
+        class="botao botao--contorno"
+        type="button"
+        popovertarget="menu-movel"
+        popovertargetaction="hide"
+      >
+        {menu.fechar}
+      </button>
+    </div>
+    <nav class="conteiner menu-movel__nav" aria-label={menu.abrir}>
+      {
+        menu.grupos.map((grupo) => (
+          <section class="menu-movel__grupo" aria-labelledby={`movel-${grupo.id}`}>
+            <p class="menu-movel__rotulo" id={`movel-${grupo.id}`}>
+              {grupo.rotulo}
+            </p>
+            <ul class="menu-movel__lista" role="list">
+              {grupo.itens.map((item) => (
+                <li>
+                  <a class="menu-movel__link" href={item.href} aria-current={ehAtual(item.href)}>
+                    <span class="painel__item"><Texto de={item.rotulo} /></span>
+                    {item.descricao && <span class="painel__descricao"><Texto de={item.descricao} /></span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+      <a class="menu-movel__link menu-movel__avulso" href={menu.quemSomos.href} aria-current={ehAtual(menu.quemSomos.href)}>
+        <span class="painel__item"><Texto de={menu.quemSomos.rotulo} /></span>
+      </a>
+      <button class="botao menu-movel__cta" type="button" aria-haspopup="dialog" data-abre-contato>
+        <TextoPorPublico textos={cta} />
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-cabecalho);
+    background-color: var(--papel);
+    view-transition-name: cabecalho;
+  }
+
+  /* Fio de 1 px que aparece quando a página rola. Sem suporte ou com movimento reduzido, fica sempre visível. */
+  .cabecalho::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 1px;
+    background-color: var(--linha);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      .cabecalho::after {
+        animation-name: surgir-fio;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: scroll(root);
+        animation-range: 0 5rem;
+      }
+    }
+  }
+
+  @keyframes surgir-fio {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .pular {
+    position: absolute;
+    inset-inline-start: var(--margem);
+    inset-block-start: var(--e-2);
+    z-index: 1;
+    padding: var(--e-2) var(--e-4);
+    border-radius: var(--raio-pilula);
+    background-color: var(--navy);
+    color: var(--papel);
+    transform: translateY(-200%);
+  }
+
+  .pular:focus-visible {
+    transform: none;
+  }
+
+  .cabecalho__linha {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    min-block-size: var(--altura-cabecalho);
+  }
+
+  .cabecalho__marca {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--alvo-minimo);
+    margin-inline-end: auto;
+    color: var(--navy);
+  }
+
+  /* O <svg> nasce dentro do SvgDoKit, fora do escopo deste componente: por isso o :global. */
+  .cabecalho__marca :global(svg) {
+    inline-size: auto;
+    block-size: 1.75rem;
+  }
+
+  .cabecalho__cta {
+    padding-inline: var(--e-4);
+    font-size: var(--t-pequeno);
+  }
+
+  .cabecalho__abrir {
+    padding-inline: var(--e-4);
+    font-size: var(--t-pequeno);
+  }
+
+  .nav-larga {
+    display: none;
+  }
+
+  /* Painéis do desktop: faixa de largura total logo abaixo do cabeçalho. */
+  .painel {
+    inset-inline: 0;
+    inset-block: var(--altura-cabecalho) auto;
+    inline-size: 100%;
+    max-inline-size: none;
+    margin: 0;
+    padding-block: var(--e-6);
+    border: 0;
+    border-block-end: 1px solid var(--linha);
+    background-color: var(--papel);
+    color: var(--navy);
+  }
+
+  /* O botão já diz o grupo; o rótulo dentro do painel fica só para o leitor de tela. */
+  .painel__rotulo {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .menu-movel__rotulo {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .painel__lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .painel__link,
+  .menu-movel__link {
+    display: grid;
+    gap: var(--e-1);
+    min-block-size: var(--alvo-minimo);
+    text-decoration: none;
+  }
+
+  .painel__item {
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-destaque);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    transition-property: text-decoration-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .painel__link:hover .painel__item,
+  .menu-movel__link:hover .painel__item,
+  [aria-current='page'] .painel__item {
+    text-decoration-color: var(--magenta);
+  }
+
+  .painel__descricao {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+  }
+
+  /* Folha do menu no celular, em tela cheia. */
+  .menu-movel {
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100dvh;
+    max-inline-size: none;
+    max-block-size: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    background-color: var(--papel);
+    color: var(--navy);
+  }
+
+  :global(html:has(#menu-movel:popover-open)) {
+    overflow: hidden;
+  }
+
+  .menu-movel__topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-block-size: var(--altura-cabecalho);
+  }
+
+  .menu-movel__nav {
+    display: grid;
+    gap: var(--e-6);
+    padding-block: var(--e-5) var(--e-7);
+  }
+
+  .menu-movel__grupo {
+    display: grid;
+    gap: var(--e-4);
+  }
+
+  .menu-movel__lista {
+    display: grid;
+    gap: var(--e-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu-movel__avulso {
+    padding-block-start: var(--e-5);
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .menu-movel__cta {
+    justify-self: start;
+  }
+
+  @media (min-width: 64rem) {
+    .cabecalho__linha {
+      gap: var(--e-5);
+    }
+
+    .cabecalho__marca {
+      margin-inline-end: 0;
+    }
+
+    .cabecalho__marca :global(svg) {
+      block-size: 2rem;
+    }
+
+    .nav-larga {
+      display: block;
+      margin-inline-end: auto;
+    }
+
+    .nav-larga__lista {
+      display: flex;
+      gap: var(--e-2);
+      padding: 0;
+      margin-inline-start: var(--e-5);
+      list-style: none;
+    }
+
+    .nav-larga__grupo,
+    .nav-larga__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--e-2);
+      min-block-size: var(--alvo-minimo);
+      padding-inline: var(--e-3);
+      border: 0;
+      border-radius: var(--raio-pilula);
+      background-color: transparent;
+      font-family: var(--fonte-titulo);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition-property: background-color;
+      transition-duration: var(--dur-rapida);
+    }
+
+    .nav-larga__grupo:hover,
+    .nav-larga__link:hover,
+    .nav-larga__link[aria-current='page'] {
+      background-color: var(--nevoa);
+    }
+
+    /* Indicador: meio-círculo da marca, que gira quando o painel abre. */
+    .nav-larga__grupo::after {
+      content: '';
+      inline-size: 0.625rem;
+      block-size: 0.3125rem;
+      border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
+      background-color: var(--magenta);
+      transition-property: transform;
+      transition-duration: var(--dur-media);
+      transition-timing-function: var(--curva);
+    }
+
+    .nav-larga__grupo:has(+ .painel:popover-open)::after {
+      transform: rotate(180deg);
+    }
+
+    .cabecalho__cta {
+      padding-inline: var(--e-5);
+      font-size: 1rem;
+    }
+
+    .cabecalho__abrir,
+    .menu-movel {
+      display: none;
+    }
+  }
+</style>

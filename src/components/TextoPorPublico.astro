@@ -1,0 +1,12 @@
+---
+// As três versões ficam no HTML; o CSS mostra a do público salvo antes da primeira pintura.
+import Texto from './Texto.astro';
+
+interface Props {
+  textos: { neutro: string; empresa: string; voce: string };
+}
+
+const { textos } = Astro.props;
+---
+
+<span data-publico-texto="neutro"><Texto de={textos.neutro} /></span><span data-publico-texto="empresa"><Texto de={textos.empresa} /></span><span data-publico-texto="voce"><Texto de={textos.voce} /></span>

@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import EmConstrucao from '../components/EmConstrucao.astro';
+import { dadosDoSite } from '../lib/site';
+import { paginaNr1 } from '../lib/paginas';
+
+const { data: pagina } = await paginaNr1();
+const site = await dadosDoSite();
+---
+
+<Base titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
+  <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
+</Base>

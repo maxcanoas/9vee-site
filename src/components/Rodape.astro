@@ -1,0 +1,226 @@
+---
+import Logo from './Logo.astro';
+import IconeSocial from './IconeSocial.astro';
+import Texto from './Texto.astro';
+import type { DadosDoSite } from '../lib/site';
+
+interface Props {
+  site: DadosDoSite;
+}
+
+const { marca, contato, redes, menu, rodape } = Astro.props.site;
+---
+
+<footer class="rodape escuro">
+  <div class="conteiner rodape__grade">
+    <div class="rodape__marca">
+      <a class="rodape__logo-link" href="/" aria-label={menu.inicio}>
+        <Logo />
+      </a>
+      <p class="rodape__resumo"><Texto de={marca.resumo} /></p>
+      <p class="texto-secundario"><Texto de={rodape.pronuncia} /></p>
+    </div>
+
+    <nav class="rodape__nav" aria-label={rodape.rotuloNavegacao}>
+      {
+        menu.grupos.map((grupo) => (
+          <div>
+            <p class="rodape__rotulo" id={`rodape-${grupo.id}`}>
+              {grupo.rotulo}
+            </p>
+            <ul class="rodape__lista" role="list" aria-labelledby={`rodape-${grupo.id}`}>
+              {grupo.itens.map((item) => (
+                <li>
+                  <a href={item.href}><Texto de={item.rotulo} /></a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+
+    <div class="rodape__contato">
+      <p class="rodape__rotulo">{rodape.tituloContato}</p>
+      <p class="texto-secundario"><Texto de={rodape.atendimento} /></p>
+      <p>{rodape.rotuloWhatsapp} {contato.whatsappExibicao}</p>
+      <p>
+        <a href={`mailto:${contato.email}`}>{contato.email}</a>
+      </p>
+      <p><a href={menu.quemSomos.href}>{menu.quemSomos.rotulo}</a></p>
+    </div>
+
+    <div class="rodape__redes">
+      <p class="rodape__rotulo" id="rodape-redes">{rodape.tituloRedes}</p>
+      <ul class="rodape__icones" role="list" aria-labelledby="rodape-redes">
+        {
+          redes.map((rede) => (
+            <li>
+              <a
+                class="rodape__icone"
+                href={rede.url}
+                target="_blank"
+                rel="noopener"
+                aria-label={rodape.rotuloRede.replace('{rede}', rede.nome)}
+              >
+                <IconeSocial icone={rede.icone} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="conteiner rodape__base">
+    <p>{rodape.direitos}</p>
+    <a href={rodape.privacidade.href} target="_blank" rel="noopener">
+      {rodape.privacidade.rotulo}<span class="visualmente-oculto"> (abre em nova aba)</span>
+    </a>
+  </div>
+</footer>
+
+<style>
+  .rodape {
+    padding-block: var(--e-7) var(--e-5);
+    background-color: var(--noite);
+    view-transition-name: rodape;
+  }
+
+  .rodape__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .rodape__logo-link {
+    display: inline-flex;
+    min-block-size: var(--alvo-minimo);
+    align-items: center;
+    color: var(--papel);
+  }
+
+  /* O <svg> nasce dentro do SvgDoKit, fora do escopo deste componente: por isso o :global. */
+  .rodape__logo-link :global(svg) {
+    inline-size: auto;
+    block-size: 2.5rem;
+  }
+
+  .rodape__marca {
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+  }
+
+  .rodape__resumo {
+    max-inline-size: 26ch;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-destaque);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+  }
+
+  .rodape__nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: var(--e-6);
+  }
+
+  .rodape__rotulo {
+    margin-block-end: var(--e-3);
+    color: var(--menta);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .rodape__lista {
+    display: grid;
+    gap: var(--e-1);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* inline-block e não flex: no flex, o espaço antes de um <span> dentro do link some. */
+  .rodape__lista a,
+  .rodape__contato a,
+  .rodape__base a {
+    display: inline-block;
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+  }
+
+  .rodape__contato {
+    display: grid;
+    gap: var(--e-2);
+    align-content: start;
+  }
+
+  .rodape__contato .rodape__rotulo {
+    margin-block-end: var(--e-1);
+  }
+
+  .rodape__icones {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rodape__icone {
+    display: grid;
+    place-items: center;
+    inline-size: var(--alvo-minimo);
+    block-size: var(--alvo-minimo);
+    border-radius: var(--raio-pilula);
+    color: var(--papel);
+    transition-property: background-color, color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .rodape__icone:hover {
+    background-color: var(--menta);
+    color: var(--navy);
+  }
+
+  .rodape__icone :global(svg) {
+    inline-size: 1.375rem;
+    block-size: 1.375rem;
+  }
+
+  .rodape__base {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--e-3);
+    margin-block-start: var(--e-7);
+    padding-block-start: var(--e-4);
+    border-block-start: 1px solid color-mix(in oklab, var(--sobre-escuro) 30%, transparent);
+    color: var(--sobre-escuro);
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 64rem) {
+    .rodape__grade {
+      grid-template-columns: 1.3fr 2fr 1.2fr;
+      grid-template-areas:
+        'marca nav contato'
+        'marca nav redes';
+      column-gap: var(--e-7);
+    }
+
+    .rodape__marca {
+      grid-area: marca;
+    }
+
+    .rodape__nav {
+      grid-area: nav;
+    }
+
+    .rodape__contato {
+      grid-area: contato;
+    }
+
+    .rodape__redes {
+      grid-area: redes;
+    }
+  }
+</style>

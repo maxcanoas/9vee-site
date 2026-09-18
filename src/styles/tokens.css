@@ -1,0 +1,68 @@
+:root {
+  color-scheme: light;
+
+  /* Cor: as cinco oficiais do kit, cada uma com um papel, e três tons derivados para texto e fundo. */
+  --papel: #f9f9f9;
+  --branco: #ffffff;
+  --nevoa: #eef0f6;
+  --linha: #dcdfe8;
+  --navy: #212d4d;
+  --navy-2: #525b75;
+  --noite: #161e33;
+  --sobre-escuro: #b8bfd3;
+  --menta: #16df97;
+  --menta-forte: color-mix(in oklab, var(--menta), var(--navy) 14%);
+  --magenta: #fe19d6;
+  --magenta-veu: color-mix(in oklab, var(--magenta) 9%, transparent);
+  --violeta: #5c58f4;
+  --veu: color-mix(in oklab, var(--noite) 62%, transparent);
+
+  /* Tipo. As famílias chegam pela Fonts API (--fonte-titulo e --fonte-texto). */
+  --t-rotulo: 0.875rem;
+  --t-pequeno: 0.9375rem;
+  --t-corpo: clamp(1.0625rem, 1.02rem + 0.18vw, 1.1875rem);
+  --t-destaque: clamp(1.1875rem, 1.08rem + 0.5vw, 1.5rem);
+  --t-3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --t-2: clamp(1.875rem, 1.45rem + 1.9vw, 3.25rem);
+  --t-1: clamp(2.25rem, 1.5rem + 3.9vw, 5.25rem);
+  --t-mostra: clamp(3rem, 1.8rem + 6vw, 7.5rem);
+
+  --altura-texto: 1.55;
+  --altura-subtitulo: 1.2;
+  --altura-titulo: 1.06;
+  --rastreio-titulo: -0.025em;
+  --medida: 64ch;
+
+  /* Espaço */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2.5rem;
+  --e-7: 4rem;
+  --e-8: 6.5rem;
+  --secao: clamp(4rem, 2.5rem + 6vw, 8.5rem);
+  --margem: max(1rem, 5vw);
+  --largura: 76rem;
+
+  /* Forma: o que se toca é pílula (duas metades de círculo); imagem é arco; texto tem canto reto. */
+  --raio-pilula: 999px;
+  --raio-arco: 999px 999px 0 0;
+  --alvo-minimo: 2.75rem;
+
+  /* Movimento */
+  --dur-rapida: 140ms;
+  --dur-media: 280ms;
+  --curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --altura-cabecalho: 3.5rem;
+  --z-cabecalho: 20;
+  --z-flutuante: 30;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --altura-cabecalho: 4.5rem;
+  }
+}

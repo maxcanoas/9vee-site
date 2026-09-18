@@ -1,0 +1,49 @@
+---
+// Conteúdo provisório: cada página é substituída pela versão completa na etapa dela.
+import Texto from './Texto.astro';
+interface Props {
+  h1: string;
+  aviso: string;
+  etiqueta: string;
+  secoes: { id: string; titulo: string }[];
+}
+
+const { h1, aviso, etiqueta, secoes } = Astro.props;
+---
+
+<div class="conteiner em-construcao">
+  <p class="em-construcao__etiqueta">{etiqueta}</p>
+  <h1><Texto de={h1} /></h1>
+  <p class="texto-secundario"><Texto de={aviso} /></p>
+  {
+    secoes.map((secao) => (
+      <section id={secao.id} class="em-construcao__secao">
+        <h2><Texto de={secao.titulo} /></h2>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .em-construcao {
+    display: grid;
+    gap: var(--e-5);
+    padding-block: var(--secao);
+  }
+
+  .em-construcao__etiqueta {
+    justify-self: start;
+    padding-block: var(--e-1);
+    padding-inline: var(--e-3);
+    border: 1px dashed var(--navy-2);
+    border-radius: var(--raio-pilula);
+    color: var(--navy-2);
+    font-size: var(--t-rotulo);
+    font-weight: 700;
+  }
+
+  .em-construcao__secao {
+    padding-block-start: var(--e-5);
+    border-block-start: 1px solid var(--linha);
+  }
+</style>

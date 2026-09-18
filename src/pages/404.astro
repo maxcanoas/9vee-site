@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Texto from '../components/Texto.astro';
+import { dadosDoSite } from '../lib/site';
+
+const { erro404 } = await dadosDoSite();
+---
+
+<Base titulo={erro404.titulo} descricao={erro404.descricao}>
+  <div class="conteiner erro">
+    <h1><Texto de={erro404.h1} /></h1>
+    <p class="texto-secundario"><Texto de={erro404.texto} /></p>
+    <a class="botao" href="/">{erro404.voltar}</a>
+  </div>
+</Base>
+
+<style>
+  .erro {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+    padding-block: var(--secao);
+  }
+</style>

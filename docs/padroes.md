@@ -21,7 +21,7 @@
 - **(teste)** Um único `<h1>` por página, e headings sem pular nível.
 - **(teste)** `<title>` com até 60 caracteres e `meta description` entre 140 e 160 nas páginas completas.
 - **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, `Service` no NR-1, `ItemList`/`Course` e `FAQPage` em Idiomas. O FAQ do JSON-LD é igual ao FAQ visível.
-- **(teste)** Noindex (meta e cabeçalho) em todo build padrão. Só o build com `INDEXAVEL=1` sai sem ele.
+- **(teste)** Noindex (meta e cabeçalho) em todo build padrão. Só o build com `INDEXAVEL=true` sai sem ele.
 - **(teste)** HTML válido pelo `html-validate`. Nada de `<a>` dentro de `<button>`, nem bloco dentro de `<p>`.
 - **(teste)** Todo `target="_blank"` vem com `rel="noopener"`.
 - **(teste)** Todo link interno resolve, com a barra final, e toda âncora existe.
@@ -44,6 +44,7 @@
 - `:focus-visible` desenhado em todo elemento interativo: anel magenta de 2 px com afastamento.
 - **(teste)** Contraste mínimo de 4,5:1 em texto normal e 3:1 em texto grande e indicador de foco, calculado.
 - Alvo de toque de no mínimo 44 × 44 px. Campo de formulário com fonte de 16 px ou mais.
+- Link ou botão com `display: flex` ou `grid` leva o rótulo inteiro dentro de um único `<span>`. Texto solto ao lado de um `<span>` vira item separado, e o espaço entre eles some ("deNR-1"). Em link de texto, use `inline-block` com padding calculado.
 - Nomes de classe e de componente em português, num idioma só.
 
 ## JavaScript

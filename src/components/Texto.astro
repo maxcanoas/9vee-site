@@ -1,0 +1,10 @@
+---
+// Todo texto visível que vem do content/ passa por aqui: escape, pendência, link, negrito e siglas sem quebra.
+import { formatarInline } from '../lib/texto';
+
+interface Props {
+  de: string;
+}
+---
+
+<Fragment set:html={formatarInline(Astro.props.de)} />

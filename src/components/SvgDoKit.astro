@@ -1,0 +1,22 @@
+---
+import { lerSvgDoKit } from '../lib/svg-do-kit';
+
+interface Props {
+  bruto: string;
+  class?: string;
+}
+
+const { bruto, class: classe } = Astro.props;
+const { viewBox, formas, evenodd } = lerSvgDoKit(bruto);
+---
+
+<svg
+  class={classe}
+  viewBox={viewBox}
+  fill="currentColor"
+  fill-rule={evenodd ? 'evenodd' : undefined}
+  aria-hidden="true"
+  focusable="false"
+>
+  {formas.map((forma) => (forma.tipo === 'path' ? <path d={forma.d} /> : <polygon points={forma.points} />))}
+</svg>

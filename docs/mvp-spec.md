@@ -142,7 +142,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | magenta (anel de foco e formas) | #FE19D6 | oficial | 3,2:1 no claro e 4,1:1 no navy, suficiente para indicador de foco; nunca como texto |
   | violeta (formas e gradientes) | #5C58F4 | oficial | não é usado em texto de interface |
 
-- **Tipografia:** no máximo 2 famílias, hospedadas no próprio site, com `font-display: swap`. A proposta é Readex Pro nos títulos e Atkinson Hyperlegible Next no texto, as duas com licença OFL; confirmo com espécime na etapa de base visual. A fonte do logo (Neulis Sans) não entra, porque a licença cobre só o logo.
+- **Tipografia:** no máximo 2 famílias, hospedadas no próprio site, com `font-display: swap`. Readex Pro (600) nos títulos e Source Sans 3 (400 e 700) no texto, as duas com licença OFL. A Atkinson Hyperlegible Next, proposta no começo, saiu na etapa 1: o zero dela é cortado ("2Ø26"), sem alternativa na fonte, e isso pesa em datas, telefones e números de lei. A fonte do logo (Neulis Sans) não entra, porque a licença cobre só o logo.
 - **Assinatura visual, "as duas metades":** os meios-círculos do padrão da marca, que se juntam num círculo conforme a rolagem. A escolha de público usa o mesmo desenho: duas metades de uma pílula.
 - **Movimento:**
   - parallax do hero da home em camadas (fundo, plano médio e texto);
@@ -262,7 +262,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 - **Preview na Cloudflare,** com Workers de arquivos estáticos, porque a Cloudflare hoje recomenda Workers no lugar do Pages para projeto novo.
   - O noindex vai por meta robots e por cabeçalho HTTP.
   - O robots.txt nunca bloqueia, senão o Google não chega a ler o noindex.
-  - Um build com `INDEXAVEL=1` remove o noindex só para medir o SEO 100 localmente. Com noindex, o Lighthouse dá cerca de 66 a 69 em SEO, e isso é esperado.
+  - Um build com `INDEXAVEL=true` remove o noindex só para medir o SEO 100 localmente. Com noindex, o Lighthouse dá cerca de 66 a 69 em SEO, e isso é esperado.
 - **Metas no Lighthouse mobile, nas 3 páginas completas:**
   - Performance ≥ 95, SEO 100 (no build indexável) e Acessibilidade ≥ 95;
   - LCP < 2,0 s e CLS < 0,05;
@@ -284,7 +284,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - um H1 por página e headings sem salto;
      - tamanhos de título e descrição;
      - JSON-LD válido e com os tipos certos por página, e FAQ do JSON-LD igual ao visível;
-     - noindex presente, e ausente com `INDEXAVEL=1`;
+     - noindex presente, e ausente com `INDEXAVEL=true`;
      - nenhum travessão, palavra proibida ou link genérico;
      - "Novee" só nos dois lugares permitidos;
      - links e âncoras internos que resolvem;

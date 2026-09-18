@@ -1,0 +1,17 @@
+---
+import SvgDoKit from './SvgDoKit.astro';
+import tiktok from '../../assets-cliente/Vectors/Social_1.svg?raw';
+import instagram from '../../assets-cliente/Vectors/Social_2.svg?raw';
+import facebook from '../../assets-cliente/Vectors/Social_3.svg?raw';
+import x from '../../assets-cliente/Vectors/Social_4.svg?raw';
+import youtube from '../../assets-cliente/Vectors/Social_5.svg?raw';
+import linkedin from '../../assets-cliente/Vectors/Social_8.svg?raw';
+
+const icones = { tiktok, instagram, facebook, x, youtube, linkedin };
+
+interface Props {
+  icone: keyof typeof icones;
+}
+---
+
+<SvgDoKit bruto={icones[Astro.props.icone]} />

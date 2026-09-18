@@ -1,0 +1,79 @@
+---
+import { Font } from 'astro:assets';
+import { INDEXAVEL } from 'astro:env/server';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import Cabecalho from '../components/Cabecalho.astro';
+import Rodape from '../components/Rodape.astro';
+import { dadosDoSite } from '../lib/site';
+import { organizacao, serializarJsonLd } from '../lib/jsonld';
+import { textoPuro } from '../lib/texto';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { titulo, descricao, jsonLd = [] } = Astro.props;
+const site = await dadosDoSite();
+const base = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, base).href;
+const imagemPrevia = new URL('/og.jpg', base).href;
+const tituloPuro = textoPuro(titulo);
+const descricaoPura = textoPuro(descricao);
+const dadosEstruturados = serializarJsonLd([organizacao(site, base), ...jsonLd]);
+const regrasDeSpeculation = JSON.stringify({
+  prerender: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }],
+});
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <title>{tituloPuro}</title>
+    <meta name="description" content={descricaoPura} />
+    {!INDEXAVEL && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={site.marca.nome} />
+    <meta property="og:title" content={tituloPuro} />
+    <meta property="og:description" content={descricaoPura} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imagemPrevia} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f9f9f9" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <Font cssVariable="--fonte-titulo" preload={[{ subset: 'latin', weight: '600', style: 'normal' }]} />
+    <Font cssVariable="--fonte-texto" />
+    <script is:inline>
+      // Antes da primeira pintura: marca que há JS e aplica o público salvo, sem piscar.
+      (function () {
+        var raiz = document.documentElement;
+        raiz.classList.add('js');
+        try {
+          var publico = localStorage.getItem('9vee:publico');
+          if (publico === 'empresa' || publico === 'voce') raiz.dataset.publico = publico;
+        } catch (erro) {}
+      })();
+    </script>
+    <script type="speculationrules" is:inline set:html={regrasDeSpeculation} />
+    <script type="application/ld+json" is:inline set:html={dadosEstruturados} />
+  </head>
+  <body>
+    <Cabecalho site={site} />
+    <main id="conteudo" tabindex="-1">
+      <slot />
+    </main>
+    <Rodape site={site} />
+  </body>
+</html>

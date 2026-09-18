@@ -1,0 +1,4 @@
+# O preview do MVP sai do Google pelo noindex (meta e cabeçalho), não pelo robots.txt:
+# se o rastreador for bloqueado aqui, ele nunca chega a ler o noindex.
+User-agent: *
+Allow: /
