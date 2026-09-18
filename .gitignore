@@ -1,6 +1,6 @@
 # dependências e build
 node_modules/
-dist/
+/dist/
 .astro/
 
 # testes e relatórios
