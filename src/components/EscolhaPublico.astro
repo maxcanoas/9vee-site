@@ -1,0 +1,91 @@
+---
+// "Para sua empresa" ou "Para você": duas metades de uma pílula, como os meios-círculos da marca.
+// A metade escolhida aparece marcada antes do JS, pelo data-publico que o <head> põe no <html>.
+import Texto from './Texto.astro';
+
+interface Props {
+  legenda: string;
+  opcoes: { empresa: string; voce: string };
+}
+
+const { legenda, opcoes } = Astro.props;
+---
+
+<fieldset class="duas-metades" data-escolha-publico>
+  <legend class="duas-metades__legenda">{legenda}</legend>
+  <div class="duas-metades__pilula">
+    <label class="duas-metades__metade duas-metades__metade--empresa">
+      <input class="visualmente-oculto" type="radio" name="publico" value="empresa" />
+      <span><Texto de={opcoes.empresa} /></span>
+    </label>
+    <label class="duas-metades__metade duas-metades__metade--voce">
+      <input class="visualmente-oculto" type="radio" name="publico" value="voce" />
+      <span><Texto de={opcoes.voce} /></span>
+    </label>
+  </div>
+</fieldset>
+
+<style>
+  .duas-metades {
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .duas-metades__legenda {
+    margin-block-end: var(--e-3);
+    padding: 0;
+    color: var(--sobre-escuro);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .duas-metades__pilula {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    max-inline-size: 28rem;
+  }
+
+  .duas-metades__metade {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 3.25rem;
+    padding-inline: var(--e-3);
+    border: 1.5px solid var(--papel);
+    color: var(--papel);
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition-property: background-color, color, border-color;
+    transition-duration: var(--dur-rapida);
+  }
+
+  .duas-metades__metade--empresa {
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+  }
+
+  .duas-metades__metade--voce {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+  }
+
+  .duas-metades__metade:hover {
+    background-color: color-mix(in oklab, var(--papel) 12%, transparent);
+  }
+
+  :global(:root[data-publico='empresa']) .duas-metades__metade--empresa,
+  :global(:root[data-publico='voce']) .duas-metades__metade--voce {
+    border-color: var(--menta);
+    background-color: var(--menta);
+    color: var(--navy);
+  }
+
+  .duas-metades__metade:has(input:focus-visible) {
+    outline: 2px solid var(--magenta);
+    outline-offset: 3px;
+  }
+</style>

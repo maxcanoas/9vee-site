@@ -1,0 +1,93 @@
+---
+// Decorativa: a lista de idiomas com link vem logo depois. A cópia repetida cobre a largura durante o deslize.
+interface Idioma {
+  slug: string;
+  saudacao: string;
+  lang: string;
+  dir?: 'rtl';
+}
+
+interface Props {
+  idiomas: Idioma[];
+}
+
+const { idiomas } = Astro.props;
+const sequencia = [...idiomas, ...idiomas];
+---
+
+<div class="saudacoes escuro" aria-hidden="true">
+  <div class="saudacoes__trilho">
+    {
+      sequencia.map((idioma) => (
+        <span class="saudacoes__item" lang={idioma.lang} dir={idioma.dir}>
+          {idioma.saudacao}
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .saudacoes {
+    overflow: clip;
+    padding-block: var(--e-6);
+    background-color: var(--navy);
+  }
+
+  .saudacoes__trilho {
+    display: flex;
+    align-items: center;
+    gap: var(--e-6);
+    inline-size: max-content;
+    block-size: 1.2em;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-mostra);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .saudacoes__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-6);
+    unicode-bidi: isolate;
+  }
+
+  /* Entre uma saudação e outra, um meio-círculo da marca, alternando menta e magenta. */
+  .saudacoes__item::after {
+    content: '';
+    inline-size: 0.18em;
+    block-size: 0.36em;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .saudacoes__item:nth-child(even)::after {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--magenta);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .saudacoes__trilho {
+        animation-name: deslizar;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+        will-change: transform;
+      }
+    }
+  }
+
+  @keyframes deslizar {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-40%);
+    }
+  }
+</style>

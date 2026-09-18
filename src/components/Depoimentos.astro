@@ -1,0 +1,133 @@
+---
+// Trecho literal de cada fala, sem reescrever, com nome, cargo e empresa. Sem logo e sem estrelas.
+import Texto from './Texto.astro';
+
+interface Depoimento {
+  trecho: string;
+  nome: string;
+  cargo: string;
+  empresa: string;
+  servico: string;
+  pendencia?: string;
+}
+
+interface Props {
+  titulo: string;
+  itens: Depoimento[];
+  rotuloAutorizacao: string;
+}
+
+const { titulo, itens, rotuloAutorizacao } = Astro.props;
+---
+
+<section class="depoimentos" id="depoimentos" aria-labelledby="depoimentos-titulo">
+  <div class="conteiner">
+    <h2 id="depoimentos-titulo" class="depoimentos__titulo revela"><Texto de={titulo} /></h2>
+    <ul class="depoimentos__lista" role="list">
+      {
+        itens.map((depoimento, i) => (
+          <li class:list={['depoimento', 'revela', i === 0 && 'depoimento--destaque']}>
+            <figure class="depoimento__figura">
+              <blockquote class="depoimento__fala">
+                <p>
+                  “<Texto de={depoimento.trecho} />”
+                </p>
+              </blockquote>
+              <figcaption class="depoimento__autor">
+                <span class="depoimento__nome">
+                  <Texto de={depoimento.nome} />
+                </span>
+                <span class="depoimento__cargo">
+                  <Texto de={`${depoimento.cargo}, ${depoimento.empresa}`} />
+                </span>
+                <span class="depoimento__servico">
+                  <Texto de={depoimento.servico} />
+                </span>
+                {depoimento.pendencia && (
+                  <span class="depoimento__autorizacao">
+                    <Texto de={`${rotuloAutorizacao} ${depoimento.pendencia}`} />
+                  </span>
+                )}
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .depoimentos {
+    padding-block: var(--secao);
+    background-color: var(--nevoa);
+  }
+
+  .depoimentos__titulo {
+    margin-block-end: var(--e-6);
+  }
+
+  .depoimentos__lista {
+    display: grid;
+    gap: var(--e-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .depoimento__figura {
+    display: grid;
+    gap: var(--e-4);
+    margin: 0;
+  }
+
+  .depoimento__fala {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-3);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+    text-wrap: pretty;
+  }
+
+  .depoimento--destaque .depoimento__fala {
+    font-size: var(--t-2);
+    line-height: var(--altura-titulo);
+    letter-spacing: var(--rastreio-titulo);
+  }
+
+  .depoimento__autor {
+    display: grid;
+    gap: var(--e-1);
+  }
+
+  .depoimento__nome {
+    font-weight: 700;
+  }
+
+  .depoimento__cargo,
+  .depoimento__servico {
+    color: var(--navy-2);
+  }
+
+  .depoimento__servico {
+    font-size: var(--t-pequeno);
+  }
+
+  .depoimento__autorizacao {
+    margin-block-start: var(--e-2);
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 64rem) {
+    .depoimentos__lista {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-7);
+    }
+
+    .depoimento--destaque {
+      grid-column: 1 / -1;
+      max-inline-size: 52rem;
+    }
+  }
+</style>

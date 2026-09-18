@@ -1,0 +1,156 @@
+---
+import Texto from './Texto.astro';
+import { extrairPendencias } from '../lib/texto';
+
+interface Item {
+  valor: number;
+  prefixo?: string;
+  rotulo: string;
+  pendencia?: string;
+}
+
+interface Props {
+  titulo: string;
+  itens: Item[];
+  aviso: string;
+}
+
+const { titulo, itens, aviso } = Astro.props;
+const notas = itens.flatMap((item) => (item.pendencia ? extrairPendencias(item.pendencia) : []));
+---
+
+<section class="prova" aria-labelledby="prova-titulo">
+  <div class="conteiner">
+    <h2 id="prova-titulo" class="visualmente-oculto">{titulo}</h2>
+    <ul class="prova__lista" role="list">
+      {
+        itens.map((item) => (
+          <li class="prova__item">
+            {/* Prefixo e valor colados no código: qualquer quebra de linha entre eles vira espaço na tela. */}
+            <span class:list={['prova__numero', item.pendencia && 'prova__numero--pendente']}>{item.prefixo}<span class="prova__valor" data-contador={item.valor} data-digitos={String(item.valor).length}>{item.valor}</span></span>
+            <span class="prova__rotulo">
+              <Texto de={item.rotulo} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      notas.length > 0 && (
+        <details class="prova__notas">
+          <summary class="prova__aviso">
+            <span class="prova__etiqueta">a confirmar</span>
+            <span>
+              <Texto de={aviso} />
+            </span>
+          </summary>
+          <ul class="prova__lista-notas">
+            {notas.map((nota) => (
+              <li>
+                <Texto de={nota} />
+              </li>
+            ))}
+          </ul>
+        </details>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .prova {
+    padding-block: var(--e-6) var(--e-5);
+    border-block-end: 1px solid var(--linha);
+  }
+
+  .prova__lista {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--e-5) var(--e-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .prova__item {
+    display: grid;
+    gap: var(--e-1);
+    align-content: start;
+  }
+
+  .prova__numero {
+    justify-self: start;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.5rem, 1.9rem + 3vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: var(--rastreio-titulo);
+  }
+
+  /* Borda e não text-decoration: o sublinhado não atravessa o inline-block do valor. */
+  .prova__numero--pendente {
+    padding-block-end: 0.06em;
+    border-block-end: 2px dashed var(--magenta);
+  }
+
+  /* Largura reservada: a Readex Pro não tem números tabulares, e a contagem não pode empurrar o rótulo. */
+  .prova__valor {
+    display: inline-block;
+    text-align: end;
+  }
+
+  .prova__valor[data-digitos='2'] {
+    min-inline-size: 2ch;
+  }
+
+  .prova__valor[data-digitos='3'] {
+    min-inline-size: 3ch;
+  }
+
+  .prova__rotulo {
+    color: var(--navy-2);
+  }
+
+  .prova__notas {
+    margin-block-start: var(--e-5);
+    font-size: var(--t-pequeno);
+  }
+
+  .prova__aviso {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2);
+    min-block-size: var(--alvo-minimo);
+    color: var(--navy-2);
+    cursor: pointer;
+  }
+
+  .prova__etiqueta {
+    padding-block: 0.1em;
+    padding-inline: 0.5em;
+    border: 1px dashed var(--magenta);
+    border-radius: var(--raio-pilula);
+    background-color: var(--magenta-veu);
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .prova__lista-notas {
+    display: grid;
+    gap: var(--e-2);
+    margin-block-start: var(--e-3);
+    padding-inline-start: var(--e-5);
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 48rem) {
+    .prova__lista {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .prova__item + .prova__item {
+      padding-inline-start: var(--e-5);
+      border-inline-start: 1px solid var(--linha);
+    }
+  }
+</style>

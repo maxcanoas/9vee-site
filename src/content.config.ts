@@ -31,6 +31,19 @@ const site = defineCollection({
       email: z.email(),
     }),
     cidades: z.array(z.string()).min(1),
+    familias: z.array(z.object({ id: z.string(), nome: z.string(), descricao: z.string() })).min(1),
+    idiomas: z
+      .array(
+        z.object({
+          slug: z.string().regex(/^[a-z]+$/),
+          nome: z.string(),
+          saudacao: z.string(),
+          lang: z.string(),
+          dir: z.enum(['rtl']).optional(),
+          familia: z.string(),
+        }),
+      )
+      .length(14),
     redes: z.array(
       z.object({
         nome: z.string(),
@@ -81,11 +94,100 @@ const site = defineCollection({
   }),
 });
 
+const imagem = z.object({
+  id: z.string().regex(/^IMG-[A-Z0-9-]+$/),
+  arquivo: z.string().regex(/^[a-z0-9-]+$/),
+  alt: z.string().min(10),
+});
+
+export const servicoId = z.enum(['nr1', 'traducao', 'idiomas', 'lms']);
+
+const home = defineCollection({
+  loader: glob({ pattern: 'home.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    hero: z.object({
+      h1: z.string(),
+      apoio: z.string(),
+      legendaPublico: z.string(),
+      opcoes: z.object({ empresa: z.string(), voce: z.string() }),
+      imagemFundo: imagem,
+      imagemFrente: imagem,
+    }),
+    prova: z.object({
+      titulo: z.string(),
+      itens: z
+        .array(
+          z.object({
+            valor: z.number().int().positive(),
+            prefixo: z.string().optional(),
+            rotulo: z.string(),
+            pendencia: z.string().optional(),
+          }),
+        )
+        .min(1),
+      aviso: z.string(),
+    }),
+    servicos: z.object({
+      titulo: z.string(),
+      itens: z
+        .array(
+          z.object({
+            id: servicoId,
+            titulo: z.string(),
+            publico: z.string(),
+            texto: z.string(),
+            link,
+            ordemEmpresa: z.number().int().min(1).max(4),
+            ordemVoce: z.number().int().min(1).max(4),
+          }),
+        )
+        .length(4),
+    }),
+    destaqueNr1: z.object({
+      rotulo: z.string(),
+      data: z.string(),
+      titulo: z.string(),
+      pontos: z.array(z.string()).min(1),
+      fonte: z.string(),
+      link,
+      cta: z.string(),
+    }),
+    como: z.object({
+      titulo: z.string(),
+      etapas: z.array(z.object({ titulo: z.string(), texto: z.string(), imagem })).min(3).max(4),
+    }),
+    idiomas: z.object({ titulo: z.string(), apoio: z.string() }),
+    depoimentos: z.object({
+      titulo: z.string(),
+      rotuloAutorizacao: z.string(),
+      itens: z
+        .array(
+          z.object({
+            trecho: z.string(),
+            nome: z.string(),
+            cargo: z.string(),
+            empresa: z.string(),
+            servico: z.string(),
+            pendencia: z.string().optional(),
+          }),
+        )
+        .min(1),
+    }),
+    faq: z.object({
+      titulo: z.string(),
+      itens: z.array(z.object({ pergunta: z.string(), resposta: z.string() })).min(1),
+    }),
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+  }),
+});
+
 // Esquema provisório: cada página ganha o próprio esquema na etapa em que é construída.
 const paginaEmConstrucao = z.object({
   seo,
   h1: z.string(),
   aviso: z.string(),
+  tituloIdiomas: z.string().optional(),
   secoes: z.array(z.object({ id: z.string(), titulo: z.string() })).default([]),
 });
 
@@ -97,7 +199,7 @@ const pagina = (arquivo: string) =>
 
 export const collections = {
   site,
-  home: pagina('home.md'),
+  home,
   nr1: pagina('treinamento-nr-1.md'),
   idiomas: pagina('curso-de-idiomas.md'),
   parciais: pagina('{traducao-simultanea,lms,quem-somos}.md'),

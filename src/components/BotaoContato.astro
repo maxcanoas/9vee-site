@@ -1,0 +1,27 @@
+---
+// Todo CTA do site abre o mesmo drawer de contato (etapa 3). O serviço e o idioma chegam pré-escolhidos.
+import Texto from './Texto.astro';
+import TextoPorPublico from './TextoPorPublico.astro';
+
+interface Props {
+  texto?: string;
+  textos?: { neutro: string; empresa: string; voce: string };
+  servico?: 'nr1' | 'traducao' | 'idiomas' | 'lms';
+  idioma?: string;
+  contorno?: boolean;
+  class?: string;
+}
+
+const { texto, textos, servico, idioma, contorno = false, class: classe } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['botao', contorno && 'botao--contorno', classe]}
+  aria-haspopup="dialog"
+  data-abre-contato
+  data-servico={servico}
+  data-idioma={idioma}
+>
+  <span>{textos ? <TextoPorPublico textos={textos} /> : texto && <Texto de={texto} />}</span>
+</button>

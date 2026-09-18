@@ -1,6 +1,6 @@
 // Gera em public/ os ícones, a imagem de prévia do link e o logo em PNG, a partir do kit da cliente.
 // Rodar de novo só se o kit mudar: node scripts/gerar-ativos.ts
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { lerSvgDoKit, type Forma } from '../src/lib/svg-do-kit.ts';
@@ -61,4 +61,12 @@ const logoSvg =
   '</svg>';
 await sharp(Buffer.from(logoSvg)).png().toFile(fileURLToPath(emPublic('logo-9vee.png')));
 
-console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png');
+// Textura dos Placeholders: os meios-círculos do padrão do kit (Vectors/Pattern_4.svg), em branco.
+const padrao = lerSvgDoKit(await doKit('Vectors/Pattern_4.svg'));
+await mkdir(emPublic('texturas/'), { recursive: true });
+await writeFile(
+  emPublic('texturas/meias-luas.svg'),
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${padrao.viewBox}">${desenhar(padrao.formas, '#ffffff')}</svg>\n`,
+);
+
+console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg');

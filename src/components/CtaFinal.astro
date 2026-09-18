@@ -1,0 +1,84 @@
+---
+// O fechamento: as duas metades do topo agora estão juntas, formando o círculo.
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+
+interface Props {
+  titulo: string;
+  texto: string;
+  cta: { neutro: string; empresa: string; voce: string };
+}
+
+const { titulo, texto, cta } = Astro.props;
+---
+
+<section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
+  <div class="conteiner cta-final__grade">
+    <div class="cta-final__circulo" aria-hidden="true">
+      <span class="cta-final__meia cta-final__meia--esquerda"></span>
+      <span class="cta-final__meia cta-final__meia--direita"></span>
+    </div>
+    <div class="cta-final__texto">
+      <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
+      <p class="texto-secundario"><Texto de={texto} /></p>
+      <BotaoContato textos={cta} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    padding-block: var(--secao);
+  }
+
+  .cta-final__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: center;
+  }
+
+  /* O fio entre as metades faz ler "duas partes que se encontram", e não um gráfico de pizza. */
+  .cta-final__circulo {
+    display: flex;
+    gap: 3px;
+    inline-size: min(40vw, 11rem);
+  }
+
+  .cta-final__meia {
+    flex: 1;
+    aspect-ratio: 1 / 2;
+  }
+
+  .cta-final__meia--esquerda {
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .cta-final__meia--direita {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--magenta);
+  }
+
+  .cta-final__texto {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+  }
+
+  .cta-final__texto p {
+    max-inline-size: 46ch;
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  @media (min-width: 64rem) {
+    .cta-final__grade {
+      grid-template-columns: auto 1fr;
+      column-gap: var(--e-8);
+    }
+
+    .cta-final__circulo {
+      inline-size: 16rem;
+    }
+  }
+</style>

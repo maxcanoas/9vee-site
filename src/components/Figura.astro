@@ -1,0 +1,164 @@
+---
+// Imagem do Gemini se o arquivo existir em src/assets/imagens/<arquivo>.*; senão, o Placeholder.
+// A lista de IDs, arquivos e prompts fica em docs/imagens-gemini.md.
+import { Picture } from 'astro:assets';
+
+type Proporcao = '16/9' | '4/5' | '1/1' | '3/2' | '4/3' | '3/4';
+
+interface Props {
+  id: string;
+  arquivo: string;
+  alt: string;
+  proporcao: Proporcao;
+  larguras?: number[];
+  sizes?: string;
+  prioridade?: boolean;
+  forma?: 'reta' | 'arco';
+  recorte?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  arquivo,
+  alt,
+  proporcao,
+  larguras = [480, 720, 960, 1280, 1600],
+  sizes = '100vw',
+  prioridade = false,
+  forma = 'reta',
+  recorte = false,
+  class: classe,
+} = Astro.props;
+
+const imagens = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imagens/*.{jpg,jpeg,png,webp,avif}', {
+  eager: true,
+});
+const imagem = Object.entries(imagens).find(
+  ([caminho]) => caminho.split('/').pop()?.replace(/\.[^.]+$/, '') === arquivo,
+)?.[1].default;
+
+// Cada ID ganha sempre a mesma variação de gradiente, para os Placeholders não saírem iguais.
+const variante = ['a', 'b', 'c', 'd'][[...id].reduce((soma, letra) => soma + letra.charCodeAt(0), 0) % 4];
+const classeProporcao = `proporcao-${proporcao.replace('/', '-')}`;
+---
+
+{
+  imagem ? (
+    <Picture
+      src={imagem}
+      alt={alt}
+      formats={['avif']}
+      fallbackFormat="webp"
+      widths={larguras.filter((largura) => largura <= imagem.width)}
+      sizes={sizes}
+      priority={prioridade}
+      class:list={['figura', `figura--${forma}`, classeProporcao, classe]}
+    />
+  ) : (
+    <div
+      class:list={[
+        'figura',
+        'placeholder',
+        `placeholder--${recorte ? 'recorte' : variante}`,
+        `figura--${forma}`,
+        classeProporcao,
+        classe,
+      ]}
+      role="img"
+      aria-label={alt}
+      title={alt}
+    >
+      <span class="placeholder__id" aria-hidden="true">{id}</span>
+    </div>
+  )
+}
+
+<style>
+  .figura {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    object-fit: cover;
+  }
+
+  .figura--arco {
+    border-radius: var(--raio-arco);
+  }
+
+  .proporcao-16-9 { aspect-ratio: 16 / 9; }
+  .proporcao-4-5 { aspect-ratio: 4 / 5; }
+  .proporcao-1-1 { aspect-ratio: 1 / 1; }
+  .proporcao-3-2 { aspect-ratio: 3 / 2; }
+  .proporcao-4-3 { aspect-ratio: 4 / 3; }
+  .proporcao-3-4 { aspect-ratio: 3 / 4; }
+
+  /* Placeholder: gradiente da marca, textura dos meios-círculos do kit e grão, com o ID à vista. */
+  .placeholder {
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    background-color: var(--navy);
+    background-image:
+      radial-gradient(60% 55% at var(--x1) var(--y1), color-mix(in oklab, var(--magenta) 78%, transparent), transparent 70%),
+      radial-gradient(70% 60% at var(--x2) var(--y2), color-mix(in oklab, var(--violeta) 85%, transparent), transparent 72%),
+      radial-gradient(60% 55% at var(--x3) var(--y3), color-mix(in oklab, var(--menta) 72%, transparent), transparent 70%);
+  }
+
+  .placeholder--a { --x1: 12%; --y1: 10%; --x2: 82%; --y2: 28%; --x3: 68%; --y3: 96%; }
+  .placeholder--b { --x1: 88%; --y1: 14%; --x2: 18%; --y2: 44%; --x3: 30%; --y3: 100%; }
+  .placeholder--c { --x1: 40%; --y1: 0%; --x2: 95%; --y2: 70%; --x3: 5%; --y3: 80%; }
+  .placeholder--d { --x1: 0%; --y1: 60%; --x2: 60%; --y2: 12%; --x3: 100%; --y3: 100%; }
+
+  /* A camada da frente (pessoa recortada) fica clara, para se destacar sobre o fundo escuro. */
+  .placeholder--recorte {
+    --x1: 20%; --y1: 18%; --x2: 85%; --y2: 40%; --x3: 50%; --y3: 100%;
+    background-color: var(--nevoa);
+    background-image:
+      radial-gradient(60% 50% at var(--x1) var(--y1), color-mix(in oklab, var(--magenta) 32%, transparent), transparent 70%),
+      radial-gradient(70% 55% at var(--x2) var(--y2), color-mix(in oklab, var(--violeta) 38%, transparent), transparent 72%),
+      radial-gradient(70% 55% at var(--x3) var(--y3), color-mix(in oklab, var(--menta) 55%, transparent), transparent 70%);
+  }
+
+  .placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/texturas/meias-luas.svg');
+    background-size: 20rem auto;
+    opacity: 0.03;
+  }
+
+  .placeholder--recorte::before {
+    filter: invert(1);
+    opacity: 0.035;
+  }
+
+  .placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .placeholder__id {
+    position: absolute;
+    inset-inline-end: var(--e-3);
+    inset-block-end: var(--e-3);
+    z-index: 1;
+    padding-block: var(--e-1);
+    padding-inline: var(--e-3);
+    border-radius: var(--raio-pilula);
+    background-color: color-mix(in oklab, var(--papel) 88%, transparent);
+    color: var(--navy);
+    font-family: var(--fonte-texto);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+</style>

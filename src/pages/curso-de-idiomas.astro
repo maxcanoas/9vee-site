@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import EmConstrucao from '../components/EmConstrucao.astro';
+import Familias from '../components/Familias.astro';
+import Texto from '../components/Texto.astro';
 import { dadosDoSite } from '../lib/site';
 import { paginaIdiomas } from '../lib/paginas';
 
@@ -10,4 +12,22 @@ const site = await dadosDoSite();
 
 <Base titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
   <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
+  {
+    pagina.tituloIdiomas && (
+      <section class="conteiner lista-idiomas" aria-labelledby="lista-idiomas-titulo">
+        <h2 id="lista-idiomas-titulo">
+          <Texto de={pagina.tituloIdiomas} />
+        </h2>
+        <Familias familias={site.familias} idiomas={site.idiomas} modo="ancoras" />
+      </section>
+    )
+  }
 </Base>
+
+<style>
+  .lista-idiomas {
+    display: grid;
+    gap: var(--e-6);
+    padding-block-end: var(--secao);
+  }
+</style>

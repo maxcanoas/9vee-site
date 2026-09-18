@@ -17,6 +17,34 @@ cidades:
   - "Curitiba"
   - "Brasília"
 
+# Os 14 idiomas do site atual, por família, na ordem de procura que a proposta aponta (inglês, espanhol, mandarim).
+familias:
+  - id: "germanicas"
+    nome: "Germânicas"
+    descricao: "O inglês e as línguas do centro e do norte da Europa."
+  - id: "romanicas"
+    nome: "Românicas"
+    descricao: "Vieram do latim, como o português."
+  - id: "outras"
+    nome: "De outras famílias"
+    descricao: "Cada uma com a sua escrita."
+
+idiomas:
+  - { slug: "ingles", nome: "Inglês", saudacao: "Hello", lang: "en", familia: "germanicas" }
+  - { slug: "alemao", nome: "Alemão", saudacao: "Hallo", lang: "de", familia: "germanicas" }
+  - { slug: "holandes", nome: "Holandês", saudacao: "Hoi", lang: "nl", familia: "germanicas" }
+  - { slug: "sueco", nome: "Sueco", saudacao: "Hej", lang: "sv", familia: "germanicas" }
+  - { slug: "noruegues", nome: "Norueguês", saudacao: "Hei", lang: "nb", familia: "germanicas" }
+  - { slug: "espanhol", nome: "Espanhol", saudacao: "Hola", lang: "es", familia: "romanicas" }
+  - { slug: "frances", nome: "Francês", saudacao: "Bonjour", lang: "fr", familia: "romanicas" }
+  - { slug: "italiano", nome: "Italiano", saudacao: "Ciao", lang: "it", familia: "romanicas" }
+  - { slug: "portugues", nome: "Português para estrangeiros", saudacao: "Olá", lang: "pt", familia: "romanicas" }
+  - { slug: "romeno", nome: "Romeno", saudacao: "Bună", lang: "ro", familia: "romanicas" }
+  - { slug: "mandarim", nome: "Mandarim", saudacao: "你好", lang: "zh-Hans", familia: "outras" }
+  - { slug: "japones", nome: "Japonês", saudacao: "こんにちは", lang: "ja", familia: "outras" }
+  - { slug: "arabe", nome: "Árabe", saudacao: "مرحبا", lang: "ar", dir: "rtl", familia: "outras" }
+  - { slug: "russo", nome: "Russo", saudacao: "Привет", lang: "ru", familia: "outras" }
+
 redes:
   - nome: "Instagram"
     icone: "instagram"

@@ -1,0 +1,144 @@
+---
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+
+interface Props {
+  rotulo: string;
+  data: string;
+  titulo: string;
+  pontos: string[];
+  fonte: string;
+  link: { rotulo: string; href: string };
+  cta: string;
+}
+
+const { rotulo, data, titulo, pontos, fonte, link, cta } = Astro.props;
+---
+
+<section class="destaque escuro" id="nr-1" aria-labelledby="destaque-titulo">
+  <div class="conteiner destaque__grade">
+    <div class="destaque__data-bloco">
+      <p class="destaque__rotulo"><Texto de={rotulo} /></p>
+      <p class="destaque__data"><Texto de={data} /></p>
+    </div>
+    <div class="destaque__corpo">
+      <h2 id="destaque-titulo" class="destaque__titulo revela"><Texto de={titulo} /></h2>
+      <ul class="destaque__pontos" role="list">
+        {
+          pontos.map((ponto) => (
+            <li>
+              <Texto de={ponto} />
+            </li>
+          ))
+        }
+      </ul>
+      <div class="destaque__acoes">
+        <BotaoContato texto={cta} servico="nr1" />
+        <a class="destaque__link" href={link.href}><Texto de={link.rotulo} /></a>
+      </div>
+      <p class="destaque__fonte texto-secundario"><Texto de={fonte} /></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .destaque {
+    padding-block: var(--secao);
+  }
+
+  .destaque__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .destaque__data-bloco {
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+  }
+
+  .destaque__rotulo {
+    color: var(--sobre-escuro);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .destaque__data {
+    max-inline-size: 8ch;
+    color: var(--menta);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-mostra);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: var(--rastreio-titulo);
+    text-wrap: balance;
+  }
+
+  .destaque__corpo {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+
+  .destaque__titulo {
+    font-size: var(--t-3);
+    line-height: var(--altura-subtitulo);
+    letter-spacing: 0;
+  }
+
+  .destaque__pontos {
+    display: grid;
+    gap: var(--e-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Marcador: meio-círculo menta, a forma da marca. */
+  .destaque__pontos li {
+    position: relative;
+    max-inline-size: 58ch;
+    padding-inline-start: var(--e-5);
+    color: var(--sobre-escuro);
+  }
+
+  .destaque__pontos li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.45em;
+    inline-size: 0.5rem;
+    block-size: 1rem;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .destaque__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-3) var(--e-5);
+    margin-block-start: var(--e-3);
+  }
+
+  .destaque__link {
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    font-weight: 700;
+  }
+
+  .destaque__fonte {
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 64rem) {
+    .destaque__grade {
+      grid-template-columns: 0.9fr 1.1fr;
+      column-gap: var(--e-8);
+    }
+
+    .destaque__titulo {
+      font-size: var(--t-2);
+      line-height: var(--altura-titulo);
+      letter-spacing: var(--rastreio-titulo);
+    }
+  }
+</style>

@@ -1,13 +1,56 @@
 ---
 import Base from '../layouts/Base.astro';
-import EmConstrucao from '../components/EmConstrucao.astro';
+import Hero from '../components/Hero.astro';
+import FaixaProva from '../components/FaixaProva.astro';
+import Servicos from '../components/Servicos.astro';
+import DestaqueNr1 from '../components/DestaqueNr1.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import FaixaSaudacoes from '../components/FaixaSaudacoes.astro';
+import Familias from '../components/Familias.astro';
+import Texto from '../components/Texto.astro';
+import Depoimentos from '../components/Depoimentos.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite } from '../lib/site';
 import { paginaHome } from '../lib/paginas';
 
-const { data: pagina } = await paginaHome();
+const { data: home } = await paginaHome();
 const site = await dadosDoSite();
 ---
 
-<Base titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
+<Base titulo={home.seo.titulo} descricao={home.seo.descricao}>
+  <Hero {...home.hero} cta={site.cta} />
+  <FaixaProva {...home.prova} />
+  <Servicos {...home.servicos} />
+  <DestaqueNr1 {...home.destaqueNr1} />
+  <ComoFunciona {...home.como} />
+
+  <section class="idiomas-home" id="idiomas" aria-labelledby="idiomas-titulo">
+    <FaixaSaudacoes idiomas={site.idiomas} />
+    <div class="conteiner idiomas-home__corpo">
+      <h2 id="idiomas-titulo" class="revela"><Texto de={home.idiomas.titulo} /></h2>
+      <p class="idiomas-home__apoio"><Texto de={home.idiomas.apoio} /></p>
+      <Familias familias={site.familias} idiomas={site.idiomas} modo="links" />
+    </div>
+  </section>
+
+  <Depoimentos {...home.depoimentos} />
+  <Faq {...home.faq} />
+  <CtaFinal {...home.ctaFinal} cta={site.cta} />
 </Base>
+
+<style>
+  .idiomas-home__corpo {
+    display: grid;
+    gap: var(--e-4);
+    padding-block: var(--secao);
+  }
+
+  .idiomas-home__apoio {
+    max-inline-size: 52ch;
+    margin-block-end: var(--e-5);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+</style>

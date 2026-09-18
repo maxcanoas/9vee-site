@@ -4,6 +4,7 @@ seo:
   descricao: "Aulas de inglês, espanhol, mandarim e outras línguas, online, particulares ou para equipes, com preparação para TOEFL, DELE, DELF e CELPE-Bras. Veja os níveis."
 h1: "Cursos de idiomas para você e para a sua empresa"
 aviso: "A página completa de idiomas entra na etapa 5 do MVP."
+tituloIdiomas: "Os idiomas, por família"
 secoes:
   - id: "particular"
     titulo: "Aulas particulares"

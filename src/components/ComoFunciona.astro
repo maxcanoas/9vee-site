@@ -1,0 +1,198 @@
+---
+// Rolagem fixa: a imagem fica parada enquanto as etapas passam e troca conforme a etapa ativa.
+// Com suporte, a troca é feita em CSS (view timelines nomeadas). Sem suporte ou com movimento
+// reduzido, o movimento.ts marca a etapa ativa por IntersectionObserver.
+import Figura from './Figura.astro';
+import Texto from './Texto.astro';
+
+interface Etapa {
+  titulo: string;
+  texto: string;
+  imagem: { id: string; arquivo: string; alt: string };
+}
+
+interface Props {
+  titulo: string;
+  etapas: Etapa[];
+}
+
+const { titulo, etapas } = Astro.props;
+---
+
+<section class="como" id="como-funciona" aria-labelledby="como-titulo" data-como>
+  <div class="conteiner">
+    <h2 id="como-titulo" class="como__titulo revela"><Texto de={titulo} /></h2>
+    <div class="como__grade">
+      <div class="como__visual">
+        {
+          etapas.map((etapa, i) => (
+            <div class="como__quadro" data-etapa={i + 1}>
+              <Figura
+                {...etapa.imagem}
+                proporcao="4/5"
+                forma="arco"
+                sizes="(min-width: 64rem) 26rem, 50vw"
+                larguras={[400, 640, 800, 1040]}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <ol class="como__etapas">
+        {
+          etapas.map((etapa, i) => (
+            <li class="como__etapa" data-etapa={i + 1}>
+              <span class="como__numero" aria-hidden="true">
+                {i + 1}
+              </span>
+              <h3 class="como__nome">
+                <Texto de={etapa.titulo} />
+              </h3>
+              <p class="como__texto">
+                <Texto de={etapa.texto} />
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .como {
+    padding-block: var(--secao);
+    timeline-scope: --etapa-1, --etapa-2, --etapa-3, --etapa-4;
+  }
+
+  .como__titulo {
+    margin-block-end: var(--e-5);
+  }
+
+  .como__grade {
+    display: grid;
+  }
+
+  /* No celular, a imagem fica presa logo abaixo do cabeçalho, sobre o papel, e o texto passa por baixo. */
+  .como__visual {
+    position: sticky;
+    inset-block-start: var(--altura-cabecalho);
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    padding-block: var(--e-3);
+    background-color: var(--papel);
+  }
+
+  .como__quadro {
+    grid-area: 1 / 1;
+    inline-size: min(52vw, 14rem);
+    opacity: 0;
+  }
+
+  .como__quadro[data-etapa='1'] {
+    opacity: 1;
+  }
+
+  .como__etapas {
+    padding: 0;
+    list-style: none;
+  }
+
+  .como__etapa {
+    display: grid;
+    gap: var(--e-2);
+    align-content: center;
+    min-block-size: 36svh;
+    padding-block: var(--e-5);
+  }
+
+  .como__etapa[data-etapa='1'] { view-timeline-name: --etapa-1; }
+  .como__etapa[data-etapa='2'] { view-timeline-name: --etapa-2; }
+  .como__etapa[data-etapa='3'] { view-timeline-name: --etapa-3; }
+  .como__etapa[data-etapa='4'] { view-timeline-name: --etapa-4; }
+
+  .como__numero {
+    color: var(--magenta);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-2);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .como__texto {
+    max-inline-size: 40ch;
+    color: var(--navy-2);
+  }
+
+  /* Troca da imagem pela etapa ativa, feita pelo movimento.ts quando o CSS não dá conta. */
+  :global([data-como][data-ativa]) .como__quadro {
+    opacity: 0;
+  }
+
+  :global([data-como][data-ativa='1']) .como__quadro[data-etapa='1'],
+  :global([data-como][data-ativa='2']) .como__quadro[data-etapa='2'],
+  :global([data-como][data-ativa='3']) .como__quadro[data-etapa='3'],
+  :global([data-como][data-ativa='4']) .como__quadro[data-etapa='4'] {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .como__quadro {
+      transition-property: opacity;
+      transition-duration: var(--dur-media);
+    }
+
+    @supports (animation-timeline: view()) {
+      .como__quadro {
+        transition-property: none;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-range: cover 30% cover 70%;
+      }
+
+      .como__quadro[data-etapa='1'] { animation-name: quadro-primeiro; animation-timeline: --etapa-1; }
+      .como__quadro[data-etapa='2'] { animation-name: quadro-meio; animation-timeline: --etapa-2; }
+      .como__quadro[data-etapa='3'] { animation-name: quadro-meio; animation-timeline: --etapa-3; }
+      .como__quadro[data-etapa='4'] { animation-name: quadro-ultimo; animation-timeline: --etapa-4; }
+    }
+  }
+
+  @keyframes quadro-primeiro {
+    0%, 80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes quadro-meio {
+    0% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes quadro-ultimo {
+    0% { opacity: 0; }
+    20%, 100% { opacity: 1; }
+  }
+
+  @media (min-width: 64rem) {
+    .como__grade {
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--e-8);
+      align-items: start;
+    }
+
+    .como__visual {
+      inset-block-start: calc(var(--altura-cabecalho) + var(--e-6));
+      padding-block: 0;
+    }
+
+    .como__quadro {
+      inline-size: min(100%, 24rem);
+    }
+
+    .como__etapa {
+      min-block-size: 70svh;
+    }
+  }
+</style>

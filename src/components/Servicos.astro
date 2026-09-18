@@ -1,0 +1,141 @@
+---
+// A ordem muda com o público: o CSS acerta antes da primeira pintura e o JS move o DOM,
+// para a ordem do Tab bater com a da tela. O primeiro da lista ganha o destaque.
+import Texto from './Texto.astro';
+
+interface Servico {
+  id: string;
+  titulo: string;
+  publico: string;
+  texto: string;
+  link: { rotulo: string; href: string };
+  ordemEmpresa: number;
+  ordemVoce: number;
+}
+
+interface Props {
+  titulo: string;
+  itens: Servico[];
+}
+
+const { titulo, itens } = Astro.props;
+---
+
+<section class="servicos" id="servicos" aria-labelledby="servicos-titulo">
+  <div class="conteiner">
+    <h2 id="servicos-titulo" class="servicos__titulo revela"><Texto de={titulo} /></h2>
+    <ul class="servicos__lista" role="list" data-ordenavel>
+      {
+        itens.map((servico) => (
+          <li
+            class="servico"
+            data-servico={servico.id}
+            data-ordem-empresa={servico.ordemEmpresa}
+            data-ordem-voce={servico.ordemVoce}
+          >
+            <p class="servico__publico">
+              <Texto de={servico.publico} />
+            </p>
+            <h3 class="servico__nome">
+              <Texto de={servico.titulo} />
+            </h3>
+            <p class="servico__texto">
+              <Texto de={servico.texto} />
+            </p>
+            <a class="servico__link" href={servico.link.href}>
+              <Texto de={servico.link.rotulo} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .servicos {
+    padding-block: var(--secao);
+  }
+
+  .servicos__titulo {
+    margin-block-end: var(--e-6);
+  }
+
+  .servicos__lista {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+
+  .servico {
+    display: grid;
+    gap: var(--e-2);
+    align-content: start;
+    padding-block: var(--e-5) var(--e-6);
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .servico__publico {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .servico__nome {
+    font-size: var(--t-3);
+  }
+
+  .servico__texto {
+    max-inline-size: 46ch;
+    color: var(--navy-2);
+  }
+
+  .servico__link {
+    justify-self: start;
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    font-weight: 700;
+  }
+
+  /* Ordem por público. Sem escolha, vale a de empresa. */
+  .servico[data-ordem-empresa='1'] { order: 1; }
+  .servico[data-ordem-empresa='2'] { order: 2; }
+  .servico[data-ordem-empresa='3'] { order: 3; }
+  .servico[data-ordem-empresa='4'] { order: 4; }
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] { order: 1; }
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='2'] { order: 2; }
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='3'] { order: 3; }
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='4'] { order: 4; }
+
+  /* Destaque do primeiro da lista: o NR-1 para empresa, os idiomas para você. */
+  :global(:root:not([data-publico='voce'])) .servico[data-ordem-empresa='1'] .servico__nome,
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] .servico__nome {
+    font-size: var(--t-2);
+    letter-spacing: var(--rastreio-titulo);
+  }
+
+  :global(:root:not([data-publico='voce'])) .servico[data-ordem-empresa='1'] .servico__texto,
+  :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] .servico__texto {
+    color: var(--navy);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  /* Nome estável para a View Transition animar a troca de lugar. */
+  .servico[data-servico='nr1'] { view-transition-name: servico-nr1; }
+  .servico[data-servico='traducao'] { view-transition-name: servico-traducao; }
+  .servico[data-servico='idiomas'] { view-transition-name: servico-idiomas; }
+  .servico[data-servico='lms'] { view-transition-name: servico-lms; }
+
+  @media (min-width: 48rem) {
+    .servicos__lista {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--e-5);
+    }
+
+    :global(:root:not([data-publico='voce'])) .servico[data-ordem-empresa='1'],
+    :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] {
+      grid-column: 1 / -1;
+      padding-block-end: var(--e-7);
+    }
+  }
+</style>
