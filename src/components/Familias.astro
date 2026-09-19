@@ -4,6 +4,7 @@
 // com ele já marcado, e uma âncora, porque é para lá que os links da home apontam.
 // Sem JavaScript o botão some (regra do base.css), e o <noscript> mantém a lista à vista.
 import Texto from './Texto.astro';
+import { atributosDoContato } from '../lib/contato';
 
 interface Familia {
   id: string;
@@ -55,14 +56,7 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
                   </a>
                 ) : (
                   <>
-                    <button
-                      type="button"
-                      class="idioma"
-                      aria-haspopup="dialog"
-                      data-abre-contato
-                      data-servico="idiomas"
-                      data-idioma={idioma.slug}
-                    >
+                    <button {...atributosDoContato({ servico: 'idiomas', idioma: idioma.slug })} class="idioma">
                       <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
                         {idioma.saudacao}
                       </span>{' '}

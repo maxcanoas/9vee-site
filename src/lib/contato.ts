@@ -236,6 +236,20 @@ export function hojeLocal(agora: Date): string {
  * O serviço já marcado ao abrir o drawer: o do botão, o que a pessoa escolheu antes, o da página
  * e, para quem escolheu "Para você", os idiomas, porque o botão dela diz "Quero estudar".
  */
+/**
+ * Os atributos que ligam um controle ao drawer. Ficam num lugar só porque o script de contato
+ * depende deles, e o botão de idioma da página de cursos não é o BotaoContato.
+ */
+export function atributosDoContato(dados: { servico?: ServicoId; idioma?: string } = {}) {
+  return {
+    type: 'button' as const,
+    'aria-haspopup': 'dialog' as const,
+    'data-abre-contato': true,
+    'data-servico': dados.servico,
+    'data-idioma': dados.idioma,
+  };
+}
+
 export function servicoInicial(pistas: {
   doBotao: string | undefined;
   anterior: ServicoId | null;
