@@ -36,7 +36,7 @@ describe('listaDeCursos', () => {
     modelos: { nome: 'Curso de {idioma}', descricao: '{idioma} com a 9vee [CONFIRMAR COM A DANIELLA: preço].' },
     idiomas: [{ slug: 'ingles', nome: 'Inglês' }],
   });
-  const curso = (lista.itemListElement[0] as { item: Record<string, string> }).item;
+  const curso = lista.itemListElement[0].item;
 
   it('aponta cada curso para a âncora do idioma', () => {
     expect(curso.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/#ingles');

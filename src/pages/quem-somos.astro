@@ -10,6 +10,6 @@ const site = await dadosDoSite();
 ---
 
 <Base pagina="quemSomos" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <HeroPagina {...pagina.hero} textos={site.cta} etiqueta={site.rodape.etiquetaMvp} />
+  <HeroPagina {...pagina.hero} textos={site.cta} etiqueta={site.etiquetaMvp} />
   <Cartoes id="frentes" {...pagina.bloco} textos={site.cta} />
 </Base>

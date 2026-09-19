@@ -192,6 +192,7 @@ const site = defineCollection({
       idiomasVoce: formulario,
     }),
     pendencia: z.object({ etiqueta: z.string(), detalhe: z.string().includes('{nota}') }),
+    etiquetaMvp: z.string(),
     rodape: z.object({
       pronuncia: z.string(),
       atendimento: z.string(),
@@ -200,7 +201,6 @@ const site = defineCollection({
       tituloRedes: z.string(),
       rotuloRede: z.string().includes('{rede}'),
       rotuloNavegacao: z.string(),
-      etiquetaMvp: z.string(),
       privacidade: link,
       direitos: z.string(),
     }),

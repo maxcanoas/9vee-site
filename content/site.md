@@ -236,6 +236,9 @@ formularios:
     - { id: "cidade", tipo: "escolha", rotulo: "Em que cidade?", rotuloCurto: "Cidade", obrigatorio: true, opcoes: ["São Paulo", "Rio de Janeiro", "Curitiba", "Brasília", "Outra"], mostrarSe: { campo: "formato", valores: ["presencial"] } }
     - { id: "cidadeOutra", tipo: "texto", rotulo: "Qual cidade?", rotuloCurto: "Cidade", erro: "Escreva o nome da cidade.", obrigatorio: true, mostrarSe: { campo: "cidade", valores: ["outra"] }, autocomplete: "address-level2" }
 
+# A etiqueta das três páginas que ficam parciais no MVP.
+etiquetaMvp: "Página em construção no MVP"
+
 # Pendências para a reunião: o [CONFIRMAR COM A DANIELLA: ...] dos textos vira esta etiqueta.
 pendencia:
   etiqueta: "a confirmar"
@@ -249,7 +252,6 @@ rodape:
   tituloRedes: "A 9vee nas redes"
   rotuloRede: "9vee no {rede}"
   rotuloNavegacao: "Rodapé"
-  etiquetaMvp: "Página em construção no MVP"
   privacidade:
     rotulo: "Política de privacidade"
     href: "https://www.9vee.com.br/politica-de-privacidade"
