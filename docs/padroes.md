@@ -23,6 +23,7 @@
 - **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, `Service` no NR-1, `ItemList`/`Course` e `FAQPage` em Idiomas. O FAQ do JSON-LD é igual ao FAQ visível.
 - **(teste)** Noindex (meta e cabeçalho) em todo build padrão. Só o build com `INDEXAVEL=true` sai sem ele.
 - **(teste)** HTML válido pelo `html-validate`. Nada de `<a>` dentro de `<button>`, nem bloco dentro de `<p>`.
+- `role="list"` (que segura a semântica de lista no Safari quando o marcador some) vai só em `<ul>`. Em `<ol>` o `html-validate` recusa, pela regra `prefer-native-element`.
 - **(teste)** Todo `target="_blank"` vem com `rel="noopener"`.
 - **(teste)** Todo link interno resolve, com a barra final, e toda âncora existe.
 - O WhatsApp usa só o formato `https://wa.me/5511934661917?text=`, nunca `api.whatsapp.com`.

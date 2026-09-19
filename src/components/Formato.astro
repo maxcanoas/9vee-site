@@ -1,0 +1,115 @@
+---
+// Formato, carga horária e turma. O que ainda não está confirmado aparece como pendência.
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+import type { ServicoId } from '../lib/contato';
+
+interface Props {
+  titulo: string;
+  itens: { rotulo: string; valor: string }[];
+  texto: string;
+  cta: string;
+  servico?: ServicoId;
+}
+
+const { titulo, itens, texto, cta, servico } = Astro.props;
+---
+
+<section class="formato" id="formato" aria-labelledby="formato-titulo">
+  <div class="conteiner formato__grade">
+    <div class="formato__cabeca">
+      <h2 id="formato-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p><Texto de={texto} /></p>
+    </div>
+
+    <dl class="formato__lista">
+      {
+        itens.map((item) => (
+          <div class="formato__linha">
+            <dt>
+              <Texto de={item.rotulo} />
+            </dt>
+            <dd>
+              <Texto de={item.valor} />
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="formato__acao">
+      <BotaoContato texto={cta} servico={servico} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .formato {
+    padding-block: var(--secao);
+  }
+
+  .formato__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: start;
+  }
+
+  .formato__cabeca p {
+    max-inline-size: 40ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+  }
+
+  .formato__lista {
+    padding: var(--e-5);
+    border: 1px solid var(--linha);
+    background-color: var(--branco);
+  }
+
+  .formato__linha {
+    display: grid;
+    gap: var(--e-1);
+    padding-block: var(--e-4);
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .formato__linha:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .formato__linha:last-child {
+    padding-block-end: 0;
+  }
+
+  .formato__lista dt {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .formato__lista dd {
+    max-inline-size: 46ch;
+    margin: 0;
+  }
+
+  @media (min-width: 64rem) {
+    .formato__grade {
+      grid-template-columns: 0.9fr 1.1fr;
+      column-gap: var(--e-8);
+    }
+
+    .formato__cabeca {
+      grid-area: 1 / 1;
+    }
+
+    .formato__lista {
+      grid-area: 1 / 2 / span 2;
+      padding: var(--e-6);
+    }
+
+    .formato__acao {
+      grid-area: 2 / 1;
+    }
+  }
+</style>

@@ -63,14 +63,17 @@ describe('home', () => {
   });
 });
 
-describe('imagens provisórias', () => {
-  it('dão a todo Placeholder o texto alternativo definitivo e o ID à vista', () => {
-    const placeholders = home.querySelectorAll('.placeholder');
-    expect(placeholders.length).toBeGreaterThanOrEqual(6);
-    for (const placeholder of placeholders) {
-      expect(placeholder.getAttribute('role')).toBe('img');
-      expect((placeholder.getAttribute('aria-label') ?? '').length).toBeGreaterThanOrEqual(10);
-      expect(placeholder.querySelector('.placeholder__id')?.text).toMatch(/^IMG-[A-Z0-9-]+$/);
+// A figura sai como imagem se o arquivo do Gemini já está em src/assets/imagens/, e como Placeholder se não.
+describe('imagens', () => {
+  it('dão a toda figura o texto alternativo definitivo, e ao Placeholder o ID à vista', () => {
+    const figuras = home.querySelectorAll('.figura');
+    expect(figuras.length).toBeGreaterThanOrEqual(6);
+    for (const figura of figuras) {
+      const alternativo = figura.getAttribute('alt') ?? figura.getAttribute('aria-label') ?? '';
+      expect(alternativo.length, figura.getAttribute('class') ?? '').toBeGreaterThanOrEqual(10);
+      if (!figura.classList.contains('placeholder')) continue;
+      expect(figura.getAttribute('role')).toBe('img');
+      expect(figura.querySelector('.placeholder__id')?.text).toMatch(/^IMG-[A-Z0-9-]+$/);
     }
   });
 });

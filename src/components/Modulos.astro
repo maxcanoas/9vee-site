@@ -1,0 +1,105 @@
+---
+// Os três módulos do treinamento, na ordem em que são dados.
+import Texto from './Texto.astro';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  itens: { titulo: string; texto: string }[];
+}
+
+const { titulo, apoio, itens } = Astro.props;
+---
+
+<section class="modulos" id="modulos" aria-labelledby="modulos-titulo">
+  <div class="conteiner modulos__grade">
+    <div class="modulos__cabeca">
+      <h2 id="modulos-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="modulos__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <ol class="modulos__lista">
+      {
+        itens.map((item, i) => (
+          <li class="modulo">
+            <span class="modulo__numero" aria-hidden="true">
+              {i + 1}
+            </span>
+            <h3 class="modulo__titulo">
+              <Texto de={item.titulo} />
+            </h3>
+            <p class="modulo__texto">
+              <Texto de={item.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .modulos {
+    padding-block: var(--secao);
+  }
+
+  .modulos__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .modulos__apoio {
+    max-inline-size: 48ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .modulos__lista {
+    display: grid;
+    gap: var(--e-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .modulo {
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+    justify-items: start;
+    padding: var(--e-5);
+    border: 1px solid var(--linha);
+    background-color: var(--branco);
+  }
+
+  .modulo__numero {
+    display: grid;
+    place-items: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    border-radius: var(--raio-pilula);
+    background-color: var(--menta);
+    color: var(--navy);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-rotulo);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .modulo__titulo {
+    font-size: var(--t-destaque);
+  }
+
+  .modulo__texto {
+    max-inline-size: 42ch;
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 48rem) {
+    .modulos__lista {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--e-5);
+    }
+  }
+</style>

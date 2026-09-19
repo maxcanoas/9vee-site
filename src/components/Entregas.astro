@@ -1,0 +1,126 @@
+---
+// O que fica na empresa depois do treinamento, e o que o treinamento não faz.
+import Texto from './Texto.astro';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  itens: { titulo: string; texto: string }[];
+  nota: string;
+}
+
+const { titulo, apoio, itens, nota } = Astro.props;
+---
+
+<section class="entregas escuro" id="o-que-recebe" aria-labelledby="entregas-titulo">
+  <div class="conteiner entregas__grade">
+    <div class="entregas__cabeca">
+      <h2 id="entregas-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="entregas__apoio texto-secundario"><Texto de={apoio} /></p>
+    </div>
+
+    <ul class="entregas__itens" role="list">
+      {
+        itens.map((item) => (
+          <li class="entrega">
+            <h3 class="entrega__titulo">
+              <Texto de={item.titulo} />
+            </h3>
+            <p class="entrega__texto texto-secundario">
+              <Texto de={item.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="entregas__nota"><Texto de={nota} /></p>
+  </div>
+</section>
+
+<style>
+  .entregas {
+    padding-block: var(--secao);
+  }
+
+  .entregas__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .entregas__apoio {
+    max-inline-size: 46ch;
+    margin-block-start: var(--e-4);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .entregas__itens {
+    display: grid;
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .entrega {
+    position: relative;
+    padding-inline-start: var(--e-5);
+  }
+
+  /* Marcador: a meia-pílula da marca, como nos pontos do destaque da home. */
+  .entrega::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.35em;
+    inset-inline-start: 0;
+    inline-size: 0.5rem;
+    block-size: 1rem;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .entrega__titulo {
+    font-size: var(--t-destaque);
+  }
+
+  .entrega__texto {
+    max-inline-size: 42ch;
+    margin-block-start: var(--e-2);
+  }
+
+  .entregas__nota {
+    max-inline-size: 62ch;
+    padding: var(--e-5);
+    border: 1px solid var(--linha-escura);
+  }
+
+  @media (min-width: 48rem) {
+    .entregas__itens {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--e-5);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .entregas__grade {
+      grid-template-columns: 0.9fr 1.1fr;
+      column-gap: var(--e-8);
+    }
+
+    .entregas__cabeca {
+      grid-area: 1 / 1;
+    }
+
+    .entregas__itens {
+      grid-area: 1 / 2 / span 2;
+      grid-template-columns: 1fr;
+      gap: var(--e-6);
+    }
+
+    /* A ressalva fecha a coluna do título, embaixo, e não sobra vazio. */
+    .entregas__nota {
+      grid-area: 2 / 1;
+      align-self: end;
+    }
+  }
+</style>

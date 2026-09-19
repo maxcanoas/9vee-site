@@ -137,7 +137,7 @@ faq:
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e do tamanho do grupo [CONFIRMAR COM A DANIELLA: uma faixa de preço por serviço, para dar um ponto de partida aqui]. Com as respostas do formulário, a equipe já fala de valor no primeiro contato [CONFIRMAR COM A DANIELLA: se o comercial responde com valor já no primeiro contato]."
     - pergunta: "O treinamento de NR-1 deixa a empresa em dia com a norma?"
-      resposta: "Ele cobre uma parte: a capacitação sobre riscos psicossociais e o plano de ação do último módulo. A avaliação dos riscos no PGR continua com a empresa e o SESMT. [Veja o que o treinamento entrega](/treinamento-nr-1/)."
+      resposta: "Ele cobre uma parte: a capacitação sobre riscos psicossociais e o plano de ação do último módulo. A avaliação dos riscos no PGR continua com a empresa e o SESMT. [Veja o que o treinamento entrega](/treinamento-nr-1/#o-que-recebe)."
     - pergunta: "As aulas são para empresa ou para pessoa física?"
       resposta: "Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula particular e online, e preparação para provas como TOEFL e DELE."
     - pergunta: "Quem são os intérpretes?"

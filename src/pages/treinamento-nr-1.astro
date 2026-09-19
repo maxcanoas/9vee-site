@@ -1,13 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
-import EmConstrucao from '../components/EmConstrucao.astro';
-import { dadosDoSite } from '../lib/site';
+import HeroPagina from '../components/HeroPagina.astro';
+import LinhaDoTempo from '../components/LinhaDoTempo.astro';
+import Entregas from '../components/Entregas.astro';
+import Modulos from '../components/Modulos.astro';
+import Formato from '../components/Formato.astro';
+import Abordagem from '../components/Abordagem.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import { dadosDoSite, servicoDoSite } from '../lib/site';
 import { paginaNr1 } from '../lib/paginas';
+import { servico } from '../lib/jsonld';
 
 const { data: pagina } = await paginaNr1();
 const site = await dadosDoSite();
+const base = Astro.site ?? new URL(Astro.url.origin);
+const dadosDoServico = servico(base, {
+  nome: servicoDoSite(site, 'nr1').nome,
+  tipo: pagina.servico.tipo,
+  caminho: Astro.url.pathname,
+  descricao: pagina.seo.descricao,
+});
 ---
 
-<Base pagina="nr1" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
+<Base pagina="nr1" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={[dadosDoServico]}>
+  <HeroPagina {...pagina.hero} servico="nr1" />
+  <LinhaDoTempo {...pagina.porQue} />
+  <Entregas {...pagina.entrega} />
+  <Modulos {...pagina.modulos} />
+  <Formato {...pagina.formato} servico="nr1" />
+  <Abordagem {...pagina.abordagem} />
+  <Faq {...pagina.faq} />
+  <CtaFinal {...pagina.ctaFinal} servico="nr1" />
 </Base>

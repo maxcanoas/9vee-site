@@ -1,4 +1,5 @@
 import { getEntry } from 'astro:content';
+import type { ServicoId } from './contato';
 
 export async function dadosDoSite() {
   const entrada = await getEntry('site', 'site');
@@ -9,14 +10,16 @@ export async function dadosDoSite() {
 export type DadosDoSite = Awaited<ReturnType<typeof dadosDoSite>>;
 export type PaginaId = keyof DadosDoSite['paginas'];
 
+export function servicoDoSite(site: DadosDoSite, id: ServicoId) {
+  const servico = site.servicos.find((s) => s.id === id);
+  if (!servico) throw new Error(`serviço "${id}" não está em content/site.md`);
+  return servico;
+}
+
 /** Junta a cada item a ordem do serviço por público, que vive em content/site.md. */
-export function comOrdemDoServico<T extends { id: DadosDoSite['servicos'][number]['id'] }>(
-  site: DadosDoSite,
-  itens: readonly T[],
-) {
+export function comOrdemDoServico<T extends { id: ServicoId }>(site: DadosDoSite, itens: readonly T[]) {
   return itens.map((item) => {
-    const servico = site.servicos.find((s) => s.id === item.id);
-    if (!servico) throw new Error(`serviço "${item.id}" não está em content/site.md`);
-    return { ...item, ordemEmpresa: servico.ordemEmpresa, ordemVoce: servico.ordemVoce };
+    const { ordemEmpresa, ordemVoce } = servicoDoSite(site, item.id);
+    return { ...item, ordemEmpresa, ordemVoce };
   });
 }

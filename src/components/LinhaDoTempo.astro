@@ -1,0 +1,177 @@
+---
+// "Por que agora": os três marcos da mudança da NR-1, com as notas e as fontes oficiais logo abaixo.
+import Texto from './Texto.astro';
+
+interface Marco {
+  data: string;
+  titulo: string;
+  texto: string;
+  agora?: boolean;
+}
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  marcos: Marco[];
+  notas: string[];
+  fonte: string;
+}
+
+const { titulo, apoio, marcos, notas, fonte } = Astro.props;
+---
+
+<section class="linha" id="por-que-agora" aria-labelledby="linha-titulo">
+  <div class="conteiner linha__grade">
+    <div class="linha__cabeca">
+      <h2 id="linha-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="linha__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <ol class="linha__marcos">
+      {
+        marcos.map((marco) => (
+          <li class="marco" data-agora={marco.agora ? '' : undefined}>
+            <p class="marco__data">
+              <Texto de={marco.data} />
+            </p>
+            <h3 class="marco__titulo">
+              <Texto de={marco.titulo} />
+            </h3>
+            <p class="marco__texto">
+              <Texto de={marco.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="linha__notas">
+      {notas.map((nota) => <p><Texto de={nota} /></p>)}
+      <p class="linha__fonte texto-secundario"><Texto de={fonte} /></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .linha {
+    padding-block: var(--secao);
+  }
+
+  .linha__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .linha__apoio {
+    max-inline-size: 44ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .linha__marcos {
+    display: grid;
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* No celular, o fio desce à esquerda e cada marco põe a sua meia-pílula em cima dele. */
+  .marco {
+    position: relative;
+    padding-inline-start: var(--e-5);
+    border-inline-start: 1px solid var(--linha);
+  }
+
+  .marco::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.4em;
+    inset-inline-start: 0;
+    inline-size: 0.4375rem;
+    block-size: 0.875rem;
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--menta);
+  }
+
+  .marco[data-agora]::before {
+    background-color: var(--magenta);
+  }
+
+  .marco__data {
+    color: var(--navy-2);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-destaque);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+  }
+
+  .marco[data-agora] .marco__data {
+    color: var(--navy);
+    font-size: var(--t-3);
+  }
+
+  .marco__titulo {
+    margin-block: var(--e-2) var(--e-1);
+    font-size: var(--t-destaque);
+  }
+
+  .marco__texto {
+    max-inline-size: 42ch;
+    color: var(--navy-2);
+  }
+
+  .linha__notas {
+    display: grid;
+    gap: var(--e-4);
+    padding: var(--e-5);
+    border: 1px solid var(--linha);
+  }
+
+  .linha__notas p {
+    max-inline-size: 66ch;
+  }
+
+  .linha__fonte {
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 48rem) {
+    .linha__marcos {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--e-5);
+    }
+
+    /* Na largura maior o fio deita: passa por cima dos três marcos. */
+    .marco {
+      padding-inline-start: 0;
+      padding-block-start: var(--e-4);
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--linha);
+    }
+
+    .marco::before {
+      inset-block-start: 0;
+      inline-size: 0.875rem;
+      block-size: 0.4375rem;
+      border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
+    }
+
+    .linha__notas {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-6);
+      padding: var(--e-6);
+    }
+
+    .linha__fonte {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .linha__grade {
+      gap: var(--e-7);
+    }
+  }
+</style>

@@ -2,15 +2,19 @@
 // O fechamento: as duas metades do topo agora estão juntas, formando o círculo.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
+import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
 
 interface Props {
   titulo: string;
   texto: string;
-  cta: TextosPorPublico;
+  /** Na home, o rótulo do botão muda com o público. Na página de um serviço, ele é fixo. */
+  cta?: TextosPorPublico;
+  rotulo?: string;
+  servico?: ServicoId;
 }
 
-const { titulo, texto, cta } = Astro.props;
+const { titulo, texto, cta, rotulo, servico } = Astro.props;
 ---
 
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
@@ -22,7 +26,7 @@ const { titulo, texto, cta } = Astro.props;
     <div class="cta-final__texto">
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
       <p class="texto-secundario"><Texto de={texto} /></p>
-      <BotaoContato textos={cta} />
+      <BotaoContato textos={cta} texto={rotulo} servico={servico} />
     </div>
   </div>
 </section>

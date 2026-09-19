@@ -234,7 +234,8 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   - fontes oficiais citadas na página;
   - o texto trata o treinamento como uma das medidas do PGR, sem prometer conformidade;
   - o argumento "ações até 2046" do site atual não entra, porque não tem fonte;
-  - carga horária, formato e o que a empresa recebe entram como pendências.
+  - carga horária, formato e o que a empresa recebe entram como pendências;
+  - o presencial do treinamento também é pendência, porque o site atual só afirma presencial para tradução. Por isso o `Service` do JSON-LD atende "Brasil", e não as 4 cidades.
 - **Idiomas:** os 14 idiomas do site atual agrupados por família, cada um com a saudação na própria língua e o `lang` correto.
   - Românicas: português, espanhol, francês, italiano e romeno.
   - Germânicas: inglês, alemão, holandês, sueco e norueguês.

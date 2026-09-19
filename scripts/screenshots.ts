@@ -135,6 +135,21 @@ const roteiros: Record<string, Captura[]> = {
       await p.locator('#campo-traducao-cidadeOutra').scrollIntoViewIfNeeded();
     } },
   ],
+  'etapa-4': [
+    { nome: 'nr1-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'nr1-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'nr1-hero-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true },
+    { nome: 'nr1-hero-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'nr1-hero-rolado-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 420, behavior: 'instant' })) },
+    { nome: 'nr1-por-que-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#por-que-agora') },
+    { nome: 'nr1-por-que-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#por-que-agora') },
+    { nome: 'nr1-recebe-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#o-que-recebe') },
+    { nome: 'nr1-modulos-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#modulos') },
+    { nome: 'nr1-modulos-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#modulos') },
+    { nome: 'nr1-formato-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#formato') },
+    { nome: 'nr1-abordagem-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#abordagem') },
+    { nome: 'nr1-drawer-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formato [data-abre-contato]').click() },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';

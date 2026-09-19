@@ -39,6 +39,24 @@ export function organizacao(site: DadosDoSite, base: URL) {
   };
 }
 
+/**
+ * Um serviço da 9vee, ligado à organização pelo @id. A área atendida é o país, porque o treinamento
+ * online alcança qualquer cidade e o presencial ainda depende da confirmação da Daniella.
+ */
+export function servico(base: URL, dados: { nome: string; tipo: string; caminho: string; descricao: string }) {
+  return {
+    '@type': 'Service',
+    '@id': new URL(`${dados.caminho}#servico`, base).href,
+    name: dados.nome,
+    serviceType: dados.tipo,
+    description: textoPuro(dados.descricao),
+    url: new URL(dados.caminho, base).href,
+    provider: { '@id': new URL('/#organizacao', base).href },
+    areaServed: { '@type': 'Country', name: 'Brasil' },
+    audience: { '@type': 'BusinessAudience' },
+  };
+}
+
 /** Serializa para <script type="application/ld+json"> sem permitir fechar a tag. */
 export function serializarJsonLd(nos: Record<string, unknown>[]): string {
   const documento =

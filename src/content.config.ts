@@ -18,6 +18,13 @@ const seo = z.object({
 
 const porPublico = z.object({ neutro: z.string(), empresa: z.string(), voce: z.string() });
 
+const faq = z.object({
+  titulo: z.string(),
+  itens: z.array(z.object({ pergunta: z.string(), resposta: z.string() })).min(1),
+});
+
+const tituloETexto = z.object({ titulo: z.string(), texto: z.string() });
+
 export const servicoId = z.enum(SERVICOS);
 
 const condicao = z.object({ campo: z.string(), valores: z.array(z.string()).min(1) });
@@ -283,11 +290,57 @@ const home = defineCollection({
         )
         .min(1),
     }),
-    faq: z.object({
-      titulo: z.string(),
-      itens: z.array(z.object({ pergunta: z.string(), resposta: z.string() })).min(1),
-    }),
+    faq,
     ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+  }),
+});
+
+const nr1 = defineCollection({
+  loader: glob({ pattern: 'treinamento-nr-1.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    servico: z.object({ tipo: z.string() }),
+    hero: z.object({
+      rotulo: z.string(),
+      h1: z.string(),
+      apoio: z.string(),
+      cta: z.string(),
+      imagem,
+    }),
+    porQue: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      marcos: z
+        .array(tituloETexto.extend({ data: z.string(), agora: z.boolean().optional() }))
+        .min(2)
+        .refine((lista) => lista.filter((marco) => marco.agora).length <= 1, { error: 'só um marco é o de agora' }),
+      notas: z.array(z.string()).min(1),
+      fonte: z.string(),
+    }),
+    entrega: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).min(2),
+      nota: z.string(),
+    }),
+    modulos: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).length(3),
+    }),
+    formato: z.object({
+      titulo: z.string(),
+      itens: z.array(z.object({ rotulo: z.string(), valor: z.string() })).min(1),
+      texto: z.string(),
+      cta: z.string(),
+    }),
+    abordagem: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      etapas: z.array(tituloETexto).length(4),
+    }),
+    faq,
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string(), rotulo: z.string() }),
   }),
 });
 
@@ -309,7 +362,7 @@ const pagina = (arquivo: string) =>
 export const collections = {
   site,
   home,
-  nr1: pagina('treinamento-nr-1.md'),
+  nr1,
   idiomas: pagina('curso-de-idiomas.md'),
   parciais: pagina('{traducao-simultanea,lms,quem-somos}.md'),
 };

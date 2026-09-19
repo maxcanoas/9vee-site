@@ -76,6 +76,18 @@ Todo prompt termina com a linha: `Avoid: stock photo poses, handshake clichés, 
 
   > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the left for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a small group of six diverse employees seated in a semicircle at the start of a workshop in a bright training room, a facilitator standing by a whiteboard that shows only simple abstract shapes, everyone relaxed and attentive, morning light. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, text on the whiteboard.
 
+## Treinamento de NR-1
+
+### IMG-NR1-HERO
+
+- **Onde:** Treinamento de NR-1, hero (moldura de arco, ao lado do texto).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `nr1-hero.jpg`
+- **Alt:** Gestora de RH e técnico de segurança conversando numa sala de reunião, com a área de produção ao fundo.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian HR manager in her forties and a workplace safety technician in his thirties talking across a small table in an industrial office, she is listening while he explains something, a closed laptop and a printed document face down between them; through the glass wall behind them, the factory floor is softly out of focus. Serious and respectful mood, not tense. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, safety helmets used as props, readable text on paper or screens.
+
 ## Próximas etapas
 
-Os heros do NR-1 e de Idiomas, o "Como funciona" de Idiomas e os heros das três páginas parciais entram aqui nas etapas 4, 5 e 6.
+O hero de Idiomas, o "Como funciona" de Idiomas e os heros das três páginas parciais entram aqui nas etapas 5 e 6.

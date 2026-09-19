@@ -1,0 +1,150 @@
+---
+// Hero das páginas internas: o texto primeiro, a imagem em arco ao lado e o círculo da marca atrás dela.
+import Figura from './Figura.astro';
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+import type { ServicoId } from '../lib/contato';
+
+interface Props {
+  rotulo: string;
+  h1: string;
+  apoio: string;
+  cta: string;
+  imagem: { id: string; arquivo: string; alt: string };
+  servico?: ServicoId;
+}
+
+const { rotulo, h1, apoio, cta, imagem, servico } = Astro.props;
+---
+
+<section class="hero-pagina escuro" aria-labelledby="hero-titulo">
+  <div class="conteiner hero-pagina__grade">
+    <div class="hero-pagina__texto">
+      <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
+      <h1 id="hero-titulo"><Texto de={h1} /></h1>
+      <p class="hero-pagina__apoio"><Texto de={apoio} /></p>
+      <BotaoContato texto={cta} servico={servico} />
+    </div>
+
+    <div class="hero-pagina__visual">
+      <span class="hero-pagina__meia hero-pagina__meia--esquerda" aria-hidden="true"></span>
+      <span class="hero-pagina__meia hero-pagina__meia--direita" aria-hidden="true"></span>
+      <div class="hero-pagina__quadro">
+        <Figura
+          {...imagem}
+          proporcao="4/5"
+          forma="arco"
+          primeiraDobra
+          sizes="(min-width: 64rem) 22rem, 62vw"
+          larguras={[400, 640, 800]}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-pagina {
+    padding-block: var(--e-7) var(--secao);
+  }
+
+  .hero-pagina__grade {
+    display: grid;
+    gap: var(--e-7);
+    align-items: center;
+  }
+
+  .hero-pagina__texto {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+  }
+
+  .hero-pagina__rotulo {
+    color: var(--menta);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .hero-pagina__texto h1 {
+    max-inline-size: 16ch;
+  }
+
+  .hero-pagina__apoio {
+    max-inline-size: 46ch;
+    color: var(--sobre-escuro);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  /* O círculo da marca fica atrás do arco e aparece por cima dos ombros da imagem. */
+  .hero-pagina__visual {
+    position: relative;
+    justify-self: center;
+    inline-size: min(62vw, 20rem);
+  }
+
+  .hero-pagina__quadro {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-pagina__meia {
+    position: absolute;
+    inset-block-start: -7%;
+    inline-size: 47%;
+    aspect-ratio: 1 / 2;
+  }
+
+  .hero-pagina__meia--esquerda {
+    inset-inline-end: calc(50% + var(--fio-metades) / 2);
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .hero-pagina__meia--direita {
+    inset-inline-start: calc(50% + var(--fio-metades) / 2);
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--magenta);
+  }
+
+  @media (min-width: 64rem) {
+    .hero-pagina {
+      padding-block: var(--secao);
+    }
+
+    .hero-pagina__grade {
+      grid-template-columns: 1.15fr 0.85fr;
+      column-gap: var(--e-8);
+    }
+
+    .hero-pagina__visual {
+      justify-self: end;
+      inline-size: min(100%, 22rem);
+    }
+  }
+
+  /* Parallax curto: a imagem sobe um pouco e descola do círculo. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      .hero-pagina__quadro {
+        animation-name: hero-pagina-quadro;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: scroll(root);
+        animation-range: 0 70svh;
+        will-change: transform;
+      }
+    }
+  }
+
+  @keyframes hero-pagina-quadro {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-8%);
+    }
+  }
+</style>

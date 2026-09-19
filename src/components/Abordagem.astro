@@ -1,0 +1,97 @@
+---
+// As quatro etapas pelas quais cada módulo passa, na ordem.
+import Texto from './Texto.astro';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  etapas: { titulo: string; texto: string }[];
+}
+
+const { titulo, apoio, etapas } = Astro.props;
+---
+
+<section class="abordagem" id="abordagem" aria-labelledby="abordagem-titulo">
+  <div class="conteiner abordagem__grade">
+    <div class="abordagem__cabeca">
+      <h2 id="abordagem-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="abordagem__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <ol class="abordagem__etapas">
+      {
+        etapas.map((etapa) => (
+          <li class="etapa">
+            <h3 class="etapa__titulo">
+              <Texto de={etapa.titulo} />
+            </h3>
+            <p class="etapa__texto">
+              <Texto de={etapa.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .abordagem {
+    padding-block: var(--secao);
+    background-color: var(--nevoa);
+  }
+
+  .abordagem__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .abordagem__apoio {
+    max-inline-size: 52ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .abordagem__etapas {
+    display: grid;
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Cada etapa começa com a meia-pílula da marca, deitada. */
+  .etapa::before {
+    content: '';
+    display: block;
+    inline-size: 0.875rem;
+    block-size: 0.4375rem;
+    margin-block-end: var(--e-3);
+    border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .etapa__titulo {
+    font-size: var(--t-destaque);
+  }
+
+  .etapa__texto {
+    max-inline-size: 38ch;
+    margin-block-start: var(--e-2);
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 48rem) {
+    .abordagem__etapas {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-5);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .abordagem__etapas {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>
