@@ -64,6 +64,18 @@ export function jsonLd(raiz: HTMLElement): Record<string, unknown>[] {
     );
 }
 
+/** Todo texto que o JSON-LD leva, em qualquer profundidade. */
+export function textosDoJsonLd(nos: Record<string, unknown>[]): string[] {
+  const textos: string[] = [];
+  const visitar = (valor: unknown) => {
+    if (typeof valor === 'string') textos.push(valor);
+    else if (Array.isArray(valor)) valor.forEach(visitar);
+    else if (valor && typeof valor === 'object') Object.values(valor).forEach(visitar);
+  };
+  visitar(nos);
+  return textos;
+}
+
 export function arquivoDaRota(caminho: string): string {
   return caminho.endsWith('/') ? join(DIST, caminho, 'index.html') : join(DIST, caminho);
 }

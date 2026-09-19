@@ -116,7 +116,7 @@ faq:
     - pergunta: "Vocês atendem criança e adolescente?"
       resposta: "Sim, com material da Cambridge. No pedido, diga a idade junto com o idioma."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "As provas de proficiência têm certificado próprio, emitido por quem aplica o exame. Sobre o certificado da 9vee no fim do curso: [CONFIRMAR COM A DANIELLA: se a 9vee emite certificado no fim do curso, e de que tipo]."
+      resposta: "As provas de proficiência têm certificado próprio, emitido por quem aplica o exame. O certificado da própria 9vee ainda está em aberto [CONFIRMAR COM A DANIELLA: se a 9vee emite certificado no fim do curso, e de que tipo]."
     - pergunta: "Quanto custa?"
       resposta: "Depende do idioma, do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma, para dar um ponto de partida aqui]. O pedido desta página já leva essas respostas."
 

@@ -11,6 +11,7 @@ import {
   tamanhoDoJs,
   textoVisivel,
   textosDeAtributo,
+  textosDoJsonLd,
 } from './apoio';
 
 // Brief do MVP (seção 9) e marcadores do comando humanizar. Radicais pegam as flexões.
@@ -102,6 +103,14 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(organizacao).toBeDefined();
     expect(organizacao?.name).toBe('9vee');
     expect(organizacao?.alternateName).toBe('Novee');
+  });
+
+  // Tirar a pendência de uma frase pode deixar sobra ("no fim do curso:."). O visitante não vê, o Google vê.
+  it('não deixa sobra de pontuação no texto do JSON-LD', () => {
+    for (const texto of textosDoJsonLd(jsonLd(raiz))) {
+      if (/^https?:\/\//.test(texto)) continue;
+      expect(texto, texto).not.toMatch(/[:,;]\s*[.:,;]|\s[.,;:]|[:,;]$/);
+    }
   });
 
   it('não tem travessão nem meia-risca', () => {
