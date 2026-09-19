@@ -1,12 +1,12 @@
 ---
 seo:
   titulo: "9vee | Idiomas, tradução simultânea e treinamento de NR-1"
-  descricao: "Cursos de idiomas, intérpretes para eventos e treinamento de NR-1. Para empresas e para você, online ou presencial em São Paulo, Rio, Curitiba e Brasília."
+  descricao: "Aulas de idiomas online e in company, tradução simultânea em São Paulo, Rio de Janeiro, Curitiba e Brasília e treinamento de NR-1 sobre saúde mental."
 
 hero:
   h1: "Para a conversa dar certo."
-  apoio: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho. Para a sua empresa e para você."
-  legendaPublico: "É para:"
+  apoio: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
+  legendaPublico: "É para sua empresa ou para você?"
   opcoes:
     empresa: "Para sua empresa"
     voce: "Para você"
@@ -23,7 +23,7 @@ prova:
   titulo: "A 9vee em números"
   itens:
     - valor: 19
-      rotulo: "anos no mercado"
+      rotulo: "anos de empresa"
       pendencia: "[CONFIRMAR COM A DANIELLA: ano de fundação. O site diz 19 anos nos números e mais de 20 no Quem Somos]"
     - valor: 14
       rotulo: "idiomas"
@@ -49,7 +49,7 @@ servicos:
     - id: "traducao"
       titulo: "Tradução simultânea"
       publico: "Para empresas"
-      texto: "Intérpretes em cabine para congressos, reuniões e visitas. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
+      texto: "Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
       link: { rotulo: "Ver como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     - id: "idiomas"
       titulo: "Cursos de idiomas"
@@ -59,7 +59,7 @@ servicos:
     - id: "lms"
       titulo: "LMS"
       publico: "Para empresas"
-      texto: "Plataforma para a equipe estudar a qualquer hora, com trilhas por nível e relatórios de frequência para o RH."
+      texto: "Plataforma para a equipe estudar a qualquer hora, com trilhas por nível e relatórios para o RH."
       link: { rotulo: "Conhecer o LMS", href: "/lms/" }
 
 destaqueNr1:
@@ -83,14 +83,14 @@ como:
         id: "IMG-HOME-COMO-1"
         arquivo: "home-como-1"
         alt: "Mãos segurando um celular numa mesa de café, escrevendo uma mensagem."
-    - titulo: "A equipe entende o seu caso"
-      texto: "No curso, isso começa por um diagnóstico do seu nível e do seu objetivo. No evento, pela data, pelos idiomas e pelo público."
+    - titulo: "A equipe estuda o pedido"
+      texto: "No curso, começa por um diagnóstico do seu nível. No evento, pela data e pelos idiomas."
       imagem:
         id: "IMG-HOME-COMO-2"
         arquivo: "home-como-2"
         alt: "Professora ouvindo um aluno adulto numa sala clara, com um caderno aberto na mesa."
     - titulo: "Você recebe a proposta"
-      texto: "Com formato, prazo e valor [CONFIRMAR COM A DANIELLA: em quanto tempo a proposta costuma sair]."
+      texto: "Com formato e valor, em [CONFIRMAR COM A DANIELLA: em quanto tempo a proposta costuma sair]."
       imagem:
         id: "IMG-HOME-COMO-3"
         arquivo: "home-como-3"
@@ -135,15 +135,15 @@ faq:
     - pergunta: "Vocês atendem fora de São Paulo?"
       resposta: "Sim. A tradução simultânea tem atendimento presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também podem ser online, de qualquer cidade."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do serviço, do formato e do tamanho do grupo. Com as respostas do formulário, a equipe já consegue falar de valor no primeiro contato [CONFIRMAR COM A DANIELLA: se o comercial responde com valor já no primeiro contato]."
+      resposta: "Depende do formato e do tamanho do grupo [CONFIRMAR COM A DANIELLA: uma faixa de preço por serviço, para dar um ponto de partida aqui]. Com as respostas do formulário, a equipe já fala de valor no primeiro contato [CONFIRMAR COM A DANIELLA: se o comercial responde com valor já no primeiro contato]."
     - pergunta: "O treinamento de NR-1 deixa a empresa em dia com a norma?"
       resposta: "Ele cobre uma parte: a capacitação sobre riscos psicossociais e o plano de ação do último módulo. A avaliação dos riscos no PGR continua com a empresa e o SESMT. [Veja o que o treinamento entrega](/treinamento-nr-1/)."
     - pergunta: "As aulas são para empresa ou para pessoa física?"
-      resposta: "Para os dois. A empresa contrata turmas, aula individual para executivos e o LMS. Você pode fazer aula particular ou online, com preparação para provas."
+      resposta: "Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula particular e online, e preparação para provas como TOEFL e DELE."
     - pergunta: "Quem são os intérpretes?"
-      resposta: "Profissionais formados em interpretação, com experiência em engenharia, medicina, tecnologia, vendas e negócios internacionais."
+      resposta: "Profissionais formados em centros especializados, com experiência em áreas como engenharia, medicina, tecnologia e negócios internacionais."
 
 ctaFinal:
   titulo: "Conte o que você precisa."
-  texto: "São quatro passos e o seu nome. No fim, você escolhe: conversar agora pelo WhatsApp ou esperar o contato da equipe."
+  texto: "Você responde em quatro passos. No fim, decide se prefere conversar agora pelo WhatsApp ou esperar a equipe chamar."
 ---
