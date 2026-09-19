@@ -2,11 +2,12 @@
 // O fechamento: as duas metades do topo agora estão juntas, formando o círculo.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
+import type { TextosPorPublico } from '../lib/publico';
 
 interface Props {
   titulo: string;
   texto: string;
-  cta: { neutro: string; empresa: string; voce: string };
+  cta: TextosPorPublico;
 }
 
 const { titulo, texto, cta } = Astro.props;

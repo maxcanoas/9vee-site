@@ -1,11 +1,15 @@
-export type Publico = 'empresa' | 'voce';
+export const PUBLICOS = ['empresa', 'voce'] as const;
+export type Publico = (typeof PUBLICOS)[number];
+
+/** Um texto para cada situação: sem escolha (neutro), empresa e você. */
+export type TextosPorPublico = Record<'neutro' | Publico, string>;
 
 export const CHAVE_PUBLICO = '9vee:publico';
 
 type Armazenamento = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
 
 export function publicoValido(valor: unknown): Publico | null {
-  return valor === 'empresa' || valor === 'voce' ? valor : null;
+  return PUBLICOS.find((publico) => publico === valor) ?? null;
 }
 
 // O acesso ao localStorage pode lançar erro (aba anônima, cookies bloqueados): a escolha vira "nenhuma".

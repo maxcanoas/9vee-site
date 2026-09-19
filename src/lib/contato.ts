@@ -3,10 +3,11 @@
 import type { Publico } from './publico';
 import { preencher } from './texto';
 
-export type ServicoId = 'nr1' | 'traducao' | 'idiomas' | 'lms';
+/** Os quatro serviços, na ordem do site. O esquema do conteúdo e os componentes partem desta lista. */
+export const SERVICOS = ['nr1', 'traducao', 'idiomas', 'lms'] as const;
+export type ServicoId = (typeof SERVICOS)[number];
 export type Etapa = 'publico' | 'servico' | 'detalhes' | 'final';
 export const ETAPAS: readonly Etapa[] = ['publico', 'servico', 'detalhes', 'final'];
-const SERVICOS: readonly ServicoId[] = ['nr1', 'traducao', 'idiomas', 'lms'];
 export type FormularioId = 'nr1' | 'traducao' | 'lms' | 'idiomasEmpresa' | 'idiomasVoce';
 
 export interface Condicao {
@@ -165,12 +166,20 @@ function valorLegivel(campo: Campo, valor: string | string[], idiomas: IdiomaCur
   }
 }
 
+export interface LinhaDoPedido {
+  rotulo: string;
+  valor: string;
+}
+
+/** A linha como ela vai na mensagem do WhatsApp: "Rótulo: valor". */
+export const linhaEmTexto = ({ rotulo, valor }: LinhaDoPedido) => `${rotulo}: ${valor}`;
+
 /**
- * "Rótulo curto: valor" de cada campo visível respondido, na ordem do formulário.
+ * Rótulo curto e valor de cada campo visível respondido, na ordem do formulário.
  * Quando um campo só aparece para detalhar outro de mesmo rótulo (a cidade "Outra" e qual cidade),
  * a resposta digitada substitui a opção.
  */
-export function linhasDoPedido(campos: Campo[], respostas: Respostas, idiomas: IdiomaCurto[]): string[] {
+export function linhasDoPedido(campos: Campo[], respostas: Respostas, idiomas: IdiomaCurto[]): LinhaDoPedido[] {
   const respondidos = camposVisiveis(campos, respostas).filter((campo) => temValor(respostas[campo.id]));
   const detalhados = new Set(
     respondidos.flatMap((campo) => {
@@ -180,7 +189,7 @@ export function linhasDoPedido(campos: Campo[], respostas: Respostas, idiomas: I
   );
   return respondidos
     .filter((campo) => !detalhados.has(campo.id))
-    .map((campo) => `${campo.rotuloCurto}: ${valorLegivel(campo, respostas[campo.id]!, idiomas)}`);
+    .map((campo) => ({ rotulo: campo.rotuloCurto, valor: valorLegivel(campo, respostas[campo.id]!, idiomas) }));
 }
 
 export function montarMensagem(
@@ -202,7 +211,7 @@ export function montarMensagem(
       publico: pedido.publico ? modelos.publico[pedido.publico] : '',
     }),
     modelos.pedido[pedido.servico],
-    ...linhasDoPedido(pedido.campos, pedido.respostas, pedido.idiomas),
+    ...linhasDoPedido(pedido.campos, pedido.respostas, pedido.idiomas).map(linhaEmTexto),
     ...(nome ? [preencher(modelos.nome, { nome })] : []),
   ].join('\n');
 }
@@ -261,12 +270,12 @@ export function linhasDaConfirmacao(
     contato: string;
   },
   rotulos: { servico: string; nome: string; contato: Record<'telefone' | 'email', string> },
-): string[] {
+): LinhaDoPedido[] {
   const contato = pedido.contato.trim();
   return [
-    `${rotulos.servico}: ${pedido.servico}`,
+    { rotulo: rotulos.servico, valor: pedido.servico },
     ...linhasDoPedido(pedido.campos, pedido.respostas, pedido.idiomas),
-    `${rotulos.nome}: ${pedido.nome.trim()}`,
-    `${rotulos.contato[tipoDeContato(contato) ?? 'email']}: ${contato}`,
+    { rotulo: rotulos.nome, valor: pedido.nome.trim() },
+    { rotulo: rotulos.contato[tipoDeContato(contato) ?? 'email'], valor: contato },
   ];
 }

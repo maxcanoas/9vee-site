@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { SERVICOS } from './lib/contato';
 
 const conteudo = './content';
 
@@ -17,7 +18,7 @@ const seo = z.object({
 
 const porPublico = z.object({ neutro: z.string(), empresa: z.string(), voce: z.string() });
 
-export const servicoId = z.enum(['nr1', 'traducao', 'idiomas', 'lms']);
+export const servicoId = z.enum(SERVICOS);
 
 const condicao = z.object({ campo: z.string(), valores: z.array(z.string()).min(1) });
 const campoBase = {
@@ -189,7 +190,6 @@ const site = defineCollection({
       atendimento: z.string(),
       tituloContato: z.string(),
       rotuloWhatsapp: z.string(),
-      rotuloEmail: z.string(),
       tituloRedes: z.string(),
       rotuloRede: z.string().includes('{rede}'),
       rotuloNavegacao: z.string(),

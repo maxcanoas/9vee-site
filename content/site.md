@@ -246,7 +246,6 @@ rodape:
   atendimento: "Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também online, de qualquer cidade."
   tituloContato: "Contato"
   rotuloWhatsapp: "WhatsApp"
-  rotuloEmail: "E-mail"
   tituloRedes: "A 9vee nas redes"
   rotuloRede: "9vee no {rede}"
   rotuloNavegacao: "Rodapé"

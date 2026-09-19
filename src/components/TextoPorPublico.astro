@@ -1,9 +1,10 @@
 ---
 // As três versões ficam no HTML; o CSS mostra a do público salvo antes da primeira pintura.
 import Texto from './Texto.astro';
+import type { TextosPorPublico } from '../lib/publico';
 
 interface Props {
-  textos: { neutro: string; empresa: string; voce: string };
+  textos: TextosPorPublico;
 }
 
 const { textos } = Astro.props;

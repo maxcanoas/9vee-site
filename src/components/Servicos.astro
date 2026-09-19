@@ -2,9 +2,10 @@
 // A ordem muda com o público: o CSS acerta antes da primeira pintura e o JS move o DOM,
 // para a ordem do Tab bater com a da tela. O primeiro da lista ganha o destaque.
 import Texto from './Texto.astro';
+import type { ServicoId } from '../lib/contato';
 
 interface Servico {
-  id: string;
+  id: ServicoId;
   titulo: string;
   publico: string;
   texto: string;
@@ -96,6 +97,13 @@ const { titulo, itens } = Astro.props;
     font-weight: 700;
   }
 
+  /* Nome estável para a View Transition animar a troca de lugar. Fica no CSS, e não num style inline,
+     porque o html-validate recusa style inline; por isso os quatro serviços aparecem aqui. */
+  .servico[data-servico='nr1'] { view-transition-name: servico-nr1; }
+  .servico[data-servico='traducao'] { view-transition-name: servico-traducao; }
+  .servico[data-servico='idiomas'] { view-transition-name: servico-idiomas; }
+  .servico[data-servico='lms'] { view-transition-name: servico-lms; }
+
   /* Ordem por público. Sem escolha, vale a de empresa. */
   .servico[data-ordem-empresa='1'] { order: 1; }
   .servico[data-ordem-empresa='2'] { order: 2; }
@@ -119,12 +127,6 @@ const { titulo, itens } = Astro.props;
     font-size: var(--t-destaque);
     line-height: 1.45;
   }
-
-  /* Nome estável para a View Transition animar a troca de lugar. */
-  .servico[data-servico='nr1'] { view-transition-name: servico-nr1; }
-  .servico[data-servico='traducao'] { view-transition-name: servico-traducao; }
-  .servico[data-servico='idiomas'] { view-transition-name: servico-idiomas; }
-  .servico[data-servico='lms'] { view-transition-name: servico-lms; }
 
   @media (min-width: 48rem) {
     .servicos__lista {

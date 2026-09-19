@@ -3,9 +3,10 @@ import {
   camposVisiveis,
   formularioDe,
   hojeLocal,
-  linhasDaConfirmacao,
+  linhaEmTexto,
+  linhasDaConfirmacao as paresDaConfirmacao,
   linkWhatsApp,
-  linhasDoPedido,
+  linhasDoPedido as paresDoPedido,
   mensagemFlutuante,
   modoDoDrawer,
   montarMensagem,
@@ -18,6 +19,11 @@ import {
   type ModelosDeMensagem,
   type TextosDeErro,
 } from '../../src/lib/contato';
+
+// As linhas saem em pares de rótulo e valor; aqui, no texto que vai para a mensagem.
+const linhasDoPedido = (...args: Parameters<typeof paresDoPedido>) => paresDoPedido(...args).map(linhaEmTexto);
+const linhasDaConfirmacao = (...args: Parameters<typeof paresDaConfirmacao>) =>
+  paresDaConfirmacao(...args).map(linhaEmTexto);
 
 const erros: TextosDeErro = {
   escolha: 'Escolha uma das opções.',
@@ -226,6 +232,13 @@ describe('tipoDeContato', () => {
 });
 
 describe('linhasDoPedido', () => {
+  it('devolve pares de rótulo e valor, sem texto para desmontar depois', () => {
+    expect(paresDoPedido(idiomasVoce, { idioma: 'espanhol', objetivo: 'viagem' }, idiomas)).toEqual([
+      { rotulo: 'Idioma', valor: 'espanhol' },
+      { rotulo: 'Objetivo', valor: 'viagem' },
+    ]);
+  });
+
   it('lista rótulo curto e valor legível, na ordem dos campos visíveis', () => {
     const respostas = {
       empresa: 'Hotel Exemplo',

@@ -12,6 +12,7 @@ import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { dadosDoSite, type PaginaId } from '../lib/site';
 import { organizacao, serializarJsonLd } from '../lib/jsonld';
 import { textoPuro } from '../lib/texto';
+import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
 
 interface Props {
   pagina: PaginaId;
@@ -60,16 +61,15 @@ const regrasDeSpeculation = JSON.stringify({
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <Font cssVariable="--fonte-titulo" preload={[{ subset: 'latin', weight: '600', style: 'normal' }]} />
     <Font cssVariable="--fonte-texto" />
-    <script is:inline>
-      // Antes da primeira pintura: marca que há JS e aplica o público salvo, sem piscar.
-      (function () {
-        var raiz = document.documentElement;
-        raiz.classList.add('js');
-        try {
-          var publico = localStorage.getItem('9vee:publico');
-          if (publico === 'empresa' || publico === 'voce') raiz.dataset.publico = publico;
-        } catch (erro) {}
-      })();
+    {/* Antes da primeira pintura: marca que há JS e aplica o público salvo, sem piscar.
+        A chave e os públicos vêm de src/lib/publico.ts, os mesmos do script da página. */}
+    <script is:inline define:vars={{ chave: CHAVE_PUBLICO, publicos: PUBLICOS }}>
+      var raiz = document.documentElement;
+      raiz.classList.add('js');
+      try {
+        var publico = localStorage.getItem(chave);
+        if (publicos.indexOf(publico) >= 0) raiz.dataset.publico = publico;
+      } catch (erro) {}
     </script>
     <script type="speculationrules" is:inline set:html={regrasDeSpeculation} />
     <script type="application/ld+json" is:inline set:html={dadosEstruturados} />

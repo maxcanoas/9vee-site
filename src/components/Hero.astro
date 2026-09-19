@@ -3,6 +3,7 @@ import Figura from './Figura.astro';
 import Texto from './Texto.astro';
 import EscolhaPublico from './EscolhaPublico.astro';
 import BotaoContato from './BotaoContato.astro';
+import type { TextosPorPublico } from '../lib/publico';
 
 interface Imagem {
   id: string;
@@ -17,7 +18,7 @@ interface Props {
   opcoes: { empresa: string; voce: string };
   imagemFundo: Imagem;
   imagemFrente: Imagem;
-  cta: { neutro: string; empresa: string; voce: string };
+  cta: TextosPorPublico;
 }
 
 const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = Astro.props;

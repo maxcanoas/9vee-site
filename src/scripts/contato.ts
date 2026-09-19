@@ -20,6 +20,7 @@ import {
   type Campo,
   type DadosDoDrawer,
   type Etapa,
+  type LinhaDoPedido,
   type Respostas,
   type ServicoId,
 } from '../lib/contato';
@@ -202,20 +203,19 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     linkDeNovo.href = saidaWhatsApp.href;
   }
 
-  function linhaDoPedido(texto: string) {
+  function linhaDoPedido(linha: LinhaDoPedido) {
     const item = document.createElement('li');
-    const divisa = texto.indexOf(': ');
     const rotulo = document.createElement('span');
     rotulo.className = 'pedido__rotulo';
-    rotulo.textContent = texto.slice(0, divisa + 1);
-    item.append(rotulo, ` ${texto.slice(divisa + 2)}`);
+    rotulo.textContent = `${linha.rotulo}:`;
+    item.append(rotulo, ` ${linha.valor}`);
     return item;
   }
 
   function mostrarPedido() {
     if (!servico) return;
     const linhas = [
-      `${dados.confirmacao.servico}: ${dados.servicos[servico]}`,
+      { rotulo: dados.confirmacao.servico, valor: dados.servicos[servico] },
       ...linhasDoPedido(camposAtuais(), lerRespostas(), dados.idiomas),
     ];
     um('[data-linhas-pedido]').replaceChildren(...linhas.map(linhaDoPedido));
