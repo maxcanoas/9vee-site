@@ -90,7 +90,7 @@ como:
         arquivo: "home-como-2"
         alt: "Professora ouvindo um aluno adulto numa sala clara, com um caderno aberto na mesa."
     - titulo: "Você recebe a proposta"
-      texto: "Com formato e valor, em [CONFIRMAR COM A DANIELLA: em quanto tempo a proposta costuma sair]."
+      texto: "Com formato e valor [CONFIRMAR COM A DANIELLA: em quanto tempo a proposta costuma sair]."
       imagem:
         id: "IMG-HOME-COMO-3"
         arquivo: "home-como-3"
