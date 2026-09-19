@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import EmConstrucao from '../components/EmConstrucao.astro';
+import HeroPagina from '../components/HeroPagina.astro';
+import Cartoes from '../components/Cartoes.astro';
 import { dadosDoSite } from '../lib/site';
 import { paginaParcial } from '../lib/paginas';
 
@@ -9,5 +10,6 @@ const site = await dadosDoSite();
 ---
 
 <Base pagina="lms" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
+  <HeroPagina {...pagina.hero} servico="lms" etiqueta={site.rodape.etiquetaMvp} />
+  <Cartoes id="pedido" {...pagina.bloco} servico="lms" />
 </Base>

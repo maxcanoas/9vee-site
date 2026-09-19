@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 19/09/2026, no fim da etapa 5. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 19/09/2026, no fim da etapa 6. Para retomar, vá direto para "Próxima etapa".
 
 ## Onde estamos
 
@@ -12,9 +12,9 @@ Atualizado em 19/09/2026, no fim da etapa 5. Para retomar, vá direto para "Pró
 | 3. Drawer de contato e WhatsApp | feita e aprovada, com as 7 decisões registradas abaixo | `be20fd3` e `d2c50d2` |
 | Revisão das etapas 1 a 3: humanizar e code-review | feita e aprovada | de `4608dd0` a `f772212` |
 | 4. Treinamento de NR-1 | feita e aprovada | `f6dce38` |
-| 5. Cursos de Idiomas | **feita, esperando o ok** | commit deste arquivo |
-| 6. Páginas parciais | **próxima** | |
-| 7. Verificação e revisão final | a fazer | |
+| 5. Cursos de Idiomas | feita e aprovada | `69aa31b` |
+| 6. Páginas parciais | **feita, esperando o ok** | commit deste arquivo |
+| 7. Verificação e revisão final | **próxima** | |
 | 8. Publicação e reunião | a fazer | |
 
 ## O que cada etapa entregou
@@ -58,13 +58,21 @@ Do lado técnico: esquema próprio da coleção `nr1` em `src/content.config.ts`
 - hero com o botão que muda de texto conforme o público ("Quero estudar" ou "Pedir orçamento");
 - os 14 idiomas por família, cada um com âncora própria e com botão que abre o pedido já com o idioma marcado. É para essas âncoras que os 14 links da home apontam;
 - a régua do A1 ao C2 em português claro, com a barra crescendo de um nível para o outro;
-- "Como são as aulas", com as âncoras `#particular` e `#online` que o menu usa, e o presencial marcado como pendência;
+- "Como são as aulas", com a âncora `#particular` que o menu usa, e o presencial marcado como pendência;
 - os 6 exames do site atual, com uma linha cada;
 - "Para a sua equipe", o bloco B2B com âncora `#empresas`;
 - "Como começa", com o diagnóstico de nível;
 - FAQ de quem vai estudar e o contato no hero, no meio, no bloco da equipe e no fim.
 
 Do lado técnico: esquema próprio da coleção `idiomas`, JSON-LD com `ItemList` de 14 `Course` (cada um apontando para a própria âncora) e `FAQPage` igual ao FAQ visível, quatro componentes novos (`Niveis`, `Aulas`, `Provas`, `ComoComeca`), o `Familias` com o modo de pedido, o `Entregas` da etapa 4 virou `Pontos` e serve às duas páginas, os prompts `IMG-IDIOMAS-HERO` e `IMG-IDIOMAS-COMO`, `tests/dist/idiomas.test.ts` e o roteiro de capturas `etapa-5`.
+
+**Etapa 6.** As três páginas parciais, com hero, um bloco curto e a etiqueta "página em construção no MVP" no alto:
+
+- **Tradução Simultânea:** os três formatos (simultânea, consecutiva e acompanhamento), os sete idiomas com intérprete e o presencial nas quatro cidades, que é o único presencial que o site atual afirma;
+- **LMS:** as três perguntas que dimensionam a plataforma, que são as mesmas do pedido. O resto é pendência, porque o site atual não tem material de LMS;
+- **Quem Somos:** as quatro frentes da empresa e a sede em São Paulo, com o tempo de casa como pendência.
+
+Do lado técnico: a coleção `parciais` ganhou esquema próprio e o `EmConstrucao` saiu, o `Aulas` da etapa 5 virou `Cartoes` e serve às quatro páginas, o `HeroPagina` ganhou a etiqueta de obra, entraram os três prompts que faltavam em `docs/imagens-gemini.md`, `tests/dist/parciais.test.ts` e o roteiro de capturas `etapa-6`.
 
 ## Decisões da etapa 3, aprovadas em 19/09/2026
 
@@ -91,6 +99,13 @@ Do lado técnico: esquema próprio da coleção `idiomas`, JSON-LD com `ItemList
 3. **"Para a sua equipe" reaproveita o bloco escuro da etapa 4**, que virou o componente `Pontos` e ganhou um botão de contato opcional.
 4. **Os textos dos níveis são a escala global do Conselho da Europa em português claro.** Não é tradução literal: é o que a pessoa consegue fazer em cada nível.
 5. **A preparação para provas descreve cada exame numa linha.** São os 6 que o site atual lista, e as descrições são fato público sobre o exame, não promessa da 9vee.
+
+## Decisões da etapa 6
+
+1. **A etiqueta de obra ficou no hero, acima do rótulo.** Quem abre a página lê antes de tudo que ela ainda não está completa, e o resto do texto é verdade sobre o serviço.
+2. **O texto do LMS diz o que a 9vee precisa saber, não o que a plataforma faz.** O site atual não tem uma linha sobre o LMS, então a página mostra as três perguntas do pedido e marca o resto como pendência.
+3. **Os dois blocos repetidos viraram componentes de verdade:** `Pontos` (escuro, com marcadores) e `Cartoes` (claro, com cartões). As quatro páginas novas usam os dois.
+4. **A descrição do LMS perdeu os "relatórios de frequência"**, que tinham escapado da revisão das etapas 1 a 3. O site atual não afirma isso.
 
 ## Pendências técnicas
 
@@ -128,36 +143,42 @@ Dos Idiomas, da etapa 5:
 - se a 9vee emite certificado no fim do curso, e de que tipo;
 - faixa de preço das aulas.
 
+Das parciais, da etapa 6:
+
+- como é o LMS que a 9vee usa hoje, o que o RH acompanha nele e se há conteúdo próprio;
+- ano de fundação, de novo, agora no Quem Somos.
+
 Fora do site, para a reunião: uma leitura jurídica do argumento de risco da página de NR-1.
 
-## Próxima etapa: 6, Páginas parciais
+## Próxima etapa: 7, Verificação e revisão final
 
-São Tradução Simultânea, LMS e Quem Somos. Cada uma fica com hero, um bloco curto e a etiqueta "página em construção no MVP", para nenhum link do menu quebrar.
+**Medição:**
 
-**O que cada uma leva:**
+- Lighthouse mobile nas 3 páginas completas, mediana de 3 rodadas, nos dois builds: o padrão (com noindex, onde o SEO cai para cerca de 66 a 69, e isso é esperado) e o indexável, que é onde o SEO 100 é medido;
+- metas: Performance ≥ 95, Acessibilidade ≥ 95, LCP < 2,0 s e CLS < 0,05;
+- agora com imagens de verdade, conferir o peso delas e o que o AVIF entregou.
 
-- **Tradução Simultânea:** simultânea, consecutiva e acompanhamento; cabines e sistema de áudio; intérpretes em 7 idiomas (inglês, espanhol, mandarim, francês, italiano, crioulo haitiano e coreano); presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, que é o único presencial que o site atual afirma.
-- **LMS:** o site atual não tem material. O texto fica curto e o que faltar vira pendência.
-- **Quem Somos:** sede em São Paulo e o tempo de casa, que é pendência (19 anos nos números ou mais de 20 no texto).
+**Conferência:**
 
-**Trabalho técnico:**
+- as 5 larguras e o teclado, que as suítes já cobrem, mais uma passada manual;
+- o CLS da troca de fonte num Android de verdade;
+- o link do WhatsApp e o teclado virtual num Android e num iPhone de verdade, na mão do Maxwell.
 
-- trocar o esquema provisório da coleção `parciais` por um esquema próprio;
-- reaproveitar o `HeroPagina`, com imagem por página, e manter a etiqueta do MVP;
-- o drawer com o serviço da página já escolhido (`traducao` e `lms`; Quem Somos não tem serviço);
-- os 3 prompts que faltam em `docs/imagens-gemini.md`;
-- testes do HTML e roteiro de capturas `etapa-6`;
-- rodar o `humanizar` nos textos novos antes de entregar a etapa.
+**Revisão:**
+
+- `code-review` de `mvp-base` até HEAD, nos dois eixos (padrões e spec);
+- `humanizar` e `humanizar-ui` no que entrou nas etapas 4, 5 e 6;
+- relatório primeiro, parada para o ok, e um commit por mudança.
 
 ## Como retomar
 
 - `npm test`: testes de lógica, os dois builds (o padrão e o indexável, em `dist-indexavel/`) e os testes do HTML gerado.
 - `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
-- `node scripts/screenshots.ts etapa-5`: capturas em `relatorios/etapa-5/`, fora do git.
+- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git.
 - `npm run dev:rede`: o site na rede local, para abrir no celular.
 - `npx astro check`: tipos.
 
-Na última rodada: 75 testes de lógica, 262 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 104 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
+Na última rodada: 75 testes de lógica, 278 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 104 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
 
 Notas do ambiente:
 

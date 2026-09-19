@@ -1,36 +1,40 @@
 ---
-// Os formatos de aula para quem estuda por conta própria. Cada um tem âncora: o menu aponta para elas.
+// Bloco claro de cartões: os formatos de aula, as frentes da empresa, o que a página parcial já diz.
+// O item pode ter id próprio quando o menu aponta para ele.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
+import type { TextosPorPublico } from '../lib/publico';
 
 interface Props {
+  id: string;
   titulo: string;
   apoio: string;
-  itens: { id: string; titulo: string; texto: string }[];
+  itens: { id?: string; titulo: string; texto: string }[];
   nota: string;
-  cta: string;
+  cta?: string;
+  textos?: TextosPorPublico;
   servico?: ServicoId;
 }
 
-const { titulo, apoio, itens, nota, cta, servico } = Astro.props;
+const { id, titulo, apoio, itens, nota, cta, textos, servico } = Astro.props;
 ---
 
-<section class="aulas" id="formatos" aria-labelledby="aulas-titulo">
-  <div class="conteiner aulas__grade">
-    <div class="aulas__cabeca">
-      <h2 id="aulas-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="aulas__apoio"><Texto de={apoio} /></p>
+<section class="cartoes" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner cartoes__grade">
+    <div class="cartoes__cabeca">
+      <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
+      <p class="cartoes__apoio"><Texto de={apoio} /></p>
     </div>
 
-    <ul class="aulas__lista" role="list">
+    <ul class="cartoes__lista" role="list">
       {
         itens.map((item) => (
-          <li class="aula" id={item.id}>
-            <h3 class="aula__titulo">
+          <li class="cartao" id={item.id}>
+            <h3 class="cartao__titulo">
               <Texto de={item.titulo} />
             </h3>
-            <p class="aula__texto">
+            <p class="cartao__texto">
               <Texto de={item.texto} />
             </p>
           </li>
@@ -38,24 +42,24 @@ const { titulo, apoio, itens, nota, cta, servico } = Astro.props;
       }
     </ul>
 
-    <div class="aulas__fecho">
-      <p class="aulas__nota texto-secundario"><Texto de={nota} /></p>
-      <BotaoContato texto={cta} servico={servico} />
+    <div class="cartoes__fecho">
+      <p class="cartoes__nota texto-secundario"><Texto de={nota} /></p>
+      {(cta || textos) && <BotaoContato texto={cta} textos={textos} servico={servico} />}
     </div>
   </div>
 </section>
 
 <style>
-  .aulas {
+  .cartoes {
     padding-block: var(--secao);
   }
 
-  .aulas__grade {
+  .cartoes__grade {
     display: grid;
     gap: var(--e-6);
   }
 
-  .aulas__apoio {
+  .cartoes__apoio {
     max-inline-size: 48ch;
     margin-block-start: var(--e-4);
     color: var(--navy-2);
@@ -63,14 +67,14 @@ const { titulo, apoio, itens, nota, cta, servico } = Astro.props;
     line-height: 1.45;
   }
 
-  .aulas__lista {
+  .cartoes__lista {
     display: grid;
     gap: var(--e-4);
     padding: 0;
     list-style: none;
   }
 
-  .aula {
+  .cartao {
     display: grid;
     gap: var(--e-3);
     align-content: start;
@@ -79,39 +83,40 @@ const { titulo, apoio, itens, nota, cta, servico } = Astro.props;
     background-color: var(--branco);
   }
 
-  .aula:target {
+  .cartao:target {
     border-color: var(--magenta);
   }
 
-  .aula__titulo {
+  .cartao__titulo {
     font-size: var(--t-destaque);
   }
 
-  .aula__texto {
+  .cartao__texto {
     max-inline-size: 42ch;
     color: var(--navy-2);
   }
 
-  .aulas__fecho {
+  .cartoes__fecho {
     display: grid;
     gap: var(--e-5);
     justify-items: start;
   }
 
-  .aulas__nota {
+  .cartoes__nota {
     max-inline-size: 52ch;
     font-size: var(--t-pequeno);
   }
 
+  /* auto-fit: a seção com quatro frentes ocupa quatro colunas, a com três ocupa três. */
   @media (min-width: 48rem) {
-    .aulas__lista {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .cartoes__lista {
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
       gap: var(--e-5);
     }
   }
 
   @media (min-width: 64rem) {
-    .aulas__fecho {
+    .cartoes__fecho {
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: var(--e-6);

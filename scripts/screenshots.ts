@@ -166,6 +166,17 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'idiomas-comeca-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#como-comeca') },
     { nome: 'idiomas-drawer-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('#japones button').click() },
   ],
+  'etapa-6': [
+    { nome: 'traducao-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'traducao-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'traducao-hero-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'lms-390', rota: '/lms/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'lms-1280', rota: '/lms/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'quem-somos-390', rota: '/quem-somos/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'quem-somos-1280', rota: '/quem-somos/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'quem-somos-hero-1280', rota: '/quem-somos/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'traducao-drawer-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formatos [data-abre-contato]').click() },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';

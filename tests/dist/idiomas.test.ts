@@ -41,7 +41,7 @@ describe('cursos de idiomas', () => {
     for (const botao of botoes) {
       expect(botao.tagName).toBe('BUTTON');
       expect(botao.getAttribute('data-servico')).toBe('idiomas');
-      expect(botao.parentNode.getAttribute('id')).toBe(botao.getAttribute('data-idioma'));
+      expect(botao.parentNode?.getAttribute('id')).toBe(botao.getAttribute('data-idioma'));
     }
   });
 

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import HeroPagina from '../components/HeroPagina.astro';
 import Familias from '../components/Familias.astro';
 import Niveis from '../components/Niveis.astro';
-import Aulas from '../components/Aulas.astro';
+import Cartoes from '../components/Cartoes.astro';
 import Provas from '../components/Provas.astro';
 import Pontos from '../components/Pontos.astro';
 import ComoComeca from '../components/ComoComeca.astro';
@@ -40,7 +40,7 @@ const jsonLd = [
   </section>
 
   <Niveis {...pagina.niveis} />
-  <Aulas {...pagina.formatos} servico="idiomas" />
+  <Cartoes id="formatos" {...pagina.formatos} servico="idiomas" />
   <Provas {...pagina.provas} />
   <Pontos id="empresas" {...pagina.equipe} servico="idiomas" />
   <ComoComeca {...pagina.como} />

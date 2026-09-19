@@ -391,25 +391,32 @@ const idiomas = defineCollection({
   }),
 });
 
-// Esquema provisório: cada página ganha o próprio esquema na etapa em que é construída.
-const paginaEmConstrucao = z.object({
-  seo,
-  h1: z.string(),
-  aviso: z.string(),
-  tituloIdiomas: z.string().optional(),
-  secoes: z.array(z.object({ id: z.string(), titulo: z.string() })).default([]),
+// As três páginas que ficam parciais no MVP: hero, um bloco curto e a etiqueta de obra.
+const parciais = defineCollection({
+  loader: glob({ pattern: '{traducao-simultanea,lms,quem-somos}.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    hero: z.object({
+      rotulo: z.string(),
+      h1: z.string(),
+      apoio: z.string(),
+      cta: z.string().optional(),
+      imagem,
+    }),
+    bloco: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).min(2),
+      nota: z.string(),
+      cta: z.string().optional(),
+    }),
+  }),
 });
-
-const pagina = (arquivo: string) =>
-  defineCollection({
-    loader: glob({ pattern: arquivo, base: conteudo }),
-    schema: paginaEmConstrucao,
-  });
 
 export const collections = {
   site,
   home,
   nr1,
   idiomas,
-  parciais: pagina('{traducao-simultanea,lms,quem-somos}.md'),
+  parciais,
 };

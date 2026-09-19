@@ -15,14 +15,17 @@ interface Props {
   textos?: TextosPorPublico;
   imagem: { id: string; arquivo: string; alt: string };
   servico?: ServicoId;
+  /** Só nas páginas parciais: o aviso de que a página ainda não está completa. */
+  etiqueta?: string;
 }
 
-const { rotulo, h1, apoio, cta, textos, imagem, servico } = Astro.props;
+const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.props;
 ---
 
 <section class="hero-pagina escuro" aria-labelledby="hero-titulo">
   <div class="conteiner hero-pagina__grade">
     <div class="hero-pagina__texto">
+      {etiqueta && <p class="hero-pagina__etiqueta">{etiqueta}</p>}
       <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="hero-pagina__apoio"><Texto de={apoio} /></p>
@@ -66,6 +69,17 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico } = Astro.props;
   .hero-pagina__rotulo {
     color: var(--menta);
     font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  /* Tracejado: o mesmo contorno das pendências, para ler como aviso de obra. */
+  .hero-pagina__etiqueta {
+    padding-block: var(--e-1);
+    padding-inline: var(--e-3);
+    border: 1px dashed var(--sobre-escuro);
+    border-radius: var(--raio-pilula);
+    color: var(--sobre-escuro);
+    font-size: var(--t-rotulo);
     font-weight: 700;
   }
 

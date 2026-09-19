@@ -110,6 +110,38 @@ Todo prompt termina com a linha: `Avoid: stock photo poses, handshake clichés, 
 
   > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the left for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian man in his forties taking his first online language lesson at home, headphones on, looking at a laptop screen that is turned away from the camera, an open notebook and a pen beside the laptop, morning light from a window behind him. Attentive and comfortable, not tense. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, readable text on the screen or on the notebook.
 
-## Próximas etapas
+## Páginas parciais
 
-Os heros das três páginas parciais (Tradução Simultânea, LMS e Quem Somos) entram aqui na etapa 6.
+### IMG-TRADUCAO-HERO
+
+- **Onde:** Tradução Simultânea, hero (moldura de arco, ao lado do texto).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `traducao-hero.jpg`
+- **Alt:** Intérprete na cabine de tradução, de fone, acompanhando o palco pelo vidro.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian interpreter inside a glass simultaneous interpretation booth at a conference, wearing headphones and speaking into a small microphone, seen from inside the booth with the lit stage softly out of focus through the glass in front of her. Concentrated and calm. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, readable text on screens or slides.
+
+### IMG-LMS-HERO
+
+- **Onde:** LMS, hero (moldura de arco, ao lado do texto).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `lms-hero.jpg`
+- **Alt:** Colaborador estudando pela plataforma no notebook, numa mesa de escritório.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the left for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian employee in his thirties studying on a laptop at his desk in a bright open office, headphones around his neck, a notebook and a mug beside the laptop, the screen turned away from the camera and out of focus; colleagues blurred in the background. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, readable text or interface on the screen.
+
+### IMG-QUEM-SOMOS-HERO
+
+- **Onde:** Quem Somos, hero (moldura de arco, ao lado do texto).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `quem-somos-hero.jpg`
+- **Alt:** Profissionais conversando numa sala de reunião clara, com a cidade na janela.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: three Brazilian professionals of different ages talking in a bright meeting room in São Paulo, one leaning on the table and the others listening, the city skyline soft through a large window behind them. Everyday work moment, not a posed group portrait. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, team photo lineups, readable text on screens.
+
+## Todas as imagens do MVP
+
+Com a etapa 6, a lista fecha: as duas camadas do hero da home, as quatro do "Como funciona", o hero do NR-1, os dois de Idiomas e os três das páginas parciais.
