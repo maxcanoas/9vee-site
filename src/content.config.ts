@@ -29,6 +29,7 @@ const campoBase = {
   mostrarSe: condicao.optional(),
   ocultarSe: condicao.optional(),
   minuscula: z.boolean().optional(),
+  erro: z.string().optional(),
 };
 const campo = z.discriminatedUnion('tipo', [
   z.object({ ...campoBase, tipo: z.literal('texto'), autocomplete: z.string().optional() }),
@@ -131,7 +132,15 @@ const site = defineCollection({
       botaoFlutuante: z.string(),
       publico: z.object({ titulo: z.string(), opcoes: z.object({ empresa: z.string(), voce: z.string() }) }),
       servico: z.object({ titulo: z.string() }),
-      detalhes: z.object({ titulo: z.string() }),
+      detalhes: z.object({
+        titulos: z.object({
+          nr1: z.string(),
+          traducao: z.string(),
+          lms: z.string(),
+          idiomasEmpresa: z.string(),
+          idiomasVoce: z.string(),
+        }),
+      }),
       final: z.object({
         titulo: z.string(),
         rotuloNome: z.string(),

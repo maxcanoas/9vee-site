@@ -22,6 +22,8 @@ interface CampoBase {
   mostrarSe?: Condicao;
   ocultarSe?: Condicao;
   minuscula?: boolean;
+  /** Erro próprio do campo; sem ele, vale o erro do tipo. */
+  erro?: string;
 }
 
 export type Campo =
@@ -63,6 +65,7 @@ export interface DadosDoDrawer {
   modelos: ModelosDeMensagem;
   erros: TextosDeErro & { nome: string; contato: string };
   passo: string;
+  titulosDetalhes: Record<FormularioId, string>;
   publicos: Record<Publico, string>;
   confirmacao: { servico: string; nome: string; contato: Record<'telefone' | 'email', string> };
 }
@@ -119,12 +122,13 @@ export function validarCampos(
     const obrigatorio = ehObrigatorio(campo, publico);
     if (campo.tipo === 'data') {
       const dataValida = typeof valor === 'string' && (valor === SEM_DATA || (/^\d{4}-\d{2}-\d{2}$/.test(valor) && valor >= hoje));
-      if ((obrigatorio || temValor(valor)) && !dataValida) encontrados[campo.id] = erros.data;
+      if ((obrigatorio || temValor(valor)) && !dataValida) encontrados[campo.id] = campo.erro ?? erros.data;
       continue;
     }
     if (!obrigatorio || temValor(valor)) continue;
     encontrados[campo.id] =
-      campo.tipo === 'texto' ? erros.texto : campo.tipo === 'multipla' ? erros.multipla : erros.escolha;
+      campo.erro ??
+      (campo.tipo === 'texto' ? erros.texto : campo.tipo === 'multipla' ? erros.multipla : erros.escolha);
   }
   return encontrados;
 }

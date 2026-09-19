@@ -254,6 +254,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     if (proxima === 'detalhes') {
       const id = formularioAtual();
       for (const bloco of todos('[data-formulario]')) bloco.hidden = bloco.dataset.formulario !== id;
+      if (id) um('[data-titulo-detalhes]').textContent = dados.titulosDetalhes[id];
       atualizarCampos();
     }
     if (proxima === 'final') mostrarPedido();

@@ -36,7 +36,7 @@ const modelos: ModelosDeMensagem = {
     lms: 'Quero um orçamento do LMS.',
   },
   nome: 'Meu nome é {nome}.',
-  flutuante: 'Olá, 9vee. Vim pela página {pagina} do site e quero falar sobre {assunto}.',
+  flutuante: 'Olá, 9vee. Vim pela página {pagina} do site e {assunto}.',
 };
 
 const idiomas = [
@@ -164,6 +164,11 @@ describe('validarCampos', () => {
       colaboradores: erros.escolha,
       prazo: erros.escolha,
     });
+  });
+
+  it('usa o erro do próprio campo quando o conteúdo define um', () => {
+    const comErro: Campo[] = [{ ...nr1[0], erro: 'Escreva o nome da empresa.' }];
+    expect(validarCampos(comErro, {}, 'empresa', hoje, erros)).toEqual({ empresa: 'Escreva o nome da empresa.' });
   });
 
   it('aceita o formulário completo', () => {
@@ -297,9 +302,9 @@ describe('montarMensagem', () => {
 });
 
 describe('mensagemFlutuante', () => {
-  it('diz a página e o assunto, na voz do visitante', () => {
-    expect(mensagemFlutuante('Cursos de Idiomas', 'aulas de idioma para mim', modelos)).toBe(
-      'Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero falar sobre aulas de idioma para mim.',
+  it('diz a página e o pedido, na voz do visitante', () => {
+    expect(mensagemFlutuante('Cursos de Idiomas', 'quero aulas de idioma para mim', modelos)).toBe(
+      'Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para mim.',
     );
   });
 });

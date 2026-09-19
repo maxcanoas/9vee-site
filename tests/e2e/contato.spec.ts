@@ -51,7 +51,7 @@ test.describe('drawer de contato', () => {
     await page.goto('/treinamento-nr-1/');
     await page.locator('.cabecalho__cta').click();
 
-    await expect(titulo(page)).toHaveText('Conte um pouco mais');
+    await expect(titulo(page)).toHaveText('Sobre o treinamento');
     await expect(page.locator('[data-formulario="nr1"]')).toBeVisible();
     await expect(drawer(page).locator('[data-resumo-de="servico"]')).toContainText('Treinamento de NR-1');
   });
@@ -63,6 +63,7 @@ test.describe('drawer de contato', () => {
 
     // O nome acessível ignora a versão escondida do título, como o leitor de tela.
     await expect(drawer(page)).toHaveAccessibleName('Montar suas aulas');
+    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();
   });
 
@@ -88,7 +89,7 @@ test.describe('drawer de contato', () => {
     await page.locator('.cabecalho__cta').click();
     await page.locator('[data-continuar]').click();
 
-    await expect(page.locator('#campo-nr1-empresa-erro')).toHaveText('Preencha este campo.');
+    await expect(page.locator('#campo-nr1-empresa-erro')).toHaveText('Escreva o nome da empresa.');
     await expect(page.locator('#campo-nr1-colaboradores-erro')).toHaveText('Escolha uma das opções.');
     await expect(page.locator('#campo-nr1-empresa')).toBeFocused();
     await expect(page.locator('#campo-nr1-empresa')).toHaveAttribute('aria-invalid', 'true');
@@ -102,7 +103,7 @@ test.describe('drawer de contato', () => {
     await page.locator('.hero__cta').click();
     await drawer(page).locator('.metade--esquerda').click();
     await drawer(page).locator('.servico-opcao', { hasText: 'Treinamento de NR-1' }).click();
-    await expect(titulo(page)).toHaveText('Conte um pouco mais');
+    await expect(titulo(page)).toHaveText('Sobre o treinamento');
     await preencherNr1(page);
 
     await expect(titulo(page)).toHaveText('Como podemos te chamar?');
@@ -174,6 +175,7 @@ test.describe('drawer de contato', () => {
     await page.locator('.cabecalho__cta').click();
     const cidade = page.locator('[data-formulario="traducao"] [data-campo="cidade"]');
     const outra = page.locator('#campo-traducao-cidadeOutra');
+    await expect(titulo(page)).toHaveText('Sobre o evento');
 
     await opcao(page, 'traducao', 'Online').click();
     await expect(cidade).toBeHidden();
@@ -258,17 +260,17 @@ test.describe('atalho do WhatsApp', () => {
     await expect(atalho).toHaveAttribute('target', '_blank');
     await expect(atalho).toHaveAttribute('rel', /noopener/);
     expect(mensagemDe((await atalho.getAttribute('href'))!)).toBe(
-      'Olá, 9vee. Vim pela página Treinamento de NR-1 do site e quero falar sobre o treinamento de NR-1 para a minha empresa.',
+      'Olá, 9vee. Vim pela página Treinamento de NR-1 do site e quero um orçamento do treinamento de NR-1 para a minha empresa.',
     );
   });
 
   test('troca a mensagem quando a pessoa escolhe o público', async ({ page }) => {
     await page.goto('/');
     const atalho = page.locator('[data-whatsapp-flutuante]');
-    expect(mensagemDe((await atalho.getAttribute('href'))!)).toContain('sobre os serviços da 9vee');
+    expect(mensagemDe((await atalho.getAttribute('href'))!)).toContain('e quero pedir um orçamento.');
 
     await page.locator('.duas-metades__metade--voce').click();
-    await expect.poll(async () => mensagemDe((await atalho.getAttribute('href'))!)).toContain('sobre aulas de idioma para mim');
+    await expect.poll(async () => mensagemDe((await atalho.getAttribute('href'))!)).toContain('quero saber das aulas de idioma para mim');
   });
 
   test('some enquanto o drawer está aberto', async ({ page }) => {

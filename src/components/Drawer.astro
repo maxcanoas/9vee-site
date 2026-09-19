@@ -29,6 +29,9 @@ const dados: DadosDoDrawer = {
   modelos: textos.mensagens,
   erros: textos.erros,
   passo: textos.passo,
+  titulosDetalhes: Object.fromEntries(
+    formularioIds.map((id) => [id, textoPuro(textos.detalhes.titulos[id])]),
+  ) as DadosDoDrawer['titulosDetalhes'],
   publicos: textos.publico.opcoes,
   confirmacao: {
     servico: textos.confirmacao.rotuloServico,
@@ -152,7 +155,9 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
         </section>
 
         <section class="etapa" data-etapa="detalhes" aria-labelledby="etapa-detalhes" hidden>
-          <h3 class="etapa__titulo" id="etapa-detalhes" tabindex="-1"><Texto de={textos.detalhes.titulo} /></h3>
+          <h3 class="etapa__titulo" id="etapa-detalhes" tabindex="-1" data-titulo-detalhes>
+            <Texto de={textos.detalhes.titulos.nr1} />
+          </h3>
           {
             formularioIds.map((id) => (
               <div class="etapa__campos" data-formulario={id} hidden>
