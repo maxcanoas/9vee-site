@@ -81,13 +81,18 @@ const { titulo, itens, id = 'perguntas' } = Astro.props;
     block-size: 0.4375rem;
     border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
     background-color: var(--magenta);
-    transition-property: transform;
-    transition-duration: var(--dur-media);
-    transition-timing-function: var(--curva);
   }
 
   .faq__item[open] .faq__pergunta::after {
     transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .faq__pergunta::after {
+      transition-property: transform;
+      transition-duration: var(--dur-media);
+      transition-timing-function: var(--curva);
+    }
   }
 
   .faq__resposta {

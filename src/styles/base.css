@@ -21,8 +21,11 @@ html {
   }
 }
 
-@view-transition {
-  navigation: auto;
+/* Transição entre páginas só para quem não pediu menos movimento. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
 }
 
 body {

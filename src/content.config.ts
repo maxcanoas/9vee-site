@@ -183,6 +183,7 @@ const site = defineCollection({
       idiomasEmpresa: formulario,
       idiomasVoce: formulario,
     }),
+    pendencia: z.object({ etiqueta: z.string(), detalhe: z.string().includes('{nota}') }),
     rodape: z.object({
       pronuncia: z.string(),
       atendimento: z.string(),

@@ -1,6 +1,7 @@
 // Lógica do pedido de contato, sem tela: campos por serviço, validação e mensagem do WhatsApp.
 // As perguntas, as opções, os erros e os modelos de mensagem vêm de content/site.md.
 import type { Publico } from './publico';
+import { preencher } from './texto';
 
 export type ServicoId = 'nr1' | 'traducao' | 'idiomas' | 'lms';
 export type Etapa = 'publico' | 'servico' | 'detalhes' | 'final';
@@ -181,9 +182,6 @@ export function linhasDoPedido(campos: Campo[], respostas: Respostas, idiomas: I
     .filter((campo) => !detalhados.has(campo.id))
     .map((campo) => `${campo.rotuloCurto}: ${valorLegivel(campo, respostas[campo.id]!, idiomas)}`);
 }
-
-export const preencher = (modelo: string, dados: Record<string, string>) =>
-  modelo.replace(/\{(\w+)\}/g, (_, chave: string) => dados[chave] ?? '');
 
 export function montarMensagem(
   pedido: {

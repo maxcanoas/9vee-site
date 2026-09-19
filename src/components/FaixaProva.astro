@@ -13,9 +13,10 @@ interface Props {
   titulo: string;
   itens: Item[];
   aviso: string;
+  etiqueta: string;
 }
 
-const { titulo, itens, aviso } = Astro.props;
+const { titulo, itens, aviso, etiqueta } = Astro.props;
 const notas = itens.flatMap((item) => (item.pendencia ? extrairPendencias(item.pendencia) : []));
 ---
 
@@ -39,7 +40,7 @@ const notas = itens.flatMap((item) => (item.pendencia ? extrairPendencias(item.p
       notas.length > 0 && (
         <details class="prova__notas">
           <summary class="prova__aviso">
-            <span class="prova__etiqueta">a confirmar</span>
+            <span class="prova__etiqueta">{etiqueta}</span>
             <span>
               <Texto de={aviso} />
             </span>

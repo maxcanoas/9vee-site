@@ -13,6 +13,8 @@ interface Props {
   larguras?: number[];
   sizes?: string;
   prioridade?: boolean;
+  /** Na primeira tela sem ser a imagem principal: carrega já, sem a prioridade alta. */
+  primeiraDobra?: boolean;
   forma?: 'reta' | 'arco';
   recorte?: boolean;
   class?: string;
@@ -26,6 +28,7 @@ const {
   larguras = [480, 720, 960, 1280, 1600],
   sizes = '100vw',
   prioridade = false,
+  primeiraDobra = false,
   forma = 'reta',
   recorte = false,
   class: classe,
@@ -53,6 +56,7 @@ const classeProporcao = `proporcao-${proporcao.replace('/', '-')}`;
       widths={larguras.filter((largura) => largura <= imagem.width)}
       sizes={sizes}
       priority={prioridade}
+      loading={primeiraDobra && !prioridade ? 'eager' : undefined}
       class:list={['figura', `figura--${forma}`, classeProporcao, classe]}
     />
   ) : (

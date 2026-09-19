@@ -382,9 +382,6 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
       block-size: 0.3125rem;
       border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
       background-color: var(--magenta);
-      transition-property: transform;
-      transition-duration: var(--dur-media);
-      transition-timing-function: var(--curva);
     }
 
     .nav-larga__grupo:has(+ .painel:popover-open)::after {
@@ -399,6 +396,14 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
     .cabecalho__abrir,
     .menu-movel {
       display: none;
+    }
+  }
+
+  @media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+    .nav-larga__grupo::after {
+      transition-property: transform;
+      transition-duration: var(--dur-media);
+      transition-timing-function: var(--curva);
     }
   }
 </style>

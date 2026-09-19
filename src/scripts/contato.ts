@@ -13,7 +13,6 @@ import {
   linkWhatsApp,
   modoDoDrawer,
   montarMensagem,
-  preencher,
   primeiraEtapaPendente,
   servicoInicial,
   tipoDeContato,
@@ -25,6 +24,7 @@ import {
   type ServicoId,
 } from '../lib/contato';
 import { publicoValido, type Publico } from '../lib/publico';
+import { preencher } from '../lib/texto';
 import { aoMudarPublico, escolherPublico, publicoAtual } from './publico';
 
 type Tela = Etapa | 'aberto' | 'confirmado';

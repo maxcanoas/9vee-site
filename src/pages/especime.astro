@@ -4,6 +4,9 @@ import Base from '../layouts/Base.astro';
 import SvgDoKit from '../components/SvgDoKit.astro';
 import nove from '../../assets-cliente/Vectors/Stamp.svg?raw';
 import { formatarInline } from '../lib/texto';
+import { dadosDoSite } from '../lib/site';
+
+const { pendencia } = await dadosDoSite();
 
 const cores = [
   { nome: 'Papel', hex: '#F9F9F9', origem: 'oficial', papel: 'Fundo base', medida: 'navy sobre ele: 12,9:1', classe: 'amostra--papel' },
@@ -173,6 +176,7 @@ const colaboradores = ['Até 50', '51 a 200', '201 a 1.000', 'Mais de 1.000'];
       <p
         set:html={formatarInline(
           'A 9vee atende há 19 anos [CONFIRMAR COM A DANIELLA: o Quem Somos diz "mais de 20 anos"], em 14 idiomas.',
+          pendencia,
         )}
       />
     </section>

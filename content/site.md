@@ -236,6 +236,11 @@ formularios:
     - { id: "cidade", tipo: "escolha", rotulo: "Em que cidade?", rotuloCurto: "Cidade", obrigatorio: true, opcoes: ["São Paulo", "Rio de Janeiro", "Curitiba", "Brasília", "Outra"], mostrarSe: { campo: "formato", valores: ["presencial"] } }
     - { id: "cidadeOutra", tipo: "texto", rotulo: "Qual cidade?", rotuloCurto: "Cidade", erro: "Escreva o nome da cidade.", obrigatorio: true, mostrarSe: { campo: "cidade", valores: ["outra"] }, autocomplete: "address-level2" }
 
+# Pendências para a reunião: o [CONFIRMAR COM A DANIELLA: ...] dos textos vira esta etiqueta.
+pendencia:
+  etiqueta: "a confirmar"
+  detalhe: "com a Daniella: {nota}"
+
 rodape:
   pronuncia: "9vee, lê-se Novee [CONFIRMAR COM A DANIELLA: a pronúncia certa da marca]."
   atendimento: "Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também online, de qualquer cidade."

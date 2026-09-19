@@ -4,6 +4,18 @@ const NEGRITO = /\*\*(.+?)\*\*/g;
 // Siglas com hífen que o navegador quebraria no meio ("NR-" numa linha, "1" na outra).
 const SEM_QUEBRA = /(?<![\p{L}\d-])(NR-1|CELPE-Bras)(?![\p{L}\d-])/gu;
 
+/** Textos da etiqueta de pendência, vindos de content/site.md. O detalhe traz {nota}. */
+export interface TextosDePendencia {
+  etiqueta: string;
+  detalhe: string;
+}
+
+/** Troca cada {chave} do modelo pelo valor correspondente. */
+export const preencher = (modelo: string, dados: Record<string, string>) =>
+  modelo.replace(/\{(\w+)\}/g, (_, chave: string) => dados[chave] ?? '');
+
+const maiuscula = (texto: string) => texto.charAt(0).toLocaleUpperCase('pt-BR') + texto.slice(1);
+
 /** Aviso para o leitor de tela em todo link que abre outra aba. */
 export const AVISO_NOVA_ABA = ' (abre em nova aba)';
 
@@ -16,13 +28,12 @@ export function escaparHtml(texto: string): string {
     .replaceAll("'", '&#39;');
 }
 
-function etiquetaPendencia(notaHtml: string): string {
+function etiquetaPendencia(notaHtml: string, textos: TextosDePendencia): string {
+  const etiqueta = escaparHtml(textos.etiqueta);
+  const detalhe = preencher(escaparHtml(textos.detalhe), { nota: notaHtml });
   // O title não aceita tags nem aspas cruas; o texto para leitor de tela aceita.
-  const notaTitulo = notaHtml.replace(/<[^>]+>/g, '').replaceAll('"', '&quot;');
-  return (
-    `<mark class="confirmar" title="A confirmar com a Daniella: ${notaTitulo}">` +
-    `a confirmar<span class="visualmente-oculto"> com a Daniella: ${notaHtml}</span></mark>`
-  );
+  const titulo = `${maiuscula(etiqueta)} ${detalhe}`.replace(/<[^>]+>/g, '').replaceAll('"', '&quot;');
+  return `<mark class="confirmar" title="${titulo}">${etiqueta}<span class="visualmente-oculto"> ${detalhe}</span></mark>`;
 }
 
 function linkHtml(rotulo: string, urlEscapada: string): string {
@@ -40,17 +51,17 @@ function linkHtml(rotulo: string, urlEscapada: string): string {
 }
 
 /** Texto de uma linha vindo do content/: escapa o HTML e aplica pendência, link e negrito. */
-export function formatarInline(texto: string): string {
+export function formatarInline(texto: string, pendencia: TextosDePendencia): string {
   return escaparHtml(texto)
     .replace(SEM_QUEBRA, '<span class="sem-quebra">$1</span>')
-    .replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota))
+    .replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota, pendencia))
     .replace(LINK, (_, rotulo: string, url: string) => linkHtml(rotulo, url))
     .replace(NEGRITO, '<strong>$1</strong>');
 }
 
 /** Corpo em Markdown já renderizado: só troca os marcadores de pendência. */
-export function marcarPendencias(html: string): string {
-  return html.replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota));
+export function marcarPendencias(html: string, pendencia: TextosDePendencia): string {
+  return html.replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota, pendencia));
 }
 
 export function extrairPendencias(texto: string): string[] {

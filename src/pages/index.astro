@@ -20,7 +20,7 @@ const site = await dadosDoSite();
 
 <Base pagina="home" titulo={home.seo.titulo} descricao={home.seo.descricao}>
   <Hero {...home.hero} cta={site.cta} />
-  <FaixaProva {...home.prova} />
+  <FaixaProva {...home.prova} etiqueta={site.pendencia.etiqueta} />
   <Servicos titulo={home.servicos.titulo} itens={comOrdemDoServico(site, home.servicos.itens)} />
   <DestaqueNr1 {...home.destaqueNr1} />
   <ComoFunciona {...home.como} />
