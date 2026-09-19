@@ -150,6 +150,22 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-abordagem-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#abordagem') },
     { nome: 'nr1-drawer-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formato [data-abre-contato]').click() },
   ],
+  'etapa-5': [
+    { nome: 'idiomas-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'idiomas-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'idiomas-hero-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true },
+    { nome: 'idiomas-hero-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'idiomas-familias-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#idiomas') },
+    { nome: 'idiomas-familias-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#idiomas') },
+    { nome: 'idiomas-alvo-1280', rota: '/curso-de-idiomas/#japones', largura: 1280, altura: 800, movimento: true },
+    { nome: 'idiomas-niveis-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#niveis') },
+    { nome: 'idiomas-niveis-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#niveis') },
+    { nome: 'idiomas-aulas-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#formatos') },
+    { nome: 'idiomas-provas-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#provas') },
+    { nome: 'idiomas-equipe-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#empresas') },
+    { nome: 'idiomas-comeca-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#como-comeca') },
+    { nome: 'idiomas-drawer-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('#japones button').click() },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';

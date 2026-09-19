@@ -67,20 +67,22 @@ test.describe('drawer de contato', () => {
     await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();
   });
 
-  test('o botão pode trazer o idioma escolhido', async ({ page, context }) => {
+  test('o idioma da lista de cursos já chega marcado no pedido', async ({ page, context }) => {
     await salvarPublico(context, 'voce');
     await page.goto('/curso-de-idiomas/');
-    await page.evaluate(() => {
-      const botao = document.createElement('button');
-      botao.type = 'button';
-      botao.textContent = 'Estudar japonês';
-      botao.dataset.abreContato = '';
-      botao.dataset.idioma = 'japones';
-      document.querySelector('main')!.append(botao);
-    });
-    await page.getByRole('button', { name: 'Estudar japonês' }).click();
+    await page.locator('#japones button').click();
 
+    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('input[name="idiomasVoce-idioma"][value="japones"]')).toBeChecked();
+  });
+
+  test('a empresa que escolhe um idioma cai no formulário de turma', async ({ page, context }) => {
+    await salvarPublico(context, 'empresa');
+    await page.goto('/curso-de-idiomas/');
+    await page.locator('#mandarim button').click();
+
+    await expect(page.locator('[data-formulario="idiomasEmpresa"]')).toBeVisible();
+    await expect(page.locator('input[name="idiomasEmpresa-idioma"][value="mandarim"]')).toBeChecked();
   });
 
   test('"Continuar" sem resposta aponta cada erro e leva o foco ao primeiro', async ({ page, context }) => {

@@ -1,0 +1,120 @@
+---
+// Os formatos de aula para quem estuda por conta própria. Cada um tem âncora: o menu aponta para elas.
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+import type { ServicoId } from '../lib/contato';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  itens: { id: string; titulo: string; texto: string }[];
+  nota: string;
+  cta: string;
+  servico?: ServicoId;
+}
+
+const { titulo, apoio, itens, nota, cta, servico } = Astro.props;
+---
+
+<section class="aulas" id="formatos" aria-labelledby="aulas-titulo">
+  <div class="conteiner aulas__grade">
+    <div class="aulas__cabeca">
+      <h2 id="aulas-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="aulas__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <ul class="aulas__lista" role="list">
+      {
+        itens.map((item) => (
+          <li class="aula" id={item.id}>
+            <h3 class="aula__titulo">
+              <Texto de={item.titulo} />
+            </h3>
+            <p class="aula__texto">
+              <Texto de={item.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="aulas__fecho">
+      <p class="aulas__nota texto-secundario"><Texto de={nota} /></p>
+      <BotaoContato texto={cta} servico={servico} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .aulas {
+    padding-block: var(--secao);
+  }
+
+  .aulas__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .aulas__apoio {
+    max-inline-size: 48ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .aulas__lista {
+    display: grid;
+    gap: var(--e-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .aula {
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+    padding: var(--e-5);
+    border: 1px solid var(--linha);
+    background-color: var(--branco);
+  }
+
+  .aula:target {
+    border-color: var(--magenta);
+  }
+
+  .aula__titulo {
+    font-size: var(--t-destaque);
+  }
+
+  .aula__texto {
+    max-inline-size: 42ch;
+    color: var(--navy-2);
+  }
+
+  .aulas__fecho {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+  }
+
+  .aulas__nota {
+    max-inline-size: 52ch;
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 48rem) {
+    .aulas__lista {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--e-5);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .aulas__fecho {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--e-6);
+    }
+  }
+</style>

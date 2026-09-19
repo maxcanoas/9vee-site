@@ -88,6 +88,28 @@ Todo prompt termina com a linha: `Avoid: stock photo poses, handshake clichés, 
 
   > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian HR manager in her forties and a workplace safety technician in his thirties talking across a small table in an industrial office, she is listening while he explains something, a closed laptop and a printed document face down between them; through the glass wall behind them, the factory floor is softly out of focus. Serious and respectful mood, not tense. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, safety helmets used as props, readable text on paper or screens.
 
+## Cursos de Idiomas
+
+### IMG-IDIOMAS-HERO
+
+- **Onde:** Cursos de Idiomas, hero (moldura de arco, ao lado do texto).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idiomas-hero.jpg`
+- **Alt:** Aluna adulta numa aula de idioma, sorrindo enquanto fala com a professora.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian woman in her thirties in a one to one language lesson, caught mid-sentence with a relaxed smile, sitting at a small light wood table by a window with plants; her teacher is in the foreground, seen from behind and out of focus, so the student is clearly the subject. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, classroom blackboards, readable text on paper or screens.
+
+### IMG-IDIOMAS-COMO
+
+- **Onde:** Cursos de Idiomas, seção "Como começa" (moldura de arco, ao lado dos três passos).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idiomas-como.jpg`
+- **Alt:** Aluno adulto na primeira aula online, com o caderno aberto ao lado do notebook.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the left for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: a Brazilian man in his forties taking his first online language lesson at home, headphones on, looking at a laptop screen that is turned away from the camera, an open notebook and a pen beside the laptop, morning light from a window behind him. Attentive and comfortable, not tense. Aspect ratio 4:5. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, readable text on the screen or on the notebook.
+
 ## Próximas etapas
 
-O hero de Idiomas, o "Como funciona" de Idiomas e os heros das três páginas parciais entram aqui nas etapas 5 e 6.
+Os heros das três páginas parciais (Tradução Simultânea, LMS e Quem Somos) entram aqui na etapa 6.

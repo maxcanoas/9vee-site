@@ -1,32 +1,38 @@
 ---
-// O que fica na empresa depois do treinamento, e o que o treinamento não faz.
+// Bloco escuro de pontos: o que a empresa leva do treinamento, o que a 9vee faz pela equipe.
+// A nota fecha a coluna do título, embaixo, com o botão de contato quando a seção pede um.
 import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+import type { ServicoId } from '../lib/contato';
 
 interface Props {
+  id: string;
   titulo: string;
   apoio: string;
   itens: { titulo: string; texto: string }[];
   nota: string;
+  cta?: string;
+  servico?: ServicoId;
 }
 
-const { titulo, apoio, itens, nota } = Astro.props;
+const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
 ---
 
-<section class="entregas escuro" id="o-que-recebe" aria-labelledby="entregas-titulo">
-  <div class="conteiner entregas__grade">
-    <div class="entregas__cabeca">
-      <h2 id="entregas-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="entregas__apoio texto-secundario"><Texto de={apoio} /></p>
+<section class="pontos escuro" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner pontos__grade">
+    <div class="pontos__cabeca">
+      <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
+      <p class="pontos__apoio texto-secundario"><Texto de={apoio} /></p>
     </div>
 
-    <ul class="entregas__itens" role="list">
+    <ul class="pontos__itens" role="list">
       {
         itens.map((item) => (
-          <li class="entrega">
-            <h3 class="entrega__titulo">
+          <li class="ponto">
+            <h3 class="ponto__titulo">
               <Texto de={item.titulo} />
             </h3>
-            <p class="entrega__texto texto-secundario">
+            <p class="ponto__texto texto-secundario">
               <Texto de={item.texto} />
             </p>
           </li>
@@ -34,41 +40,44 @@ const { titulo, apoio, itens, nota } = Astro.props;
       }
     </ul>
 
-    <p class="entregas__nota"><Texto de={nota} /></p>
+    <div class="pontos__fecho">
+      <p class="pontos__nota"><Texto de={nota} /></p>
+      {cta && <BotaoContato texto={cta} servico={servico} />}
+    </div>
   </div>
 </section>
 
 <style>
-  .entregas {
+  .pontos {
     padding-block: var(--secao);
   }
 
-  .entregas__grade {
+  .pontos__grade {
     display: grid;
     gap: var(--e-6);
   }
 
-  .entregas__apoio {
+  .pontos__apoio {
     max-inline-size: 46ch;
     margin-block-start: var(--e-4);
     font-size: var(--t-destaque);
     line-height: 1.45;
   }
 
-  .entregas__itens {
+  .pontos__itens {
     display: grid;
     gap: var(--e-5);
     padding: 0;
     list-style: none;
   }
 
-  .entrega {
+  .ponto {
     position: relative;
     padding-inline-start: var(--e-5);
   }
 
   /* Marcador: a meia-pílula da marca, como nos pontos do destaque da home. */
-  .entrega::before {
+  .ponto::before {
     content: '';
     position: absolute;
     inset-block-start: 0.35em;
@@ -79,46 +88,52 @@ const { titulo, apoio, itens, nota } = Astro.props;
     background-color: var(--menta);
   }
 
-  .entrega__titulo {
+  .ponto__titulo {
     font-size: var(--t-destaque);
   }
 
-  .entrega__texto {
+  .ponto__texto {
     max-inline-size: 42ch;
     margin-block-start: var(--e-2);
   }
 
-  .entregas__nota {
+  .pontos__fecho {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+  }
+
+  .pontos__nota {
     max-inline-size: 62ch;
     padding: var(--e-5);
     border: 1px solid var(--linha-escura);
   }
 
   @media (min-width: 48rem) {
-    .entregas__itens {
+    .pontos__itens {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       column-gap: var(--e-5);
     }
   }
 
   @media (min-width: 64rem) {
-    .entregas__grade {
+    .pontos__grade {
       grid-template-columns: 0.9fr 1.1fr;
       column-gap: var(--e-8);
     }
 
-    .entregas__cabeca {
+    .pontos__cabeca {
       grid-area: 1 / 1;
     }
 
-    .entregas__itens {
+    .pontos__itens {
       grid-area: 1 / 2 / span 2;
       grid-template-columns: 1fr;
       gap: var(--e-6);
     }
 
     /* A ressalva fecha a coluna do título, embaixo, e não sobra vazio. */
-    .entregas__nota {
+    .pontos__fecho {
       grid-area: 2 / 1;
       align-self: end;
     }

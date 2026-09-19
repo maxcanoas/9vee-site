@@ -4,17 +4,20 @@ import Figura from './Figura.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
+import type { TextosPorPublico } from '../lib/publico';
 
 interface Props {
   rotulo: string;
   h1: string;
   apoio: string;
-  cta: string;
+  /** Rótulo fixo do botão. Na página que serve os dois públicos, use `textos` no lugar. */
+  cta?: string;
+  textos?: TextosPorPublico;
   imagem: { id: string; arquivo: string; alt: string };
   servico?: ServicoId;
 }
 
-const { rotulo, h1, apoio, cta, imagem, servico } = Astro.props;
+const { rotulo, h1, apoio, cta, textos, imagem, servico } = Astro.props;
 ---
 
 <section class="hero-pagina escuro" aria-labelledby="hero-titulo">
@@ -23,7 +26,7 @@ const { rotulo, h1, apoio, cta, imagem, servico } = Astro.props;
       <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="hero-pagina__apoio"><Texto de={apoio} /></p>
-      <BotaoContato texto={cta} servico={servico} />
+      <BotaoContato texto={cta} textos={textos} servico={servico} />
     </div>
 
     <div class="hero-pagina__visual">

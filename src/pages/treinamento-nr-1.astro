@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import HeroPagina from '../components/HeroPagina.astro';
 import LinhaDoTempo from '../components/LinhaDoTempo.astro';
-import Entregas from '../components/Entregas.astro';
+import Pontos from '../components/Pontos.astro';
 import Modulos from '../components/Modulos.astro';
 import Formato from '../components/Formato.astro';
 import Abordagem from '../components/Abordagem.astro';
@@ -26,7 +26,7 @@ const dadosDoServico = servico(base, {
 <Base pagina="nr1" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={[dadosDoServico]}>
   <HeroPagina {...pagina.hero} servico="nr1" />
   <LinhaDoTempo {...pagina.porQue} />
-  <Entregas {...pagina.entrega} />
+  <Pontos id="o-que-recebe" {...pagina.entrega} />
   <Modulos {...pagina.modulos} />
   <Formato {...pagina.formato} servico="nr1" />
   <Abordagem {...pagina.abordagem} />

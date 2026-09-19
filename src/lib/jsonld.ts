@@ -1,4 +1,4 @@
-import { jsonParaScript, textoPuro } from './texto';
+import { jsonParaScript, preencher, textoPuro } from './texto';
 import type { DadosDoSite } from './site';
 
 /** "5511934661917" vira "+55 11 93466-1917". */
@@ -54,6 +54,44 @@ export function servico(base: URL, dados: { nome: string; tipo: string; caminho:
     provider: { '@id': new URL('/#organizacao', base).href },
     areaServed: { '@type': 'Country', name: 'Brasil' },
     audience: { '@type': 'BusinessAudience' },
+  };
+}
+
+/** Um Course por idioma, cada um apontando para a própria âncora na página de cursos. */
+export function listaDeCursos(
+  base: URL,
+  dados: {
+    caminho: string;
+    modelos: { nome: string; descricao: string };
+    idiomas: readonly { slug: string; nome: string }[];
+  },
+) {
+  return {
+    '@type': 'ItemList',
+    '@id': new URL(`${dados.caminho}#cursos`, base).href,
+    itemListElement: dados.idiomas.map((idioma, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Course',
+        name: preencher(dados.modelos.nome, { idioma: idioma.nome }),
+        description: preencher(dados.modelos.descricao, { idioma: idioma.nome }),
+        url: new URL(`${dados.caminho}#${idioma.slug}`, base).href,
+        provider: { '@id': new URL('/#organizacao', base).href },
+      },
+    })),
+  };
+}
+
+/** O FAQPage repete, sem marcação, as mesmas perguntas que a página mostra. */
+export function faqPage(itens: readonly { pergunta: string; resposta: string }[]) {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: itens.map((item) => ({
+      '@type': 'Question',
+      name: textoPuro(item.pergunta),
+      acceptedAnswer: { '@type': 'Answer', text: textoPuro(item.resposta) },
+    })),
   };
 }
 

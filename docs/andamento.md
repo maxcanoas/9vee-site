@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 19/09/2026, no fim da etapa 4. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 19/09/2026, no fim da etapa 5. Para retomar, vá direto para "Próxima etapa".
 
 ## Onde estamos
 
@@ -11,9 +11,9 @@ Atualizado em 19/09/2026, no fim da etapa 4. Para retomar, vá direto para "Pró
 | 2. Home | feita e aprovada | `e375d5a` |
 | 3. Drawer de contato e WhatsApp | feita e aprovada, com as 7 decisões registradas abaixo | `be20fd3` e `d2c50d2` |
 | Revisão das etapas 1 a 3: humanizar e code-review | feita e aprovada | de `4608dd0` a `f772212` |
-| 4. Treinamento de NR-1 | **feita, esperando o ok** | commit deste arquivo |
-| 5. Cursos de Idiomas | **próxima** | |
-| 6. Páginas parciais | a fazer | |
+| 4. Treinamento de NR-1 | feita e aprovada | `f6dce38` |
+| 5. Cursos de Idiomas | **feita, esperando o ok** | commit deste arquivo |
+| 6. Páginas parciais | **próxima** | |
 | 7. Verificação e revisão final | a fazer | |
 | 8. Publicação e reunião | a fazer | |
 
@@ -46,12 +46,25 @@ Atualizado em 19/09/2026, no fim da etapa 4. Para retomar, vá direto para "Pró
 - FAQ de quem decide, com 5 perguntas;
 - contato no hero, no meio (seção de formato) e no fim, sempre com `data-servico="nr1"`.
 
-Do lado técnico: esquema próprio da coleção `nr1` em `src/content.config.ts`, JSON-LD `Service` ligado à organização pelo `@id`, seis componentes novos (`HeroPagina`, `LinhaDoTempo`, `Entregas`, `Modulos`, `Formato`, `Abordagem`), o prompt `IMG-NR1-HERO` em `docs/imagens-gemini.md`, `tests/dist/nr1.test.ts` e o roteiro de capturas `etapa-4`. O `HeroPagina` foi escrito para servir também às etapas 5 e 6.
+Do lado técnico: esquema próprio da coleção `nr1` em `src/content.config.ts`, JSON-LD `Service` ligado à organização pelo `@id`, seis componentes novos (`HeroPagina`, `LinhaDoTempo`, `Pontos`, `Modulos`, `Formato`, `Abordagem`), o prompt `IMG-NR1-HERO` em `docs/imagens-gemini.md`, `tests/dist/nr1.test.ts` e o roteiro de capturas `etapa-4`. O `HeroPagina` foi escrito para servir também às etapas 5 e 6.
 
 **Imagens do Gemini.** Durante a etapa 4 chegaram os 7 arquivos em `src/assets/imagens/`: os 6 da home e o `nr1-hero.jpg`. O site já serve AVIF com WebP de reserva, srcset, width e height. Duas observações:
 
 - `home-hero-frente.jpg` é a camada recortada do hero da home. Ela precisa ser `.png` com fundo transparente, senão o retângulo da foto aparece por cima do círculo da marca;
 - os arquivos ainda não estão no git.
+
+**Etapa 5.** A página `/curso-de-idiomas/` completa, a vitrine do B2C:
+
+- hero com o botão que muda de texto conforme o público ("Quero estudar" ou "Pedir orçamento");
+- os 14 idiomas por família, cada um com âncora própria e com botão que abre o pedido já com o idioma marcado. É para essas âncoras que os 14 links da home apontam;
+- a régua do A1 ao C2 em português claro, com a barra crescendo de um nível para o outro;
+- "Como são as aulas", com as âncoras `#particular` e `#online` que o menu usa, e o presencial marcado como pendência;
+- os 6 exames do site atual, com uma linha cada;
+- "Para a sua equipe", o bloco B2B com âncora `#empresas`;
+- "Como começa", com o diagnóstico de nível;
+- FAQ de quem vai estudar e o contato no hero, no meio, no bloco da equipe e no fim.
+
+Do lado técnico: esquema próprio da coleção `idiomas`, JSON-LD com `ItemList` de 14 `Course` (cada um apontando para a própria âncora) e `FAQPage` igual ao FAQ visível, quatro componentes novos (`Niveis`, `Aulas`, `Provas`, `ComoComeca`), o `Familias` com o modo de pedido, o `Entregas` da etapa 4 virou `Pontos` e serve às duas páginas, os prompts `IMG-IDIOMAS-HERO` e `IMG-IDIOMAS-COMO`, `tests/dist/idiomas.test.ts` e o roteiro de capturas `etapa-5`.
 
 ## Decisões da etapa 3, aprovadas em 19/09/2026
 
@@ -70,6 +83,14 @@ Do lado técnico: esquema próprio da coleção `nr1` em `src/content.config.ts`
 3. **Os nomes dos três módulos ficaram como a cliente escreve**, inclusive "mudança de mindset" no módulo 2. É o nome do produto dela; trocar é decisão da Daniella.
 4. **A seção "Por que agora" virou linha do tempo**, em vez de repetir o bloco que a home já tem. Quem vem da home encontra a informação aprofundada, e não a mesma peça duas vezes.
 5. **O `Service` do JSON-LD atende "Brasil"**, e não as 4 cidades, porque o presencial do treinamento é pendência.
+
+## Decisões da etapa 5
+
+1. **O hero não repete a escolha de público da home.** O botão muda de texto conforme o público já escolhido, e quem ainda não escolheu responde isso no primeiro passo do drawer. A página serve os dois públicos por seções separadas, e não por um seletor a mais.
+2. **Cada idioma é um botão, com o texto repetido dentro de um `<noscript>`.** Sem JavaScript o botão some, pela regra do `base.css`, e a lista continua à vista. A meia-pílula menta no canto é o que diz que a linha faz alguma coisa.
+3. **"Para a sua equipe" reaproveita o bloco escuro da etapa 4**, que virou o componente `Pontos` e ganhou um botão de contato opcional.
+4. **Os textos dos níveis são a escala global do Conselho da Europa em português claro.** Não é tradução literal: é o que a pessoa consegue fazer em cada nível.
+5. **A preparação para provas descreve cada exame numa linha.** São os 6 que o site atual lista, e as descrições são fato público sobre o exame, não promessa da 9vee.
 
 ## Pendências técnicas
 
@@ -100,45 +121,43 @@ Do NR-1, da etapa 4:
 - se há turma com a equipe inteira, e não só com a liderança;
 - faixa de preço do treinamento.
 
+Dos Idiomas, da etapa 5:
+
+- se as aulas de idioma também acontecem presencialmente, e em que cidades;
+- quantas horas de aula costumam levar de um nível para o outro;
+- se a 9vee emite certificado no fim do curso, e de que tipo;
+- faixa de preço das aulas.
+
 Fora do site, para a reunião: uma leitura jurídica do argumento de risco da página de NR-1.
 
-## Próxima etapa: 5, Cursos de Idiomas
+## Próxima etapa: 6, Páginas parciais
 
-**Seções, na ordem do brief:**
+São Tradução Simultânea, LMS e Quem Somos. Cada uma fica com hero, um bloco curto e a etiqueta "página em construção no MVP", para nenhum link do menu quebrar.
 
-1. Hero com a escolha entre aula para você e aula para a equipe.
-2. Os 14 idiomas por família, com âncora por idioma (`/curso-de-idiomas/#ingles`), que é para onde a home aponta.
-3. A régua de A1 a C2 em palavras simples.
-4. Formatos: online, particular, in company e o público de cada um.
-5. Preparação para provas: TOEFL iBT, CELPE-Bras, DELE, DELF/DALF, TCF e Inburgering.
-6. FAQ.
-7. Contato no meio e no fim.
+**O que cada uma leva:**
 
-**Regras de conteúdo** (da spec):
-
-- a aula presencial de idiomas nas 4 cidades é pendência: o site atual só afirma presencial para tradução;
-- a régua CEFR segue a escala global do Conselho da Europa;
-- o número de idiomas é pendência, porque a home diz 14 e a página atual diz "inglês e mais 11".
+- **Tradução Simultânea:** simultânea, consecutiva e acompanhamento; cabines e sistema de áudio; intérpretes em 7 idiomas (inglês, espanhol, mandarim, francês, italiano, crioulo haitiano e coreano); presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, que é o único presencial que o site atual afirma.
+- **LMS:** o site atual não tem material. O texto fica curto e o que faltar vira pendência.
+- **Quem Somos:** sede em São Paulo e o tempo de casa, que é pendência (19 anos nos números ou mais de 20 no texto).
 
 **Trabalho técnico:**
 
-- esquema próprio da coleção `idiomas` e `content/curso-de-idiomas.md`;
-- JSON-LD: `ItemList` de `Course` e `FAQPage`, com o FAQ igual ao visível;
-- âncora por idioma, e cada idioma abre o drawer com ele já escolhido (`data-idioma`);
-- reaproveitar `HeroPagina`, `Faq` e `CtaFinal`;
-- o hero de Idiomas e o "Como funciona" de Idiomas em `docs/imagens-gemini.md`;
-- testes do HTML e roteiro de capturas `etapa-5`;
+- trocar o esquema provisório da coleção `parciais` por um esquema próprio;
+- reaproveitar o `HeroPagina`, com imagem por página, e manter a etiqueta do MVP;
+- o drawer com o serviço da página já escolhido (`traducao` e `lms`; Quem Somos não tem serviço);
+- os 3 prompts que faltam em `docs/imagens-gemini.md`;
+- testes do HTML e roteiro de capturas `etapa-6`;
 - rodar o `humanizar` nos textos novos antes de entregar a etapa.
 
 ## Como retomar
 
 - `npm test`: testes de lógica, os dois builds (o padrão e o indexável, em `dist-indexavel/`) e os testes do HTML gerado.
 - `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
-- `node scripts/screenshots.ts etapa-4`: capturas em `relatorios/etapa-4/`, fora do git.
+- `node scripts/screenshots.ts etapa-5`: capturas em `relatorios/etapa-5/`, fora do git.
 - `npm run dev:rede`: o site na rede local, para abrir no celular.
 - `npx astro check`: tipos.
 
-Na última rodada: 75 testes de lógica, 252 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 101 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
+Na última rodada: 75 testes de lógica, 262 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 104 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
 
 Notas do ambiente:
 

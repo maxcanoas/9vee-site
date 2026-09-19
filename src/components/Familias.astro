@@ -1,6 +1,8 @@
 ---
 // Os 14 idiomas por família, cada um com o olá na própria língua (e o lang certo, para a letra certa).
-// Na home, cada idioma é um link para a página de cursos; lá, cada idioma é uma âncora com o próprio id.
+// Na home, cada idioma é um link para a página de cursos; lá, cada idioma é um botão que abre o pedido
+// com ele já marcado, e uma âncora, porque é para lá que os links da home apontam.
+// Sem JavaScript o botão some (regra do base.css), e o <noscript> mantém a lista à vista.
 import Texto from './Texto.astro';
 
 interface Familia {
@@ -21,10 +23,12 @@ interface Idioma {
 interface Props {
   familias: Familia[];
   idiomas: Idioma[];
-  modo: 'links' | 'ancoras';
+  modo: 'links' | 'pedido';
+  /** Modo "pedido": o que o leitor de tela ouve depois do nome do idioma. */
+  rotuloPedido?: string;
 }
 
-const { familias, idiomas, modo } = Astro.props;
+const { familias, idiomas, modo, rotuloPedido } = Astro.props;
 ---
 
 <div class="familias">
@@ -41,7 +45,7 @@ const { familias, idiomas, modo } = Astro.props;
           {idiomas
             .filter((idioma) => idioma.familia === familia.id)
             .map((idioma) => (
-              <li id={modo === 'ancoras' ? idioma.slug : undefined} class="familia__item">
+              <li id={modo === 'pedido' ? idioma.slug : undefined} class="familia__item">
                 {modo === 'links' ? (
                   <a class="idioma" href={`/curso-de-idiomas/#${idioma.slug}`}>
                     <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
@@ -50,12 +54,30 @@ const { familias, idiomas, modo } = Astro.props;
                     <span class="idioma__nome">{idioma.nome}</span>
                   </a>
                 ) : (
-                  <p class="idioma">
-                    <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
-                      {idioma.saudacao}
-                    </span>{' '}
-                    <span class="idioma__nome">{idioma.nome}</span>
-                  </p>
+                  <>
+                    <button
+                      type="button"
+                      class="idioma"
+                      aria-haspopup="dialog"
+                      data-abre-contato
+                      data-servico="idiomas"
+                      data-idioma={idioma.slug}
+                    >
+                      <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
+                        {idioma.saudacao}
+                      </span>{' '}
+                      <span class="idioma__nome">{idioma.nome}</span>{' '}
+                      <span class="visualmente-oculto">{rotuloPedido}</span>
+                    </button>
+                    <noscript>
+                      <p class="idioma">
+                        <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
+                          {idioma.saudacao}
+                        </span>{' '}
+                        <span class="idioma__nome">{idioma.nome}</span>
+                      </p>
+                    </noscript>
+                  </>
                 )}
               </li>
             ))}
@@ -103,6 +125,28 @@ const { familias, idiomas, modo } = Astro.props;
     text-decoration: none;
   }
 
+  /* O botão precisa perder a aparência de botão: aqui ele é a própria linha da lista.
+     A meia-pílula no canto é o que diz que a linha faz alguma coisa quando tocada. */
+  button.idioma {
+    position: relative;
+    padding-inline-end: var(--e-5);
+    border-inline: 0;
+    border-block-end: 0;
+    background-color: transparent;
+    text-align: start;
+  }
+
+  button.idioma::after {
+    content: '';
+    position: absolute;
+    inset-block-start: var(--e-4);
+    inset-inline-end: 0;
+    inline-size: 0.4375rem;
+    block-size: 0.875rem;
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--menta);
+  }
+
   .idioma__saudacao {
     display: block;
     font-family: var(--fonte-titulo);
@@ -117,7 +161,8 @@ const { familias, idiomas, modo } = Astro.props;
     color: var(--navy-2);
   }
 
-  a.idioma:hover .idioma__saudacao {
+  a.idioma:hover .idioma__saudacao,
+  button.idioma:hover .idioma__saudacao {
     text-decoration-line: underline;
     text-decoration-color: var(--magenta);
     text-decoration-thickness: var(--sublinhado-destaque);

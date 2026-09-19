@@ -1,0 +1,92 @@
+---
+// Os exames de proficiência que o site atual lista, um por linha.
+import Texto from './Texto.astro';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  itens: { nome: string; texto: string }[];
+}
+
+const { titulo, apoio, itens } = Astro.props;
+---
+
+<section class="provas" id="provas" aria-labelledby="provas-titulo">
+  <div class="conteiner provas__grade">
+    <div class="provas__cabeca">
+      <h2 id="provas-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="provas__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <dl class="provas__lista">
+      {
+        itens.map((item) => (
+          <div class="prova">
+            <dt class="prova__nome">
+              <Texto de={item.nome} />
+            </dt>
+            <dd class="prova__texto">
+              <Texto de={item.texto} />
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .provas {
+    padding-block: var(--secao);
+  }
+
+  .provas__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: start;
+  }
+
+  .provas__apoio {
+    max-inline-size: 40ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+  }
+
+  .provas__lista {
+    display: grid;
+  }
+
+  .prova {
+    display: grid;
+    gap: var(--e-1);
+    padding-block: var(--e-4);
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .prova__nome {
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-destaque);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+  }
+
+  .prova__texto {
+    max-inline-size: 44ch;
+    margin: 0;
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 48rem) {
+    .provas__lista {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-6);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .provas__grade {
+      grid-template-columns: 0.8fr 1.2fr;
+      column-gap: var(--e-8);
+    }
+  }
+</style>

@@ -344,6 +344,53 @@ const nr1 = defineCollection({
   }),
 });
 
+const idiomas = defineCollection({
+  loader: glob({ pattern: 'curso-de-idiomas.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    curso: z.object({
+      nome: z.string().includes('{idioma}'),
+      descricao: z.string().includes('{idioma}'),
+    }),
+    hero: z.object({ rotulo: z.string(), h1: z.string(), apoio: z.string(), imagem }),
+    idiomas: z.object({ titulo: z.string(), apoio: z.string(), rotuloPedido: z.string() }),
+    niveis: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z
+        .array(z.object({ codigo: z.string().regex(/^[ABC][12]$/), rotulo: z.string(), texto: z.string() }))
+        .length(6),
+    }),
+    formatos: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto.extend({ id: z.string().regex(/^[a-z]+$/) })).min(2),
+      nota: z.string(),
+      cta: z.string(),
+    }),
+    provas: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1),
+    }),
+    equipe: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).min(2),
+      nota: z.string(),
+      cta: z.string(),
+    }),
+    como: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      etapas: z.array(tituloETexto).length(3),
+      imagem,
+    }),
+    faq,
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+  }),
+});
+
 // Esquema provisório: cada página ganha o próprio esquema na etapa em que é construída.
 const paginaEmConstrucao = z.object({
   seo,
@@ -363,6 +410,6 @@ export const collections = {
   site,
   home,
   nr1,
-  idiomas: pagina('curso-de-idiomas.md'),
+  idiomas,
   parciais: pagina('{traducao-simultanea,lms,quem-somos}.md'),
 };

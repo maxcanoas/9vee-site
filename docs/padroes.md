@@ -57,6 +57,7 @@
 - Lógica sem tela (campos, validação, mensagem do WhatsApp, formatador de texto) fica em módulo puro, com teste unitário escrito antes.
 - Todo acesso a `localStorage` fica dentro de `try/catch`.
 - A página funciona sem JavaScript: conteúdo visível, links funcionando e o WhatsApp alcançável pelo botão flutuante.
+- Botão que abre o drawer some sem JavaScript, pela regra do `base.css`. Se ele carrega conteúdo (a lista de idiomas, por exemplo), o mesmo conteúdo vai também dentro de um `<noscript>`, que só aparece nesse caso.
 - Nenhum request de terceiros: sem CDN, sem fonte externa, sem script de rastreamento no MVP.
 
 ## Imagens e fontes

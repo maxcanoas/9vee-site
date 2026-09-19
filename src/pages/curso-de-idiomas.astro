@@ -1,33 +1,68 @@
 ---
 import Base from '../layouts/Base.astro';
-import EmConstrucao from '../components/EmConstrucao.astro';
+import HeroPagina from '../components/HeroPagina.astro';
 import Familias from '../components/Familias.astro';
+import Niveis from '../components/Niveis.astro';
+import Aulas from '../components/Aulas.astro';
+import Provas from '../components/Provas.astro';
+import Pontos from '../components/Pontos.astro';
+import ComoComeca from '../components/ComoComeca.astro';
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
 import Texto from '../components/Texto.astro';
 import { dadosDoSite } from '../lib/site';
 import { paginaIdiomas } from '../lib/paginas';
+import { faqPage, listaDeCursos } from '../lib/jsonld';
 
 const { data: pagina } = await paginaIdiomas();
 const site = await dadosDoSite();
+const base = Astro.site ?? new URL(Astro.url.origin);
+const jsonLd = [
+  listaDeCursos(base, { caminho: Astro.url.pathname, modelos: pagina.curso, idiomas: site.idiomas }),
+  faqPage(pagina.faq.itens),
+];
 ---
 
-<Base pagina="idiomas" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <EmConstrucao h1={pagina.h1} aviso={pagina.aviso} etiqueta={site.rodape.etiquetaMvp} secoes={pagina.secoes} />
-  {
-    pagina.tituloIdiomas && (
-      <section class="conteiner lista-idiomas" aria-labelledby="lista-idiomas-titulo">
-        <h2 id="lista-idiomas-titulo">
-          <Texto de={pagina.tituloIdiomas} />
-        </h2>
-        <Familias familias={site.familias} idiomas={site.idiomas} modo="ancoras" />
-      </section>
-    )
-  }
+<Base pagina="idiomas" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
+  <HeroPagina {...pagina.hero} textos={site.cta} servico="idiomas" />
+
+  <section class="idiomas" id="idiomas" aria-labelledby="idiomas-titulo">
+    <div class="conteiner idiomas__corpo">
+      <h2 id="idiomas-titulo" class="revela"><Texto de={pagina.idiomas.titulo} /></h2>
+      <p class="idiomas__apoio"><Texto de={pagina.idiomas.apoio} /></p>
+      <Familias
+        familias={site.familias}
+        idiomas={site.idiomas}
+        modo="pedido"
+        rotuloPedido={pagina.idiomas.rotuloPedido}
+      />
+    </div>
+  </section>
+
+  <Niveis {...pagina.niveis} />
+  <Aulas {...pagina.formatos} servico="idiomas" />
+  <Provas {...pagina.provas} />
+  <Pontos id="empresas" {...pagina.equipe} servico="idiomas" />
+  <ComoComeca {...pagina.como} />
+  <Faq {...pagina.faq} />
+  <CtaFinal {...pagina.ctaFinal} cta={site.cta} servico="idiomas" />
 </Base>
 
 <style>
-  .lista-idiomas {
+  .idiomas {
+    padding-block: var(--secao);
+  }
+
+  .idiomas__corpo {
     display: grid;
-    gap: var(--e-6);
-    padding-block-end: var(--secao);
+    gap: var(--e-4);
+  }
+
+  .idiomas__apoio {
+    max-inline-size: 56ch;
+    margin-block-end: var(--e-5);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
   }
 </style>

@@ -1,0 +1,121 @@
+---
+// A régua do Conselho da Europa, do A1 ao C2, com a barra crescendo de um nível para o outro.
+import Texto from './Texto.astro';
+
+interface Props {
+  titulo: string;
+  apoio: string;
+  itens: { codigo: string; rotulo: string; texto: string }[];
+}
+
+const { titulo, apoio, itens } = Astro.props;
+---
+
+<section class="niveis" id="niveis" aria-labelledby="niveis-titulo">
+  <div class="conteiner niveis__grade">
+    <div class="niveis__cabeca">
+      <h2 id="niveis-titulo" class="revela"><Texto de={titulo} /></h2>
+      <p class="niveis__apoio"><Texto de={apoio} /></p>
+    </div>
+
+    <ol class="niveis__lista">
+      {
+        itens.map((nivel, i) => (
+          <li class="nivel" data-passo={i + 1}>
+            <span class="nivel__barra" aria-hidden="true" />
+            <h3 class="nivel__titulo">
+              <span class="nivel__codigo">{nivel.codigo}</span>
+              <span class="nivel__rotulo">
+                <Texto de={nivel.rotulo} />
+              </span>
+            </h3>
+            <p class="nivel__texto">
+              <Texto de={nivel.texto} />
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .niveis {
+    padding-block: var(--secao);
+    background-color: var(--nevoa);
+  }
+
+  .niveis__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .niveis__apoio {
+    max-inline-size: 52ch;
+    margin-block-start: var(--e-4);
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+    line-height: 1.45;
+  }
+
+  .niveis__lista {
+    display: grid;
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* A barra é a régua: a parte menta cresce a cada nível. */
+  .nivel__barra {
+    display: block;
+    block-size: var(--sublinhado-destaque);
+    margin-block-end: var(--e-4);
+    background-color: var(--linha);
+  }
+
+  .nivel__barra::before {
+    content: '';
+    display: block;
+    inline-size: var(--parte);
+    block-size: 100%;
+    background-color: var(--menta);
+  }
+
+  .nivel[data-passo='1'] { --parte: 17%; }
+  .nivel[data-passo='2'] { --parte: 33%; }
+  .nivel[data-passo='3'] { --parte: 50%; }
+  .nivel[data-passo='4'] { --parte: 67%; }
+  .nivel[data-passo='5'] { --parte: 83%; }
+  .nivel[data-passo='6'] { --parte: 100%; }
+
+  .nivel__codigo {
+    display: block;
+    font-size: var(--t-3);
+  }
+
+  .nivel__rotulo {
+    display: block;
+    color: var(--navy-2);
+    font-size: var(--t-destaque);
+  }
+
+  .nivel__texto {
+    max-inline-size: 38ch;
+    margin-block-start: var(--e-3);
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 48rem) {
+    .niveis__lista {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-5);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .niveis__lista {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--e-6) var(--e-5);
+    }
+  }
+</style>
