@@ -124,6 +124,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 - Site estático em Astro 7 (versão atual: 7.3), CSS com custom properties e TypeScript só nas partes interativas. Sem framework de interface, sem jQuery e sem GSAP: todos os efeitos pedidos cabem em CSS.
 - Os textos ficam separados do código: um arquivo Markdown por página (frontmatter estruturado e prosa no corpo) e mais um arquivo com os textos compartilhados (menu, rodapé, drawer, mensagens do WhatsApp e mensagens de erro).
 - **Endereços:** mantêm os atuais onde a página continua (curso-de-idiomas, traducao-simultanea, lms, quem-somos), para ninguém perder link. A página nova de NR-1 fica em `treinamento-nr-1`. Todo endereço termina com barra.
+- **Páginas além das seis:** a 404, que a Cloudflare serve para endereço inexistente, e a `/especime/`, página de trabalho da etapa 1 que sai antes da publicação.
 
 ### Marca e visual
 
@@ -138,6 +139,9 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | navy-2 (texto secundário) | #525B75 | derivado | 6,4:1 sobre o papel |
   | névoa (fundo alternado) | #EEF0F6 | derivado | |
   | sobre-escuro (texto secundário no navy) | #B8BFD3 | derivado | 7,4:1 sobre o navy |
+  | noite (rodapé e véus) | #161E33 | derivado | um tom abaixo do navy, para o rodapé fechar a página |
+  | linha (fios e bordas) | #DCDFE8 | derivado | só em fio de 1 px, nunca como texto |
+  | menta forte (hover do botão) | menta com 14% de navy | derivado | navy sobre ela segue acima de 7:1 |
   | menta (botões) | #16DF97 | oficial | sempre com texto navy (7,8:1); nunca como texto sobre fundo claro |
   | magenta (anel de foco e formas) | #FE19D6 | oficial | 3,2:1 no claro e 4,1:1 no navy, suficiente para indicador de foco; nunca como texto |
   | violeta (formas e gradientes) | #5C58F4 | oficial | não é usado em texto de interface |
@@ -175,7 +179,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 
   O drawer abre no primeiro passo sem resposta, e os passos já respondidos aparecem como um resumo que dá para editar.
 - **Serviço já escolhido ao abrir,** nesta ordem: o do botão, o que a pessoa escolheu antes na mesma página, o da página e, para quem escolheu "Para você", os cursos de idiomas (o botão dela diz "Quero estudar"). Sem nenhuma dessas pistas, a pessoa escolhe no passo 2.
-- **Título:** "Pedir orçamento"; vira "Montar suas aulas" quando o pedido é de idiomas para a própria pessoa.
+- **Título:** "Pedir orçamento"; vira "Montar suas aulas" quando o pedido é de idiomas para a própria pessoa. O passo 3 tem título por serviço ("Sobre o treinamento", "Sobre o evento"...).
 - **Avanço:** no toque, escolher o público ou o serviço já leva ao passo seguinte. No teclado, as setas só marcam a opção, e o Enter avança. Nos outros passos, o avanço é sempre pelo botão "Continuar".
 - **Campos por serviço** (seção 5 da proposta, com botões de escolha sempre que possível):
 
@@ -215,7 +219,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 
 ### Botão flutuante de WhatsApp
 
-- Aparece em todas as páginas e vai direto ao WhatsApp, numa nova aba. A mensagem cita a página de origem e o público. Por exemplo: "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero falar sobre aulas de idioma para mim."
+- Aparece em todas as páginas e vai direto ao WhatsApp, numa nova aba. A mensagem cita a página de origem e o público. Por exemplo: "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para mim."
 - Usa a menta da marca, sem pulso, selo de notificação ou balão.
 - Reserva espaço no fim da página, some quando o drawer ou o menu estão abertos e se recolhe ao rolar para baixo no celular.
 - Na página, o WhatsApp tem só duas entradas: esse botão e a saída do drawer.
@@ -269,7 +273,8 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 - **Metas no Lighthouse mobile, nas 3 páginas completas:**
   - Performance ≥ 95, SEO 100 (no build indexável) e Acessibilidade ≥ 95;
   - LCP < 2,0 s e CLS < 0,05;
-  - JavaScript inicial < 30 KB, com meta interna abaixo de 10 KB.
+  - JavaScript inicial < 30 KB, com meta interna abaixo de 10 KB medida com gzip.
+- **Navegação:** a próxima página é pré-renderizada quando o dedo ou o mouse chega no link (speculation rules, "moderate"; o Safari ignora), e a troca de página tem transição em CSS, só para quem não pediu menos movimento.
 - **Ferramentas com risco conhecido:**
   - O CSS é minificado com esbuild, porque o minificador padrão do Vite 8 funde `animation-timeline` no atalho `animation` e quebra o parallax só no build. As animações são escritas por extenso, e `@scope` não é usado.
   - A pontuação automática do Markdown fica sem converter hífens em travessão.

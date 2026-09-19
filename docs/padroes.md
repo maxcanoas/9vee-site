@@ -30,27 +30,29 @@
 
 ## CSS
 
-- Cores, tamanhos de texto, espaçamentos, raios e durações vêm de tokens. Nenhum valor solto fora do arquivo de tokens, a não ser proporção de imagem e posição de forma decorativa.
+- Cores, tamanhos de texto, espaçamentos, raios, durações, o anel de foco e a sombra vêm de tokens. Nenhum valor solto fora do arquivo de tokens, a não ser proporção de imagem, posição de forma decorativa, o fio de 1 px e as cores da arte (véu do hero e Placeholders).
 - **(teste)** Zero `!important`, zero `transition: all` e zero `overflow-x: hidden` no `body`.
 - Transição sempre com a propriedade nomeada.
-- Anima só `transform` e `opacity`.
+- Movimento anima só `transform` e `opacity`. Mudança de cor no hover pode ter transição curta (`--dur-rapida`), porque não desloca nada.
 - **(teste)** Animação por rolagem sempre com as propriedades escritas por extenso (`animation-name`, `animation-timeline`, `animation-range`...), nunca pelo atalho `animation`. O teste confere que `animation-timeline` sobreviveu no CSS gerado.
-- Todo movimento fica dentro de `@media (prefers-reduced-motion: no-preference)`. O parallax fica também dentro de `@supports (animation-timeline: view())`.
+- **(teste)** Todo movimento fica dentro de `@media (prefers-reduced-motion: no-preference)`, inclusive a transição entre páginas e o giro dos indicadores. O parallax fica também dentro de `@supports (animation-timeline: view())`.
 - Nada na primeira tela começa invisível. O estado escondido das revelações só existe quando a melhoria está ativa.
-- Para recortar, use `overflow: clip`. `overflow: hidden` em ancestral de elemento sticky é proibido.
+- Para recortar, use `overflow: clip`. `overflow: hidden` em ancestral de elemento sticky é proibido. Exceção: no `html`, para travar a rolagem com o menu ou o drawer abertos; ali o valor vai para a janela e o sticky continua funcionando.
 - Não use `@scope`, que quebra o minificador.
-- Não use `backdrop-filter`, gradiente em texto ou gradiente em botão. Gradiente só na arte da marca e nos Placeholders.
+- Não use `backdrop-filter`, gradiente em texto ou gradiente em botão. Gradiente só na arte da marca, nos Placeholders e no véu do hero, que garante a leitura do texto sobre a imagem.
 - Sombra só com motivo escrito em comentário. A profundidade vem de cor de fundo e de fio de 1 px.
-- `:focus-visible` desenhado em todo elemento interativo: anel magenta de 2 px com afastamento.
+- `:focus-visible` desenhado em todo elemento interativo, com os tokens `--foco` e `--foco-afastamento`.
+- **(teste)** Magenta e violeta nunca como cor de texto: as duas ficam para forma, foco e arte.
 - **(teste)** Contraste mínimo de 4,5:1 em texto normal e 3:1 em texto grande e indicador de foco, calculado.
 - Alvo de toque de no mínimo 44 × 44 px. Campo de formulário com fonte de 16 px ou mais.
 - Link ou botão com `display: flex` ou `grid` leva o rótulo inteiro dentro de um único `<span>`. Texto solto ao lado de um `<span>` vira item separado, e o espaço entre eles some ("deNR-1"). Em link de texto, use `inline-block` com padding calculado.
+- Nada de `style` inline: o `html-validate` recusa. O que depende de um valor por item fica no CSS, com seletor de atributo.
 - Nomes de classe e de componente em português, num idioma só.
 
 ## JavaScript
 
 - TypeScript só nas partes interativas. Sem framework de interface, sem jQuery e sem GSAP.
-- **(teste)** JavaScript inicial abaixo de 30 KB por página, com meta interna abaixo de 10 KB.
+- **(teste)** JavaScript inicial abaixo de 30 KB por página e abaixo de 10 KB com gzip (a meta interna é medida comprimida).
 - Lógica sem tela (campos, validação, mensagem do WhatsApp, formatador de texto) fica em módulo puro, com teste unitário escrito antes.
 - Todo acesso a `localStorage` fica dentro de `try/catch`.
 - A página funciona sem JavaScript: conteúdo visível, links funcionando e o WhatsApp alcançável pelo botão flutuante.
