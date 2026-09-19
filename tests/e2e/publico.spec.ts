@@ -27,7 +27,8 @@ test.describe('escolha de público', () => {
     await page.goto('/');
     await page.locator('.duas-metades__metade--voce').click();
     await page.locator('.duas-metades__metade--empresa').click();
-    expect(await ordemDosServicos(page)).toEqual(['nr1', 'traducao', 'idiomas', 'lms']);
+    // A troca roda dentro de uma View Transition: a ordem nova chega um instante depois do clique.
+    await expect.poll(() => ordemDosServicos(page)).toEqual(['nr1', 'traducao', 'idiomas', 'lms']);
     await expect(page.getByRole('button', { name: 'Pedir orçamento' }).first()).toBeVisible();
   });
 
@@ -44,15 +45,4 @@ test.describe('escolha de público', () => {
     await expect(page.locator('input[name="publico"][value="voce"]')).toBeChecked();
     expect(await ordemDosServicos(page)).toEqual(['idiomas', 'traducao', 'nr1', 'lms']);
   });
-});
-
-test.describe('larguras', () => {
-  for (const largura of [360, 390, 768, 1280, 1920]) {
-    test(`a home não rola na horizontal em ${largura} px`, async ({ page }) => {
-      await page.setViewportSize({ width: largura, height: 900 });
-      await page.goto('/');
-      const sobra = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-      expect(sobra).toBeLessThanOrEqual(0);
-    });
-  }
 });

@@ -8,6 +8,7 @@ import {
   arquivoDaRota,
   carregarPaginas,
   jsonLd,
+  tamanhoDoJs,
   textoVisivel,
   textosDeAtributo,
 } from './apoio';
@@ -166,6 +167,18 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
       r.messages.map((m) => `${m.ruleId} (${m.line}:${m.column}): ${m.message}`),
     );
     expect(erros).toEqual([]);
+  });
+
+  it('carrega menos de 30 KB de JavaScript, e menos de 10 KB com gzip', () => {
+    const { bruto, gzip } = tamanhoDoJs(raiz);
+    expect(bruto).toBeLessThan(30 * 1024);
+    expect(gzip).toBeLessThan(10 * 1024);
+  });
+
+  // O espécime pinta o selo "9" (um SVG, forma da marca) pelo color; ele é página de trabalho e sai antes da publicação.
+  it.skipIf(rota === '/especime/')('não usa magenta nem violeta como cor de texto (a paleta reserva as duas para forma e foco)', () => {
+    const css = raiz.querySelectorAll('style').map((s) => s.textContent).join('\n');
+    expect(css).not.toMatch(/(?<![\w-])color:\s*var\(--(?:magenta|violeta)\)/);
   });
 
   it('mantém as animações por rolagem escritas por extenso no CSS', () => {

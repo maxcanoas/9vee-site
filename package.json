@@ -12,7 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "vitest run --project unit && astro build && vitest run --project dist",
+    "test": "vitest run --project unit && astro build && node scripts/build-indexavel.ts && vitest run --project dist",
     "test:unit": "vitest run --project unit",
     "test:dist": "vitest run --project dist",
     "screenshots": "node scripts/screenshots.ts",

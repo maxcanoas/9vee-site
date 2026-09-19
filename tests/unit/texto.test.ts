@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   extrairPendencias,
   formatarInline,
+  jsonParaScript,
   marcarPendencias,
   textoPuro,
 } from '../../src/lib/texto';
@@ -115,5 +116,14 @@ describe('textoPuro', () => {
     expect(
       textoPuro('Aulas **online** na [9vee](/) desde 2007 [CONFIRMAR: ano de fundação].'),
     ).toBe('Aulas online na 9vee desde 2007.');
+  });
+});
+
+describe('jsonParaScript', () => {
+  it('escapa o "<" para nenhum texto fechar a tag <script>', () => {
+    const dados = { texto: '</script><script>alert(1)</script>' };
+    const json = jsonParaScript(dados);
+    expect(json).not.toContain('<');
+    expect(JSON.parse(json)).toEqual(dados);
   });
 });
