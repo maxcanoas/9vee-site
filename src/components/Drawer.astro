@@ -347,7 +347,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
 
   .drawer__metades {
     display: flex;
-    gap: 2px;
+    gap: var(--fio-metades);
   }
 
   .drawer__metades span {
@@ -475,7 +475,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
   .metades {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3px;
+    gap: var(--fio-metades);
   }
 
   .metade {
@@ -522,8 +522,8 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
 
   .metade:has(:focus-visible),
   .servico-opcao:has(:focus-visible) {
-    outline: 2px solid var(--magenta);
-    outline-offset: 3px;
+    outline: var(--foco);
+    outline-offset: var(--foco-afastamento);
   }
 
   .metade:has([aria-invalid='true']),
@@ -552,7 +552,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
 
   .servico-opcao__nome {
     font-family: var(--fonte-titulo);
-    font-size: 1.0625rem;
+    font-size: var(--t-interface);
     font-weight: 600;
     line-height: 1.25;
   }
@@ -575,7 +575,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
   }
 
   .pedido__titulo {
-    font-size: 1rem;
+    font-size: var(--t-interface);
     letter-spacing: 0;
   }
 
@@ -626,7 +626,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
   /* O fechamento da assinatura: as duas metades se juntam quando o pedido sai. */
   .circulo {
     display: flex;
-    gap: 3px;
+    gap: var(--fio-metades);
     inline-size: 4rem;
     block-size: 4rem;
   }
@@ -720,7 +720,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
     }
 
     .circulo__meia {
-      animation-duration: 700ms;
+      animation-duration: var(--dur-lenta);
       animation-timing-function: var(--curva);
       animation-fill-mode: both;
     }

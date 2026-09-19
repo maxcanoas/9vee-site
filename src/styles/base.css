@@ -102,8 +102,8 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--magenta);
-  outline-offset: 3px;
+  outline: var(--foco);
+  outline-offset: var(--foco-afastamento);
 }
 
 ::selection {
@@ -154,7 +154,7 @@ a:hover {
   background-color: var(--menta);
   color: var(--navy);
   font-family: var(--fonte-titulo);
-  font-size: 1rem;
+  font-size: var(--t-interface);
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
@@ -195,14 +195,14 @@ a:hover {
 /* Pendência: etiqueta discreta para a reunião com a Daniella e o Arthur. */
 mark.confirmar {
   display: inline-block;
-  padding-block: 0.1em;
-  padding-inline: 0.5em;
+  padding-block: var(--e-etiqueta-bloco);
+  padding-inline: var(--e-etiqueta-linha);
   border: 1px dashed var(--magenta);
   border-radius: var(--raio-pilula);
   background-color: var(--magenta-veu);
   color: inherit;
   font-family: var(--fonte-texto);
-  font-size: 0.78em;
+  font-size: var(--t-etiqueta);
   font-weight: 700;
   line-height: 1.35;
   vertical-align: 0.08em;

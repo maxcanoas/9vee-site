@@ -40,7 +40,7 @@ const { titulo, texto, cta } = Astro.props;
   /* O fio entre as metades faz ler "duas partes que se encontram", e não um gráfico de pizza. */
   .cta-final__circulo {
     display: flex;
-    gap: 3px;
+    gap: var(--fio-metades);
     inline-size: min(40vw, 11rem);
   }
 

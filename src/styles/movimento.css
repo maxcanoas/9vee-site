@@ -14,7 +14,7 @@
   /* Reserva para quem não tem animação por rolagem: o movimento.ts põe e tira esta classe. */
   .revela {
     transition-property: opacity, transform;
-    transition-duration: 600ms;
+    transition-duration: var(--dur-lenta);
     transition-timing-function: var(--curva);
   }
 

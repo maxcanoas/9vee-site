@@ -16,6 +16,13 @@
   --magenta-veu: color-mix(in oklab, var(--magenta) 9%, transparent);
   --violeta: #5c58f4;
   --veu: color-mix(in oklab, var(--noite) 62%, transparent);
+  --papel-veu: color-mix(in oklab, var(--papel) 12%, transparent);
+  --papel-denso: color-mix(in oklab, var(--papel) 88%, transparent);
+  --linha-escura: color-mix(in oklab, var(--sobre-escuro) 30%, transparent);
+  /* Única sombra do site: a do atalho do WhatsApp, que passa por cima de toda seção. */
+  --sombra-flutuante:
+    0 0 0 1px color-mix(in oklab, var(--navy) 16%, transparent),
+    0 0.5rem 1.25rem -0.5rem color-mix(in oklab, var(--noite) 55%, transparent);
 
   /* Tipo. As famílias chegam pela Fonts API (--fonte-titulo e --fonte-texto). */
   --t-rotulo: 0.875rem;
@@ -26,6 +33,14 @@
   --t-2: clamp(1.875rem, 1.45rem + 1.9vw, 3.25rem);
   --t-1: clamp(2.25rem, 1.5rem + 3.9vw, 5.25rem);
   --t-mostra: clamp(3rem, 1.8rem + 6vw, 7.5rem);
+  /* Botão, rótulo de campo, opção e menu. */
+  --t-interface: 1rem;
+  /* Números da faixa de prova. */
+  --t-numero: clamp(2.5rem, 1.9rem + 3vw, 4.5rem);
+  /* ID das imagens nos Placeholders, que é anotação de trabalho. */
+  --t-chip: 0.6875rem;
+  /* Etiqueta de pendência, relativa ao texto em volta. */
+  --t-etiqueta: 0.78em;
 
   --altura-texto: 1.55;
   --altura-subtitulo: 1.2;
@@ -42,6 +57,9 @@
   --e-6: 2.5rem;
   --e-7: 4rem;
   --e-8: 6.5rem;
+  --e-etiqueta-bloco: 0.1em;
+  --e-etiqueta-linha: 0.5em;
+  --e-sublinhado: 0.06em;
   --secao: clamp(4rem, 2.5rem + 6vw, 8.5rem);
   --margem: max(1rem, 5vw);
   --largura: 76rem;
@@ -50,11 +68,19 @@
   --raio-pilula: 999px;
   --raio-arco: 999px 999px 0 0;
   --alvo-minimo: 2.75rem;
+  /* O fio entre as duas metades: faz ler "duas partes que se encontram", e não um gráfico de pizza. */
+  --fio-metades: 3px;
+  /* Sublinhado de destaque: item do menu, idioma e número pendente. */
+  --sublinhado-destaque: 2px;
+  /* Anel de foco: magenta, 3,2:1 no claro e 4,1:1 no navy. */
+  --foco: 2px solid var(--magenta);
+  --foco-afastamento: 3px;
   --flutuante: 3.5rem;
 
   /* Movimento */
   --dur-rapida: 140ms;
   --dur-media: 280ms;
+  --dur-lenta: 600ms;
   --curva: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   --altura-cabecalho: 3.5rem;
