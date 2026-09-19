@@ -113,7 +113,7 @@ servicos:
   - { id: "nr1", nome: "Treinamento de NR-1", descricao: "Saúde mental e riscos psicossociais para RH, SESMT e liderança", ordemEmpresa: 1, ordemVoce: 3 }
   - { id: "traducao", nome: "Tradução simultânea", descricao: "Intérpretes em cabine ou ao lado de executivos", ordemEmpresa: 2, ordemVoce: 2 }
   - { id: "idiomas", nome: "Cursos de idiomas", descricao: "Aula particular, online ou para a equipe inteira", ordemEmpresa: 3, ordemVoce: 1 }
-  - { id: "lms", nome: "LMS", descricao: "Plataforma de estudo com trilhas e relatórios para o RH", ordemEmpresa: 4, ordemVoce: 4 }
+  - { id: "lms", nome: "LMS", descricao: "Plataforma de estudo para a equipe da empresa", ordemEmpresa: 4, ordemVoce: 4 }
 
 # Nome de cada página na mensagem do WhatsApp ("Vim pela página ... do site") e o pedido do botão flutuante, por público.
 paginas:
