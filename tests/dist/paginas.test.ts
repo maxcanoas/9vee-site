@@ -181,6 +181,14 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(css).not.toMatch(/(?<![\w-])color:\s*var\(--(?:magenta|violeta)\)/);
   });
 
+  it('só faz a transição entre páginas para quem não pediu menos movimento', () => {
+    const css = raiz.querySelectorAll('style').map((s) => s.textContent).join('\n');
+    const todas = css.split('@view-transition').length - 1;
+    const protegidas = css.split('@media(prefers-reduced-motion:no-preference){@view-transition').length - 1;
+    expect(todas).toBeGreaterThan(0);
+    expect(protegidas).toBe(todas);
+  });
+
   it('mantém as animações por rolagem escritas por extenso no CSS', () => {
     const css = raiz.querySelectorAll('style').map((s) => s.textContent).join('\n');
     expect(css).toContain('animation-timeline');
