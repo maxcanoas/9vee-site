@@ -243,6 +243,8 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   - A régua CEFR de A1 a C2 segue a escala global do Conselho da Europa.
   - As provas vêm do site atual: TOEFL iBT, CELPE-Bras, DELE, DELF/DALF, TCF e Inburgering.
   - A aula presencial de idiomas nas 4 cidades é pendência, porque o site atual só afirma presencial para tradução.
+  - O site atual também afirma, e a página usa: aula online, aula individual para executivos, in company, turma de criança e adolescente com material da Cambridge, português para estrangeiros e diagnóstico de nível antes de começar.
+- **Tradução simultânea,** do site atual: simultânea, consecutiva e acompanhamento; cabine e sistema de áudio; intérpretes em 7 idiomas (inglês, espanhol, mandarim, francês, italiano, crioulo haitiano e coreano); presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, o único presencial que o site atual afirma.
 - **Regras de texto:**
   - português do Brasil, frases curtas, voz ativa e segunda pessoa;
   - nenhum travessão;
