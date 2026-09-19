@@ -15,18 +15,29 @@ const normalizar = (texto: string) =>
 
 describe('cursos de idiomas', () => {
   it('traz as seções na ordem do brief', () => {
-    const secoes = idiomas.querySelectorAll('main > section').map((secao) => secao.getAttribute('id') ?? 'hero');
+    // As famílias de idioma também são <section>, mas sem id: aqui entram só as seções da página.
+    const secoes = idiomas.querySelectorAll('main section[id]').map((secao) => secao.getAttribute('id'));
     expect(secoes).toEqual([
-      'hero',
       'idiomas',
       'niveis',
-      'formatos',
       'provas',
+      'formatos',
       'empresas',
       'como-comeca',
       'perguntas',
       'contato',
     ]);
+  });
+
+  it('deixa os dois blocos de formato trocarem de lugar com o público', () => {
+    const blocos = idiomas.querySelectorAll('.modalidades > *');
+    expect(blocos).toHaveLength(2);
+    for (const bloco of blocos) {
+      expect(bloco.getAttribute('data-ordem-empresa')).toMatch(/^[12]$/);
+      expect(bloco.getAttribute('data-ordem-voce')).toMatch(/^[12]$/);
+    }
+    // Sem escolha, esta página abre nos formatos: é a vitrine de quem estuda por conta própria.
+    expect(blocos.map((b) => b.querySelector('section')?.getAttribute('id'))).toEqual(['formatos', 'empresas']);
   });
 
   it('tem as âncoras que o menu e a home usam', () => {
@@ -89,7 +100,7 @@ describe('cursos de idiomas', () => {
   });
 
   it('abre o pedido com os cursos escolhidos, no começo, no meio e no fim', () => {
-    const fora = idiomas.querySelectorAll('main > section:not(#idiomas) [data-abre-contato]');
+    const fora = idiomas.querySelectorAll('main section:not(#idiomas) [data-abre-contato]');
     expect(fora.length).toBeGreaterThanOrEqual(3);
     for (const botao of fora) {
       expect(botao.getAttribute('data-servico')).toBe('idiomas');

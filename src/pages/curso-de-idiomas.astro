@@ -40,9 +40,19 @@ const jsonLd = [
   </section>
 
   <Niveis {...pagina.niveis} />
-  <Cartoes id="formatos" {...pagina.formatos} servico="idiomas" />
   <Provas {...pagina.provas} />
-  <Pontos id="empresas" {...pagina.equipe} servico="idiomas" />
+
+  {/* Os dois blocos de formato trocam de lugar com o público, como a spec pede.
+      Esta é a vitrine de quem estuda por conta própria, então sem escolha valem os formatos primeiro. */}
+  <div class="modalidades" data-ordenavel="voce">
+    <div class="modalidade" data-ordem-empresa="2" data-ordem-voce="1">
+      <Cartoes id="formatos" {...pagina.formatos} servico="idiomas" />
+    </div>
+    <div class="modalidade" data-ordem-empresa="1" data-ordem-voce="2">
+      <Pontos id="empresas" {...pagina.equipe} servico="idiomas" />
+    </div>
+  </div>
+
   <ComoComeca {...pagina.como} />
   <Faq {...pagina.faq} />
   <CtaFinal {...pagina.ctaFinal} cta={site.cta} servico="idiomas" />
@@ -65,4 +75,15 @@ const jsonLd = [
     font-size: var(--t-destaque);
     line-height: 1.45;
   }
+
+  /* Grid só para o `order` valer: o JavaScript também move os blocos no DOM,
+     para a ordem do Tab bater com a da tela. */
+  .modalidades {
+    display: grid;
+  }
+
+  .modalidade[data-ordem-voce='1'] { order: 1; }
+  .modalidade[data-ordem-voce='2'] { order: 2; }
+  :global(:root[data-publico='empresa']) .modalidade[data-ordem-empresa='1'] { order: 1; }
+  :global(:root[data-publico='empresa']) .modalidade[data-ordem-empresa='2'] { order: 2; }
 </style>

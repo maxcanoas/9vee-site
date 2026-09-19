@@ -45,4 +45,22 @@ test.describe('escolha de público', () => {
     await expect(page.locator('input[name="publico"][value="voce"]')).toBeChecked();
     expect(await ordemDosServicos(page)).toEqual(['idiomas', 'traducao', 'nr1', 'lms']);
   });
+
+  test('na página de cursos, a empresa vê o bloco da equipe antes dos formatos', async ({ page, context }) => {
+    const ordemDosBlocos = () =>
+      page
+        .locator('.modalidades > .modalidade')
+        .evaluateAll((blocos) =>
+          blocos
+            .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)
+            .map((bloco) => bloco.querySelector('section')?.id),
+        );
+
+    await page.goto('/curso-de-idiomas/');
+    expect(await ordemDosBlocos()).toEqual(['formatos', 'empresas']);
+
+    await context.addInitScript(() => localStorage.setItem('9vee:publico', 'empresa'));
+    await page.goto('/curso-de-idiomas/');
+    expect(await ordemDosBlocos()).toEqual(['empresas', 'formatos']);
+  });
 });

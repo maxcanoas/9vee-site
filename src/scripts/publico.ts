@@ -29,11 +29,13 @@ function aplicar(publico: Publico | null) {
   }
 
   // O CSS já mostra a ordem certa; mover o DOM faz a ordem do Tab e do leitor de tela bater com a da tela.
+  // `data-ordenavel="voce"` diz que, sem escolha, a lista abre na ordem de quem estuda por conta própria.
   for (const lista of document.querySelectorAll<HTMLElement>('[data-ordenavel]')) {
+    const semEscolha = publicoValido(lista.dataset.ordenavel);
     const itens = [...lista.children]
       .filter((filho): filho is HTMLElement => filho instanceof HTMLElement)
       .map((el) => ({ el, ordemEmpresa: Number(el.dataset.ordemEmpresa), ordemVoce: Number(el.dataset.ordemVoce) }));
-    for (const { el } of ordenarPorPublico(itens, publico)) lista.append(el);
+    for (const { el } of ordenarPorPublico(itens, publico ?? semEscolha)) lista.append(el);
   }
 
   for (const ouvinte of ouvintes) ouvinte(publico);
