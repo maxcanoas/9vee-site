@@ -125,7 +125,7 @@ const { titulo, itens } = Astro.props;
   :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] .servico__texto {
     color: var(--navy);
     font-size: var(--t-destaque);
-    line-height: 1.45;
+    line-height: var(--altura-apoio);
   }
 
   @media (min-width: 48rem) {

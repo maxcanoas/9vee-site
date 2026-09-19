@@ -43,6 +43,8 @@
   --t-etiqueta: 0.78em;
 
   --altura-texto: 1.55;
+  /* Texto de apoio, maior que o corpo: respira um pouco mais apertado. */
+  --altura-apoio: 1.45;
   --altura-subtitulo: 1.2;
   --altura-titulo: 1.06;
   --rastreio-titulo: -0.025em;
