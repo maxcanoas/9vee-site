@@ -9,7 +9,7 @@ import Pontos from '../components/Pontos.astro';
 import ComoComeca from '../components/ComoComeca.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
-import Texto from '../components/Texto.astro';
+import CabecaDeSecao from '../components/CabecaDeSecao.astro';
 import { dadosDoSite } from '../lib/site';
 import { paginaIdiomas } from '../lib/paginas';
 import { faqPage, listaDeCursos } from '../lib/jsonld';
@@ -28,8 +28,7 @@ const jsonLd = [
 
   <section class="idiomas" id="idiomas" aria-labelledby="idiomas-titulo">
     <div class="conteiner idiomas__corpo">
-      <h2 id="idiomas-titulo" class="revela"><Texto de={pagina.idiomas.titulo} /></h2>
-      <p class="idiomas__apoio"><Texto de={pagina.idiomas.apoio} /></p>
+      <CabecaDeSecao id="idiomas" titulo={pagina.idiomas.titulo} apoio={pagina.idiomas.apoio} class="idiomas__cabeca" />
       <Familias
         familias={site.familias}
         idiomas={site.idiomas}
@@ -68,12 +67,8 @@ const jsonLd = [
     gap: var(--e-4);
   }
 
-  .idiomas__apoio {
-    max-inline-size: 56ch;
+  .idiomas__cabeca {
     margin-block-end: var(--e-5);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
   }
 
   /* Grid só para o `order` valer: o JavaScript também move os blocos no DOM,

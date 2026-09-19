@@ -1,5 +1,6 @@
 ---
 // Os exames de proficiência que o site atual lista, um por linha.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Props {
@@ -13,10 +14,7 @@ const { titulo, apoio, itens } = Astro.props;
 
 <section class="provas" id="provas" aria-labelledby="provas-titulo">
   <div class="conteiner provas__grade">
-    <div class="provas__cabeca">
-      <h2 id="provas-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="provas__apoio"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao id="provas" {titulo} {apoio} class="provas__cabeca" />
 
     <dl class="provas__lista">
       {
@@ -46,11 +44,6 @@ const { titulo, apoio, itens } = Astro.props;
     align-items: start;
   }
 
-  .provas__apoio {
-    max-inline-size: 40ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-  }
 
   .provas__lista {
     display: grid;

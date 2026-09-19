@@ -1,0 +1,28 @@
+---
+// O cabeçalho que abre quase toda seção: o título, que revela na rolagem, e o parágrafo de apoio.
+// O id vira `<id>-titulo`, que é o que o aria-labelledby da seção aponta.
+import Texto from './Texto.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  apoio: string;
+  class?: string;
+}
+
+const { id, titulo, apoio, class: classe } = Astro.props;
+---
+
+<div class:list={['cabeca', classe]}>
+  <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
+  <p class="cabeca__apoio texto-secundario"><Texto de={apoio} /></p>
+</div>
+
+<style>
+  .cabeca__apoio {
+    max-inline-size: 48ch;
+    margin-block-start: var(--e-4);
+    font-size: var(--t-destaque);
+    line-height: var(--altura-apoio);
+  }
+</style>

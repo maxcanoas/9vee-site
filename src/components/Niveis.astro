@@ -1,5 +1,6 @@
 ---
 // A régua do Conselho da Europa, do A1 ao C2, com a barra crescendo de um nível para o outro.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Props {
@@ -13,10 +14,7 @@ const { titulo, apoio, itens } = Astro.props;
 
 <section class="niveis" id="niveis" aria-labelledby="niveis-titulo">
   <div class="conteiner niveis__grade">
-    <div class="niveis__cabeca">
-      <h2 id="niveis-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="niveis__apoio"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao id="niveis" {titulo} {apoio} />
 
     <ol class="niveis__lista">
       {
@@ -50,13 +48,6 @@ const { titulo, apoio, itens } = Astro.props;
     gap: var(--e-6);
   }
 
-  .niveis__apoio {
-    max-inline-size: 52ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
-  }
 
   .niveis__lista {
     display: grid;

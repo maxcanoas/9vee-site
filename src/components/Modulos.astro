@@ -1,5 +1,6 @@
 ---
 // Os três módulos do treinamento, na ordem em que são dados.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Props {
@@ -13,10 +14,7 @@ const { titulo, apoio, itens } = Astro.props;
 
 <section class="modulos" id="modulos" aria-labelledby="modulos-titulo">
   <div class="conteiner modulos__grade">
-    <div class="modulos__cabeca">
-      <h2 id="modulos-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="modulos__apoio"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao id="modulos" {titulo} {apoio} />
 
     <ol class="modulos__lista">
       {
@@ -48,13 +46,6 @@ const { titulo, apoio, itens } = Astro.props;
     gap: var(--e-6);
   }
 
-  .modulos__apoio {
-    max-inline-size: 48ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
-  }
 
   .modulos__lista {
     display: grid;

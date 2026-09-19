@@ -1,5 +1,6 @@
 ---
 // "Por que agora": os três marcos da mudança da NR-1, com as notas e as fontes oficiais logo abaixo.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Marco {
@@ -22,10 +23,7 @@ const { titulo, apoio, marcos, notas, fonte } = Astro.props;
 
 <section class="linha" id="por-que-agora" aria-labelledby="linha-titulo">
   <div class="conteiner linha__grade">
-    <div class="linha__cabeca">
-      <h2 id="linha-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="linha__apoio"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao id="linha" {titulo} {apoio} />
 
     <ol class="linha__marcos">
       {
@@ -62,13 +60,6 @@ const { titulo, apoio, marcos, notas, fonte } = Astro.props;
     gap: var(--e-6);
   }
 
-  .linha__apoio {
-    max-inline-size: 44ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
-  }
 
   .linha__marcos {
     display: grid;

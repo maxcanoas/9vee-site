@@ -1,6 +1,7 @@
 ---
 // Os três passos até a primeira aula, com a imagem ao lado.
 import Figura from './Figura.astro';
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Props {
@@ -26,8 +27,7 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
     </div>
 
     <div class="comeca__texto">
-      <h2 id="comeca-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p class="comeca__apoio"><Texto de={apoio} /></p>
+      <CabecaDeSecao id="comeca" {titulo} {apoio} />
 
       <ol class="comeca__etapas">
         {
@@ -64,14 +64,6 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
   .comeca__visual {
     justify-self: center;
     inline-size: min(62vw, 20rem);
-  }
-
-  .comeca__apoio {
-    max-inline-size: 44ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
   }
 
   .comeca__etapas {

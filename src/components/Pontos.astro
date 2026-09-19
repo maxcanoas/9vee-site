@@ -1,6 +1,7 @@
 ---
 // Bloco escuro de pontos: o que a empresa leva do treinamento, o que a 9vee faz pela equipe.
 // A nota fecha a coluna do título, embaixo, com o botão de contato quando a seção pede um.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
@@ -20,10 +21,7 @@ const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
 
 <section class="pontos escuro" id={id} aria-labelledby={`${id}-titulo`}>
   <div class="conteiner pontos__grade">
-    <div class="pontos__cabeca">
-      <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
-      <p class="pontos__apoio texto-secundario"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao {id} {titulo} {apoio} class="pontos__cabeca" />
 
     <ul class="pontos__itens" role="list">
       {
@@ -57,12 +55,6 @@ const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
     gap: var(--e-6);
   }
 
-  .pontos__apoio {
-    max-inline-size: 46ch;
-    margin-block-start: var(--e-4);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
-  }
 
   .pontos__itens {
     display: grid;

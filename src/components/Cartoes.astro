@@ -1,6 +1,7 @@
 ---
 // Bloco claro de cartões: os formatos de aula, as frentes da empresa, o que a página parcial já diz.
 // O item pode ter id próprio quando o menu aponta para ele.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
@@ -22,10 +23,7 @@ const { id, titulo, apoio, itens, nota, cta, textos, servico } = Astro.props;
 
 <section class="cartoes" id={id} aria-labelledby={`${id}-titulo`}>
   <div class="conteiner cartoes__grade">
-    <div class="cartoes__cabeca">
-      <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
-      <p class="cartoes__apoio"><Texto de={apoio} /></p>
-    </div>
+    <CabecaDeSecao {id} {titulo} {apoio} />
 
     <ul class="cartoes__lista" role="list">
       {
@@ -59,13 +57,6 @@ const { id, titulo, apoio, itens, nota, cta, textos, servico } = Astro.props;
     gap: var(--e-6);
   }
 
-  .cartoes__apoio {
-    max-inline-size: 48ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
-    font-size: var(--t-destaque);
-    line-height: var(--altura-apoio);
-  }
 
   .cartoes__lista {
     display: grid;

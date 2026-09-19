@@ -1,5 +1,6 @@
 ---
 // Formato, carga horária e turma. O que ainda não está confirmado aparece como pendência.
+import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
@@ -17,10 +18,7 @@ const { titulo, itens, texto, cta, servico } = Astro.props;
 
 <section class="formato" id="formato" aria-labelledby="formato-titulo">
   <div class="conteiner formato__grade">
-    <div class="formato__cabeca">
-      <h2 id="formato-titulo" class="revela"><Texto de={titulo} /></h2>
-      <p><Texto de={texto} /></p>
-    </div>
+    <CabecaDeSecao id="formato" {titulo} apoio={texto} class="formato__cabeca" />
 
     <dl class="formato__lista">
       {
@@ -52,12 +50,6 @@ const { titulo, itens, texto, cta, servico } = Astro.props;
     display: grid;
     gap: var(--e-6);
     align-items: start;
-  }
-
-  .formato__cabeca p {
-    max-inline-size: 40ch;
-    margin-block-start: var(--e-4);
-    color: var(--navy-2);
   }
 
   .formato__lista {
