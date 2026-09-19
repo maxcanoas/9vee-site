@@ -209,6 +209,21 @@ mark.confirmar {
   white-space: nowrap;
 }
 
+/* Selo numérico: a pílula da marca com o número da etapa ou do módulo dentro. */
+.selo-numero {
+  display: grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: var(--raio-pilula);
+  background-color: var(--menta);
+  color: var(--navy);
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-rotulo);
+  font-weight: 600;
+  line-height: 1;
+}
+
 .escuro {
   background-color: var(--navy);
   color: var(--papel);

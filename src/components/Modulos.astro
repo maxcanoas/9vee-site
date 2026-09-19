@@ -20,7 +20,7 @@ const { titulo, apoio, itens } = Astro.props;
       {
         itens.map((item, i) => (
           <li class="modulo">
-            <span class="modulo__numero" aria-hidden="true">
+            <span class="selo-numero" aria-hidden="true">
               {i + 1}
             </span>
             <h3 class="modulo__titulo">
@@ -62,20 +62,6 @@ const { titulo, apoio, itens } = Astro.props;
     padding: var(--e-5);
     border: 1px solid var(--linha);
     background-color: var(--branco);
-  }
-
-  .modulo__numero {
-    display: grid;
-    place-items: center;
-    inline-size: 2rem;
-    block-size: 2rem;
-    border-radius: var(--raio-pilula);
-    background-color: var(--menta);
-    color: var(--navy);
-    font-family: var(--fonte-titulo);
-    font-size: var(--t-rotulo);
-    font-weight: 600;
-    line-height: 1;
   }
 
   .modulo__titulo {

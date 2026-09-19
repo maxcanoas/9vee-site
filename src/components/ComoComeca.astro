@@ -33,7 +33,7 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
         {
           etapas.map((etapa, i) => (
             <li class="passo">
-              <span class="passo__numero" aria-hidden="true">
+              <span class="selo-numero passo__numero" aria-hidden="true">
                 {i + 1}
               </span>
               <h3 class="passo__titulo">
@@ -81,19 +81,9 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
     align-items: center;
   }
 
+  /* O selo ocupa as duas linhas do passo: o título em cima, o texto embaixo. */
   .passo__numero {
-    display: grid;
     grid-row: span 2;
-    place-items: center;
-    inline-size: 2rem;
-    block-size: 2rem;
-    border-radius: var(--raio-pilula);
-    background-color: var(--menta);
-    color: var(--navy);
-    font-family: var(--fonte-titulo);
-    font-size: var(--t-rotulo);
-    font-weight: 600;
-    line-height: 1;
   }
 
   .passo__titulo {
