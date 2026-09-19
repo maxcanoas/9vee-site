@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { servico, telefoneInternacional } from '../../src/lib/jsonld';
+import { listaDeCursos, servico, telefoneInternacional } from '../../src/lib/jsonld';
 
 describe('telefoneInternacional', () => {
   it('escreve o número do WhatsApp no padrão internacional', () => {
@@ -27,5 +27,23 @@ describe('servico', () => {
 
   it('tira a pendência da descrição que o Google lê', () => {
     expect(no.description).toBe('Treinamento de NR-1 para RH e SESMT.');
+  });
+});
+
+describe('listaDeCursos', () => {
+  const lista = listaDeCursos(new URL('https://exemplo.9vee.com.br/'), {
+    caminho: '/curso-de-idiomas/',
+    modelos: { nome: 'Curso de {idioma}', descricao: '{idioma} com a 9vee [CONFIRMAR COM A DANIELLA: preço].' },
+    idiomas: [{ slug: 'ingles', nome: 'Inglês' }],
+  });
+  const curso = (lista.itemListElement[0] as { item: Record<string, string> }).item;
+
+  it('aponta cada curso para a âncora do idioma', () => {
+    expect(curso.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/#ingles');
+    expect(curso.name).toBe('Curso de Inglês');
+  });
+
+  it('tira a pendência da descrição que o Google lê', () => {
+    expect(curso.description).toBe('Inglês com a 9vee.');
   });
 });

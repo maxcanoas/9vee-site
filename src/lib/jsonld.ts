@@ -74,8 +74,8 @@ export function listaDeCursos(
       position: i + 1,
       item: {
         '@type': 'Course',
-        name: preencher(dados.modelos.nome, { idioma: idioma.nome }),
-        description: preencher(dados.modelos.descricao, { idioma: idioma.nome }),
+        name: textoPuro(preencher(dados.modelos.nome, { idioma: idioma.nome })),
+        description: textoPuro(preencher(dados.modelos.descricao, { idioma: idioma.nome })),
         url: new URL(`${dados.caminho}#${idioma.slug}`, base).href,
         provider: { '@id': new URL('/#organizacao', base).href },
       },
