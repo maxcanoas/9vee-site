@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 19/09/2026, no fim da etapa 6. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 19/09/2026, no fim da etapa 7. Para retomar, vá direto para "Próxima etapa".
 
 ## Onde estamos
 
@@ -13,9 +13,9 @@ Atualizado em 19/09/2026, no fim da etapa 6. Para retomar, vá direto para "Pró
 | Revisão das etapas 1 a 3: humanizar e code-review | feita e aprovada | de `4608dd0` a `f772212` |
 | 4. Treinamento de NR-1 | feita e aprovada | `f6dce38` |
 | 5. Cursos de Idiomas | feita e aprovada | `69aa31b` |
-| 6. Páginas parciais | **feita, esperando o ok** | commit deste arquivo |
-| 7. Verificação e revisão final | **próxima** | |
-| 8. Publicação e reunião | a fazer | |
+| 6. Páginas parciais | feita e aprovada | `c0c8c96` |
+| 7. Verificação e revisão final | **feita, esperando o ok** | de `9e8f11e` ao commit deste arquivo |
+| 8. Publicação e reunião | **próxima** | |
 
 ## O que cada etapa entregou
 
@@ -74,6 +74,21 @@ Do lado técnico: esquema próprio da coleção `idiomas`, JSON-LD com `ItemList
 
 Do lado técnico: a coleção `parciais` ganhou esquema próprio e o `EmConstrucao` saiu, o `Aulas` da etapa 5 virou `Cartoes` e serve às quatro páginas, o `HeroPagina` ganhou a etiqueta de obra, entraram os três prompts que faltavam em `docs/imagens-gemini.md`, `tests/dist/parciais.test.ts` e o roteiro de capturas `etapa-6`.
 
+**Etapa 7.** A medição, a revisão e as correções.
+
+- **Lighthouse mobile**, mediana de 3 rodadas, nas 3 páginas completas e nos dois builds: Performance de 98 a 100, Acessibilidade 100, Práticas 100, SEO 100 no build indexável (66 a 69 no padrão, pelo noindex, como a spec previa), LCP de 1,51 s a 1,96 s e CLS de 0,000 a 0,001. Todas as metas batidas. O script é o `scripts/lighthouse.ts` e o resultado fica em `relatorios/etapa-7/lighthouse.md`.
+- **`code-review` de `mvp-base` até HEAD**, nos dois eixos, com o `humanizar` e o `humanizar-ui` por cima. Nove correções aplicadas, uma por commit:
+  1. a ordem dos blocos de formato na página de Idiomas agora muda com o público, que era um efeito que a spec pedia e tinha ficado de fora;
+  2. a resposta do FAQ que ia quebrada para o JSON-LD ("no fim do curso:."), com teste novo que pega esse rastro em qualquer página;
+  3. os "relatórios para o RH" que sobraram na home e no drawer viraram pendência;
+  4. o `line-height: 1.45` solto em 13 arquivos virou `--altura-apoio`;
+  5. o cabeçalho de seção repetido em dez lugares virou o `CabecaDeSecao`;
+  6. o selo numérico duplicado virou a classe `.selo-numero`;
+  7. o contrato do drawer saiu de um lugar só (`atributosDoContato`);
+  8. a descrição do curso no JSON-LD passa pelo `textoPuro`;
+  9. a `etiquetaMvp` saiu de dentro do `rodape` no `site.md`.
+- A spec passou a registrar de onde vêm os fatos do site atual sobre idiomas e tradução, e a página de NR-1 cita agora as 5 fontes oficiais.
+
 ## Decisões da etapa 3, aprovadas em 19/09/2026
 
 1. Nome obrigatório nas duas saídas.
@@ -107,10 +122,18 @@ Do lado técnico: a coleção `parciais` ganhou esquema próprio e o `EmConstruc
 3. **Os dois blocos repetidos viraram componentes de verdade:** `Pontos` (escuro, com marcadores) e `Cartoes` (claro, com cartões). As quatro páginas novas usam os dois.
 4. **A descrição do LMS perdeu os "relatórios de frequência"**, que tinham escapado da revisão das etapas 1 a 3. O site atual não afirma isso.
 
+## Decisões da etapa 7
+
+1. **A medida do Lighthouse é feita com gzip.** A primeira rodada deu LCP de 2,1 s a 2,5 s porque o servidor local mandava os 130 KB de HTML sem compressão. A Cloudflare comprime, então o servidor da medida também comprime. Sem isso, a medida castiga bytes que a produção nunca envia.
+2. **Sem escolha, a página de Idiomas abre nos formatos**, e não na ordem de empresa das outras listas. É a vitrine de quem estuda por conta própria. Por isso o `data-ordenavel` agora aceita dizer qual ordem vale sem escolha.
+3. **A revelação por rolagem fica como está**, em 11 a 17 elementos por página. A régua do `humanizar-ui` pede no máximo dois momentos de movimento, mas o modo de falha que ela teme, a tela em branco no celular, não acontece aqui: a animação roda quando o elemento entra e some inteira com movimento reduzido. É o mesmo movimento aprovado na home.
+4. **As meias-pílulas decorativas continuam com medida em `rem` crua.** São forma, não tamanho de texto, e o `Faq` já fazia assim desde a etapa 2.
+
 ## Pendências técnicas
 
 - **JavaScript:** dentro do teto (30 KB) e da meta interna (10 KB com gzip). O teste de build confere em todas as páginas.
-- **Etapa 7:** Lighthouse nas 3 páginas completas, o CLS da troca de fonte num Android de verdade e o teste manual do link do WhatsApp e do teclado virtual no Android e no iPhone. Agora com imagens de verdade, medir também o peso delas.
+- **Teste em aparelho de verdade,** que continua com o Maxwell: o link do WhatsApp, o teclado virtual no drawer e a troca de fonte num Android e num iPhone. No laboratório o CLS é 0,000, mas aparelho de verdade é aparelho de verdade.
+- **Para a reunião:** a página de NR-1 não tem nenhuma prova, nenhum caso e nenhum número. É honesto, porque não há dado confirmado, mas é a maior fraqueza dela para quem decide. Vale pedir à Daniella um caso real de treinamento já dado.
 - **Etapa 8:** tirar a página `/especime/` antes de publicar e criar o script que lista as pendências para o roteiro da reunião. O script deve ignorar os comentários do YAML, que também citam o formato `[CONFIRMAR ...]`.
 
 ## Pendências de conteúdo para a Daniella
@@ -150,35 +173,26 @@ Das parciais, da etapa 6:
 
 Fora do site, para a reunião: uma leitura jurídica do argumento de risco da página de NR-1.
 
-## Próxima etapa: 7, Verificação e revisão final
+## Próxima etapa: 8, Publicação e reunião
 
-**Medição:**
-
-- Lighthouse mobile nas 3 páginas completas, mediana de 3 rodadas, nos dois builds: o padrão (com noindex, onde o SEO cai para cerca de 66 a 69, e isso é esperado) e o indexável, que é onde o SEO 100 é medido;
-- metas: Performance ≥ 95, Acessibilidade ≥ 95, LCP < 2,0 s e CLS < 0,05;
-- agora com imagens de verdade, conferir o peso delas e o que o AVIF entregou.
-
-**Conferência:**
-
-- as 5 larguras e o teclado, que as suítes já cobrem, mais uma passada manual;
-- o CLS da troca de fonte num Android de verdade;
-- o link do WhatsApp e o teclado virtual num Android e num iPhone de verdade, na mão do Maxwell.
-
-**Revisão:**
-
-- `code-review` de `mvp-base` até HEAD, nos dois eixos (padrões e spec);
-- `humanizar` e `humanizar-ui` no que entrou nas etapas 4, 5 e 6;
-- relatório primeiro, parada para o ok, e um commit por mudança.
+- o Maxwell roda `! npx wrangler login` uma vez;
+- build padrão, com noindex, e `npx wrangler deploy` na Cloudflare, com Workers de arquivos estáticos;
+- conferir os cabeçalhos do preview publicado com `curl -I` (o `X-Robots-Tag` precisa chegar) e medir o Lighthouse de novo, agora no ar;
+- tirar a página `/especime/` antes de publicar;
+- o script que lista as pendências dos textos para o roteiro da reunião, ignorando os comentários do YAML, que também citam o formato `[CONFIRMAR ...]`;
+- `docs/roteiro-apresentacao.md`: a ordem da demonstração (home, troca de público, NR-1, drawer até o WhatsApp, idiomas), o antes e depois ligado aos quatro motivos da proposta, a lista de pendências e o que falta para o site completo, sem preços;
+- o checklist do teste no Android e no iPhone de verdade.
 
 ## Como retomar
 
 - `npm test`: testes de lógica, os dois builds (o padrão e o indexável, em `dist-indexavel/`) e os testes do HTML gerado.
 - `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
-- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git.
+- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`.
+- `npm install --no-save lighthouse && node scripts/lighthouse.ts`: a medição das 3 páginas completas nos dois builds.
 - `npm run dev:rede`: o site na rede local, para abrir no celular.
 - `npx astro check`: tipos.
 
-Na última rodada: 75 testes de lógica, 278 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 104 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
+Na última rodada: 77 testes de lógica, 287 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 107 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
 
 Notas do ambiente:
 
