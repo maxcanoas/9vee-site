@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 19/09/2026, no fim da etapa 7. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 19/09/2026, no meio da etapa 8. Para retomar, vá direto para "Próxima etapa".
 
 ## Onde estamos
 
@@ -14,8 +14,8 @@ Atualizado em 19/09/2026, no fim da etapa 7. Para retomar, vá direto para "Pró
 | 4. Treinamento de NR-1 | feita e aprovada | `f6dce38` |
 | 5. Cursos de Idiomas | feita e aprovada | `69aa31b` |
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
-| 7. Verificação e revisão final | **feita, esperando o ok** | de `9e8f11e` ao commit deste arquivo |
-| 8. Publicação e reunião | **próxima** | |
+| 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
+| 8. Publicação e reunião | **em andamento**: falta publicar | `35c51c4` |
 
 ## O que cada etapa entregou
 
@@ -88,6 +88,13 @@ Do lado técnico: a coleção `parciais` ganhou esquema próprio e o `EmConstruc
   8. a descrição do curso no JSON-LD passa pelo `textoPuro`;
   9. a `etiquetaMvp` saiu de dentro do `rodape` no `site.md`.
 - A spec passou a registrar de onde vêm os fatos do site atual sobre idiomas e tradução, e a página de NR-1 cita agora as 5 fontes oficiais.
+
+**Etapa 8, o que já está pronto.** Tudo que não depende da conta da Cloudflare:
+
+- a página `/especime/` saiu do repositório, como a spec previa. Com ela saiu a exceção da regra de cor nos testes, que agora valem para todas as páginas sem pular nenhuma;
+- `wrangler.jsonc`: o `dist/` sobe como Worker de arquivos estáticos, com a 404 do próprio site para endereço inexistente. O `npm run deploy` faz o build e publica;
+- `scripts/pendencias.ts`: junta as 29 pendências dos textos, agrupadas por página, ignorando os comentários do YAML. Escreve `relatorios/pendencias.md`;
+- `docs/roteiro-apresentacao.md`: a ordem da demonstração, o antes e depois ligado ao que a proposta apontou, os números do Lighthouse, o que ainda não está no MVP, as quatro perguntas que mais importam e o checklist do teste em aparelho de verdade.
 
 ## Decisões da etapa 3, aprovadas em 19/09/2026
 
@@ -173,15 +180,16 @@ Das parciais, da etapa 6:
 
 Fora do site, para a reunião: uma leitura jurídica do argumento de risco da página de NR-1.
 
-## Próxima etapa: 8, Publicação e reunião
+## O que falta na etapa 8
 
-- o Maxwell roda `! npx wrangler login` uma vez;
-- build padrão, com noindex, e `npx wrangler deploy` na Cloudflare, com Workers de arquivos estáticos;
-- conferir os cabeçalhos do preview publicado com `curl -I` (o `X-Robots-Tag` precisa chegar) e medir o Lighthouse de novo, agora no ar;
-- tirar a página `/especime/` antes de publicar;
-- o script que lista as pendências dos textos para o roteiro da reunião, ignorando os comentários do YAML, que também citam o formato `[CONFIRMAR ...]`;
-- `docs/roteiro-apresentacao.md`: a ordem da demonstração (home, troca de público, NR-1, drawer até o WhatsApp, idiomas), o antes e depois ligado aos quatro motivos da proposta, a lista de pendências e o que falta para o site completo, sem preços;
-- o checklist do teste no Android e no iPhone de verdade.
+A publicação depende da conta da Cloudflare, que é do Maxwell. Na ordem:
+
+1. `! npx wrangler login`, uma vez. Abre o navegador e pede a autorização.
+2. `npm run deploy`. O build padrão sai com noindex e o Worker sobe. A saída do wrangler dá o endereço, algo como `https://9vee-preview.<subdomínio>.workers.dev`.
+3. Com o endereço em mãos, publicar de novo com ele: `SITE_URL=https://... npm run build && npx wrangler deploy`. É o que deixa canonical, Open Graph e JSON-LD apontando para o preview, e não para o localhost.
+4. Conferir o cabeçalho no ar: `curl -I https://...` precisa trazer `X-Robots-Tag: noindex`. O `robots.txt` não pode bloquear, senão o Google nem chega a ler o noindex.
+5. Medir o Lighthouse no endereço publicado e comparar com `relatorios/etapa-7/lighthouse.md`.
+6. Rodar `node scripts/pendencias.ts` e passar pelo checklist do roteiro, no Android e no iPhone.
 
 ## Como retomar
 
@@ -189,10 +197,12 @@ Fora do site, para a reunião: uma leitura jurídica do argumento de risco da p�
 - `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
 - `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`.
 - `npm install --no-save lighthouse && node scripts/lighthouse.ts`: a medição das 3 páginas completas nos dois builds.
+- `node scripts/pendencias.ts`: a lista de pendências dos textos, em `relatorios/pendencias.md`.
+- `npm run deploy`: build padrão e publicação na Cloudflare (precisa do `wrangler login` antes).
 - `npm run dev:rede`: o site na rede local, para abrir no celular.
 - `npx astro check`: tipos.
 
-Na última rodada: 77 testes de lógica, 287 do HTML (1 pulado de propósito: a regra de cor não vale para a página de espécime) e 107 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
+Na última rodada: 77 testes de lógica, 258 do HTML (nenhum pulado, depois que o espécime saiu) e 107 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
 
 Notas do ambiente:
 
