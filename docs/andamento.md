@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 19/09/2026, no meio da etapa 8. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 20/09/2026, com o preview no ar. Para retomar, vá direto para "Próxima etapa".
 
 ## Onde estamos
 
@@ -15,7 +15,7 @@ Atualizado em 19/09/2026, no meio da etapa 8. Para retomar, vá direto para "Pr�
 | 5. Cursos de Idiomas | feita e aprovada | `69aa31b` |
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
 | 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
-| 8. Publicação e reunião | **em andamento**: falta publicar | `35c51c4` |
+| 8. Publicação e reunião | **publicada**: falta o teste em aparelho e a reunião | `35c51c4` e o commit deste arquivo |
 
 ## O que cada etapa entregou
 
@@ -95,6 +95,14 @@ Do lado técnico: a coleção `parciais` ganhou esquema próprio e o `EmConstruc
 - `wrangler.jsonc`: o `dist/` sobe como Worker de arquivos estáticos, com a 404 do próprio site para endereço inexistente. O `npm run deploy` faz o build e publica;
 - `scripts/pendencias.ts`: junta as 29 pendências dos textos, agrupadas por página, ignorando os comentários do YAML. Escreve `relatorios/pendencias.md`;
 - `docs/roteiro-apresentacao.md`: a ordem da demonstração, o antes e depois ligado ao que a proposta apontou, os números do Lighthouse, o que ainda não está no MVP, as quatro perguntas que mais importam e o checklist do teste em aparelho de verdade.
+
+**Etapa 8, publicado em 20/09/2026.** O preview está em **https://9vee-preview.9vee-site.workers.dev**, na conta Cloudflare do Maxwell, como Worker de arquivos estáticos.
+
+Conferido no ar: as 6 páginas do menu respondem 200, toda resposta traz `X-Robots-Tag: noindex, nofollow`, a meta robots está no HTML, o canonical e o Open Graph apontam para o endereço do preview, o `og.jpg` é servido (é o que faz a prévia do link no WhatsApp mostrar a marca), endereço inexistente cai na 404 do próprio site e o `robots.txt` não bloqueia.
+
+Lighthouse no endereço publicado, mediana de 3 rodadas: Performance 96 a 99, Acessibilidade 100, Práticas 100, LCP de 1,55 s a 1,90 s e CLS até 0,001. O SEO aparece entre 66 e 69 porque o preview está com noindex, como a spec previa. O resultado está em `relatorios/etapa-8/lighthouse-publicado.md`.
+
+Uma nota para a próxima publicação: o subdomínio novo da Cloudflare levou uns três minutos para o certificado sair. Até lá o endereço falha no aperto de mão TLS, no terminal e no navegador. É espera, não erro.
 
 ## Decisões da etapa 3, aprovadas em 19/09/2026
 
@@ -182,14 +190,21 @@ Fora do site, para a reunião: uma leitura jurídica do argumento de risco da p�
 
 ## O que falta na etapa 8
 
-A publicação depende da conta da Cloudflare, que é do Maxwell. Na ordem:
+Com o Maxwell:
 
-1. `! npx wrangler login`, uma vez. Abre o navegador e pede a autorização.
-2. `npm run deploy`. O build padrão sai com noindex e o Worker sobe. A saída do wrangler dá o endereço, algo como `https://9vee-preview.<subdomínio>.workers.dev`.
-3. Com o endereço em mãos, publicar de novo com ele: `SITE_URL=https://... npm run build && npx wrangler deploy`. É o que deixa canonical, Open Graph e JSON-LD apontando para o preview, e não para o localhost.
-4. Conferir o cabeçalho no ar: `curl -I https://...` precisa trazer `X-Robots-Tag: noindex`. O `robots.txt` não pode bloquear, senão o Google nem chega a ler o noindex.
-5. Medir o Lighthouse no endereço publicado e comparar com `relatorios/etapa-7/lighthouse.md`.
-6. Rodar `node scripts/pendencias.ts` e passar pelo checklist do roteiro, no Android e no iPhone.
+- [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
+- [ ] gerar as 5 imagens que faltam, ou pelo menos o hero de Cursos de Idiomas, que é a primeira tela de quem entra pela página de cursos;
+- [ ] salvar a `home-hero-frente` como `.png` com fundo transparente;
+- [ ] decidir se as 7 imagens do Gemini entram no git;
+- [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
+
+Para publicar de novo, depois de qualquer mudança:
+
+```
+SITE_URL=https://9vee-preview.9vee-site.workers.dev npm run build && npx wrangler deploy
+```
+
+O endereço é sempre o mesmo, então o link que já foi mandado continua valendo.
 
 ## Como retomar
 
