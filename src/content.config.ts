@@ -126,7 +126,7 @@ const site = defineCollection({
         { error: 'cada público precisa de uma ordem de 1 a 4, sem repetir' },
       ),
     paginas: z.record(
-      z.enum(['home', 'nr1', 'idiomas', 'traducao', 'lms', 'quemSomos', 'especime', 'erro404']),
+      z.enum(['home', 'nr1', 'idiomas', 'traducao', 'lms', 'quemSomos', 'erro404']),
       z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
     ),
     drawer: z.object({

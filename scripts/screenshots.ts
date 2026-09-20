@@ -45,8 +45,6 @@ const preencherNr1 = async (p: Page) => {
 
 const roteiros: Record<string, Captura[]> = {
   'etapa-1': [
-    { nome: 'especime-390', rota: '/especime/', largura: 390, altura: 844, paginaInteira: true },
-    { nome: 'especime-1280', rota: '/especime/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'cabecalho-390', rota: '/', largura: 390, altura: 844 },
     { nome: 'cabecalho-1280', rota: '/', largura: 1280, altura: 800 },
     { nome: 'menu-aberto-390', rota: '/', largura: 390, altura: 844, antes: (p) => p.getByRole('button', { name: 'Menu', exact: true }).click() },

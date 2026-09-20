@@ -184,8 +184,7 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(gzip).toBeLessThan(10 * 1024);
   });
 
-  // O espécime pinta o selo "9" (um SVG, forma da marca) pelo color; ele é página de trabalho e sai antes da publicação.
-  it.skipIf(rota === '/especime/')('não usa magenta nem violeta como cor de texto (a paleta reserva as duas para forma e foco)', () => {
+  it('não usa magenta nem violeta como cor de texto (a paleta reserva as duas para forma e foco)', () => {
     const css = raiz.querySelectorAll('style').map((s) => s.textContent).join('\n');
     expect(css).not.toMatch(/(?<![\w-])color:\s*var\(--(?:magenta|violeta)\)/);
   });

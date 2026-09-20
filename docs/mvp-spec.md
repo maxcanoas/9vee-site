@@ -124,7 +124,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 - Site estático em Astro 7 (versão atual: 7.3), CSS com custom properties e TypeScript só nas partes interativas. Sem framework de interface, sem jQuery e sem GSAP: todos os efeitos pedidos cabem em CSS.
 - Os textos ficam separados do código: um arquivo Markdown por página (frontmatter estruturado e prosa no corpo) e mais um arquivo com os textos compartilhados (menu, rodapé, drawer, mensagens do WhatsApp e mensagens de erro).
 - **Endereços:** mantêm os atuais onde a página continua (curso-de-idiomas, traducao-simultanea, lms, quem-somos), para ninguém perder link. A página nova de NR-1 fica em `treinamento-nr-1`. Todo endereço termina com barra.
-- **Páginas além das seis:** a 404, que a Cloudflare serve para endereço inexistente, e a `/especime/`, página de trabalho da etapa 1 que sai antes da publicação.
+- **Páginas além das seis:** a 404, que a Cloudflare serve para endereço inexistente. A `/especime/`, página de trabalho da etapa 1, saiu do repositório na etapa 8, antes da publicação.
 
 ### Marca e visual
 

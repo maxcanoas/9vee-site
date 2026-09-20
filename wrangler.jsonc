@@ -1,0 +1,12 @@
+{
+  // Preview do MVP na Cloudflare: um Worker que só serve os arquivos do dist/.
+  // A Cloudflare recomenda Workers no lugar do Pages para projeto novo.
+  // O dist/ precisa ser o build padrão, com noindex na meta e no _headers.
+  "name": "9vee-preview",
+  "compatibility_date": "2026-09-19",
+  "assets": {
+    "directory": "./dist",
+    // Endereço que não existe recebe a página 404 do próprio site.
+    "not_found_handling": "404-page"
+  }
+}

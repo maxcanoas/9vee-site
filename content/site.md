@@ -139,9 +139,6 @@ paginas:
   quemSomos:
     nome: "Quem Somos"
     assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
-  especime:
-    nome: "de espécime visual"
-    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
   erro404:
     nome: "de erro"
     assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }

@@ -16,7 +16,8 @@
     "test:unit": "vitest run --project unit",
     "test:dist": "vitest run --project dist",
     "screenshots": "node scripts/screenshots.ts",
-    "e2e": "astro build && playwright test"
+    "e2e": "astro build && playwright test",
+    "deploy": "astro build && npx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",
