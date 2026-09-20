@@ -190,13 +190,14 @@ Fora do site, para a reunião: uma leitura jurídica do argumento de risco da p�
 
 ## O que falta na etapa 8
 
+**Imagens: fechadas em 20/09/2026.** As 12 estão no site e nenhuma página usa Placeholder. As cinco que faltavam vieram em 4:5, depois que o prompt passou a dizer "4:5 portrait (1200 x 1500 pixels), not 3:4", e a camada da frente do hero da home virou PNG com fundo transparente. Todas versionadas.
+
 Com o Maxwell:
 
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
-- [ ] gerar as 5 imagens que faltam, ou pelo menos o hero de Cursos de Idiomas, que é a primeira tela de quem entra pela página de cursos;
-- [ ] salvar a `home-hero-frente` como `.png` com fundo transparente;
-- [ ] decidir se as 7 imagens do Gemini entram no git;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
+
+Nota sobre recorte: ao conferir um PNG recortado, olhe a cor além do alfa. A área opaca larga na base da imagem era o blazer da intérprete, não sobra de fundo.
 
 Para publicar de novo, depois de qualquer mudança:
 
