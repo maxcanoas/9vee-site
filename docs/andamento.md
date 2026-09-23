@@ -16,7 +16,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
 | 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
 | 8. Publicação e reunião | **publicada**: falta o teste em aparelho e a reunião | `35c51c4` e o commit deste arquivo |
-| 9. Ajustes pedidos pela cliente | **feita**: falta o Maxwell republicar o preview e dar o push | de `8107b6a` a `a58d186` e o commit deste arquivo |
+| 9. Ajustes pedidos pela cliente | **publicada** em 23/09: falta o push | de `8107b6a` a `a58d186` e o commit deste arquivo |
 
 ## O que cada etapa entregou
 
@@ -218,7 +218,7 @@ Fora do site, para a reunião: uma leitura jurídica do argumento de risco da p�
 
 Com o Maxwell:
 
-- [ ] republicar o preview com a etapa 9. O `dist/` já foi construído com o `SITE_URL` do preview em 23/09, então basta `! npx wrangler deploy` (o modo automático bloqueia a publicação feita por mim, como o push). Se algum build rodar antes, use o comando completo abaixo: o `npm run deploy` sozinho sai sem o `SITE_URL`, com o canonical em localhost. A cliente vê a mudança no mesmo link;
+- [x] republicar o preview com a etapa 9: feito pelo Maxwell em 23/09 (`npx wrangler deploy`, versão `e5f7d05d`), porque o modo automático bloqueia a publicação feita por mim. Conferido no ar: as seis páginas em 200, a 404, o noindex, o canonical, a ordem nova, o círculo da marca, os 9 grifos e os 3 logos. Atenção para a próxima vez: o `npm run deploy` sozinho sai sem o `SITE_URL`, com o canonical em localhost; use o comando completo abaixo;
 - [ ] `git push` da etapa 9 (`! git push`);
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
