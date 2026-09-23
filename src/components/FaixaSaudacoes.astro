@@ -17,7 +17,7 @@ const { idiomas } = Astro.props;
 const sequencia = [...idiomas, ...idiomas];
 ---
 
-<div class="saudacoes escuro" aria-hidden="true">
+<div class="saudacoes escuro tons-claros" aria-hidden="true">
   <div class="saudacoes__trilho">
     {
       sequencia.map((idioma) => (
@@ -30,11 +30,7 @@ const sequencia = [...idiomas, ...idiomas];
 </div>
 
 <style>
-  /* A faixa é .escuro, mas as meias-luas não levam texto em cima: valem os tons claros, os mesmos dos títulos das
-     famílias logo abaixo, e não os escuros que o .escuro usa sob texto papel. */
   .saudacoes {
-    --grifo-violeta: var(--grifo-violeta-claro);
-    --grifo-magenta: var(--grifo-magenta-claro);
     overflow: clip;
     padding-block: var(--e-6);
     background-color: var(--navy);
@@ -60,8 +56,8 @@ const sequencia = [...idiomas, ...idiomas];
     unicode-bidi: isolate;
   }
 
-  /* Entre uma saudação e outra, um meio-círculo da marca na cor da família da saudação que vem antes.
-     A forma continua alternando entre as duas metades. */
+  /* Depois de cada saudação, um meio-círculo da marca na cor da família dela, com a forma alternando entre as
+     duas metades. */
   .saudacoes__item::after {
     content: '';
     inline-size: 0.18em;
@@ -72,6 +68,12 @@ const sequencia = [...idiomas, ...idiomas];
 
   .saudacoes__item:nth-child(even)::after {
     border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+  }
+
+  /* No árabe o item é da direita para a esquerda, e o flex poria a meia-lua antes da palavra. A faixa anda da
+     esquerda para a direita, então o item inverte o eixo para a meia-lua ficar depois, como nas outras. */
+  .saudacoes__item[dir='rtl'] {
+    flex-direction: row-reverse;
   }
 
   @media (prefers-reduced-motion: no-preference) {

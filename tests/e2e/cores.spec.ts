@@ -63,13 +63,32 @@ test.describe('código de cor', () => {
 
   test('na faixa de saudações, a meia-lua de cada língua tem a cor da família dela', async ({ page }) => {
     await page.goto('/');
+    const corDaFamilia = new Map<string, string | null>();
     for (const familia of ['germanicas', 'romanicas', 'outras']) {
-      const meiaLua = await page
-        .locator(`.saudacoes__item[data-grupo="${familia}"]`)
-        .first()
-        .evaluate((el) => getComputedStyle(el, '::after').backgroundColor);
-      expect(meiaLua, familia).toBe(await corDoGrifo(page.locator(`.familia[data-grupo="${familia}"] .grifo`)));
+      corDaFamilia.set(familia, await corDoGrifo(page.locator(`.familia[data-grupo="${familia}"] .grifo`)));
     }
+    const meiasLuas = await page.locator('.saudacoes__item').evaluateAll((itens) =>
+      itens.map((item) => ({
+        saudacao: item.textContent?.trim(),
+        familia: item.getAttribute('data-grupo') ?? '',
+        cor: getComputedStyle(item, '::after').backgroundColor,
+      })),
+    );
+    expect(meiasLuas).toHaveLength(28);
+    for (const { saudacao, familia, cor } of meiasLuas) expect(cor, saudacao).toBe(corDaFamilia.get(familia));
+  });
+
+  // O árabe é da direita para a esquerda: sem o eixo invertido, a meia-lua iria para antes da palavra.
+  test('no árabe, a meia-lua fica depois da palavra, como nas outras saudações', async ({ page }) => {
+    await page.goto('/');
+    const folgas = await page.locator('.saudacoes__item[dir="rtl"]').first().evaluate((item) => {
+      const texto = document.createRange();
+      texto.selectNodeContents(item);
+      const [caixa, palavra] = [item.getBoundingClientRect(), texto.getBoundingClientRect()];
+      return { antes: palavra.left - caixa.left, depois: caixa.right - palavra.right };
+    });
+    expect(folgas.antes).toBeLessThan(2);
+    expect(folgas.depois).toBeGreaterThan(10);
   });
 
   test('o idioma de destino ganha o fio na cor da família dele', async ({ page }) => {

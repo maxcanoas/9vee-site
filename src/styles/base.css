@@ -240,11 +240,18 @@ mark.confirmar {
 }
 
 /* No .escuro o texto do grifo é papel, e o tom da faixa segue o texto: a violeta pura dá 4,8:1 e a magenta
-   escurecida, 4,6:1. A menta não serve aqui (1,5:1), e nenhum grupo com menta aparece no escuro. Onde o texto
-   sobre a faixa continua navy num fundo escuro (a escolha de público do hero), o componente volta aos tons claros. */
+   escurecida, 4,6:1. A menta não serve sob texto papel (1,5:1). */
 .escuro {
   --grifo-violeta: var(--violeta);
   --grifo-magenta: color-mix(in oklab, var(--magenta) 77%, var(--noite));
+}
+
+/* Em fundo escuro, sem texto papel sobre a cor, voltam os tons claros: na escolha de público o texto é navy, e as
+   meias-luas da faixa de saudações não levam texto. Contra o navy, os claros dão 4,7:1 e 4,6:1; os escuros, só
+   2,7:1 e 2,8:1. Vem depois do .escuro para vencer no mesmo elemento. */
+.tons-claros {
+  --grifo-violeta: var(--grifo-violeta-claro);
+  --grifo-magenta: var(--grifo-magenta-claro);
 }
 
 /* Selo numérico: a pílula da marca com o número da etapa ou do módulo dentro. */

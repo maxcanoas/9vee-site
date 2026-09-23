@@ -218,8 +218,11 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'familias-home-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
     { nome: 'familias-home-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.familias', -160) },
     { nome: 'familias-cursos-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
-    { nome: 'saudacoes-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.saudacoes', -200) },
-    { nome: 'saudacoes-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.saudacoes', -250) },
+    // A faixa anda com a rolagem: cada posição mostra outra família passando.
+    { nome: 'saudacoes-inicio-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.saudacoes', -620) },
+    { nome: 'saudacoes-meio-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.saudacoes', -250) },
+    { nome: 'saudacoes-fim-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.saudacoes', -80) },
+    { nome: 'saudacoes-meio-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.saudacoes', -300) },
     { nome: 'familias-hover-germanicas-1280', rota: '/', largura: 1280, altura: 800, antes: passarMouseNaLingua('germanicas') },
     { nome: 'familias-hover-outras-1280', rota: '/', largura: 1280, altura: 800, antes: passarMouseNaLingua('outras') },
     { nome: 'idioma-destino-1280', rota: '/curso-de-idiomas/#japones', largura: 1280, altura: 800 },

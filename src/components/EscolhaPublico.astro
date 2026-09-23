@@ -13,7 +13,7 @@ interface Props {
 const { legenda, opcoes } = Astro.props;
 ---
 
-<fieldset class="duas-metades" data-escolha-publico>
+<fieldset class="duas-metades tons-claros" data-escolha-publico>
   <legend class="duas-metades__legenda">{legenda}</legend>
   <div class="duas-metades__pilula">
     <label class="duas-metades__metade duas-metades__metade--empresa" data-grupo={GRUPO_DO_PUBLICO.empresa}>
@@ -28,11 +28,7 @@ const { legenda, opcoes } = Astro.props;
 </fieldset>
 
 <style>
-  /* O texto da metade escolhida é navy, então valem os tons claros do grifo mesmo sobre um fundo escuro:
-     sem isto, um .escuro em volta trocaria a violeta pelo tom puro, com 2,7:1. */
   .duas-metades {
-    --grifo-violeta: var(--grifo-violeta-claro);
-    --grifo-magenta: var(--grifo-magenta-claro);
     min-inline-size: 0;
     margin: 0;
     padding: 0;
