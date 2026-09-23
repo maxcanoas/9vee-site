@@ -231,7 +231,7 @@ Com o Maxwell:
 - [x] republicar o que veio depois da primeira publicação: o hover dos idiomas na cor da família, o fio do idioma de destino e a cor do público na escolha. Feito pelo Maxwell em 23/09 (versão `714d209d`) e conferido no ar. O push vai junto com este registro;
 - [x] republicar a faixa de saudações na cor da família: feito pelo Maxwell em 23/09 (versão `8bbc2c5c`) e conferido no ar;
 - [x] republicar as correções da revisão das saudações (a classe `.tons-claros` e a meia-lua do árabe): feito pelo Maxwell em 23/09 (versão `1ec13e91`) e conferido no ar;
-- [ ] republicar o círculo com o logo no fim da home;
+- [x] republicar o círculo com o logo no fim da home: feito pelo Maxwell em 23/09 (versão `fec46e54`) e conferido no ar, as 11 versões da imagem em 200;
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 
