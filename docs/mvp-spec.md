@@ -365,3 +365,13 @@ Cada etapa termina com um commit e uma parada para o "ok" do Maxwell.
 8. Publicação do preview e roteiro da apresentação.
 
 O ponto fixo do code-review é a tag `mvp-base`.
+
+## Ajustes pedidos pela cliente em 23/09/2026
+
+Depois de ver o preview, a cliente mandou cinco apontamentos. Cada um atualiza a seção correspondente acima quando é feito. O ponto fixo do code-review desta rodada é o commit `fd6acb3`.
+
+1. **Círculo Novee no topo.** O círculo verde e rosa do topo dá lugar ao "círculo Novee" do kit, o degradê da paleta (`Profile Pic_1`), inteiro e sem as letras, porque a intérprete cobre o miolo. Ele aparece no hero da home, onde gira devagar com a rolagem, nos heroes das páginas internas e no CTA do fim, que repete o do topo. As metades verde e rosa ficam nos detalhes pequenos, como a escolha de público, o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
+2. **Cor por público no menu.** "Empresas" e "Para você" ganham cada um a sua cor, em marca-texto. É uma faixa sólida atrás da metade de baixo das letras, com o texto em navy. Empresas fica em violeta e Para você em magenta, porque a menta já é a cor dos botões. Vale no menu do celular, no menu do computador (na meia-lua e com o painel aberto) e no rodapé.
+3. **Cor por família de idiomas.** O mesmo marca-texto no título de cada família: Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Vale na home e na página de cursos.
+4. **Ordem do conteúdo.** Idiomas, Tradução Simultânea, NR-1 e LMS, igual para os dois públicos. Detalhes em "Público duplo".
+5. **Logos nos depoimentos.** O logo da empresa entra ao lado do nome da pessoa, em uma cor só (navy) e escondido do leitor de tela, porque o nome da empresa continua no texto. O uso do logo depende de autorização da empresa, marcada como pendência junto com a da fala.
