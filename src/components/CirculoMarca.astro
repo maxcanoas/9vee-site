@@ -1,8 +1,8 @@
 ---
-// O círculo Novee do kit: o degradê da paleta do Profile Pic_1, sem as letras, que abre e fecha as páginas.
-// O arquivo sai de scripts/gerar-ativos.ts. É enfeite: alt vazio, e o contêiner fica escondido do leitor de tela.
+// O círculo da marca, o "círculo Novee" que a cliente pediu: o degradê da paleta do Profile Pic_1, sem as letras,
+// que abre e fecha as páginas. O arquivo sai de scripts/gerar-ativos.ts. É enfeite: sai com alt vazio.
 import { Picture } from 'astro:assets';
-import circulo from '../assets/marca/circulo-novee.png';
+import circulo from '../assets/marca/circulo-marca.png';
 
 interface Props {
   sizes: string;
@@ -21,11 +21,11 @@ const { sizes, primeiraDobra = false } = Astro.props;
   widths={[320, 480, 640, 800, 1000]}
   sizes={sizes}
   loading={primeiraDobra ? 'eager' : 'lazy'}
-  class="circulo-novee"
+  class="circulo-marca"
 />
 
 <style>
-  .circulo-novee {
+  .circulo-marca {
     display: block;
     inline-size: 100%;
     block-size: auto;

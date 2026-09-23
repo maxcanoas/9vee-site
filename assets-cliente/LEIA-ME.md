@@ -17,7 +17,7 @@ Cópia parcial do kit de marca da 9vee assinado por Kim Zamorano. O original est
 | `Vectors/Stamp_3.svg` | o "9", menta | elemento gráfico |
 | `Vectors/Stamp_4.svg` | o "9", navy | favicon |
 | `Vectors/Profile Pic.svg` | "9" off-white em círculo navy | ícone de atalho do iPhone |
-| `Vectors/Profile Pic_1.svg` | o "círculo Novee": degradê da paleta com o logo empilhado | a camada de degradê, sem as letras, vira `src/assets/marca/circulo-novee.png` (`scripts/gerar-ativos.ts`), o círculo do topo e do fim das páginas |
+| `Vectors/Profile Pic_1.svg` | o "círculo Novee": degradê da paleta com o logo empilhado | a camada de degradê, sem as letras, vira `src/assets/marca/circulo-marca.png` (`scripts/gerar-ativos.ts`), o círculo do topo e do fim das páginas |
 | `Vectors/Social_1.svg` | TikTok | rodapé |
 | `Vectors/Social_2.svg` | Instagram | rodapé |
 | `Vectors/Social_3.svg` | Facebook | rodapé |

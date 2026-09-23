@@ -3,7 +3,7 @@ import Figura from './Figura.astro';
 import Texto from './Texto.astro';
 import EscolhaPublico from './EscolhaPublico.astro';
 import BotaoContato from './BotaoContato.astro';
-import CirculoNovee from './CirculoNovee.astro';
+import CirculoMarca from './CirculoMarca.astro';
 import type { TextosPorPublico } from '../lib/publico';
 
 interface Imagem {
@@ -41,7 +41,7 @@ const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = As
 
     <div class="hero__visual">
       <div class="hero__circulo" aria-hidden="true">
-        <CirculoNovee sizes="(min-width: 64rem) 25rem, (min-width: 27rem) 14.5rem, 54vw" primeiraDobra />
+        <CirculoMarca sizes="(min-width: 64rem) 25rem, (min-width: 27rem) 14.5rem, 54vw" primeiraDobra />
       </div>
       <div class="hero__frente">
         <Figura
@@ -150,7 +150,7 @@ const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = As
     text-align: center;
   }
 
-  /* O círculo Novee, maior que o retrato: uma auréola atrás da intérprete. */
+  /* O círculo da marca, maior que o retrato: uma auréola atrás da intérprete. */
   .hero__circulo {
     position: absolute;
     inset-block-start: 0;

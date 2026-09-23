@@ -1,5 +1,5 @@
 // Gera a partir do kit da cliente os ícones, a imagem de prévia do link e o logo em PNG (em public/)
-// e o círculo Novee (em src/assets/marca/, onde o Astro otimiza a imagem).
+// e o círculo da marca (em src/assets/marca/, onde o Astro otimiza a imagem).
 // Rodar de novo só se o kit mudar: node scripts/gerar-ativos.ts
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -69,21 +69,21 @@ await writeFile(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${padrao.viewBox}">${desenhar(padrao.formas, '#ffffff')}</svg>\n`,
 );
 
-// Círculo Novee (Vectors/Profile Pic_1.svg): só a camada de degradê, com o recorte em círculo do próprio kit.
+// Círculo da marca (o "círculo Novee" do kit, Vectors/Profile Pic_1.svg): só a camada de degradê, com o recorte em círculo do próprio kit.
 // As letras ficam de fora, porque no site a intérprete e as imagens cobrem o miolo do círculo.
-const perfilNovee = await doKit('Vectors/Profile Pic_1.svg');
-const recorteNovee = lerCirculo(perfilNovee);
-const degradeNovee = /<image\b[^>]*\/>/.exec(perfilNovee)?.[0];
-if (!degradeNovee) throw new Error('Profile Pic_1.svg sem a camada de degradê');
+const perfilMarca = await doKit('Vectors/Profile Pic_1.svg');
+const recorteMarca = lerCirculo(perfilMarca);
+const degradeMarca = /<image\b[^>]*\/>/.exec(perfilMarca)?.[0];
+if (!degradeMarca) throw new Error('Profile Pic_1.svg sem a camada de degradê');
 const ladoCirculo = 1200;
-const circuloNovee =
-  `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${lerSvgDoKit(perfilNovee).viewBox}" width="${ladoCirculo}" height="${ladoCirculo}">` +
-  `<clipPath id="c"><circle cx="${recorteNovee.cx}" cy="${recorteNovee.cy}" r="${recorteNovee.r}"/></clipPath>` +
-  `<g clip-path="url(#c)">${degradeNovee}</g></svg>`;
+const circuloMarca =
+  `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${lerSvgDoKit(perfilMarca).viewBox}" width="${ladoCirculo}" height="${ladoCirculo}">` +
+  `<clipPath id="c"><circle cx="${recorteMarca.cx}" cy="${recorteMarca.cy}" r="${recorteMarca.r}"/></clipPath>` +
+  `<g clip-path="url(#c)">${degradeMarca}</g></svg>`;
 await mkdir(new URL('src/assets/marca/', raiz), { recursive: true });
-await sharp(Buffer.from(circuloNovee))
+await sharp(Buffer.from(circuloMarca))
   .png({ compressionLevel: 9 })
-  .toFile(fileURLToPath(new URL('src/assets/marca/circulo-novee.png', raiz)));
+  .toFile(fileURLToPath(new URL('src/assets/marca/circulo-marca.png', raiz)));
 
 console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg');
-console.log('e em src/assets/marca/: circulo-novee.png');
+console.log('e em src/assets/marca/: circulo-marca.png');

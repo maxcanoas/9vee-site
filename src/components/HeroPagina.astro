@@ -3,7 +3,7 @@
 import Figura from './Figura.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
-import CirculoNovee from './CirculoNovee.astro';
+import CirculoMarca from './CirculoMarca.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
 
@@ -35,7 +35,7 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.prop
 
     <div class="hero-pagina__visual">
       <div class="hero-pagina__circulo" aria-hidden="true">
-        <CirculoNovee sizes="(min-width: 64rem) 21rem, (min-width: 32.5rem) 19rem, 58vw" primeiraDobra />
+        <CirculoMarca sizes="(min-width: 64rem) 21rem, (min-width: 32.5rem) 19rem, 58vw" primeiraDobra />
       </div>
       <div class="hero-pagina__quadro">
         <Figura

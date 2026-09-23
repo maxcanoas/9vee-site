@@ -259,7 +259,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 ### Imagens
 
 - Nenhuma imagem de banco. O kit da cliente não tem foto nenhuma. Cada imagem do MVP é um Placeholder na proporção final: gradiente da marca, textura sutil do padrão, ID visível (por exemplo, IMG-HOME-HERO-FUNDO) e o alt definitivo.
-- O círculo Novee sai do kit. O `scripts/gerar-ativos.ts` tira do `Vectors/Profile Pic_1.svg` só a camada de degradê, com o recorte do próprio kit, e grava `src/assets/marca/circulo-novee.png`. O site serve AVIF com WebP de reserva, como nas outras imagens.
+- O círculo Novee sai do kit. O `scripts/gerar-ativos.ts` tira do `Vectors/Profile Pic_1.svg` só a camada de degradê, com o recorte do próprio kit, e grava `src/assets/marca/circulo-marca.png`. O site serve AVIF com WebP de reserva, como nas outras imagens.
 - **Troca por nome de arquivo:** basta salvar a imagem do Gemini em `src/assets/imagens/`, com o nome indicado, e rodar o build. O site passa a servir AVIF com fallback WebP, srcset, width e height, lazy fora da primeira dobra e prioridade alta só no hero. A pasta é `src/assets/imagens/`, e não `public/images/`, porque o Astro só otimiza imagens dentro de `src/`.
 - **Registro de cada imagem em `docs/imagens-gemini.md`:** ID, página e seção, proporção e tamanho final, nome do arquivo e prompt em inglês, sempre começando pelo estilo base do brief.
   - O hero da home sai em duas camadas: um prompt para o fundo, sem pessoas em primeiro plano, e outro para o elemento da frente, sobre fundo liso de cor única.
