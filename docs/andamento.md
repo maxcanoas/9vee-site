@@ -16,7 +16,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
 | 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
 | 8. Publicação e reunião | **publicada**: falta o teste em aparelho e a reunião | `35c51c4` e o commit deste arquivo |
-| 9. Ajustes pedidos pela cliente | **publicada** e no GitHub em 23/09, com os ajustes do Maxwell (última versão no ar: `8bbc2c5c`) | de `8107b6a` em diante |
+| 9. Ajustes pedidos pela cliente | **publicada** e no GitHub em 23/09, com os ajustes do Maxwell (última versão no ar: `1ec13e91`) | de `8107b6a` em diante |
 
 ## O que cada etapa entregou
 
@@ -229,6 +229,7 @@ Com o Maxwell:
 - [x] `git push` da etapa 9: feito em 23/09, até `440a6f6`;
 - [x] republicar o que veio depois da primeira publicação: o hover dos idiomas na cor da família, o fio do idioma de destino e a cor do público na escolha. Feito pelo Maxwell em 23/09 (versão `714d209d`) e conferido no ar. O push vai junto com este registro;
 - [x] republicar a faixa de saudações na cor da família: feito pelo Maxwell em 23/09 (versão `8bbc2c5c`) e conferido no ar;
+- [x] republicar as correções da revisão das saudações (a classe `.tons-claros` e a meia-lua do árabe): feito pelo Maxwell em 23/09 (versão `1ec13e91`) e conferido no ar;
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 
