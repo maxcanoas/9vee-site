@@ -165,8 +165,10 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
     text-underline-offset: 0.18em;
   }
 
+  /* O inset engrossa o fio sem mudar a altura da linha: com 1 px, a menta quase sumia sobre o papel. */
   .familia__item:target .idioma {
     border-block-start-color: var(--cor-grupo);
+    box-shadow: inset 0 var(--sublinhado-destaque) 0 var(--cor-grupo);
   }
 
   @media (min-width: 64rem) {
