@@ -1,6 +1,7 @@
 ---
 // "Para sua empresa" ou "Para você": duas metades de uma pílula, como os meios-círculos da marca.
 // A metade escolhida aparece marcada antes do JS, pelo data-publico que o <head> põe no <html>.
+// Cada metade leva o id do grupo do menu que ela representa, para pegar a cor do público no mapa do base.css.
 import Texto from './Texto.astro';
 
 interface Props {
@@ -14,11 +15,11 @@ const { legenda, opcoes } = Astro.props;
 <fieldset class="duas-metades" data-escolha-publico>
   <legend class="duas-metades__legenda">{legenda}</legend>
   <div class="duas-metades__pilula">
-    <label class="duas-metades__metade duas-metades__metade--empresa">
+    <label class="duas-metades__metade duas-metades__metade--empresa" data-grupo="empresas">
       <input class="visualmente-oculto" type="radio" name="publico" value="empresa" />
       <span><Texto de={opcoes.empresa} /></span>
     </label>
-    <label class="duas-metades__metade duas-metades__metade--voce">
+    <label class="duas-metades__metade duas-metades__metade--voce" data-grupo="para-voce">
       <input class="visualmente-oculto" type="radio" name="publico" value="voce" />
       <span><Texto de={opcoes.voce} /></span>
     </label>
@@ -77,10 +78,13 @@ const { legenda, opcoes } = Astro.props;
     background-color: var(--papel-veu);
   }
 
+  /* A metade escolhida ganha a cor do público, a mesma do grifo do menu, com texto navy (4,7:1 na violeta
+     clara e 4,6:1 na magenta clara) e a mesma folga contra o navy do hero. Os botões de ação continuam menta:
+     a cor de ação é uma só, para o botão não virar mais uma mancha colorida entre o círculo e as faixas. */
   :global(:root[data-publico='empresa']) .duas-metades__metade--empresa,
   :global(:root[data-publico='voce']) .duas-metades__metade--voce {
-    border-color: var(--menta);
-    background-color: var(--menta);
+    border-color: var(--cor-grupo);
+    background-color: var(--cor-grupo);
     color: var(--navy);
   }
 

@@ -20,6 +20,13 @@ describe('código de cor', () => {
     for (const grupo of grupos) expect(grupo.querySelector('.grifo')).not.toBeNull();
   });
 
+  // As metades da escolha pegam a cor pelo id do grupo do menu: um id trocado no content/site.md apagaria a cor.
+  it('liga as duas metades da escolha de público aos grupos do menu', () => {
+    const doMenu = home.querySelectorAll('#menu-movel [data-grupo]').map((grupo) => grupo.getAttribute('data-grupo'));
+    const daEscolha = home.querySelectorAll('.duas-metades [data-grupo]').map((metade) => metade.getAttribute('data-grupo'));
+    expect(daEscolha).toEqual(doMenu);
+  });
+
   it.each([
     ['na home', home],
     ['na página de cursos', cursos],

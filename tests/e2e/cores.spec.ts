@@ -32,6 +32,22 @@ test.describe('código de cor', () => {
     expect(new Set(cores).size).toBe(3);
   });
 
+  // A cor do público vai só para a escolha. O botão de ação continua menta, a única cor de ação do site.
+  test('a metade escolhida ganha a cor do público, a mesma do menu, e o botão continua menta', async ({ page }) => {
+    await page.goto('/');
+    for (const [publico, grupo] of [['empresa', 'empresas'], ['voce', 'para-voce']]) {
+      const metade = page.locator(`.duas-metades__metade--${publico}`);
+      await metade.click();
+      await expect(page.locator('html')).toHaveAttribute('data-publico', publico);
+      // A troca de cor tem transição curta: espera o valor final, e não o do meio do caminho.
+      const corDoMenu = await corDoGrifo(page.locator(`#menu-movel [data-grupo="${grupo}"] .grifo`));
+      await expect.poll(() => metade.evaluate((el) => getComputedStyle(el).backgroundColor), { message: publico }).toBe(corDoMenu);
+      await expect.poll(() => metade.evaluate((el) => getComputedStyle(el).color), { message: publico }).toBe('rgb(33, 45, 77)');
+      const botao = await page.locator('.hero__cta').evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(botao, publico).toBe('rgb(22, 223, 151)');
+    }
+  });
+
   test('ao passar o mouse numa língua, o sublinhado tem a cor da família dela', async ({ page, isMobile }) => {
     test.skip(isMobile, 'hover só existe com mouse');
     await page.goto('/');

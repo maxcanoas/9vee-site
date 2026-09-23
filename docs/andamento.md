@@ -155,6 +155,7 @@ A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano c
 2. **Círculo da marca** (`14f7949`, com as correções até `e447f1c`). O "círculo Novee" da cliente é o `Profile Pic_1` do kit. O `gerar-ativos` tira só a camada de degradê do SVG, sem as letras, e grava `src/assets/marca/circulo-marca.png`. Ele fica atrás da intérprete no hero da home, onde gira uns 30 graus com a rolagem, atrás da imagem nos heroes internos e no CTA do fim. As metades verde e rosa ficaram nos detalhes.
 3. **Código de cor** (`fb7e2f3`, com a correção `237088d`). Marca-texto, pela classe `.grifo`. Empresas em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (meia-lua na cor do grupo; faixa no hover, no foco e com o painel aberto). Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Um mapa só, pelo `data-grupo`, em `base.css`. Depois da publicação, o Maxwell notou que o hover das línguas continuava magenta em todas as famílias: o sublinhado do hover e o fio do idioma de destino passaram a usar a cor da família.
 4. **Logos nos depoimentos** (`5a30392`, com a correção `a58d186`). Nissan e GM do Simple Icons, Embraer do Wikimedia Commons, em navy e escondidos do leitor de tela, pelo componente `LogoEmpresa`, que tira o tamanho do formato do `viewBox`. A pendência de cada depoimento pede também a autorização da empresa para o logo.
+5. **Cor do público na escolha**, depois da publicação. Na escolha do hero, a metade escolhida ganha a cor do público, a mesma do menu (violeta clara para empresa, magenta clara para você), com texto navy. Os botões de ação continuam menta.
 
 **Decisões:**
 
@@ -164,6 +165,7 @@ A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano c
 4. Logos em uma cor só, porque as cores das marcas brigariam com a paleta.
 5. Arquivo e componente do círculo se chamam `circulo-marca` e `CirculoMarca`: "novee" iria para a URL pública da imagem, contra a regra da marca.
 6. O kit original agora está em `docs/Archive`, fora do git pelo `.gitignore`.
+7. **Botão de ação continua menta.** O Maxwell propôs pintar também os botões com a cor do público. Simulei as opções na tela (`relatorios/analise-cores/`) e recomendei não pintar, e ele aprovou. O botão violeta daria 2,7:1 contra o navy do hero e do fim (a WCAG pede 3:1), o texto teria de mudar de cor por público, o atalho do WhatsApp continuaria verde ao lado de um botão rosa, e quem escolheu "Para você" veria a página de NR-1 com botões rosa. A cor de ação ficou uma só, e isso virou regra no `padroes.md`.
 
 **Para mostrar à cliente:** no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares.
 
@@ -220,7 +222,7 @@ Com o Maxwell:
 
 - [x] republicar o preview com a etapa 9: feito pelo Maxwell em 23/09 (`npx wrangler deploy`, versão `e5f7d05d`), porque o modo automático bloqueia a publicação feita por mim. Conferido no ar: as seis páginas em 200, a 404, o noindex, o canonical, a ordem nova, o círculo da marca, os 9 grifos e os 3 logos. Atenção para a próxima vez: o `npm run deploy` sozinho sai sem o `SITE_URL`, com o canonical em localhost; use o comando completo abaixo;
 - [x] `git push` da etapa 9: feito em 23/09, até `440a6f6`;
-- [ ] republicar e dar o push do ajuste do hover dos idiomas, que veio depois (build com o `SITE_URL`, `! npx wrangler deploy` e `! git push`);
+- [ ] republicar e dar o push do que veio depois da publicação: o hover dos idiomas na cor da família, o fio do idioma de destino e a cor do público na escolha (build com o `SITE_URL`, `! npx wrangler deploy` e `! git push`);
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 

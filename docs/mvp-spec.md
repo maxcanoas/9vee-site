@@ -143,14 +143,15 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | linha (fios e bordas) | #DCDFE8 | derivado | só em fio de 1 px, nunca como texto |
   | menta forte (hover do botão) | menta com 14% de navy | derivado | navy sobre ela segue acima de 7:1 |
   | menta (botões e grifo de De outras famílias) | #16DF97 | oficial | sempre com texto navy (7,8:1); nunca como texto sobre fundo claro; no grifo, só em fundo claro |
-  | magenta (anel de foco, formas e grifo de Para você e das Românicas) | #FE19D6 | oficial | 3,2:1 no claro e 4,1:1 no navy, suficiente para indicador de foco; nunca como texto. No grifo, 90% com papel sob texto navy (4,6:1) e 77% com noite sob texto papel (4,6:1) |
-  | violeta (formas, gradientes e grifo de Empresas e das Germânicas) | #5C58F4 | oficial | não é usado em texto de interface. No grifo, 70% com papel sob texto navy (4,7:1) e pura sob texto papel (4,8:1) |
+  | magenta (anel de foco, formas, grifo de Para você e das Românicas e a metade "Para você" escolhida) | #FE19D6 | oficial | 3,2:1 no claro e 4,1:1 no navy, suficiente para indicador de foco; nunca como texto. No grifo, 90% com papel sob texto navy (4,6:1) e 77% com noite sob texto papel (4,6:1) |
+  | violeta (formas, gradientes, grifo de Empresas e das Germânicas e a metade "Para sua empresa" escolhida) | #5C58F4 | oficial | não é usado em texto de interface. No grifo, 70% com papel sob texto navy (4,7:1) e pura sob texto papel (4,8:1) |
 
 - **Tipografia:** no máximo 2 famílias, hospedadas no próprio site, com `font-display: swap`. Readex Pro (600) nos títulos e Source Sans 3 (400 e 700) no texto, as duas com licença OFL. A Atkinson Hyperlegible Next, proposta no começo, saiu na etapa 1: o zero dela é cortado ("2Ø26"), sem alternativa na fonte, e isso pesa em datas, telefones e números de lei. A fonte do logo (Neulis Sans) não entra, porque a licença cobre só o logo.
 - **Código de cor dos grupos:** cada público e cada família de idiomas tem a sua cor, que aparece em marca-texto no título do grupo. É uma faixa sólida atrás da parte de baixo das letras (a classe `.grifo`, na fonte de título), com o texto em navy no fundo claro e em papel no rodapé escuro. Empresas fica em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (na meia-lua; a faixa aparece no hover, no foco e com o painel aberto). Germânicas fica em violeta, Românicas em magenta e De outras famílias em menta, na home e na página de cursos.
   - As faixas clareiam no fundo claro e escurecem no escuro só o bastante para o texto dar 4,5:1 onde a faixa passa por trás das letras (tokens `--grifo-violeta`, `--grifo-magenta` e `--grifo-menta`, e as versões do `.escuro` em `base.css`).
   - Um mapa só liga o id do grupo em `content/site.md` à cor, pelo atributo `data-grupo`.
   - Na lista de idiomas, o sublinhado do hover e o fio do idioma de destino (quem chega por uma âncora, como `#japones`) usam a cor da família, a mesma do grifo do título. A meia-pílula menta no canto dos botões continua menta: ela diz que a linha abre o pedido.
+  - Na escolha de público do hero, a metade escolhida ganha a cor do público, a mesma do menu, com texto navy. Os botões de ação continuam menta, a única cor de ação do site. Em violeta, o botão daria 2,7:1 contra o navy do hero e disputaria com o círculo e as faixas; o atalho do WhatsApp continuaria verde ao lado; e quem escolheu "Para você" veria a página de NR-1 com botões rosa. No pedido, a escolha continua marcando em navy, como todas as escolhas de lá.
 - **Assinatura visual:** o círculo Novee do kit, o degradê da paleta do `Profile Pic_1`, sem as letras, abre e fecha as páginas. Ele fica atrás da intérprete no hero da home, onde gira devagar com a rolagem, atrás da imagem em arco nos heroes internos e ao lado do texto no CTA do fim. As duas metades, os meios-círculos do padrão da marca, ficam nos detalhes, como a escolha de público (duas metades de uma pílula), o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
 - **Movimento:**
   - parallax do hero da home em camadas: o fundo desce, a intérprete sobe e o círculo Novee gira devagar;
@@ -167,7 +168,8 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   - A lista da home e a do passo 2 saem ordenadas pelos números de `content/site.md`, com ou sem JavaScript. O mecanismo de ordem por público continua: para voltar a ter uma ordem de empresa, basta mudar esses números. O menu, o rodapé e a ordem dos blocos da home são listas à parte.
   - As histórias 1 e 18 continuam atendidas: o NR-1 aparece no hero e na lista de serviços, e os cursos vêm primeiro para todo mundo. O destaque de NR-1 desceu por decisão da cliente.
 - **Efeitos da escolha:**
-  - o texto do botão de ação;
+  - o texto do botão de ação (a cor dele não muda: é sempre menta);
+  - a cor da metade escolhida no hero, a cor do público;
   - a mensagem do WhatsApp;
   - o passo 1 do drawer, que já vem respondido;
   - a ordem das modalidades na página de Idiomas.
@@ -385,3 +387,4 @@ Depois de ver o preview, a cliente mandou cinco apontamentos. Cada um atualiza a
 3. **Cor por família de idiomas.** O mesmo marca-texto no título de cada família: Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Vale na home e na página de cursos. Depois da publicação, o Maxwell pediu que o hover das línguas também seguisse a cor da família: o sublinhado do hover e o fio do idioma de destino usam a cor do grupo.
 4. **Ordem do conteúdo.** Idiomas, Tradução Simultânea, NR-1 e LMS, igual para os dois públicos. Detalhes em "Público duplo".
 5. **Logos nos depoimentos.** O logo da empresa entra ao lado do nome da pessoa, em uma cor só (navy) e escondido do leitor de tela, porque o nome da empresa continua no texto. O uso do logo depende de autorização da empresa, marcada como pendência junto com a da fala.
+6. **Cor do público na escolha.** Depois da publicação, o Maxwell propôs pintar a escolha e os botões de ação com a cor do público. A análise de UX, com as opções simuladas na tela, recomendou levar a cor só para a metade escolhida, e ele aprovou: os botões continuam menta. O porquê está em "Código de cor dos grupos".
