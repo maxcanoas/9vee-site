@@ -6,7 +6,7 @@ Cópia parcial do kit de marca da 9vee assinado por Kim Zamorano. O original est
 |---|---|---|
 | `Vectors/Logo_5.svg` | logo principal "9vee", navy #212D4D | menu e rodapé sobre fundo claro |
 | `Vectors/Logo_2.svg` | logo principal "9vee", off-white #F9F9F9 | sobre fundo navy |
-| `Vectors/Pattern.svg` | padrão de meios-círculos, violeta #5C58F4 | assinatura visual e textura dos placeholders |
+| `Vectors/Pattern.svg` | padrão de meios-círculos, violeta #5C58F4 | as duas metades dos detalhes e a textura dos placeholders |
 | `Vectors/Pattern_1.svg` | padrão, magenta #FE19D6 | idem |
 | `Vectors/Pattern_2.svg` | padrão, menta #16DF97 | idem |
 | `Vectors/Pattern_3.svg` | padrão, navy #212D4D | idem |

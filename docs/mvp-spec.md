@@ -147,7 +147,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | violeta (formas e gradientes) | #5C58F4 | oficial | não é usado em texto de interface |
 
 - **Tipografia:** no máximo 2 famílias, hospedadas no próprio site, com `font-display: swap`. Readex Pro (600) nos títulos e Source Sans 3 (400 e 700) no texto, as duas com licença OFL. A Atkinson Hyperlegible Next, proposta no começo, saiu na etapa 1: o zero dela é cortado ("2Ø26"), sem alternativa na fonte, e isso pesa em datas, telefones e números de lei. A fonte do logo (Neulis Sans) não entra, porque a licença cobre só o logo.
-- **Assinatura visual:** o círculo Novee do kit, o degradê da paleta do `Profile Pic_1`, sem as letras, abre e fecha as páginas. Ele fica atrás da intérprete no hero da home, onde gira devagar com a rolagem, atrás da imagem nos heroes internos e no CTA do fim. As duas metades, os meios-círculos do padrão da marca, ficam nos detalhes: a escolha de público (duas metades de uma pílula), o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
+- **Assinatura visual:** o círculo Novee do kit, o degradê da paleta do `Profile Pic_1`, sem as letras, abre e fecha as páginas. Ele fica atrás da intérprete no hero da home, onde gira devagar com a rolagem, atrás da imagem em arco nos heroes internos e ao lado do texto no CTA do fim. As duas metades, os meios-círculos do padrão da marca, ficam nos detalhes, como a escolha de público (duas metades de uma pílula), o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
 - **Movimento:**
   - parallax do hero da home em camadas: o fundo desce, a intérprete sobe e o círculo Novee gira devagar;
   - faixa de saudações nos 14 idiomas, que anda com a rolagem;
@@ -300,6 +300,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - JSON-LD válido e com os tipos certos por página, e FAQ do JSON-LD igual ao visível;
      - noindex presente, e ausente com `INDEXAVEL=true`;
      - a ordem dos serviços na home, no menu, no rodapé e no pedido, e o bloco dos idiomas logo depois da lista;
+     - o círculo da marca no hero e no CTA do fim, com alt vazio;
      - nenhum travessão, palavra proibida ou link genérico;
      - "Novee" só nos dois lugares permitidos;
      - links e âncoras internos que resolvem;
