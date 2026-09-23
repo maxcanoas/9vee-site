@@ -155,16 +155,18 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
     color: var(--navy-2);
   }
 
+  /* O sublinhado do hover e o fio do idioma de destino pegam a cor da família, a mesma do grifo do título,
+     para o código de cor valer na lista inteira. */
   a.idioma:hover .idioma__saudacao,
   button.idioma:hover .idioma__saudacao {
     text-decoration-line: underline;
-    text-decoration-color: var(--magenta);
+    text-decoration-color: var(--cor-grupo);
     text-decoration-thickness: var(--sublinhado-destaque);
     text-underline-offset: 0.18em;
   }
 
   .familia__item:target .idioma {
-    border-block-start-color: var(--magenta);
+    border-block-start-color: var(--cor-grupo);
   }
 
   @media (min-width: 64rem) {

@@ -39,6 +39,12 @@ const rolarAteImagem = (seletor: string, deslocamento = 0) => async (pagina: Pag
   await pagina.locator(`${seletor} img`).first().evaluate((imagem) => (imagem as HTMLImageElement).decode());
 };
 
+// Rola até as famílias e deixa o mouse sobre a primeira língua da família pedida.
+const passarMouseNaLingua = (familia: string) => async (pagina: Page) => {
+  await rolarAte('.familias', -160)(pagina);
+  await pagina.locator(`.familia[data-grupo="${familia}"] a.idioma`).first().hover();
+};
+
 const opcao = (pagina: Page, formulario: string, texto: string) =>
   pagina.locator(`[data-formulario="${formulario}"] label.opcao`, { hasText: texto }).first().click();
 
@@ -208,6 +214,9 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'familias-home-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
     { nome: 'familias-home-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.familias', -160) },
     { nome: 'familias-cursos-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
+    { nome: 'familias-hover-germanicas-1280', rota: '/', largura: 1280, altura: 800, antes: passarMouseNaLingua('germanicas') },
+    { nome: 'familias-hover-outras-1280', rota: '/', largura: 1280, altura: 800, antes: passarMouseNaLingua('outras') },
+    { nome: 'idioma-destino-1280', rota: '/curso-de-idiomas/#japones', largura: 1280, altura: 800 },
     { nome: 'depoimentos-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('#depoimentos', -60) },
     { nome: 'depoimentos-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('#depoimentos', -80) },
     { nome: 'depoimento-largo-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.depoimento:nth-child(3)', -80) },

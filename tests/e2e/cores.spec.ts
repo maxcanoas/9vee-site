@@ -32,6 +32,24 @@ test.describe('código de cor', () => {
     expect(new Set(cores).size).toBe(3);
   });
 
+  test('ao passar o mouse numa língua, o sublinhado tem a cor da família dela', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'hover só existe com mouse');
+    await page.goto('/');
+    for (const familia of ['germanicas', 'romanicas', 'outras']) {
+      const grupo = page.locator(`.familia[data-grupo="${familia}"]`);
+      const lingua = grupo.locator('a.idioma').first();
+      await lingua.hover();
+      const sublinhado = await lingua.locator('.idioma__saudacao').evaluate((el) => getComputedStyle(el).textDecorationColor);
+      expect(sublinhado, familia).toBe(await corDoGrifo(grupo.locator('.grifo')));
+    }
+  });
+
+  test('o idioma de destino ganha o fio na cor da família dele', async ({ page }) => {
+    await page.goto('/curso-de-idiomas/#japones');
+    const fio = await page.locator('#japones .idioma').first().evaluate((el) => getComputedStyle(el).borderTopColor);
+    expect(fio).toBe(await corDoGrifo(page.locator('.familia[data-grupo="outras"] .grifo')));
+  });
+
   // A faixa passa por trás da parte de baixo das letras: ali o texto também precisa de 4,5:1.
   test('o texto dá 4,5:1 sobre a faixa, no fundo claro e no escuro', async ({ page }) => {
     await page.goto('/');
