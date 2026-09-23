@@ -29,6 +29,10 @@ const rolarAte = (seletor: string, deslocamento = 0) => async (pagina: Page) => 
   );
 };
 
+const rolarPara = (topo: number) => async (pagina: Page) => {
+  await pagina.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), topo);
+};
+
 // Rola até o bloco e espera a imagem dele decodificar: fora da primeira tela, ela só carrega perto da vista.
 const rolarAteImagem = (seletor: string, deslocamento = 0) => async (pagina: Page) => {
   await rolarAte(seletor, deslocamento)(pagina);
@@ -67,7 +71,7 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'hero-390', rota: '/', largura: 390, altura: 844, movimento: true },
     { nome: 'hero-1280', rota: '/', largura: 1280, altura: 800, movimento: true },
-    { nome: 'hero-rolado-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 420, behavior: 'instant' })) },
+    { nome: 'hero-rolado-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarPara(420) },
     {
       nome: 'publico-voce-390',
       rota: '/',
@@ -144,7 +148,7 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'nr1-hero-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true },
     { nome: 'nr1-hero-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true },
-    { nome: 'nr1-hero-rolado-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 420, behavior: 'instant' })) },
+    { nome: 'nr1-hero-rolado-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarPara(420) },
     { nome: 'nr1-por-que-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#por-que-agora') },
     { nome: 'nr1-por-que-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#por-que-agora') },
     { nome: 'nr1-recebe-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#o-que-recebe') },
@@ -190,9 +194,9 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'painel-empresas-1280', rota: '/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Empresas' }).click() },
     { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: abrirServicoComoEmpresa },
     { nome: 'hero-390', rota: '/', largura: 390, altura: 844, movimento: true },
-    { nome: 'hero-rolado-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 200, behavior: 'instant' })) },
+    { nome: 'hero-rolado-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarPara(200) },
     { nome: 'hero-1280', rota: '/', largura: 1280, altura: 800, movimento: true },
-    { nome: 'hero-rolado-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 250, behavior: 'instant' })) },
+    { nome: 'hero-rolado-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarPara(250) },
     { nome: 'hero-parado-1280', rota: '/', largura: 1280, altura: 800 },
     { nome: 'nr1-hero-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true },
     { nome: 'idiomas-hero-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true },
