@@ -8,7 +8,7 @@ test.describe('sem preferência de movimento', () => {
 
   test('o hero anima com a rolagem', async ({ page }) => {
     await page.goto('/');
-    const animacao = await page.locator('.hero__meia').first().evaluate((el) => getComputedStyle(el).animationName);
+    const animacao = await page.locator('.hero__circulo').evaluate((el) => getComputedStyle(el).animationName);
     expect(animacao).not.toBe('none');
   });
 });

@@ -147,6 +147,18 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
+  // O círculo Novee do kit abre (hero) e fecha (CTA do fim) as páginas. É enfeite: alt vazio e contêiner escondido.
+  it('usa o círculo Novee no topo e no fechamento, como enfeite', () => {
+    const blocos = raiz.querySelectorAll('.hero__visual, .hero-pagina__visual, .cta-final');
+    if (rota !== '/404') expect(blocos.length, `${rota} sem hero`).toBeGreaterThan(0);
+    for (const bloco of blocos) {
+      const circulo = bloco.querySelector('[aria-hidden="true"] img');
+      expect(circulo, rota).not.toBeNull();
+      expect(circulo?.getAttribute('alt')).toBe('');
+      expect(circulo?.getAttribute('src')).toMatch(/\/circulo-novee\./);
+    }
+  });
+
   it('tem width, height e alt em toda imagem', () => {
     for (const img of raiz.querySelectorAll('img')) {
       expect(img.getAttribute('width'), img.toString()).toBeTruthy();

@@ -3,6 +3,7 @@
 import Figura from './Figura.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
+import CirculoNovee from './CirculoNovee.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
 
@@ -33,8 +34,9 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.prop
     </div>
 
     <div class="hero-pagina__visual">
-      <span class="hero-pagina__meia hero-pagina__meia--esquerda" aria-hidden="true"></span>
-      <span class="hero-pagina__meia hero-pagina__meia--direita" aria-hidden="true"></span>
+      <div class="hero-pagina__circulo" aria-hidden="true">
+        <CirculoNovee sizes="(min-width: 64rem) 21rem, (min-width: 32.5rem) 19rem, 58vw" primeiraDobra />
+      </div>
       <div class="hero-pagina__quadro">
         <Figura
           {...imagem}
@@ -106,23 +108,10 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.prop
     z-index: 1;
   }
 
-  .hero-pagina__meia {
+  .hero-pagina__circulo {
     position: absolute;
     inset-block-start: -7%;
-    inline-size: 47%;
-    aspect-ratio: 1 / 2;
-  }
-
-  .hero-pagina__meia--esquerda {
-    inset-inline-end: calc(50% + var(--fio-metades) / 2);
-    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
-    background-color: var(--menta);
-  }
-
-  .hero-pagina__meia--direita {
-    inset-inline-start: calc(50% + var(--fio-metades) / 2);
-    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
-    background-color: var(--magenta);
+    inset-inline: 3%;
   }
 
   @media (min-width: 64rem) {

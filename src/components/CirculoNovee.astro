@@ -1,0 +1,33 @@
+---
+// O círculo Novee do kit: o degradê da paleta do Profile Pic_1, sem as letras, que abre e fecha as páginas.
+// O arquivo sai de scripts/gerar-ativos.ts. É enfeite: alt vazio, e o contêiner fica escondido do leitor de tela.
+import { Picture } from 'astro:assets';
+import circulo from '../assets/marca/circulo-novee.png';
+
+interface Props {
+  sizes: string;
+  /** Na primeira tela: carrega já, mas sem a prioridade alta, que fica com a imagem principal. */
+  primeiraDobra?: boolean;
+}
+
+const { sizes, primeiraDobra = false } = Astro.props;
+---
+
+<Picture
+  src={circulo}
+  alt=""
+  formats={['avif']}
+  fallbackFormat="webp"
+  widths={[320, 480, 640, 800, 1000]}
+  sizes={sizes}
+  loading={primeiraDobra ? 'eager' : 'lazy'}
+  class="circulo-novee"
+/>
+
+<style>
+  .circulo-novee {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+</style>

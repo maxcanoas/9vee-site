@@ -147,9 +147,9 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   | violeta (formas e gradientes) | #5C58F4 | oficial | não é usado em texto de interface |
 
 - **Tipografia:** no máximo 2 famílias, hospedadas no próprio site, com `font-display: swap`. Readex Pro (600) nos títulos e Source Sans 3 (400 e 700) no texto, as duas com licença OFL. A Atkinson Hyperlegible Next, proposta no começo, saiu na etapa 1: o zero dela é cortado ("2Ø26"), sem alternativa na fonte, e isso pesa em datas, telefones e números de lei. A fonte do logo (Neulis Sans) não entra, porque a licença cobre só o logo.
-- **Assinatura visual, "as duas metades":** os meios-círculos do padrão da marca, que se juntam num círculo conforme a rolagem. A escolha de público usa o mesmo desenho: duas metades de uma pílula.
+- **Assinatura visual:** o círculo Novee do kit, o degradê da paleta do `Profile Pic_1`, sem as letras, abre e fecha as páginas. Ele fica atrás da intérprete no hero da home, onde gira devagar com a rolagem, atrás da imagem nos heroes internos e no CTA do fim. As duas metades, os meios-círculos do padrão da marca, ficam nos detalhes: a escolha de público (duas metades de uma pílula), o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
 - **Movimento:**
-  - parallax do hero da home em camadas (fundo, plano médio e texto);
+  - parallax do hero da home em camadas: o fundo desce, a intérprete sobe e o círculo Novee gira devagar;
   - faixa de saudações nos 14 idiomas, que anda com a rolagem;
   - "Como funciona" em rolagem fixa, com as etapas trocando;
   - contadores na faixa de prova;
@@ -259,6 +259,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 ### Imagens
 
 - Nenhuma imagem de banco. O kit da cliente não tem foto nenhuma. Cada imagem do MVP é um Placeholder na proporção final: gradiente da marca, textura sutil do padrão, ID visível (por exemplo, IMG-HOME-HERO-FUNDO) e o alt definitivo.
+- O círculo Novee sai do kit. O `scripts/gerar-ativos.ts` tira do `Vectors/Profile Pic_1.svg` só a camada de degradê, com o recorte do próprio kit, e grava `src/assets/marca/circulo-novee.png`. O site serve AVIF com WebP de reserva, como nas outras imagens.
 - **Troca por nome de arquivo:** basta salvar a imagem do Gemini em `src/assets/imagens/`, com o nome indicado, e rodar o build. O site passa a servir AVIF com fallback WebP, srcset, width e height, lazy fora da primeira dobra e prioridade alta só no hero. A pasta é `src/assets/imagens/`, e não `public/images/`, porque o Astro só otimiza imagens dentro de `src/`.
 - **Registro de cada imagem em `docs/imagens-gemini.md`:** ID, página e seção, proporção e tamanho final, nome do arquivo e prompt em inglês, sempre começando pelo estilo base do brief.
   - O hero da home sai em duas camadas: um prompt para o fundo, sem pessoas em primeiro plano, e outro para o elemento da frente, sobre fundo liso de cor única.

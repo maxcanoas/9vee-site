@@ -1,4 +1,5 @@
-// Gera em public/ os ícones, a imagem de prévia do link e o logo em PNG, a partir do kit da cliente.
+// Gera a partir do kit da cliente os ícones, a imagem de prévia do link e o logo em PNG (em public/)
+// e o círculo Novee (em src/assets/marca/, onde o Astro otimiza a imagem).
 // Rodar de novo só se o kit mudar: node scripts/gerar-ativos.ts
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -69,4 +70,22 @@ await writeFile(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${padrao.viewBox}">${desenhar(padrao.formas, '#ffffff')}</svg>\n`,
 );
 
+// Círculo Novee (Vectors/Profile Pic_1.svg): só a camada de degradê, com o recorte em círculo do próprio kit.
+// As letras ficam de fora, porque no site a intérprete e as imagens cobrem o miolo do círculo.
+const perfilNovee = await doKit('Vectors/Profile Pic_1.svg');
+const viewBoxNovee = /viewBox="([^"]+)"/.exec(perfilNovee)?.[1];
+const recorteNovee = /<clipPath id="clippath">\s*<circle[^>]*\bcx="([^"]+)"[^>]*\bcy="([^"]+)"[^>]*\br="([^"]+)"/.exec(perfilNovee);
+const degradeNovee = /<image\b[^>]*\/>/.exec(perfilNovee)?.[0];
+if (!viewBoxNovee || !recorteNovee || !degradeNovee) throw new Error('Profile Pic_1.svg sem o degradê ou o recorte');
+const ladoCirculo = 1200;
+const circuloNovee =
+  `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${viewBoxNovee}" width="${ladoCirculo}" height="${ladoCirculo}">` +
+  `<clipPath id="c"><circle cx="${recorteNovee[1]}" cy="${recorteNovee[2]}" r="${recorteNovee[3]}"/></clipPath>` +
+  `<g clip-path="url(#c)">${degradeNovee}</g></svg>`;
+await mkdir(new URL('src/assets/marca/', raiz), { recursive: true });
+await sharp(Buffer.from(circuloNovee))
+  .png({ compressionLevel: 9 })
+  .toFile(fileURLToPath(new URL('src/assets/marca/circulo-novee.png', raiz)));
+
 console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg');
+console.log('e em src/assets/marca/: circulo-novee.png');

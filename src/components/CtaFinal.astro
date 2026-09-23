@@ -1,7 +1,8 @@
 ---
-// O fechamento: as duas metades do topo agora estão juntas, formando o círculo.
+// O fechamento repete o círculo Novee do topo da página.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
+import CirculoNovee from './CirculoNovee.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
 
@@ -20,8 +21,7 @@ const { titulo, texto, cta, rotulo, servico } = Astro.props;
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
   <div class="conteiner cta-final__grade">
     <div class="cta-final__circulo" aria-hidden="true">
-      <span class="cta-final__meia cta-final__meia--esquerda"></span>
-      <span class="cta-final__meia cta-final__meia--direita"></span>
+      <CirculoNovee sizes="(min-width: 64rem) 16rem, (min-width: 27.5rem) 11rem, 40vw" />
     </div>
     <div class="cta-final__texto">
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
@@ -42,26 +42,8 @@ const { titulo, texto, cta, rotulo, servico } = Astro.props;
     align-items: center;
   }
 
-  /* O fio entre as metades faz ler "duas partes que se encontram", e não um gráfico de pizza. */
   .cta-final__circulo {
-    display: flex;
-    gap: var(--fio-metades);
     inline-size: min(40vw, 11rem);
-  }
-
-  .cta-final__meia {
-    flex: 1;
-    aspect-ratio: 1 / 2;
-  }
-
-  .cta-final__meia--esquerda {
-    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
-    background-color: var(--menta);
-  }
-
-  .cta-final__meia--direita {
-    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
-    background-color: var(--magenta);
   }
 
   .cta-final__texto {

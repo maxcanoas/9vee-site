@@ -29,6 +29,12 @@ const rolarAte = (seletor: string, deslocamento = 0) => async (pagina: Page) => 
   );
 };
 
+// Rola até o bloco e espera a imagem dele decodificar: fora da primeira tela, ela só carrega perto da vista.
+const rolarAteImagem = (seletor: string, deslocamento = 0) => async (pagina: Page) => {
+  await rolarAte(seletor, deslocamento)(pagina);
+  await pagina.locator(`${seletor} img`).first().evaluate((imagem) => (imagem as HTMLImageElement).decode());
+};
+
 const opcao = (pagina: Page, formulario: string, texto: string) =>
   pagina.locator(`[data-formulario="${formulario}"] label.opcao`, { hasText: texto }).first().click();
 
@@ -183,6 +189,15 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'menu-aberto-390', rota: '/', largura: 390, altura: 844, antes: (p) => p.getByRole('button', { name: 'Menu', exact: true }).click() },
     { nome: 'painel-empresas-1280', rota: '/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Empresas' }).click() },
     { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: abrirServicoComoEmpresa },
+    { nome: 'hero-390', rota: '/', largura: 390, altura: 844, movimento: true },
+    { nome: 'hero-rolado-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 200, behavior: 'instant' })) },
+    { nome: 'hero-1280', rota: '/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'hero-rolado-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: (p) => p.evaluate(() => window.scrollTo({ top: 250, behavior: 'instant' })) },
+    { nome: 'hero-parado-1280', rota: '/', largura: 1280, altura: 800 },
+    { nome: 'nr1-hero-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true },
+    { nome: 'idiomas-hero-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true },
+    { nome: 'cta-final-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAteImagem('#contato', -80) },
+    { nome: 'cta-final-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAteImagem('#contato', -120) },
   ],
 };
 
