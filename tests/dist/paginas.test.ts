@@ -195,9 +195,10 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(gzip).toBeLessThan(10 * 1024);
   });
 
+  // As cores do grifo (--grifo-*) e a cor do grupo (--cor-grupo) são magenta e violeta com outro nome.
   it('não usa magenta nem violeta como cor de texto (a paleta reserva as duas para forma e foco)', () => {
     const css = raiz.querySelectorAll('style').map((s) => s.textContent).join('\n');
-    expect(css).not.toMatch(/(?<![\w-])color:\s*var\(--(?:magenta|violeta)\)/);
+    expect(css).not.toMatch(/(?<![\w-])color:\s*var\(--(?:magenta|violeta|cor-grupo|grifo-[\w-]+)\)/);
   });
 
   it('só faz a transição entre páginas para quem não pediu menos movimento', () => {

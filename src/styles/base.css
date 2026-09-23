@@ -209,24 +209,41 @@ mark.confirmar {
   white-space: nowrap;
 }
 
-/* Grifo: a faixa de marca-texto atrás da metade de baixo do texto, na cor do grupo (--cor-grupo).
+/* Grifo: a faixa de marca-texto atrás da parte de baixo das letras, na cor do grupo (--cor-grupo).
    O box-shadow aqui não é sombra: é a própria faixa, cor sólida que acompanha a quebra de linha.
-   A sobra de cada lado deixa a faixa um pouco mais larga que a palavra, sem tirar o texto do alinhamento. */
+   A sobra de cada lado deixa a faixa um pouco mais larga que a palavra, sem tirar o texto do alinhamento.
+   A fonte vem junto porque a altura da faixa foi medida na Readex Pro. */
 .grifo {
   margin-inline: calc(-1 * var(--grifo-sobra));
   padding-inline: var(--grifo-sobra);
   box-shadow: inset 0 calc(-1 * var(--grifo-altura)) 0 var(--cor-grupo);
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
-/* A cor de cada público nos títulos de grupo do menu e do rodapé. */
-[data-grupo='empresas'] {
-  --cor-grupo: var(--cor-empresas);
+/* Um mapa só, do id do grupo em content/site.md para a cor, para o menu, o rodapé e as famílias de idiomas.
+   A cor é lida onde o grupo está, então o fundo escuro troca as faixas logo abaixo sem outro mapa. */
+[data-grupo='empresas'],
+[data-grupo='germanicas'] {
+  --cor-grupo: var(--grifo-violeta);
 }
 
-[data-grupo='para-voce'] {
-  --cor-grupo: var(--cor-voce);
+[data-grupo='para-voce'],
+[data-grupo='romanicas'] {
+  --cor-grupo: var(--grifo-magenta);
+}
+
+[data-grupo='outras'] {
+  --cor-grupo: var(--grifo-menta);
+}
+
+/* No fundo escuro o texto do grifo é papel: a violeta pura dá 4,8:1 e a magenta escurecida, 4,6:1.
+   A menta não serve aqui (1,5:1), e nenhum grupo com menta aparece no escuro. */
+.escuro {
+  --grifo-violeta: var(--violeta);
+  --grifo-magenta: color-mix(in oklab, var(--magenta) 77%, var(--noite));
 }
 
 /* Selo numérico: a pílula da marca com o número da etapa ou do módulo dentro. */

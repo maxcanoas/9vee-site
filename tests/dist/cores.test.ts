@@ -25,7 +25,7 @@ describe('código de cor', () => {
     ['na página de cursos', cursos],
   ])('grifa o título de cada família de idiomas %s', (_onde, raiz) => {
     const familias = raiz.querySelectorAll('.familia');
-    expect(familias.map((familia) => familia.getAttribute('data-familia'))).toEqual(['germanicas', 'romanicas', 'outras']);
+    expect(familias.map((familia) => familia.getAttribute('data-grupo'))).toEqual(['germanicas', 'romanicas', 'outras']);
     for (const familia of familias) expect(familia.querySelector('h3 .grifo')).not.toBeNull();
   });
 });

@@ -26,7 +26,7 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
           menu.grupos.map((grupo) => (
             <li data-grupo={grupo.id}>
               <button class="nav-larga__grupo" type="button" popovertarget={`painel-${grupo.id}`}>
-                <span class="grifo">{grupo.rotulo}</span>
+                <span class="nav-larga__rotulo"><span class="grifo">{grupo.rotulo}</span></span>
               </button>
               <div class="painel" id={`painel-${grupo.id}`} popover>
                 <div class="conteiner painel__grade">
@@ -226,9 +226,7 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
   }
 
   .menu-movel__rotulo {
-    font-family: var(--fonte-titulo);
     font-size: var(--t-interface);
-    font-weight: 600;
   }
 
   .painel__lista {
@@ -260,11 +258,10 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
     transition-duration: var(--dur-rapida);
   }
 
-  /* Dentro de um grupo, o sublinhado pega a cor do público; fora dele (Quem somos), fica o magenta. */
   .painel__link:hover .painel__item,
   .menu-movel__link:hover .painel__item,
   [aria-current='page'] .painel__item {
-    text-decoration-color: var(--cor-grupo, var(--magenta));
+    text-decoration-color: var(--magenta);
   }
 
   .painel__descricao {
@@ -389,9 +386,11 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
       transform: rotate(180deg);
     }
 
-    /* Na barra do computador, o grifo só aparece no hover e com o painel aberto: fixo, pesaria no cabeçalho. */
-    .nav-larga__grupo:not(:hover, :has(+ .painel:popover-open)) .grifo {
-      box-shadow: none;
+    /* Na barra do computador, a faixa só aparece no hover, no foco e com o painel aberto: fixa, pesaria no
+       cabeçalho. Parado, zera a cor do grupo só no rótulo, e a meia-lua continua colorida. O rótulo fica num
+       span próprio porque o botão é flex: o grifo precisa continuar inline para a faixa subir da caixa do texto. */
+    .nav-larga__grupo:not(:hover, :focus-visible, :has(+ .painel:popover-open)) .nav-larga__rotulo {
+      --cor-grupo: transparent;
     }
 
     .cabecalho__cta {

@@ -1,10 +1,11 @@
 import { expect, test, type Locator } from '@playwright/test';
 
-// A cor da faixa do grifo, lida do box-shadow calculado ("rgb(92, 88, 244) 0px -9.6px 0px 0px inset").
+// A cor da faixa do grifo, que abre o box-shadow calculado ("oklab(...) 0px -9.6px 0px 0px inset": a cor vem
+// de um color-mix). Faixa transparente conta como sem grifo.
 const corDoGrifo = (grifo: Locator) =>
   grifo.evaluate((el) => {
-    const faixa = getComputedStyle(el).boxShadow;
-    return faixa === 'none' ? null : (faixa.match(/rgba?\([^)]*\)/)?.[0] ?? null);
+    const cor = /^(\w+\([^)]*\)|#\w+|\w+)/.exec(getComputedStyle(el).boxShadow)?.[1] ?? 'none';
+    return cor === 'none' || cor === 'rgba(0, 0, 0, 0)' ? null : cor;
   });
 
 test.describe('código de cor', () => {
@@ -24,14 +25,41 @@ test.describe('código de cor', () => {
     await page.goto('/');
     const cores = await Promise.all(
       ['germanicas', 'romanicas', 'outras'].map((familia) =>
-        corDoGrifo(page.locator(`.familia[data-familia="${familia}"] .grifo`)),
+        corDoGrifo(page.locator(`.familia[data-grupo="${familia}"] .grifo`)),
       ),
     );
     expect(cores.every(Boolean)).toBe(true);
     expect(new Set(cores).size).toBe(3);
   });
 
-  test('no computador, o grifo do grupo só aparece com o painel aberto', async ({ page, isMobile }) => {
+  // A faixa passa por trás da parte de baixo das letras: ali o texto também precisa de 4,5:1.
+  test('o texto dá 4,5:1 sobre a faixa, no fundo claro e no escuro', async ({ page }) => {
+    await page.goto('/');
+    const contrastes = await page.locator('#menu-movel .grifo, footer .grifo, .familia .grifo').evaluateAll((grifos) => {
+      // O canvas converte qualquer cor CSS (oklab, color-mix resolvido) para RGB.
+      const tela = document.createElement('canvas').getContext('2d')!;
+      const rgb = (cor: string) => {
+        tela.clearRect(0, 0, 1, 1);
+        tela.fillStyle = cor;
+        tela.fillRect(0, 0, 1, 1);
+        return [...tela.getImageData(0, 0, 1, 1).data.slice(0, 3)];
+      };
+      const luminancia = (cor: string) => {
+        const [r, g, b] = rgb(cor).map((v) => (v / 255 <= 0.04045 ? v / 255 / 12.92 : ((v / 255 + 0.055) / 1.055) ** 2.4));
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      };
+      return grifos.map((grifo) => {
+        const estilo = getComputedStyle(grifo);
+        const faixa = /^(\w+\([^)]*\)|#\w+|\w+)/.exec(estilo.boxShadow)?.[1] ?? '';
+        const [a, b] = [luminancia(estilo.color), luminancia(faixa)];
+        return { texto: grifo.textContent?.trim(), razao: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) };
+      });
+    });
+    expect(contrastes).toHaveLength(7);
+    for (const { texto, razao } of contrastes) expect(razao, texto).toBeGreaterThanOrEqual(4.5);
+  });
+
+  test('no computador, o grifo do grupo aparece com o painel aberto e some parado', async ({ page, isMobile }) => {
     test.skip(isMobile, 'a barra com os grupos só existe no computador');
     await page.goto('/');
     const grifo = page.locator('.nav-larga [data-grupo="empresas"] .grifo');

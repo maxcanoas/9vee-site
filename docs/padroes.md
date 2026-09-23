@@ -42,7 +42,8 @@
 - Não use `@scope`, que quebra o minificador.
 - Não use `backdrop-filter`, gradiente em texto ou gradiente em botão. Gradiente só na arte da marca, nos Placeholders e no véu do hero, que garante a leitura do texto sobre a imagem.
 - Sombra só com motivo escrito em comentário. A profundidade vem de cor de fundo e de fio de 1 px. O `box-shadow: inset` do grifo e do campo inválido é traço de forma, não sombra.
-- O grifo (a faixa de marca-texto) sai só pela classe `.grifo` e só com as cores do código de grupo: `--cor-empresas`, `--cor-voce` e as das famílias. Vai em rótulo na fonte de título, porque a altura da faixa foi medida na Readex Pro.
+- O grifo (a faixa de marca-texto) sai só pela classe `.grifo` e só com as cores do grifo (`--grifo-violeta`, `--grifo-magenta` e `--grifo-menta`), pelo mapa `[data-grupo]` do `base.css`. A classe traz a fonte de título, porque a altura da faixa foi medida na Readex Pro.
+- O texto sobre a faixa segue a regra dos 4,5:1, porque a faixa passa por trás das letras. As cores do grifo clareiam no fundo claro e escurecem no `.escuro` só o bastante para isso, e a menta não vai em fundo escuro.
 - `:focus-visible` desenhado em todo elemento interativo, com os tokens `--foco` e `--foco-afastamento`.
 - **(teste)** Magenta e violeta nunca como cor de texto: as duas ficam para forma, foco e arte.
 - **(teste)** Contraste mínimo de 4,5:1 em texto normal e 3:1 em texto grande e indicador de foco, calculado.
