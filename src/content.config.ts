@@ -284,6 +284,8 @@ const home = defineCollection({
             nome: z.string(),
             cargo: z.string(),
             empresa: z.string(),
+            /** Nome do arquivo em src/assets/logos/, sem o .svg. */
+            logo: z.string().regex(/^[a-z-]+$/).optional(),
             servico: z.string(),
             pendencia: z.string().optional(),
           }),

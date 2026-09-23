@@ -1,12 +1,16 @@
 ---
-// Trecho literal de cada fala, sem reescrever, com nome, cargo e empresa. Sem logo e sem estrelas.
+// Trecho literal de cada fala, sem reescrever, com nome, cargo e empresa. Sem estrelas.
+// O logo da empresa vai ao lado do nome, na cor do texto e escondido do leitor de tela, que já ouve
+// a empresa na linha do cargo. De onde vem cada logo está em src/assets/logos/LEIA-ME.md.
 import Texto from './Texto.astro';
+import SvgDoKit from './SvgDoKit.astro';
 
 interface Depoimento {
   trecho: string;
   nome: string;
   cargo: string;
   empresa: string;
+  logo?: string;
   servico: string;
   pendencia?: string;
 }
@@ -18,6 +22,13 @@ interface Props {
 }
 
 const { titulo, itens, rotuloAutorizacao } = Astro.props;
+
+const logos = import.meta.glob<string>('/src/assets/logos/*.svg', { query: '?raw', import: 'default', eager: true });
+const logoDe = (nome: string) => {
+  const bruto = logos[`/src/assets/logos/${nome}.svg`];
+  if (!bruto) throw new Error(`logo "${nome}" não está em src/assets/logos/`);
+  return bruto;
+};
 ---
 
 <section class="depoimentos" id="depoimentos" aria-labelledby="depoimentos-titulo">
@@ -34,6 +45,11 @@ const { titulo, itens, rotuloAutorizacao } = Astro.props;
                 </p>
               </blockquote>
               <figcaption class="depoimento__autor">
+                {depoimento.logo && (
+                  <span class="depoimento__logo" data-logo={depoimento.logo}>
+                    <SvgDoKit bruto={logoDe(depoimento.logo)} />
+                  </span>
+                )}
                 <span class="depoimento__nome">
                   <Texto de={depoimento.nome} />
                 </span>
@@ -100,6 +116,34 @@ const { titulo, itens, rotuloAutorizacao } = Astro.props;
     gap: var(--e-1);
   }
 
+  /* Com logo, ele fica à esquerda do nome, do cargo e do serviço; a autorização desce na largura toda. */
+  .depoimento__autor:has(.depoimento__logo) {
+    grid-template-columns: auto 1fr;
+    column-gap: var(--e-4);
+  }
+
+  .depoimento__autor:has(.depoimento__logo) > * {
+    grid-column: 2;
+  }
+
+  .depoimento__autor > .depoimento__logo {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-self: center;
+    color: var(--navy);
+  }
+
+  /* Os emblemas (Nissan e GM) na altura de três linhas de texto. O da Embraer é só a palavra: mais baixo,
+     para pesar como os outros. É forma, e não tamanho de texto, como os logos do cabeçalho e do rodapé. */
+  .depoimento__logo :global(svg) {
+    inline-size: auto;
+    block-size: 2.75rem;
+  }
+
+  .depoimento__logo[data-logo='embraer'] :global(svg) {
+    block-size: 1.1rem;
+  }
+
   .depoimento__nome {
     font-weight: 700;
   }
@@ -111,6 +155,10 @@ const { titulo, itens, rotuloAutorizacao } = Astro.props;
 
   .depoimento__servico {
     font-size: var(--t-pequeno);
+  }
+
+  .depoimento__autor > .depoimento__autorizacao {
+    grid-column: 1 / -1;
   }
 
   .depoimento__autorizacao {

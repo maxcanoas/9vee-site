@@ -230,7 +230,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 ### Conteúdo e pendências
 
 - **Faixa de prova:** 14 idiomas, 19 anos, +160 clientes e +65 profissionais, os números que o site atual publica. Os quatro são pendências, porque o próprio site se contradiz: o Quem Somos diz "mais de 20 anos", e a página de Idiomas fala em 12 idiomas.
-- **Depoimentos** de Eduardo Martins (Nissan), Bruno Teixeira (GM) e Pedro Cavalcante (Embraer): trecho literal, sem reescrita e sem logo, com nome, cargo e empresa, marcados "a confirmar autorização". Os trechos escolhidos não citam a marca.
+- **Depoimentos** de Eduardo Martins (Nissan), Bruno Teixeira (GM) e Pedro Cavalcante (Embraer): trecho literal, sem reescrita, com nome, cargo e empresa, marcados "a confirmar autorização". Os trechos escolhidos não citam a marca. O logo da empresa fica ao lado do nome, como a cliente pediu em 23/09/2026: em uma cor só (navy), escondido do leitor de tela e com a autorização da empresa na mesma pendência da fala. De onde vem cada logo está em `src/assets/logos/LEIA-ME.md`.
 - **NR-1:**
   - fiscalização com autuação desde 26/05/2026, pela Portaria MTE nº 1.419/2024;
   - Certificado Empresa Promotora da Saúde Mental, criado pela Lei 14.831/2024, com o regulamento ainda pendente;
@@ -341,7 +341,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 
 - Ano de fundação (19 anos ou "mais de 20") e quantidade de idiomas (14 ou 12).
 - Clientes (+160) e profissionais (+65).
-- Autorização por escrito dos 3 depoimentos, e a confirmação de que as falas são reais: os textos têm marcas fortes de texto gerado.
+- Autorização por escrito dos 3 depoimentos e dos logos das empresas, e a confirmação de que as falas são reais: os textos têm marcas fortes de texto gerado.
 - NR-1: carga horária, formato, tamanho de turma, entregáveis, certificado de participação e uma leitura jurídica do argumento de risco.
 - Idiomas: aula presencial nas 4 cidades, faixa de preço, certificado e duração por nível.
 - Prazo de resposta do comercial, para a tela de confirmação do drawer.

@@ -87,6 +87,16 @@ describe('home', () => {
       expect(depoimento.querySelector('mark.confirmar')).not.toBeNull();
     }
   });
+
+  // O leitor de tela já ouve o nome da empresa na linha do cargo: o logo repetiria.
+  it('põe o logo da empresa ao lado do nome em cada depoimento, escondido do leitor de tela', () => {
+    for (const depoimento of home.querySelectorAll('.depoimento')) {
+      const logo = depoimento.querySelector('figcaption .depoimento__logo svg');
+      expect(logo, depoimento.querySelector('.depoimento__nome')?.text.trim()).not.toBeNull();
+      expect(logo?.getAttribute('aria-hidden')).toBe('true');
+      expect(logo?.querySelector('path')).not.toBeNull();
+    }
+  });
 });
 
 // A figura sai como imagem se o arquivo do Gemini já está em src/assets/imagens/, e como Placeholder se não.
