@@ -84,7 +84,6 @@ O SEO do link que você vai mandar aparece como 66 a 69, e isso é de propósito
 
 - O envio de verdade do formulário, por e-mail ou para o CRM.
 - As versões completas de Tradução Simultânea, LMS e Quem Somos.
-- Cinco das doze imagens, que ainda são as provisórias com o ID à vista.
 - Páginas por idioma e por cidade, a limpeza do blog e a tabela de redirecionamentos.
 - A medição com GA4, as conversões e o aviso de cookies.
 - A troca do domínio e a saída do Wix.
