@@ -25,9 +25,9 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
     <nav class="rodape__nav" aria-label={rodape.rotuloNavegacao}>
       {
         menu.grupos.map((grupo) => (
-          <div>
+          <div data-grupo={grupo.id}>
             <p class="rodape__rotulo" id={`rodape-${grupo.id}`}>
-              {grupo.rotulo}
+              <span class="grifo">{grupo.rotulo}</span>
             </p>
             <ul class="rodape__lista" role="list" aria-labelledby={`rodape-${grupo.id}`}>
               {grupo.itens.map((item) => (
@@ -132,6 +132,14 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
     color: var(--menta);
     font-size: var(--t-pequeno);
     font-weight: 700;
+  }
+
+  /* Os grupos de público levam o grifo na cor deles, na fonte de título, como no menu. O texto fica claro
+     para não brigar com a faixa. */
+  .rodape__nav .rodape__rotulo {
+    color: var(--papel);
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
   }
 
   .rodape__lista {

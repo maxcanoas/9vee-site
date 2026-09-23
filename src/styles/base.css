@@ -209,6 +209,26 @@ mark.confirmar {
   white-space: nowrap;
 }
 
+/* Grifo: a faixa de marca-texto atrás da metade de baixo do texto, na cor do grupo (--cor-grupo).
+   O box-shadow aqui não é sombra: é a própria faixa, cor sólida que acompanha a quebra de linha.
+   A sobra de cada lado deixa a faixa um pouco mais larga que a palavra, sem tirar o texto do alinhamento. */
+.grifo {
+  margin-inline: calc(-1 * var(--grifo-sobra));
+  padding-inline: var(--grifo-sobra);
+  box-shadow: inset 0 calc(-1 * var(--grifo-altura)) 0 var(--cor-grupo);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* A cor de cada público nos títulos de grupo do menu e do rodapé. */
+[data-grupo='empresas'] {
+  --cor-grupo: var(--cor-empresas);
+}
+
+[data-grupo='para-voce'] {
+  --cor-grupo: var(--cor-voce);
+}
+
 /* Selo numérico: a pílula da marca com o número da etapa ou do módulo dentro. */
 .selo-numero {
   display: grid;

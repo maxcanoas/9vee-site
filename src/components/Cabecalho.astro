@@ -24,9 +24,9 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
       <ul class="nav-larga__lista" role="list">
         {
           menu.grupos.map((grupo) => (
-            <li>
+            <li data-grupo={grupo.id}>
               <button class="nav-larga__grupo" type="button" popovertarget={`painel-${grupo.id}`}>
-                {grupo.rotulo}
+                <span class="grifo">{grupo.rotulo}</span>
               </button>
               <div class="painel" id={`painel-${grupo.id}`} popover>
                 <div class="conteiner painel__grade">
@@ -82,9 +82,9 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
     <nav class="conteiner menu-movel__nav" aria-label={menu.abrir}>
       {
         menu.grupos.map((grupo) => (
-          <section class="menu-movel__grupo" aria-labelledby={`movel-${grupo.id}`}>
+          <section class="menu-movel__grupo" aria-labelledby={`movel-${grupo.id}`} data-grupo={grupo.id}>
             <p class="menu-movel__rotulo" id={`movel-${grupo.id}`}>
-              {grupo.rotulo}
+              <span class="grifo">{grupo.rotulo}</span>
             </p>
             <ul class="menu-movel__lista" role="list">
               {grupo.itens.map((item) => (
@@ -226,9 +226,9 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
   }
 
   .menu-movel__rotulo {
-    color: var(--navy-2);
-    font-size: var(--t-pequeno);
-    font-weight: 700;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-interface);
+    font-weight: 600;
   }
 
   .painel__lista {
@@ -260,10 +260,11 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
     transition-duration: var(--dur-rapida);
   }
 
+  /* Dentro de um grupo, o sublinhado pega a cor do público; fora dele (Quem somos), fica o magenta. */
   .painel__link:hover .painel__item,
   .menu-movel__link:hover .painel__item,
   [aria-current='page'] .painel__item {
-    text-decoration-color: var(--magenta);
+    text-decoration-color: var(--cor-grupo, var(--magenta));
   }
 
   .painel__descricao {
@@ -375,17 +376,22 @@ const ehAtual = (href: string) => (href === atual ? 'page' : undefined);
       background-color: var(--nevoa);
     }
 
-    /* Indicador: meio-círculo da marca, que gira quando o painel abre. */
+    /* Indicador: meio-círculo da marca, na cor do público, que gira quando o painel abre. */
     .nav-larga__grupo::after {
       content: '';
       inline-size: 0.625rem;
       block-size: 0.3125rem;
       border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
-      background-color: var(--magenta);
+      background-color: var(--cor-grupo);
     }
 
     .nav-larga__grupo:has(+ .painel:popover-open)::after {
       transform: rotate(180deg);
+    }
+
+    /* Na barra do computador, o grifo só aparece no hover e com o painel aberto: fixo, pesaria no cabeçalho. */
+    .nav-larga__grupo:not(:hover, :has(+ .painel:popover-open)) .grifo {
+      box-shadow: none;
     }
 
     .cabecalho__cta {

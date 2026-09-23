@@ -19,7 +19,14 @@
   --papel-veu: color-mix(in oklab, var(--papel) 12%, transparent);
   --papel-denso: color-mix(in oklab, var(--papel) 88%, transparent);
   --linha-escura: color-mix(in oklab, var(--sobre-escuro) 30%, transparent);
-  /* Única sombra do site: a do atalho do WhatsApp, que passa por cima de toda seção. */
+  /* Código de cor dos grupos, no grifo e na meia-lua do menu. A menta fica fora dos públicos: é a cor dos botões. */
+  --cor-empresas: var(--violeta);
+  --cor-voce: var(--magenta);
+  --cor-germanicas: var(--violeta);
+  --cor-romanicas: var(--magenta);
+  --cor-outras-familias: var(--menta);
+  /* Única sombra de profundidade do site: a do atalho do WhatsApp, que passa por cima de toda seção.
+     Os box-shadow inset do grifo e do campo inválido são traço de forma, não sombra. */
   --sombra-flutuante:
     0 0 0 1px color-mix(in oklab, var(--navy) 16%, transparent),
     0 0.5rem 1.25rem -0.5rem color-mix(in oklab, var(--noite) 55%, transparent);
@@ -74,6 +81,10 @@
   --fio-metades: 3px;
   /* Sublinhado de destaque: item do menu, idioma e número pendente. */
   --sublinhado-destaque: 2px;
+  /* Grifo: a faixa sobe da base da caixa do texto e cobre uns 60% da altura das minúsculas.
+     A medida vale para a Readex Pro, a fonte de todo rótulo com grifo; a Source Sans desce mais e pediria outra. */
+  --grifo-altura: 0.6em;
+  --grifo-sobra: 0.15em;
   /* Anel de foco: magenta, 3,2:1 no claro e 4,1:1 no navy. */
   --foco: 2px solid var(--magenta);
   --foco-afastamento: 3px;

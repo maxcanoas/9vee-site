@@ -202,6 +202,12 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'idiomas-hero-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true },
     { nome: 'cta-final-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAteImagem('#contato', -80) },
     { nome: 'cta-final-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAteImagem('#contato', -120) },
+    { nome: 'painel-para-voce-1280', rota: '/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Para você' }).first().click() },
+    { nome: 'rodape-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('footer') },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('footer') },
+    { nome: 'familias-home-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
+    { nome: 'familias-home-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.familias', -160) },
+    { nome: 'familias-cursos-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
   ],
 };
 

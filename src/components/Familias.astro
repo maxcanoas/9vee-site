@@ -35,9 +35,9 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
 <div class="familias">
   {
     familias.map((familia) => (
-      <section class="familia revela" aria-labelledby={`familia-${familia.id}`}>
+      <section class="familia revela" aria-labelledby={`familia-${familia.id}`} data-familia={familia.id}>
         <h3 id={`familia-${familia.id}`} class="familia__nome">
-          <Texto de={familia.nome} />
+          <span class="grifo"><Texto de={familia.nome} /></span>
         </h3>
         <p class="familia__descricao">
           <Texto de={familia.descricao} />
@@ -95,6 +95,19 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
 
   .familia__nome {
     font-size: var(--t-3);
+  }
+
+  /* Código de cor das famílias: cada título grifado com a sua cor. */
+  .familia[data-familia='germanicas'] {
+    --cor-grupo: var(--cor-germanicas);
+  }
+
+  .familia[data-familia='romanicas'] {
+    --cor-grupo: var(--cor-romanicas);
+  }
+
+  .familia[data-familia='outras'] {
+    --cor-grupo: var(--cor-outras-familias);
   }
 
   .familia__descricao {

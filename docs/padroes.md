@@ -41,7 +41,8 @@
 - Para recortar, use `overflow: clip`. `overflow: hidden` em ancestral de elemento sticky é proibido. Exceção: no `html`, para travar a rolagem com o menu ou o drawer abertos; ali o valor vai para a janela e o sticky continua funcionando.
 - Não use `@scope`, que quebra o minificador.
 - Não use `backdrop-filter`, gradiente em texto ou gradiente em botão. Gradiente só na arte da marca, nos Placeholders e no véu do hero, que garante a leitura do texto sobre a imagem.
-- Sombra só com motivo escrito em comentário. A profundidade vem de cor de fundo e de fio de 1 px.
+- Sombra só com motivo escrito em comentário. A profundidade vem de cor de fundo e de fio de 1 px. O `box-shadow: inset` do grifo e do campo inválido é traço de forma, não sombra.
+- O grifo (a faixa de marca-texto) sai só pela classe `.grifo` e só com as cores do código de grupo: `--cor-empresas`, `--cor-voce` e as das famílias. Vai em rótulo na fonte de título, porque a altura da faixa foi medida na Readex Pro.
 - `:focus-visible` desenhado em todo elemento interativo, com os tokens `--foco` e `--foco-afastamento`.
 - **(teste)** Magenta e violeta nunca como cor de texto: as duas ficam para forma, foco e arte.
 - **(teste)** Contraste mínimo de 4,5:1 em texto normal e 3:1 em texto grande e indicador de foco, calculado.
