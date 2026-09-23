@@ -156,7 +156,7 @@ A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobre
 3. **Código de cor** (`fb7e2f3`, com a correção `237088d`). Marca-texto, pela classe `.grifo`. Empresas em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (meia-lua na cor do grupo; faixa no hover, no foco e com o painel aberto). Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Um mapa só, pelo `data-grupo`, em `base.css`. Depois da publicação, o Maxwell notou que o hover das línguas continuava magenta em todas as famílias: o sublinhado do hover e o fio do idioma de destino passaram a usar a cor da família.
 4. **Logos nos depoimentos** (`5a30392`, com a correção `a58d186`). Nissan e GM do Simple Icons, Embraer do Wikimedia Commons, em navy e escondidos do leitor de tela, pelo componente `LogoEmpresa`, que tira o tamanho do formato do `viewBox`. A pendência de cada depoimento pede também a autorização da empresa para o logo.
 5. **Cor do público na escolha**, pedido do Maxwell depois da publicação (`a42ae96`). Na escolha do hero, a metade escolhida ganha a cor do público, a mesma do menu (violeta clara para empresa, magenta clara para você), com texto navy. Os botões de ação continuam menta.
-6. **Saudações na cor da família**, pedido do Maxwell depois da publicação. A faixa de saudações da home alternava meias-luas menta e magenta pela posição ("Hallo", germânica, com meia-lua rosa). Agora a meia-lua de cada saudação tem a cor da família dela, no tom claro dos títulos.
+6. **Saudações na cor da família**, pedido do Maxwell depois da publicação. A faixa de saudações da home alternava meias-luas menta e magenta pela posição ("Hallo", germânica, com meia-lua rosa). Agora a meia-lua de cada saudação tem a cor da família dela, no tom claro dos títulos. A faixa é escura, mas as meias-luas não levam texto em cima: a classe `.tons-claros`, a mesma da escolha de público, traz os tons claros, que contra o navy dão 4,7:1 e 4,6:1 (os escuros dariam 2,7:1 e 2,8:1). A revisão pegou um defeito antigo no árabe, que é da direita para a esquerda: a meia-lua ia para antes da palavra, e agora fica depois, como nas outras.
 
 **Decisões:**
 
@@ -171,7 +171,8 @@ A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobre
 **Para mostrar à cliente:**
 
 - no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares;
-- a escolha de público agora marca na cor do público, a mesma do menu. Ela não pediu isso: é um ajuste do Maxwell, então vale mostrar e ouvir.
+- a escolha de público agora marca na cor do público, a mesma do menu. Ela não pediu isso: é um ajuste do Maxwell, então vale mostrar e ouvir;
+- a faixa de saudações da home agora tem as meias-luas na cor da família de cada língua, também um ajuste do Maxwell.
 
 ## Pendências técnicas
 
