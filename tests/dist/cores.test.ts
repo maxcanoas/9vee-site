@@ -31,6 +31,19 @@ describe('código de cor', () => {
     }
   });
 
+  it('marca cada saudação da faixa com a família da própria língua', () => {
+    const familiaDaLingua = new Map(
+      home
+        .querySelectorAll('.familia [lang]')
+        .map((saudacao) => [saudacao.getAttribute('lang'), saudacao.closest('.familia')?.getAttribute('data-grupo')]),
+    );
+    const itens = home.querySelectorAll('.saudacoes__item');
+    expect(itens.length).toBeGreaterThan(0);
+    for (const item of itens) {
+      expect(item.getAttribute('data-grupo'), item.text.trim()).toBe(familiaDaLingua.get(item.getAttribute('lang')));
+    }
+  });
+
   it.each([
     ['na home', home],
     ['na página de cursos', cursos],

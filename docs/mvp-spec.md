@@ -151,6 +151,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
   - As faixas clareiam no fundo claro e escurecem no escuro só o bastante para o texto dar 4,5:1 onde a faixa passa por trás das letras (tokens `--grifo-violeta`, `--grifo-magenta` e `--grifo-menta`, e as versões do `.escuro` em `base.css`).
   - Um mapa só liga o id do grupo em `content/site.md` à cor, pelo atributo `data-grupo`.
   - Na lista de idiomas, o sublinhado do hover e o fio do idioma de destino (quem chega por uma âncora, como `#japones`) usam a cor da família, a mesma do grifo do título. A meia-pílula menta no canto dos botões continua menta: ela diz que a linha abre o pedido.
+  - Na faixa de saudações da home, a meia-lua depois de cada saudação tem a cor da família dela, no mesmo tom claro dos títulos das famílias logo abaixo. A faixa é escura, mas as meias-luas não levam texto em cima, então não valem os tons escuros do .escuro.
   - Na escolha de público do hero, a metade escolhida ganha a cor do público, a mesma do menu, com texto navy. Os botões de ação continuam menta, a única cor de ação do site. Na cor do público, o botão viraria mais uma área colorida disputando com o círculo e as faixas, o atalho do WhatsApp continuaria verde ao lado de um botão rosa, e quem escolheu "Para você" veria a página de NR-1 com botões rosa. O contraste só pesaria na cor pura: a violeta daria 2,7:1 contra o navy do hero, e no tom claro do grifo o botão passaria. No pedido, a escolha continua marcando em navy, como todas as escolhas de lá.
 - **Assinatura visual:** o círculo Novee do kit, o degradê da paleta do `Profile Pic_1`, sem as letras, abre e fecha as páginas. Ele fica atrás da intérprete no hero da home, onde gira devagar com a rolagem, atrás da imagem em arco nos heroes internos e ao lado do texto no CTA do fim. As duas metades, os meios-círculos do padrão da marca, ficam nos detalhes, como a escolha de público (duas metades de uma pílula), o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
 - **Movimento:**
@@ -323,7 +324,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - a confirmação de "receber contato";
      - a escolha de público trocando o botão, mantendo a ordem dos serviços e persistindo entre páginas;
      - o movimento reduzido desligando as animações (conferido só no Chromium);
-     - o código de cor: cada público e cada família com a sua cor, o texto com 4,5:1 sobre a faixa, o hover das línguas e o fio do idioma de destino na cor da família, a metade escolhida na cor do público e o botão de ação em menta;
+     - o código de cor: cada público e cada família com a sua cor, o texto com 4,5:1 sobre a faixa, o hover das línguas, o fio do idioma de destino e as meias-luas da faixa de saudações na cor da família, a metade escolhida na cor do público e o botão de ação em menta;
      - nenhuma rolagem horizontal em 360, 390, 768, 1280 e 1920 px;
      - o botão flutuante sem cobrir o fim do rodapé.
 - **Complementos:**
@@ -381,11 +382,12 @@ O ponto fixo do code-review é a tag `mvp-base`.
 
 ## Ajustes pedidos pela cliente em 23/09/2026
 
-Depois de ver o preview, a cliente mandou cinco apontamentos (itens 1 a 5). O item 6 veio do Maxwell, depois da publicação. Cada um atualiza a seção correspondente acima quando é feito. O ponto fixo do code-review desta rodada é o commit `fd6acb3`.
+Depois de ver o preview, a cliente mandou cinco apontamentos (itens 1 a 5). Os itens 6 e 7 vieram do Maxwell, depois da publicação. Cada um atualiza a seção correspondente acima quando é feito. O ponto fixo do code-review desta rodada é o commit `fd6acb3`.
 
-1. **Círculo Novee no topo.** O círculo verde e rosa do topo dá lugar ao "círculo Novee" do kit, o degradê da paleta (`Profile Pic_1`), inteiro e sem as letras, porque a intérprete cobre o miolo. Ele aparece no hero da home, onde gira devagar com a rolagem, nos heroes das páginas internas e no CTA do fim, que repete o do topo. As metades verde e rosa ficam nos detalhes pequenos, como o progresso e a confirmação do pedido, a faixa de saudações e a linha do tempo.
+1. **Círculo Novee no topo.** O círculo verde e rosa do topo dá lugar ao "círculo Novee" do kit, o degradê da paleta (`Profile Pic_1`), inteiro e sem as letras, porque a intérprete cobre o miolo. Ele aparece no hero da home, onde gira devagar com a rolagem, nos heroes das páginas internas e no CTA do fim, que repete o do topo. As metades verde e rosa ficam nos detalhes pequenos, como o progresso e a confirmação do pedido e a linha do tempo.
 2. **Cor por público no menu.** "Empresas" e "Para você" ganham cada um a sua cor, em marca-texto. É uma faixa sólida atrás da parte de baixo das letras, com o texto em navy (em papel no rodapé escuro). Empresas fica em violeta e Para você em magenta, porque a menta já é a cor dos botões. Vale no menu do celular, no rodapé e no menu do computador (na meia-lua; a faixa aparece no hover, no foco e com o painel aberto).
 3. **Cor por família de idiomas.** O mesmo marca-texto no título de cada família: Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Vale na home e na página de cursos. Depois da publicação, o Maxwell pediu que o hover das línguas também seguisse a cor da família: o sublinhado do hover e o fio do idioma de destino usam a cor do grupo.
 4. **Ordem do conteúdo.** Idiomas, Tradução Simultânea, NR-1 e LMS, igual para os dois públicos. Detalhes em "Público duplo".
 5. **Logos nos depoimentos.** O logo da empresa entra ao lado do nome da pessoa, em uma cor só (navy) e escondido do leitor de tela, porque o nome da empresa continua no texto. O uso do logo depende de autorização da empresa, marcada como pendência junto com a da fala.
 6. **Cor do público na escolha.** Depois da publicação, o Maxwell propôs pintar a escolha e os botões de ação com a cor do público. A análise de UX, com as opções simuladas na tela, recomendou levar a cor só para a metade escolhida, e ele aprovou: os botões continuam menta. O porquê está em "Código de cor dos grupos".
+7. **Saudações na cor da família.** Também do Maxwell: a faixa de saudações da home alternava meias-luas menta e magenta pela posição, e "Hallo", que é germânica, aparecia com meia-lua rosa. Agora a meia-lua de cada saudação tem a cor da família dela.

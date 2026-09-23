@@ -1,10 +1,12 @@
 ---
 // Decorativa: a lista de idiomas com link vem logo depois. A cópia repetida cobre a largura durante o deslize.
+// Cada saudação leva a família dela, para a meia-lua que vem depois pegar a cor do grupo no mapa do base.css.
 interface Idioma {
   slug: string;
   saudacao: string;
   lang: string;
   dir?: 'rtl';
+  familia: string;
 }
 
 interface Props {
@@ -19,7 +21,7 @@ const sequencia = [...idiomas, ...idiomas];
   <div class="saudacoes__trilho">
     {
       sequencia.map((idioma) => (
-        <span class="saudacoes__item" lang={idioma.lang} dir={idioma.dir}>
+        <span class="saudacoes__item" lang={idioma.lang} dir={idioma.dir} data-grupo={idioma.familia}>
           {idioma.saudacao}
         </span>
       ))
@@ -28,7 +30,11 @@ const sequencia = [...idiomas, ...idiomas];
 </div>
 
 <style>
+  /* A faixa é .escuro, mas as meias-luas não levam texto em cima: valem os tons claros, os mesmos dos títulos das
+     famílias logo abaixo, e não os escuros que o .escuro usa sob texto papel. */
   .saudacoes {
+    --grifo-violeta: var(--grifo-violeta-claro);
+    --grifo-magenta: var(--grifo-magenta-claro);
     overflow: clip;
     padding-block: var(--e-6);
     background-color: var(--navy);
@@ -54,18 +60,18 @@ const sequencia = [...idiomas, ...idiomas];
     unicode-bidi: isolate;
   }
 
-  /* Entre uma saudação e outra, um meio-círculo da marca, alternando menta e magenta. */
+  /* Entre uma saudação e outra, um meio-círculo da marca na cor da família da saudação que vem antes.
+     A forma continua alternando entre as duas metades. */
   .saudacoes__item::after {
     content: '';
     inline-size: 0.18em;
     block-size: 0.36em;
     border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
-    background-color: var(--menta);
+    background-color: var(--cor-grupo);
   }
 
   .saudacoes__item:nth-child(even)::after {
     border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
-    background-color: var(--magenta);
   }
 
   @media (prefers-reduced-motion: no-preference) {

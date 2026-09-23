@@ -16,7 +16,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
 | 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
 | 8. Publicação e reunião | **publicada**: falta o teste em aparelho e a reunião | `35c51c4` e o commit deste arquivo |
-| 9. Ajustes pedidos pela cliente | **publicada** e no GitHub em 23/09 (até `440a6f6`); o ajuste do hover dos idiomas vem depois | de `8107b6a` em diante |
+| 9. Ajustes pedidos pela cliente | **publicada** e no GitHub em 23/09, com os ajustes do Maxwell; falta publicar a faixa de saudações na cor da família | de `8107b6a` em diante |
 
 ## O que cada etapa entregou
 
@@ -147,7 +147,7 @@ Uma nota para a próxima publicação: o subdomínio novo da Cloudflare levou un
 
 ## Etapa 9: ajustes pedidos pela cliente (23/09/2026)
 
-A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobrem os cinco; o item 5 é um ajuste do Maxwell, depois da publicação). O Maxwell aprovou o plano com as decisões abaixo, e a spec ganhou a seção "Ajustes pedidos pela cliente em 23/09/2026". Cada fase passou por humanizar, code-review nos dois eixos e capturas no roteiro `ajustes-cliente`, com as correções da revisão em commits próprios.
+A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobrem os cinco; os itens 5 e 6 são ajustes do Maxwell, depois da publicação). O Maxwell aprovou o plano com as decisões abaixo, e a spec ganhou a seção "Ajustes pedidos pela cliente em 23/09/2026". Cada fase passou por humanizar, code-review nos dois eixos e capturas no roteiro `ajustes-cliente`, com as correções da revisão em commits próprios.
 
 **O que entrou:**
 
@@ -156,6 +156,7 @@ A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobre
 3. **Código de cor** (`fb7e2f3`, com a correção `237088d`). Marca-texto, pela classe `.grifo`. Empresas em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (meia-lua na cor do grupo; faixa no hover, no foco e com o painel aberto). Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Um mapa só, pelo `data-grupo`, em `base.css`. Depois da publicação, o Maxwell notou que o hover das línguas continuava magenta em todas as famílias: o sublinhado do hover e o fio do idioma de destino passaram a usar a cor da família.
 4. **Logos nos depoimentos** (`5a30392`, com a correção `a58d186`). Nissan e GM do Simple Icons, Embraer do Wikimedia Commons, em navy e escondidos do leitor de tela, pelo componente `LogoEmpresa`, que tira o tamanho do formato do `viewBox`. A pendência de cada depoimento pede também a autorização da empresa para o logo.
 5. **Cor do público na escolha**, pedido do Maxwell depois da publicação (`a42ae96`). Na escolha do hero, a metade escolhida ganha a cor do público, a mesma do menu (violeta clara para empresa, magenta clara para você), com texto navy. Os botões de ação continuam menta.
+6. **Saudações na cor da família**, pedido do Maxwell depois da publicação. A faixa de saudações da home alternava meias-luas menta e magenta pela posição ("Hallo", germânica, com meia-lua rosa). Agora a meia-lua de cada saudação tem a cor da família dela, no tom claro dos títulos.
 
 **Decisões:**
 
@@ -226,6 +227,7 @@ Com o Maxwell:
 - [x] republicar o preview com a etapa 9: feito pelo Maxwell em 23/09 (`npx wrangler deploy`, versão `e5f7d05d`), porque o modo automático bloqueia a publicação feita por mim. Conferido no ar: as seis páginas em 200, a 404, o noindex, o canonical, a ordem nova, o círculo da marca, os 9 grifos e os 3 logos. Atenção para a próxima vez: o `npm run deploy` sozinho sai sem o `SITE_URL`, com o canonical em localhost; use o comando completo abaixo;
 - [x] `git push` da etapa 9: feito em 23/09, até `440a6f6`;
 - [x] republicar o que veio depois da primeira publicação: o hover dos idiomas na cor da família, o fio do idioma de destino e a cor do público na escolha. Feito pelo Maxwell em 23/09 (versão `714d209d`) e conferido no ar. O push vai junto com este registro;
+- [ ] republicar a faixa de saudações na cor da família (`! npx wrangler deploy`; o `dist/` fica pronto com o `SITE_URL`);
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 

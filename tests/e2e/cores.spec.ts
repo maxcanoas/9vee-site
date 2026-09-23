@@ -61,6 +61,17 @@ test.describe('código de cor', () => {
     }
   });
 
+  test('na faixa de saudações, a meia-lua de cada língua tem a cor da família dela', async ({ page }) => {
+    await page.goto('/');
+    for (const familia of ['germanicas', 'romanicas', 'outras']) {
+      const meiaLua = await page
+        .locator(`.saudacoes__item[data-grupo="${familia}"]`)
+        .first()
+        .evaluate((el) => getComputedStyle(el, '::after').backgroundColor);
+      expect(meiaLua, familia).toBe(await corDoGrifo(page.locator(`.familia[data-grupo="${familia}"] .grifo`)));
+    }
+  });
+
   test('o idioma de destino ganha o fio na cor da família dele', async ({ page }) => {
     await page.goto('/curso-de-idiomas/#japones');
     const fio = await page.locator('#japones .idioma').first().evaluate((el) => getComputedStyle(el).borderTopColor);
