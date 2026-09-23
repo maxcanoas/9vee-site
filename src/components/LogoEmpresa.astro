@@ -1,0 +1,42 @@
+---
+// O logo de uma empresa cliente, pela geometria do SVG e na cor do texto. Fonte e licença de cada arquivo
+// estão em src/assets/logos/LEIA-ME.md. Um nome sem arquivo derruba o build, para não sair depoimento sem logo.
+// O formato vem do viewBox, e não do nome da empresa: um arquivo oficial que entrar no lugar ganha o tamanho certo.
+import SvgDoKit from './SvgDoKit.astro';
+import { lerSvgDoKit } from '../lib/svg-do-kit';
+
+interface Props {
+  nome: string;
+}
+
+const { nome } = Astro.props;
+
+const logos = import.meta.glob<string>('/src/assets/logos/*.svg', { query: '?raw', import: 'default', eager: true });
+const bruto = logos[`/src/assets/logos/${nome}.svg`];
+if (!bruto) throw new Error(`logo "${nome}" não está em src/assets/logos/`);
+const [, , largura, altura] = lerSvgDoKit(bruto).viewBox.split(/\s+/).map(Number);
+const formato = largura / altura > 2 ? 'largo' : 'emblema';
+---
+
+<span class="logo-empresa" data-formato={formato}>
+  <SvgDoKit bruto={bruto} />
+</span>
+
+<style>
+  .logo-empresa {
+    display: block;
+    color: var(--navy);
+  }
+
+  /* Medida de forma, e não de texto, como os logos do cabeçalho e do rodapé. O emblema vai pela altura, grande
+     o bastante para o nome dentro do da Nissan ler; o logo largo vai pela largura, para pesar igual ao lado. */
+  .logo-empresa :global(svg) {
+    inline-size: auto;
+    block-size: 3.5rem;
+  }
+
+  .logo-empresa[data-formato='largo'] :global(svg) {
+    inline-size: 7rem;
+    block-size: auto;
+  }
+</style>

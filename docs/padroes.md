@@ -68,6 +68,8 @@
   - se o arquivo existe em `src/assets/imagens/`, sai em AVIF com fallback WebP, com srcset, sizes, width e height;
   - se não existe, sai o Placeholder com ID e alt.
 - A exceção é a arte da marca que sai do kit, o círculo do topo e do fim das páginas: ela passa pelo `CirculoMarca`, que usa o `<Picture>` direto. O arquivo sempre existe, então não há Placeholder nem ID, e o alt é vazio porque é enfeite.
+- Logo e ícone em SVG (o da 9vee, o das redes, o das empresas clientes) saem como geometria pintada com a cor do texto, pelo `SvgDoKit`. Os logos das empresas passam pelo `LogoEmpresa`, que lê o arquivo em `src/assets/logos/` e tira o tamanho do formato do `viewBox`, nunca do nome da empresa.
+- O tamanho de logo e ícone em SVG pode ir em `rem` cru: é forma, e não tamanho de texto.
 - Lazy fora da primeira dobra. `priority` (fetchpriority alto) só na imagem do hero.
 - No máximo 2 famílias de fonte, hospedadas no site pela Fonts API, com `font-display: swap`. Preload só do peso do H1.
 - A fonte do logo (Neulis Sans) não entra no site.

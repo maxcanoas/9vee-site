@@ -10,6 +10,6 @@ Os três logos que aparecem ao lado do nome nos depoimentos da home, a pedido da
 
 A licença cobre só o desenho do arquivo. Os três continuam marcas registradas das empresas. Antes de o site ir para o ar, cada empresa precisa autorizar por escrito o uso do logo. A pendência está no texto de cada depoimento, em `content/home.md`, junto com a autorização da fala.
 
-O componente `Depoimentos` usa só a geometria de cada arquivo (pelo `lerSvgDoKit`) e pinta com a cor do texto. As cores originais das marcas não entram no site.
+O componente `LogoEmpresa` usa só a geometria de cada arquivo (pelo `lerSvgDoKit`) e pinta com a cor do texto. As cores originais das marcas não entram no site. O tamanho sai do formato do `viewBox`: logo quase quadrado vai pela altura, e logo largo (mais que o dobro da altura), pela largura.
 
-Para trocar por um arquivo oficial que a empresa mandar, salve com o mesmo nome. O SVG precisa ter `viewBox` e o desenho em `path` ou `polygon`, sem `transform`.
+Para trocar por um arquivo oficial que a empresa mandar, salve com o mesmo nome. O SVG precisa ter `viewBox` e o desenho em `path` ou `polygon`. O leitor não aplica `transform`, ignora `rect` e `circle` sem avisar e não enxerga `fill-rule="evenodd"` escrito como atributo: se o arquivo tiver algum desses, converta para `path` antes.

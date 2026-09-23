@@ -304,6 +304,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - noindex presente, e ausente com `INDEXAVEL=true`;
      - a ordem dos serviços na home, no menu, no rodapé e no pedido, e o bloco dos idiomas logo depois da lista;
      - o círculo da marca no hero e no CTA do fim, com alt vazio;
+     - o logo da empresa em cada depoimento, escondido do leitor de tela;
      - nenhum travessão, palavra proibida ou link genérico;
      - "Novee" só nos dois lugares permitidos;
      - links e âncoras internos que resolvem;

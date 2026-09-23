@@ -93,7 +93,7 @@ O SEO do link que você vai mandar aparece como 66 a 69, e isso é de propósito
 Abra `relatorios/pendencias.md`. São 29 perguntas, agrupadas por página. Quatro valem mais que as outras, porque travam texto que já está no ar:
 
 1. **Ano de fundação e quantidade de idiomas.** O site atual se contradiz nos dois.
-2. **Os três depoimentos.** Precisa de autorização por escrito, e de confirmar que as falas são das pessoas.
+2. **Os três depoimentos.** Precisa de autorização por escrito das pessoas para as falas e das empresas para os logos, e de confirmar que as falas são das pessoas. Os logos do MVP vêm de fontes abertas (Simple Icons e Wikimedia Commons), e não das empresas. Se a 9vee tiver os arquivos oficiais, eles entram no lugar com o mesmo nome.
 3. **Onde há atendimento presencial,** por serviço. Hoje o site só afirma presencial para a tradução.
 4. **Carga horária e formato do treinamento de NR-1,** que é a pergunta que todo RH faz primeiro.
 

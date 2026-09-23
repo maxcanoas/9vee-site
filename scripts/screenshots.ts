@@ -210,6 +210,8 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'familias-cursos-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.familias', -120) },
     { nome: 'depoimentos-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('#depoimentos', -60) },
     { nome: 'depoimentos-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('#depoimentos', -80) },
+    { nome: 'depoimento-largo-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.depoimento:nth-child(3)', -80) },
+    { nome: 'depoimentos-baixo-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.depoimento:nth-child(2)', -120) },
   ],
 };
 
