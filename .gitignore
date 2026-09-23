@@ -21,3 +21,7 @@ relatorios/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# kit de marca original da cliente (19 MB); o site usa a cópia parcial em assets-cliente/
+docs/Archive/
+docs/Guide.pdf
