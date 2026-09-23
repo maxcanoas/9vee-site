@@ -21,3 +21,11 @@ export function lerSvgDoKit(bruto: string): DesenhoSvg {
 
   return { viewBox, formas, evenodd: /fill-rule:\s*evenodd/.test(bruto) };
 }
+
+/** O primeiro círculo do SVG: o fundo do Profile Pic e o recorte do degradê do Profile Pic_1. */
+export function lerCirculo(bruto: string): { cx: string; cy: string; r: string } {
+  const circulo = /<circle\b[^>]*\bcx="([^"]+)"[^>]*\bcy="([^"]+)"[^>]*\br="([^"]+)"/.exec(bruto);
+  if (!circulo) throw new Error('SVG do kit sem círculo');
+  const [, cx, cy, r] = circulo;
+  return { cx, cy, r };
+}

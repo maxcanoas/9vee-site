@@ -4,7 +4,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { lerSvgDoKit, type Forma } from '../src/lib/svg-do-kit.ts';
+import { lerCirculo, lerSvgDoKit, type Forma } from '../src/lib/svg-do-kit.ts';
 
 const raiz = new URL('../', import.meta.url);
 const doKit = (arquivo: string) => readFile(new URL(`assets-cliente/${arquivo}`, raiz), 'utf8');
@@ -21,11 +21,10 @@ const desenhar = (formas: Forma[], cor: string) =>
 // Favicon: o "9" off-white no círculo navy do kit (Vectors/Profile Pic.svg). Legível em aba clara e escura.
 const perfilBruto = await doKit('Vectors/Profile Pic.svg');
 const perfil = lerSvgDoKit(perfilBruto);
-const circulo = /<circle[^>]*\bcx="([^"]+)"[^>]*\bcy="([^"]+)"[^>]*\br="([^"]+)"/.exec(perfilBruto);
-if (!circulo) throw new Error('Profile Pic.svg sem o círculo');
+const fundo = lerCirculo(perfilBruto);
 const favicon =
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${perfil.viewBox}">` +
-  `<circle cx="${circulo[1]}" cy="${circulo[2]}" r="${circulo[3]}" fill="${NAVY}"/>` +
+  `<circle cx="${fundo.cx}" cy="${fundo.cy}" r="${fundo.r}" fill="${NAVY}"/>` +
   desenhar(perfil.formas, PAPEL) +
   '</svg>\n';
 await writeFile(emPublic('favicon.svg'), favicon);
@@ -73,14 +72,13 @@ await writeFile(
 // Círculo Novee (Vectors/Profile Pic_1.svg): só a camada de degradê, com o recorte em círculo do próprio kit.
 // As letras ficam de fora, porque no site a intérprete e as imagens cobrem o miolo do círculo.
 const perfilNovee = await doKit('Vectors/Profile Pic_1.svg');
-const viewBoxNovee = /viewBox="([^"]+)"/.exec(perfilNovee)?.[1];
-const recorteNovee = /<clipPath id="clippath">\s*<circle[^>]*\bcx="([^"]+)"[^>]*\bcy="([^"]+)"[^>]*\br="([^"]+)"/.exec(perfilNovee);
+const recorteNovee = lerCirculo(perfilNovee);
 const degradeNovee = /<image\b[^>]*\/>/.exec(perfilNovee)?.[0];
-if (!viewBoxNovee || !recorteNovee || !degradeNovee) throw new Error('Profile Pic_1.svg sem o degradê ou o recorte');
+if (!degradeNovee) throw new Error('Profile Pic_1.svg sem a camada de degradê');
 const ladoCirculo = 1200;
 const circuloNovee =
-  `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${viewBoxNovee}" width="${ladoCirculo}" height="${ladoCirculo}">` +
-  `<clipPath id="c"><circle cx="${recorteNovee[1]}" cy="${recorteNovee[2]}" r="${recorteNovee[3]}"/></clipPath>` +
+  `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${lerSvgDoKit(perfilNovee).viewBox}" width="${ladoCirculo}" height="${ladoCirculo}">` +
+  `<clipPath id="c"><circle cx="${recorteNovee.cx}" cy="${recorteNovee.cy}" r="${recorteNovee.r}"/></clipPath>` +
   `<g clip-path="url(#c)">${degradeNovee}</g></svg>`;
 await mkdir(new URL('src/assets/marca/', raiz), { recursive: true });
 await sharp(Buffer.from(circuloNovee))

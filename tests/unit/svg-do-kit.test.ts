@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { lerSvgDoKit } from '../../src/lib/svg-do-kit';
+import { lerCirculo, lerSvgDoKit } from '../../src/lib/svg-do-kit';
 
 const kit = (arquivo: string) =>
   readFileSync(new URL(`../../assets-cliente/Vectors/${arquivo}`, import.meta.url), 'utf8');
@@ -28,5 +28,19 @@ describe('lerSvgDoKit', () => {
   it('entrega os desenhos sem cor fixa, para herdarem a cor do contexto', () => {
     const logo = lerSvgDoKit(kit('Logo_5.svg'));
     expect(JSON.stringify(logo)).not.toMatch(/#[0-9a-f]{6}/i);
+  });
+});
+
+describe('lerCirculo', () => {
+  it('lê o círculo de fundo do Profile Pic, que vira o favicon', () => {
+    expect(lerCirculo(kit('Profile Pic.svg'))).toEqual({ cx: '492.71', cy: '492.71', r: '492.71' });
+  });
+
+  it('lê o recorte do degradê do Profile Pic_1, e não os retângulos dos outros recortes', () => {
+    expect(lerCirculo(kit('Profile Pic_1.svg'))).toEqual({ cx: '492.71', cy: '492.71', r: '492.71' });
+  });
+
+  it('avisa quando o SVG não tem círculo', () => {
+    expect(() => lerCirculo(kit('Logo_5.svg'))).toThrow('SVG do kit sem círculo');
   });
 });
