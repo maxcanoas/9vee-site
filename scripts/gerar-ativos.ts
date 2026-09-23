@@ -85,5 +85,11 @@ await sharp(Buffer.from(circuloMarca))
   .png({ compressionLevel: 9 })
   .toFile(fileURLToPath(new URL('src/assets/marca/circulo-marca.png', raiz)));
 
+// O mesmo círculo com o logo empilhado no miolo (o PNG do kit, PP & Banner/Profile Pic_1.png), para o fim da home.
+await sharp(fileURLToPath(new URL('assets-cliente/PP & Banner/Profile Pic_1.png', raiz)))
+  .resize(ladoCirculo, ladoCirculo)
+  .png({ compressionLevel: 9 })
+  .toFile(fileURLToPath(new URL('src/assets/marca/circulo-marca-logo.png', raiz)));
+
 console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg');
-console.log('e em src/assets/marca/: circulo-marca.png');
+console.log('e em src/assets/marca/: circulo-marca.png, circulo-marca-logo.png');

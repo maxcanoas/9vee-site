@@ -172,7 +172,8 @@ A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobre
 
 - no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares;
 - a escolha de público agora marca na cor do público, a mesma do menu. Ela não pediu isso: é um ajuste do Maxwell, então vale mostrar e ouvir;
-- a faixa de saudações da home agora tem as meias-luas na cor da família de cada língua, também um ajuste do Maxwell.
+- a faixa de saudações da home agora tem as meias-luas na cor da família de cada língua, também um ajuste do Maxwell;
+- o círculo do fim da home agora leva o logo empilhado no miolo, a pedido do Maxwell: é o PNG do kit (`PP & Banner/Profile Pic_1.png`), que o `gerar-ativos` reduz para `src/assets/marca/circulo-marca-logo.png`. O topo da home e as outras páginas seguem com o círculo sem letras.
 
 ## Pendências técnicas
 
@@ -230,6 +231,7 @@ Com o Maxwell:
 - [x] republicar o que veio depois da primeira publicação: o hover dos idiomas na cor da família, o fio do idioma de destino e a cor do público na escolha. Feito pelo Maxwell em 23/09 (versão `714d209d`) e conferido no ar. O push vai junto com este registro;
 - [x] republicar a faixa de saudações na cor da família: feito pelo Maxwell em 23/09 (versão `8bbc2c5c`) e conferido no ar;
 - [x] republicar as correções da revisão das saudações (a classe `.tons-claros` e a meia-lua do árabe): feito pelo Maxwell em 23/09 (versão `1ec13e91`) e conferido no ar;
+- [ ] republicar o círculo com o logo no fim da home;
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 

@@ -2,15 +2,19 @@
 // O círculo da marca, o "círculo Novee" que a cliente pediu: o degradê da paleta do Profile Pic_1, sem as letras,
 // que abre e fecha as páginas. O arquivo sai de scripts/gerar-ativos.ts. É enfeite: sai com alt vazio.
 import { Picture } from 'astro:assets';
-import circulo from '../assets/marca/circulo-marca.png';
+import semLogo from '../assets/marca/circulo-marca.png';
+import comLogo from '../assets/marca/circulo-marca-logo.png';
 
 interface Props {
   sizes: string;
   /** Na primeira tela: carrega já, mas sem a prioridade alta, que fica com a imagem principal. */
   primeiraDobra?: boolean;
+  /** Com o logo empilhado no miolo, onde nada cobre o círculo (o fim da home). */
+  logo?: boolean;
 }
 
-const { sizes, primeiraDobra = false } = Astro.props;
+const { sizes, primeiraDobra = false, logo = false } = Astro.props;
+const circulo = logo ? comLogo : semLogo;
 ---
 
 <Picture

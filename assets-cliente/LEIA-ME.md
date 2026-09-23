@@ -24,6 +24,7 @@ Cópia parcial do kit de marca da 9vee assinado por Kim Zamorano. O original est
 | `Vectors/Social_4.svg` | X | rodapé |
 | `Vectors/Social_5.svg` | YouTube | rodapé |
 | `Vectors/Social_8.svg` | LinkedIn | rodapé |
+| `PP & Banner/Profile Pic_1.png` | o mesmo círculo em PNG, com o logo empilhado no miolo, 1972 × 1971 | reduzido para `src/assets/marca/circulo-marca-logo.png` (`scripts/gerar-ativos.ts`), o círculo do fim da home |
 | `PP & Banner/Banner.png` | banner em gradiente, 3129 × 1379 | imagem de prévia do link (og:image) |
 | `Ai File/Guide.pdf` | guia da marca: paleta, logos, padrão | referência |
 | `Ai File/Font Disclaimer.txt` | aviso de licença da fonte do logo (Neulis Sans) | referência: a fonte do logo não vai para o site |

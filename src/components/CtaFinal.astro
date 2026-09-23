@@ -13,15 +13,17 @@ interface Props {
   cta?: TextosPorPublico;
   rotulo?: string;
   servico?: ServicoId;
+  /** Na home, o círculo leva o logo no miolo. */
+  logo?: boolean;
 }
 
-const { titulo, texto, cta, rotulo, servico } = Astro.props;
+const { titulo, texto, cta, rotulo, servico, logo } = Astro.props;
 ---
 
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
   <div class="conteiner cta-final__grade">
     <div class="cta-final__circulo" aria-hidden="true">
-      <CirculoMarca sizes="(min-width: 64rem) 16rem, (min-width: 27.5rem) 11rem, 40vw" />
+      <CirculoMarca sizes="(min-width: 64rem) 16rem, (min-width: 27.5rem) 11rem, 40vw" logo={logo} />
     </div>
     <div class="cta-final__texto">
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
