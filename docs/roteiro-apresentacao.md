@@ -76,7 +76,7 @@ A medição e a limpeza do blog ficam para depois da aprovação, como a propost
 
 ## Os números que dá para mostrar
 
-O Lighthouse no celular, nas três páginas completas: Performance de 98 a 100, Acessibilidade 100, Boas práticas 100 e SEO 100. O relatório está em `relatorios/etapa-7/lighthouse.md`.
+O Lighthouse no celular, nas três páginas completas, depois dos ajustes de 23/09: Performance de 99 a 100, Acessibilidade 100, Boas práticas 100 e SEO 100. O relatório está em `relatorios/etapa-7/lighthouse.md`.
 
 O SEO do link que você vai mandar aparece como 66 a 69, e isso é de propósito: o preview está escondido do Google. O 100 é medido no mesmo site sem esse bloqueio.
 

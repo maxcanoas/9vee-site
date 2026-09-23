@@ -1,6 +1,6 @@
 # Andamento do MVP da 9vee
 
-Atualizado em 20/09/2026, com o preview no ar. Para retomar, vá direto para "Próxima etapa".
+Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de ver o preview. Para retomar, vá direto para "Etapa 9" e "O que falta".
 
 ## Onde estamos
 
@@ -16,6 +16,7 @@ Atualizado em 20/09/2026, com o preview no ar. Para retomar, vá direto para "Pr
 | 6. Páginas parciais | feita e aprovada | `c0c8c96` |
 | 7. Verificação e revisão final | feita e aprovada | de `9e8f11e` a `f9374b4` |
 | 8. Publicação e reunião | **publicada**: falta o teste em aparelho e a reunião | `35c51c4` e o commit deste arquivo |
+| 9. Ajustes pedidos pela cliente | **feita**: falta o Maxwell republicar o preview e dar o push | de `8107b6a` a `a58d186` e o commit deste arquivo |
 
 ## O que cada etapa entregou
 
@@ -144,12 +145,35 @@ Uma nota para a próxima publicação: o subdomínio novo da Cloudflare levou un
 3. **A revelação por rolagem fica como está**, em 11 a 17 elementos por página. A régua do `humanizar-ui` pede no máximo dois momentos de movimento, mas o modo de falha que ela teme, a tela em branco no celular, não acontece aqui: a animação roda quando o elemento entra e some inteira com movimento reduzido. É o mesmo movimento aprovado na home.
 4. **As meias-pílulas decorativas continuam com medida em `rem` crua.** São forma, não tamanho de texto, e o `Faq` já fazia assim desde a etapa 2.
 
+## Etapa 9: ajustes pedidos pela cliente (23/09/2026)
+
+A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano com as decisões abaixo, e a spec ganhou a seção "Ajustes pedidos pela cliente em 23/09/2026". Cada fase passou por humanizar, code-review nos dois eixos e capturas no roteiro `ajustes-cliente`, com as correções da revisão em commits próprios.
+
+**O que entrou:**
+
+1. **Ordem do conteúdo** (`22b842d`). Idiomas, Tradução simultânea, NR-1 e LMS, a mesma para os dois públicos, na lista da home, no grupo Empresas do menu e do rodapé e no passo do serviço do pedido. Na home, o bloco dos idiomas subiu para logo depois da lista, antes do destaque de NR-1. A lista da home e a do pedido saem ordenadas pelos números do `content/site.md` já no build.
+2. **Círculo da marca** (`14f7949`, com as correções até `e447f1c`). O "círculo Novee" da cliente é o `Profile Pic_1` do kit. O `gerar-ativos` tira só a camada de degradê do SVG, sem as letras, e grava `src/assets/marca/circulo-marca.png`. Ele fica atrás da intérprete no hero da home, onde gira uns 30 graus com a rolagem, atrás da imagem nos heroes internos e no CTA do fim. As metades verde e rosa ficaram nos detalhes.
+3. **Código de cor** (`fb7e2f3`, com a correção `237088d`). Marca-texto, pela classe `.grifo`. Empresas em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (meia-lua na cor do grupo; faixa no hover, no foco e com o painel aberto). Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Um mapa só, pelo `data-grupo`, em `base.css`.
+4. **Logos nos depoimentos** (`5a30392`, com a correção `a58d186`). Nissan e GM do Simple Icons, Embraer do Wikimedia Commons, em navy e escondidos do leitor de tela, pelo componente `LogoEmpresa`, que tira o tamanho do formato do `viewBox`. A pendência de cada depoimento pede também a autorização da empresa para o logo.
+
+**Decisões:**
+
+1. Uma ordem só para os dois públicos, como ela pediu. A escolha de público continua trocando o botão, o pedido, a mensagem do WhatsApp e a ordem dos blocos na página de Idiomas. O mecanismo de ordem por público ficou: se ela quiser de novo uma ordem de empresa, são os números do `site.md`.
+2. O círculo entra inteiro desde a primeira tela e sem as letras, porque a intérprete cobre o miolo.
+3. O grifo é marca-texto, e não caixa cheia. A faixa passa por trás da parte de baixo das letras, então o texto precisa de 4,5:1 sobre ela também. A primeira versão, com as cores puras, dava 2,7:1 no navy sobre violeta. Agora as faixas clareiam no fundo claro (violeta 70% e magenta 90% com papel) e, no rodapé, a magenta escurece (77% com noite). O teste do navegador mede o contraste de cada grifo. A altura foi medida na Readex Pro, que a própria classe traz.
+4. Logos em uma cor só, porque as cores das marcas brigariam com a paleta.
+5. Arquivo e componente do círculo se chamam `circulo-marca` e `CirculoMarca`: "novee" iria para a URL pública da imagem, contra a regra da marca.
+6. O kit original agora está em `docs/Archive`, fora do git pelo `.gitignore`.
+
+**Para mostrar à cliente:** no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares.
+
 ## Pendências técnicas
 
 - **JavaScript:** dentro do teto (30 KB) e da meta interna (10 KB com gzip). O teste de build confere em todas as páginas.
 - **Teste em aparelho de verdade,** que continua com o Maxwell: o link do WhatsApp, o teclado virtual no drawer e a troca de fonte num Android e num iPhone. No laboratório o CLS é 0,000, mas aparelho de verdade é aparelho de verdade.
 - **Para a reunião:** a página de NR-1 não tem nenhuma prova, nenhum caso e nenhum número. É honesto, porque não há dado confirmado, mas é a maior fraqueza dela para quem decide. Vale pedir à Daniella um caso real de treinamento já dado.
 - **Etapa 8:** tirar a página `/especime/` antes de publicar e criar o script que lista as pendências para o roteiro da reunião. O script deve ignorar os comentários do YAML, que também citam o formato `[CONFIRMAR ...]`.
+- **Etapa 9:** os `.docx` em `docs/` (roteiro, colinha, relatório e propostas) são de antes dos ajustes e não foram atualizados. O roteiro que vale é o `docs/roteiro-apresentacao.md`.
 
 ## Pendências de conteúdo para a Daniella
 
@@ -158,7 +182,7 @@ Já marcadas no site com a etiqueta "a confirmar":
 - ano de fundação: 19 anos nos números ou "mais de 20" no Quem Somos;
 - quantidade de idiomas: 14 na home ou "inglês e mais 11" na página de cursos;
 - número de clientes e de profissionais;
-- autorização por escrito dos depoimentos de Eduardo Martins (Nissan), Bruno Teixeira (GM) e Pedro Cavalcante (Embraer), e confirmação de que as falas são deles;
+- autorização por escrito dos depoimentos de Eduardo Martins (Nissan), Bruno Teixeira (GM) e Pedro Cavalcante (Embraer), e das três empresas para os logos, e confirmação de que as falas são deles;
 - prazo de resposta do comercial e em quanto tempo a proposta costuma sair;
 - se o comercial responde com valor já no primeiro contato, e uma faixa de preço por serviço para a FAQ;
 - situação do regulamento da Lei 14.831 na data da publicação;
@@ -194,6 +218,8 @@ Fora do site, para a reunião: uma leitura jurídica do argumento de risco da p�
 
 Com o Maxwell:
 
+- [ ] republicar o preview com a etapa 9. O `dist/` já foi construído com o `SITE_URL` do preview em 23/09, então basta `! npx wrangler deploy` (o modo automático bloqueia a publicação feita por mim, como o push). Se algum build rodar antes, use o comando completo abaixo: o `npm run deploy` sozinho sai sem o `SITE_URL`, com o canonical em localhost. A cliente vê a mudança no mesmo link;
+- [ ] `git push` da etapa 9 (`! git push`);
 - [ ] abrir o preview no Android e no iPhone e passar pelo checklist do `docs/roteiro-apresentacao.md`, principalmente a saída pelo WhatsApp, o teclado virtual no pedido e a prévia do link;
 - [ ] mandar o link para a Daniella e o Arthur e levar `relatorios/pendencias.md` para a reunião.
 
@@ -211,14 +237,16 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 
 - `npm test`: testes de lógica, os dois builds (o padrão e o indexável, em `dist-indexavel/`) e os testes do HTML gerado.
 - `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
-- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`.
+- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9.
 - `npm install --no-save lighthouse && node scripts/lighthouse.ts`: a medição das 3 páginas completas nos dois builds.
 - `node scripts/pendencias.ts`: a lista de pendências dos textos, em `relatorios/pendencias.md`.
 - `npm run deploy`: build padrão e publicação na Cloudflare (precisa do `wrangler login` antes).
 - `npm run dev:rede`: o site na rede local, para abrir no celular.
 - `npx astro check`: tipos.
 
-Na última rodada: 77 testes de lógica, 258 do HTML (nenhum pulado, depois que o espécime saiu) e 107 no navegador (79 pulados de propósito: teclado físico e larguras rodam só no desktop, e o movimento só no Chromium).
+Na última rodada (etapa 9): 80 testes de lógica, 276 do HTML e 116 no navegador (82 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
+
+Lighthouse local da etapa 9, mediana de 3 rodadas: Performance de 99 a 100, Acessibilidade 100, Práticas 100, SEO 100 no build indexável, LCP de 1,66 s a 1,97 s e CLS até 0,001. A home ficou perto do teto de 2,0 s de LCP, porque o círculo da marca é uma imagem a mais na primeira tela. Medido antes das correções das fases 3 e 4, que só mexem em CSS e em SVG abaixo da dobra.
 
 Notas do ambiente:
 
