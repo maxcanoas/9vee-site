@@ -3,7 +3,7 @@
 import type { Publico } from './publico';
 import { preencher } from './texto';
 
-/** Os quatro serviços, na ordem do site. O esquema do conteúdo e os componentes partem desta lista. */
+/** Os quatro serviços. O esquema do conteúdo e os componentes partem desta lista; a ordem na tela vem de content/site.md. */
 export const SERVICOS = ['nr1', 'traducao', 'idiomas', 'lms'] as const;
 export type ServicoId = (typeof SERVICOS)[number];
 export type Etapa = 'publico' | 'servico' | 'detalhes' | 'final';

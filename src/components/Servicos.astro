@@ -1,6 +1,6 @@
 ---
-// A ordem muda com o público: o CSS acerta antes da primeira pintura e o JS move o DOM,
-// para a ordem do Tab bater com a da tela. O primeiro da lista ganha o destaque.
+// A ordem vem dos números de content/site.md e pode mudar com o público: o CSS acerta antes da primeira
+// pintura e o JS move o DOM, para a ordem do Tab bater com a da tela. O primeiro da lista ganha o destaque.
 import Texto from './Texto.astro';
 import type { ServicoId } from '../lib/contato';
 
@@ -114,7 +114,7 @@ const { titulo, itens } = Astro.props;
   :global(:root[data-publico='voce']) .servico[data-ordem-voce='3'] { order: 3; }
   :global(:root[data-publico='voce']) .servico[data-ordem-voce='4'] { order: 4; }
 
-  /* Destaque do primeiro da lista: o NR-1 para empresa, os idiomas para você. */
+  /* Destaque do primeiro da lista de cada público. */
   :global(:root:not([data-publico='voce'])) .servico[data-ordem-empresa='1'] .servico__nome,
   :global(:root[data-publico='voce']) .servico[data-ordem-voce='1'] .servico__nome {
     font-size: var(--t-2);

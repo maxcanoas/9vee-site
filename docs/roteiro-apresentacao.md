@@ -22,9 +22,9 @@ Diga que o site inteiro foi montado a partir do kit de marca deles, sem foto de 
 
 ### 2. A escolha de público (1 minuto)
 
-Toque em "Para você". Os serviços se reordenam na hora, os idiomas sobem para o primeiro lugar e o botão vira "Quero estudar".
+Toque em "Para você". O botão vira "Quero estudar", e o pedido passa a abrir em "Montar suas aulas", com os cursos de idiomas já marcados.
 
-Volte para "Para sua empresa" e mostre o NR-1 voltando ao topo.
+Volte para "Para sua empresa": o botão volta a ser "Pedir orçamento". A ordem dos serviços não muda com a escolha. É a que eles pediram, com os idiomas primeiro.
 
 Essa é a resposta ao site que fala igual com o RH de uma indústria e com quem quer espanhol para viajar.
 
@@ -69,7 +69,7 @@ Abra a Tradução Simultânea. Mostre a etiqueta "Página em construção no MVP
 | Quem procura treinamento de NR-1 não acha a 9vee: o assunto não aparece em menu, título nem endereço | Página própria em `/treinamento-nr-1/`, no menu, com título, descrição e dados estruturados para o Google |
 | Os 14 idiomas da home são figuras sem link | Cada idioma é um link na home e um botão na página de cursos, que já abre o pedido com ele marcado |
 | Quem quer orçamento é mandado de volta para a home e perde a página que estava lendo | O pedido abre por cima da página, com o serviço já escolhido, e termina no WhatsApp com a mensagem pronta |
-| O site fala do mesmo jeito com a empresa e com a pessoa física | A escolha de público muda a ordem, o texto dos botões e a mensagem do WhatsApp, e vale no site inteiro |
+| O site fala do mesmo jeito com a empresa e com a pessoa física | A escolha de público muda o texto dos botões, o pedido, a mensagem do WhatsApp e a ordem dos blocos na página de Idiomas, e vale no site inteiro |
 | A marca aparece escrita de dois jeitos | "9vee" em todo lugar, e "Novee" só no rodapé e nos dados estruturados, para quem procura pelo nome que ouviu |
 
 A medição e a limpeza do blog ficam para depois da aprovação, como a proposta já previa.

@@ -43,6 +43,12 @@ const preencherNr1 = async (p: Page) => {
   await p.fill('#campo-final-nome', 'Maria');
 };
 
+// Abre o pedido pelo hero e responde que é para a empresa: o drawer para no passo do serviço.
+const abrirServicoComoEmpresa = async (p: Page) => {
+  await p.locator('.hero__cta').click();
+  await p.locator('.metade--esquerda').click();
+};
+
 const roteiros: Record<string, Captura[]> = {
   'etapa-1': [
     { nome: 'cabecalho-390', rota: '/', largura: 390, altura: 844 },
@@ -92,14 +98,8 @@ const roteiros: Record<string, Captura[]> = {
       await p.evaluate(() => window.scrollBy({ top: -40, behavior: 'instant' }));
     } },
     { nome: 'drawer-publico-390', rota: '/', largura: 390, altura: 844, antes: (p) => p.locator('.hero__cta').click() },
-    { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: async (p) => {
-      await p.locator('.hero__cta').click();
-      await p.locator('.metade--esquerda').click();
-    } },
-    { nome: 'drawer-servico-1280', rota: '/', largura: 1280, altura: 800, antes: async (p) => {
-      await p.locator('.hero__cta').click();
-      await p.locator('.metade--esquerda').click();
-    } },
+    { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: abrirServicoComoEmpresa },
+    { nome: 'drawer-servico-1280', rota: '/', largura: 1280, altura: 800, antes: abrirServicoComoEmpresa },
     { nome: 'drawer-nr1-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('.cabecalho__cta').click() },
     { nome: 'drawer-nr1-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, publico: 'empresa', antes: (p) => p.locator('.cabecalho__cta').click() },
     { nome: 'drawer-erros-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
@@ -174,6 +174,15 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'quem-somos-1280', rota: '/quem-somos/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'quem-somos-hero-1280', rota: '/quem-somos/', largura: 1280, altura: 800, movimento: true },
     { nome: 'traducao-drawer-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formatos [data-abre-contato]').click() },
+  ],
+  'ajustes-cliente': [
+    { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'servicos-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#servicos', -60) },
+    { nome: 'servicos-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('#servicos', -80) },
+    { nome: 'menu-aberto-390', rota: '/', largura: 390, altura: 844, antes: (p) => p.getByRole('button', { name: 'Menu', exact: true }).click() },
+    { nome: 'painel-empresas-1280', rota: '/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Empresas' }).click() },
+    { nome: 'drawer-servico-390', rota: '/', largura: 390, altura: 844, antes: abrirServicoComoEmpresa },
   ],
 };
 

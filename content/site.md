@@ -75,18 +75,18 @@ menu:
     - id: "empresas"
       rotulo: "Empresas"
       itens:
-        - rotulo: "Treinamento de NR-1"
-          descricao: "Saúde mental e riscos psicossociais no trabalho"
-          href: "/treinamento-nr-1/"
-        - rotulo: "Tradução simultânea"
-          descricao: "Intérpretes para eventos e reuniões"
-          href: "/traducao-simultanea/"
-        - rotulo: "LMS"
-          descricao: "Plataforma de cursos para a sua equipe"
-          href: "/lms/"
         - rotulo: "Idiomas para equipes"
           descricao: "Aulas in company e online"
           href: "/curso-de-idiomas/#empresas"
+        - rotulo: "Tradução simultânea"
+          descricao: "Intérpretes para eventos e reuniões"
+          href: "/traducao-simultanea/"
+        - rotulo: "Treinamento de NR-1"
+          descricao: "Saúde mental e riscos psicossociais no trabalho"
+          href: "/treinamento-nr-1/"
+        - rotulo: "LMS"
+          descricao: "Plataforma de cursos para a sua equipe"
+          href: "/lms/"
     - id: "para-voce"
       rotulo: "Para você"
       itens:
@@ -109,10 +109,11 @@ cta:
   voce: "Quero estudar"
 
 # Ordem dos serviços por público, na home e no drawer. Sem escolha, vale a de empresa.
+# Desde 23/09/2026 é a mesma para os dois públicos, a que a cliente pediu: idiomas, tradução, NR-1 e LMS.
 servicos:
-  - { id: "nr1", nome: "Treinamento de NR-1", descricao: "Saúde mental e riscos psicossociais para RH, SESMT e liderança", ordemEmpresa: 1, ordemVoce: 3 }
+  - { id: "idiomas", nome: "Cursos de idiomas", descricao: "Aula particular, online ou para a equipe inteira", ordemEmpresa: 1, ordemVoce: 1 }
   - { id: "traducao", nome: "Tradução simultânea", descricao: "Intérpretes em cabine ou ao lado de executivos", ordemEmpresa: 2, ordemVoce: 2 }
-  - { id: "idiomas", nome: "Cursos de idiomas", descricao: "Aula particular, online ou para a equipe inteira", ordemEmpresa: 3, ordemVoce: 1 }
+  - { id: "nr1", nome: "Treinamento de NR-1", descricao: "Saúde mental e riscos psicossociais para RH, SESMT e liderança", ordemEmpresa: 3, ordemVoce: 3 }
   - { id: "lms", nome: "LMS", descricao: "Plataforma de estudo para a equipe da empresa", ordemEmpresa: 4, ordemVoce: 4 }
 
 # Nome de cada página na mensagem do WhatsApp ("Vim pela página ... do site") e o pedido do botão flutuante, por público.

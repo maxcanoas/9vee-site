@@ -6,19 +6,45 @@ import { DIST } from './apoio';
 
 const home = parse(readFileSync(join(DIST, 'index.html'), 'utf8'));
 
-describe('home', () => {
-  it('sai com os serviços na ordem de empresa, que vale antes de qualquer escolha', () => {
+// A ordem que a cliente pediu em 23/09/2026, a mesma para os dois públicos.
+const ORDEM = ['idiomas', 'traducao', 'nr1', 'lms'];
+
+describe('ordem do conteúdo', () => {
+  it('sai com os serviços na ordem da cliente: idiomas, tradução, NR-1 e LMS', () => {
     const ordem = home.querySelectorAll('[data-ordenavel] > li').map((li) => li.getAttribute('data-servico'));
-    expect(ordem).toEqual(['nr1', 'traducao', 'idiomas', 'lms']);
+    expect(ordem).toEqual(ORDEM);
   });
 
-  it('traz a ordem de cada público em todos os serviços', () => {
+  it('dá a mesma ordem aos dois públicos, para a escolha não reordenar os serviços', () => {
     for (const li of home.querySelectorAll('[data-ordenavel] > li')) {
       expect(li.getAttribute('data-ordem-empresa')).toMatch(/^[1-4]$/);
-      expect(li.getAttribute('data-ordem-voce')).toMatch(/^[1-4]$/);
+      expect(li.getAttribute('data-ordem-voce')).toBe(li.getAttribute('data-ordem-empresa'));
     }
   });
 
+  it('põe o bloco dos idiomas logo depois da lista, antes do destaque de NR-1', () => {
+    const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
+    const inicio = secoes.indexOf('servicos');
+    expect(secoes.slice(inicio, inicio + 3)).toEqual(['servicos', 'idiomas', 'nr-1']);
+  });
+
+  // O grupo Empresas aparece três vezes: no painel do computador, no menu do celular e no rodapé.
+  it.each([
+    ['no painel do computador', '#painel-empresas .painel__lista a'],
+    ['no menu do celular', '#menu-movel [aria-labelledby="movel-empresas"] a'],
+    ['no rodapé', 'footer [aria-labelledby="rodape-empresas"] a'],
+  ])('lista o grupo Empresas %s na mesma ordem', (_onde, seletor) => {
+    const hrefs = home.querySelectorAll(seletor).map((a) => a.getAttribute('href'));
+    expect(hrefs).toEqual(['/curso-de-idiomas/#empresas', '/traducao-simultanea/', '/treinamento-nr-1/', '/lms/']);
+  });
+
+  it('lista os serviços do pedido na mesma ordem', () => {
+    const valores = home.querySelectorAll('input[name="drawer-servico"]').map((opcao) => opcao.getAttribute('value'));
+    expect(valores).toEqual(ORDEM);
+  });
+});
+
+describe('home', () => {
   it('tem a escolha de público com as duas opções', () => {
     const valores = home.querySelectorAll('input[name="publico"]').map((r) => r.getAttribute('value'));
     expect(valores).toEqual(['empresa', 'voce']);

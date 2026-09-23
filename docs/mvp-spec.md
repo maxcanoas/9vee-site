@@ -44,7 +44,7 @@
 Um MVP navegável, publicado num link de preview escondido do Google, com:
 
 - **Visual novo** derivado do kit de marca: calmo, sofisticado, com parallax leve feito em CSS e liso no celular.
-- **Escolha de público na home.** Ela muda na hora a ordem dos serviços, o texto do botão de ação e a mensagem do WhatsApp, e fica lembrada nas outras páginas. O menu tem dois grupos: Empresas e Para você.
+- **Escolha de público na home.** Ela muda na hora o texto do botão de ação, o pedido, a mensagem do WhatsApp e a ordem dos blocos na página de Idiomas, e fica lembrada nas outras páginas. O menu tem dois grupos: Empresas e Para você.
 - **Três páginas completas:** Home; Treinamento de NR-1, página própria e vitrine do B2B; e Cursos de Idiomas, vitrine do B2C. Três páginas parciais garantem que nenhum link do menu quebre.
 - **Contato sem sair da página.** Todo botão de ação abre o mesmo drawer, com o serviço da página já escolhido, perguntas por serviço em botões de escolha e duas saídas: o WhatsApp com a mensagem pronta, numa nova aba, ou a confirmação na própria tela. Há um botão flutuante de WhatsApp em todas as páginas.
 - **SEO visível no código das três páginas completas** (título, descrição, um H1, hierarquia e dados estruturados), como argumento de venda.
@@ -159,8 +159,10 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
 ### Público duplo
 
 - O estado tem dois valores (empresa, você), além do estado inicial sem escolha. Fica guardado no navegador e é aplicado antes da primeira pintura, para a página não pular.
+- **Ordem dos serviços:** Idiomas, Tradução Simultânea, NR-1 e LMS, a mesma para os dois públicos, como a cliente pediu em 23/09/2026. Vale na lista da home, no grupo Empresas do menu e do rodapé e no passo 2 do drawer. O primeiro da lista ganha o destaque, então os idiomas ficam em destaque para todo mundo. Na home, o bloco dos idiomas vem logo depois da lista, antes do destaque de NR-1.
+  - A lista da home e a do passo 2 saem ordenadas pelos números de `content/site.md`, com ou sem JavaScript. O mecanismo de ordem por público continua: para voltar a ter uma ordem de empresa, basta mudar esses números. O menu, o rodapé e a ordem dos blocos da home são listas à parte.
+  - As histórias 1 e 18 continuam atendidas: o NR-1 aparece no hero e na lista de serviços, e os cursos vêm primeiro para todo mundo. O destaque de NR-1 desceu por decisão da cliente.
 - **Efeitos da escolha:**
-  - a ordem dos serviços: sem escolha ou empresa, NR-1, Tradução Simultânea, Idiomas e LMS; com "você", Idiomas vem primeiro;
   - o texto do botão de ação;
   - a mensagem do WhatsApp;
   - o passo 1 do drawer, que já vem respondido;
@@ -296,6 +298,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - tamanhos de título e descrição;
      - JSON-LD válido e com os tipos certos por página, e FAQ do JSON-LD igual ao visível;
      - noindex presente, e ausente com `INDEXAVEL=true`;
+     - a ordem dos serviços na home, no menu, no rodapé e no pedido, e o bloco dos idiomas logo depois da lista;
      - nenhum travessão, palavra proibida ou link genérico;
      - "Novee" só nos dois lugares permitidos;
      - links e âncoras internos que resolvem;
@@ -309,7 +312,7 @@ Um MVP navegável, publicado num link de preview escondido do Google, com:
      - o serviço já escolhido pela página;
      - o link do WhatsApp interceptado e conferido;
      - a confirmação de "receber contato";
-     - a escolha de público reordenando e persistindo entre páginas;
+     - a escolha de público trocando o botão, mantendo a ordem dos serviços e persistindo entre páginas;
      - o movimento reduzido desligando as animações (conferido só no Chromium);
      - nenhuma rolagem horizontal em 360, 390, 768, 1280 e 1920 px;
      - o botão flutuante sem cobrir o fim do rodapé.

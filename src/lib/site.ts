@@ -1,5 +1,6 @@
 import { getEntry } from 'astro:content';
 import type { ServicoId } from './contato';
+import { ordenarPorPublico } from './publico';
 
 export async function dadosDoSite() {
   const entrada = await getEntry('site', 'site');
@@ -16,10 +17,14 @@ export function servicoDoSite(site: DadosDoSite, id: ServicoId) {
   return servico;
 }
 
-/** Junta a cada item a ordem do serviço por público, que vive em content/site.md. */
+/**
+ * Junta a cada item a ordem do serviço por público, que vive em content/site.md, e devolve a lista na ordem
+ * de quem ainda não escolheu. Assim o HTML sem JavaScript já sai na ordem da tela, e a ordem mora só nos números.
+ */
 export function comOrdemDoServico<T extends { id: ServicoId }>(site: DadosDoSite, itens: readonly T[]) {
-  return itens.map((item) => {
+  const comOrdem = itens.map((item) => {
     const { ordemEmpresa, ordemVoce } = servicoDoSite(site, item.id);
     return { ...item, ordemEmpresa, ordemVoce };
   });
+  return ordenarPorPublico(comOrdem, null);
 }

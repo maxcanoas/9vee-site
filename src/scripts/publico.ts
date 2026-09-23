@@ -41,7 +41,7 @@ function aplicar(publico: Publico | null) {
   for (const ouvinte of ouvintes) ouvinte(publico);
 }
 
-/** Grava e aplica a escolha. Na home, os cartões deslizam para a nova ordem; dentro do drawer, a troca é seca. */
+/** Grava e aplica a escolha. Na home, a troca roda numa View Transition (se a ordem mudar, os cartões deslizam); dentro do drawer, é seca. */
 export function escolherPublico(publico: Publico | null, animar = false): void {
   gravarPublico(armazenamento, publico);
   const reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;

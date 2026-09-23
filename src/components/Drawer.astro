@@ -6,6 +6,7 @@ import Texto from './Texto.astro';
 import CampoContato from './CampoContato.astro';
 import IconeWhatsApp from './IconeWhatsApp.astro';
 import { linkWhatsApp, type Campo, type DadosDoDrawer, type FormularioId } from '../lib/contato';
+import { ordenarPorPublico } from '../lib/publico';
 import { AVISO_NOVA_ABA, jsonParaScript, textoPuro } from '../lib/texto';
 import type { DadosDoSite, PaginaId } from '../lib/site';
 
@@ -126,7 +127,7 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
             </legend>
             <div class="servicos-drawer" data-ordenavel>
               {
-                servicos.map((servico) => (
+                ordenarPorPublico(servicos, null).map((servico) => (
                   <label
                     class="servico-opcao"
                     data-ordem-empresa={servico.ordemEmpresa}

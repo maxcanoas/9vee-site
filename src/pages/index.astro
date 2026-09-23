@@ -22,9 +22,8 @@ const site = await dadosDoSite();
   <Hero {...home.hero} cta={site.cta} />
   <FaixaProva {...home.prova} etiqueta={site.pendencia.etiqueta} />
   <Servicos titulo={home.servicos.titulo} itens={comOrdemDoServico(site, home.servicos.itens)} />
-  <DestaqueNr1 {...home.destaqueNr1} />
-  <ComoFunciona {...home.como} />
 
+  {/* Os blocos seguem a ordem dos serviços que a cliente pediu: idiomas antes do NR-1. */}
   <section class="idiomas-home" id="idiomas" aria-labelledby="idiomas-titulo">
     <FaixaSaudacoes idiomas={site.idiomas} />
     <div class="conteiner idiomas-home__corpo">
@@ -34,6 +33,8 @@ const site = await dadosDoSite();
     </div>
   </section>
 
+  <DestaqueNr1 {...home.destaqueNr1} />
+  <ComoFunciona {...home.como} />
   <Depoimentos {...home.depoimentos} />
   <Faq {...home.faq} />
   <CtaFinal {...home.ctaFinal} cta={site.cta} />

@@ -41,21 +41,21 @@ prova:
 servicos:
   titulo: "O que a 9vee faz"
   itens:
-    - id: "nr1"
-      titulo: "Treinamento de NR-1"
-      publico: "Para empresas"
-      texto: "Saúde mental e riscos psicossociais para RH, SESMT e liderança. A fiscalização com multa começou em maio de 2026."
-      link: { rotulo: "Conhecer o treinamento de NR-1", href: "/treinamento-nr-1/" }
-    - id: "traducao"
-      titulo: "Tradução simultânea"
-      publico: "Para empresas"
-      texto: "Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
-      link: { rotulo: "Ver como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     - id: "idiomas"
       titulo: "Cursos de idiomas"
       publico: "Para você e para empresas"
       texto: "Aula particular, online ou para a equipe inteira, com preparação para TOEFL, DELE, DELF e CELPE-Bras."
       link: { rotulo: "Ver os cursos de idiomas", href: "/curso-de-idiomas/" }
+    - id: "traducao"
+      titulo: "Tradução simultânea"
+      publico: "Para empresas"
+      texto: "Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
+      link: { rotulo: "Ver como funciona a tradução simultânea", href: "/traducao-simultanea/" }
+    - id: "nr1"
+      titulo: "Treinamento de NR-1"
+      publico: "Para empresas"
+      texto: "Saúde mental e riscos psicossociais para RH, SESMT e liderança. A fiscalização com multa começou em maio de 2026."
+      link: { rotulo: "Conhecer o treinamento de NR-1", href: "/treinamento-nr-1/" }
     - id: "lms"
       titulo: "LMS"
       publico: "Para empresas"
