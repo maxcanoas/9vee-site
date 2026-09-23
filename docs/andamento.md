@@ -147,7 +147,7 @@ Uma nota para a próxima publicação: o subdomínio novo da Cloudflare levou un
 
 ## Etapa 9: ajustes pedidos pela cliente (23/09/2026)
 
-A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano com as decisões abaixo, e a spec ganhou a seção "Ajustes pedidos pela cliente em 23/09/2026". Cada fase passou por humanizar, code-review nos dois eixos e capturas no roteiro `ajustes-cliente`, com as correções da revisão em commits próprios.
+A cliente viu o preview e mandou cinco apontamentos (os itens 1 a 4 abaixo cobrem os cinco; o item 5 é um ajuste do Maxwell, depois da publicação). O Maxwell aprovou o plano com as decisões abaixo, e a spec ganhou a seção "Ajustes pedidos pela cliente em 23/09/2026". Cada fase passou por humanizar, code-review nos dois eixos e capturas no roteiro `ajustes-cliente`, com as correções da revisão em commits próprios.
 
 **O que entrou:**
 
@@ -155,7 +155,7 @@ A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano c
 2. **Círculo da marca** (`14f7949`, com as correções até `e447f1c`). O "círculo Novee" da cliente é o `Profile Pic_1` do kit. O `gerar-ativos` tira só a camada de degradê do SVG, sem as letras, e grava `src/assets/marca/circulo-marca.png`. Ele fica atrás da intérprete no hero da home, onde gira uns 30 graus com a rolagem, atrás da imagem nos heroes internos e no CTA do fim. As metades verde e rosa ficaram nos detalhes.
 3. **Código de cor** (`fb7e2f3`, com a correção `237088d`). Marca-texto, pela classe `.grifo`. Empresas em violeta e Para você em magenta, no menu do celular, no rodapé e no menu do computador (meia-lua na cor do grupo; faixa no hover, no foco e com o painel aberto). Germânicas em violeta, Românicas em magenta e De outras famílias em menta. Um mapa só, pelo `data-grupo`, em `base.css`. Depois da publicação, o Maxwell notou que o hover das línguas continuava magenta em todas as famílias: o sublinhado do hover e o fio do idioma de destino passaram a usar a cor da família.
 4. **Logos nos depoimentos** (`5a30392`, com a correção `a58d186`). Nissan e GM do Simple Icons, Embraer do Wikimedia Commons, em navy e escondidos do leitor de tela, pelo componente `LogoEmpresa`, que tira o tamanho do formato do `viewBox`. A pendência de cada depoimento pede também a autorização da empresa para o logo.
-5. **Cor do público na escolha**, depois da publicação. Na escolha do hero, a metade escolhida ganha a cor do público, a mesma do menu (violeta clara para empresa, magenta clara para você), com texto navy. Os botões de ação continuam menta.
+5. **Cor do público na escolha**, pedido do Maxwell depois da publicação (`a42ae96`). Na escolha do hero, a metade escolhida ganha a cor do público, a mesma do menu (violeta clara para empresa, magenta clara para você), com texto navy. Os botões de ação continuam menta.
 
 **Decisões:**
 
@@ -165,9 +165,12 @@ A cliente viu o preview e mandou cinco apontamentos. O Maxwell aprovou o plano c
 4. Logos em uma cor só, porque as cores das marcas brigariam com a paleta.
 5. Arquivo e componente do círculo se chamam `circulo-marca` e `CirculoMarca`: "novee" iria para a URL pública da imagem, contra a regra da marca.
 6. O kit original agora está em `docs/Archive`, fora do git pelo `.gitignore`.
-7. **Botão de ação continua menta.** O Maxwell propôs pintar também os botões com a cor do público. Simulei as opções na tela (`relatorios/analise-cores/`) e recomendei não pintar, e ele aprovou. O botão violeta daria 2,7:1 contra o navy do hero e do fim (a WCAG pede 3:1), o texto teria de mudar de cor por público, o atalho do WhatsApp continuaria verde ao lado de um botão rosa, e quem escolheu "Para você" veria a página de NR-1 com botões rosa. A cor de ação ficou uma só, e isso virou regra no `padroes.md`.
+7. **Botão de ação continua menta.** O Maxwell propôs pintar também os botões com a cor do público. Simulei as opções na tela (`relatorios/analise-cores/`) e recomendei não pintar, e ele aprovou. Na cor do público, o botão viraria mais uma área colorida disputando com o círculo e as faixas, o atalho do WhatsApp continuaria verde ao lado de um botão rosa, e quem escolheu "Para você" veria a página de NR-1 com botões rosa. Na análise eu também citei contraste (a violeta pura dá 2,7:1 contra o navy, e o texto teria de trocar de cor por público), mas a revisão mostrou que isso só vale para a cor pura: no tom claro do grifo, o botão com texto navy daria 4,7:1. A decisão ficou pelos outros motivos. A cor de ação ficou uma só, e isso virou regra no `padroes.md`.
 
-**Para mostrar à cliente:** no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares.
+**Para mostrar à cliente:**
+
+- no fundo navy (CTA do fim e heroes internos), o quadrante escuro do degradê se mistura com o fundo, e o círculo lê como um arco colorido. É o degradê do kit como ele é. Se ela estranhar, dá para girar o círculo nesses lugares;
+- a escolha de público agora marca na cor do público, a mesma do menu. Ela não pediu isso: é um ajuste do Maxwell, então vale mostrar e ouvir.
 
 ## Pendências técnicas
 

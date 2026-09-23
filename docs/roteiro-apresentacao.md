@@ -22,9 +22,9 @@ Diga que o site inteiro foi montado a partir do kit de marca deles, sem foto de 
 
 ### 2. A escolha de público (1 minuto)
 
-Toque em "Para você". O botão vira "Quero estudar", e o pedido passa a abrir em "Montar suas aulas", com os cursos de idiomas já marcados.
+Toque em "Para você". A metade escolhida fica magenta, a mesma cor de "Para você" no menu. O botão vira "Quero estudar", e o pedido passa a abrir em "Montar suas aulas", com os cursos de idiomas já marcados. A cor na escolha não foi um pedido deles: mostre e pergunte se agrada.
 
-Volte para "Para sua empresa": o botão volta a ser "Pedir orçamento". A ordem dos serviços não muda com a escolha. É a que eles pediram, com os idiomas primeiro.
+Volte para "Para sua empresa": a metade fica violeta, como Empresas no menu, e o botão volta a ser "Pedir orçamento". A ordem dos serviços não muda com a escolha. É a que eles pediram, com os idiomas primeiro.
 
 Essa é a resposta ao site que fala igual com o RH de uma indústria e com quem quer espanhol para viajar.
 
