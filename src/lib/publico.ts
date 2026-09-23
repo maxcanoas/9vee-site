@@ -1,6 +1,9 @@
 export const PUBLICOS = ['empresa', 'voce'] as const;
 export type Publico = (typeof PUBLICOS)[number];
 
+/** O grupo do menu (id em content/site.md) que cada público representa: é por ele que a escolha pega a cor. */
+export const GRUPO_DO_PUBLICO: Record<Publico, string> = { empresa: 'empresas', voce: 'para-voce' };
+
 /** Um texto para cada situação: sem escolha (neutro), empresa e você. */
 export type TextosPorPublico = Record<'neutro' | Publico, string>;
 

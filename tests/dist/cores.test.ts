@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
+import { GRUPO_DO_PUBLICO, PUBLICOS } from '../../src/lib/publico';
 import { DIST } from './apoio';
 
 const pagina = (pasta: string) => parse(readFileSync(join(DIST, pasta, 'index.html'), 'utf8'));
@@ -21,10 +22,13 @@ describe('código de cor', () => {
   });
 
   // As metades da escolha pegam a cor pelo id do grupo do menu: um id trocado no content/site.md apagaria a cor.
-  it('liga as duas metades da escolha de público aos grupos do menu', () => {
+  it('liga cada metade da escolha de público ao grupo do menu que ela representa', () => {
     const doMenu = home.querySelectorAll('#menu-movel [data-grupo]').map((grupo) => grupo.getAttribute('data-grupo'));
-    const daEscolha = home.querySelectorAll('.duas-metades [data-grupo]').map((metade) => metade.getAttribute('data-grupo'));
-    expect(daEscolha).toEqual(doMenu);
+    for (const publico of PUBLICOS) {
+      const grupo = home.querySelector(`.duas-metades__metade--${publico}`)?.getAttribute('data-grupo');
+      expect(grupo, publico).toBe(GRUPO_DO_PUBLICO[publico]);
+      expect(doMenu, `o menu não tem o grupo "${grupo}"`).toContain(grupo);
+    }
   });
 
   it.each([

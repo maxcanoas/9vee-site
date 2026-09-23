@@ -1,4 +1,5 @@
 import { expect, test, type Locator } from '@playwright/test';
+import { GRUPO_DO_PUBLICO } from '../../src/lib/publico';
 
 // A cor da faixa do grifo, que abre o box-shadow calculado ("oklab(...) 0px -9.6px 0px 0px inset": a cor vem
 // de um color-mix). Faixa transparente conta como sem grifo.
@@ -35,7 +36,7 @@ test.describe('código de cor', () => {
   // A cor do público vai só para a escolha. O botão de ação continua menta, a única cor de ação do site.
   test('a metade escolhida ganha a cor do público, a mesma do menu, e o botão continua menta', async ({ page }) => {
     await page.goto('/');
-    for (const [publico, grupo] of [['empresa', 'empresas'], ['voce', 'para-voce']]) {
+    for (const [publico, grupo] of Object.entries(GRUPO_DO_PUBLICO)) {
       const metade = page.locator(`.duas-metades__metade--${publico}`);
       await metade.click();
       await expect(page.locator('html')).toHaveAttribute('data-publico', publico);

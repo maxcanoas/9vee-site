@@ -207,6 +207,7 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'escolha-empresa-390', rota: '/', largura: 390, altura: 844, publico: 'empresa', antes: rolarAte('.duas-metades', -320) },
     { nome: 'escolha-voce-390', rota: '/', largura: 390, altura: 844, publico: 'voce', antes: rolarAte('.duas-metades', -320) },
     { nome: 'escolha-empresa-1280', rota: '/', largura: 1280, altura: 800, publico: 'empresa' },
+    { nome: 'escolha-voce-1280', rota: '/', largura: 1280, altura: 800, publico: 'voce' },
     { nome: 'nr1-hero-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, movimento: true },
     { nome: 'idiomas-hero-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, movimento: true },
     { nome: 'cta-final-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAteImagem('#contato', -80) },

@@ -19,11 +19,13 @@
   --papel-veu: color-mix(in oklab, var(--papel) 12%, transparent);
   --papel-denso: color-mix(in oklab, var(--papel) 88%, transparent);
   --linha-escura: color-mix(in oklab, var(--sobre-escuro) 30%, transparent);
-  /* Faixas do grifo (o código de cor dos grupos). No fundo claro o texto é navy, e as cores clareiam até ele dar
-     4,5:1 onde a faixa passa por trás das letras: violeta clareada 4,7:1, magenta clareada 4,6:1, menta 7,8:1.
-     No fundo escuro elas mudam em base.css. */
-  --grifo-violeta: color-mix(in oklab, var(--violeta) 70%, var(--papel));
-  --grifo-magenta: color-mix(in oklab, var(--magenta) 90%, var(--papel));
+  /* Faixas do grifo (o código de cor dos grupos). O tom segue a cor do texto que fica sobre a faixa. Com texto
+     navy, as cores clareiam até ele dar 4,5:1: violeta clareada 4,7:1, magenta clareada 4,6:1, menta 7,8:1.
+     Onde o texto é papel (o .escuro), elas escurecem em base.css. */
+  --grifo-violeta-claro: color-mix(in oklab, var(--violeta) 70%, var(--papel));
+  --grifo-magenta-claro: color-mix(in oklab, var(--magenta) 90%, var(--papel));
+  --grifo-violeta: var(--grifo-violeta-claro);
+  --grifo-magenta: var(--grifo-magenta-claro);
   --grifo-menta: var(--menta);
   /* Única sombra de profundidade do site: a do atalho do WhatsApp, que passa por cima de toda seção.
      Os box-shadow inset do grifo e do campo inválido são traço de forma, não sombra. */
