@@ -2,10 +2,9 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
-import type { HTMLElement } from 'node-html-parser';
+import { parse, type HTMLElement } from 'node-html-parser';
+import { expect } from 'vitest';
 import { carregarPaginas as lerPaginas, type Pagina } from '../../scripts/paginas-do-build.ts';
-
-export { textoVisivel, type Pagina } from '../../scripts/paginas-do-build.ts';
 
 /** O build de preview, o que vai para o Cloudflare. A maior parte dos testes lê este. */
 export const DIST = fileURLToPath(new URL('../../dist/', import.meta.url));
@@ -17,6 +16,36 @@ export const DOMINIO = 'https://www.9vee.com.br';
 export function carregarPaginas(pasta = DIST): Pagina[] {
   if (!existsSync(pasta)) throw new Error(`${pasta} não existe: rode "npm test", que faz os builds antes dos testes`);
   return lerPaginas(pasta);
+}
+
+/** Texto que a pessoa vê ou que o leitor de tela lê: sem script, style e template. */
+export function textoVisivel(raiz: HTMLElement): string {
+  const copia = parse(raiz.toString());
+  copia.querySelectorAll('script, style, template, noscript').forEach((no) => no.remove());
+  return (copia.querySelector('body')?.text ?? '').replace(/\s+/g, ' ');
+}
+
+/**
+ * Em qualquer modo, o endereço que o Google e as redes leem é o definitivo, nunca o do Cloudflare.
+ * A 404 responde por qualquer endereço que não existe, então não tem canonical nem og:url.
+ */
+export function conferirEnderecos({ rota, raiz }: Pagina) {
+  const canonical = raiz.querySelector('link[rel="canonical"]')?.getAttribute('href');
+  const ogUrl = raiz.querySelector('meta[property="og:url"]')?.getAttribute('content');
+  if (rota === '/404') {
+    expect(canonical).toBeUndefined();
+    expect(ogUrl).toBeUndefined();
+  } else {
+    expect(canonical).toBe(`${DOMINIO}${rota}`);
+    expect(ogUrl).toBe(canonical);
+  }
+  expect(raiz.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(`${DOMINIO}/`);
+}
+
+/** O robots libera em todos os modos: com o rastreador bloqueado, o Google não leria o noindex do preview. */
+export function conferirRobotsLiberado(robots: string) {
+  expect(robots).toMatch(/^Allow: \/$/m);
+  expect(robots).not.toMatch(/^Disallow:\s*\//m);
 }
 
 /** Textos que também contam como copy: title, description e atributos lidos por pessoas. */

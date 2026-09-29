@@ -5,8 +5,9 @@ import { describe, expect, it } from 'vitest';
 import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
   DIST,
-  DOMINIO,
   carregarPaginas,
+  conferirEnderecos,
+  conferirRobotsLiberado,
   jsonLd,
   tamanhoDoJs,
   textoVisivel,
@@ -66,7 +67,7 @@ describe('build', () => {
   });
 
   it('não bloqueia rastreador no robots.txt (senão ele não lê o noindex)', () => {
-    expect(readFileSync(join(DIST, 'robots.txt'), 'utf8')).not.toMatch(/^Disallow:\s*\//m);
+    conferirRobotsLiberado(readFileSync(join(DIST, 'robots.txt'), 'utf8'));
   });
 
   it('não aponta sitemap no robots.txt do preview', () => {
@@ -102,18 +103,8 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(raiz.querySelector('meta[name="robots"]')?.getAttribute('content')).toContain('noindex');
   });
 
-  // Mesmo no preview, o endereço que o Google e as redes leem é o definitivo, nunca o do Cloudflare.
   it('aponta canonical e Open Graph para o domínio definitivo', () => {
-    const canonical = raiz.querySelector('link[rel="canonical"]')?.getAttribute('href');
-    const ogUrl = raiz.querySelector('meta[property="og:url"]')?.getAttribute('content');
-    if (rota === '/404') {
-      expect(canonical).toBeUndefined();
-      expect(ogUrl).toBeUndefined();
-    } else {
-      expect(canonical).toBe(`${DOMINIO}${rota}`);
-      expect(ogUrl).toBe(canonical);
-    }
-    expect(raiz.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(`${DOMINIO}/`);
+    conferirEnderecos({ arquivo, rota, html, raiz });
   });
 
   it('descreve a organização em JSON-LD, com Novee como nome alternativo', () => {
@@ -185,7 +176,7 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
-  // A mesma regra da trava de produção: link que não abre, sem barra no fim ou com âncora que não existe.
+  // A mesma regra da trava: o preview não pode ter link que a produção barraria.
   it('resolve todos os links internos e âncoras', () => {
     expect(linksQuebrados({ arquivo, rota, html, raiz }, DIST)).toEqual([]);
   });
