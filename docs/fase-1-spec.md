@@ -179,16 +179,18 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 | Envio do formulário | chave de teste | chave de teste (e-mail do Maxwell) | chave de produção (contato@9vee.com.br) |
 
 - O robots do preview libera, e o noindex vai na meta e no cabeçalho, como no MVP. Decidido na rodada de 29/09: com o robots bloqueando, o Google não leria o noindex.
-- Canonical, Open Graph e sitemap usam sempre `https://www.9vee.com.br`, em todos os modos. Todo endereço termina com barra. A página de erro não tem canonical.
-- As credenciais (a chave do serviço de formulário e o ID do GA4) vêm de arquivos `.env`, fora do Git. O `.env.example` lista as variáveis sem valores. A regra do `.gitignore` que hoje esconde também o exemplo é corrigida.
+- Canonical, Open Graph e sitemap usam sempre `https://www.9vee.com.br`, em todos os modos. Todo endereço termina com barra. A página de erro não tem canonical nem `og:url`.
+- As credenciais (a chave do serviço de formulário e o ID do GA4) vêm de arquivos `.env`, fora do Git, um por modo: `.env.development`, `.env.preview` e `.env.producao`. O `.env.example` lista as variáveis sem valores e explica que o modo vem do comando, e não do arquivo. A regra do `.gitignore` que escondia também o exemplo foi corrigida.
+- O build recusa o `.env` e o `.env.local`, que valeriam para todos os modos e levariam a chave de um ambiente para o outro, e recusa o `--mode` solto, que leria o `.env` de um modo e construiria outro.
+- A produção sai em `dist-producao/`, e o preview em `dist/`, que é a pasta que o `wrangler` publica. O `npm run build` é o mesmo que o `build:preview`, para um build solto nunca sair indexável nessa pasta. O `npm run preview` serve o `dist-producao/` localmente, que é o uso que o brief dá a ele: conferir e medir a produção.
 - A chave do serviço de formulário acaba no JavaScript publicado, porque o envio sai do navegador. É assim que esses serviços funcionam: a chave só permite mandar para o e-mail dela.
 - **Trava de produção:** o `check:producao` roda sobre o build de produção e falha se encontrar:
-  - `[CONFIRMAR` em qualquer texto;
+  - pendência, no HTML (a marca na tela ou o `[CONFIRMAR` cru) ou na fonte, em `content/`, porque a faixa de números e o texto puro do título, da descrição e do JSON-LD não deixam marca no HTML;
   - o Placeholder de imagem;
-  - a etiqueta de obra;
+  - as marcas do MVP: a etiqueta de obra e o aviso "MVP: envio simulado" do pedido;
   - noindex, na meta ou no cabeçalho;
-  - travessão no texto visível;
-  - link interno quebrado.
+  - travessão ou meia-risca em qualquer parte do HTML (texto, atributos e JSON-LD);
+  - link interno quebrado, sem barra no fim ou com âncora que não existe.
 - As palavras proibidas e o resto dos padrões continuam nos testes do HTML gerado, como no MVP.
 
 ### Páginas

@@ -16,4 +16,5 @@
 - [ ] Marca de publicada: a página não publicada aparece no preview e fica fora do build de produção, do menu, dos links e do sitemap.
 - [ ] Home e página de cursos levam à página de cada idioma publicado; os não publicados continuam na âncora da página de cursos.
 - [ ] Inglês, espanhol e mandarim escritos com os fatos do Arthur; o que faltar fica marcado, e a página fica não publicada.
-- [ ] Testes do HTML gerado cobrem a regra de publicação.
+- [ ] Testes do HTML gerado cobrem a regra de publicação. O teste que compara as páginas da produção com as do preview passa a descontar as não publicadas.
+- [ ] A trava de produção deixa de ler, em `content/`, o conteúdo das páginas não publicadas, que não vão ao ar.

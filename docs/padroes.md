@@ -21,11 +21,11 @@
 - **(teste)** Um único `<h1>` por página, e headings sem pular nível.
 - **(teste)** `<title>` com até 60 caracteres e `meta description` entre 140 e 160 nas páginas completas.
 - **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, `Service` no NR-1, `ItemList`/`Course` e `FAQPage` em Idiomas. O FAQ do JSON-LD é igual ao FAQ visível.
-- **(teste)** Noindex na meta no local e no preview, e também no cabeçalho do preview (`_headers`, para a Cloudflare). A produção sai sem noindex em lugar nenhum.
-- **(teste)** Canonical, `og:url` e `og:image` sempre em `https://www.9vee.com.br`, em todos os modos, com barra no fim. A 404 não tem canonical nem `og:url`.
+- **(teste)** Noindex na meta e no cabeçalho do preview (`_headers`, para a Cloudflare). A produção sai sem noindex em lugar nenhum. O local segue o preview, sem o `_headers`, e é conferido à mão.
+- **(teste)** Canonical, `og:url` e `og:image` sempre em `https://www.9vee.com.br`, com barra no fim, no preview e na produção (o local usa o mesmo layout). A 404 não tem canonical nem `og:url`.
 - **(teste)** robots.txt libera em todos os modos; só o da produção aponta o sitemap.
-- **(trava)** O build de produção passa no `check:producao`: nenhuma pendência, Placeholder, marca do MVP (etiqueta de obra e aviso de envio simulado), noindex, travessão ou link interno quebrado.
-- O modo vem do comando (`npm run dev`, `build:preview` e `build:producao`), nunca do `.env`. Cada modo tem o seu `.env.<modo>`; `.env` e `.env.local` são proibidos, porque valeriam para todos os modos.
+- **(trava)** O build de produção passa no `check:producao`: nenhuma pendência (no HTML e na fonte, em `content/`), Placeholder, marca do MVP (etiqueta de obra e aviso de envio simulado), noindex, travessão ou meia-risca, ou link interno quebrado.
+- O modo vem do comando (`npm run dev`, `build:preview` e `build:producao`), nunca do `.env`. Cada modo tem o seu arquivo: `.env.development` (local), `.env.preview` e `.env.producao`. `.env` e `.env.local` são proibidos, porque valeriam para todos os modos.
 - **(teste)** HTML válido pelo `html-validate`. Nada de `<a>` dentro de `<button>`, nem bloco dentro de `<p>`.
 - `role="list"` (que segura a semântica de lista no Safari quando o marcador some) vai só em `<ul>`. Em `<ol>` o `html-validate` recusa, pela regra `prefer-native-element`.
 - **(teste)** Todo `target="_blank"` vem com `rel="noopener"`.
