@@ -7,10 +7,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
-import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
+import { CABECALHO_DA_TABELA, RODADAS, linhaDaTabela, medirPagina } from './medida-lighthouse.ts';
 
-const RODADAS = 3;
 const PAGINAS = [
   { nome: 'Home', rota: '/' },
   { nome: 'Treinamento de NR-1', rota: '/treinamento-nr-1/' },
@@ -64,33 +63,6 @@ function servir(pasta: string, porta: number): Promise<Server> {
   return new Promise((ok) => servidor.listen(porta, () => ok(servidor)));
 }
 
-const mediana = (valores: number[]) => [...valores].sort((a, b) => a - b)[Math.floor(valores.length / 2)];
-
-interface Medida {
-  performance: number;
-  acessibilidade: number;
-  praticas: number;
-  seo: number;
-  lcp: number;
-  cls: number;
-  tbt: number;
-}
-
-async function medir(url: string, porta: number): Promise<Medida> {
-  const { lhr } = (await lighthouse(url, { port: porta, output: 'json', logLevel: 'error' }))!;
-  const nota = (id: string) => Math.round((lhr.categories[id].score ?? 0) * 100);
-  const valor = (id: string) => lhr.audits[id].numericValue ?? 0;
-  return {
-    performance: nota('performance'),
-    acessibilidade: nota('accessibility'),
-    praticas: nota('best-practices'),
-    seo: nota('seo'),
-    lcp: valor('largest-contentful-paint'),
-    cls: valor('cumulative-layout-shift'),
-    tbt: valor('total-blocking-time'),
-  };
-}
-
 const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new', '--no-sandbox'] });
 const linhas: string[] = [
   '# Lighthouse mobile',
@@ -105,17 +77,9 @@ const linhas: string[] = [
 
 const servidor = await servir(PASTA, PORTA);
 try {
-  linhas.push('| Página | Perf. | Acess. | Práticas | SEO | LCP | CLS | TBT |', '|---|---|---|---|---|---|---|---|');
+  linhas.push(...CABECALHO_DA_TABELA);
   for (const pagina of PAGINAS) {
-    const medidas: Medida[] = [];
-    for (let i = 0; i < RODADAS; i++) {
-      medidas.push(await medir(`http://localhost:${PORTA}${pagina.rota}`, chrome.port));
-    }
-    const m = (campo: keyof Medida) => mediana(medidas.map((medida) => medida[campo]));
-    linhas.push(
-      `| ${pagina.nome} | ${m('performance')} | ${m('acessibilidade')} | ${m('praticas')} | ${m('seo')} | ` +
-        `${(m('lcp') / 1000).toFixed(2)} s | ${m('cls').toFixed(3)} | ${Math.round(m('tbt'))} ms |`,
-    );
+    linhas.push(linhaDaTabela(pagina.nome, await medirPagina(`http://localhost:${PORTA}${pagina.rota}`, chrome.port)));
     console.log(`ok ${pagina.rota}`);
   }
   linhas.push('');
