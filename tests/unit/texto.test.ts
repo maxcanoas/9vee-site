@@ -4,6 +4,7 @@ import {
   formatarInline,
   jsonParaScript,
   marcarPendencias,
+  pendenciasDoArquivo,
   textoPuro,
 } from '../../src/lib/texto';
 
@@ -108,6 +109,31 @@ describe('extrairPendencias', () => {
 
   it('devolve lista vazia quando não há pendência', () => {
     expect(extrairPendencias('texto confirmado')).toEqual([]);
+  });
+});
+
+describe('pendenciasDoArquivo', () => {
+  it('lê as pendências de um arquivo de content/, no frontmatter e no corpo', () => {
+    const arquivo = [
+      '---',
+      'prova:',
+      '  - valor: 19',
+      '    pendencia: "[CONFIRMAR COM A DANIELLA: ano de fundação]"',
+      '---',
+      '# Título do corpo [CONFIRMAR COM A DANIELLA: nome da seção]',
+    ].join('\n');
+    expect(pendenciasDoArquivo(arquivo)).toEqual(['ano de fundação', 'nome da seção']);
+  });
+
+  it('ignora o comentário do YAML, que cita o formato sem ser texto do site', () => {
+    const arquivo = [
+      '---',
+      '# Pendências para a reunião: o [CONFIRMAR COM A DANIELLA: ...] dos textos vira esta etiqueta.',
+      'pendencia:',
+      '  etiqueta: "a confirmar"',
+      '---',
+    ].join('\n');
+    expect(pendenciasDoArquivo(arquivo)).toEqual([]);
   });
 });
 

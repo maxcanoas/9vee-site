@@ -68,6 +68,21 @@ export function extrairPendencias(texto: string): string[] {
   return [...texto.matchAll(PENDENCIA)].map((m) => m[1].trim());
 }
 
+/**
+ * As pendências de um arquivo inteiro de content/. Os comentários do YAML ficam de fora: eles também
+ * citam o formato da pendência, e não são texto do site. O corpo em Markdown entra inteiro.
+ */
+export function pendenciasDoArquivo(arquivo: string): string[] {
+  const partes = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/.exec(arquivo);
+  const frontmatter = partes?.[1] ?? '';
+  const corpo = partes ? partes[2] : arquivo;
+  const semComentarios = frontmatter
+    .split(/\r?\n/)
+    .filter((linha) => !linha.trimStart().startsWith('#'))
+    .join('\n');
+  return extrairPendencias(`${semComentarios}\n${corpo}`);
+}
+
 /** Versão sem marcação, para title, description, aria-label e JSON-LD. */
 export function textoPuro(texto: string): string {
   return texto

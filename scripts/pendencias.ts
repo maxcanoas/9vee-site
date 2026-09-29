@@ -2,7 +2,7 @@
 // Uso: node scripts/pendencias.ts  (escreve relatorios/pendencias.md e imprime na tela)
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { extrairPendencias } from '../src/lib/texto.ts';
+import { pendenciasDoArquivo } from '../src/lib/texto.ts';
 
 const conteudo = new URL('../content/', import.meta.url);
 
@@ -17,13 +17,6 @@ const PAGINAS: Record<string, string> = {
   'quem-somos.md': 'Quem Somos',
 };
 
-// Comentário de YAML também cita o formato da pendência, e não é texto do site.
-const semComentarios = (texto: string) =>
-  texto
-    .split('\n')
-    .filter((linha) => !linha.trimStart().startsWith('#'))
-    .join('\n');
-
 const arquivos = (await readdir(conteudo)).filter((nome) => nome.endsWith('.md'));
 const desconhecidos = arquivos.filter((nome) => !(nome in PAGINAS));
 if (desconhecidos.length) throw new Error(`arquivo sem nome de página: ${desconhecidos.join(', ')}`);
@@ -33,8 +26,7 @@ let total = 0;
 
 for (const [arquivo, pagina] of Object.entries(PAGINAS)) {
   if (!arquivos.includes(arquivo)) continue;
-  const texto = semComentarios(await readFile(new URL(arquivo, conteudo), 'utf8'));
-  const pendencias = [...new Set(extrairPendencias(texto))];
+  const pendencias = [...new Set(pendenciasDoArquivo(await readFile(new URL(arquivo, conteudo), 'utf8')))];
   if (!pendencias.length) continue;
   total += pendencias.length;
   linhas.push(`## ${pagina}`, '');

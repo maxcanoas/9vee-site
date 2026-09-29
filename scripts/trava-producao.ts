@@ -1,9 +1,10 @@
 // A trava de produção: o que não pode ir ao ar no site definitivo. Lê uma pasta de build e devolve
 // cada achado, na ordem das páginas. O `npm run check:producao` roda esta verificação sobre dist-producao/.
 import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join, relative, sep } from 'node:path';
 import { parse } from 'node-html-parser';
-import { arquivoDaRota, carregarPaginas, type Pagina } from './paginas-do-build.ts';
+import { pendenciasDoArquivo } from '../src/lib/texto.ts';
+import { arquivoDaRota, carregarPaginas, listarArquivos, type Pagina } from './paginas-do-build.ts';
 
 const PENDENCIA_CRUA = /\[CONFIRMAR[^\]]*\]/g;
 // As marcas do MVP, pelo elemento e não pelo texto: a resposta "Em construção" do formulário de NR-1 é
@@ -84,6 +85,21 @@ export interface Achado {
   /** A rota da página, ou o arquivo, quando o achado não é de uma página. */
   onde: string;
   detalhe: string;
+}
+
+/**
+ * As pendências da fonte, em content/. A página nem sempre mostra a pendência como marca: a faixa de números
+ * da home tira a nota do texto, e o título, a descrição e o JSON-LD saem sem ela.
+ */
+export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
+  const base = dirname(pastaDoConteudo);
+  return listarArquivos(pastaDoConteudo, '.md').flatMap((arquivo) =>
+    pendenciasDoArquivo(readFileSync(arquivo, 'utf8')).map((detalhe) => ({
+      regra: 'pendencia' as const,
+      onde: relative(base, arquivo).split(sep).join('/'),
+      detalhe,
+    })),
+  );
 }
 
 export function verificarBuild(pasta: string): Achado[] {

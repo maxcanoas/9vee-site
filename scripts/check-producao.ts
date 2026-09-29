@@ -2,7 +2,7 @@
 // O build:producao chama este script no fim, então o build de produção só "passa" com a trava limpa.
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { REGRAS, verificarBuild, type Regra } from './trava-producao.ts';
+import { REGRAS, pendenciasNoConteudo, verificarBuild, type Regra } from './trava-producao.ts';
 
 const pasta = fileURLToPath(new URL('../dist-producao/', import.meta.url));
 if (!existsSync(pasta)) {
@@ -10,7 +10,10 @@ if (!existsSync(pasta)) {
   process.exit(1);
 }
 
-const achados = verificarBuild(pasta);
+const achados = [
+  ...pendenciasNoConteudo(fileURLToPath(new URL('../content/', import.meta.url))),
+  ...verificarBuild(pasta),
+];
 if (achados.length === 0) {
   console.log('check:producao: nada a barrar. O build de produção pode ir ao ar.');
 } else {

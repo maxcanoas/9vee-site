@@ -11,16 +11,17 @@ export interface Pagina {
   raiz: HTMLElement;
 }
 
-function listarHtml(pasta: string): string[] {
+/** Os arquivos com a extensão, na pasta e nas subpastas. */
+export function listarArquivos(pasta: string, extensao: string): string[] {
   return readdirSync(pasta).flatMap((nome) => {
     const caminho = join(pasta, nome);
-    if (statSync(caminho).isDirectory()) return listarHtml(caminho);
-    return nome.endsWith('.html') ? [caminho] : [];
+    if (statSync(caminho).isDirectory()) return listarArquivos(caminho, extensao);
+    return nome.endsWith(extensao) ? [caminho] : [];
   });
 }
 
 export function carregarPaginas(pasta: string): Pagina[] {
-  return listarHtml(pasta).map((arquivo) => {
+  return listarArquivos(pasta, '.html').map((arquivo) => {
     const html = readFileSync(arquivo, 'utf8');
     const relativo = relative(pasta, arquivo).split(sep).join('/');
     const rota = `/${relativo.replace(/index\.html$/, '').replace(/\.html$/, '')}`;

@@ -2,7 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { verificarBuild, type Achado } from '../../scripts/trava-producao.ts';
+import { pendenciasNoConteudo, verificarBuild, type Achado } from '../../scripts/trava-producao.ts';
 
 const pastas: string[] = [];
 
@@ -122,5 +122,21 @@ describe('verificarBuild', () => {
       'og.jpg': '',
     });
     expect(verificarBuild(pasta).map((achado) => achado.detalhe)).toEqual(['link quebrado: /logo.png']);
+  });
+});
+
+// A página nem sempre mostra a pendência como marca: a faixa de números da home tira a nota do texto, e o
+// título, a descrição e o JSON-LD saem sem ela. Por isso a trava também lê a fonte, em content/.
+describe('pendenciasNoConteudo', () => {
+  it('acha a pendência em qualquer arquivo de content/, também nas subpastas', () => {
+    const raiz = montarBuild({
+      'content/home.md': '---\nprova:\n  - valor: 19\n    pendencia: "[CONFIRMAR COM A DANIELLA: ano de fundação]"\n---\n',
+      'content/idiomas/ingles.md': '---\nseo:\n  descricao: "Inglês com [CONFIRMAR COM A DANIELLA: níveis]"\n---\n',
+      'content/lms.md': '---\n# O [CONFIRMAR: ...] vira etiqueta na tela.\nhero:\n  h1: "LMS"\n---\n',
+    });
+    expect(pendenciasNoConteudo(join(raiz, 'content'))).toEqual([
+      { regra: 'pendencia', onde: 'content/home.md', detalhe: 'ano de fundação' },
+      { regra: 'pendencia', onde: 'content/idiomas/ingles.md', detalhe: 'níveis' },
+    ]);
   });
 });
