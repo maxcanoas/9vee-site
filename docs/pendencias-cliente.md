@@ -2,7 +2,9 @@
 
 Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas.
 
-A divisão entre os dois é sugestão minha, pelos papéis da proposta: a Daniella decide o site, os textos e os leads; o Arthur, as aulas e o agendamento. Os acessos que dependem do dono do domínio ficaram com o Arthur, porque o 9vee.com.br está no nome dele. Mude o que não bater. Esta lista ainda muda com as suas respostas às perguntas da Fase A.
+A divisão entre os dois é sugestão minha, pelos papéis da proposta: a Daniella decide o site, os textos e os leads; o Arthur, as aulas e o agendamento. Os acessos que dependem do dono do domínio ficaram com o Arthur, porque o 9vee.com.br está no nome dele. Mude o que não bater.
+
+Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois, a página de termos de uso sai (410) e os pedidos vão só para o contato@9vee.com.br.
 
 ## A mensagem
 
@@ -19,7 +21,7 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 5. Os depoimentos de Eduardo Martins (Nissan), Bruno Teixeira (General Motors) e Pedro Cavalcante (Embraer): vocês têm autorização por escrito de cada um para a fala e de cada empresa para o logo? As falas são deles, do jeito que estão no site?
 6. Em quanto tempo o comercial responde um pedido, e em quanto tempo a proposta costuma sair? A página de Mandarim promete "até um dia útil": isso vale para todos os serviços?
 7. O comercial já responde com valor no primeiro contato? Existe uma faixa de preço que dê para mostrar por serviço (idiomas, tradução, NR-1 e LMS), ou preferem não mostrar preço?
-8. Qual e-mail deve receber os pedidos do site: só o contato@9vee.com.br, ou também o seu e o do Arthur? E hoje, os avisos dos formulários do Wix chegam em qual caixa?
+8. Os pedidos do site novo vão chegar no contato@9vee.com.br. Essa caixa é lida todo dia? E hoje, os avisos dos formulários do Wix chegam em qual caixa?
 
 **Treinamento de NR-1**
 
@@ -53,19 +55,18 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 
 25. Qual é a razão social e o CNPJ da 9vee? Quem responde pelos dados pessoais (o encarregado da LGPD), ou qual e-mail recebe os pedidos dos titulares?
 26. A política de privacidade atual cita o foro de Arapoti (PR). Está certo? Vocês têm advogado para revisar a política nova?
-27. Os "Termos de uso" do site atual são usados em contrato com aluno? O texto fala em "exames de ingresso no ensino superior", que não é serviço da 9vee.
 
 **Blog**
 
-28. Podem parar de publicar posts no blog do Wix a partir de agora? Cada post novo vira mais um endereço para redirecionar na troca.
+27. Podem parar de publicar posts no blog do Wix a partir de agora? Cada post novo vira mais um endereço para redirecionar na troca.
 
 **Para a revisão dos textos**
 
-29. A Lei 14.831 ainda não tem o regulamento que diz como pedir o certificado. Eu confiro de novo na semana da publicação; se vocês souberem de novidade antes, me avisem.
+28. A Lei 14.831 ainda não tem o regulamento que diz como pedir o certificado. Eu confiro de novo na semana da publicação; se vocês souberem de novidade antes, me avisem.
 
 **Serviços**
 
-30. A página de cursos atual oferece "Realocação de funcionários": apoio com idioma, legislação, documentação e adaptação para quem muda de cidade ou de país. Esse serviço continua? Se continuar, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros, sem página própria.
+29. A página de cursos atual oferece "Realocação de funcionários": apoio com idioma, legislação, documentação e adaptação para quem muda de cidade ou de país. Esse serviço continua? Se continuar, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros, sem página própria.
 
 ### Para o Arthur
 
@@ -79,12 +80,11 @@ Arthur, para as páginas de cada idioma e para a troca do site preciso destas re
 4. Quantas horas de aula costumam levar de um nível para o outro?
 5. A 9vee emite certificado no fim do curso? De que tipo?
 
-**Acessos e contas** (a publicação só acontece com eles)
+**Acessos e contas**
 
-6. Acesso ao painel da HostGator (cPanel), para conferir o plano de hospedagem antes da troca.
-7. Acesso de editor ao Google Analytics da 9vee e de usuário completo ao Google Search Console. As duas contas já existem; parecem estar na conta Google "Novee" (noveecloud9@gmail.com). Confirmam?
-8. A proposta prevê o código num repositório em nome da 9vee. Vocês têm conta no GitHub, ou crio uma organização em nome da 9vee na entrega?
-9. A zona DNS do 9vee.com.br foi alterada hoje, 29/09. Foi alguém de vocês ou da HostGator? Só para eu saber antes de a gente mexer no apontamento.
+6. Acesso de editor ao Google Analytics da 9vee e de usuário completo ao Google Search Console. As duas contas já existem; parecem estar na conta Google "Novee" (noveecloud9@gmail.com). Confirmam?
+7. A proposta prevê o código num repositório em nome da 9vee. Vocês têm conta no GitHub, ou crio uma organização em nome da 9vee na entrega?
+8. A zona DNS do 9vee.com.br foi alterada hoje, 29/09. Foi alguém de vocês ou da HostGator? Só para eu saber antes de a gente mexer no apontamento, no lançamento.
 
 ## De onde vem cada pendência
 
@@ -101,7 +101,7 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D9 a D14 | `content/treinamento-nr-1.md` | formato, carga horária, turma, plano de ação, comprovante e turma inteira |
 | D21 | `content/home.md`, `content/lms.md` | texto do LMS na lista de serviços e nota da página LMS |
 | D24 | `content/site.md` | `rodape.pronuncia` |
-| D29 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
+| D28 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
 | A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |
 | A4 | `content/curso-de-idiomas.md` | FAQ "Quanto tempo leva para subir um nível?" |
 | A5 | `content/curso-de-idiomas.md` | FAQ "No fim do curso eu recebo certificado?" |

@@ -150,6 +150,18 @@ O maior risco não são as horas: é o tempo de resposta do cliente. As páginas
 
 ## Divergências entre a proposta e o brief
 
+Resolvidas na rodada de perguntas de 29/09/2026 (detalhe em `docs/fase-1-spec.md`):
+
+- 1, 3 e 6: vão para o checklist de lançamento.
+- 2: o retrato do antes sai na semana 1 ou 2; o relatório, no lançamento.
+- 4: o Redação 900+ fica de fora por enquanto; o cliente não quer mexer nele agora.
+- 5: o mesmo GA4 e o mesmo Search Console, com acesso de editor e de usuário completo; o site novo e o Bing ficam para o lançamento.
+- 7: a pergunta vai na mensagem para a Daniella.
+- 8: nada de HostGator por enquanto; tudo pensado para funcionar localmente, e a publicação vem quando o cliente der o acesso.
+- O robots.txt do preview continua liberado, com noindex na meta e no cabeçalho.
+
+A soma sem o Redação 900+ fica em cerca de 89 horas, com 11 a 12 horas por semana.
+
 Estão no cronograma da proposta e o brief não cobre:
 
 1. **Publicação automática** (Frente 5): "cada alteração que eu fizer entra no ar sozinha, sem upload manual". Precisa da HostGator.
