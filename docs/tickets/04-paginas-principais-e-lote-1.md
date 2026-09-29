@@ -14,7 +14,7 @@
 - [x] Trilha de navegação visível nas páginas internas, com o `BreadcrumbList` igual.
 - [ ] Se a Daniella confirmar a realocação de funcionários, o bloco entra na parte de empresas da página de cursos. Ainda sem resposta (pergunta 29 da mensagem ao cliente).
 - [x] `humanizar` rodado em todo texto alterado.
-- [ ] `docs/revisao-daniella/lote-1.md` gerado com as três páginas e os textos compartilhados (menu, rodapé e pedido). Sai depois das correções que a revisão do ticket 03 pediu no gerador.
+- [x] `docs/revisao-daniella/lote-1.md` gerado com as três páginas e os textos compartilhados (menu, rodapé e pedido), depois das correções que a revisão do ticket 03 pediu no gerador. Ele traz 23 pendências no texto (20 com a Daniella e 3 com o Arthur) e as 4 da faixa de números.
 - [x] Testes do HTML gerado e do navegador passam; `docs/novidades-preview.md` atualizado.
 
 **Como ficou:** a trilha tem dois passos, "Início" e a página, com o nome que o site já usa para ela em `content/site.md`. A mesma lista vira a trilha na tela e o `BreadcrumbList`, e um teste confere que os dois batem em toda página interna. As páginas parciais (Tradução, LMS e Quem Somos) também ganharam a trilha, porque o hero delas é o mesmo. Com a trilha no alto, o respiro de cima do hero ficou igual no celular e no computador; senão o botão sairia da primeira tela em 1280 x 800 (capturas em `relatorios/ticket-04/`). O "sede em São Paulo" que ainda aparece no texto de Quem Somos sai no ticket 07, que reescreve a página. O teste que comparava o FAQPage com o FAQ visível só em Idiomas passou a valer para toda página.
