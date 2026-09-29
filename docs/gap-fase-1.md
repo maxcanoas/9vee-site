@@ -19,7 +19,7 @@ Levantado em 29/09/2026, na branch `fase-1`, a partir da tag `mvp-aprovado`. Com
 | P5 | LMS completa | parcial; o site atual não tem nada sobre o LMS além do título | `content/lms.md`, `src/pages/lms.astro` | 2,5 | média, depende do cliente |
 | P6 | Quem Somos completa: história, equipe e números, sem falar em sede física | parcial; o texto de hoje diz "sede em São Paulo" | `content/quem-somos.md`, `src/pages/quem-somos.astro` | 2 | média |
 | P7 | Política de privacidade própria do site | falta; o rodapé aponta para a página do Wix | `content/site.md` (`rodape.privacidade.href`) | 2 | alta, trava o formulário e o aviso de cookies |
-| P8 | 404 personalizada, com os caminhos para os serviços | parcial; existe uma 404 simples | `src/pages/404.astro`, `content/site.md` (`erro404`) | 0,5 | baixa |
+| P8 | 404 personalizada, com os caminhos para os serviços, e sem canonical (hoje ela sai com canonical para `/404/`) | parcial; existe uma 404 simples | `src/pages/404.astro`, `content/site.md` (`erro404`) | 0,5 | baixa |
 | P9 | Modelo da página por idioma: esquema do conteúdo, seções, JSON-LD `Course` e `FAQPage`, links para serviço e cidade | falta | novo, uma rota por idioma a partir de `content/` | 2 | alta |
 | P10 | Os 14 textos por idioma, cada um com conteúdo próprio (para quem é, níveis, formatos, FAQ) | falta | `content/` | 7 | alta |
 | P11 | Modelo da página por cidade | falta | novo | 1 | média |

@@ -14,7 +14,7 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 
 1. Qual serviço tem a melhor margem e qual vocês querem que cresça primeiro? A resposta decide a ordem das páginas novas.
 2. A 9vee tem quantos anos? A home diz 19 anos, e o Quem Somos atual diz "mais de 20". Qual é o ano de fundação?
-3. Quantos idiomas vocês ensinam hoje? A home diz 14, e a página de cursos diz "inglês e mais 11".
+3. Quantos idiomas vocês ensinam hoje? A home diz 14, a página de cursos diz "inglês e mais 11" e, na parte de empresas, "cursos online em 12 idiomas".
 4. Quantos profissionais são hoje, entre professores, intérpretes e equipe? E quantos clientes, contando empresas e alunos? O site atual diz "+65" e "+160".
 5. Os depoimentos de Eduardo Martins (Nissan), Bruno Teixeira (General Motors) e Pedro Cavalcante (Embraer): vocês têm autorização por escrito de cada um para a fala e de cada empresa para o logo? As falas são deles, do jeito que estão no site?
 6. Em quanto tempo o comercial responde um pedido, e em quanto tempo a proposta costuma sair? A página de Mandarim promete "até um dia útil": isso vale para todos os serviços?
@@ -63,6 +63,10 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 
 29. A Lei 14.831 ainda não tem o regulamento que diz como pedir o certificado. Eu confiro de novo na semana da publicação; se vocês souberem de novidade antes, me avisem.
 
+**Serviços**
+
+30. A página de cursos atual oferece "Realocação de funcionários": apoio com idioma, legislação, documentação e adaptação para quem muda de cidade ou de país. Esse serviço continua? Se continuar, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros, sem página própria.
+
 ### Para o Arthur
 
 Arthur, para as páginas de cada idioma e para a troca do site preciso destas respostas.
@@ -70,7 +74,7 @@ Arthur, para as páginas de cada idioma e para a troca do site preciso destas re
 **Os idiomas** (cada um vai ter página própria, e página sem informação própria é punida pelo Google)
 
 1. A lista continua esta: inglês, espanhol, francês, italiano, alemão, holandês, sueco, norueguês, romeno, português para estrangeiros, mandarim, japonês, árabe e russo? Algum saiu ou entrou?
-2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova).
+2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova). Hoje o site só tem material próprio de inglês (crianças e adolescentes com Cambridge, TOEFL), português para estrangeiros (CELPE-Bras), espanhol (DELE), francês (DELF, DALF e TCF), holandês (Inburgering) e mandarim. Dos outros oito (alemão, italiano, sueco, norueguês, romeno, japonês, árabe e russo), o site só traz o nome.
 3. As aulas de idioma também acontecem presencialmente? Em que cidades, e onde (na empresa do aluno, em sala da 9vee, em espaço parceiro)?
 4. Quantas horas de aula costumam levar de um nível para o outro?
 5. A 9vee emite certificado no fim do curso? De que tipo?

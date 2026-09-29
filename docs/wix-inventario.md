@@ -130,3 +130,5 @@ Para a LGPD, o "antes" é este: GA4 e gravação de sessão rodando sem aviso ne
 5. O GA4 `G-Y04K0CN1F9` já existe. Usar a mesma propriedade no site novo mantém o histórico para o antes e depois.
 6. O blog ainda recebe posts: vale pedir para parar agora, porque cada texto novo vira mais um endereço para redirecionar.
 7. A política de privacidade atual é um modelo genérico: não nomeia encarregado nem CNPJ, cita uma "Política de Cookies" que não existe e elege o foro de Arapoti (PR).
+8. A página de cursos atual oferece um serviço que o MVP e a proposta não citam: "Realocação de funcionários" (relocation). Também diz "cursos online em 12 idiomas" para empresas, um terceiro número além de 14 e de "inglês e mais 11".
+9. Dos 14 idiomas, só seis têm algum material próprio no site atual: inglês, português para estrangeiros, espanhol, francês, holandês e mandarim. Os outros oito aparecem só pelo nome.
