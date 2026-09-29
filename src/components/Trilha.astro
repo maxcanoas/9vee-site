@@ -1,0 +1,70 @@
+---
+// A trilha de navegação no alto das páginas internas, igual à do JSON-LD. O último passo é a página
+// onde a pessoa está: não é link. Os separadores são meias-luas da marca, sem texto para o leitor de tela.
+import Texto from './Texto.astro';
+import { dadosDoSite, type PassoDaTrilha } from '../lib/site';
+
+interface Props {
+  passos: PassoDaTrilha[];
+}
+
+const { passos } = Astro.props;
+const { trilha: textos } = await dadosDoSite();
+const ultimo = passos.length - 1;
+---
+
+<nav class="trilha" aria-label={textos.rotulo}>
+  <ol class="trilha__lista">
+    {
+      passos.map((passo, i) => (
+        <li class="trilha__passo">
+          {i < ultimo ? (
+            <a class="trilha__link" href={passo.caminho}>
+              <Texto de={passo.nome} />
+            </a>
+          ) : (
+            <span aria-current="page">
+              <Texto de={passo.nome} />
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .trilha__lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: var(--sobre-escuro);
+    font-size: var(--t-pequeno);
+  }
+
+  .trilha__passo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+  }
+
+  /* A meia-lua entre os passos: forma, e não texto, para o leitor de tela não ler um separador. */
+  .trilha__passo + .trilha__passo::before {
+    content: '';
+    inline-size: 0.3em;
+    block-size: 0.6em;
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: currentColor;
+  }
+
+  /* O padding calculado dá ao link 44 px de altura de toque sem afastar as linhas da trilha. */
+  .trilha__link {
+    display: inline-block;
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    color: var(--papel);
+  }
+</style>

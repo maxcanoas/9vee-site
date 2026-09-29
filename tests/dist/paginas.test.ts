@@ -5,11 +5,13 @@ import { describe, expect, it } from 'vitest';
 import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
   DIST,
+  DOMINIO,
   carregarPaginas,
   conferirEnderecos,
   conferirRobotsLiberado,
   jsonLd,
   tamanhoDoJs,
+  textoComoNoJsonLd,
   textoVisivel,
   textosDeAtributo,
   textosDoJsonLd,
@@ -49,6 +51,10 @@ const LINKS_GENERICOS = new Set([
   'leia mais',
   'aqui',
 ]);
+
+// A home e a página de erro não têm trilha: a home é o começo dela, e a 404 não tem lugar no site.
+const INTERNAS = new Set(['/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/']);
+const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/']);
 
 const paginas = carregarPaginas();
 const validador = new HtmlValidate(new FileSystemConfigLoader());
@@ -112,6 +118,48 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(organizacao).toBeDefined();
     expect(organizacao?.name).toBe('9vee');
     expect(organizacao?.alternateName).toBe('Novee');
+  });
+
+  // A 9vee não tem sede aberta ao público: a área atendida, o contato e as redes dizem onde encontrá-la.
+  it('não dá endereço à organização, e diz onde ela atende e como falar com ela', () => {
+    const nos = jsonLd(raiz);
+    const organizacao = nos.find((no) => no['@type'] === 'EducationalOrganization');
+    expect(JSON.stringify(nos)).not.toMatch(/PostalAddress|LocalBusiness|"address"/);
+    expect(organizacao?.areaServed).toContainEqual({ '@type': 'Country', name: 'Brasil' });
+    expect(organizacao?.contactPoint).toMatchObject({ '@type': 'ContactPoint', email: expect.stringContaining('@') });
+    expect(organizacao?.sameAs).toEqual(expect.arrayContaining([expect.stringMatching(/^https:\/\//)]));
+  });
+
+  it('repete no FAQPage o mesmo FAQ que a página mostra', () => {
+    const faq = jsonLd(raiz).find((no) => no['@type'] === 'FAQPage');
+    const doJson = (faq?.mainEntity ?? []) as { name: string; acceptedAnswer: { text: string } }[];
+    const daPagina = raiz.querySelectorAll('.faq details').map((item) => ({
+      pergunta: textoComoNoJsonLd(item.querySelector('summary')!),
+      resposta: textoComoNoJsonLd(item.querySelector('.faq__resposta')!),
+    }));
+    if (COM_FAQ.has(rota)) expect(daPagina.length, `${rota} sem FAQ`).toBeGreaterThanOrEqual(4);
+    expect(doJson.map((q) => ({ pergunta: q.name, resposta: q.acceptedAnswer.text }))).toEqual(daPagina);
+  });
+
+  it('mostra a trilha nas páginas internas, igual ao BreadcrumbList', () => {
+    const trilha = raiz.querySelector('nav.trilha');
+    const doJson = jsonLd(raiz).find((no) => no['@type'] === 'BreadcrumbList');
+    if (!INTERNAS.has(rota)) {
+      expect(trilha, rota).toBeNull();
+      expect(doJson, rota).toBeUndefined();
+      return;
+    }
+    const itens = doJson?.itemListElement as { position: number; name: string; item: string }[];
+    const passos = trilha!.querySelectorAll('li');
+    expect(itens.map((i) => i.position)).toEqual(itens.map((_, i) => i + 1));
+    expect(itens.map((i) => i.name)).toEqual(passos.map((li) => textoComoNoJsonLd(li)));
+    expect(itens.map((i) => i.item)).toEqual([`${DOMINIO}/`, `${DOMINIO}${rota}`]);
+    // Os passos antes do último levam ao mesmo endereço do JSON-LD. O último é a página: sem link.
+    passos.slice(0, -1).forEach((li, i) => {
+      expect(new URL(li.querySelector('a')?.getAttribute('href') ?? '', DOMINIO).href).toBe(itens[i].item);
+    });
+    expect(passos.at(-1)?.querySelector('a')).toBeNull();
+    expect(passos.at(-1)?.querySelector('[aria-current="page"]')).not.toBeNull();
   });
 
   // Tirar a pendência de uma frase pode deixar sobra ("no fim do curso:."). O visitante não vê, o Google vê.

@@ -1,5 +1,5 @@
 import { jsonParaScript, preencher, textoPuro } from './texto';
-import type { DadosDoSite } from './site';
+import type { DadosDoSite, PassoDaTrilha } from './site';
 
 /** "5511934661917" vira "+55 11 93466-1917". */
 export function telefoneInternacional(numero: string): string {
@@ -18,12 +18,7 @@ export function organizacao(site: DadosDoSite, base: URL) {
     logo: new URL('/logo-9vee.png', base).href,
     email: site.contato.email,
     telephone: telefone,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: site.marca.sede,
-      addressRegion: site.marca.sedeUf,
-      addressCountry: 'BR',
-    },
+    // Sem endereço: a 9vee não tem sede aberta ao público. A área atendida diz onde ela trabalha.
     areaServed: [
       ...site.cidades.map((cidade) => ({ '@type': 'City', name: cidade })),
       { '@type': 'Country', name: 'Brasil' },
@@ -79,6 +74,19 @@ export function listaDeCursos(
         url: new URL(`${dados.caminho}#${idioma.slug}`, base).href,
         provider: { '@id': new URL('/#organizacao', base).href },
       },
+    })),
+  };
+}
+
+/** A trilha que o Google mostra no resultado (Início > Cursos de idiomas), igual à trilha visível da página. */
+export function trilhaDeNavegacao(base: URL, passos: readonly PassoDaTrilha[]) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: passos.map((passo, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: textoPuro(passo.nome),
+      item: new URL(passo.caminho, base).href,
     })),
   };
 }

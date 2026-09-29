@@ -6,13 +6,6 @@ import { DIST, jsonLd } from './apoio';
 
 const idiomas = parse(readFileSync(join(DIST, 'curso-de-idiomas', 'index.html'), 'utf8'));
 
-/** Mesma limpeza que o textoPuro faz do lado do JSON-LD, para os dois textos ficarem comparáveis. */
-const normalizar = (texto: string) =>
-  texto
-    .replace(/\s+/g, ' ')
-    .replace(/\s+([.,;:!?])/g, '$1')
-    .trim();
-
 describe('cursos de idiomas', () => {
   it('traz as seções na ordem do brief', () => {
     // As famílias de idioma também são <section>, mas sem id: aqui entram só as seções da página.
@@ -71,22 +64,6 @@ describe('cursos de idiomas', () => {
       const ancora = new URL(item.url).hash.slice(1);
       expect(idiomas.getElementById(ancora), `âncora ${ancora} do JSON-LD não existe`).not.toBeNull();
     }
-  });
-
-  it('repete no FAQPage o mesmo FAQ que a página mostra', () => {
-    const faq = jsonLd(idiomas).find((no) => no['@type'] === 'FAQPage');
-    const doJson = faq?.mainEntity as { name: string; acceptedAnswer: { text: string } }[];
-    const daPagina = idiomas.querySelectorAll('#perguntas details').map((item) => {
-      const copia = parse(item.toString());
-      // A etiqueta de pendência não entra no JSON-LD, então também sai daqui antes de comparar.
-      copia.querySelectorAll('mark.confirmar').forEach((marca) => marca.remove());
-      return {
-        pergunta: normalizar(copia.querySelector('summary')?.text ?? ''),
-        resposta: normalizar(copia.querySelector('.faq__resposta')?.text ?? ''),
-      };
-    });
-    expect(daPagina.length).toBeGreaterThanOrEqual(4);
-    expect(doJson.map((q) => ({ pergunta: q.name, resposta: q.acceptedAnswer.text }))).toEqual(daPagina);
   });
 
   it('lista os seis exames que o site atual prepara', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { listaDeCursos, servico, telefoneInternacional } from '../../src/lib/jsonld';
+import { listaDeCursos, servico, telefoneInternacional, trilhaDeNavegacao } from '../../src/lib/jsonld';
 
 describe('telefoneInternacional', () => {
   it('escreve o número do WhatsApp no padrão internacional', () => {
@@ -45,5 +45,26 @@ describe('listaDeCursos', () => {
 
   it('tira a pendência da descrição que o Google lê', () => {
     expect(curso.description).toBe('Inglês com a 9vee.');
+  });
+});
+
+describe('trilhaDeNavegacao', () => {
+  const trilha = trilhaDeNavegacao(new URL('https://exemplo.9vee.com.br/'), [
+    { nome: 'Início', caminho: '/' },
+    { nome: 'Cursos de Idiomas', caminho: '/curso-de-idiomas/' },
+    { nome: 'Inglês [CONFIRMAR COM O ARTHUR: nome do curso]', caminho: '/curso-de-idiomas/ingles/' },
+  ]);
+
+  it('numera os passos a partir de 1, com o endereço absoluto de cada um', () => {
+    expect(trilha['@type']).toBe('BreadcrumbList');
+    expect(trilha.itemListElement.map((passo) => [passo.position, passo.item])).toEqual([
+      [1, 'https://exemplo.9vee.com.br/'],
+      [2, 'https://exemplo.9vee.com.br/curso-de-idiomas/'],
+      [3, 'https://exemplo.9vee.com.br/curso-de-idiomas/ingles/'],
+    ]);
+  });
+
+  it('tira a pendência do nome que o Google lê', () => {
+    expect(trilha.itemListElement[2].name).toBe('Inglês');
   });
 });

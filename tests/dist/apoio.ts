@@ -72,6 +72,19 @@ export function jsonLd(raiz: HTMLElement): Record<string, unknown>[] {
     );
 }
 
+/**
+ * O texto de um elemento limpo como o textoPuro limpa o do JSON-LD: sem a etiqueta de pendência, sem o texto
+ * só para leitor de tela e sem espaço antes da pontuação. Assim os dois lados ficam comparáveis.
+ */
+export function textoComoNoJsonLd(elemento: HTMLElement): string {
+  const copia = parse(elemento.toString());
+  copia.querySelectorAll('mark.confirmar, .visualmente-oculto').forEach((no) => no.remove());
+  return copia.text
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([.,;:!?])/g, '$1')
+    .trim();
+}
+
 /** Todo texto que o JSON-LD leva, em qualquer profundidade. */
 export function textosDoJsonLd(nos: Record<string, unknown>[]): string[] {
   const textos: string[] = [];

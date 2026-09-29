@@ -3,8 +3,6 @@ marca:
   nome: "9vee"
   nomeAlternativo: "Novee"
   resumo: "A 9vee ensina idiomas, leva intérpretes a eventos e dá treinamento de NR-1 sobre saúde mental no trabalho."
-  sede: "São Paulo"
-  sedeUf: "SP"
 
 contato:
   whatsapp: "5511934661917"
@@ -102,6 +100,11 @@ menu:
   quemSomos:
     rotulo: "Quem somos"
     href: "/quem-somos/"
+
+# A trilha de navegação no alto das páginas internas: Início, e a página onde a pessoa está.
+trilha:
+  rotulo: "Você está em"
+  inicio: "Início"
 
 cta:
   neutro: "Pedir orçamento"

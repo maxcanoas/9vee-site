@@ -191,6 +191,15 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'quem-somos-hero-1280', rota: '/quem-somos/', largura: 1280, altura: 800, movimento: true },
     { nome: 'traducao-drawer-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formatos [data-abre-contato]').click() },
   ],
+  'ticket-04': [
+    { nome: 'nr1-hero-360', rota: '/treinamento-nr-1/', largura: 360, altura: 780 },
+    { nome: 'nr1-hero-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
+    { nome: 'idiomas-hero-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844 },
+    { nome: 'traducao-hero-390', rota: '/traducao-simultanea/', largura: 390, altura: 844 },
+    { nome: 'traducao-hero-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800 },
+    { nome: 'trilha-foco-1280', rota: '/lms/', largura: 1280, altura: 800, antes: (p) => p.locator('.trilha a').focus() },
+    { nome: 'trilha-mouse-1280', rota: '/quem-somos/', largura: 1280, altura: 800, antes: (p) => p.locator('.trilha a').hover() },
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

@@ -64,8 +64,6 @@ const site = defineCollection({
       nome: z.literal('9vee'),
       nomeAlternativo: z.string(),
       resumo: z.string(),
-      sede: z.string(),
-      sedeUf: z.string().length(2),
     }),
     contato: z.object({
       whatsapp: z.string().regex(/^55\d{10,11}$/),
@@ -108,6 +106,7 @@ const site = defineCollection({
       ),
       quemSomos: link,
     }),
+    trilha: z.object({ rotulo: z.string(), inicio: z.string() }),
     cta: porPublico,
     servicos: z
       .array(

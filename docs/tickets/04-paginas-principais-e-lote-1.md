@@ -6,13 +6,15 @@
 
 **Horas:** 8. **Semana:** 2.
 
-**Situação:** ready-for-agent
+**Situação:** feito em 29/09/2026, sem resposta do cliente ainda.
 
-- [ ] As respostas do cliente que chegaram estão aplicadas. O que falta continua marcado, com o nome de quem responde.
-- [ ] `EducationalOrganization` sem endereço, com `areaServed`, `contactPoint` e `sameAs`. "Sede em São Paulo" sai dos textos compartilhados.
-- [ ] `FAQPage` na home e no NR-1, igual ao FAQ visível; `Service` no NR-1.
-- [ ] Trilha de navegação visível nas páginas internas, com o `BreadcrumbList` igual.
-- [ ] Se a Daniella confirmar a realocação de funcionários, o bloco entra na parte de empresas da página de cursos.
-- [ ] `humanizar` rodado em todo texto alterado.
-- [ ] `docs/revisao-daniella/lote-1.md` gerado com as três páginas e os textos compartilhados (menu, rodapé e pedido).
-- [ ] Testes do HTML gerado e do navegador passam; `docs/novidades-preview.md` atualizado.
+- [x] As respostas do cliente que chegaram estão aplicadas. O que falta continua marcado, com o nome de quem responde. Nenhuma resposta chegou até aqui: as pendências seguem como estavam, e as da Daniella e do Arthur já levam o nome de quem responde (ticket 03).
+- [x] `EducationalOrganization` sem endereço, com `areaServed`, `contactPoint` e `sameAs`. "Sede em São Paulo" sai dos textos compartilhados.
+- [x] `FAQPage` na home e no NR-1, igual ao FAQ visível; `Service` no NR-1.
+- [x] Trilha de navegação visível nas páginas internas, com o `BreadcrumbList` igual.
+- [ ] Se a Daniella confirmar a realocação de funcionários, o bloco entra na parte de empresas da página de cursos. Ainda sem resposta (pergunta 29 da mensagem ao cliente).
+- [x] `humanizar` rodado em todo texto alterado.
+- [ ] `docs/revisao-daniella/lote-1.md` gerado com as três páginas e os textos compartilhados (menu, rodapé e pedido). Sai depois das correções que a revisão do ticket 03 pediu no gerador.
+- [x] Testes do HTML gerado e do navegador passam; `docs/novidades-preview.md` atualizado.
+
+**Como ficou:** a trilha tem dois passos, "Início" e a página, com o nome que o site já usa para ela em `content/site.md`. A mesma lista vira a trilha na tela e o `BreadcrumbList`, e um teste confere que os dois batem em toda página interna. As páginas parciais (Tradução, LMS e Quem Somos) também ganharam a trilha, porque o hero delas é o mesmo. Com a trilha no alto, o respiro de cima do hero ficou igual no celular e no computador; senão o botão sairia da primeira tela em 1280 x 800 (capturas em `relatorios/ticket-04/`). O "sede em São Paulo" que ainda aparece no texto de Quem Somos sai no ticket 07, que reescreve a página. O teste que comparava o FAQPage com o FAQ visível só em Idiomas passou a valer para toda página.
