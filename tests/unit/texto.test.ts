@@ -3,13 +3,15 @@ import {
   extrairPendencias,
   formatarInline,
   jsonParaScript,
+  lerPendencias,
   marcarPendencias,
   pendenciasDoArquivo,
   textoPuro,
 } from '../../src/lib/texto';
 
 // Os textos da etiqueta vêm de content/site.md; aqui, os mesmos do conteúdo.
-const pendencia = { etiqueta: 'a confirmar', detalhe: 'com a Daniella: {nota}' };
+const quem = { daniella: 'a Daniella', arthur: 'o Arthur' };
+const pendencia = { etiqueta: 'a confirmar', detalhe: 'com {quem}: {nota}', quem };
 const formatar = (texto: string) => formatarInline(texto, pendencia);
 const marcar = (html: string) => marcarPendencias(html, pendencia);
 
@@ -45,7 +47,7 @@ describe('formatarInline', () => {
   });
 
   it('usa o texto da etiqueta que vem do conteúdo', () => {
-    expect(formatarInline('[CONFIRMAR: prazo]', { etiqueta: 'pendente', detalhe: 'de aprovação: {nota}' })).toBe(
+    expect(formatarInline('[CONFIRMAR: prazo]', { etiqueta: 'pendente', detalhe: 'de aprovação: {nota}', quem })).toBe(
       '<mark class="confirmar" title="Pendente de aprovação: prazo">pendente<span class="visualmente-oculto"> de aprovação: prazo</span></mark>',
     );
   });
@@ -54,6 +56,12 @@ describe('formatarInline', () => {
     const html = formatar('19 anos [CONFIRMAR COM A DANIELLA: ano de fundação]');
     expect(html).toBe(
       '19 anos <mark class="confirmar" title="A confirmar com a Daniella: ano de fundação">a confirmar<span class="visualmente-oculto"> com a Daniella: ano de fundação</span></mark>',
+    );
+  });
+
+  it('diz quem responde a pendência: a Daniella ou o Arthur', () => {
+    expect(formatar('Aulas [CONFIRMAR COM O ARTHUR: níveis oferecidos]')).toBe(
+      'Aulas <mark class="confirmar" title="A confirmar com o Arthur: níveis oferecidos">a confirmar<span class="visualmente-oculto"> com o Arthur: níveis oferecidos</span></mark>',
     );
   });
 
@@ -112,6 +120,17 @@ describe('extrairPendencias', () => {
   });
 });
 
+describe('lerPendencias', () => {
+  it('diz quem responde cada pendência; a forma curta fica com a Daniella', () => {
+    const texto = '[CONFIRMAR COM O ARTHUR: níveis] e [CONFIRMAR COM A DANIELLA: preço] e [CONFIRMAR: prazo]';
+    expect(lerPendencias(texto)).toEqual([
+      { responsavel: 'arthur', nota: 'níveis' },
+      { responsavel: 'daniella', nota: 'preço' },
+      { responsavel: 'daniella', nota: 'prazo' },
+    ]);
+  });
+});
+
 describe('pendenciasDoArquivo', () => {
   it('lê as pendências de um arquivo de content/, no frontmatter e no corpo', () => {
     const arquivo = [
@@ -122,7 +141,10 @@ describe('pendenciasDoArquivo', () => {
       '---',
       '# Título do corpo [CONFIRMAR COM A DANIELLA: nome da seção]',
     ].join('\n');
-    expect(pendenciasDoArquivo(arquivo)).toEqual(['ano de fundação', 'nome da seção']);
+    expect(pendenciasDoArquivo(arquivo)).toEqual([
+      { responsavel: 'daniella', nota: 'ano de fundação' },
+      { responsavel: 'daniella', nota: 'nome da seção' },
+    ]);
   });
 
   it('ignora o comentário do YAML, que cita o formato sem ser texto do site', () => {
@@ -142,6 +164,10 @@ describe('textoPuro', () => {
     expect(
       textoPuro('Aulas **online** na [9vee](/) desde 2007 [CONFIRMAR: ano de fundação].'),
     ).toBe('Aulas online na 9vee desde 2007.');
+  });
+
+  it('tira também a pendência do Arthur', () => {
+    expect(textoPuro('Turmas do A1 ao C2 [CONFIRMAR COM O ARTHUR: níveis oferecidos].')).toBe('Turmas do A1 ao C2.');
   });
 });
 

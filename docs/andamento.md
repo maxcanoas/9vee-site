@@ -258,7 +258,8 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npm run e2e`: build de preview e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
 - `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9.
 - `npm install --no-save lighthouse && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção.
-- `node scripts/pendencias.ts`: a lista de pendências dos textos, em `relatorios/pendencias.md`.
+- `node scripts/pendencias.ts`: a lista de pendências dos textos, separada entre a Daniella e o Arthur, em `relatorios/pendencias.md`.
+- `npm run lote -- 1`: o lote 1 de revisão da Daniella, em `docs/revisao-daniella/lote-1.md`, montado do build de preview (rode antes o `npm run build:preview`).
 - `npm run deploy`: build de preview e publicação na Cloudflare (precisa do `wrangler login` antes).
 - `npx astro check`: tipos.
 - Variáveis de ambiente: um arquivo por modo (`.env.development`, `.env.preview` e `.env.producao`), copiado do `.env.example`. O build recusa `.env` e `.env.local`, que valeriam para todos os modos.

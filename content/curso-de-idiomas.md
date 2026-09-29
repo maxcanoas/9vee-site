@@ -58,7 +58,7 @@ formatos:
     - id: "crianca"
       titulo: "Criança e adolescente"
       texto: "Para quem ainda está na escola, com material da Cambridge."
-  nota: "Aula presencial: [CONFIRMAR COM A DANIELLA: se as aulas de idioma também acontecem presencialmente, e em que cidades]."
+  nota: "Aula presencial: [CONFIRMAR COM O ARTHUR: se as aulas de idioma também acontecem presencialmente, e em que cidades]."
   cta: "Falar sobre as aulas"
 
 provas:
@@ -112,11 +112,11 @@ faq:
     - pergunta: "Não sei o meu nível. Tem problema?"
       resposta: "Não. O diagnóstico acontece antes de fechar a turma, e é ele que diz onde você está e de onde a aula começa."
     - pergunta: "Quanto tempo leva para subir um nível?"
-      resposta: "Depende do seu ponto de partida e de quanto você pratica fora da aula [CONFIRMAR COM A DANIELLA: quantas horas de aula costumam levar de um nível para o outro]."
+      resposta: "Depende do seu ponto de partida e de quanto você pratica fora da aula [CONFIRMAR COM O ARTHUR: quantas horas de aula costumam levar de um nível para o outro]."
     - pergunta: "Vocês atendem criança e adolescente?"
       resposta: "Sim, com material da Cambridge. No pedido, diga a idade junto com o idioma."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "As provas de proficiência têm certificado próprio, emitido por quem aplica o exame. O certificado da própria 9vee ainda está em aberto [CONFIRMAR COM A DANIELLA: se a 9vee emite certificado no fim do curso, e de que tipo]."
+      resposta: "As provas de proficiência têm certificado próprio, emitido por quem aplica o exame. O certificado da própria 9vee ainda está em aberto [CONFIRMAR COM O ARTHUR: se a 9vee emite certificado no fim do curso, e de que tipo]."
     - pergunta: "Quanto custa?"
       resposta: "Depende do idioma, do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma, para dar um ponto de partida aqui]. O pedido desta página já leva essas respostas."
 

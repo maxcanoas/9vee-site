@@ -237,10 +237,13 @@ formularios:
 # A etiqueta das três páginas que ficam parciais no MVP.
 etiquetaMvp: "Página em construção no MVP"
 
-# Pendências para a reunião: o [CONFIRMAR COM A DANIELLA: ...] dos textos vira esta etiqueta.
+# Pendências: o [CONFIRMAR COM A DANIELLA: ...] ou o [CONFIRMAR COM O ARTHUR: ...] dos textos vira esta etiqueta.
 pendencia:
   etiqueta: "a confirmar"
-  detalhe: "com a Daniella: {nota}"
+  detalhe: "com {quem}: {nota}"
+  quem:
+    daniella: "a Daniella"
+    arthur: "o Arthur"
 
 rodape:
   pronuncia: "9vee, lê-se Novee [CONFIRMAR COM A DANIELLA: a pronúncia certa da marca]."

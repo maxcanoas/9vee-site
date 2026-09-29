@@ -94,10 +94,10 @@ export interface Achado {
 export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
   const base = dirname(pastaDoConteudo);
   return listarArquivos(pastaDoConteudo, '.md').flatMap((arquivo) =>
-    pendenciasDoArquivo(readFileSync(arquivo, 'utf8')).map((detalhe) => ({
+    pendenciasDoArquivo(readFileSync(arquivo, 'utf8')).map(({ nota }) => ({
       regra: 'pendencia' as const,
       onde: relative(base, arquivo).split(sep).join('/'),
-      detalhe,
+      detalhe: nota,
     })),
   );
 }

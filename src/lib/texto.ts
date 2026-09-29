@@ -1,14 +1,26 @@
-const PENDENCIA = /\[CONFIRMAR(?: COM A DANIELLA)?:\s*([^\]]+?)\s*\]/g;
+// A pendência diz quem responde: [CONFIRMAR COM A DANIELLA: ...] ou [CONFIRMAR COM O ARTHUR: ...].
+// A forma curta, [CONFIRMAR: ...], fica com a Daniella, que aprova os textos.
+const PENDENCIA = /\[CONFIRMAR(?: COM (A DANIELLA|O ARTHUR))?:\s*([^\]]+?)\s*\]/g;
 const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 const NEGRITO = /\*\*(.+?)\*\*/g;
 // Siglas com hífen que o navegador quebraria no meio ("NR-" numa linha, "1" na outra).
 const SEM_QUEBRA = /(?<![\p{L}\d-])(NR-1|CELPE-Bras)(?![\p{L}\d-])/gu;
 
-/** Textos da etiqueta de pendência, vindos de content/site.md. O detalhe traz {nota}. */
+export type Responsavel = 'daniella' | 'arthur';
+
+export interface Pendencia {
+  responsavel: Responsavel;
+  nota: string;
+}
+
+/** Textos da etiqueta de pendência, vindos de content/site.md. O detalhe traz {quem} e {nota}. */
 export interface TextosDePendencia {
   etiqueta: string;
   detalhe: string;
+  quem: Record<Responsavel, string>;
 }
+
+const responsavelDa = (marca: string | undefined): Responsavel => (marca === 'O ARTHUR' ? 'arthur' : 'daniella');
 
 /** Troca cada {chave} do modelo pelo valor correspondente. */
 export const preencher = (modelo: string, dados: Record<string, string>) =>
@@ -28,9 +40,9 @@ export function escaparHtml(texto: string): string {
     .replaceAll("'", '&#39;');
 }
 
-function etiquetaPendencia(notaHtml: string, textos: TextosDePendencia): string {
+function etiquetaPendencia(notaHtml: string, responsavel: Responsavel, textos: TextosDePendencia): string {
   const etiqueta = escaparHtml(textos.etiqueta);
-  const detalhe = preencher(escaparHtml(textos.detalhe), { nota: notaHtml });
+  const detalhe = preencher(escaparHtml(textos.detalhe), { nota: notaHtml, quem: escaparHtml(textos.quem[responsavel]) });
   // O title não aceita tags nem aspas cruas; o texto para leitor de tela aceita.
   const titulo = `${maiuscula(etiqueta)} ${detalhe}`.replace(/<[^>]+>/g, '').replaceAll('"', '&quot;');
   return `<mark class="confirmar" title="${titulo}">${etiqueta}<span class="visualmente-oculto"> ${detalhe}</span></mark>`;
@@ -54,25 +66,34 @@ function linkHtml(rotulo: string, urlEscapada: string): string {
 export function formatarInline(texto: string, pendencia: TextosDePendencia): string {
   return escaparHtml(texto)
     .replace(SEM_QUEBRA, '<span class="sem-quebra">$1</span>')
-    .replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota, pendencia))
+    .replace(PENDENCIA, (_, marca: string | undefined, nota: string) =>
+      etiquetaPendencia(nota, responsavelDa(marca), pendencia),
+    )
     .replace(LINK, (_, rotulo: string, url: string) => linkHtml(rotulo, url))
     .replace(NEGRITO, '<strong>$1</strong>');
 }
 
 /** Corpo em Markdown já renderizado: só troca os marcadores de pendência. */
 export function marcarPendencias(html: string, pendencia: TextosDePendencia): string {
-  return html.replace(PENDENCIA, (_, nota: string) => etiquetaPendencia(nota, pendencia));
+  return html.replace(PENDENCIA, (_, marca: string | undefined, nota: string) =>
+    etiquetaPendencia(nota, responsavelDa(marca), pendencia),
+  );
+}
+
+/** Cada pendência do texto, com quem responde, na ordem em que aparece. */
+export function lerPendencias(texto: string): Pendencia[] {
+  return [...texto.matchAll(PENDENCIA)].map(([, marca, nota]) => ({ responsavel: responsavelDa(marca), nota: nota.trim() }));
 }
 
 export function extrairPendencias(texto: string): string[] {
-  return [...texto.matchAll(PENDENCIA)].map((m) => m[1].trim());
+  return lerPendencias(texto).map((pendencia) => pendencia.nota);
 }
 
 /**
  * As pendências de um arquivo inteiro de content/. Os comentários do YAML ficam de fora: eles também
  * citam o formato da pendência, e não são texto do site. O corpo em Markdown entra inteiro.
  */
-export function pendenciasDoArquivo(arquivo: string): string[] {
+export function pendenciasDoArquivo(arquivo: string): Pendencia[] {
   const partes = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/.exec(arquivo);
   const frontmatter = partes?.[1] ?? '';
   const corpo = partes ? partes[2] : arquivo;
@@ -80,7 +101,7 @@ export function pendenciasDoArquivo(arquivo: string): string[] {
     .split(/\r?\n/)
     .filter((linha) => !linha.trimStart().startsWith('#'))
     .join('\n');
-  return extrairPendencias(`${semComentarios}\n${corpo}`);
+  return lerPendencias(`${semComentarios}\n${corpo}`);
 }
 
 /** Versão sem marcação, para title, description, aria-label e JSON-LD. */

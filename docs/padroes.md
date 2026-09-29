@@ -12,7 +12,7 @@
   - do humanizar: soluções (fora da razão social), excelência, inovação, ecossistema, "sob medida", "vale ressaltar", "é importante destacar".
 - **(teste)** Nenhum link genérico: "mais", "veja mais", "clique aqui", "ir", "mais informação", "mais informações", "saiba mais".
 - **(teste)** Marca: "9vee" em todo lugar. "Novee" só no rodapé ("lê-se Novee") e no `alternateName` do JSON-LD.
-- Nenhum dado inventado. O que não foi confirmado vira `[CONFIRMAR COM A DANIELLA: ...]`.
+- Nenhum dado inventado. O que não foi confirmado vira `[CONFIRMAR COM A DANIELLA: ...]` ou `[CONFIRMAR COM O ARTHUR: ...]`, conforme quem responde (a divisão está em `docs/pendencias-cliente.md`). A forma curta, `[CONFIRMAR: ...]`, fica com a Daniella.
 - Sem caixa alta em parágrafo. Caixa alta só em rótulo de até 3 palavras.
 - Zero emoji e zero exclamação em texto de venda.
 
