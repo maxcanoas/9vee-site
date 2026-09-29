@@ -17,7 +17,8 @@ const PAGINAS = [
   { nome: 'Cursos de Idiomas', rota: '/curso-de-idiomas/' },
 ];
 // A medida é no build de produção: é o que vai ao ar, e o único sem noindex, que derrubaria o SEO.
-const BUILDS = [{ nome: 'de produção', pasta: 'dist-producao', porta: 4501 }];
+const PASTA = 'dist-producao';
+const PORTA = 4501;
 
 const TIPOS: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
@@ -94,7 +95,7 @@ const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new', '--
 const linhas: string[] = [
   '# Lighthouse mobile',
   '',
-  `Medido em ${new Date().toLocaleDateString('pt-BR')}, mediana de ${RODADAS} rodadas por página, com o Chrome instalado.`,
+  `Medido em ${new Date().toLocaleDateString('pt-BR')} no build de produção (${PASTA}/), mediana de ${RODADAS} rodadas por página, com o Chrome instalado.`,
   '',
   'Metas: Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05.',
   '',
@@ -102,26 +103,24 @@ const linhas: string[] = [
   '',
 ];
 
+const servidor = await servir(PASTA, PORTA);
 try {
-  for (const build of BUILDS) {
-    const servidor = await servir(build.pasta, build.porta);
-    linhas.push(`## Build ${build.nome}`, '', '| Página | Perf. | Acess. | Práticas | SEO | LCP | CLS | TBT |', '|---|---|---|---|---|---|---|---|');
-    for (const pagina of PAGINAS) {
-      const medidas: Medida[] = [];
-      for (let i = 0; i < RODADAS; i++) {
-        medidas.push(await medir(`http://localhost:${build.porta}${pagina.rota}`, chrome.port));
-      }
-      const m = (campo: keyof Medida) => mediana(medidas.map((medida) => medida[campo]));
-      linhas.push(
-        `| ${pagina.nome} | ${m('performance')} | ${m('acessibilidade')} | ${m('praticas')} | ${m('seo')} | ` +
-          `${(m('lcp') / 1000).toFixed(2)} s | ${m('cls').toFixed(3)} | ${Math.round(m('tbt'))} ms |`,
-      );
-      console.log(`ok ${build.pasta}${pagina.rota}`);
+  linhas.push('| Página | Perf. | Acess. | Práticas | SEO | LCP | CLS | TBT |', '|---|---|---|---|---|---|---|---|');
+  for (const pagina of PAGINAS) {
+    const medidas: Medida[] = [];
+    for (let i = 0; i < RODADAS; i++) {
+      medidas.push(await medir(`http://localhost:${PORTA}${pagina.rota}`, chrome.port));
     }
-    linhas.push('');
-    await new Promise((ok) => servidor.close(ok));
+    const m = (campo: keyof Medida) => mediana(medidas.map((medida) => medida[campo]));
+    linhas.push(
+      `| ${pagina.nome} | ${m('performance')} | ${m('acessibilidade')} | ${m('praticas')} | ${m('seo')} | ` +
+        `${(m('lcp') / 1000).toFixed(2)} s | ${m('cls').toFixed(3)} | ${Math.round(m('tbt'))} ms |`,
+    );
+    console.log(`ok ${pagina.rota}`);
   }
+  linhas.push('');
 } finally {
+  await new Promise((ok) => servidor.close(ok));
   await chrome.kill();
 }
 

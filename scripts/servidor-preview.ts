@@ -4,12 +4,9 @@
 // Uso: node scripts/servidor-preview.ts preview   ou   node scripts/servidor-preview.ts producao
 import { fileURLToPath } from 'node:url';
 import { preview } from 'astro';
+import { modoDoComando } from './modo.ts';
 
-const modo = process.argv[2] ?? 'preview';
-if (modo !== 'preview' && modo !== 'producao') {
-  console.error('Uso: node scripts/servidor-preview.ts preview   ou   node scripts/servidor-preview.ts producao');
-  process.exit(1);
-}
+const modo = modoDoComando(process.argv[2] ?? 'preview', 'servidor-preview.ts');
 // O modo decide a pasta que o astro.config aponta.
 process.env.MODO = modo;
 

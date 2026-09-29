@@ -5,12 +5,9 @@
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { build } from 'astro';
+import { modoDoComando } from './modo.ts';
 
-const modo = process.argv[2];
-if (modo !== 'preview' && modo !== 'producao') {
-  console.error('Uso: node scripts/build.ts preview   ou   node scripts/build.ts producao');
-  process.exit(1);
-}
+const modo = modoDoComando(process.argv[2], 'build.ts');
 
 const raiz = new URL('../', import.meta.url);
 const vazaria = ['.env', '.env.local'].filter((nome) => existsSync(new URL(nome, raiz)));
