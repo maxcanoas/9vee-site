@@ -4,6 +4,13 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 
 **Fase 1 (desde 29/09/2026):** o MVP foi aprovado e está guardado na tag `mvp-aprovado`. O trabalho segue na branch `fase-1`, com a spec em `docs/fase-1-spec.md`, os tickets em `docs/tickets/` e o cronograma em `docs/cronograma-8-semanas.md`. Desde o ticket 01, o preview se publica com `npm run build:preview && npx wrangler deploy` (ou `npm run deploy`, que faz os dois). O `SITE_URL` não existe mais: o canonical é sempre o `https://www.9vee.com.br`.
 
+**Fase 1, onde estamos (29/09/2026):** tickets 01 a 04 feitos, cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". Para retomar:
+
+- o lote 1 de revisão (`docs/revisao-daniella/lote-1.md`) e a mensagem de pendências (`docs/pendencias-cliente.md`) estão prontos para o Maxwell mandar à cliente, junto com o preview publicado e o texto de `docs/novidades-preview.md`;
+- o retrato do antes está em `docs/antes.md`, com a medida do Wix de 29/09 às 20h29, que já registra as versões do Lighthouse e do Chrome: o Wix não precisa ser medido de novo;
+- o próximo é o ticket 05 (Tradução Simultânea), da semana 3, que usa as respostas da Daniella; sem elas, a página sai com os fatos do site atual e as pendências marcadas;
+- `npm run lote -- N` faz o build de preview e gera o lote N; `npm run build:producao` termina na trava, que ainda acusa as pendências e as marcas do MVP, como esperado.
+
 ## Onde estamos
 
 | Etapa | Situação | Commits |
@@ -257,9 +264,10 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npm test`: testes de lógica, os dois builds (preview e produção) e os testes do HTML gerado.
 - `npm run e2e`: build de preview e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
 - `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9.
-- `npm install --no-save lighthouse && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção.
+- `npm install --no-save lighthouse@13.5.0 && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção. A versão fica fixa para o depois usar a mesma régua do retrato do antes.
+- `node scripts/lighthouse-no-ar.ts <endereços completos>`: a mesma medida num site no ar, o Wix no antes e o site novo no depois. Cada rodada conta como visita no GA4 do site medido.
 - `node scripts/pendencias.ts`: a lista de pendências dos textos, separada entre a Daniella e o Arthur, em `relatorios/pendencias.md`.
-- `npm run lote -- 1`: o lote 1 de revisão da Daniella, em `docs/revisao-daniella/lote-1.md`, montado do build de preview (rode antes o `npm run build:preview`).
+- `npm run lote -- 1`: faz o build de preview e monta dele o lote 1 de revisão da Daniella, em `docs/revisao-daniella/lote-1.md`.
 - `npm run deploy`: build de preview e publicação na Cloudflare (precisa do `wrangler login` antes).
 - `npx astro check`: tipos.
 - Variáveis de ambiente: um arquivo por modo (`.env.development`, `.env.preview` e `.env.producao`), copiado do `.env.example`. O build recusa `.env` e `.env.local`, que valeriam para todos os modos.
@@ -267,6 +275,8 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 Na última rodada (etapa 9): 80 testes de lógica, 276 do HTML e 116 no navegador (82 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
 
 Lighthouse local da etapa 9, mediana de 3 rodadas: Performance de 99 a 100, Acessibilidade 100, Práticas 100, SEO 100 no build indexável, LCP de 1,66 s a 1,97 s e CLS até 0,001. A home ficou perto do teto de 2,0 s de LCP, porque o círculo da marca é uma imagem a mais na primeira tela. Medido antes das correções das fases 3 e 4, que só mexem em CSS e em SVG abaixo da dobra.
+
+Lighthouse local depois do ticket 04 (29/09/2026, duas medidas seguidas no build de produção, com o Lighthouse 13.5.0 e o Chrome 154.0.8037.92): Performance de 97 a 100, Acessibilidade 100, Práticas 100, SEO 100, LCP de 1,66 s a 1,99 s e CLS até 0,001. A home continua no limite dos 2,0 s de LCP (1,97 s e 1,99 s). O NR-1 deu TBT de 166 ms na primeira medida e 0 ms na segunda, sem mudança no código.
 
 Notas do ambiente:
 
