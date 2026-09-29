@@ -198,8 +198,7 @@ Você responde em quatro passos. No fim, decide se prefere conversar agora pelo 
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Treinamento de NR-1 do site e quero um orçamento do treinamento de NR-1 para a minha empresa."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Treinamento de NR-1 do site e quero saber do treinamento de NR-1 para mim."
 
-- [Link: Início]
-- Treinamento de NR-1
+[Caminho: Início > Treinamento de NR-1]
 
 Para RH, SESMT e diretoria
 
@@ -348,8 +347,7 @@ São cinco perguntas sobre tamanho, prazo e o que já existe por lá. No fim, vo
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para a minha equipe."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para mim."
 
-- [Link: Início]
-- Cursos de Idiomas
+[Caminho: Início > Cursos de idiomas]
 
 Para você e para a sua equipe
 

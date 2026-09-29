@@ -96,6 +96,13 @@ const temBlocoDentro = (elemento: HTMLElement) =>
         dentro.tagName === 'IMG',
     );
 
+// Uma navegação que é só uma lista ordenada é a trilha do alto da página: Início, e os passos até ela.
+function passosDaTrilha(elemento: HTMLElement): string[] | undefined {
+  const [lista, ...outros] = elementos(elemento);
+  if (elemento.tagName !== 'NAV' || outros.length > 0 || lista?.tagName !== 'OL') return undefined;
+  return elementos(lista).map((passo) => limpar(textoInline(passo)));
+}
+
 // Um item de lista que é só um link (a lista de idiomas da home) aparece como link, igual ao link solto.
 function soUmLink(elemento: HTMLElement): HTMLElement | undefined {
   const conteudo = elemento.childNodes.filter((filho) => !(filho.nodeType === NodeType.TEXT_NODE && !filho.text.trim()));
@@ -129,8 +136,12 @@ function linhasDe(elemento: HTMLElement, saida: string[]): string[] {
     if (ignorado(filho)) continue;
     const tag = filho.tagName;
     const texto = () => limpar(textoInline(filho));
+    const trilha = passosDaTrilha(filho);
 
-    if (tag in NIVEL_DO_TITULO) {
+    if (trilha) {
+      // Numa linha só: em itens soltos, o Markdown juntaria os passos à lista do endereço e do título.
+      novaLinha(`[Caminho: ${trilha.join(' > ')}]`);
+    } else if (tag in NIVEL_DO_TITULO) {
       if (texto()) novaLinha(`${'#'.repeat(NIVEL_DO_TITULO[tag])} ${texto()}`);
     } else if (tag === 'IMG' || filho.getAttribute('role') === 'img') {
       const descricao = limpar(filho.getAttribute('alt') ?? filho.getAttribute('aria-label') ?? '');

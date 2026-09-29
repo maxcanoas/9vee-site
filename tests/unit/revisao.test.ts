@@ -10,7 +10,8 @@ const PAGINA = `<!doctype html><html lang="pt-BR"><head>
 </head><body>
 <header><nav><a href="/">Página inicial</a></nav></header>
 <main id="conteudo">
-<section><p class="rotulo">Para você e para a sua equipe</p><h1>Cursos de idiomas</h1>
+<section><nav class="trilha" aria-label="Você está aqui"><ol> <li><a href="/">Início</a></li> <li><span aria-current="page">Cursos de idiomas</span></li> </ol></nav>
+<p class="rotulo">Para você e para a sua equipe</p><h1>Cursos de idiomas</h1>
 <p>Do inglês ao japonês, com <strong>aula particular</strong> ou <a href="/lms/">pela plataforma</a>.</p>
 <button type="button" data-abre-contato><span><span data-publico-texto="neutro">Pedir orçamento</span><span data-publico-texto="empresa">Pedir orçamento</span><span data-publico-texto="voce">Quero estudar</span></span></button>
 <picture><img src="/a.avif" alt="Aluna numa aula de idioma, sorrindo." width="1" height="1"></picture>
@@ -47,6 +48,7 @@ describe('textoDaPagina', () => {
 
   it('põe o texto da página na ordem da tela, com os títulos em nível', () => {
     const ordem = [
+      '[Caminho: Início > Cursos de idiomas]',
       'Para você e para a sua equipe',
       '### Cursos de idiomas',
       'Do inglês ao japonês, com aula particular ou pela plataforma.',
@@ -64,6 +66,11 @@ describe('textoDaPagina', () => {
     const posicoes = ordem.map((trecho) => texto.indexOf(trecho));
     expect(posicoes.every((posicao) => posicao >= 0), JSON.stringify(ordem.filter((_, i) => posicoes[i] < 0))).toBe(true);
     expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
+  });
+
+  // Em itens soltos, o Markdown juntaria os passos à lista do endereço e do título, logo acima.
+  it('põe a trilha numa linha só, e não como itens de lista', () => {
+    expect(texto).not.toContain('- [Link: Início]');
   });
 
   // No HTML, as partes vêm lado a lado, sem texto entre elas; na tela, cada uma tem a sua linha.
