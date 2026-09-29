@@ -7,10 +7,8 @@ import CirculoMarca from './CirculoMarca.astro';
 import Trilha from './Trilha.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
-import type { PassoDaTrilha } from '../lib/site';
 
 interface Props {
-  trilha: PassoDaTrilha[];
   rotulo: string;
   h1: string;
   apoio: string;
@@ -23,13 +21,13 @@ interface Props {
   etiqueta?: string;
 }
 
-const { trilha, rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.props;
+const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.props;
 ---
 
 <section class="hero-pagina escuro" aria-labelledby="hero-titulo">
   <div class="conteiner hero-pagina__grade">
     <div class="hero-pagina__texto">
-      <Trilha passos={trilha} />
+      <Trilha />
       {etiqueta && <p class="hero-pagina__etiqueta">{etiqueta}</p>}
       <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>

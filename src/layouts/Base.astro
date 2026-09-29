@@ -10,8 +10,9 @@ import Rodape from '../components/Rodape.astro';
 import Drawer from '../components/Drawer.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { dadosDoSite, type PaginaId } from '../lib/site';
-import { organizacao, serializarJsonLd } from '../lib/jsonld';
+import { organizacao, serializarJsonLd, trilhaDeNavegacao } from '../lib/jsonld';
 import { textoPuro } from '../lib/texto';
+import { trilhaDoCaminho } from '../lib/trilha';
 import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
 
 interface Props {
@@ -30,7 +31,14 @@ const canonical = pagina === 'erro404' ? null : new URL(Astro.url.pathname, base
 const imagemPrevia = new URL('/og.jpg', base).href;
 const tituloPuro = textoPuro(titulo);
 const descricaoPura = textoPuro(descricao);
-const dadosEstruturados = serializarJsonLd([organizacao(site, base), ...jsonLd]);
+// A home é o começo da trilha, e a página de erro não tem lugar no site. As outras têm a trilha na tela, no
+// hero, e aqui a mesma trilha para o Google, as duas tiradas do endereço.
+const comTrilha = pagina !== 'home' && pagina !== 'erro404';
+const dadosEstruturados = serializarJsonLd([
+  organizacao(site, base),
+  ...(comTrilha ? [trilhaDeNavegacao(base, trilhaDoCaminho(site, Astro.url.pathname))] : []),
+  ...jsonLd,
+]);
 const regrasDeSpeculation = JSON.stringify({
   prerender: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }],
 });

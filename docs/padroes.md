@@ -20,7 +20,7 @@
 
 - **(teste)** Um único `<h1>` por página, e headings sem pular nível.
 - **(teste)** `<title>` com até 60 caracteres e `meta description` entre 140 e 160 nas páginas completas.
-- **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, sem endereço, com a área atendida, o contato e as redes; `Service` no NR-1; `ItemList`/`Course` em Idiomas; `FAQPage` em toda página com FAQ, igual ao FAQ visível; `BreadcrumbList` nas páginas internas, igual à trilha visível. A home e a 404 não têm trilha.
+- **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, sem endereço, com a área atendida, o contato e as redes; `Service` no NR-1; `ItemList`/`Course` em Idiomas; `FAQPage` em toda página com FAQ, igual ao FAQ visível; um só `BreadcrumbList` em toda página que não seja a home nem a 404, igual à trilha visível, com o nome que o menu dá a cada passo.
 - **(teste)** Noindex na meta e no cabeçalho do preview (`_headers`, para a Cloudflare). A produção sai sem noindex em lugar nenhum. O local segue o preview, sem o `_headers`, e é conferido à mão.
 - **(teste)** Canonical, `og:url` e `og:image` sempre em `https://www.9vee.com.br`, com barra no fim, no preview e na produção (o local usa o mesmo layout). A 404 não tem canonical nem `og:url`.
 - **(teste)** robots.txt libera em todos os modos; só o da produção aponta o sitemap.

@@ -10,4 +10,4 @@
 
 - [ ] História, pessoas (se autorizadas), números confirmados e as quatro frentes.
 - [ ] Nada de sede física, endereço, mapa ou "venha nos visitar".
-- [ ] `BreadcrumbList`; `humanizar`; prompts das imagens novas.
+- [ ] `humanizar`; prompts das imagens novas. A trilha na tela e o `BreadcrumbList` já saem do hero e do `Base` desde o ticket 04.

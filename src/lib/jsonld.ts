@@ -1,5 +1,6 @@
 import { jsonParaScript, preencher, textoPuro } from './texto';
-import type { DadosDoSite, PassoDaTrilha } from './site';
+import type { DadosDoSite } from './site';
+import type { PassoDaTrilha } from './trilha';
 
 /** "5511934661917" vira "+55 11 93466-1917". */
 export function telefoneInternacional(numero: string): string {

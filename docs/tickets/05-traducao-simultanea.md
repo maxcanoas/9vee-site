@@ -10,7 +10,7 @@
 
 - [ ] Formatos (simultânea, consecutiva e acompanhamento), equipamento, os 7 idiomas, como funciona o presencial nas cidades, como o pedido é dimensionado, perguntas frequentes e prova, cada um com o que estiver confirmado.
 - [ ] Se a Daniella confirmar, uma seção sobre interpretação de mandarim para o mercado financeiro: reuniões com investidores, due diligence e roadshows.
-- [ ] `Service`, `FAQPage` e `BreadcrumbList` no JSON-LD.
+- [ ] `Service` e `FAQPage` no JSON-LD. A trilha na tela e o `BreadcrumbList` já saem do hero e do `Base` desde o ticket 04: não acrescentar outro.
 - [ ] Botões de pedido no meio e no fim, com o serviço já marcado.
 - [ ] Seções próprias, sem repetir a estrutura das outras páginas.
 - [ ] `humanizar`; prompts das imagens novas em `docs/imagens-gemini.md`.

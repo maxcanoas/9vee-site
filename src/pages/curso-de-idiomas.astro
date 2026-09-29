@@ -10,23 +10,21 @@ import ComoComeca from '../components/ComoComeca.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import CabecaDeSecao from '../components/CabecaDeSecao.astro';
-import { dadosDoSite, trilhaDaPagina } from '../lib/site';
+import { dadosDoSite } from '../lib/site';
 import { paginaIdiomas } from '../lib/paginas';
-import { faqPage, listaDeCursos, trilhaDeNavegacao } from '../lib/jsonld';
+import { faqPage, listaDeCursos } from '../lib/jsonld';
 
 const { data: pagina } = await paginaIdiomas();
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
-const trilha = trilhaDaPagina(site, 'idiomas', Astro.url.pathname);
 const jsonLd = [
-  trilhaDeNavegacao(base, trilha),
   listaDeCursos(base, { caminho: Astro.url.pathname, modelos: pagina.curso, idiomas: site.idiomas }),
   faqPage(pagina.faq.itens),
 ];
 ---
 
 <Base pagina="idiomas" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
-  <HeroPagina {...pagina.hero} trilha={trilha} textos={site.cta} servico="idiomas" />
+  <HeroPagina {...pagina.hero} textos={site.cta} servico="idiomas" />
 
   <section class="idiomas" id="idiomas" aria-labelledby="idiomas-titulo">
     <div class="conteiner idiomas__corpo">

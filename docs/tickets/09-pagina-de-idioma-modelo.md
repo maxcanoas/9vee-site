@@ -12,7 +12,7 @@
 - [ ] Topo tipográfico: a saudação na escrita do idioma, com `lang` e direção certos, e o círculo da marca. Sem foto.
 - [ ] Seções escolhidas pelo conteúdo daquele idioma (para quem é, níveis, formatos, provas e FAQ), sem a mesma contagem de blocos entre páginas.
 - [ ] O pedido abre com "idiomas" e o idioma da página marcados.
-- [ ] `Course`, `FAQPage` e `BreadcrumbList`.
+- [ ] `Course` e `FAQPage`. O `Base` já monta o `BreadcrumbList` de três passos pelo endereço (Início, Cursos de idiomas e o idioma), mas o `trilhaDoCaminho` só conhece os nomes do menu: ele precisa do nome de cada idioma. A página não usa o `HeroPagina`, então a trilha na tela entra no topo tipográfico.
 - [ ] Marca de publicada: a página não publicada aparece no preview e fica fora do build de produção, do menu, dos links e do sitemap.
 - [ ] Home e página de cursos levam à página de cada idioma publicado; os não publicados continuam na âncora da página de cursos.
 - [ ] Inglês, espanhol e mandarim escritos com os fatos do Arthur; o que faltar fica marcado, e a página fica não publicada.

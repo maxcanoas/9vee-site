@@ -101,9 +101,10 @@ menu:
     rotulo: "Quem somos"
     href: "/quem-somos/"
 
-# A trilha de navegação no alto das páginas internas: Início, e a página onde a pessoa está.
+# A trilha de navegação no alto das páginas internas: Início, e cada nível do endereço até a página, com o
+# nome que ele tem no menu acima. O rótulo é o que o leitor de tela anuncia antes da trilha.
 trilha:
-  rotulo: "Você está em"
+  rotulo: "Você está aqui"
   inicio: "Início"
 
 cta:

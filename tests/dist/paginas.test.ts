@@ -52,8 +52,8 @@ const LINKS_GENERICOS = new Set([
   'aqui',
 ]);
 
-// A home e a página de erro não têm trilha: a home é o começo dela, e a 404 não tem lugar no site.
-const INTERNAS = new Set(['/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/']);
+// Toda página tem trilha, menos a home, que é o começo dela, e a 404, que não tem lugar no site.
+const temTrilha = (rota: string) => rota !== '/' && rota !== '/404';
 const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/']);
 
 const paginas = carregarPaginas();
@@ -131,8 +131,9 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
   });
 
   it('repete no FAQPage o mesmo FAQ que a página mostra', () => {
-    const faq = jsonLd(raiz).find((no) => no['@type'] === 'FAQPage');
-    const doJson = (faq?.mainEntity ?? []) as { name: string; acceptedAnswer: { text: string } }[];
+    const faqs = jsonLd(raiz).filter((no) => no['@type'] === 'FAQPage');
+    expect(faqs.length, 'mais de um FAQPage').toBeLessThanOrEqual(1);
+    const doJson = (faqs[0]?.mainEntity ?? []) as { name: string; acceptedAnswer: { text: string } }[];
     const daPagina = raiz.querySelectorAll('.faq details').map((item) => ({
       pergunta: textoComoNoJsonLd(item.querySelector('summary')!),
       resposta: textoComoNoJsonLd(item.querySelector('.faq__resposta')!),
@@ -141,25 +142,39 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(doJson.map((q) => ({ pergunta: q.name, resposta: q.acceptedAnswer.text }))).toEqual(daPagina);
   });
 
-  it('mostra a trilha nas páginas internas, igual ao BreadcrumbList', () => {
+  it('mostra a trilha em toda página interna, igual ao BreadcrumbList', () => {
     const trilha = raiz.querySelector('nav.trilha');
-    const doJson = jsonLd(raiz).find((no) => no['@type'] === 'BreadcrumbList');
-    if (!INTERNAS.has(rota)) {
+    const trilhas = jsonLd(raiz).filter((no) => no['@type'] === 'BreadcrumbList');
+    if (!temTrilha(rota)) {
       expect(trilha, rota).toBeNull();
-      expect(doJson, rota).toBeUndefined();
+      expect(trilhas, rota).toEqual([]);
       return;
     }
-    const itens = doJson?.itemListElement as { position: number; name: string; item: string }[];
+    expect(trilha, `${rota} sem trilha na tela`).not.toBeNull();
+    expect(trilhas, `${rota} precisa de um BreadcrumbList, e só um`).toHaveLength(1);
+    const itens = trilhas[0].itemListElement as { position: number; name: string; item: string }[];
     const passos = trilha!.querySelectorAll('li');
     expect(itens.map((i) => i.position)).toEqual(itens.map((_, i) => i + 1));
     expect(itens.map((i) => i.name)).toEqual(passos.map((li) => textoComoNoJsonLd(li)));
-    expect(itens.map((i) => i.item)).toEqual([`${DOMINIO}/`, `${DOMINIO}${rota}`]);
-    // Os passos antes do último levam ao mesmo endereço do JSON-LD. O último é a página: sem link.
+    expect(itens[0].item).toBe(`${DOMINIO}/`);
+    expect(itens.at(-1)?.item).toBe(`${DOMINIO}${rota}`);
+    // Os passos antes do último são links para o endereço do JSON-LD. O último é a página: sem link.
     passos.slice(0, -1).forEach((li, i) => {
-      expect(new URL(li.querySelector('a')?.getAttribute('href') ?? '', DOMINIO).href).toBe(itens[i].item);
+      const href = li.querySelector('a')?.getAttribute('href');
+      expect(href, `o passo ${i + 1} da trilha não é link`).toBeTruthy();
+      expect(new URL(href!, `${DOMINIO}${rota}`).href).toBe(itens[i].item);
     });
     expect(passos.at(-1)?.querySelector('a')).toBeNull();
     expect(passos.at(-1)?.querySelector('[aria-current="page"]')).not.toBeNull();
+  });
+
+  // O nome vem do menu, e não do trecho da mensagem do WhatsApp, que tem outra caixa e muda por outro motivo.
+  it('dá à página, na trilha, o mesmo nome que ela tem no menu', () => {
+    if (!temTrilha(rota)) return;
+    const noMenu = raiz.querySelectorAll('header a').find((link) => link.getAttribute('href') === rota);
+    expect(noMenu, `${rota} fora do menu`).toBeDefined();
+    const nome = (noMenu!.querySelector('.painel__item') ?? noMenu!).text.trim();
+    expect(textoComoNoJsonLd(raiz.querySelector('nav.trilha [aria-current="page"]')!)).toBe(nome);
   });
 
   // Tirar a pendência de uma frase pode deixar sobra ("no fim do curso:."). O visitante não vê, o Google vê.

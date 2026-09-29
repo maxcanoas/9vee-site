@@ -2,18 +2,14 @@
 import Base from '../layouts/Base.astro';
 import HeroPagina from '../components/HeroPagina.astro';
 import Cartoes from '../components/Cartoes.astro';
-import { dadosDoSite, trilhaDaPagina } from '../lib/site';
+import { dadosDoSite } from '../lib/site';
 import { paginaParcial } from '../lib/paginas';
-import { trilhaDeNavegacao } from '../lib/jsonld';
 
 const { data: pagina } = await paginaParcial('traducao-simultanea');
 const site = await dadosDoSite();
-const base = Astro.site ?? new URL(Astro.url.origin);
-const trilha = trilhaDaPagina(site, 'traducao', Astro.url.pathname);
-const jsonLd = [trilhaDeNavegacao(base, trilha)];
 ---
 
-<Base pagina="traducao" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
-  <HeroPagina {...pagina.hero} trilha={trilha} servico="traducao" etiqueta={site.etiquetaMvp} />
+<Base pagina="traducao" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
+  <HeroPagina {...pagina.hero} servico="traducao" etiqueta={site.etiquetaMvp} />
   <Cartoes id="formatos" {...pagina.bloco} servico="traducao" />
 </Base>

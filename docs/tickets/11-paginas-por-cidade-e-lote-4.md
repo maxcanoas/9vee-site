@@ -11,6 +11,6 @@
 - [ ] Decisão registrada com o Maxwell, a partir da resposta do cliente: página de tradução por cidade ou página da cidade inteira, com o endereço de cada uma.
 - [ ] Modelo e as cidades com fato local; as sem fato ficam não publicadas, e os posts delas vão para a página do serviço.
 - [ ] Nada de endereço, mapa ou "venha nos visitar"; nada de `LocalBusiness`.
-- [ ] `BreadcrumbList` e o JSON-LD do serviço que couber.
+- [ ] O JSON-LD do serviço que couber. O `Base` já monta o `BreadcrumbList` pelo endereço; falta dar ao `trilhaDoCaminho` o nome de cada cidade, e pôr a trilha na tela se a página não usar o `HeroPagina`.
 - [ ] Links: cidade para serviço e para os idiomas com aula presencial ali; serviço e idioma para a cidade.
 - [ ] Prompt da foto de cada cidade publicada; `humanizar`; `docs/revisao-daniella/lote-4.md`.

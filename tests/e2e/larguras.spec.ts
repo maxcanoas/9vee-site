@@ -36,3 +36,34 @@ for (const largura of LARGURAS) {
     });
   });
 }
+
+test.describe('hero das páginas internas', () => {
+  // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook.
+  for (const rota of PAGINAS.filter((rota) => rota !== '/')) {
+    test(`${rota}: o botão cabe inteiro na primeira tela em 1280 x 800`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(rota);
+      await page.evaluate(() => document.fonts.ready);
+      const caixa = await page.locator('.hero-pagina [data-abre-contato]').first().boundingBox();
+      expect(caixa!.y + caixa!.height).toBeLessThanOrEqual(800);
+    });
+  }
+
+  // "Início" é mais estreito que 44 px: a área de toque em volta do centro dele precisa cair no link.
+  test('o link da trilha tem 44 x 44 px de área de toque', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/lms/');
+    const alcanca = await page.locator('.trilha a').evaluate((link) => {
+      const caixa = link.getBoundingClientRect();
+      const [x, y] = [caixa.left + caixa.width / 2, caixa.top + caixa.height / 2];
+      const pontas = [
+        [x - 21, y],
+        [x + 21, y],
+        [x, y - 21],
+        [x, y + 21],
+      ];
+      return pontas.every(([px, py]) => link.contains(document.elementFromPoint(px, py)));
+    });
+    expect(alcanca).toBe(true);
+  });
+});

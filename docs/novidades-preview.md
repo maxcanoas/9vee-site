@@ -6,7 +6,7 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
 
 - No alto das páginas de NR-1, Cursos, Tradução, LMS e Quem Somos aparece o caminho até a página: "Início", e a página onde a pessoa está. Um toque em "Início" leva de volta para a home.
 - As perguntas do fim da home e da página de NR-1 agora vão também para o Google, no formato que ele lê. A página de cursos já fazia isso.
-- O site não informa mais ao Google um endereço de sede, porque a 9vee não recebe clientes num escritório. No lugar, ele informa as quatro cidades onde vocês atendem presencialmente (São Paulo, Rio de Janeiro, Curitiba e Brasília) e o Brasil.
+- Os dados que o site passa ao Google não trazem mais um endereço de sede, porque a 9vee não recebe clientes num escritório. O texto da página Quem Somos ainda fala da sede em São Paulo: ele muda quando a página for reescrita, com as respostas de vocês.
 - Daniella: junto com este link vai o lote 1 de textos, com a home, o NR-1, os cursos, o menu, o rodapé e o pedido de orçamento. É para você ler, corrigir o que quiser e aprovar. O que aparece como "a confirmar" ainda espera uma resposta de vocês.
 
 Nota para o Maxwell, não para o cliente: vale publicar junto com o lote 1 (`docs/revisao-daniella/lote-1.md`), porque a trilha é a primeira mudança na tela desde a aprovação do MVP. Nenhuma resposta do cliente chegou ainda: a mensagem de `docs/pendencias-cliente.md` pode ir junto.

@@ -11,23 +11,6 @@ export async function dadosDoSite() {
 export type DadosDoSite = Awaited<ReturnType<typeof dadosDoSite>>;
 export type PaginaId = keyof DadosDoSite['paginas'];
 
-export interface PassoDaTrilha {
-  nome: string;
-  caminho: string;
-}
-
-/** A trilha de uma página interna: o início e a página, pelo nome que o site já usa para ela. */
-export function trilhaDaPagina(
-  site: DadosDoSite,
-  pagina: Exclude<PaginaId, 'home' | 'erro404'>,
-  caminho: string,
-): PassoDaTrilha[] {
-  return [
-    { nome: site.trilha.inicio, caminho: '/' },
-    { nome: site.paginas[pagina].nome, caminho },
-  ];
-}
-
 export function servicoDoSite(site: DadosDoSite, id: ServicoId) {
   const servico = site.servicos.find((s) => s.id === id);
   if (!servico) throw new Error(`serviço "${id}" não está em content/site.md`);

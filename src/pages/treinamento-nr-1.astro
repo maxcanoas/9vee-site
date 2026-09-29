@@ -8,16 +8,14 @@ import Formato from '../components/Formato.astro';
 import Abordagem from '../components/Abordagem.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
-import { dadosDoSite, servicoDoSite, trilhaDaPagina } from '../lib/site';
+import { dadosDoSite, servicoDoSite } from '../lib/site';
 import { paginaNr1 } from '../lib/paginas';
-import { faqPage, servico, trilhaDeNavegacao } from '../lib/jsonld';
+import { faqPage, servico } from '../lib/jsonld';
 
 const { data: pagina } = await paginaNr1();
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
-const trilha = trilhaDaPagina(site, 'nr1', Astro.url.pathname);
 const jsonLd = [
-  trilhaDeNavegacao(base, trilha),
   servico(base, {
     nome: servicoDoSite(site, 'nr1').nome,
     tipo: pagina.servico.tipo,
@@ -29,7 +27,7 @@ const jsonLd = [
 ---
 
 <Base pagina="nr1" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
-  <HeroPagina {...pagina.hero} trilha={trilha} servico="nr1" />
+  <HeroPagina {...pagina.hero} servico="nr1" />
   <LinhaDoTempo {...pagina.porQue} />
   <Pontos id="o-que-recebe" {...pagina.entrega} />
   <Modulos {...pagina.modulos} />
