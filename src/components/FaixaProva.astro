@@ -1,6 +1,6 @@
 ---
 import Texto from './Texto.astro';
-import { extrairPendencias } from '../lib/texto';
+import { lerPendencias } from '../lib/texto';
 
 interface Item {
   valor: number;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const { titulo, itens, aviso, etiqueta } = Astro.props;
-const notas = itens.flatMap((item) => (item.pendencia ? extrairPendencias(item.pendencia) : []));
+const notas = itens.flatMap((item) => (item.pendencia ? lerPendencias(item.pendencia).map(({ nota }) => nota) : []));
 ---
 
 <section class="prova" aria-labelledby="prova-titulo">

@@ -80,13 +80,8 @@ export function marcarPendencias(html: string, pendencia: TextosDePendencia): st
   );
 }
 
-/** Cada pendência do texto, com quem responde, na ordem em que aparece. */
 export function lerPendencias(texto: string): Pendencia[] {
   return [...texto.matchAll(PENDENCIA)].map(([, marca, nota]) => ({ responsavel: responsavelDa(marca), nota: nota.trim() }));
-}
-
-export function extrairPendencias(texto: string): string[] {
-  return lerPendencias(texto).map((pendencia) => pendencia.nota);
 }
 
 /**

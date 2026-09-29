@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import {
-  extrairPendencias,
   formatarInline,
   jsonParaScript,
   lerPendencias,
@@ -108,19 +107,17 @@ describe('marcarPendencias', () => {
   });
 });
 
-describe('extrairPendencias', () => {
+describe('lerPendencias', () => {
   it('lista as notas na ordem em que aparecem', () => {
     const texto =
       '19 anos [CONFIRMAR COM A DANIELLA: ano de fundação] e +160 clientes [CONFIRMAR: número de clientes]';
-    expect(extrairPendencias(texto)).toEqual(['ano de fundação', 'número de clientes']);
+    expect(lerPendencias(texto).map(({ nota }) => nota)).toEqual(['ano de fundação', 'número de clientes']);
   });
 
   it('devolve lista vazia quando não há pendência', () => {
-    expect(extrairPendencias('texto confirmado')).toEqual([]);
+    expect(lerPendencias('texto confirmado')).toEqual([]);
   });
-});
 
-describe('lerPendencias', () => {
   it('diz quem responde cada pendência; a forma curta fica com a Daniella', () => {
     const texto = '[CONFIRMAR COM O ARTHUR: níveis] e [CONFIRMAR COM A DANIELLA: preço] e [CONFIRMAR: prazo]';
     expect(lerPendencias(texto)).toEqual([

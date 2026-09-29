@@ -140,7 +140,7 @@ describe('montarLote', () => {
         { nome: 'Cursos de Idiomas', html: PAGINA },
         { nome: 'Outra', html: PAGINA.replace('Cursos de idiomas | 9vee', 'Outra | 9vee') },
       ],
-      compartilhados: COMPARTILHADOS,
+      htmlDosCompartilhados: COMPARTILHADOS,
       data: new Date(2026, 8, 29),
     });
     expect(lote.startsWith('# Lote 1: Páginas principais')).toBe(true);

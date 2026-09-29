@@ -6,7 +6,13 @@ import { fileURLToPath } from 'node:url';
 import { arquivoDaRota } from './paginas-do-build.ts';
 import { montarLote } from './revisao.ts';
 
-const LOTES: Record<number, { titulo: string; paginas: [nome: string, rota: string][]; compartilhados?: boolean }> = {
+interface Lote {
+  titulo: string;
+  paginas: [nome: string, rota: string][];
+  comTextosCompartilhados?: boolean;
+}
+
+const LOTES: Record<number, Lote> = {
   1: {
     titulo: 'páginas principais',
     paginas: [
@@ -15,7 +21,7 @@ const LOTES: Record<number, { titulo: string; paginas: [nome: string, rota: stri
       ['Cursos de Idiomas', '/curso-de-idiomas/'],
     ],
     // O menu, o rodapé e o pedido vão no primeiro lote, que a Daniella lê primeiro.
-    compartilhados: true,
+    comTextosCompartilhados: true,
   },
 };
 
@@ -37,7 +43,7 @@ const texto = montarLote({
   numero,
   titulo: lote.titulo,
   paginas: lote.paginas.map(([nome, rota]) => ({ nome, html: html(rota) })),
-  compartilhados: lote.compartilhados ? html('/') : undefined,
+  htmlDosCompartilhados: lote.comTextosCompartilhados ? html('/') : undefined,
   data: new Date(),
 });
 

@@ -2,6 +2,9 @@
 // Sai do HTML do build de preview, e não do content/, porque só a página montada tem a ordem da tela
 // e os textos que vêm de outros arquivos (a lista de idiomas, os botões, o pedido).
 import { HTMLElement, NodeType, parse, type Node } from 'node-html-parser';
+import type { DadosDoDrawer, FormularioId } from '../src/lib/contato.ts';
+import type { Publico } from '../src/lib/publico.ts';
+import { escaparHtml } from '../src/lib/texto.ts';
 
 export interface PaginaDoLote {
   nome: string;
@@ -18,14 +21,17 @@ const CONTAINERS = new Set([
   'DETAILS', 'DIALOG', 'UL', 'OL', 'DL', 'FIGURE', 'PICTURE', 'TABLE', 'TBODY', 'THEAD', 'TR',
 ]);
 const ITENS = new Set(['LI', 'LABEL']);
-const PUBLICOS: [string, string][] = [
-  ['empresa', 'para sua empresa'],
-  ['voce', 'para você'],
-];
+// Os nomes das duas metades da escolha de público, como a Daniella as vê na home.
+const ROTULOS_DOS_PUBLICOS: Record<Publico, string> = { empresa: 'Para sua empresa', voce: 'Para você' };
+
+type DadosDoPedido = Partial<Pick<DadosDoDrawer, 'titulosDetalhes' | 'modelos' | 'erros'>>;
 
 const limpar = (texto: string) => texto.replace(/\s+/g, ' ').trim();
+const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
 
 const elementos = (no: HTMLElement) => no.childNodes.filter((filho): filho is HTMLElement => filho instanceof HTMLElement);
+
+const ehPendencia = (elemento: HTMLElement) => elemento.tagName === 'MARK' && elemento.classList.contains('confirmar');
 
 function ignorado(elemento: HTMLElement): boolean {
   return (
@@ -35,12 +41,13 @@ function ignorado(elemento: HTMLElement): boolean {
   );
 }
 
-/** O texto de um botão que muda com o público: o neutro e, entre parênteses, o que muda. */
+// Os três textos do público estão no HTML e o CSS mostra um só. No lote, o neutro vem primeiro,
+// e o que muda para cada público vem entre parênteses.
 function textoPorPublico(variantes: HTMLElement[]): string {
   const texto = Object.fromEntries(variantes.map((variante) => [variante.getAttribute('data-publico-texto'), limpar(textoInline(variante))]));
-  const diferentes = PUBLICOS.filter(([publico]) => texto[publico] && texto[publico] !== texto.neutro).map(
-    ([publico, rotulo]) => `${rotulo}: ${texto[publico]}`,
-  );
+  const diferentes = (Object.entries(ROTULOS_DOS_PUBLICOS) as [Publico, string][])
+    .filter(([publico]) => texto[publico] && texto[publico] !== texto.neutro)
+    .map(([publico, rotulo]) => `${minuscula(rotulo)}: ${texto[publico]}`);
   return diferentes.length ? `${texto.neutro} (${diferentes.join('; ')})` : texto.neutro;
 }
 
@@ -48,7 +55,7 @@ function textoInline(no: Node): string {
   if (no.nodeType === NodeType.TEXT_NODE) return no.text;
   if (!(no instanceof HTMLElement)) return '';
   // A pendência aparece por extenso, com quem responde: é o que a Daniella precisa ver.
-  if (no.tagName === 'MARK' && no.classList.contains('confirmar')) return `[${no.getAttribute('title') ?? 'A confirmar'}]`;
+  if (ehPendencia(no)) return `[${no.getAttribute('title') ?? 'A confirmar'}]`;
   if (ignorado(no)) return '';
   if (no.tagName === 'BR') return ' ';
   const porPublico = elementos(no).filter((filho) => filho.hasAttribute('data-publico-texto'));
@@ -59,7 +66,7 @@ function textoInline(no: Node): string {
   return no.childNodes.map(textoInline).join('');
 }
 
-/** O texto do botão ou do link; o de ícone, sem texto, fala pelo rótulo acessível. */
+// Botão ou link de ícone não tem texto: fala pelo rótulo acessível.
 const textoDaAcao = (elemento: HTMLElement) => limpar(textoInline(elemento)) || limpar(elemento.getAttribute('aria-label') ?? '');
 
 const temBlocoDentro = (elemento: HTMLElement) =>
@@ -74,7 +81,7 @@ const temBlocoDentro = (elemento: HTMLElement) =>
         dentro.tagName === 'IMG',
     );
 
-/** O bloco que é só um link vira [Link: ...], como o link solto. */
+// Um item de lista que é só um link (a lista de idiomas da home) aparece como link, igual ao link solto.
 function soUmLink(elemento: HTMLElement): HTMLElement | undefined {
   const conteudo = elemento.childNodes.filter((filho) => !(filho.nodeType === NodeType.TEXT_NODE && !filho.text.trim()));
   const [unico] = conteudo;
@@ -82,25 +89,26 @@ function soUmLink(elemento: HTMLElement): HTMLElement | undefined {
 }
 
 function linhasDe(elemento: HTMLElement, saida: string[]): string[] {
-  let solto = '';
-  const soltar = () => {
-    const texto = limpar(solto);
+  // Texto que corre fora de um bloco (entre links e spans) vira um parágrafo quando o próximo bloco começa.
+  let textoCorrido = '';
+  const fecharTextoCorrido = () => {
+    const texto = limpar(textoCorrido);
     if (texto) saida.push(texto);
-    solto = '';
+    textoCorrido = '';
   };
-  const empurrar = (linha: string) => {
-    soltar();
+  const novaLinha = (linha: string) => {
+    fecharTextoCorrido();
     saida.push(linha);
   };
 
   for (const filho of elemento.childNodes) {
     if (filho.nodeType === NodeType.TEXT_NODE) {
-      solto += filho.text;
+      textoCorrido += filho.text;
       continue;
     }
     if (!(filho instanceof HTMLElement)) continue;
-    if (filho.tagName === 'MARK' && filho.classList.contains('confirmar')) {
-      solto += textoInline(filho);
+    if (ehPendencia(filho)) {
+      textoCorrido += textoInline(filho);
       continue;
     }
     if (ignorado(filho)) continue;
@@ -108,34 +116,34 @@ function linhasDe(elemento: HTMLElement, saida: string[]): string[] {
     const texto = () => limpar(textoInline(filho));
 
     if (tag in NIVEL_DO_TITULO) {
-      if (texto()) empurrar(`${'#'.repeat(NIVEL_DO_TITULO[tag])} ${texto()}`);
+      if (texto()) novaLinha(`${'#'.repeat(NIVEL_DO_TITULO[tag])} ${texto()}`);
     } else if (tag === 'IMG' || filho.getAttribute('role') === 'img') {
       const descricao = limpar(filho.getAttribute('alt') ?? filho.getAttribute('aria-label') ?? '');
-      if (descricao) empurrar(`[Imagem: ${descricao}]`);
+      if (descricao) novaLinha(`[Imagem: ${descricao}]`);
     } else if (tag === 'BUTTON') {
-      if (textoDaAcao(filho)) empurrar(`[Botão: ${textoDaAcao(filho)}]`);
-    } else if (tag === 'A' && !limpar(solto)) {
-      if (textoDaAcao(filho)) empurrar(`[Link: ${textoDaAcao(filho)}]`);
+      if (textoDaAcao(filho)) novaLinha(`[Botão: ${textoDaAcao(filho)}]`);
+    } else if (tag === 'A' && !limpar(textoCorrido)) {
+      if (textoDaAcao(filho)) novaLinha(`[Link: ${textoDaAcao(filho)}]`);
     } else if (tag === 'LABEL' && !filho.querySelector('input')) {
       // O rótulo de um campo de digitar; o que envolve um input é uma opção de escolher.
-      if (texto()) empurrar(`[Campo: ${texto()}]`);
+      if (texto()) novaLinha(`[Campo: ${texto()}]`);
     } else if (BLOCOS_DE_TEXTO.has(tag) && !temBlocoDentro(filho)) {
       const link = soUmLink(filho);
       const linha = link ? `[Link: ${textoDaAcao(link)}]` : texto();
-      if (linha) empurrar(ITENS.has(tag) ? `- ${linha}` : linha);
+      if (linha) novaLinha(ITENS.has(tag) ? `- ${linha}` : linha);
     } else if (BLOCOS_DE_TEXTO.has(tag) || CONTAINERS.has(tag)) {
-      soltar();
+      fecharTextoCorrido();
       linhasDe(filho, saida);
     } else {
-      solto += textoInline(filho);
+      textoCorrido += textoInline(filho);
     }
   }
-  soltar();
+  fecharTextoCorrido();
   return saida;
 }
 
-/** As linhas em Markdown: itens de lista seguidos ficam juntos, o resto separado por linha em branco. */
-function juntar(linhas: string[]): string {
+// Itens seguidos ficam colados, para o Markdown montar uma lista só; o resto vai separado por linha em branco.
+function markdownDasLinhas(linhas: string[]): string {
   return linhas
     .map((linha, i) => (i > 0 && linha.startsWith('- ') && linhas[i - 1].startsWith('- ') ? `\n${linha}` : `\n\n${linha}`))
     .join('')
@@ -164,41 +172,30 @@ export function textoDaPagina({ nome, html }: PaginaDoLote): string {
   const neutra = mensagemDoLink(botao?.getAttribute('href'));
   if (neutra) {
     cabeca.push(`- Mensagem do botão do WhatsApp: "${neutra}"`);
-    const empresa = mensagemDoLink(botao?.getAttribute('data-href-empresa'));
-    const voce = mensagemDoLink(botao?.getAttribute('data-href-voce'));
-    if (empresa) cabeca.push(`  - Para quem escolheu "Para sua empresa": "${empresa}"`);
-    if (voce) cabeca.push(`  - Para quem escolheu "Para você": "${voce}"`);
+    for (const [publico, rotulo] of Object.entries(ROTULOS_DOS_PUBLICOS) as [Publico, string][]) {
+      const mensagem = mensagemDoLink(botao?.getAttribute(`data-href-${publico}`));
+      if (mensagem) cabeca.push(`  - Para quem escolheu "${rotulo}": "${mensagem}"`);
+    }
   }
   const principal = raiz.querySelector('main');
-  return `${cabeca.join('\n')}\n\n${principal ? juntar(linhasDe(principal, [])) : ''}`;
+  return `${cabeca.join('\n')}\n\n${principal ? markdownDasLinhas(linhasDe(principal, [])) : ''}`;
 }
 
-interface DadosDoPedido {
-  titulosDetalhes?: Record<string, string>;
-  modelos?: {
-    abertura?: string;
-    publico?: Record<string, string>;
-    pedido?: Record<string, string>;
-    nome?: string;
-    flutuante?: string;
-  };
-  erros?: Record<string, string>;
-}
-
-function mensagensDoPedido(dados: DadosDoPedido): string[] {
-  const { modelos = {}, erros = {} } = dados;
+function mensagensDoPedido({ modelos, erros }: DadosDoPedido): string[] {
   const linhas = [
     '### Mensagens do WhatsApp que o pedido monta',
     '',
     'O {pagina} vira o nome da página, o {publico} vira o trecho de cada público, o {assunto} vira o pedido de cada página e o {nome} vira o nome da pessoa.',
     '',
   ];
-  if (modelos.abertura) linhas.push(`- Abertura: "${modelos.abertura}"`);
-  for (const [publico, trecho] of Object.entries(modelos.publico ?? {})) linhas.push(`- Trecho de ${publico === 'voce' ? '"Para você"' : '"Para sua empresa"'}: "${trecho}"`);
-  for (const pedido of Object.values(modelos.pedido ?? {})) linhas.push(`- Pedido: "${pedido}"`);
-  if (modelos.nome) linhas.push(`- Fecho: "${modelos.nome}"`);
-  if (modelos.flutuante) linhas.push(`- Botão flutuante: "${modelos.flutuante}"`);
-  linhas.push('', '### Avisos de erro do pedido', '', ...Object.values(erros).map((erro) => `- ${erro}`));
+  if (modelos?.abertura) linhas.push(`- Abertura: "${modelos.abertura}"`);
+  for (const [publico, trecho] of Object.entries(modelos?.publico ?? {}) as [Publico, string][]) {
+    linhas.push(`- Trecho de "${ROTULOS_DOS_PUBLICOS[publico]}": "${trecho}"`);
+  }
+  for (const pedido of Object.values(modelos?.pedido ?? {})) linhas.push(`- Pedido: "${pedido}"`);
+  if (modelos?.nome) linhas.push(`- Fecho: "${modelos.nome}"`);
+  if (modelos?.flutuante) linhas.push(`- Botão flutuante: "${modelos.flutuante}"`);
+  linhas.push('', '### Avisos de erro do pedido', '', ...Object.values(erros ?? {}).map((erro) => `- ${erro}`));
   return linhas;
 }
 
@@ -213,12 +210,12 @@ export function textosCompartilhados(html: string): string {
   // o serviço. No lote, cada bloco de campos ganha o próprio título, e o título que só vale para um sai.
   raiz.querySelectorAll('[data-titulo-detalhes]').forEach((titulo) => titulo.remove());
   for (const bloco of raiz.querySelectorAll('[data-formulario]')) {
-    const titulo = dados?.titulosDetalhes?.[bloco.getAttribute('data-formulario') ?? ''];
-    if (titulo) bloco.insertAdjacentHTML('afterbegin', `<h4>${titulo.replaceAll('&', '&amp;').replaceAll('<', '&lt;')}</h4>`);
+    const titulo = dados?.titulosDetalhes?.[bloco.getAttribute('data-formulario') as FormularioId];
+    if (titulo) bloco.insertAdjacentHTML('afterbegin', `<h4>${escaparHtml(titulo)}</h4>`);
   }
   const secao = (titulo: string, seletor: string) => {
     const elemento = raiz.querySelector(seletor);
-    return elemento ? [titulo, '', juntar(linhasDe(elemento, [])), ''] : [];
+    return elemento ? [titulo, '', markdownDasLinhas(linhasDe(elemento, [])), ''] : [];
   };
   return [
     '## Textos que aparecem em todas as páginas',
@@ -236,14 +233,15 @@ export function montarLote(lote: {
   numero: number;
   titulo: string;
   paginas: PaginaDoLote[];
-  compartilhados?: string;
+  /** O HTML de uma página qualquer, de onde saem o menu, o rodapé e o pedido. */
+  htmlDosCompartilhados?: string;
   data: Date;
 }): string {
   const partes = [
     `# Lote ${lote.numero}: ${lote.titulo}`,
     `Textos do site novo da 9vee para a revisão da Daniella, gerados em ${lote.data.toLocaleDateString('pt-BR')} a partir do preview. Cada página aparece na ordem da tela. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder.`,
     ...lote.paginas.map(textoDaPagina),
-    ...(lote.compartilhados ? [textosCompartilhados(lote.compartilhados)] : []),
+    ...(lote.htmlDosCompartilhados ? [textosCompartilhados(lote.htmlDosCompartilhados)] : []),
   ];
   return `${partes.join('\n\n')}\n`;
 }
