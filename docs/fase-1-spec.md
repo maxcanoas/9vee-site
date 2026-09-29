@@ -230,7 +230,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - Os textos continuam em `content/`, um arquivo por página. As páginas de idioma e de cidade ficam numa pasta cada.
 - Português do Brasil, frases curtas, voz ativa e segunda pessoa, sem travessão e sem as palavras proibidas. O `humanizar` roda em todo texto novo antes de cada lote.
 - Nenhum dado inventado. A pendência passa a dizer quem responde: `[CONFIRMAR COM A DANIELLA: ...]` ou `[CONFIRMAR COM O ARTHUR: ...]`. O formatador e a lista de pendências aceitam os dois.
-- **Lotes de revisão:** um script monta cada lote a partir de `content/`, com o texto limpo na ordem da página, sem código.
+- **Lotes de revisão:** um script faz o build de preview e monta cada lote a partir dele, com o texto limpo na ordem da página, sem código. É o build, e não o `content/`, que tem a ordem da tela e os textos que vêm de outros arquivos (a lista de idiomas, os botões, o pedido).
   - Lote 1: Home, NR-1 e Cursos de Idiomas, mandado cedo.
   - Lote 2: Tradução, LMS, Quem Somos, privacidade e 404.
   - Lote 3: os idiomas.

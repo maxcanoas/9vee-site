@@ -1,6 +1,6 @@
-// npm run lote -- <número>: monta docs/revisao-daniella/lote-N.md a partir do build de preview (dist/).
-// Rode antes o npm run build:preview, para o lote sair com o texto de agora. Cada ticket que fecha um lote
-// acrescenta as páginas dele aqui.
+// npm run lote -- <número>: faz o build de preview e monta docs/revisao-daniella/lote-N.md a partir dele (dist/).
+// O build vem junto para o lote nunca sair de um dist/ velho. Cada ticket que fecha um lote acrescenta as
+// páginas dele aqui.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { arquivoDaRota } from './paginas-do-build.ts';
@@ -34,7 +34,7 @@ if (!lote) {
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 if (!existsSync(dist)) {
-  console.error('Não existe dist/. Rode antes o npm run build:preview.');
+  console.error('Não existe dist/. Rode pelo npm run lote, que faz o build antes.');
   process.exit(1);
 }
 const html = (rota: string) => readFileSync(arquivoDaRota(dist, rota), 'utf8');

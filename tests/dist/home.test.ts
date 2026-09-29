@@ -82,6 +82,12 @@ describe('home', () => {
     expect(hrefs.some((h) => h.startsWith('https://www.planalto.gov.br/'))).toBe(true);
   });
 
+  it('diz, em cada nota da faixa de números, com quem está a pendência', () => {
+    const notas = home.querySelectorAll('.prova__lista-notas li').map((nota) => nota.text.replace(/\s+/g, ' ').trim());
+    expect(notas.length).toBeGreaterThan(0);
+    for (const nota of notas) expect(nota).toMatch(/^com (a Daniella|o Arthur): \S/);
+  });
+
   it('marca cada depoimento com a autorização a confirmar', () => {
     for (const depoimento of home.querySelectorAll('.depoimento')) {
       expect(depoimento.querySelector('mark.confirmar')).not.toBeNull();

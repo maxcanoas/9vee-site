@@ -13,7 +13,7 @@
     "build:preview": "node scripts/build.ts preview",
     "build:producao": "node scripts/build.ts producao && npm run check:producao",
     "check:producao": "node scripts/check-producao.ts",
-    "lote": "node scripts/lote-revisao.ts",
+    "lote": "npm run build:preview && node scripts/lote-revisao.ts",
     "preview": "node scripts/servidor-preview.ts producao",
     "check": "astro check",
     "test": "vitest run --project unit && npm run build:preview && node scripts/build.ts producao && vitest run --project dist",

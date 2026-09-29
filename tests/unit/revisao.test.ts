@@ -21,6 +21,9 @@ const PAGINA = `<!doctype html><html lang="pt-BR"><head>
 <ul><li><p>Para empresas</p><h3>Tradução simultânea</h3><p>Intérpretes em cabine.</p><a href="/traducao-simultanea/">Ver a tradução simultânea</a></li></ul>
 <noscript><p>Lista sem JavaScript</p></noscript>
 <a href="https://www.gov.br/x" target="_blank" rel="noopener">Portaria<span class="visualmente-oculto"> (abre em nova aba)</span></a>
+</section>
+<section><figure><blockquote><p>Equipe pontual.</p></blockquote><figcaption> <span class="logo"><svg aria-hidden="true"></svg></span> <span>Eduardo Martins</span> <span>Diretor de Vendas, Nissan</span> <span>Autorização de uso: <mark class="confirmar" title="A confirmar com a Daniella: autorização por escrito">a confirmar<span class="visualmente-oculto"> com a Daniella: autorização por escrito</span></mark></span> </figcaption></figure>
+<details class="prova__notas"><summary> <span>a confirmar</span> <span>Números do site atual</span> </summary><ul><li>com a Daniella: ano de fundação</li></ul></details>
 </section></main>
 <footer><p>© 2026 9vee</p></footer>
 <a class="whatsapp-flutuante" href="${whatsapp('Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero saber dos cursos.')}" data-whatsapp-flutuante data-href-empresa="${whatsapp('Olá, 9vee. Quero aulas para a minha equipe.')}" data-href-voce="${whatsapp('Olá, 9vee. Quero aulas para mim.')}"><span class="visualmente-oculto">Conversar no WhatsApp</span></a>
@@ -63,6 +66,15 @@ describe('textoDaPagina', () => {
     expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b));
   });
 
+  // No HTML, as partes vêm lado a lado, sem texto entre elas; na tela, cada uma tem a sua linha.
+  it('separa o que a tela mostra em linhas, como o nome e o cargo de um depoimento', () => {
+    expect(texto).toContain(
+      'Eduardo Martins · Diretor de Vendas, Nissan · Autorização de uso: [A confirmar com a Daniella: autorização por escrito]',
+    );
+    expect(texto).toContain('a confirmar · Números do site atual');
+    expect(texto).toContain('- com a Daniella: ano de fundação');
+  });
+
   it('deixa de fora código, enfeite, texto só do leitor de tela e o menu e o rodapé', () => {
     for (const trecho of ['<', 'Hello Hola', 'Lista sem JavaScript', 'abre em nova aba', 'Página inicial', '© 2026']) {
       expect(texto).not.toContain(trecho);
@@ -80,12 +92,19 @@ const COMPARTILHADOS = `<!doctype html><html lang="pt-BR"><head><title>9vee</tit
 <section data-etapa="detalhes" hidden><h3 data-titulo-detalhes>Sobre o treinamento</h3><div data-formulario="traducao" hidden><div class="campo"><label for="c1">Nome da empresa</label><input type="text" id="c1"></div></div></section>
 <section data-etapa="confirmado" hidden><h3>Pedido anotado.</h3><p>A equipe responde logo.</p></section></dialog>
 <script type="application/json" id="dados-contato">${JSON.stringify({
+  pagina: 'inicial',
   titulosDetalhes: { traducao: 'Sobre o evento' },
   modelos: {
     abertura: 'Olá, 9vee. Vim pela página {pagina} do site{publico}.',
     publico: { empresa: ' e falo pela minha empresa', voce: ' e é para mim' },
-    pedido: { nr1: 'Quero um orçamento de treinamento de NR-1.' },
+    pedido: {
+      nr1: 'Quero um orçamento de treinamento de NR-1.',
+      traducao: 'Quero um orçamento de tradução simultânea.',
+      idiomas: 'Quero um orçamento de aulas de idioma.',
+      lms: 'Quero um orçamento do LMS.',
+    },
     nome: 'Meu nome é {nome}.',
+    flutuante: 'Olá, 9vee. Vim pela página {pagina} do site e {assunto}.',
   },
   erros: { escolha: 'Escolha uma das opções.', nome: 'Escreva como podemos te chamar.' },
 })}</script>
@@ -98,7 +117,7 @@ describe('textosCompartilhados', () => {
     for (const trecho of [
       '### Menu',
       'Empresas',
-      'LMS Plataforma de cursos',
+      '[Link: LMS · Plataforma de cursos]',
       '### Rodapé',
       'A 9vee ensina idiomas.',
       '### Pedido de orçamento',
@@ -124,10 +143,24 @@ describe('textosCompartilhados', () => {
     expect(texto).not.toContain('Sobre o treinamento');
   });
 
-  it('mostra os modelos da mensagem do WhatsApp e os avisos de erro do pedido', () => {
-    expect(texto).toContain('Olá, 9vee. Vim pela página {pagina} do site{publico}.');
-    expect(texto).toContain('Quero um orçamento de treinamento de NR-1.');
-    expect(texto).toContain('Escreva como podemos te chamar.');
+  it('mostra a mensagem do WhatsApp já montada, como a pessoa manda, e os avisos de erro do pedido', () => {
+    for (const trecho of [
+      '> Olá, 9vee. Vim pela página inicial do site e falo pela minha empresa.',
+      '> Quero um orçamento de treinamento de NR-1.',
+      '> Meu nome é (nome da pessoa).',
+      '> Olá, 9vee. Vim pela página inicial do site e é para mim.',
+      '> Quero um orçamento de aulas de idioma.',
+      '- Quero um orçamento de tradução simultânea.',
+      '- Quero um orçamento do LMS.',
+      '- Escreva como podemos te chamar.',
+    ]) {
+      expect(texto, trecho).toContain(trecho);
+    }
+  });
+
+  // A mensagem do botão flutuante já sai montada em cada página; aqui entra só o que o pedido monta.
+  it('não mostra modelo com chave para preencher', () => {
+    expect(texto).not.toMatch(/\{\w+\}/);
   });
 });
 
@@ -145,6 +178,8 @@ describe('montarLote', () => {
     });
     expect(lote.startsWith('# Lote 1: Páginas principais')).toBe(true);
     expect(lote).toContain('29/09/2026');
+    // A ordem do lote é a do HTML: a da tela do computador, antes de a pessoa escolher o público.
+    expect(lote).toContain('na ordem da tela do computador');
     expect(lote.indexOf('## Cursos de Idiomas')).toBeLessThan(lote.indexOf('## Outra'));
     expect(lote.indexOf('## Outra')).toBeLessThan(lote.indexOf('## Textos que aparecem em todas as páginas'));
     expect(lote).not.toMatch(/[—–]/);

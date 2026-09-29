@@ -2,7 +2,7 @@
 // Sai do HTML do build de preview, e não do content/, porque só a página montada tem a ordem da tela
 // e os textos que vêm de outros arquivos (a lista de idiomas, os botões, o pedido).
 import { HTMLElement, NodeType, parse, type Node } from 'node-html-parser';
-import type { DadosDoDrawer, FormularioId } from '../src/lib/contato.ts';
+import { montarMensagem, type DadosDoDrawer, type FormularioId, type ServicoId } from '../src/lib/contato.ts';
 import type { Publico } from '../src/lib/publico.ts';
 import { escaparHtml } from '../src/lib/texto.ts';
 
@@ -23,8 +23,14 @@ const CONTAINERS = new Set([
 const ITENS = new Set(['LI', 'LABEL']);
 // Os nomes das duas metades da escolha de público, como a Daniella as vê na home.
 const ROTULOS_DOS_PUBLICOS: Record<Publico, string> = { empresa: 'Para sua empresa', voce: 'Para você' };
+// As mensagens do pedido saem montadas, e não como modelo: uma de cada público, com o serviço que ele mais pede.
+const EXEMPLOS_DE_MENSAGEM: [Publico, ServicoId][] = [
+  ['empresa', 'nr1'],
+  ['voce', 'idiomas'],
+];
+const NOME_DE_EXEMPLO = '(nome da pessoa)';
 
-type DadosDoPedido = Partial<Pick<DadosDoDrawer, 'titulosDetalhes' | 'modelos' | 'erros'>>;
+type DadosDoPedido = Partial<Pick<DadosDoDrawer, 'pagina' | 'titulosDetalhes' | 'modelos' | 'erros'>>;
 
 const limpar = (texto: string) => texto.replace(/\s+/g, ' ').trim();
 const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
@@ -63,6 +69,15 @@ function textoInline(no: Node): string {
   // O título do pedido tem uma versão para orçamento e outra para quem monta as próprias aulas.
   const porModo = elementos(no).filter((filho) => filho.hasAttribute('data-modo-texto'));
   if (porModo.length > 0) return porModo.map((modo) => limpar(textoInline(modo))).join(' / ');
+  // Spans lado a lado, sem texto entre eles, são linhas separadas na tela: o nome e o cargo de um depoimento,
+  // o título e a descrição de um link do menu. Colados, viram uma frase só; o ponto no meio separa as partes.
+  const partes = no.childNodes.filter((filho) => !(filho.nodeType === NodeType.TEXT_NODE && !filho.text.trim()));
+  if (partes.length > 1 && partes.every((parte) => parte instanceof HTMLElement && parte.tagName === 'SPAN')) {
+    return partes
+      .map((parte) => limpar(textoInline(parte)))
+      .filter(Boolean)
+      .join(' · ');
+  }
   return no.childNodes.map(textoInline).join('');
 }
 
@@ -181,21 +196,38 @@ export function textoDaPagina({ nome, html }: PaginaDoLote): string {
   return `${cabeca.join('\n')}\n\n${principal ? markdownDasLinhas(linhasDe(principal, [])) : ''}`;
 }
 
-function mensagensDoPedido({ modelos, erros }: DadosDoPedido): string[] {
-  const linhas = [
-    '### Mensagens do WhatsApp que o pedido monta',
-    '',
-    'O {pagina} vira o nome da página, o {publico} vira o trecho de cada público, o {assunto} vira o pedido de cada página e o {nome} vira o nome da pessoa.',
-    '',
-  ];
-  if (modelos?.abertura) linhas.push(`- Abertura: "${modelos.abertura}"`);
-  for (const [publico, trecho] of Object.entries(modelos?.publico ?? {}) as [Publico, string][]) {
-    linhas.push(`- Trecho de "${ROTULOS_DOS_PUBLICOS[publico]}": "${trecho}"`);
+// A mensagem como a pessoa manda, montada pela mesma função do site. Cada linha vira um parágrafo da citação,
+// para a quebra de linha da mensagem continuar visível no Markdown.
+function mensagemDeExemplo(pagina: string, publico: Publico, servico: ServicoId, modelos: DadosDoDrawer['modelos']) {
+  const pedido = { pagina, publico, servico, campos: [], respostas: {}, nome: NOME_DE_EXEMPLO, idiomas: [] };
+  return montarMensagem(pedido, modelos)
+    .split('\n')
+    .map((linha) => `> ${linha}`)
+    .join('\n>\n');
+}
+
+function mensagensDoPedido({ pagina, modelos, erros }: DadosDoPedido): string[] {
+  const linhas: string[] = [];
+  if (pagina && modelos) {
+    linhas.push(
+      '### Mensagem do WhatsApp que o pedido monta',
+      '',
+      'Entre o pedido e o nome, a mensagem traz as respostas do formulário, uma por linha.',
+    );
+    for (const [publico, servico] of EXEMPLOS_DE_MENSAGEM) {
+      linhas.push(
+        '',
+        `Para quem escolheu "${ROTULOS_DOS_PUBLICOS[publico]}", pela página ${pagina}:`,
+        '',
+        mensagemDeExemplo(pagina, publico, servico, modelos),
+      );
+    }
+    const outrosPedidos = (Object.entries(modelos.pedido) as [ServicoId, string][])
+      .filter(([servico]) => !EXEMPLOS_DE_MENSAGEM.some(([, exemplo]) => exemplo === servico))
+      .map(([, pedido]) => `- ${pedido}`);
+    if (outrosPedidos.length) linhas.push('', 'Nos outros serviços, a linha do pedido muda para:', '', ...outrosPedidos);
   }
-  for (const pedido of Object.values(modelos?.pedido ?? {})) linhas.push(`- Pedido: "${pedido}"`);
-  if (modelos?.nome) linhas.push(`- Fecho: "${modelos.nome}"`);
-  if (modelos?.flutuante) linhas.push(`- Botão flutuante: "${modelos.flutuante}"`);
-  linhas.push('', '### Avisos de erro do pedido', '', ...Object.values(erros ?? {}).map((erro) => `- ${erro}`));
+  if (erros) linhas.push('', '### Avisos de erro do pedido', '', ...Object.values(erros).map((erro) => `- ${erro}`));
   return linhas;
 }
 
@@ -239,7 +271,7 @@ export function montarLote(lote: {
 }): string {
   const partes = [
     `# Lote ${lote.numero}: ${lote.titulo}`,
-    `Textos do site novo da 9vee para a revisão da Daniella, gerados em ${lote.data.toLocaleDateString('pt-BR')} a partir do preview. Cada página aparece na ordem da tela. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder.`,
+    `Textos do site novo da 9vee para a revisão da Daniella, gerados em ${lote.data.toLocaleDateString('pt-BR')} a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "${ROTULOS_DOS_PUBLICOS.empresa}" e "${ROTULOS_DOS_PUBLICOS.voce}"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.`,
     ...lote.paginas.map(textoDaPagina),
     ...(lote.htmlDosCompartilhados ? [textosCompartilhados(lote.htmlDosCompartilhados)] : []),
   ];

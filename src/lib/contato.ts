@@ -1,7 +1,8 @@
 // Lógica do pedido de contato, sem tela: campos por serviço, validação e mensagem do WhatsApp.
 // As perguntas, as opções, os erros e os modelos de mensagem vêm de content/site.md.
 import type { Publico } from './publico';
-import { preencher } from './texto';
+// Com a extensão, o Node carrega este módulo sem o Vite: o scripts/revisao.ts monta com ele as mensagens do lote.
+import { preencher } from './texto.ts';
 
 /** Os quatro serviços. O esquema do conteúdo e os componentes partem desta lista; a ordem na tela vem de content/site.md. */
 export const SERVICOS = ['nr1', 'traducao', 'idiomas', 'lms'] as const;

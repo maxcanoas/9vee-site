@@ -1,6 +1,6 @@
 ---
 import Texto from './Texto.astro';
-import { lerPendencias } from '../lib/texto';
+import { detalheDaPendencia, lerPendencias, type TextosDePendencia } from '../lib/texto';
 
 interface Item {
   valor: number;
@@ -13,11 +13,14 @@ interface Props {
   titulo: string;
   itens: Item[];
   aviso: string;
-  etiqueta: string;
+  pendencia: TextosDePendencia;
 }
 
-const { titulo, itens, aviso, etiqueta } = Astro.props;
-const notas = itens.flatMap((item) => (item.pendencia ? lerPendencias(item.pendencia).map(({ nota }) => nota) : []));
+const { titulo, itens, aviso, pendencia } = Astro.props;
+// Cada nota diz com quem está, como a etiqueta das pendências no meio do texto.
+const notas = itens.flatMap((item) =>
+  item.pendencia ? lerPendencias(item.pendencia).map((nota) => detalheDaPendencia(nota, pendencia)) : [],
+);
 ---
 
 <section class="prova" aria-labelledby="prova-titulo">
@@ -40,7 +43,7 @@ const notas = itens.flatMap((item) => (item.pendencia ? lerPendencias(item.pende
       notas.length > 0 && (
         <details class="prova__notas">
           <summary class="prova__aviso">
-            <span class="prova__etiqueta">{etiqueta}</span>
+            <span class="prova__etiqueta">{pendencia.etiqueta}</span>
             <span>
               <Texto de={aviso} />
             </span>

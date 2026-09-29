@@ -80,6 +80,11 @@ export function marcarPendencias(html: string, pendencia: TextosDePendencia): st
   );
 }
 
+/** "com a Daniella: faixa de preço": o detalhe da pendência em texto puro, para onde ela aparece fora da etiqueta. */
+export function detalheDaPendencia({ responsavel, nota }: Pendencia, textos: TextosDePendencia): string {
+  return preencher(textos.detalhe, { nota, quem: textos.quem[responsavel] });
+}
+
 export function lerPendencias(texto: string): Pendencia[] {
   return [...texto.matchAll(PENDENCIA)].map(([, marca, nota]) => ({ responsavel: responsavelDa(marca), nota: nota.trim() }));
 }

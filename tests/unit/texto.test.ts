@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  detalheDaPendencia,
   formatarInline,
   jsonParaScript,
   lerPendencias,
@@ -125,6 +126,15 @@ describe('lerPendencias', () => {
       { responsavel: 'daniella', nota: 'preço' },
       { responsavel: 'daniella', nota: 'prazo' },
     ]);
+  });
+});
+
+describe('detalheDaPendencia', () => {
+  it('diz com quem está a pendência, em texto puro, pelo modelo do content/', () => {
+    expect(detalheDaPendencia({ responsavel: 'arthur', nota: 'horas por nível' }, pendencia)).toBe(
+      'com o Arthur: horas por nível',
+    );
+    expect(detalheDaPendencia({ responsavel: 'daniella', nota: 'R$ <10>' }, pendencia)).toBe('com a Daniella: R$ <10>');
   });
 });
 
