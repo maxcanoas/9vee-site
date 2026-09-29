@@ -53,7 +53,7 @@ describe('verificarBuild', () => {
         '<div class="figura placeholder placeholder--a" role="img" aria-label="Auditório"><span class="placeholder__id">IMG-HOME-HERO-FUNDO</span></div>',
       ),
     });
-    expect(verificarBuild(pasta)).toEqual([{ regra: 'placeholder', rota: '/', detalhe: 'IMG-HOME-HERO-FUNDO' }]);
+    expect(verificarBuild(pasta)).toEqual([{ regra: 'placeholder', onde: '/', detalhe: 'IMG-HOME-HERO-FUNDO' }]);
   });
 
   it('barra a etiqueta de obra e o aviso de envio simulado do MVP', () => {
@@ -65,7 +65,7 @@ describe('verificarBuild', () => {
     });
     const achados = verificarBuild(pasta);
     expect(regras(achados)).toEqual(['obra', 'obra']);
-    expect(achados.every((achado) => achado.rota === '/lms/')).toBe(true);
+    expect(achados.every((achado) => achado.onde === '/lms/')).toBe(true);
   });
 
   it('não confunde a resposta "Em construção" do formulário com a etiqueta de obra', () => {
@@ -83,8 +83,8 @@ describe('verificarBuild', () => {
       _headers: '/*\n  X-Robots-Tag: noindex, nofollow\n',
     });
     expect(verificarBuild(pasta)).toEqual([
-      { regra: 'noindex', rota: '/', detalhe: 'meta robots "noindex, nofollow"' },
-      { regra: 'noindex', rota: '_headers', detalhe: 'X-Robots-Tag: noindex, nofollow' },
+      { regra: 'noindex', onde: '/', detalhe: 'meta robots "noindex, nofollow"' },
+      { regra: 'noindex', onde: '_headers', detalhe: 'X-Robots-Tag: noindex, nofollow' },
     ]);
   });
 

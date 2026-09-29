@@ -5,15 +5,6 @@ import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { arquivoDaRota, carregarPaginas, type Pagina } from './paginas-do-build.ts';
 
-export type Regra = 'pendencia' | 'placeholder' | 'obra' | 'noindex' | 'travessao' | 'link';
-
-export interface Achado {
-  regra: Regra;
-  /** A rota da página, ou o nome do arquivo quando o achado não é de uma página. */
-  rota: string;
-  detalhe: string;
-}
-
 const PENDENCIA_CRUA = /\[CONFIRMAR[^\]]*\]/g;
 // As marcas do MVP, pelo elemento e não pelo texto: a resposta "Em construção" do formulário de NR-1 é
 // conteúdo de verdade. São a etiqueta das páginas parciais e o aviso de que o pedido não era enviado.
@@ -34,7 +25,7 @@ function placeholders(pagina: Pagina): string[] {
     .map((placeholder) => placeholder.querySelector('.placeholder__id')?.text.trim() || 'Placeholder sem ID');
 }
 
-function marcasDeObra(pagina: Pagina): string[] {
+function marcasDoMvp(pagina: Pagina): string[] {
   return pagina.raiz.querySelectorAll(MARCAS_DO_MVP).map((marca) => marca.text.replace(/\s+/g, ' ').trim());
 }
 
@@ -76,26 +67,37 @@ export function linksQuebrados(pagina: Pagina, pasta: string): string[] {
   return problemas;
 }
 
-const REGRAS: [Regra, (pagina: Pagina, pasta: string) => string[]][] = [
-  ['pendencia', pendencias],
-  ['placeholder', placeholders],
-  ['obra', marcasDeObra],
-  ['noindex', noindex],
-  ['travessao', travessoes],
-  ['link', linksQuebrados],
-];
+/** Cada regra, com o nome que o check:producao mostra e o que ela procura em cada página. Regra nova entra só aqui. */
+export const REGRAS = {
+  pendencia: { nome: 'Pendência sem resposta', naPagina: pendencias },
+  placeholder: { nome: 'Placeholder no lugar da imagem', naPagina: placeholders },
+  obra: { nome: 'Marca do MVP (etiqueta de obra ou envio simulado)', naPagina: marcasDoMvp },
+  noindex: { nome: 'Noindex', naPagina: noindex },
+  travessao: { nome: 'Travessão ou meia-risca', naPagina: travessoes },
+  link: { nome: 'Link interno quebrado', naPagina: linksQuebrados },
+} satisfies Record<string, { nome: string; naPagina: (pagina: Pagina, pasta: string) => string[] }>;
+
+export type Regra = keyof typeof REGRAS;
+
+export interface Achado {
+  regra: Regra;
+  /** A rota da página, ou o arquivo, quando o achado não é de uma página. */
+  onde: string;
+  detalhe: string;
+}
 
 export function verificarBuild(pasta: string): Achado[] {
+  const regras = Object.entries(REGRAS) as [Regra, (typeof REGRAS)[Regra]][];
   const achados: Achado[] = carregarPaginas(pasta).flatMap((pagina) =>
-    REGRAS.flatMap(([regra, verificar]) =>
-      verificar(pagina, pasta).map((detalhe) => ({ regra, rota: pagina.rota, detalhe })),
+    regras.flatMap(([regra, { naPagina }]) =>
+      naPagina(pagina, pasta).map((detalhe) => ({ regra, onde: pagina.rota, detalhe })),
     ),
   );
   // O cabeçalho de noindex que o build de preview deixa para a Cloudflare.
   const cabecalhos = join(pasta, '_headers');
   if (existsSync(cabecalhos)) {
     for (const linha of readFileSync(cabecalhos, 'utf8').split('\n')) {
-      if (/x-robots-tag:.*noindex/i.test(linha)) achados.push({ regra: 'noindex', rota: '_headers', detalhe: linha.trim() });
+      if (/x-robots-tag:.*noindex/i.test(linha)) achados.push({ regra: 'noindex', onde: '_headers', detalhe: linha.trim() });
     }
   }
   return achados;

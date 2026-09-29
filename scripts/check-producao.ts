@@ -2,16 +2,7 @@
 // O build:producao chama este script no fim, então o build de produção só "passa" com a trava limpa.
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { verificarBuild, type Regra } from './trava-producao.ts';
-
-const NOMES: Record<Regra, string> = {
-  pendencia: 'Pendência sem resposta',
-  placeholder: 'Placeholder no lugar da imagem',
-  obra: 'Marca do MVP (obra ou envio simulado)',
-  noindex: 'Noindex',
-  travessao: 'Travessão ou meia-risca',
-  link: 'Link interno quebrado',
-};
+import { REGRAS, verificarBuild, type Regra } from './trava-producao.ts';
 
 const pasta = fileURLToPath(new URL('../dist-producao/', import.meta.url));
 if (!existsSync(pasta)) {
@@ -24,11 +15,11 @@ if (achados.length === 0) {
   console.log('check:producao: nada a barrar. O build de produção pode ir ao ar.');
 } else {
   console.error(`check:producao: ${achados.length} achados. O build de produção não pode ir ao ar assim.\n`);
-  for (const [regra, nome] of Object.entries(NOMES) as [Regra, string][]) {
+  for (const [regra, { nome }] of Object.entries(REGRAS) as [Regra, (typeof REGRAS)[Regra]][]) {
     const daRegra = achados.filter((achado) => achado.regra === regra);
     if (daRegra.length === 0) continue;
     console.error(`${nome} (${daRegra.length})`);
-    for (const achado of daRegra) console.error(`  ${achado.rota}  ${achado.detalhe}`);
+    for (const achado of daRegra) console.error(`  ${achado.onde}  ${achado.detalhe}`);
     console.error('');
   }
   process.exitCode = 1;
