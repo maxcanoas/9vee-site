@@ -1,6 +1,6 @@
-// Lighthouse mobile nas 3 páginas completas, nos dois builds, com a mediana de 3 rodadas.
+// Lighthouse mobile nas 3 páginas completas do MVP, no build de produção, com a mediana de 3 rodadas.
 // O pacote não fica no package.json: instale antes com `npm install --no-save lighthouse`.
-// Uso: npm run build && node scripts/build-indexavel.ts && node scripts/lighthouse.ts
+// Uso: node scripts/build.ts producao && node scripts/lighthouse.ts
 import { createServer, type Server } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -16,10 +16,8 @@ const PAGINAS = [
   { nome: 'Treinamento de NR-1', rota: '/treinamento-nr-1/' },
   { nome: 'Cursos de Idiomas', rota: '/curso-de-idiomas/' },
 ];
-const BUILDS = [
-  { nome: 'padrão (com noindex)', pasta: 'dist', porta: 4500 },
-  { nome: 'indexável', pasta: 'dist-indexavel', porta: 4501 },
-];
+// A medida é no build de produção: é o que vai ao ar, e o único sem noindex, que derrubaria o SEO.
+const BUILDS = [{ nome: 'de produção', pasta: 'dist-producao', porta: 4501 }];
 
 const TIPOS: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
@@ -94,11 +92,11 @@ async function medir(url: string, porta: number): Promise<Medida> {
 
 const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new', '--no-sandbox'] });
 const linhas: string[] = [
-  '# Lighthouse mobile do MVP',
+  '# Lighthouse mobile',
   '',
   `Medido em ${new Date().toLocaleDateString('pt-BR')}, mediana de ${RODADAS} rodadas por página, com o Chrome instalado.`,
   '',
-  'Metas da spec: Performance ≥ 95, Acessibilidade ≥ 95, SEO 100 no build indexável, LCP < 2,0 s e CLS < 0,05.',
+  'Metas: Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05.',
   '',
   'O servidor da medida manda HTML, CSS e JS com gzip, como a Cloudflare faz. Sem isso a medida castiga uns 130 KB por página que a produção nunca envia.',
   '',

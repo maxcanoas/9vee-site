@@ -9,15 +9,18 @@
   "scripts": {
     "dev": "astro dev",
     "dev:rede": "astro dev --host",
-    "build": "astro build",
-    "preview": "astro preview",
+    "build": "node scripts/build.ts preview",
+    "build:preview": "node scripts/build.ts preview",
+    "build:producao": "node scripts/build.ts producao && node scripts/check-producao.ts",
+    "check:producao": "node scripts/check-producao.ts",
+    "preview": "node scripts/servidor-preview.ts producao",
     "check": "astro check",
-    "test": "vitest run --project unit && astro build && node scripts/build-indexavel.ts && vitest run --project dist",
+    "test": "vitest run --project unit && node scripts/build.ts preview && node scripts/build.ts producao && vitest run --project dist",
     "test:unit": "vitest run --project unit",
     "test:dist": "vitest run --project dist",
     "screenshots": "node scripts/screenshots.ts",
-    "e2e": "astro build && playwright test",
-    "deploy": "astro build && npx wrangler deploy"
+    "e2e": "node scripts/build.ts preview && playwright test",
+    "deploy": "node scripts/build.ts preview && npx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",

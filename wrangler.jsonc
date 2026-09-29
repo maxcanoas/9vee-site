@@ -1,7 +1,8 @@
 {
-  // Preview do MVP na Cloudflare: um Worker que só serve os arquivos do dist/.
+  // Preview do site na Cloudflare: um Worker que só serve os arquivos do dist/.
   // A Cloudflare recomenda Workers no lugar do Pages para projeto novo.
-  // O dist/ precisa ser o build padrão, com noindex na meta e no _headers.
+  // O dist/ é sempre o build de preview (npm run build:preview), com noindex na meta e no _headers.
+  // O build de produção sai em dist-producao/ e nunca vem para cá.
   "name": "9vee-preview",
   "compatibility_date": "2026-09-19",
   "assets": {

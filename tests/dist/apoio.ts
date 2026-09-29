@@ -1,43 +1,22 @@
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { dirname, join, relative, sep } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
-import { parse, type HTMLElement } from 'node-html-parser';
+import type { HTMLElement } from 'node-html-parser';
+import { carregarPaginas as lerPaginas, type Pagina } from '../../scripts/paginas-do-build.ts';
 
+export { textoVisivel, type Pagina } from '../../scripts/paginas-do-build.ts';
+
+/** O build de preview, o que vai para o Cloudflare. A maior parte dos testes lê este. */
 export const DIST = fileURLToPath(new URL('../../dist/', import.meta.url));
-/** Build sem noindex (scripts/build-indexavel.ts), só para conferir o SEO. */
-export const DIST_INDEXAVEL = fileURLToPath(new URL('../../dist-indexavel/', import.meta.url));
+/** O build de produção, sem noindex: o que confere o SEO e o que a trava de produção lê. */
+export const DIST_PRODUCAO = fileURLToPath(new URL('../../dist-producao/', import.meta.url));
 
-export interface Pagina {
-  arquivo: string;
-  rota: string;
-  html: string;
-  raiz: HTMLElement;
-}
-
-function listarHtml(pasta: string): string[] {
-  return readdirSync(pasta).flatMap((nome) => {
-    const caminho = join(pasta, nome);
-    if (statSync(caminho).isDirectory()) return listarHtml(caminho);
-    return nome.endsWith('.html') ? [caminho] : [];
-  });
-}
+export const DOMINIO = 'https://www.9vee.com.br';
 
 export function carregarPaginas(pasta = DIST): Pagina[] {
   if (!existsSync(pasta)) throw new Error(`${pasta} não existe: rode "npm test", que faz os builds antes dos testes`);
-  return listarHtml(pasta).map((arquivo) => {
-    const html = readFileSync(arquivo, 'utf8');
-    const relativo = relative(pasta, arquivo).split(sep).join('/');
-    const rota = `/${relativo.replace(/index\.html$/, '').replace(/\.html$/, '')}`;
-    return { arquivo, rota, html, raiz: parse(html) };
-  });
-}
-
-/** Texto que a pessoa vê ou que o leitor de tela lê: sem script, style e template. */
-export function textoVisivel(raiz: HTMLElement): string {
-  const copia = parse(raiz.toString());
-  copia.querySelectorAll('script, style, template, noscript').forEach((no) => no.remove());
-  return (copia.querySelector('body')?.text ?? '').replace(/\s+/g, ' ');
+  return lerPaginas(pasta);
 }
 
 /** Textos que também contam como copy: title, description e atributos lidos por pessoas. */
@@ -74,10 +53,6 @@ export function textosDoJsonLd(nos: Record<string, unknown>[]): string[] {
   };
   visitar(nos);
   return textos;
-}
-
-export function arquivoDaRota(caminho: string): string {
-  return caminho.endsWith('/') ? join(DIST, caminho, 'index.html') : join(DIST, caminho);
 }
 
 // Import estático no código minificado: import{a}from"./x.js" ou import"./x.js". O import("...") fica de fora.

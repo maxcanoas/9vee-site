@@ -1,7 +1,7 @@
 # dependências e build
 node_modules/
 /dist/
-/dist-indexavel/
+/dist-producao/
 .astro/
 
 # testes e relatórios
@@ -15,6 +15,7 @@ relatorios/
 .wrangler/
 .env
 .env.*
+!.env.example
 
 # sistema
 *.log

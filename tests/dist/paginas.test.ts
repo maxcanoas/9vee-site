@@ -1,11 +1,11 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { FileSystemConfigLoader, HtmlValidate } from 'html-validate';
-import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
+import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
   DIST,
-  arquivoDaRota,
+  DOMINIO,
   carregarPaginas,
   jsonLd,
   tamanhoDoJs,
@@ -68,6 +68,10 @@ describe('build', () => {
   it('não bloqueia rastreador no robots.txt (senão ele não lê o noindex)', () => {
     expect(readFileSync(join(DIST, 'robots.txt'), 'utf8')).not.toMatch(/^Disallow:\s*\//m);
   });
+
+  it('não aponta sitemap no robots.txt do preview', () => {
+    expect(readFileSync(join(DIST, 'robots.txt'), 'utf8')).not.toMatch(/^Sitemap:/im);
+  });
 });
 
 describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
@@ -96,6 +100,20 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
 
   it('fica fora do Google (noindex)', () => {
     expect(raiz.querySelector('meta[name="robots"]')?.getAttribute('content')).toContain('noindex');
+  });
+
+  // Mesmo no preview, o endereço que o Google e as redes leem é o definitivo, nunca o do Cloudflare.
+  it('aponta canonical e Open Graph para o domínio definitivo', () => {
+    const canonical = raiz.querySelector('link[rel="canonical"]')?.getAttribute('href');
+    const ogUrl = raiz.querySelector('meta[property="og:url"]')?.getAttribute('content');
+    if (rota === '/404') {
+      expect(canonical).toBeUndefined();
+      expect(ogUrl).toBeUndefined();
+    } else {
+      expect(canonical).toBe(`${DOMINIO}${rota}`);
+      expect(ogUrl).toBe(canonical);
+    }
+    expect(raiz.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(`${DOMINIO}/`);
   });
 
   it('descreve a organização em JSON-LD, com Novee como nome alternativo', () => {
@@ -167,19 +185,9 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
+  // A mesma regra da trava de produção: link que não abre, sem barra no fim ou com âncora que não existe.
   it('resolve todos os links internos e âncoras', () => {
-    for (const link of raiz.querySelectorAll('a[href]')) {
-      const href = link.getAttribute('href') ?? '';
-      if (!href.startsWith('/') && !href.startsWith('#')) continue;
-      const [caminho, ancora] = href.split('#');
-      const destino = caminho ? arquivoDaRota(caminho) : arquivo;
-      expect(existsSync(destino), `link quebrado: ${href}`).toBe(true);
-      if (caminho && !caminho.includes('.')) expect(caminho, `sem barra final: ${href}`).toMatch(/\/$/);
-      if (ancora) {
-        const alvo = parse(readFileSync(destino, 'utf8'));
-        expect(alvo.getElementById(ancora), `âncora inexistente: ${href}`).not.toBeNull();
-      }
-    }
+    expect(linksQuebrados({ arquivo, rota, html, raiz }, DIST)).toEqual([]);
   });
 
   it('é HTML válido (html-validate)', async () => {

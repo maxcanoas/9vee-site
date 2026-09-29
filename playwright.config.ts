@@ -12,7 +12,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'node scripts/servidor-preview.ts',
+    command: 'node scripts/servidor-preview.ts preview',
     url: 'http://localhost:4400',
     reuseExistingServer: false,
     timeout: 60_000,

@@ -1,6 +1,6 @@
 ---
 import { Font } from 'astro:assets';
-import { INDEXAVEL } from 'astro:env/server';
+import { MODO } from 'astro:env/server';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/movimento.css';
@@ -24,7 +24,9 @@ interface Props {
 const { pagina, titulo, descricao, jsonLd = [] } = Astro.props;
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
-const canonical = new URL(Astro.url.pathname, base).href;
+const indexavel = MODO === 'producao';
+// A página de erro responde por qualquer endereço que não existe: ela não tem endereço próprio para apontar.
+const canonical = pagina === 'erro404' ? null : new URL(Astro.url.pathname, base).href;
 const imagemPrevia = new URL('/og.jpg', base).href;
 const tituloPuro = textoPuro(titulo);
 const descricaoPura = textoPuro(descricao);
@@ -44,14 +46,14 @@ const regrasDeSpeculation = JSON.stringify({
     />
     <title>{tituloPuro}</title>
     <meta name="description" content={descricaoPura} />
-    {!INDEXAVEL && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonical} />
+    {!indexavel && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content={site.marca.nome} />
     <meta property="og:title" content={tituloPuro} />
     <meta property="og:description" content={descricaoPura} />
-    <meta property="og:url" content={canonical} />
+    {canonical && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={imagemPrevia} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

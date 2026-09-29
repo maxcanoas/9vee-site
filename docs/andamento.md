@@ -2,6 +2,8 @@
 
 Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de ver o preview. Para retomar, vá direto para "Etapa 9" e "O que falta".
 
+**Fase 1 (desde 29/09/2026):** o MVP foi aprovado e está guardado na tag `mvp-aprovado`. O trabalho segue na branch `fase-1`, com a spec em `docs/fase-1-spec.md`, os tickets em `docs/tickets/` e o cronograma em `docs/cronograma-8-semanas.md`. Desde o ticket 01, o preview se publica com `npm run build:preview && npx wrangler deploy` (ou `npm run deploy`, que faz os dois). O `SITE_URL` não existe mais: o canonical é sempre o `https://www.9vee.com.br`.
+
 ## Onde estamos
 
 | Etapa | Situação | Commits |
@@ -237,24 +239,29 @@ Com o Maxwell:
 
 Nota sobre recorte: ao conferir um PNG recortado, olhe a cor além do alfa. A área opaca larga na base da imagem era o blazer da intérprete, não sobra de fundo.
 
-Para publicar de novo, depois de qualquer mudança:
+Para publicar de novo, depois de qualquer mudança (desde o ticket 01 da Fase 1):
 
 ```
-SITE_URL=https://9vee-preview.9vee-site.workers.dev npm run build && npx wrangler deploy
+npm run build:preview && npx wrangler deploy
 ```
 
 O endereço é sempre o mesmo, então o link que já foi mandado continua valendo.
 
 ## Como retomar
 
-- `npm test`: testes de lógica, os dois builds (o padrão e o indexável, em `dist-indexavel/`) e os testes do HTML gerado.
-- `npm run e2e`: build e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
+- `npm run dev`: o site local, em modo local (noindex, pendências à vista). `npm run dev -- --host` ou `npm run dev:rede` abre na rede, para o celular.
+- `npm run build:preview`: o build que vai para o Cloudflare, em `dist/`, com noindex na meta e no `_headers`.
+- `npm run build:producao`: o site definitivo, em `dist-producao/`, sem noindex. Termina rodando a trava (`check:producao`), que falha enquanto sobrar pendência, Placeholder, marca do MVP, noindex, travessão ou link quebrado.
+- `npm run check:producao`: só a trava, sobre um `dist-producao/` já construído.
+- `npm run preview`: serve o `dist-producao/` em http://localhost:4321, para conferir e medir.
+- `npm test`: testes de lógica, os dois builds (preview e produção) e os testes do HTML gerado.
+- `npm run e2e`: build de preview e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
 - `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9.
-- `npm install --no-save lighthouse && node scripts/lighthouse.ts`: a medição das 3 páginas completas nos dois builds.
+- `npm install --no-save lighthouse && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção.
 - `node scripts/pendencias.ts`: a lista de pendências dos textos, em `relatorios/pendencias.md`.
-- `npm run deploy`: build padrão e publicação na Cloudflare (precisa do `wrangler login` antes).
-- `npm run dev:rede`: o site na rede local, para abrir no celular.
+- `npm run deploy`: build de preview e publicação na Cloudflare (precisa do `wrangler login` antes).
 - `npx astro check`: tipos.
+- Variáveis de ambiente: um arquivo por modo (`.env.development`, `.env.preview` e `.env.producao`), copiado do `.env.example`. O build recusa `.env` e `.env.local`, que valeriam para todos os modos.
 
 Na última rodada (etapa 9): 80 testes de lógica, 276 do HTML e 116 no navegador (82 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
 
