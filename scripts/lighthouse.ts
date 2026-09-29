@@ -1,5 +1,5 @@
 // Lighthouse mobile nas 3 páginas completas do MVP, no build de produção, com a mediana de 3 rodadas.
-// O pacote não fica no package.json: instale antes com `npm install --no-save lighthouse`.
+// O pacote não fica no package.json: instale antes com `npm install --no-save lighthouse@13.5.0`.
 // Uso: node scripts/build.ts producao && node scripts/lighthouse.ts
 import { createServer, type Server } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -7,7 +7,6 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
-import * as chromeLauncher from 'chrome-launcher';
 import { CABECALHO_DA_TABELA, RODADAS, linhaDaTabela, medirPagina } from './medida-lighthouse.ts';
 
 const PAGINAS = [
@@ -63,11 +62,10 @@ function servir(pasta: string, porta: number): Promise<Server> {
   return new Promise((ok) => servidor.listen(porta, () => ok(servidor)));
 }
 
-const chrome = await chromeLauncher.launch({ chromeFlags: ['--headless=new', '--no-sandbox'] });
 const linhas: string[] = [
   '# Lighthouse mobile',
   '',
-  `Medido em ${new Date().toLocaleDateString('pt-BR')} no build de produção (${PASTA}/), mediana de ${RODADAS} rodadas por página, com o Chrome instalado.`,
+  `Medido em ${new Date().toLocaleDateString('pt-BR')} no build de produção (${PASTA}/), mediana de ${RODADAS} rodadas por página.`,
   '',
   'Metas: Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05.',
   '',
@@ -76,16 +74,19 @@ const linhas: string[] = [
 ];
 
 const servidor = await servir(PASTA, PORTA);
+const versoes = new Set<string>();
 try {
   linhas.push(...CABECALHO_DA_TABELA);
   for (const pagina of PAGINAS) {
-    linhas.push(linhaDaTabela(pagina.nome, await medirPagina(`http://localhost:${PORTA}${pagina.rota}`, chrome.port)));
-    console.log(`ok ${pagina.rota}`);
+    const medida = await medirPagina(`http://localhost:${PORTA}${pagina.rota}`);
+    versoes.add(medida.versoes);
+    linhas.push(linhaDaTabela(pagina.nome, medida));
+    // A linha sai na hora: se uma página falhar, as de antes não se perdem.
+    console.log(linhas.at(-1));
   }
-  linhas.push('');
+  linhas.push('', `Medido com ${[...versoes].join('; ')}.`, '');
 } finally {
   await new Promise((ok) => servidor.close(ok));
-  await chrome.kill();
 }
 
 const saida = new URL('../relatorios/etapa-7/', import.meta.url);
