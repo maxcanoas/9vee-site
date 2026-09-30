@@ -6,6 +6,7 @@ import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { preview } from 'astro';
 import { chromium, type Page } from '@playwright/test';
+import { paginasDeIdiomaNoConteudo } from '../tests/conteudo.ts';
 
 interface Captura {
   nome: string;
@@ -237,6 +238,18 @@ const roteiros: Record<string, Captura[]> = {
     // Os links do menu saem do mesmo componente da 404: o painel e o menu do celular não podem ter mudado.
     { nome: 'painel-empresas-1280', rota: '/lms/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Empresas' }).click() },
     { nome: 'menu-aberto-390', rota: '/lms/', largura: 390, altura: 844, antes: (p) => p.getByRole('button', { name: 'Menu', exact: true }).click() },
+  ],
+  // O topo de cada página de idioma, com a foto do lugar, e o do NR-1, que usa o mesmo arco e não pode ter mudado.
+  'fotos-idiomas': [
+    ...paginasDeIdiomaNoConteudo().flatMap(({ rota }): Captura[] => {
+      const pagina = rota.split('/').at(-2);
+      return [
+        { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844 },
+        { nome: `${pagina}-topo-1280`, rota, largura: 1280, altura: 800 },
+      ];
+    }),
+    { nome: 'nr1-topo-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844 },
+    { nome: 'nr1-topo-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
   ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
