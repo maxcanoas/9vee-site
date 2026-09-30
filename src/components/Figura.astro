@@ -38,6 +38,8 @@ const imagens = import.meta.glob<{ default: ImageMetadata }>('/src/assets/imagen
 const imagem = Object.entries(imagens).find(
   ([caminho]) => caminho.split('/').pop()?.replace(/\.[^.]+$/, '') === arquivo,
 )?.[1].default;
+// Só o Picture lê a imagem: qualquer campo lido aqui, como o width, faz o build publicar também o JPEG original.
+// Por isso as larguras vão direto, e o Astro troca a que passa da imagem pela largura dela.
 
 // Cada ID ganha sempre a mesma variação de gradiente, para os Placeholders não saírem iguais.
 const variante = ['a', 'b', 'c', 'd'][[...id].reduce((soma, letra) => soma + letra.charCodeAt(0), 0) % 4];
@@ -51,7 +53,7 @@ const classeProporcao = `proporcao-${proporcao.replace('/', '-')}`;
       alt={alt}
       formats={['avif']}
       fallbackFormat="webp"
-      widths={larguras.filter((largura) => largura <= imagem.width)}
+      widths={larguras}
       sizes={sizes}
       priority={prioridade}
       loading={primeiraDobra && !prioridade ? 'eager' : undefined}
