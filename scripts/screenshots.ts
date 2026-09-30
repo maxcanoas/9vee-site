@@ -234,6 +234,9 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'erro-390', rota: '/pagina-que-nao-existe/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'erro-1280', rota: '/pagina-que-nao-existe/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('footer') },
+    // Os links do menu saem do mesmo componente da 404: o painel e o menu do celular não podem ter mudado.
+    { nome: 'painel-empresas-1280', rota: '/lms/', largura: 1280, altura: 800, antes: (p) => p.getByRole('button', { name: 'Empresas' }).click() },
+    { nome: 'menu-aberto-390', rota: '/lms/', largura: 390, altura: 844, antes: (p) => p.getByRole('button', { name: 'Menu', exact: true }).click() },
   ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },

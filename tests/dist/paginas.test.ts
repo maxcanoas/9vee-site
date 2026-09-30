@@ -182,7 +182,7 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     const noRodape = raiz.querySelectorAll('footer a').find((link) => link.getAttribute('href') === rota);
     const idioma = paginasDeIdiomaNoConteudo().find((pagina) => pagina.rota === rota)?.idioma;
     const nome = noMenu
-      ? (noMenu.querySelector('.painel__item') ?? noMenu).text.trim()
+      ? (noMenu.querySelector('.link-do-menu__nome') ?? noMenu).text.trim()
       : noRodape
         ? noRodape.text.trim()
         : idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim();
