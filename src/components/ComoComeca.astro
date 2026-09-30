@@ -3,12 +3,13 @@
 import Figura from './Figura.astro';
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
+import type { Imagem } from '../content.config';
 
 interface Props {
   titulo: string;
   apoio: string;
   etapas: { titulo: string; texto: string }[];
-  imagem: { id: string; arquivo: string; alt: string };
+  imagem: Imagem;
 }
 
 const { titulo, apoio, etapas, imagem } = Astro.props;

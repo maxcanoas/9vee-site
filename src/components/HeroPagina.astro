@@ -6,6 +6,7 @@ import ArcoComCirculo from './ArcoComCirculo.astro';
 import Trilha from './Trilha.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
+import type { Imagem } from '../content.config';
 
 interface Props {
   rotulo: string;
@@ -14,7 +15,7 @@ interface Props {
   /** Rótulo fixo do botão. Na página que serve os dois públicos, use `textos` no lugar. */
   cta?: string;
   textos?: TextosPorPublico;
-  imagem: { id: string; arquivo: string; alt: string };
+  imagem: Imagem;
   servico?: ServicoId;
   /** Só nas páginas parciais: o aviso de que a página ainda não está completa. */
   etiqueta?: string;

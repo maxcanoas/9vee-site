@@ -5,12 +5,7 @@ import EscolhaPublico from './EscolhaPublico.astro';
 import BotaoContato from './BotaoContato.astro';
 import CirculoMarca from './CirculoMarca.astro';
 import type { TextosPorPublico } from '../lib/publico';
-
-interface Imagem {
-  id: string;
-  arquivo: string;
-  alt: string;
-}
+import type { Imagem } from '../content.config';
 
 interface Props {
   h1: string;

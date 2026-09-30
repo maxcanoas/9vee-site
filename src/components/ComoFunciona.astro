@@ -4,11 +4,12 @@
 // reduzido, o movimento.ts marca a etapa ativa por IntersectionObserver.
 import Figura from './Figura.astro';
 import Texto from './Texto.astro';
+import type { Imagem } from '../content.config';
 
 interface Etapa {
   titulo: string;
   texto: string;
-  imagem: { id: string; arquivo: string; alt: string };
+  imagem: Imagem;
 }
 
 interface Props {

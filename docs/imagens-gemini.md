@@ -333,7 +333,7 @@ Todo prompt desta série termina com a linha: `Avoid: stock photo poses, handsha
 - **Lugar:** Tóquio, Japão.
 - **Proporção e tamanho:** 4:5, 1200 × 1500.
 - **Arquivo:** `idioma-japones.jpg`
-- **Alt:** Dois colegas conversando numa rua tranquila de Tóquio, com a Tokyo Tower ao fundo.
+- **Alt:** Dois colegas conversando numa rua tranquila, com a Torre de Tóquio ao fundo.
 - **Por quê:** Letreiro em japonês gerado por IA costuma sair com caracteres inventados, e um japonês percebe na hora. Confira com atenção se sobrou algum.
 - **Prompt:**
 

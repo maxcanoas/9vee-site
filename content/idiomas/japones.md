@@ -17,7 +17,7 @@ topo:
   imagem:
     id: "IMG-IDIOMA-JAPONES"
     arquivo: "idioma-japones"
-    alt: "Dois colegas conversando numa rua tranquila de Tóquio, com a Tokyo Tower ao fundo."
+    alt: "Dois colegas conversando numa rua tranquila, com a Torre de Tóquio ao fundo."
 
 faq:
   titulo: "Perguntas sobre o japonês"

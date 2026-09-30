@@ -16,7 +16,7 @@ describe('tirarImagensOrfas', () => {
       '_astro/foto.Ab1.jpg': '',
       '_astro/idioma-alemao.Ef3.jpg': '',
     });
-    expect(tirarImagensOrfas(pasta).sort()).toEqual(['_astro/foto.Ab1.jpg', '_astro/idioma-alemao.Ef3.jpg']);
+    expect(tirarImagensOrfas(pasta).sort()).toEqual(['foto.Ab1.jpg', 'idioma-alemao.Ef3.jpg']);
     for (const arquivo of ['foto.Ab1_x.avif', 'foto.Ab1_y.webp', 'textura.Cd2.png']) {
       expect(existsSync(join(pasta, '_astro', arquivo)), arquivo).toBe(true);
     }

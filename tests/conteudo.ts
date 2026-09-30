@@ -12,6 +12,8 @@ export const PAGINAS_DE_TEXTO = ['/politica-de-privacidade/'];
 
 export interface PaginaDeIdiomaNoConteudo {
   rota: string;
+  /** O nome do arquivo em content/idiomas/: o fim do endereço e o da foto do topo (`idioma-<pagina>`). */
+  pagina: string;
   /** O slug do idioma em content/site.md, que é também a âncora dele na página de cursos. */
   idioma: string;
   publicada: boolean;
@@ -26,6 +28,7 @@ export function paginasDeIdiomaNoConteudo(): PaginaDeIdiomaNoConteudo[] {
       const arquivo = readFileSync(join(pasta, nome), 'utf8');
       const idioma = /^idioma:\s*"([^"]+)"/m.exec(partesDoArquivo(arquivo).frontmatter)?.[1];
       if (!idioma) throw new Error(`content/idiomas/${nome} sem o idioma no frontmatter`);
-      return { rota: `/curso-de-idiomas/${nome.replace(/\.md$/, '')}/`, idioma, publicada: publicadaNoArquivo(arquivo) };
+      const pagina = nome.replace(/\.md$/, '');
+      return { rota: `/curso-de-idiomas/${pagina}/`, pagina, idioma, publicada: publicadaNoArquivo(arquivo) };
     });
 }

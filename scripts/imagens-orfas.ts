@@ -1,23 +1,22 @@
 // As imagens de _astro/ que nenhum arquivo do build cita. O glob do Figura importa a pasta de imagens inteira, o Vite
 // emite cada arquivo, e o Astro só apaga depois o original das imagens que ele otimizou. Na produção, as fotos das
 // páginas de idioma não publicadas sobravam assim, sem página nenhuma que as mostrasse.
-import { existsSync, readFileSync, rmSync } from 'node:fs';
-import { join, relative, sep } from 'node:path';
-import { listarArquivos } from './paginas-do-build.ts';
+import { existsSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { extname, join } from 'node:path';
 
-const IMAGEM = /\.(jpe?g|png|webp|avif|gif)$/;
-const TEXTO = ['.html', '.css', '.js', '.json', '.xml', '.txt', '.webmanifest', '.svg'];
+const IMAGEM = /\.(jpe?g|png|webp|avif)$/;
+/** Onde o build cita uma imagem: no HTML (src e srcset), no CSS (url) e no JavaScript. */
+const QUEM_CITA = new Set(['.html', '.css', '.js']);
 
-/** Apaga as imagens órfãs de <pasta>/_astro/ e devolve o caminho de cada uma, relativo à pasta. */
+/** Apaga as imagens órfãs de <pasta>/_astro/ e devolve o nome de cada uma. */
 export function tirarImagensOrfas(pasta: string): string[] {
-  const astro = join(pasta, '_astro');
-  if (!existsSync(astro)) return [];
-  const citado = TEXTO.flatMap((extensao) => listarArquivos(pasta, extensao))
-    .map((arquivo) => readFileSync(arquivo, 'utf8'))
+  const pastaAstro = join(pasta, '_astro');
+  if (!existsSync(pastaAstro)) return [];
+  const textoDoBuild = readdirSync(pasta, { recursive: true, encoding: 'utf8' })
+    .filter((caminho) => QUEM_CITA.has(extname(caminho)))
+    .map((caminho) => readFileSync(join(pasta, caminho), 'utf8'))
     .join('\n');
-  const orfas = listarArquivos(astro, '').filter(
-    (arquivo) => IMAGEM.test(arquivo) && !citado.includes(arquivo.split(sep).at(-1)!),
-  );
-  for (const arquivo of orfas) rmSync(arquivo);
-  return orfas.map((arquivo) => relative(pasta, arquivo).split(sep).join('/'));
+  const orfas = readdirSync(pastaAstro).filter((nome) => IMAGEM.test(nome) && !textoDoBuild.includes(nome));
+  for (const nome of orfas) rmSync(join(pastaAstro, nome));
+  return orfas;
 }

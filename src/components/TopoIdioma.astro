@@ -7,13 +7,14 @@ import BotaoContato from './BotaoContato.astro';
 import ArcoComCirculo from './ArcoComCirculo.astro';
 import Trilha from './Trilha.astro';
 import type { TextosPorPublico } from '../lib/publico';
+import type { Imagem } from '../content.config';
 
 interface Props {
   h1: string;
   apoio: string;
   cta: TextosPorPublico;
   /** A foto do lugar: duas pessoas conversando numa cidade onde se fala o idioma, com um marco ao fundo. */
-  imagem: { id: string; arquivo: string; alt: string };
+  imagem: Imagem;
   idioma: { slug: string; saudacao: string; lang: string; dir?: 'rtl'; familia: string };
   /** O aviso da página que ainda não vai para o site. A produção sai sem essas páginas: só o local e o preview o mostram. */
   etiqueta?: string;

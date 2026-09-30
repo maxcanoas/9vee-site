@@ -3,9 +3,10 @@
 // páginas internas. Entra como segunda coluna da grade do topo; no celular, fica centralizado embaixo do texto.
 import Figura from './Figura.astro';
 import CirculoMarca from './CirculoMarca.astro';
+import type { Imagem } from '../content.config';
 
 interface Props {
-  imagem: { id: string; arquivo: string; alt: string };
+  imagem: Imagem;
 }
 
 const { imagem } = Astro.props;
@@ -28,7 +29,6 @@ const { imagem } = Astro.props;
 </div>
 
 <style>
-  /* O círculo da marca fica atrás do arco e aparece por cima dos ombros da imagem. */
   .arco-com-circulo {
     position: relative;
     justify-self: center;

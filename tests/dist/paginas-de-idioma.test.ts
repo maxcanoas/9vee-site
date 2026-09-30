@@ -16,7 +16,7 @@ describe('páginas de idioma', () => {
   });
 });
 
-describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, idioma, publicada }) => {
+describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, pagina, idioma, publicada }) => {
   const raiz = raizDa(rota);
   // O idioma como a página de cursos o mostra: a saudação, o lang e o nome vêm de content/site.md.
   const naLista = cursos.querySelector(`#${idioma}`);
@@ -34,15 +34,12 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, i
   });
 
   // O Figura cai calado no Placeholder quando não acha o arquivo: aqui a foto tem de existir, e ser a do idioma.
-  it('mostra a foto do lugar em arco, com o círculo da marca atrás', () => {
+  // O círculo atrás dela tem teste em toda página, e o esquema já exige o texto alternativo.
+  it('mostra a foto do próprio idioma em arco', () => {
     const foto = raiz!.querySelector('.topo-idioma .arco-com-circulo__quadro .figura');
     expect(foto?.tagName, 'Placeholder no lugar da foto').toBe('IMG');
     expect(foto?.getAttribute('class')).toContain('figura--arco');
-    expect(foto?.getAttribute('alt')?.length ?? 0).toBeGreaterThanOrEqual(10);
-    expect(foto?.getAttribute('src')).toContain(`/idioma-${rota.split('/').at(-2)}.`);
-    const circulo = raiz!.querySelector('.topo-idioma [aria-hidden="true"] img');
-    expect(circulo?.getAttribute('src')).toMatch(/\/circulo-marca\./);
-    expect(circulo?.getAttribute('alt')).toBe('');
+    expect(foto?.getAttribute('src')).toContain(`/idioma-${pagina}.`);
   });
 
   it('avisa no topo, só quando não está publicada, que fica fora do site', () => {

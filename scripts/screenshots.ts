@@ -241,13 +241,10 @@ const roteiros: Record<string, Captura[]> = {
   ],
   // O topo de cada página de idioma, com a foto do lugar, e o do NR-1, que usa o mesmo arco e não pode ter mudado.
   'fotos-idiomas': [
-    ...paginasDeIdiomaNoConteudo().flatMap(({ rota }): Captura[] => {
-      const pagina = rota.split('/').at(-2);
-      return [
-        { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844 },
-        { nome: `${pagina}-topo-1280`, rota, largura: 1280, altura: 800 },
-      ];
-    }),
+    ...paginasDeIdiomaNoConteudo().flatMap(({ rota, pagina }): Captura[] => [
+      { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844 },
+      { nome: `${pagina}-topo-1280`, rota, largura: 1280, altura: 800 },
+    ]),
     { nome: 'nr1-topo-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844 },
     { nome: 'nr1-topo-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
   ],

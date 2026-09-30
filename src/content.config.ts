@@ -231,6 +231,9 @@ const imagem = z.object({
   alt: z.string().min(10),
 });
 
+/** A imagem do Gemini de uma seção: o ID do documento de prompts, o nome do arquivo e o texto alternativo. */
+export type Imagem = z.infer<typeof imagem>;
+
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
   schema: z.object({
