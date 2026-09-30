@@ -1,0 +1,76 @@
+import { describe, expect, it } from 'vitest';
+import { DOMINIO, carregarPaginas, jsonLd, paginasDeIdioma } from './apoio';
+
+const preview = carregarPaginas();
+const raizDa = (rota: string) => preview.find((pagina) => pagina.rota === rota)?.raiz;
+const home = raizDa('/')!;
+const cursos = raizDa('/curso-de-idiomas/')!;
+
+describe('páginas de idioma', () => {
+  it('existem, pelo menos inglês, espanhol e mandarim', () => {
+    expect(paginasDeIdioma().map((pagina) => pagina.idioma)).toEqual(expect.arrayContaining(['ingles', 'espanhol', 'mandarim']));
+  });
+});
+
+describe.each(paginasDeIdioma())('página de idioma $rota', ({ rota, idioma, publicada }) => {
+  const raiz = raizDa(rota);
+  // O idioma como a página de cursos o mostra: a saudação, o lang e o nome vêm de content/site.md.
+  const naLista = cursos.querySelector(`#${idioma}`);
+
+  it('sai no preview, publicada ou não', () => {
+    expect(raiz, `${rota} fora do preview`).toBeDefined();
+  });
+
+  it('abre com a saudação na escrita do idioma, e o círculo da marca no lugar da foto', () => {
+    const saudacao = raiz!.querySelector('.topo-idioma__saudacao');
+    const daLista = naLista?.querySelector('.idioma__saudacao');
+    expect(saudacao?.text.trim()).toBe(daLista?.text.trim());
+    expect(saudacao?.getAttribute('lang')).toBe(daLista?.getAttribute('lang'));
+    expect(saudacao?.getAttribute('dir')).toBe(daLista?.getAttribute('dir'));
+    const imagens = raiz!.querySelectorAll('.topo-idioma img');
+    expect(imagens.length).toBeGreaterThan(0);
+    for (const imagem of imagens) expect(imagem.getAttribute('src')).toMatch(/\/circulo-marca\./);
+  });
+
+  it('avisa no topo, só quando não está publicada, que fica fora do site', () => {
+    expect(raiz!.querySelector('.topo-idioma__etiqueta') !== null).toBe(!publicada);
+  });
+
+  it('abre o pedido com os cursos de idiomas e o idioma da página marcados', () => {
+    const botoes = raiz!.querySelectorAll('main [data-abre-contato]');
+    expect(botoes.length).toBeGreaterThanOrEqual(2);
+    for (const botao of botoes) {
+      expect(botao.getAttribute('data-servico')).toBe('idiomas');
+      expect(botao.getAttribute('data-idioma')).toBe(idioma);
+    }
+    // O botão do cabeçalho não traz idioma: o pedido que ele abre sai com o da página.
+    const dados = JSON.parse(raiz!.querySelector('#dados-contato')!.textContent) as Record<string, string>;
+    expect(dados.servicoDaPagina).toBe('idiomas');
+    expect(dados.idiomaDaPagina).toBe(idioma);
+  });
+
+  it('diz o idioma na mensagem do WhatsApp', () => {
+    const nome = naLista?.querySelector('.idioma__nome')?.text.trim() ?? '';
+    const noMeioDaFrase = nome.charAt(0).toLocaleLowerCase('pt-BR') + nome.slice(1);
+    const link = raiz!.querySelector('[data-whatsapp-flutuante]')!;
+    for (const atributo of ['href', 'data-href-empresa', 'data-href-voce']) {
+      const mensagem = new URL(link.getAttribute(atributo)!).searchParams.get('text');
+      expect(mensagem, atributo).toContain(`Vim pela página Curso de ${noMeioDaFrase} do site`);
+      expect(mensagem, atributo).toContain(`aulas de ${noMeioDaFrase}`);
+    }
+  });
+
+  it('descreve o curso em JSON-LD com o endereço da página, e com o nome da lista de cursos', () => {
+    const curso = jsonLd(raiz!).find((no) => no['@type'] === 'Course');
+    expect(curso?.url).toBe(`${DOMINIO}${rota}`);
+    expect(curso?.provider).toEqual({ '@id': `${DOMINIO}/#organizacao` });
+    const lista = jsonLd(cursos).find((no) => no['@type'] === 'ItemList');
+    const itens = lista?.itemListElement as { item: Record<string, string> }[];
+    expect(itens.find(({ item }) => item.url === `${DOMINIO}${rota}`)?.item.name).toBe(curso?.name);
+  });
+
+  it('recebe o link da lista de idiomas da home e da página de cursos', () => {
+    expect(home.querySelector(`.familias a[href="${rota}"]`), 'home').not.toBeNull();
+    expect(naLista?.querySelector(`a[href="${rota}"]`), 'cursos').not.toBeNull();
+  });
+});

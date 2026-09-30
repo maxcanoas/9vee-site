@@ -1,6 +1,16 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const PAGINAS = ['/', '/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/'];
+const PAGINAS = [
+  '/',
+  '/treinamento-nr-1/',
+  '/curso-de-idiomas/',
+  '/traducao-simultanea/',
+  '/lms/',
+  '/quem-somos/',
+  '/curso-de-idiomas/ingles/',
+  '/curso-de-idiomas/espanhol/',
+  '/curso-de-idiomas/mandarim/',
+];
 const LARGURAS = [360, 390, 768, 1280, 1920];
 
 const sobraHorizontal = (pagina: Page) =>
@@ -44,7 +54,7 @@ test.describe('hero das páginas internas', () => {
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(rota);
       await page.evaluate(() => document.fonts.ready);
-      const caixa = await page.locator('.hero-pagina [data-abre-contato]').first().boundingBox();
+      const caixa = await page.locator(':is(.hero-pagina, .topo-idioma) [data-abre-contato]').first().boundingBox();
       expect(caixa!.y + caixa!.height).toBeLessThanOrEqual(800);
     });
   }

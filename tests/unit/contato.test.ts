@@ -10,6 +10,7 @@ import {
   mensagemFlutuante,
   modoDoDrawer,
   montarMensagem,
+  paginaDoIdioma,
   primeiraEtapaPendente,
   servicoInicial,
   tipoDeContato,
@@ -318,6 +319,37 @@ describe('mensagemFlutuante', () => {
   it('diz a página e o pedido, na voz do visitante', () => {
     expect(mensagemFlutuante('Cursos de Idiomas', 'quero aulas de idioma para mim', modelos)).toBe(
       'Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para mim.',
+    );
+  });
+});
+
+describe('paginaDoIdioma', () => {
+  const modelo = {
+    nome: 'Curso de {idioma}',
+    servico: 'idiomas' as const,
+    assunto: {
+      neutro: 'quero saber das aulas de {idioma}',
+      empresa: 'quero aulas de {idioma} para a minha equipe',
+      voce: 'quero aulas de {idioma} para mim',
+    },
+  };
+
+  it('põe o idioma no nome e no assunto, em minúscula no meio da frase', () => {
+    expect(paginaDoIdioma(modelo, 'Português para estrangeiros')).toEqual({
+      nome: 'Curso de português para estrangeiros',
+      servico: 'idiomas',
+      assunto: {
+        neutro: 'quero saber das aulas de português para estrangeiros',
+        empresa: 'quero aulas de português para estrangeiros para a minha equipe',
+        voce: 'quero aulas de português para estrangeiros para mim',
+      },
+    });
+  });
+
+  it('chega na mensagem do botão flutuante com o idioma da página', () => {
+    const { nome, assunto } = paginaDoIdioma(modelo, 'Inglês');
+    expect(mensagemFlutuante(nome, assunto.voce, modelos)).toBe(
+      'Olá, 9vee. Vim pela página Curso de inglês do site e quero aulas de inglês para mim.',
     );
   });
 });

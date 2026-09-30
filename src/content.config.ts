@@ -124,10 +124,16 @@ const site = defineCollection({
         (lista) => [lista.map((s) => s.ordemEmpresa), lista.map((s) => s.ordemVoce)].every((o) => new Set(o).size === 4),
         { error: 'cada público precisa de uma ordem de 1 a 4, sem repetir' },
       ),
-    paginas: z.record(
-      z.enum(['home', 'nr1', 'idiomas', 'traducao', 'lms', 'quemSomos', 'erro404']),
-      z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
-    ),
+    paginas: z
+      .record(
+        z.enum(['home', 'nr1', 'idiomas', 'idioma', 'traducao', 'lms', 'quemSomos', 'erro404']),
+        z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
+      )
+      .refine(({ idioma }) => [idioma.nome, ...Object.values(idioma.assunto)].every((texto) => texto.includes('{idioma}')), {
+        error: 'o modelo das páginas de idioma precisa de {idioma} no nome e em cada assunto',
+      }),
+    // O aviso das páginas de idioma ainda não publicadas, que só o local e o preview mostram.
+    naoPublicada: z.string(),
     drawer: z.object({
       titulo: z.object({ orcamento: z.string(), aulas: z.string() }),
       fechar: z.string(),
@@ -396,6 +402,35 @@ const idiomas = defineCollection({
   }),
 });
 
+// Uma página por idioma, em content/idiomas/. O nome do arquivo é o endereço; a saudação, o lang e a família
+// vêm do idioma em content/site.md. As seções são opcionais: cada página tem as que o conteúdo dela pede.
+const paginasDeIdioma = defineCollection({
+  loader: glob({ pattern: '*.md', base: `${conteudo}/idiomas` }),
+  schema: z.object({
+    idioma: z.string(),
+    publicada: z.boolean(),
+    seo,
+    topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico }),
+    paraQuem: z
+      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
+      .optional(),
+    provas: z
+      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1) })
+      .optional(),
+    destaque: z
+      .object({
+        id: z.string().regex(/^[a-z-]+$/),
+        titulo: z.string(),
+        apoio: z.string(),
+        itens: z.array(tituloETexto).min(2),
+        nota: z.string(),
+      })
+      .optional(),
+    faq: faq.optional(),
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+  }),
+});
+
 // As três páginas que ficam parciais no MVP: hero, um bloco curto e a etiqueta de obra.
 const parciais = defineCollection({
   loader: glob({ pattern: '{traducao-simultanea,lms,quem-somos}.md', base: conteudo }),
@@ -423,5 +458,6 @@ export const collections = {
   home,
   nr1,
   idiomas,
+  paginasDeIdioma,
   parciais,
 };

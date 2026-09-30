@@ -1,7 +1,7 @@
 ---
 // Os 14 idiomas por família, cada um com o olá na própria língua (e o lang certo, para a letra certa).
-// Na home, cada idioma é um link para a página de cursos; lá, cada idioma é um botão que abre o pedido
-// com ele já marcado, e uma âncora, porque é para lá que os links da home apontam.
+// O idioma que tem página neste build leva a ela, na home e na página de cursos. Sem página, ele leva, na home,
+// à âncora na página de cursos; lá, ele é um botão que abre o pedido com o idioma já marcado, e a âncora.
 // Sem JavaScript o botão some (regra do base.css), e o <noscript> mantém a lista à vista.
 import Texto from './Texto.astro';
 import { atributosDoContato } from '../lib/contato';
@@ -27,12 +27,16 @@ interface Props {
   modo: 'links' | 'pedido';
   /** Modo "pedido": o que o leitor de tela ouve depois do nome do idioma. */
   rotuloPedido?: string;
+  /** Os idiomas com página neste build, do slug para o endereço. */
+  paginas: ReadonlyMap<string, string>;
 }
 
-const { familias, idiomas, modo, rotuloPedido } = Astro.props;
+const { familias, idiomas, modo, rotuloPedido, paginas } = Astro.props;
+// O endereço do link de cada idioma. Sem página e na própria página de cursos, não há link: há o botão do pedido.
+const destino = (slug: string) => paginas.get(slug) ?? (modo === 'links' ? `/curso-de-idiomas/#${slug}` : undefined);
 ---
 
-<div class="familias">
+<div class:list={['familias', `familias--${modo}`]}>
   {
     familias.map((familia) => (
       <section class="familia revela" aria-labelledby={`familia-${familia.id}`} data-grupo={familia.id}>
@@ -47,8 +51,8 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
             .filter((idioma) => idioma.familia === familia.id)
             .map((idioma) => (
               <li id={modo === 'pedido' ? idioma.slug : undefined} class="familia__item">
-                {modo === 'links' ? (
-                  <a class="idioma" href={`/curso-de-idiomas/#${idioma.slug}`}>
+                {destino(idioma.slug) ? (
+                  <a class="idioma" href={destino(idioma.slug)}>
                     <span class="idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>
                       {idioma.saudacao}
                     </span>{' '}
@@ -119,18 +123,25 @@ const { familias, idiomas, modo, rotuloPedido } = Astro.props;
     text-decoration: none;
   }
 
-  /* O botão precisa perder a aparência de botão: aqui ele é a própria linha da lista.
-     A meia-pílula no canto é o que diz que a linha faz alguma coisa quando tocada. */
+  /* O botão precisa perder a aparência de botão: aqui ele é a própria linha da lista, alinhada com o link.
+     A meia-pílula no canto é o que diz que a linha faz alguma coisa quando tocada. Na página de cursos, o idioma
+     com página própria é link e leva a mesma meia-pílula, para a lista não misturar linha que age com linha que não. */
   button.idioma {
-    position: relative;
-    padding-inline-end: var(--e-5);
+    padding-inline-start: 0;
     border-inline: 0;
     border-block-end: 0;
     background-color: transparent;
     text-align: start;
   }
 
-  button.idioma::after {
+  button.idioma,
+  .familias--pedido a.idioma {
+    position: relative;
+    padding-inline-end: var(--e-5);
+  }
+
+  button.idioma::after,
+  .familias--pedido a.idioma::after {
     content: '';
     position: absolute;
     inset-block-start: var(--e-4);

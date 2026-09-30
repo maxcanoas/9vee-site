@@ -1,4 +1,8 @@
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import { MODO } from 'astro:env/server';
+import { entraNoBuild } from './publicacao';
+import { dadosDoSite, type DadosDoSite } from './site';
+import { trilhaDoCaminho } from './trilha';
 
 export async function paginaHome() {
   return exigir(await getEntry('home', 'home'), 'content/home.md');
@@ -14,6 +18,42 @@ export async function paginaIdiomas() {
 
 export async function paginaParcial(id: 'traducao-simultanea' | 'lms' | 'quem-somos') {
   return exigir(await getEntry('parciais', id), `content/${id}.md`);
+}
+
+export type IdiomaDoSite = DadosDoSite['idiomas'][number];
+
+export interface PaginaDeIdioma {
+  /** O nome do arquivo em content/idiomas/, que é o fim do endereço. */
+  id: string;
+  caminho: string;
+  idioma: IdiomaDoSite;
+  conteudo: CollectionEntry<'paginasDeIdioma'>['data'];
+}
+
+/** As páginas de idioma deste build: todas no local e no preview, só as publicadas na produção. */
+export async function paginasDeIdioma(): Promise<PaginaDeIdioma[]> {
+  const site = await dadosDoSite();
+  const entradas = await getCollection('paginasDeIdioma', ({ data }) => entraNoBuild(data, MODO));
+  const comPagina = new Set<string>();
+  return entradas.map(({ id, data }) => {
+    const idioma = site.idiomas.find((candidato) => candidato.slug === data.idioma);
+    if (!idioma) throw new Error(`content/idiomas/${id}.md aponta para "${data.idioma}", que não está nos idiomas de content/site.md`);
+    if (comPagina.has(idioma.slug)) throw new Error(`O idioma "${idioma.slug}" tem mais de uma página em content/idiomas/`);
+    comPagina.add(idioma.slug);
+    return { id, caminho: `/curso-de-idiomas/${id}/`, idioma, conteudo: data };
+  });
+}
+
+/** Do idioma para o endereço da página dele, só para os idiomas que têm página neste build. */
+export async function paginaDeCadaIdioma(): Promise<Map<string, string>> {
+  return new Map((await paginasDeIdioma()).map(({ idioma, caminho }) => [idioma.slug, caminho]));
+}
+
+/** A trilha do endereço, com o nome das páginas fora do menu. O Base (no JSON-LD) e a Trilha (na tela) usam esta. */
+export async function trilhaDaPagina(caminho: string) {
+  const site = await dadosDoSite();
+  const foraDoMenu = (await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho }));
+  return trilhaDoCaminho(site, caminho, foraDoMenu);
 }
 
 function exigir<T>(entrada: T | undefined, arquivo: string): T {

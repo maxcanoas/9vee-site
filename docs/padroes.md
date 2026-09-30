@@ -5,6 +5,7 @@
 ## Texto
 
 - Todo texto visível fica em `content/`: um arquivo por página, mais o de textos compartilhados. O código não carrega frase solta, com exceção de rótulos técnicos invisíveis.
+- As páginas de idioma ficam em `content/idiomas/`, uma por arquivo, e o nome do arquivo é o fim do endereço. A saudação, o `lang`, a família e o nome do idioma vêm de `content/site.md`, pelo campo `idioma`: não se repetem no arquivo da página.
 - Português do Brasil, frases curtas, voz ativa e segunda pessoa.
 - **(teste)** Nenhum travessão ("—") e nenhuma meia-risca ("–"). Para intervalos, use "de A1 a C2".
 - **(teste)** Nenhuma destas palavras e expressões:
@@ -20,11 +21,12 @@
 
 - **(teste)** Um único `<h1>` por página, e headings sem pular nível.
 - **(teste)** `<title>` com até 60 caracteres e `meta description` entre 140 e 160 nas páginas completas.
-- **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, sem endereço, com a área atendida, o contato e as redes; `Service` no NR-1; `ItemList`/`Course` em Idiomas; `FAQPage` em toda página com FAQ, igual ao FAQ visível; um só `BreadcrumbList` em toda página que não seja a home nem a 404, igual à trilha visível, com o nome que o menu dá a cada passo.
+- **(teste)** JSON-LD válido: `EducationalOrganization` em todas as páginas, sem endereço, com a área atendida, o contato e as redes; `Service` no NR-1; `ItemList`/`Course` em Idiomas; `Course` em cada página de idioma, com o mesmo nome que a lista de cursos dá a ele; `FAQPage` em toda página com FAQ, igual ao FAQ visível; um só `BreadcrumbList` em toda página que não seja a home nem a 404, igual à trilha visível, com o nome que o menu dá a cada passo (na página de idioma, que não está no menu, o nome do idioma).
 - **(teste)** Noindex na meta e no cabeçalho do preview (`_headers`, para a Cloudflare). A produção sai sem noindex em lugar nenhum. O local segue o preview, sem o `_headers`, e é conferido à mão.
 - **(teste)** Canonical, `og:url` e `og:image` sempre em `https://www.9vee.com.br`, com barra no fim, no preview e na produção (o local usa o mesmo layout). A 404 não tem canonical nem `og:url`.
 - **(teste)** robots.txt libera em todos os modos; só o da produção aponta o sitemap.
 - **(trava)** O build de produção passa no `check:producao`: nenhuma pendência (no HTML e na fonte, em `content/`), Placeholder, marca do MVP (etiqueta de obra e aviso de envio simulado), noindex, travessão ou meia-risca, ou link interno quebrado.
+- **(teste)** Página de idioma com `publicada: false` aparece no local e no preview, com o aviso no topo, e fica fora do build de produção. Os links seguem o build: a home e a página de cursos levam à página do idioma que existe nele, e à âncora do que não existe. A trava não lê o arquivo da página não publicada.
 - O modo vem do comando (`npm run dev`, `build:preview` e `build:producao`), nunca do `.env`. Cada modo tem o seu arquivo: `.env.development` (local), `.env.preview` e `.env.producao`. `.env` e `.env.local` são proibidos, porque valeriam para todos os modos.
 - **(teste)** HTML válido pelo `html-validate`. Nada de `<a>` dentro de `<button>`, nem bloco dentro de `<p>`.
 - `role="list"` (que segura a semântica de lista no Safari quando o marcador some) vai só em `<ul>`. Em `<ol>` o `html-validate` recusa, pela regra `prefer-native-element`.

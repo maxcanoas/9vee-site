@@ -2,17 +2,17 @@
 // Atalho para o WhatsApp em todas as páginas, com a mensagem da página e do público.
 // Sem JS, vale a mensagem neutra; com JS, o href troca quando a pessoa escolhe o público.
 import IconeWhatsApp from './IconeWhatsApp.astro';
-import { linkWhatsApp, mensagemFlutuante } from '../lib/contato';
+import { linkWhatsApp, mensagemFlutuante, type PaginaDoContato } from '../lib/contato';
 import { AVISO_NOVA_ABA } from '../lib/texto';
-import type { DadosDoSite, PaginaId } from '../lib/site';
+import type { DadosDoSite } from '../lib/site';
 
 interface Props {
   site: DadosDoSite;
-  pagina: PaginaId;
+  pagina: PaginaDoContato;
 }
 
 const { site, pagina } = Astro.props;
-const { nome, assunto } = site.paginas[pagina];
+const { nome, assunto } = pagina;
 const link = (publico: keyof typeof assunto) =>
   linkWhatsApp(site.contato.whatsapp, mensagemFlutuante(nome, assunto[publico], site.drawer.mensagens));
 ---

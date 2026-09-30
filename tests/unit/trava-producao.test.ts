@@ -139,4 +139,15 @@ describe('pendenciasNoConteudo', () => {
       { regra: 'pendencia', onde: 'content/idiomas/ingles.md', detalhe: 'níveis' },
     ]);
   });
+
+  // A página não publicada fica fora do build de produção: a pendência dela não vai ao ar.
+  it('pula o arquivo da página não publicada', () => {
+    const raiz = montarBuild({
+      'content/idiomas/espanhol.md': '---\nidioma: "espanhol"\npublicada: true\nseo:\n  titulo: "[CONFIRMAR COM O ARTHUR: níveis]"\n---\n',
+      'content/idiomas/ingles.md': '---\nidioma: "ingles"\npublicada: false\nseo:\n  titulo: "[CONFIRMAR COM O ARTHUR: provas]"\n---\n',
+    });
+    expect(pendenciasNoConteudo(join(raiz, 'content'))).toEqual([
+      { regra: 'pendencia', onde: 'content/idiomas/espanhol.md', detalhe: 'níveis' },
+    ]);
+  });
 });

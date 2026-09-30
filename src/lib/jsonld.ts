@@ -53,13 +53,13 @@ export function servico(base: URL, dados: { nome: string; tipo: string; caminho:
   };
 }
 
-/** Um Course por idioma, cada um apontando para a própria âncora na página de cursos. */
+/** Um Course por idioma, apontando para a página do idioma quando ela existe, e senão para a âncora dele aqui. */
 export function listaDeCursos(
   base: URL,
   dados: {
     caminho: string;
     modelos: { nome: string; descricao: string };
-    idiomas: readonly { slug: string; nome: string }[];
+    idiomas: readonly { slug: string; nome: string; pagina?: string }[];
   },
 ) {
   return {
@@ -72,10 +72,22 @@ export function listaDeCursos(
         '@type': 'Course',
         name: textoPuro(preencher(dados.modelos.nome, { idioma: idioma.nome })),
         description: textoPuro(preencher(dados.modelos.descricao, { idioma: idioma.nome })),
-        url: new URL(`${dados.caminho}#${idioma.slug}`, base).href,
+        url: new URL(idioma.pagina ?? `${dados.caminho}#${idioma.slug}`, base).href,
         provider: { '@id': new URL('/#organizacao', base).href },
       },
     })),
+  };
+}
+
+/** O curso da página de um idioma, ligado à organização pelo @id. */
+export function curso(base: URL, dados: { nome: string; descricao: string; caminho: string }) {
+  return {
+    '@type': 'Course',
+    '@id': new URL(`${dados.caminho}#curso`, base).href,
+    name: textoPuro(dados.nome),
+    description: textoPuro(dados.descricao),
+    url: new URL(dados.caminho, base).href,
+    provider: { '@id': new URL('/#organizacao', base).href },
   };
 }
 

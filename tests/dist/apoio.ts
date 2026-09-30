@@ -1,10 +1,12 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { parse, type HTMLElement } from 'node-html-parser';
 import { expect } from 'vitest';
 import { carregarPaginas as lerPaginas, type Pagina } from '../../scripts/paginas-do-build.ts';
+import { publicadaNoArquivo } from '../../src/lib/publicacao.ts';
+import { partesDoArquivo } from '../../src/lib/texto.ts';
 
 /** O build de preview, o que vai para o Cloudflare. A maior parte dos testes lê este. */
 export const DIST = fileURLToPath(new URL('../../dist/', import.meta.url));
@@ -16,6 +18,26 @@ export const DOMINIO = 'https://www.9vee.com.br';
 export function carregarPaginas(pasta = DIST): Pagina[] {
   if (!existsSync(pasta)) throw new Error(`${pasta} não existe: rode "npm test", que faz os builds antes dos testes`);
   return lerPaginas(pasta);
+}
+
+export interface PaginaDeIdioma {
+  rota: string;
+  /** O slug do idioma em content/site.md, que é também a âncora dele na página de cursos. */
+  idioma: string;
+  publicada: boolean;
+}
+
+/** As páginas de content/idiomas/, lidas da fonte com a mesma regra da trava: o preview tem todas. */
+export function paginasDeIdioma(): PaginaDeIdioma[] {
+  const pasta = fileURLToPath(new URL('../../content/idiomas/', import.meta.url));
+  return readdirSync(pasta)
+    .filter((nome) => nome.endsWith('.md'))
+    .map((nome) => {
+      const arquivo = readFileSync(join(pasta, nome), 'utf8');
+      const idioma = /^idioma:\s*"([^"]+)"/m.exec(partesDoArquivo(arquivo).frontmatter)?.[1];
+      if (!idioma) throw new Error(`content/idiomas/${nome} sem o idioma no frontmatter`);
+      return { rota: `/curso-de-idiomas/${nome.replace(/\.md$/, '')}/`, idioma, publicada: publicadaNoArquivo(arquivo) };
+    });
 }
 
 /** Texto que a pessoa vê ou que o leitor de tela lê: sem script, style e template. */

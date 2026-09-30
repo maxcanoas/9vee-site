@@ -11,14 +11,16 @@ import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import CabecaDeSecao from '../components/CabecaDeSecao.astro';
 import { dadosDoSite } from '../lib/site';
-import { paginaIdiomas } from '../lib/paginas';
+import { paginaDeCadaIdioma, paginaIdiomas } from '../lib/paginas';
 import { faqPage, listaDeCursos } from '../lib/jsonld';
 
 const { data: pagina } = await paginaIdiomas();
 const site = await dadosDoSite();
+const paginasDosIdiomas = await paginaDeCadaIdioma();
 const base = Astro.site ?? new URL(Astro.url.origin);
+const idiomas = site.idiomas.map((idioma) => ({ ...idioma, pagina: paginasDosIdiomas.get(idioma.slug) }));
 const jsonLd = [
-  listaDeCursos(base, { caminho: Astro.url.pathname, modelos: pagina.curso, idiomas: site.idiomas }),
+  listaDeCursos(base, { caminho: Astro.url.pathname, modelos: pagina.curso, idiomas }),
   faqPage(pagina.faq.itens),
 ];
 ---
@@ -34,6 +36,7 @@ const jsonLd = [
         idiomas={site.idiomas}
         modo="pedido"
         rotuloPedido={pagina.idiomas.rotuloPedido}
+        paginas={paginasDosIdiomas}
       />
     </div>
   </section>

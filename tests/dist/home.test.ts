@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST } from './apoio';
+import { DIST, paginasDeIdioma } from './apoio';
 
 const home = parse(readFileSync(join(DIST, 'index.html'), 'utf8'));
 
@@ -50,13 +50,16 @@ describe('home', () => {
     expect(valores).toEqual(['empresa', 'voce']);
   });
 
-  it('liga os 14 idiomas à página de cursos, cada um com a saudação no próprio idioma', () => {
+  // O preview tem todas as páginas de idioma, publicadas ou não. O idioma sem página leva à âncora dele.
+  it('liga os 14 idiomas à página de cada um ou à página de cursos, com a saudação no próprio idioma', () => {
     const links = home.querySelectorAll('a.idioma');
+    const hrefs = links.map((link) => link.getAttribute('href') ?? '');
+    const paginas = paginasDeIdioma();
     expect(links).toHaveLength(14);
-    for (const link of links) {
-      expect(link.getAttribute('href')).toMatch(/^\/curso-de-idiomas\/#[a-z]+$/);
-      expect(link.querySelector('[lang]')?.getAttribute('lang')).toBeTruthy();
-    }
+    expect(hrefs.filter((href) => !href.includes('#')).sort()).toEqual(paginas.map((pagina) => pagina.rota).sort());
+    for (const href of hrefs.filter((href) => href.includes('#'))) expect(href).toMatch(/^\/curso-de-idiomas\/#[a-z]+$/);
+    for (const { idioma } of paginas) expect(hrefs).not.toContain(`/curso-de-idiomas/#${idioma}`);
+    for (const link of links) expect(link.querySelector('[lang]')?.getAttribute('lang')).toBeTruthy();
   });
 
   it('traz no HTML o número final de cada contador (vale sem JS e para o Google)', () => {

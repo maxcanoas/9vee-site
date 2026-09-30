@@ -133,6 +133,11 @@ paginas:
     nome: "Cursos de Idiomas"
     servico: "idiomas"
     assunto: { neutro: "quero saber dos cursos de idiomas", empresa: "quero aulas de idioma para a minha equipe", voce: "quero aulas de idioma para mim" }
+  # Modelo das páginas de idioma: o {idioma} vira o nome dele, em minúscula no meio da frase.
+  idioma:
+    nome: "Curso de {idioma}"
+    servico: "idiomas"
+    assunto: { neutro: "quero saber das aulas de {idioma}", empresa: "quero aulas de {idioma} para a minha equipe", voce: "quero aulas de {idioma} para mim" }
   traducao:
     nome: "Tradução Simultânea"
     servico: "traducao"
@@ -240,6 +245,10 @@ formularios:
 
 # A etiqueta das três páginas que ficam parciais no MVP.
 etiquetaMvp: "Página em construção no MVP"
+
+# O aviso das páginas de idioma que ainda não vão para o site. Só aparece no local e no preview, porque a
+# produção sai sem elas.
+naoPublicada: "Fora do site até o Arthur confirmar"
 
 # Pendências: o [CONFIRMAR COM A DANIELLA: ...] ou o [CONFIRMAR COM O ARTHUR: ...] dos textos vira esta etiqueta.
 pendencia:

@@ -12,11 +12,12 @@ import Depoimentos from '../components/Depoimentos.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { comOrdemDoServico, dadosDoSite } from '../lib/site';
-import { paginaHome } from '../lib/paginas';
+import { paginaDeCadaIdioma, paginaHome } from '../lib/paginas';
 import { faqPage } from '../lib/jsonld';
 
 const { data: home } = await paginaHome();
 const site = await dadosDoSite();
+const paginasDosIdiomas = await paginaDeCadaIdioma();
 ---
 
 <Base pagina="home" titulo={home.seo.titulo} descricao={home.seo.descricao} jsonLd={[faqPage(home.faq.itens)]}>
@@ -30,7 +31,7 @@ const site = await dadosDoSite();
     <div class="conteiner idiomas-home__corpo">
       <h2 id="idiomas-titulo" class="revela"><Texto de={home.idiomas.titulo} /></h2>
       <p class="idiomas-home__apoio"><Texto de={home.idiomas.apoio} /></p>
-      <Familias familias={site.familias} idiomas={site.idiomas} modo="links" />
+      <Familias familias={site.familias} idiomas={site.idiomas} modo="links" paginas={paginasDosIdiomas} />
     </div>
   </section>
 

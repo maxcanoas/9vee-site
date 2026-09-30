@@ -9,15 +9,17 @@ import type { TextosPorPublico } from '../lib/publico';
 interface Props {
   titulo: string;
   texto: string;
-  /** Na home, o rótulo do botão muda com o público. Na página de um serviço, ele é fixo. */
+  /** Na home e nas páginas de idioma, o rótulo do botão muda com o público. Na página de um serviço, ele é fixo. */
   cta?: TextosPorPublico;
   rotulo?: string;
   servico?: ServicoId;
+  /** Na página de um idioma, o pedido abre com ele marcado. */
+  idioma?: string;
   /** Na home, o círculo leva o logo no miolo. */
   logo?: boolean;
 }
 
-const { titulo, texto, cta, rotulo, servico, logo } = Astro.props;
+const { titulo, texto, cta, rotulo, servico, idioma, logo } = Astro.props;
 ---
 
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
@@ -28,7 +30,7 @@ const { titulo, texto, cta, rotulo, servico, logo } = Astro.props;
     <div class="cta-final__texto">
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
       <p class="texto-secundario"><Texto de={texto} /></p>
-      <BotaoContato textos={cta} texto={rotulo} servico={servico} />
+      <BotaoContato textos={cta} texto={rotulo} servico={servico} idioma={idioma} />
     </div>
   </div>
 </section>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { listaDeCursos, servico, telefoneInternacional, trilhaDeNavegacao } from '../../src/lib/jsonld';
+import { curso, listaDeCursos, servico, telefoneInternacional, trilhaDeNavegacao } from '../../src/lib/jsonld';
 
 describe('telefoneInternacional', () => {
   it('escreve o número do WhatsApp no padrão internacional', () => {
@@ -34,17 +34,44 @@ describe('listaDeCursos', () => {
   const lista = listaDeCursos(new URL('https://exemplo.9vee.com.br/'), {
     caminho: '/curso-de-idiomas/',
     modelos: { nome: 'Curso de {idioma}', descricao: '{idioma} com a 9vee [CONFIRMAR COM A DANIELLA: preço].' },
-    idiomas: [{ slug: 'ingles', nome: 'Inglês' }],
+    idiomas: [
+      { slug: 'alemao', nome: 'Alemão' },
+      { slug: 'ingles', nome: 'Inglês', pagina: '/curso-de-idiomas/ingles/' },
+    ],
   });
-  const curso = lista.itemListElement[0].item;
+  const [alemao, ingles] = lista.itemListElement.map((elemento) => elemento.item);
 
-  it('aponta cada curso para a âncora do idioma', () => {
-    expect(curso.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/#ingles');
-    expect(curso.name).toBe('Curso de Inglês');
+  it('aponta o curso sem página própria para a âncora do idioma', () => {
+    expect(alemao.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/#alemao');
+    expect(alemao.name).toBe('Curso de Alemão');
+  });
+
+  it('aponta o curso com página própria para ela', () => {
+    expect(ingles.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/ingles/');
   });
 
   it('tira a pendência da descrição que o Google lê', () => {
-    expect(curso.description).toBe('Inglês com a 9vee.');
+    expect(alemao.description).toBe('Alemão com a 9vee.');
+  });
+});
+
+describe('curso', () => {
+  const no = curso(new URL('https://exemplo.9vee.com.br/'), {
+    nome: 'Curso de inglês',
+    descricao: 'Inglês para adultos [CONFIRMAR COM O ARTHUR: níveis] e para crianças.',
+    caminho: '/curso-de-idiomas/ingles/',
+  });
+
+  it('usa endereços absolutos e liga o curso à organização', () => {
+    expect(no['@type']).toBe('Course');
+    expect(no['@id']).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/ingles/#curso');
+    expect(no.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/ingles/');
+    expect(no.provider).toEqual({ '@id': 'https://exemplo.9vee.com.br/#organizacao' });
+  });
+
+  it('tira a pendência do que o Google lê', () => {
+    expect(no.name).toBe('Curso de inglês');
+    expect(no.description).toBe('Inglês para adultos e para crianças.');
   });
 });
 

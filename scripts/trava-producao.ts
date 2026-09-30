@@ -3,6 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, relative, sep } from 'node:path';
 import { parse } from 'node-html-parser';
+import { publicadaNoArquivo } from '../src/lib/publicacao.ts';
 import { pendenciasDoArquivo } from '../src/lib/texto.ts';
 import { arquivoDaRota, carregarPaginas, listarArquivos, type Pagina } from './paginas-do-build.ts';
 
@@ -89,17 +90,20 @@ export interface Achado {
 
 /**
  * As pendências da fonte, em content/. A página nem sempre mostra a pendência como marca: a faixa de números
- * da home tira a nota do texto, e o título, a descrição e o JSON-LD saem sem ela.
+ * da home tira a nota do texto, e o título, a descrição e o JSON-LD saem sem ela. O arquivo de página não
+ * publicada fica de fora, porque ela não entra no build de produção.
  */
 export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
   const base = dirname(pastaDoConteudo);
-  return listarArquivos(pastaDoConteudo, '.md').flatMap((arquivo) =>
-    pendenciasDoArquivo(readFileSync(arquivo, 'utf8')).map(({ nota }) => ({
+  return listarArquivos(pastaDoConteudo, '.md').flatMap((arquivo) => {
+    const texto = readFileSync(arquivo, 'utf8');
+    if (!publicadaNoArquivo(texto)) return [];
+    return pendenciasDoArquivo(texto).map(({ nota }) => ({
       regra: 'pendencia' as const,
       onde: relative(base, arquivo).split(sep).join('/'),
       detalhe: nota,
-    })),
-  );
+    }));
+  });
 }
 
 export function verificarBuild(pasta: string): Achado[] {

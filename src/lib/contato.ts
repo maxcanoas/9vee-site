@@ -1,8 +1,8 @@
 // Lógica do pedido de contato, sem tela: campos por serviço, validação e mensagem do WhatsApp.
 // As perguntas, as opções, os erros e os modelos de mensagem vêm de content/site.md.
-import type { Publico } from './publico';
+import type { Publico, TextosPorPublico } from './publico';
 // Com a extensão, o Node carrega este módulo sem o Vite: o scripts/revisao.ts monta com ele as mensagens do lote.
-import { preencher } from './texto.ts';
+import { minuscula, preencher } from './texto.ts';
 
 /** Os quatro serviços. O esquema do conteúdo e os componentes partem desta lista; a ordem na tela vem de content/site.md. */
 export const SERVICOS = ['nr1', 'traducao', 'idiomas', 'lms'] as const;
@@ -62,6 +62,7 @@ export interface DadosDoDrawer {
   numero: string;
   pagina: string;
   servicoDaPagina: ServicoId | null;
+  idiomaDaPagina: string | null;
   servicos: Record<ServicoId, string>;
   formularios: Record<FormularioId, Campo[]>;
   idiomas: IdiomaCurto[];
@@ -144,8 +145,6 @@ export function tipoDeContato(valor: string): 'telefone' | 'email' | null {
   return digitos.length === 10 || digitos.length === 11 ? 'telefone' : null;
 }
 
-const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
-
 function juntar(itens: string[]): string {
   return itens.length <= 1 ? itens.join('') : `${itens.slice(0, -1).join(', ')} e ${itens.at(-1)}`;
 }
@@ -219,6 +218,24 @@ export function montarMensagem(
 
 export function mensagemFlutuante(pagina: string, assunto: string, modelos: ModelosDeMensagem): string {
   return preencher(modelos.flutuante, { pagina, assunto });
+}
+
+/** O nome da página e o pedido do botão flutuante, como content/site.md dá para cada página. */
+export interface PaginaDoContato {
+  nome: string;
+  servico?: ServicoId;
+  assunto: TextosPorPublico;
+}
+
+/** A página de um idioma sai de um modelo só, com o idioma no meio da frase: "quero aulas de inglês". */
+export function paginaDoIdioma(modelo: PaginaDoContato, nomeDoIdioma: string): PaginaDoContato {
+  const dados = { idioma: minuscula(nomeDoIdioma) };
+  const { neutro, empresa, voce } = modelo.assunto;
+  return {
+    ...modelo,
+    nome: preencher(modelo.nome, dados),
+    assunto: { neutro: preencher(neutro, dados), empresa: preencher(empresa, dados), voce: preencher(voce, dados) },
+  };
 }
 
 export function linkWhatsApp(numero: string, mensagem?: string): string {

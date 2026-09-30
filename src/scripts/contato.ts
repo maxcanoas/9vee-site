@@ -175,9 +175,13 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     for (const radio of todos<HTMLInputElement>(`input[name="${nome}"]`)) radio.checked = radio.value === valor;
   }
 
-  function marcarIdioma(slug: string) {
-    for (const radio of todos<HTMLInputElement>('input[type="radio"][name$="-idioma"]')) {
-      if (radio.value === slug) radio.checked = true;
+  // O idioma do botão vale sempre. O da página entra só no grupo em que a pessoa ainda não escolheu nenhum:
+  // quem trocou o idioma e reabriu o pedido pelo cabeçalho encontra a própria escolha.
+  function marcarIdioma(slug: string, soSemEscolha = false) {
+    const radios = todos<HTMLInputElement>('input[type="radio"][name$="-idioma"]');
+    for (const radio of radios) {
+      const escolhido = radios.some((outro) => outro.name === radio.name && outro.checked);
+      if (radio.value === slug && !(soSemEscolha && escolhido)) radio.checked = true;
     }
   }
 
@@ -347,6 +351,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     servico = servicoInicial({ doBotao: origem.dataset.servico, anterior: servico, daPagina: dados.servicoDaPagina, publico });
     marcar('drawer-servico', servico);
     if (origem.dataset.idioma) marcarIdioma(origem.dataset.idioma);
+    else if (dados.idiomaDaPagina) marcarIdioma(dados.idiomaDaPagina, true);
     hoje = hojeLocal(new Date());
     for (const data of todos<HTMLInputElement>('input[type="date"]')) data.min = hoje;
     limparErros();

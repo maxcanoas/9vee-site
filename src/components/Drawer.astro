@@ -5,25 +5,28 @@
 import Texto from './Texto.astro';
 import CampoContato from './CampoContato.astro';
 import IconeWhatsApp from './IconeWhatsApp.astro';
-import { linkWhatsApp, type Campo, type DadosDoDrawer, type FormularioId } from '../lib/contato';
+import { linkWhatsApp, type Campo, type DadosDoDrawer, type FormularioId, type PaginaDoContato } from '../lib/contato';
 import { ordenarPorPublico } from '../lib/publico';
 import { AVISO_NOVA_ABA, jsonParaScript, textoPuro } from '../lib/texto';
-import type { DadosDoSite, PaginaId } from '../lib/site';
+import type { DadosDoSite } from '../lib/site';
 
 interface Props {
   site: DadosDoSite;
-  pagina: PaginaId;
+  pagina: PaginaDoContato;
+  /** Na página de um idioma: o pedido que abre sem idioma no botão (o do cabeçalho) já sai com ele. */
+  idiomaDaPagina?: string;
 }
 
-const { site, pagina } = Astro.props;
+const { site, pagina, idiomaDaPagina } = Astro.props;
 const { drawer: textos, formularios, servicos } = site;
 const idiomas = site.idiomas.map(({ slug, nome }) => ({ slug, nome }));
 const formularioIds = Object.keys(formularios) as FormularioId[];
 
 const dados: DadosDoDrawer = {
   numero: site.contato.whatsapp,
-  pagina: site.paginas[pagina].nome,
-  servicoDaPagina: site.paginas[pagina].servico ?? null,
+  pagina: pagina.nome,
+  servicoDaPagina: pagina.servico ?? null,
+  idiomaDaPagina: idiomaDaPagina ?? null,
   servicos: Object.fromEntries(servicos.map((s) => [s.id, textoPuro(s.nome)])) as DadosDoDrawer['servicos'],
   formularios,
   idiomas,

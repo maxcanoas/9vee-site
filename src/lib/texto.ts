@@ -27,6 +27,7 @@ export const preencher = (modelo: string, dados: Record<string, string>) =>
   modelo.replace(/\{(\w+)\}/g, (_, chave: string) => dados[chave] ?? '');
 
 const maiuscula = (texto: string) => texto.charAt(0).toLocaleUpperCase('pt-BR') + texto.slice(1);
+export const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
 
 /** Aviso para o leitor de tela em todo link que abre outra aba. */
 export const AVISO_NOVA_ABA = ' (abre em nova aba)';
@@ -89,14 +90,18 @@ export function lerPendencias(texto: string): Pendencia[] {
   return [...texto.matchAll(PENDENCIA)].map(([, marca, nota]) => ({ responsavel: responsavelDa(marca), nota: nota.trim() }));
 }
 
+/** O frontmatter e o corpo de um arquivo de content/. Sem frontmatter, o arquivo inteiro é corpo. */
+export function partesDoArquivo(arquivo: string): { frontmatter: string; corpo: string } {
+  const partes = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/.exec(arquivo);
+  return partes ? { frontmatter: partes[1], corpo: partes[2] } : { frontmatter: '', corpo: arquivo };
+}
+
 /**
  * As pendências de um arquivo inteiro de content/. Os comentários do YAML ficam de fora: eles também
  * citam o formato da pendência, e não são texto do site. O corpo em Markdown entra inteiro.
  */
 export function pendenciasDoArquivo(arquivo: string): Pendencia[] {
-  const partes = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/.exec(arquivo);
-  const frontmatter = partes?.[1] ?? '';
-  const corpo = partes ? partes[2] : arquivo;
+  const { frontmatter, corpo } = partesDoArquivo(arquivo);
   const semComentarios = frontmatter
     .split(/\r?\n/)
     .filter((linha) => !linha.trimStart().startsWith('#'))

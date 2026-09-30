@@ -1,0 +1,122 @@
+---
+// O topo das páginas de idioma, tipográfico e sem foto: a saudação na escrita do idioma, com a meia-lua na cor da
+// família, como na faixa de saudações da home, e o círculo da marca. A meia-lua vira o lado reto para o círculo:
+// são as duas metades que se encontram, a forma da marca.
+import Texto from './Texto.astro';
+import BotaoContato from './BotaoContato.astro';
+import CirculoMarca from './CirculoMarca.astro';
+import Trilha from './Trilha.astro';
+import type { TextosPorPublico } from '../lib/publico';
+
+interface Props {
+  h1: string;
+  apoio: string;
+  cta: TextosPorPublico;
+  idioma: { slug: string; saudacao: string; lang: string; dir?: 'rtl'; familia: string };
+  /** O aviso da página que ainda não vai para o site. A produção sai sem essas páginas: só o local e o preview o mostram. */
+  etiqueta?: string;
+}
+
+const { h1, apoio, cta, idioma, etiqueta } = Astro.props;
+---
+
+<section class="topo-idioma escuro tons-claros" aria-labelledby="hero-titulo" data-grupo={idioma.familia}>
+  <div class="conteiner topo-idioma__grade">
+    <div class="topo-idioma__texto">
+      <Trilha />
+      {etiqueta && <p class="topo-idioma__etiqueta"><Texto de={etiqueta} /></p>}
+      <p class="topo-idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>{idioma.saudacao}</p>
+      <h1 id="hero-titulo"><Texto de={h1} /></h1>
+      <p class="topo-idioma__apoio"><Texto de={apoio} /></p>
+      <BotaoContato textos={cta} servico="idiomas" idioma={idioma.slug} />
+    </div>
+    <div class="topo-idioma__circulo" aria-hidden="true">
+      <CirculoMarca sizes="(min-width: 64rem) 22rem, min(62vw, 20rem)" primeiraDobra />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* O respiro de cima é o do hero das páginas internas: a trilha ocupa o alto, e o botão cabe na primeira tela. */
+  .topo-idioma {
+    padding-block: var(--e-7) var(--secao);
+  }
+
+  .topo-idioma__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .topo-idioma__texto {
+    display: grid;
+    gap: var(--e-5);
+    justify-items: start;
+  }
+
+  /* Tracejado: o mesmo contorno das pendências, porque o aviso também é de coisa a confirmar. */
+  .topo-idioma__etiqueta {
+    padding-block: var(--e-1);
+    padding-inline: var(--e-3);
+    border: 1px dashed var(--sobre-escuro);
+    border-radius: var(--raio-pilula);
+    color: var(--sobre-escuro);
+    font-size: var(--t-rotulo);
+    font-weight: 700;
+  }
+
+  .topo-idioma__saudacao {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-5);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-mostra);
+    font-weight: 600;
+    line-height: 1.1;
+    unicode-bidi: isolate;
+  }
+
+  .topo-idioma__saudacao::after {
+    content: '';
+    flex: none;
+    inline-size: 0.18em;
+    block-size: 0.36em;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--cor-grupo);
+  }
+
+  /* No árabe o elemento corre da direita para a esquerda, e o flex poria a meia-lua antes da palavra. O eixo
+     invertido a deixa depois, do lado do círculo, como nas outras línguas. */
+  .topo-idioma__saudacao[dir='rtl'] {
+    flex-direction: row-reverse;
+  }
+
+  .topo-idioma__texto h1 {
+    max-inline-size: 16ch;
+  }
+
+  .topo-idioma__apoio {
+    max-inline-size: 46ch;
+    color: var(--sobre-escuro);
+    font-size: var(--t-destaque);
+    line-height: var(--altura-apoio);
+  }
+
+  /* As medidas do visual do hero das páginas internas: no celular, centralizado embaixo do texto. */
+  .topo-idioma__circulo {
+    justify-self: center;
+    inline-size: min(62vw, 20rem);
+  }
+
+  @media (min-width: 64rem) {
+    .topo-idioma__grade {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      column-gap: var(--e-8);
+    }
+
+    .topo-idioma__circulo {
+      justify-self: end;
+      inline-size: min(100%, 22rem);
+    }
+  }
+</style>

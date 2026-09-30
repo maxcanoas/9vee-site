@@ -76,13 +76,42 @@ test.describe('drawer de contato', () => {
     await expect(page.locator('input[name="idiomasVoce-idioma"][value="japones"]')).toBeChecked();
   });
 
+  // O idioma com página própria é link para ela; o primeiro botão da lista é de um idioma sem página.
   test('a empresa que escolhe um idioma cai no formulário de turma', async ({ page, context }) => {
     await salvarPublico(context, 'empresa');
     await page.goto('/curso-de-idiomas/');
-    await page.locator('#mandarim button').click();
+    const botao = page.locator('#idiomas button[data-idioma]').first();
+    const idioma = await botao.getAttribute('data-idioma');
+    await botao.click();
 
     await expect(page.locator('[data-formulario="idiomasEmpresa"]')).toBeVisible();
-    await expect(page.locator('input[name="idiomasEmpresa-idioma"][value="mandarim"]')).toBeChecked();
+    await expect(page.locator(`input[name="idiomasEmpresa-idioma"][value="${idioma}"]`)).toBeChecked();
+  });
+
+  test('na página de um idioma, o botão do topo e o do cabeçalho já saem com o idioma marcado', async ({ page, context }) => {
+    await salvarPublico(context, 'voce');
+    await page.goto('/curso-de-idiomas/ingles/');
+    await page.locator('.topo-idioma [data-abre-contato]').click();
+
+    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(page.locator('input[name="idiomasVoce-idioma"][value="ingles"]')).toBeChecked();
+
+    await page.goto('/curso-de-idiomas/mandarim/');
+    await page.locator('.cabecalho__cta').click();
+    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(page.locator('input[name="idiomasVoce-idioma"][value="mandarim"]')).toBeChecked();
+  });
+
+  test('o idioma que a pessoa trocou fica marcado quando ela reabre o pedido pelo cabeçalho', async ({ page, context }) => {
+    await salvarPublico(context, 'voce');
+    await page.goto('/curso-de-idiomas/ingles/');
+    await page.locator('.cabecalho__cta').click();
+    await opcao(page, 'idiomasVoce', 'Espanhol').click();
+    await drawer(page).locator('.drawer__fechar').click();
+    await page.locator('.cabecalho__cta').click();
+
+    await expect(page.locator('input[name="idiomasVoce-idioma"][value="espanhol"]')).toBeChecked();
+    await expect(page.locator('input[name="idiomasVoce-idioma"][value="ingles"]')).not.toBeChecked();
   });
 
   test('"Continuar" sem resposta aponta cada erro e leva o foco ao primeiro', async ({ page, context }) => {

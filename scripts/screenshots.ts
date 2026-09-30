@@ -200,6 +200,19 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'trilha-foco-1280', rota: '/lms/', largura: 1280, altura: 800, antes: (p) => p.locator('.trilha a').focus() },
     { nome: 'trilha-mouse-1280', rota: '/quem-somos/', largura: 1280, altura: 800, antes: (p) => p.locator('.trilha a').hover() },
   ],
+  'ticket-09': [
+    { nome: 'ingles-topo-360', rota: '/curso-de-idiomas/ingles/', largura: 360, altura: 780 },
+    { nome: 'ingles-topo-1280', rota: '/curso-de-idiomas/ingles/', largura: 1280, altura: 800 },
+    { nome: 'ingles-inteira-390', rota: '/curso-de-idiomas/ingles/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'ingles-inteira-1280', rota: '/curso-de-idiomas/ingles/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'mandarim-topo-390', rota: '/curso-de-idiomas/mandarim/', largura: 390, altura: 844 },
+    { nome: 'mandarim-topo-1280', rota: '/curso-de-idiomas/mandarim/', largura: 1280, altura: 800 },
+    { nome: 'mandarim-inteira-1280', rota: '/curso-de-idiomas/mandarim/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'espanhol-inteira-390', rota: '/curso-de-idiomas/espanhol/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'cursos-familias-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, antes: rolarAte('.familias', -120) },
+    // O pedido aberto pelo cabeçalho, sem idioma no botão, já sai com o idioma da página marcado.
+    { nome: 'ingles-pedido-cabecalho-390', rota: '/curso-de-idiomas/ingles/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('.cabecalho__cta').click() },
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

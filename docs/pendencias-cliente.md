@@ -75,7 +75,7 @@ Arthur, para as páginas de cada idioma e para a troca do site preciso destas re
 **Os idiomas** (cada um vai ter página própria, e página sem informação própria é punida pelo Google)
 
 1. A lista continua esta: inglês, espanhol, francês, italiano, alemão, holandês, sueco, norueguês, romeno, português para estrangeiros, mandarim, japonês, árabe e russo? Algum saiu ou entrou?
-2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova). Hoje o site só tem material próprio de inglês (crianças e adolescentes com Cambridge, TOEFL), português para estrangeiros (CELPE-Bras), espanhol (DELE), francês (DELF, DALF e TCF), holandês (Inburgering) e mandarim. Dos outros oito (alemão, italiano, sueco, norueguês, romeno, japonês, árabe e russo), o site só traz o nome.
+2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova). Hoje o site só tem material próprio de inglês (crianças e adolescentes com Cambridge, TOEFL), português para estrangeiros (CELPE-Bras), espanhol (DELE), francês (DELF, DALF e TCF), holandês (Inburgering) e mandarim. Dos outros oito (alemão, italiano, sueco, norueguês, romeno, japonês, árabe e russo), o site só traz o nome. As páginas de inglês, espanhol e mandarim já estão no preview, com cada pergunta marcada como "a confirmar". No inglês falta também a idade do curso de crianças e adolescentes e o material do curso de adultos; no mandarim, como o curso ensina o pinyin, os caracteres e os tons.
 3. As aulas de idioma também acontecem presencialmente? Em que cidades, e onde (na empresa do aluno, em sala da 9vee, em espaço parceiro)?
 4. Quantas horas de aula costumam levar de um nível para o outro?
 5. A 9vee emite certificado no fim do curso? De que tipo?
@@ -102,8 +102,10 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D21 | `content/home.md`, `content/lms.md` | texto do LMS na lista de serviços e nota da página LMS |
 | D24 | `content/site.md` | `rodape.pronuncia` |
 | D28 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
+| A2 | `content/idiomas/ingles.md`, `content/idiomas/espanhol.md`, `content/idiomas/mandarim.md` | as pendências de cada página de idioma: níveis, formatos, professores, material, idade, HSK e escrita |
 | A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |
-| A4 | `content/curso-de-idiomas.md` | FAQ "Quanto tempo leva para subir um nível?" |
+| A4 | `content/curso-de-idiomas.md`, `content/idiomas/mandarim.md` | FAQ "Quanto tempo leva para subir um nível?" e, no mandarim, "Em quanto tempo dá para conversar?" |
 | A5 | `content/curso-de-idiomas.md` | FAQ "No fim do curso eu recebo certificado?" |
+| D7 (idiomas) | `content/idiomas/*.md` | o "Quanto custa?" de cada página de idioma |
 
 As demais perguntas são novas da Fase 1 e ainda não têm marcação no código.

@@ -4,10 +4,10 @@
 // texto para o leitor de tela.
 import Texto from './Texto.astro';
 import { dadosDoSite } from '../lib/site';
-import { trilhaDoCaminho } from '../lib/trilha';
+import { trilhaDaPagina } from '../lib/paginas';
 
 const site = await dadosDoSite();
-const passos = trilhaDoCaminho(site, Astro.url.pathname);
+const passos = await trilhaDaPagina(Astro.url.pathname);
 const ultimo = passos.length - 1;
 ---
 
