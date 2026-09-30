@@ -17,3 +17,4 @@
 - [ ] "Enviando", confirmação na tela sem o aviso de envio simulado e, na falha, uma mensagem clara com a saída pelo WhatsApp e a mensagem pronta.
 - [ ] Testes unitários do módulo, com o serviço simulado, e do navegador (certo, com erro e pela isca), escritos antes.
 - [ ] Envio real no preview publicado: certo, com erro e pela isca, conferido no e-mail de teste.
+- [ ] A política de privacidade descreve o envio como ficou: o serviço (a Web3Forms, ou a Formspark se o plano B entrar), o que ele guarda e por quanto tempo. O link da caixa de consentimento leva a `/politica-de-privacidade/#pedido`.

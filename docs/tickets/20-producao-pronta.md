@@ -14,4 +14,5 @@
 - [ ] Teclado e leitor de tela conferidos no drawer e no aviso de cookies.
 - [ ] Teste em Android e iPhone de verdade pelo preview: WhatsApp, drawer e formulário.
 - [ ] `docs/checklist-lancamento.md` com os passos do brief e os da spec.
+- [ ] Conferir em que país fica o servidor do site na HostGator. A política de privacidade só diz "fora do Brasil" da Web3Forms e do Google porque o servidor de e-mail da 9vee fica em Vinhedo (SP); se o do site ficar fora, a seção da hospedagem muda.
 - [ ] `README.md` de entrega.

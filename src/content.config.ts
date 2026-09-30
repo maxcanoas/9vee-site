@@ -474,8 +474,8 @@ const parciais = defineCollection({
   }),
 });
 
-// A política de privacidade: uma página de texto. Cada seção é uma sequência de parágrafos e listas, na ordem
-// do arquivo, e a versão fecha a página.
+// A política de privacidade é texto corrido: parágrafos e listas se alternam na ordem do arquivo, por isso cada
+// seção tem uma lista só de blocos.
 const privacidade = defineCollection({
   loader: glob({ pattern: 'politica-de-privacidade.md', base: conteudo }),
   schema: z.object({

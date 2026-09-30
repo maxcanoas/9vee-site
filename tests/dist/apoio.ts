@@ -18,7 +18,7 @@ export function carregarPaginas(pasta = DIST): Pagina[] {
   return lerPaginas(pasta);
 }
 
-export { paginasDeIdiomaNoConteudo, type PaginaDeIdiomaNoConteudo } from '../conteudo.ts';
+export { PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo, type PaginaDeIdiomaNoConteudo } from '../conteudo.ts';
 
 /** Texto que a pessoa vê ou que o leitor de tela lê: sem script, style e template. */
 export function textoVisivel(raiz: HTMLElement): string {

@@ -19,7 +19,7 @@ secoes:
   - id: "pedido"
     titulo: "Quando você pede contato"
     blocos:
-      - 'Se você escolhe "Prefiro receber contato", o site manda à 9vee o que você respondeu no pedido, o seu nome e o WhatsApp ou o e-mail que você deixou. A 9vee usa esses dados para responder e montar a proposta.'
+      - 'Se você escolhe "Prefiro receber contato", o site manda o pedido à 9vee. Ele leva as suas respostas, o seu nome e o WhatsApp ou o e-mail que você deixou. A 9vee usa esses dados para responder e montar a proposta.'
       - "O pedido só sai com a caixa de consentimento marcada. Junto com ele vai a prova de que você concordou: o texto da caixa, a data e a hora e a página de onde o pedido saiu."
       - "Quem entrega o pedido é a Web3Forms, um serviço de formulários da empresa indiana Web3Creative. Ela manda o pedido por e-mail para a 9vee e guarda uma cópia por até 3 anos. Para barrar spam, passa o endereço IP e o e-mail de quem envia a dois filtros, o CleanTalk e o Akismet. Os servidores dela podem ficar fora do Brasil. Os detalhes estão na [política de privacidade da Web3Forms](https://web3forms.com/privacy)."
       - "Na caixa de e-mail da 9vee, o pedido fica guardado por [CONFIRMAR COM A DANIELLA: por quanto tempo a 9vee guarda os pedidos que chegam pelo site]."
@@ -28,13 +28,16 @@ secoes:
     titulo: "Quando você fala pelo WhatsApp"
     blocos:
       - "O botão do WhatsApp só abre o aplicativo com a mensagem escrita. Quem manda é você, do seu WhatsApp para o da 9vee, e a mensagem não passa pelo site. A conversa segue as regras do WhatsApp."
+      - "No WhatsApp da 9vee, a conversa fica guardada por [CONFIRMAR COM A DANIELLA: por quanto tempo a 9vee guarda as conversas do WhatsApp]."
 
   - id: "estatistica"
     titulo: "A estatística de visitas"
     blocos:
       - "O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies. Se você recusar ou não responder, ele nem carrega."
-      - "Com o aceite, o Google recebe as páginas que você vê, de que busca ou link você veio, o tipo de aparelho e de navegador e a cidade aproximada."
-      - "Ele também conta os pedidos abertos e enviados e os usos do botão do WhatsApp. Em cada um vão o serviço, a página e se o pedido é de empresa ou de pessoa. O seu nome e o seu contato não vão para o Google."
+      - "Com o aceite, o Google recebe dados da sua visita, como as páginas que você vê e de que busca ou link você veio. Recebe também o tipo de aparelho e de navegador e a cidade aproximada."
+      # A última frase depende do ticket 13: o link do WhatsApp leva o nome e a empresa no texto da mensagem, e o
+      # clique de saída da medição otimizada do GA4 mandaria esse endereço inteiro para o Google.
+      - "Ele também conta os pedidos abertos e enviados e os usos do botão do WhatsApp, com o serviço e a página. No pedido enviado e no WhatsApp vai também se é para empresa ou para você, quando você já escolheu. O seu nome e o seu contato não vão para o Google."
       - "O Google grava dois cookies no seu navegador, o _ga e o _ga_ seguido de um código, que duram até 2 anos. Os dados ligados a eles ficam no Google por até 14 meses. Depois disso, sobram só os totais dos relatórios."
       - "A 9vee usa esses números para saber que páginas e que serviços trazem pedidos. O Google pode tratar os dados fora do Brasil. O que ele faz com eles está na página [como o Google usa informações de sites](https://policies.google.com/technologies/partner-sites?hl=pt-BR)."
       - 'Para mudar a sua escolha, use o link "Preferências de cookies", no rodapé.'

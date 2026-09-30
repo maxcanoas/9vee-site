@@ -15,7 +15,7 @@ const PAGINAS: Record<string, string> = {
   'traducao-simultanea.md': 'Tradução Simultânea',
   'lms.md': 'LMS',
   'quem-somos.md': 'Quem Somos',
-  'politica-de-privacidade.md': 'Política de privacidade',
+  'politica-de-privacidade.md': 'Política de Privacidade',
 };
 
 const arquivos = (await readdir(conteudo)).filter((nome) => nome.endsWith('.md'));

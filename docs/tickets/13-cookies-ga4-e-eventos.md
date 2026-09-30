@@ -17,3 +17,5 @@
 - [ ] Eventos conferidos no DebugView, com a propriedade de teste.
 - [ ] `docs/medicao.md`: o que cada evento significa, onde dispara, como marcar os dois principais no GA4 e como montar o relatório mensal por serviço e por público.
 - [ ] A política de privacidade descreve o aviso e o GA4 como ficaram.
+- [ ] O clique de saída da medição otimizada do GA4 fica desligado (na propriedade ou pelo gtag), e o DebugView confirma que nenhum evento leva o endereço do link do WhatsApp: ele traz o nome e a empresa no texto da mensagem, e a política promete que o nome e o contato não vão para o Google.
+- [ ] O link do rodapé que reabre as preferências se chama "Preferências de cookies", o nome que a política cita. Se o nome mudar, a política muda junto, e o rótulo sai de `ROTULOS_AINDA_SEM_TELA` em `tests/dist/privacidade-e-404.test.ts`.

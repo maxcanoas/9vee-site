@@ -2,9 +2,12 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, carregarPaginas } from './apoio';
+import { DIST, carregarPaginas, textoVisivel } from './apoio';
 
 const abrir = (arquivo: string) => parse(readFileSync(join(DIST, arquivo), 'utf8'));
+
+// O link de preferências dos cookies chega com o aviso, no ticket 13.
+const ROTULOS_AINDA_SEM_TELA = ['Preferências de cookies'];
 
 describe('política de privacidade', () => {
   const principal = abrir('politica-de-privacidade/index.html').querySelector('main')!;
@@ -17,6 +20,16 @@ describe('política de privacidade', () => {
 
   it('diz onde o titular reclama, além dos direitos dele', () => {
     expect(texto).toContain('ANPD');
+  });
+
+  // A política cita rótulos da interface entre aspas: se um deles mudar no site, ela precisa mudar junto.
+  it('cita os rótulos da interface como o site os mostra', () => {
+    const site = textoVisivel(abrir('index.html'));
+    const citados = [...texto.matchAll(/"([^"]+)"/g)].map(([, rotulo]) => rotulo);
+    expect(citados.length).toBeGreaterThan(0);
+    for (const rotulo of citados.filter((citado) => !ROTULOS_AINDA_SEM_TELA.includes(citado))) {
+      expect(site, rotulo).toContain(rotulo);
+    }
   });
 
   // Sem as respostas, a política não vai ao ar: a trava de produção pega a marca.

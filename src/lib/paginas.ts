@@ -57,11 +57,14 @@ export async function enderecoDosIdiomasPublicados(): Promise<Map<string, string
   return new Map(publicadas.map(({ idioma, caminho }) => [idioma.slug, caminho]));
 }
 
-/** A trilha do endereço, com o nome das páginas fora do menu. O Base (no JSON-LD) e a Trilha (na tela) usam esta. */
+/**
+ * A trilha do endereço, com o nome das páginas de idioma, que não estão no menu nem no rodapé. O Base (no JSON-LD) e
+ * a Trilha (na tela) usam esta.
+ */
 export async function trilhaDaPagina(caminho: string) {
   const site = await dadosDoSite();
-  const foraDoMenu = (await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho }));
-  return trilhaDoCaminho(site, caminho, foraDoMenu);
+  const comNomeProprio = (await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho }));
+  return trilhaDoCaminho(site, caminho, comNomeProprio);
 }
 
 function exigir<T>(entrada: T | undefined, arquivo: string): T {

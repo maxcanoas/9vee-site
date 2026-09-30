@@ -1,6 +1,6 @@
 # Pendências para a Daniella e o Arthur
 
-Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas dos 14 idiomas (tickets 09 e 10) trouxeram mais 68 marcações, 97 no total; a pergunta 2 do Arthur e a 7 da Daniella cobrem todas. Em 30/09, a política de privacidade (ticket 08) trouxe mais 6, 103 no total: a razão social, o CNPJ e o canal do titular (pergunta 25), a data da versão, que sai depois da revisão do advogado (26), e os dois prazos de guarda (27, a única pergunta nova).
+Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas dos 14 idiomas (tickets 09 e 10) trouxeram mais 68 marcações, 97 no total; a pergunta 2 do Arthur e a 7 da Daniella cobrem todas. Em 30/09, a política de privacidade (ticket 08) trouxe mais 7, 104 no total: a razão social, o CNPJ e o canal do titular (pergunta 25), a data da versão, que sai depois da revisão do advogado (26), e os três prazos de guarda (27, a única pergunta nova).
 
 A divisão entre os dois é sugestão minha, pelos papéis da proposta: a Daniella decide o site, os textos e os leads; o Arthur, as aulas e o agendamento. Os acessos que dependem do dono do domínio ficaram com o Arthur, porque o 9vee.com.br está no nome dele. Mude o que não bater.
 
@@ -55,7 +55,7 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 
 25. Qual é a razão social e o CNPJ da 9vee? Quem responde pelos dados pessoais (o encarregado da LGPD), ou qual e-mail recebe os pedidos dos titulares?
 26. A política de privacidade nova precisa passar por um advogado antes de ir ao ar. Vocês têm advogado para revisar? A política atual cita o foro de Arapoti (PR). A nova não fala de foro, porque trata só dos dados do site; fica com o advogado decidir se ele volta.
-27. Por quanto tempo a 9vee guarda os pedidos que chegam pelo site? E os registros de acesso do servidor, que anotam o endereço IP, a data e a hora de cada visita? A política precisa dizer os dois prazos. Se ainda não há regra, o advogado pode definir na revisão.
+27. Por quanto tempo a 9vee guarda os pedidos que chegam pelo site por e-mail? E as conversas que começam pelo botão do WhatsApp? E os registros de acesso do servidor, que anotam o endereço IP, a data e a hora de cada visita? A política precisa dizer os três prazos. Se ainda não há regra, o advogado pode definir na revisão.
 
 **Blog**
 
@@ -104,7 +104,7 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D24 | `content/site.md` | `rodape.pronuncia` |
 | D25 | `content/politica-de-privacidade.md` | razão social, CNPJ e canal do titular, em "Quem cuida dos seus dados" |
 | D26 | `content/politica-de-privacidade.md` | a data da versão, no fim, que sai depois da revisão do advogado |
-| D27 | `content/politica-de-privacidade.md` | o prazo dos pedidos, em "Quando você pede contato", e o dos registros de acesso, em "A hospedagem do site" |
+| D27 | `content/politica-de-privacidade.md` | o prazo dos pedidos, em "Quando você pede contato", o das conversas, em "Quando você fala pelo WhatsApp", e o dos registros de acesso, em "A hospedagem do site" |
 | D29 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
 | A2 | `content/idiomas/*.md` | as pendências de cada página de idioma: para quem é, níveis, formatos, professores, provas, material, idade, HSK, escrita e, nos oito esqueletos, as cinco perguntas de cada um |
 | A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |

@@ -33,9 +33,9 @@ function rotulosDoSite({ menu, rodape }: DadosDaTrilha): [string, string][] {
 export function trilhaDoCaminho(
   site: DadosDaTrilha,
   caminho: string,
-  foraDoMenu: readonly LinkDePagina[] = [],
+  comNomeProprio: readonly LinkDePagina[] = [],
 ): PassoDaTrilha[] {
-  const rotulos = new Map([...foraDoMenu.map(({ href, rotulo }): [string, string] => [href, rotulo]), ...rotulosDoSite(site)]);
+  const rotulos = new Map([...comNomeProprio.map(({ href, rotulo }): [string, string] => [href, rotulo]), ...rotulosDoSite(site)]);
   const niveis = caminho.split('/').filter(Boolean);
   return [
     { nome: site.trilha.inicio, caminho: '/' },

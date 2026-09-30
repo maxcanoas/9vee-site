@@ -121,10 +121,11 @@ servicos:
   - { id: "lms", nome: "LMS", descricao: "Plataforma de estudo para a equipe da empresa", ordemEmpresa: 4, ordemVoce: 4 }
 
 # Nome de cada página na mensagem do WhatsApp ("Vim pela página ... do site") e o pedido do botão flutuante, por público.
+# O pedido geral (&pedidoGeral) vale para as páginas que não são de um serviço: a home, o Quem Somos, a política e a 404.
 paginas:
   home:
     nome: "inicial"
-    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
+    assunto: &pedidoGeral { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
   nr1:
     nome: "Treinamento de NR-1"
     servico: "nr1"
@@ -148,13 +149,13 @@ paginas:
     assunto: { neutro: "quero saber do LMS", empresa: "quero o LMS para a minha equipe", voce: "quero saber do LMS para mim" }
   quemSomos:
     nome: "Quem Somos"
-    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
+    assunto: *pedidoGeral
   privacidade:
     nome: "Política de Privacidade"
-    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
+    assunto: *pedidoGeral
   erro404:
     nome: "de erro"
-    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
+    assunto: *pedidoGeral
 
 # Textos do pedido de contato (o drawer). O título muda quando a pessoa monta as próprias aulas.
 drawer:

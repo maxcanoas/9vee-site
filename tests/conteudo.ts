@@ -1,10 +1,14 @@
-// As páginas de idioma lidas da fonte, em content/idiomas/. Fica fora de tests/dist porque o teste de larguras,
-// no Playwright, também usa: aqui não entra nada do Vitest.
+// O que os testes do HTML e os do navegador leem do conteúdo: as páginas de texto e as de idioma, lidas da fonte,
+// em content/idiomas/. Fica fora de tests/dist porque o teste de larguras, no Playwright, também usa: aqui não
+// entra nada do Vitest.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { publicadaNoArquivo } from '../src/lib/publicacao.ts';
 import { partesDoArquivo } from '../src/lib/texto.ts';
+
+/** As páginas de texto, sem hero e sem o círculo da marca. */
+export const PAGINAS_DE_TEXTO = ['/politica-de-privacidade/'];
 
 export interface PaginaDeIdiomaNoConteudo {
   rota: string;

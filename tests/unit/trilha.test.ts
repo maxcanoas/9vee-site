@@ -18,8 +18,8 @@ const site = {
   rodape: { privacidade: { rotulo: 'Política de privacidade', href: '/politica-de-privacidade/' } },
 };
 
-// As páginas que não estão no menu, como as de idioma, trazem o próprio nome.
-const foraDoMenu = [{ rotulo: 'Inglês', href: '/curso-de-idiomas/ingles/' }];
+// As páginas que não estão no menu nem no rodapé, como as de idioma, trazem o próprio nome.
+const comNomeProprio = [{ rotulo: 'Inglês', href: '/curso-de-idiomas/ingles/' }];
 
 describe('trilhaDoCaminho', () => {
   it('começa no Início e dá à página o nome que ela tem no menu', () => {
@@ -33,8 +33,8 @@ describe('trilhaDoCaminho', () => {
     expect(trilhaDoCaminho(site, '/curso-de-idiomas/').at(-1)?.nome).toBe('Cursos de idiomas');
   });
 
-  it('faz um passo para cada nível do endereço, com o nome das páginas fora do menu', () => {
-    expect(trilhaDoCaminho(site, '/curso-de-idiomas/ingles/', foraDoMenu)).toEqual([
+  it('faz um passo para cada nível do endereço, com o nome que as páginas fora do menu e do rodapé trazem', () => {
+    expect(trilhaDoCaminho(site, '/curso-de-idiomas/ingles/', comNomeProprio)).toEqual([
       { nome: 'Início', caminho: '/' },
       { nome: 'Cursos de idiomas', caminho: '/curso-de-idiomas/' },
       { nome: 'Inglês', caminho: '/curso-de-idiomas/ingles/' },
@@ -56,6 +56,6 @@ describe('trilhaDoCaminho', () => {
 
   it('para o build quando um nível do endereço não tem nome', () => {
     expect(() => trilhaDoCaminho(site, '/termo-de-uso/')).toThrow('/termo-de-uso/');
-    expect(() => trilhaDoCaminho(site, '/curso-de-idiomas/espanhol/', foraDoMenu)).toThrow('/curso-de-idiomas/espanhol/');
+    expect(() => trilhaDoCaminho(site, '/curso-de-idiomas/espanhol/', comNomeProprio)).toThrow('/curso-de-idiomas/espanhol/');
   });
 });
