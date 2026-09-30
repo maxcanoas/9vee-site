@@ -56,6 +56,8 @@ const LINKS_GENERICOS = new Set([
 // Toda página tem trilha, menos a home, que é o começo dela, e a 404, que não tem lugar no site.
 const temTrilha = (rota: string) => rota !== '/' && rota !== '/404';
 const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/']);
+// A 404 e a política de privacidade, que é página de texto, não têm hero nem fechamento com o círculo.
+const SEM_CIRCULO = new Set(['/404', '/politica-de-privacidade/']);
 
 const paginas = carregarPaginas();
 const cursos = paginas.find((pagina) => pagina.rota === '/curso-de-idiomas/')!.raiz;
@@ -171,15 +173,19 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
   });
 
   // O nome vem do menu, e não do trecho da mensagem do WhatsApp, que tem outra caixa e muda por outro motivo.
-  // A página de idioma não está no menu: o nome dela é o do idioma na lista da página de cursos.
-  it('dá à página, na trilha, o mesmo nome que ela tem no menu ou na lista de idiomas', () => {
+  // A política de privacidade está só no rodapé, e a página de idioma não está em nenhum dos dois: o nome dela é o
+  // do idioma na lista da página de cursos.
+  it('dá à página, na trilha, o mesmo nome que ela tem no menu, no rodapé ou na lista de idiomas', () => {
     if (!temTrilha(rota)) return;
     const noMenu = raiz.querySelectorAll('header a').find((link) => link.getAttribute('href') === rota);
+    const noRodape = raiz.querySelectorAll('footer a').find((link) => link.getAttribute('href') === rota);
     const idioma = paginasDeIdiomaNoConteudo().find((pagina) => pagina.rota === rota)?.idioma;
     const nome = noMenu
       ? (noMenu.querySelector('.painel__item') ?? noMenu).text.trim()
-      : idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim();
-    expect(nome, `${rota} fora do menu e da lista de idiomas`).toBeDefined();
+      : noRodape
+        ? noRodape.text.trim()
+        : idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim();
+    expect(nome, `${rota} fora do menu, do rodapé e da lista de idiomas`).toBeDefined();
     expect(textoComoNoJsonLd(raiz.querySelector('nav.trilha [aria-current="page"]')!)).toBe(nome);
   });
 
@@ -227,7 +233,7 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
 
   it('usa o círculo da marca no topo e no fechamento, como enfeite (com o logo só no fim da home)', () => {
     const blocos = raiz.querySelectorAll('.hero__visual, .hero-pagina__visual, .topo-idioma, .cta-final');
-    if (rota !== '/404') expect(blocos.length, `${rota} sem hero`).toBeGreaterThan(0);
+    if (!SEM_CIRCULO.has(rota)) expect(blocos.length, `${rota} sem hero`).toBeGreaterThan(0);
     for (const bloco of blocos) {
       const circulo = bloco.querySelector('[aria-hidden="true"] img');
       expect(circulo, rota).not.toBeNull();

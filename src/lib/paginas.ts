@@ -20,6 +20,10 @@ export async function paginaParcial(id: 'traducao-simultanea' | 'lms' | 'quem-so
   return exigir(await getEntry('parciais', id), `content/${id}.md`);
 }
 
+export async function paginaPrivacidade() {
+  return exigir(await getEntry('privacidade', 'politica-de-privacidade'), 'content/politica-de-privacidade.md');
+}
+
 export type IdiomaDoSite = DadosDoSite['idiomas'][number];
 
 export interface PaginaDeIdioma {

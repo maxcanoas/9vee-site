@@ -149,6 +149,9 @@ paginas:
   quemSomos:
     nome: "Quem Somos"
     assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
+  privacidade:
+    nome: "Política de Privacidade"
+    assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
   erro404:
     nome: "de erro"
     assunto: { neutro: "quero pedir um orçamento", empresa: "quero um orçamento para a minha empresa", voce: "quero saber das aulas de idioma para mim" }
@@ -266,15 +269,17 @@ rodape:
   tituloRedes: "A 9vee nas redes"
   rotuloRede: "9vee no {rede}"
   rotuloNavegacao: "Rodapé"
+  # A política também dá o nome do último passo da trilha dela, porque não está no menu.
   privacidade:
     rotulo: "Política de privacidade"
-    href: "https://www.9vee.com.br/politica-de-privacidade"
+    href: "/politica-de-privacidade/"
   direitos: "© 2026 9vee"
 
 erro404:
   titulo: "Página não encontrada | 9vee"
   descricao: "O endereço que você abriu não existe no site da 9vee. Volte para a página inicial ou use o menu para achar idiomas, tradução simultânea, NR-1 e LMS."
   h1: "Esta página não existe"
-  texto: "O link pode estar quebrado ou a página mudou de lugar. Use o menu ou volte para a página inicial."
+  texto: "O link pode estar quebrado ou a página mudou de lugar. Os serviços da 9vee estão logo abaixo."
+  rotuloCaminhos: "Serviços da 9vee"
   voltar: "Voltar para a página inicial"
 ---

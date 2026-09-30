@@ -4,7 +4,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 
 **Fase 1 (desde 29/09/2026):** o MVP foi aprovado e está guardado na tag `mvp-aprovado`. O trabalho segue na branch `fase-1`, com a spec em `docs/fase-1-spec.md`, os tickets em `docs/tickets/` e o cronograma em `docs/cronograma-8-semanas.md`. Desde o ticket 01, o preview se publica com `npm run build:preview && npx wrangler deploy` (ou `npm run deploy`, que faz os dois). O `SITE_URL` não existe mais: o canonical é sempre o `https://www.9vee.com.br`.
 
-**Fase 1, onde estamos (29/09/2026):** tickets 01 a 04 feitos, e o 09 e o 10 (as páginas dos 14 idiomas e o lote 3) adiantados da semana 4, porque o Maxwell pediu para começar pelas páginas que ainda não existiam. Cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". Para retomar:
+**Fase 1, onde estamos (30/09/2026):** tickets 01 a 04 feitos, o 09 e o 10 (as páginas dos 14 idiomas e o lote 3) adiantados da semana 4, porque o Maxwell pediu para começar pelas páginas que ainda não existiam, e o 08 (a política de privacidade e a 404) adiantado da semana 3, sem o lote 2. Cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". A branch `fase-1` está no GitHub desde 30/09. Para retomar:
 
 - o preview foi publicado pelo Maxwell em 29/09 à noite (`npm run deploy`, versão `cd5a3dac`), com a trilha do ticket 04 e as páginas de idioma do 09, e conferido no ar: as nove páginas em 200, a 404, o noindex no cabeçalho e na meta, o canonical no domínio definitivo e os 14 idiomas da home ainda nas âncoras, porque nenhuma página de idioma está publicada;
 - a segunda publicação, também feita pelo Maxwell em 29/09 à noite (versão `75f1e57f`), levou as 14 páginas de idioma do ticket 10, conferidas no ar: todas em 200, com o noindex e o aviso no topo, e a home ainda sem link para elas;
@@ -12,7 +12,9 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 - o retrato do antes está em `docs/antes.md`, com duas medidas completas do Wix (11h50 e 20h29 de 29/09). Na comparação vale o melhor número do Wix em cada página, e ele não precisa ser medido de novo;
 - as 14 páginas de idioma estão no preview e fora da produção até o Arthur e a Daniella responderem (`publicada: false` em `content/idiomas/`). Seis têm texto do site atual (inglês, espanhol, mandarim, holandês, francês e português para estrangeiros), e oito são esqueletos com as perguntas do Arthur. No preview elas abrem pelo endereço: a home e a página de cursos só levam à página publicada;
 - o lote 3 (`docs/revisao-daniella/lote-3.md`) traz os seis idiomas escritos, pronto para a Daniella;
-- das páginas que ainda não existem, falta a política de privacidade (08), que o formulário do 12 precisa, e as cidades (11), quando chegarem os fatos locais. As parciais (05 a 07) esperam as respostas da Daniella;
+- a política de privacidade (`/politica-de-privacidade/`, ticket 08) existe desde 30/09, com seis pendências da Daniella (perguntas 25 a 27), e passa pelo advogado da 9vee antes de ir ao ar. O rodapé leva a ela na mesma aba, e a 404 mostra os serviços. Ela ainda não foi publicada no preview;
+- a ordem combinada em 30/09 é o 08, o 12 (envio real pela Web3Forms) e o 13 (aviso de cookies e GA4), que não dependem do cliente. O 12 começa pelo teste do endereço do preview e do localhost, com uma chave da Web3Forms criada com o e-mail do Maxwell. O lote 2 sai quando o 05 a 07 ficarem prontos;
+- das páginas que ainda não existem, faltam as cidades (11), quando chegarem os fatos locais. As parciais (05 a 07) esperam as respostas da Daniella;
 - `npm run lote -- N` faz o build de preview e gera o lote N; `npm run build:producao` termina na trava, que ainda acusa as pendências e as marcas do MVP, como esperado.
 
 ## Onde estamos
@@ -267,7 +269,7 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npm run preview`: serve o `dist-producao/` em http://localhost:4321, para conferir e medir.
 - `npm test`: testes de lógica, os dois builds (preview e produção) e os testes do HTML gerado.
 - `npm run e2e`: build de preview e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
-- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9 e os dos tickets `ticket-04` e `ticket-09`.
+- `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9 e os dos tickets `ticket-04`, `ticket-08`, `ticket-09` e `ticket-10`.
 - `npm install --no-save lighthouse@13.5.0 && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção. Os scripts só rodam com o Lighthouse 13.5.0, a régua do retrato do antes.
 - `node scripts/lighthouse-no-ar.ts <endereços completos>`: a mesma medida num site no ar, o Wix no antes e o site novo no depois. No Wix, cada rodada conta como visita no GA4 e no Twipla; no site novo, não, porque o GA4 só carrega depois do aceite dos cookies.
 - Medida longa pede a máquina acordada: em 29/09 o Windows entrou em suspensão por inatividade às 21h05, no meio de um teste, e o processo da página caiu.

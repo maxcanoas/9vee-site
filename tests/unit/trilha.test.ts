@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { trilhaDoCaminho } from '../../src/lib/trilha';
 
-// O menu de content/site.md, só com o que a trilha usa.
+// O menu e o rodapé de content/site.md, só com o que a trilha usa.
 const site = {
   trilha: { inicio: 'Início' },
   menu: {
@@ -15,6 +15,7 @@ const site = {
     ],
     quemSomos: { rotulo: 'Quem somos', href: '/quem-somos/' },
   },
+  rodape: { privacidade: { rotulo: 'Política de privacidade', href: '/politica-de-privacidade/' } },
 };
 
 // As páginas que não estão no menu, como as de idioma, trazem o próprio nome.
@@ -45,8 +46,16 @@ describe('trilhaDoCaminho', () => {
     expect(trilhaDoCaminho(site, '/curso-de-idiomas/', outroNome).at(-1)?.nome).toBe('Cursos de idiomas');
   });
 
+  // A política de privacidade não está no menu: o nome dela é o do link do rodapé.
+  it('dá à página do rodapé o nome que ela tem no rodapé', () => {
+    expect(trilhaDoCaminho(site, '/politica-de-privacidade/')).toEqual([
+      { nome: 'Início', caminho: '/' },
+      { nome: 'Política de privacidade', caminho: '/politica-de-privacidade/' },
+    ]);
+  });
+
   it('para o build quando um nível do endereço não tem nome', () => {
-    expect(() => trilhaDoCaminho(site, '/politica-de-privacidade/')).toThrow('/politica-de-privacidade/');
+    expect(() => trilhaDoCaminho(site, '/termo-de-uso/')).toThrow('/termo-de-uso/');
     expect(() => trilhaDoCaminho(site, '/curso-de-idiomas/espanhol/', foraDoMenu)).toThrow('/curso-de-idiomas/espanhol/');
   });
 });

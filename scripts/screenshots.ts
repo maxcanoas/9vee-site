@@ -224,6 +224,17 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'frances-inteira-1280', rota: '/curso-de-idiomas/frances/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'alemao-esqueleto-390', rota: '/curso-de-idiomas/alemao/', largura: 390, altura: 844, paginaInteira: true },
   ],
+  'ticket-08': [
+    { nome: 'privacidade-topo-360', rota: '/politica-de-privacidade/', largura: 360, altura: 780 },
+    { nome: 'privacidade-inteira-390', rota: '/politica-de-privacidade/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'privacidade-inteira-1280', rota: '/politica-de-privacidade/', largura: 1280, altura: 800, paginaInteira: true },
+    // A trilha no fundo claro, com o foco no link; e no hero escuro, que não pode ter mudado.
+    { nome: 'privacidade-trilha-foco-1280', rota: '/politica-de-privacidade/', largura: 1280, altura: 800, antes: (p) => p.locator('.trilha a').focus() },
+    { nome: 'lms-trilha-1280', rota: '/lms/', largura: 1280, altura: 800 },
+    { nome: 'erro-390', rota: '/pagina-que-nao-existe/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'erro-1280', rota: '/pagina-que-nao-existe/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('footer') },
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

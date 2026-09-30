@@ -2,6 +2,16 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, terceira leva (30/09): a política de privacidade e a página de erro
+
+- O site novo tem a sua própria política de privacidade: https://9vee-preview.9vee-site.workers.dev/politica-de-privacidade/
+  - Ela diz o que o site coleta, quem recebe os dados e por quanto tempo eles ficam guardados. Já descreve também o aviso de cookies, que chega ao preview mais adiante.
+  - O link fica no rodapé de toda página e agora abre no próprio site, e não mais no site antigo.
+  - O que aparece como "a confirmar" é a razão social, o CNPJ, o contato para pedidos sobre dados pessoais, os prazos de guarda e a data da versão (perguntas 25 a 27 da Daniella). Com as respostas, ela passa pelo advogado de vocês antes de ir ao ar.
+- A página que aparece quando alguém abre um endereço que não existe agora mostra os serviços da 9vee, para a pessoa seguir dali: https://9vee-preview.9vee-site.workers.dev/pagina-que-nao-existe/
+
+Nota para o Maxwell, não para o cliente: vale publicar (`npm run deploy`) antes de mandar a mensagem de pendências, porque as perguntas 25 a 27 falam da política nova, e a Daniella pode mandar o link ao advogado. As três levas podem ir juntas, com o lote 1, o lote 3 e a mensagem. A política entra no lote 2, que sai quando Tradução, LMS e Quem Somos ficarem prontas.
+
 ## Semana 1, segunda leva (29/09 a 04/10): uma página para cada idioma e o lote 3
 
 - Agora os 14 idiomas têm página no preview. Holandês, francês e português para estrangeiros já trazem o que o site atual diz de cada um: o Inburgering, as provas de francês e o CELPE-Bras.

@@ -1,0 +1,90 @@
+---
+// A política de privacidade: página de texto, no fundo claro, sem hero e sem foto. A trilha abre a página, e cada
+// seção é uma sequência de parágrafos e listas, na ordem de content/politica-de-privacidade.md.
+import Base from '../layouts/Base.astro';
+import Trilha from '../components/Trilha.astro';
+import Texto from '../components/Texto.astro';
+import { paginaPrivacidade } from '../lib/paginas';
+
+const { data: pagina } = await paginaPrivacidade();
+---
+
+<Base pagina="privacidade" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
+  <article class="conteiner politica">
+    <header class="politica__topo">
+      <Trilha />
+      <h1><Texto de={pagina.h1} /></h1>
+      <p class="politica__apoio texto-secundario"><Texto de={pagina.apoio} /></p>
+    </header>
+
+    {
+      pagina.secoes.map((secao) => (
+        <section class="politica__secao" id={secao.id} aria-labelledby={`${secao.id}-titulo`}>
+          <h2 id={`${secao.id}-titulo`}>
+            <Texto de={secao.titulo} />
+          </h2>
+          {secao.blocos.map((bloco) =>
+            typeof bloco === 'string' ? (
+              <p>
+                <Texto de={bloco} />
+              </p>
+            ) : (
+              <ul class="politica__lista">
+                {bloco.itens.map((item) => (
+                  <li>
+                    <Texto de={item} />
+                  </li>
+                ))}
+              </ul>
+            ),
+          )}
+        </section>
+      ))
+    }
+
+    <p class="texto-secundario"><Texto de={pagina.versao} /></p>
+  </article>
+</Base>
+
+<style>
+  .politica {
+    display: grid;
+    gap: var(--e-6);
+    padding-block: var(--e-7) var(--secao);
+  }
+
+  .politica__topo {
+    display: grid;
+    gap: var(--e-5);
+  }
+
+  /* Título de documento, e não de hero: a página é para ler, e o título grande das outras empurraria o texto para
+     baixo da primeira tela. */
+  .politica__topo h1 {
+    font-size: var(--t-2);
+  }
+
+  .politica__apoio {
+    max-inline-size: 48ch;
+    font-size: var(--t-destaque);
+    line-height: var(--altura-apoio);
+  }
+
+  .politica__secao {
+    display: grid;
+    gap: var(--e-4);
+    max-inline-size: var(--medida);
+  }
+
+  .politica__secao h2 {
+    font-size: var(--t-3);
+    line-height: var(--altura-subtitulo);
+    letter-spacing: 0;
+  }
+
+  .politica__lista {
+    display: grid;
+    gap: var(--e-2);
+    padding-inline-start: var(--e-5);
+  }
+</style>

@@ -126,7 +126,7 @@ const site = defineCollection({
       ),
     paginas: z
       .record(
-        z.enum(['home', 'nr1', 'idiomas', 'idioma', 'traducao', 'lms', 'quemSomos', 'erro404']),
+        z.enum(['home', 'nr1', 'idiomas', 'idioma', 'traducao', 'lms', 'quemSomos', 'privacidade', 'erro404']),
         z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
       )
       .refine(({ idioma }) => [idioma.nome, ...Object.values(idioma.assunto)].every((texto) => texto.includes('{idioma}')), {
@@ -218,6 +218,8 @@ const site = defineCollection({
       descricao: seo.shape.descricao,
       h1: z.string(),
       texto: z.string(),
+      // O nome, para o leitor de tela, da lista de caminhos: os grupos do menu, com os serviços de cada público.
+      rotuloCaminhos: z.string(),
       voltar: z.string(),
     }),
   }),
@@ -472,6 +474,27 @@ const parciais = defineCollection({
   }),
 });
 
+// A política de privacidade: uma página de texto. Cada seção é uma sequência de parágrafos e listas, na ordem
+// do arquivo, e a versão fecha a página.
+const privacidade = defineCollection({
+  loader: glob({ pattern: 'politica-de-privacidade.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    h1: z.string(),
+    apoio: z.string(),
+    secoes: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z-]+$/),
+          titulo: z.string(),
+          blocos: z.array(z.union([z.string(), z.object({ itens: z.array(z.string()).min(2) })])).min(1),
+        }),
+      )
+      .min(1),
+    versao: z.string(),
+  }),
+});
+
 export const collections = {
   site,
   home,
@@ -479,4 +502,5 @@ export const collections = {
   idiomas,
   paginasDeIdioma,
   parciais,
+  privacidade,
 };

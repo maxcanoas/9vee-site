@@ -3,7 +3,9 @@ import { paginasDeIdiomaNoConteudo } from '../conteudo.ts';
 
 // As páginas de idioma saem de content/idiomas/: cada idioma novo entra aqui sozinho.
 const ROTAS_DE_IDIOMA = paginasDeIdiomaNoConteudo().map((pagina) => pagina.rota);
-const PAGINAS = ['/', '/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/', ...ROTAS_DE_IDIOMA];
+const COM_HERO = ['/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/', ...ROTAS_DE_IDIOMA];
+// A política é página de texto, sem hero, e a 404 responde por qualquer endereço que não existe.
+const PAGINAS = ['/', ...COM_HERO, '/politica-de-privacidade/', '/pagina-que-nao-existe/'];
 const LARGURAS = [360, 390, 768, 1280, 1920];
 
 const sobraHorizontal = (pagina: Page) =>
@@ -42,7 +44,7 @@ for (const largura of LARGURAS) {
 
 test.describe('hero das páginas internas', () => {
   // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook.
-  for (const rota of PAGINAS.filter((rota) => rota !== '/')) {
+  for (const rota of COM_HERO) {
     test(`${rota}: o botão cabe inteiro na primeira tela em 1280 x 800`, async ({ page }) => {
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(rota);

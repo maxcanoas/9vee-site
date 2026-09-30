@@ -32,6 +32,8 @@ const ultimo = passos.length - 1;
 </nav>
 
 <style>
+  /* As cores seguem o fundo: no hero escuro, o texto claro; na página de texto (a política de privacidade), o
+     escuro do fundo claro. O passo atual fica no tom secundário, e o link no tom do texto. */
   .trilha__lista {
     display: flex;
     flex-wrap: wrap;
@@ -40,8 +42,12 @@ const ultimo = passos.length - 1;
     padding: 0;
     margin: 0;
     list-style: none;
-    color: var(--sobre-escuro);
+    color: var(--navy-2);
     font-size: var(--t-pequeno);
+  }
+
+  :global(.escuro) .trilha__lista {
+    color: var(--sobre-escuro);
   }
 
   .trilha__passo {
@@ -61,6 +67,10 @@ const ultimo = passos.length - 1;
 
   .trilha__link {
     position: relative;
+    color: var(--navy);
+  }
+
+  :global(.escuro) .trilha__link {
     color: var(--papel);
   }
 

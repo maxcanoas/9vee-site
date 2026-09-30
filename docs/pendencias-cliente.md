@@ -1,6 +1,6 @@
 # Pendências para a Daniella e o Arthur
 
-Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas dos 14 idiomas (tickets 09 e 10) trouxeram mais 68 marcações, 97 no total; a pergunta 2 do Arthur e a 7 da Daniella cobrem todas.
+Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas dos 14 idiomas (tickets 09 e 10) trouxeram mais 68 marcações, 97 no total; a pergunta 2 do Arthur e a 7 da Daniella cobrem todas. Em 30/09, a política de privacidade (ticket 08) trouxe mais 6, 103 no total: a razão social, o CNPJ e o canal do titular (pergunta 25), a data da versão, que sai depois da revisão do advogado (26), e os dois prazos de guarda (27, a única pergunta nova).
 
 A divisão entre os dois é sugestão minha, pelos papéis da proposta: a Daniella decide o site, os textos e os leads; o Arthur, as aulas e o agendamento. Os acessos que dependem do dono do domínio ficaram com o Arthur, porque o 9vee.com.br está no nome dele. Mude o que não bater.
 
@@ -54,19 +54,20 @@ Daniella, para fechar os textos do site novo preciso destas respostas. As oito p
 **Privacidade e termos**
 
 25. Qual é a razão social e o CNPJ da 9vee? Quem responde pelos dados pessoais (o encarregado da LGPD), ou qual e-mail recebe os pedidos dos titulares?
-26. A política de privacidade atual cita o foro de Arapoti (PR). Está certo? Vocês têm advogado para revisar a política nova?
+26. A política de privacidade nova precisa passar por um advogado antes de ir ao ar. Vocês têm advogado para revisar? A política atual cita o foro de Arapoti (PR). A nova não fala de foro, porque trata só dos dados do site; fica com o advogado decidir se ele volta.
+27. Por quanto tempo a 9vee guarda os pedidos que chegam pelo site? E os registros de acesso do servidor, que anotam o endereço IP, a data e a hora de cada visita? A política precisa dizer os dois prazos. Se ainda não há regra, o advogado pode definir na revisão.
 
 **Blog**
 
-27. Podem parar de publicar posts no blog do Wix a partir de agora? Cada post novo vira mais um endereço para redirecionar na troca.
+28. Podem parar de publicar posts no blog do Wix a partir de agora? Cada post novo vira mais um endereço para redirecionar na troca.
 
 **Para a revisão dos textos**
 
-28. A Lei 14.831 ainda não tem o regulamento que diz como pedir o certificado. Eu confiro de novo na semana da publicação; se vocês souberem de novidade antes, me avisem.
+29. A Lei 14.831 ainda não tem o regulamento que diz como pedir o certificado. Eu confiro de novo na semana da publicação; se vocês souberem de novidade antes, me avisem.
 
 **Serviços**
 
-29. A página de cursos atual oferece "Realocação de funcionários": apoio com idioma, legislação, documentação e adaptação para quem muda de cidade ou de país. Esse serviço continua? Se continuar, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros, sem página própria.
+30. A página de cursos atual oferece "Realocação de funcionários": apoio com idioma, legislação, documentação e adaptação para quem muda de cidade ou de país. Esse serviço continua? Se continuar, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros, sem página própria.
 
 ### Para o Arthur
 
@@ -101,12 +102,15 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D9 a D14 | `content/treinamento-nr-1.md` | formato, carga horária, turma, plano de ação, comprovante e turma inteira |
 | D21 | `content/home.md`, `content/lms.md` | texto do LMS na lista de serviços e nota da página LMS |
 | D24 | `content/site.md` | `rodape.pronuncia` |
-| D28 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
+| D25 | `content/politica-de-privacidade.md` | razão social, CNPJ e canal do titular, em "Quem cuida dos seus dados" |
+| D26 | `content/politica-de-privacidade.md` | a data da versão, no fim, que sai depois da revisão do advogado |
+| D27 | `content/politica-de-privacidade.md` | o prazo dos pedidos, em "Quando você pede contato", e o dos registros de acesso, em "A hospedagem do site" |
+| D29 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
 | A2 | `content/idiomas/*.md` | as pendências de cada página de idioma: para quem é, níveis, formatos, professores, provas, material, idade, HSK, escrita e, nos oito esqueletos, as cinco perguntas de cada um |
 | A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |
 | A4 | `content/curso-de-idiomas.md`, `content/idiomas/mandarim.md` | FAQ "Quanto tempo leva para subir um nível?" e, no mandarim, "Em quanto tempo dá para conversar?" |
 | A5 | `content/curso-de-idiomas.md` | FAQ "No fim do curso eu recebo certificado?" |
 | D7 (idiomas) | `content/idiomas/*.md` | o "Quanto custa?" de cada página de idioma |
-| D29 | `content/curso-de-idiomas.md` (parte de empresas) e `content/idiomas/portugues-para-estrangeiros.md` | se a Daniella confirmar, um bloco de realocação nas duas páginas, como a spec pede; hoje nenhuma das duas fala do serviço |
+| D30 | `content/curso-de-idiomas.md` (parte de empresas) e `content/idiomas/portugues-para-estrangeiros.md` | se a Daniella confirmar, um bloco de realocação nas duas páginas, como a spec pede; hoje nenhuma das duas fala do serviço |
 
 As demais perguntas são novas da Fase 1 e ainda não têm marcação no código.
