@@ -390,6 +390,6 @@ As 13 foram recortadas por um script de uso único, que fica com as originais em
 | `idioma-noruegues.jpg` | creme, em volta | 72, 42, 784 × 980 | 84% | placa com letras num prédio de Bryggen, ilegível na tela |
 | `idioma-portugues-para-estrangeiros.jpg` | creme, em volta | 47, 35, 836 × 1045 | 90% | veio como `idioma-portugues.jpg` |
 | `idioma-romeno.jpg` | azul-marinho, só nos cantos de cima | 8, 4, 912 × 1140 | 98% | inscrição no frontão do Ateneu, ilegível na tela |
-| `idioma-russo.jpg` | azul-marinho, em volta | 94, 56, 740 × 925 | 80% | a cruz da torre central fica a uns 5 px do topo do arco. Na original, ela já ficava a 14 px do arco desenhado. Se incomodar, é a candidata a refazer |
+| `idioma-russo.jpg` | azul-marinho, em volta | 94, 56, 740 × 925 | 80% | a cruz da torre central fica a uns 5 px do topo do arco. Na original, ela já ficava a 14 px do arco desenhado. O Maxwell decidiu manter, em 30/09 |
 | `idioma-sueco.jpg` | creme, só nos cantos de cima | 8, 4, 912 × 1140 | 98% | |
-| `idioma-arabe.jpg` | nenhuma | sem recorte (928 × 1152) | 100% | o arco é de pedra e faz parte da cena. Recortar por dentro dele poria o topo do arco do site na ponta do Burj Khalifa: a abertura começa em y≈30, e a ponta da torre fica em y≈45 |
+| `idioma-arabe.jpg` | nenhuma | sem recorte (928 × 1152) | 100% | o arco é de pedra e faz parte da cena. Recortar por dentro dele poria o topo do arco do site na ponta do Burj Khalifa: a abertura começa em y≈30, e a ponta da torre fica em y≈45. O Maxwell decidiu manter o arco de pedra, em 30/09 |
