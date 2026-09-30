@@ -279,7 +279,7 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npx astro check`: tipos.
 - Variáveis de ambiente: um arquivo por modo (`.env.development`, `.env.preview` e `.env.producao`), copiado do `.env.example`. O build recusa `.env` e `.env.local`, que valeriam para todos os modos.
 
-Na última rodada (ticket 10, 29/09/2026): 133 testes de lógica, 919 do HTML e 225 no navegador (264 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
+Na última rodada (ticket 08, 30/09/2026): 134 testes de lógica, 984 do HTML e 235 no navegador (284 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). No ticket 10, um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
 
 Lighthouse local da etapa 9, mediana de 3 rodadas: Performance de 99 a 100, Acessibilidade 100, Práticas 100, SEO 100 no build indexável, LCP de 1,66 s a 1,97 s e CLS até 0,001. A home ficou perto do teto de 2,0 s de LCP, porque o círculo da marca é uma imagem a mais na primeira tela. Medido antes das correções das fases 3 e 4, que só mexem em CSS e em SVG abaixo da dobra.
 
