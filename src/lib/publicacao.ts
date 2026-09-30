@@ -5,6 +5,10 @@ import { partesDoArquivo } from './texto.ts';
 
 export type Modo = 'local' | 'preview' | 'producao';
 
+// As pastas de content/ cujas páginas podem ficar fora da produção. Nas outras, a marca não vale: uma página do
+// menu vai ao ar de qualquer jeito, e a marca esquecida nela esconderia uma pendência da trava.
+export const PASTAS_COM_PUBLICACAO = ['idiomas'];
+
 export function entraNoBuild({ publicada }: { publicada: boolean }, modo: Modo): boolean {
   return publicada || modo !== 'producao';
 }

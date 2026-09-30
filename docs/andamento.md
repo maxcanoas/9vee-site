@@ -8,7 +8,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 
 - o lote 1 de revisão (`docs/revisao-daniella/lote-1.md`) e a mensagem de pendências (`docs/pendencias-cliente.md`) estão prontos para o Maxwell mandar à cliente, junto com o preview publicado e o texto de `docs/novidades-preview.md`;
 - o retrato do antes está em `docs/antes.md`, com duas medidas completas do Wix (11h50 e 20h29 de 29/09). Na comparação vale o melhor número do Wix em cada página, e ele não precisa ser medido de novo;
-- as páginas de inglês, espanhol e mandarim estão no preview e fora da produção até o Arthur responder (`publicada: false` em `content/idiomas/`);
+- as páginas de inglês, espanhol e mandarim estão no preview e fora da produção até o Arthur e a Daniella responderem (`publicada: false` em `content/idiomas/`). No preview elas abrem pelo endereço: a home e a página de cursos só levam à página publicada;
 - a ordem que recomendei para as páginas que faltam: o ticket 10 começando por holandês e francês, que têm material no site atual, depois a política de privacidade (08), que o formulário do 12 precisa, e as cidades (11) quando chegarem os fatos locais. As parciais (05 a 07) esperam as respostas da Daniella;
 - `npm run lote -- N` faz o build de preview e gera o lote N; `npm run build:producao` termina na trava, que ainda acusa as pendências e as marcas do MVP, como esperado.
 

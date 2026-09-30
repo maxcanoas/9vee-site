@@ -414,6 +414,17 @@ const paginasDeIdioma = defineCollection({
     paraQuem: z
       .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
       .optional(),
+    // Os níveis que aquele idioma oferece, na escala dele: do A1 ao C2 ou a da prova do idioma (HSK, JLPT).
+    niveis: z
+      .object({
+        titulo: z.string(),
+        apoio: z.string(),
+        itens: z.array(z.object({ codigo: z.string(), rotulo: z.string(), texto: z.string() })).min(2).max(6),
+      })
+      .optional(),
+    formatos: z
+      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
+      .optional(),
     provas: z
       .object({ titulo: z.string(), apoio: z.string(), itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1) })
       .optional(),

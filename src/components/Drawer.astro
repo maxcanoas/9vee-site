@@ -13,11 +13,9 @@ import type { DadosDoSite } from '../lib/site';
 interface Props {
   site: DadosDoSite;
   pagina: PaginaDoContato;
-  /** Na página de um idioma: o pedido que abre sem idioma no botão (o do cabeçalho) já sai com ele. */
-  idiomaDaPagina?: string;
 }
 
-const { site, pagina, idiomaDaPagina } = Astro.props;
+const { site, pagina } = Astro.props;
 const { drawer: textos, formularios, servicos } = site;
 const idiomas = site.idiomas.map(({ slug, nome }) => ({ slug, nome }));
 const formularioIds = Object.keys(formularios) as FormularioId[];
@@ -26,7 +24,7 @@ const dados: DadosDoDrawer = {
   numero: site.contato.whatsapp,
   pagina: pagina.nome,
   servicoDaPagina: pagina.servico ?? null,
-  idiomaDaPagina: idiomaDaPagina ?? null,
+  idiomaDaPagina: pagina.idioma ?? null,
   servicos: Object.fromEntries(servicos.map((s) => [s.id, textoPuro(s.nome)])) as DadosDoDrawer['servicos'],
   formularios,
   idiomas,

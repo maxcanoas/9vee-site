@@ -2,11 +2,15 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, jsonLd, paginasDeIdioma } from './apoio';
+import { DIST, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
 
 const idiomas = parse(readFileSync(join(DIST, 'curso-de-idiomas', 'index.html'), 'utf8'));
-// O preview tem todas as páginas de idioma, publicadas ou não.
-const paginaDoIdioma = new Map(paginasDeIdioma().map((pagina) => [pagina.idioma, pagina.rota]));
+// A lista só leva à página de idioma publicada.
+const enderecoDoIdioma = new Map(
+  paginasDeIdiomaNoConteudo()
+    .filter((pagina) => pagina.publicada)
+    .map((pagina) => [pagina.idioma, pagina.rota]),
+);
 
 describe('cursos de idiomas', () => {
   it('traz as seções na ordem do brief', () => {
@@ -41,12 +45,12 @@ describe('cursos de idiomas', () => {
     }
   });
 
-  it('leva o idioma com página a ela, e dá aos outros um botão que já manda o idioma para o pedido', () => {
+  it('leva o idioma com página publicada a ela, e dá aos outros um botão que já manda o idioma para o pedido', () => {
     const itens = idiomas.querySelectorAll('#idiomas .familia__item');
     expect(itens).toHaveLength(14);
     for (const item of itens) {
       const slug = item.getAttribute('id');
-      const pagina = paginaDoIdioma.get(slug ?? '');
+      const pagina = enderecoDoIdioma.get(slug ?? '');
       if (pagina) {
         expect(item.querySelector('a.idioma')?.getAttribute('href'), slug ?? '').toBe(pagina);
         expect(item.querySelector('[data-abre-contato]'), slug ?? '').toBeNull();
@@ -61,7 +65,7 @@ describe('cursos de idiomas', () => {
 
   // O link para a página do idioma funciona sem JavaScript; o botão do pedido, não.
   it('mantém a lista de idiomas à vista sem JavaScript', () => {
-    expect(idiomas.querySelectorAll('#idiomas noscript')).toHaveLength(14 - paginaDoIdioma.size);
+    expect(idiomas.querySelectorAll('#idiomas noscript')).toHaveLength(14 - enderecoDoIdioma.size);
   });
 
   it('descreve os 14 cursos em JSON-LD, cada um na página dele ou na própria âncora', () => {
@@ -69,7 +73,7 @@ describe('cursos de idiomas', () => {
     const itens = lista?.itemListElement as { position: number; item: Record<string, string> }[];
     expect(itens).toHaveLength(14);
     expect(itens.map((i) => i.position)).toEqual(Array.from({ length: 14 }, (_, i) => i + 1));
-    const rotas = [...paginaDoIdioma.values()];
+    const rotas = [...enderecoDoIdioma.values()];
     for (const { item } of itens) {
       expect(item['@type']).toBe('Course');
       expect(item.name).toMatch(/^Curso de .+/);

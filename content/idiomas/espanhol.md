@@ -6,7 +6,7 @@ publicada: false
 
 seo:
   titulo: "Curso de espanhol e preparatório para o DELE | 9vee"
-  descricao: "Aulas de espanhol e preparatório para o DELE, o diploma oficial do idioma, com a gramática que a prova cobra, prática intensiva e provas de anos anteriores."
+  descricao: "Aulas de espanhol e preparatório para o DELE, o diploma oficial do idioma, com a gramática que a prova cobra e o treino com provas de anos anteriores."
 
 topo:
   h1: "Curso de espanhol"
@@ -15,7 +15,7 @@ topo:
 
 provas:
   titulo: "Preparação para o DELE"
-  apoio: "Aplicado em centros autorizados, como os Institutos Cervantes e as embaixadas."
+  apoio: "O diploma é emitido em centros autorizados, como os Institutos Cervantes e as embaixadas."
   itens:
     - nome: "DELE"
       texto: "Diploma de Español como Lengua Extranjera: o certificado oficial de espanhol para quem não é nativo."
@@ -24,13 +24,13 @@ faq:
   titulo: "Perguntas sobre o espanhol"
   itens:
     - pergunta: "Como é o preparatório do DELE?"
-      resposta: "Ele trabalha a gramática que a prova cobra, com prática intensiva e provas de anos anteriores, para você chegar ao exame conhecendo o formato."
+      resposta: "Ele trabalha a gramática que a prova cobra e treina com provas de anos anteriores."
     - pergunta: "Que níveis de espanhol vocês dão?"
       resposta: "O diagnóstico do começo mostra o seu nível [CONFIRMAR COM O ARTHUR: que níveis de espanhol a 9vee oferece, e para quem costuma procurar: carreira, viagem, mudança de país ou prova]."
     - pergunta: "As aulas são online ou presenciais?"
       resposta: "Há aula online, ao vivo, de qualquer cidade [CONFIRMAR COM O ARTHUR: se o espanhol também tem aula particular, turma, presencial ou in company, e se os professores são nativos]."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de espanhol]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
 
 ctaFinal:
   titulo: "Vai prestar o DELE ou quer falar espanhol?"

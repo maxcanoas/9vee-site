@@ -8,6 +8,7 @@ import {
   ehObrigatorio,
   formularioDe,
   hojeLocal,
+  idiomaInicial,
   linhasDaConfirmacao,
   linhasDoPedido,
   linkWhatsApp,
@@ -175,13 +176,15 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     for (const radio of todos<HTMLInputElement>(`input[name="${nome}"]`)) radio.checked = radio.value === valor;
   }
 
-  // O idioma do botão vale sempre. O da página entra só no grupo em que a pessoa ainda não escolheu nenhum:
-  // quem trocou o idioma e reabriu o pedido pelo cabeçalho encontra a própria escolha.
-  function marcarIdioma(slug: string, soSemEscolha = false) {
+  // Os dois formulários de idiomas (o da empresa e o de quem estuda) têm cada um o seu grupo, e cada grupo decide
+  // pela mesma regra, com a escolha que já tem.
+  function marcarIdiomas(doBotao: string | undefined) {
     const radios = todos<HTMLInputElement>('input[type="radio"][name$="-idioma"]');
-    for (const radio of radios) {
-      const escolhido = radios.some((outro) => outro.name === radio.name && outro.checked);
-      if (radio.value === slug && !(soSemEscolha && escolhido)) radio.checked = true;
+    for (const nome of new Set(radios.map((radio) => radio.name))) {
+      const grupo = radios.filter((radio) => radio.name === nome);
+      const escolhido = grupo.find((radio) => radio.checked)?.value ?? null;
+      const idioma = idiomaInicial({ doBotao, escolhido, daPagina: dados.idiomaDaPagina });
+      for (const radio of grupo) radio.checked = radio.value === idioma;
     }
   }
 
@@ -350,8 +353,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     marcar('drawer-publico', publico);
     servico = servicoInicial({ doBotao: origem.dataset.servico, anterior: servico, daPagina: dados.servicoDaPagina, publico });
     marcar('drawer-servico', servico);
-    if (origem.dataset.idioma) marcarIdioma(origem.dataset.idioma);
-    else if (dados.idiomaDaPagina) marcarIdioma(dados.idiomaDaPagina, true);
+    marcarIdiomas(origem.dataset.idioma);
     hoje = hojeLocal(new Date());
     for (const data of todos<HTMLInputElement>('input[type="date"]')) data.min = hoje;
     limparErros();

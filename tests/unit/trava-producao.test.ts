@@ -150,4 +150,15 @@ describe('pendenciasNoConteudo', () => {
       { regra: 'pendencia', onde: 'content/idiomas/espanhol.md', detalhe: 'níveis' },
     ]);
   });
+
+  // A marca só vale na pasta das páginas que podem ficar fora. Esquecida numa página do menu, que vai ao ar de
+  // qualquer jeito, ela não pode esconder uma pendência.
+  it('lê a pendência da página do menu mesmo com a marca de não publicada', () => {
+    const raiz = montarBuild({
+      'content/lms.md': '---\npublicada: false\nhero:\n  h1: "[CONFIRMAR COM A DANIELLA: nome da plataforma]"\n---\n',
+    });
+    expect(pendenciasNoConteudo(join(raiz, 'content'))).toEqual([
+      { regra: 'pendencia', onde: 'content/lms.md', detalhe: 'nome da plataforma' },
+    ]);
+  });
 });

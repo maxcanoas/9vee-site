@@ -224,18 +224,29 @@ export function mensagemFlutuante(pagina: string, assunto: string, modelos: Mode
 export interface PaginaDoContato {
   nome: string;
   servico?: ServicoId;
+  /** Na página de um idioma, o slug dele: o pedido aberto sem idioma no botão já sai com este. */
+  idioma?: string;
   assunto: TextosPorPublico;
 }
 
 /** A página de um idioma sai de um modelo só, com o idioma no meio da frase: "quero aulas de inglês". */
-export function paginaDoIdioma(modelo: PaginaDoContato, nomeDoIdioma: string): PaginaDoContato {
-  const dados = { idioma: minuscula(nomeDoIdioma) };
+export function paginaDoContatoDoIdioma(modelo: PaginaDoContato, idioma: { slug: string; nome: string }): PaginaDoContato {
+  const dados = { idioma: minuscula(idioma.nome) };
   const { neutro, empresa, voce } = modelo.assunto;
   return {
     ...modelo,
     nome: preencher(modelo.nome, dados),
+    idioma: idioma.slug,
     assunto: { neutro: preencher(neutro, dados), empresa: preencher(empresa, dados), voce: preencher(voce, dados) },
   };
+}
+
+/**
+ * O idioma a marcar num grupo do pedido quando ele abre: o do botão, o que a pessoa já tinha escolhido e, na
+ * página de um idioma, o dela. Quem trocou o idioma e reabriu pelo cabeçalho encontra a própria escolha.
+ */
+export function idiomaInicial(pistas: { doBotao: string | undefined; escolhido: string | null; daPagina: string | null }) {
+  return pistas.doBotao ?? pistas.escolhido ?? pistas.daPagina;
 }
 
 export function linkWhatsApp(numero: string, mensagem?: string): string {

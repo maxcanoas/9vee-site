@@ -44,9 +44,13 @@ export async function paginasDeIdioma(): Promise<PaginaDeIdioma[]> {
   });
 }
 
-/** Do idioma para o endereço da página dele, só para os idiomas que têm página neste build. */
-export async function paginaDeCadaIdioma(): Promise<Map<string, string>> {
-  return new Map((await paginasDeIdioma()).map(({ idioma, caminho }) => [idioma.slug, caminho]));
+/**
+ * Do idioma para o endereço da página dele, só das publicadas, em todos os modos: é para elas que a home e a página
+ * de cursos levam. A não publicada aparece no local e no preview, mas só por quem tem o endereço.
+ */
+export async function enderecoDosIdiomasPublicados(): Promise<Map<string, string>> {
+  const publicadas = (await paginasDeIdioma()).filter(({ conteudo }) => conteudo.publicada);
+  return new Map(publicadas.map(({ idioma, caminho }) => [idioma.slug, caminho]));
 }
 
 /** A trilha do endereço, com o nome das páginas fora do menu. O Base (no JSON-LD) e a Trilha (na tela) usam esta. */

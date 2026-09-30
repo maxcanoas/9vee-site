@@ -1,17 +1,17 @@
 ---
 // Uma página por idioma, com o texto de content/idiomas/. Entra no build pela regra de publicação (a produção só
-// leva as publicadas), e cada uma mostra só as seções que o conteúdo dela tem.
+// leva as publicadas), e cada uma mostra só as seções que o conteúdo dela tem, na ordem da spec.
 import Base from '../../layouts/Base.astro';
 import TopoIdioma from '../../components/TopoIdioma.astro';
 import Cartoes from '../../components/Cartoes.astro';
+import Niveis from '../../components/Niveis.astro';
 import Provas from '../../components/Provas.astro';
 import Pontos from '../../components/Pontos.astro';
 import Faq from '../../components/Faq.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
 import { dadosDoSite } from '../../lib/site';
 import { paginaIdiomas, paginasDeIdioma, type PaginaDeIdioma } from '../../lib/paginas';
-import { curso, faqPage } from '../../lib/jsonld';
-import { preencher } from '../../lib/texto';
+import { curso, faqPage, nomeDoCurso } from '../../lib/jsonld';
 
 export async function getStaticPaths() {
   return (await paginasDeIdioma()).map((pagina) => ({ params: { pagina: pagina.id }, props: pagina }));
@@ -23,10 +23,9 @@ const { idioma, conteudo } = Astro.props;
 const site = await dadosDoSite();
 const { data: cursos } = await paginaIdiomas();
 const base = Astro.site ?? new URL(Astro.url.origin);
-// O nome do curso é o mesmo que a lista da página de cursos dá a ele.
 const jsonLd = [
   curso(base, {
-    nome: preencher(cursos.curso.nome, { idioma: idioma.nome }),
+    nome: nomeDoCurso(cursos.curso.nome, idioma.nome),
     descricao: conteudo.seo.descricao,
     caminho: Astro.url.pathname,
   }),
@@ -37,6 +36,8 @@ const jsonLd = [
 <Base pagina="idioma" idioma={idioma} titulo={conteudo.seo.titulo} descricao={conteudo.seo.descricao} jsonLd={jsonLd}>
   <TopoIdioma {...conteudo.topo} idioma={idioma} etiqueta={conteudo.publicada ? undefined : site.naoPublicada} />
   {conteudo.paraQuem && <Cartoes id="para-quem" {...conteudo.paraQuem} />}
+  {conteudo.niveis && <Niveis {...conteudo.niveis} />}
+  {conteudo.formatos && <Pontos id="formatos" {...conteudo.formatos} />}
   {conteudo.provas && <Provas {...conteudo.provas} />}
   {conteudo.destaque && <Pontos {...conteudo.destaque} />}
   {conteudo.faq && <Faq {...conteudo.faq} />}

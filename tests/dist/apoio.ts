@@ -20,7 +20,7 @@ export function carregarPaginas(pasta = DIST): Pagina[] {
   return lerPaginas(pasta);
 }
 
-export interface PaginaDeIdioma {
+export interface PaginaDeIdiomaNoConteudo {
   rota: string;
   /** O slug do idioma em content/site.md, que é também a âncora dele na página de cursos. */
   idioma: string;
@@ -28,7 +28,7 @@ export interface PaginaDeIdioma {
 }
 
 /** As páginas de content/idiomas/, lidas da fonte com a mesma regra da trava: o preview tem todas. */
-export function paginasDeIdioma(): PaginaDeIdioma[] {
+export function paginasDeIdiomaNoConteudo(): PaginaDeIdiomaNoConteudo[] {
   const pasta = fileURLToPath(new URL('../../content/idiomas/', import.meta.url));
   return readdirSync(pasta)
     .filter((nome) => nome.endsWith('.md'))

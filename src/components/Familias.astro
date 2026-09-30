@@ -1,6 +1,6 @@
 ---
 // Os 14 idiomas por família, cada um com o olá na própria língua (e o lang certo, para a letra certa).
-// O idioma que tem página neste build leva a ela, na home e na página de cursos. Sem página, ele leva, na home,
+// O idioma com página publicada leva a ela, na home e na página de cursos. Sem página, ele leva, na home,
 // à âncora na página de cursos; lá, ele é um botão que abre o pedido com o idioma já marcado, e a âncora.
 // Sem JavaScript o botão some (regra do base.css), e o <noscript> mantém a lista à vista.
 import Texto from './Texto.astro';
@@ -27,13 +27,13 @@ interface Props {
   modo: 'links' | 'pedido';
   /** Modo "pedido": o que o leitor de tela ouve depois do nome do idioma. */
   rotuloPedido?: string;
-  /** Os idiomas com página neste build, do slug para o endereço. */
-  paginas: ReadonlyMap<string, string>;
+  /** Os idiomas com página publicada, do slug para o endereço. */
+  enderecos: ReadonlyMap<string, string>;
 }
 
-const { familias, idiomas, modo, rotuloPedido, paginas } = Astro.props;
+const { familias, idiomas, modo, rotuloPedido, enderecos } = Astro.props;
 // O endereço do link de cada idioma. Sem página e na própria página de cursos, não há link: há o botão do pedido.
-const destino = (slug: string) => paginas.get(slug) ?? (modo === 'links' ? `/curso-de-idiomas/#${slug}` : undefined);
+const destino = (slug: string) => enderecos.get(slug) ?? (modo === 'links' ? `/curso-de-idiomas/#${slug}` : undefined);
 ---
 
 <div class:list={['familias', `familias--${modo}`]}>

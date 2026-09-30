@@ -13,7 +13,7 @@ import { dadosDoSite, type PaginaId } from '../lib/site';
 import { organizacao, serializarJsonLd, trilhaDeNavegacao } from '../lib/jsonld';
 import { textoPuro } from '../lib/texto';
 import { trilhaDaPagina } from '../lib/paginas';
-import { paginaDoIdioma } from '../lib/contato';
+import { paginaDoContatoDoIdioma } from '../lib/contato';
 import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
 
 // A página de idioma, e só ela, diz qual é o idioma: o nome da página na mensagem e o pedido saem dele.
@@ -28,7 +28,7 @@ type Props = {
 
 const { pagina, idioma, titulo, descricao, jsonLd = [] } = Astro.props;
 const site = await dadosDoSite();
-const dadosDaPagina = idioma ? paginaDoIdioma(site.paginas.idioma, idioma.nome) : site.paginas[pagina];
+const dadosDaPagina = idioma ? paginaDoContatoDoIdioma(site.paginas.idioma, idioma) : site.paginas[pagina];
 const base = Astro.site ?? new URL(Astro.url.origin);
 const indexavel = MODO === 'producao';
 // A página de erro responde por qualquer endereço que não existe: ela não tem endereço próprio para apontar.
@@ -96,7 +96,7 @@ const regrasDeSpeculation = JSON.stringify({
     </main>
     <Rodape site={site} />
     <BotaoWhatsApp site={site} pagina={dadosDaPagina} />
-    <Drawer site={site} pagina={dadosDaPagina} idiomaDaPagina={idioma?.slug} />
+    <Drawer site={site} pagina={dadosDaPagina} />
     <script>
       import '../scripts/publico.ts';
       import '../scripts/movimento.ts';

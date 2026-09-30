@@ -15,17 +15,27 @@ topo:
 
 paraQuem:
   titulo: "Para quem é"
-  apoio: "Quatro públicos, cada um com um objetivo diferente."
+  apoio: "Três públicos, cada um com um objetivo diferente."
   itens:
     - titulo: "Quem usa inglês no trabalho"
       texto: "Aulas com foco na conversa e no dia a dia do trabalho, para profissionais de qualquer cidade do Brasil."
-    - titulo: "Executivos"
-      texto: "Aula individual para reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico."
     - titulo: "Crianças e adolescentes"
       texto: "Um curso próprio, com aulas diferentes para crianças e para adolescentes."
     - titulo: "Quem vai prestar o TOEFL"
       texto: "Preparatório para o TOEFL iBT, para quem já está no intermediário alto ou no avançado."
-  nota: "Para treinar a equipe inteira, a 9vee monta [turmas in company](/curso-de-idiomas/#empresas)."
+  nota: "Todo curso começa com um diagnóstico do seu nível e do seu objetivo."
+
+formatos:
+  titulo: "Como são as aulas"
+  apoio: "No pedido, você escolhe o formato que combina com a sua rotina."
+  itens:
+    - titulo: "Aula individual"
+      texto: "Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico."
+    - titulo: "Online, ao vivo"
+      texto: "De qualquer cidade, no dia e no horário que você escolher."
+    - titulo: "Turma in company"
+      texto: "O time estuda junto, na mesma turma e no mesmo nível, sem sair da empresa."
+  nota: "Para a equipe inteira, veja as [turmas para empresas](/curso-de-idiomas/#empresas). Aula presencial: [CONFIRMAR COM O ARTHUR: se o inglês tem aula presencial fora da empresa, e em que cidades]."
 
 provas:
   titulo: "Preparação para o TOEFL"
@@ -42,9 +52,7 @@ destaque:
     - titulo: "Crianças"
       texto: "Aprendem com atividades lúdicas, pela interação e pela curiosidade."
     - titulo: "Adolescentes"
-      texto: "Conversam sobre temas atuais e situações do dia a dia, e ganham confiança para falar."
-    - titulo: "Escrita e gramática"
-      texto: "Entram junto com a conversa, no contexto da aula, e o vocabulário cresce com o uso."
+      texto: "Conversam sobre temas atuais e situações do dia a dia. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso."
   nota: "Idade e formato: [CONFIRMAR COM O ARTHUR: a partir de que idade, se é turma ou aula individual e se é online ou presencial]."
 
 faq:
@@ -56,10 +64,8 @@ faq:
       resposta: "Dá. A aula individual para executivos trabalha reunião, call, negociação e apresentação, com o plano montado a partir de um diagnóstico do seu dia a dia."
     - pergunta: "O material da Cambridge também vale para adultos?"
       resposta: "O material da Cambridge é o do curso de crianças e adolescentes [CONFIRMAR COM O ARTHUR: que material o curso de adultos usa]."
-    - pergunta: "Os professores são nativos?"
-      resposta: "As aulas são com professores qualificados, e o conteúdo segue o seu objetivo [CONFIRMAR COM O ARTHUR: se o inglês tem professor nativo, e em que casos]."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de inglês]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
 
 ctaFinal:
   titulo: "Conte para que você quer o inglês."

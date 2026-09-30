@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DOMINIO, carregarPaginas, jsonLd, paginasDeIdioma } from './apoio';
+import { DOMINIO, carregarPaginas, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
 
 const preview = carregarPaginas();
 const raizDa = (rota: string) => preview.find((pagina) => pagina.rota === rota)?.raiz;
@@ -8,11 +8,11 @@ const cursos = raizDa('/curso-de-idiomas/')!;
 
 describe('páginas de idioma', () => {
   it('existem, pelo menos inglês, espanhol e mandarim', () => {
-    expect(paginasDeIdioma().map((pagina) => pagina.idioma)).toEqual(expect.arrayContaining(['ingles', 'espanhol', 'mandarim']));
+    expect(paginasDeIdiomaNoConteudo().map((pagina) => pagina.idioma)).toEqual(expect.arrayContaining(['ingles', 'espanhol', 'mandarim']));
   });
 });
 
-describe.each(paginasDeIdioma())('página de idioma $rota', ({ rota, idioma, publicada }) => {
+describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, idioma, publicada }) => {
   const raiz = raizDa(rota);
   // O idioma como a página de cursos o mostra: a saudação, o lang e o nome vêm de content/site.md.
   const naLista = cursos.querySelector(`#${idioma}`);
@@ -60,17 +60,20 @@ describe.each(paginasDeIdioma())('página de idioma $rota', ({ rota, idioma, pub
     }
   });
 
+  // Na lista da página de cursos, o curso aponta para a página só quando ela está publicada.
   it('descreve o curso em JSON-LD com o endereço da página, e com o nome da lista de cursos', () => {
     const curso = jsonLd(raiz!).find((no) => no['@type'] === 'Course');
     expect(curso?.url).toBe(`${DOMINIO}${rota}`);
     expect(curso?.provider).toEqual({ '@id': `${DOMINIO}/#organizacao` });
     const lista = jsonLd(cursos).find((no) => no['@type'] === 'ItemList');
     const itens = lista?.itemListElement as { item: Record<string, string> }[];
-    expect(itens.find(({ item }) => item.url === `${DOMINIO}${rota}`)?.item.name).toBe(curso?.name);
+    const naListaDeCursos = publicada ? `${DOMINIO}${rota}` : `${DOMINIO}/curso-de-idiomas/#${idioma}`;
+    expect(itens.find(({ item }) => item.url === naListaDeCursos)?.item.name).toBe(curso?.name);
   });
 
-  it('recebe o link da lista de idiomas da home e da página de cursos', () => {
-    expect(home.querySelector(`.familias a[href="${rota}"]`), 'home').not.toBeNull();
-    expect(naLista?.querySelector(`a[href="${rota}"]`), 'cursos').not.toBeNull();
+  // A não publicada aparece no preview só para quem tem o endereço: a home e a página de cursos não levam a ela.
+  it('recebe o link da home e da página de cursos só quando está publicada', () => {
+    expect(home.querySelector(`.familias a[href="${rota}"]`) !== null, 'home').toBe(publicada);
+    expect(naLista?.querySelector(`a[href="${rota}"]`) !== null, 'cursos').toBe(publicada);
   });
 });

@@ -8,14 +8,14 @@ import {
   carregarPaginas,
   conferirEnderecos,
   conferirRobotsLiberado,
-  paginasDeIdioma,
+  paginasDeIdiomaNoConteudo,
 } from './apoio';
 
 // O build de produção é o que vai ao ar e o que o Lighthouse mede para o SEO 100: sem noindex em lugar nenhum.
 describe('build de produção', () => {
   const paginas = carregarPaginas(DIST_PRODUCAO);
   const preview = carregarPaginas();
-  const naoPublicadas = paginasDeIdioma().filter((pagina) => !pagina.publicada).map((pagina) => pagina.rota);
+  const naoPublicadas = paginasDeIdiomaNoConteudo().filter((pagina) => !pagina.publicada).map((pagina) => pagina.rota);
 
   it('gera as páginas do preview, menos as de idioma não publicadas', () => {
     const esperadas = preview.map((p) => p.rota).filter((rota) => !naoPublicadas.includes(rota));
@@ -23,13 +23,13 @@ describe('build de produção', () => {
   });
 
   it('deixa cada página de idioma não publicada só no preview', () => {
-    for (const { rota, publicada } of paginasDeIdioma()) {
+    for (const { rota, publicada } of paginasDeIdiomaNoConteudo()) {
       expect(preview.some((p) => p.rota === rota), `${rota} no preview`).toBe(true);
       expect(paginas.some((p) => p.rota === rota), `${rota} na produção`).toBe(publicada);
     }
   });
 
-  // A página que ficou fora também sai dos links: a home e a página de cursos levam à âncora do idioma.
+  // A home e a página de cursos só levam à página de idioma publicada: a que ficou fora nunca vira link quebrado.
   it.each(paginas.map((p) => [p.rota, p] as const))('%s só liga para páginas da produção', (_rota, pagina) => {
     expect(linksQuebrados(pagina, DIST_PRODUCAO)).toEqual([]);
   });

@@ -22,7 +22,7 @@ paraQuem:
     - titulo: "Viagem"
       texto: "Para conversar na viagem, com a fala treinada desde as primeiras aulas."
     - titulo: "Cultura"
-      texto: "Para quem se interessa pela China e quer entender a língua por dentro."
+      texto: "Para quem se interessa pela cultura chinesa."
   nota: "Para quem trabalha com a China, a 9vee também leva [intérpretes de mandarim](/traducao-simultanea/) a reuniões e eventos."
 
 destaque:
@@ -44,11 +44,11 @@ faq:
     - pergunta: "Preciso aprender os caracteres para começar?"
       resposta: "Dá para começar a falar pelo pinyin, que usa o nosso alfabeto [CONFIRMAR COM O ARTHUR: se o curso começa pelo pinyin e quando entram os caracteres]."
     - pergunta: "Em quanto tempo dá para conversar?"
-      resposta: "O curso trabalha a conversa desde as primeiras aulas [CONFIRMAR COM O ARTHUR: quantas horas de aula costumam levar até uma conversa simples]."
+      resposta: "O curso trabalha a conversa desde as primeiras aulas [CONFIRMAR COM O ARTHUR: quantas horas de aula costumam levar de um nível para o outro no mandarim]."
     - pergunta: "Vocês preparam para o HSK?"
       resposta: "O HSK é a prova oficial de proficiência em mandarim do governo chinês [CONFIRMAR COM O ARTHUR: se a 9vee prepara para o HSK, e para quais níveis]."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de mandarim]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
 
 ctaFinal:
   titulo: "Comece pelo seu objetivo."

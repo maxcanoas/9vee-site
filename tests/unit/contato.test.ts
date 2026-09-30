@@ -3,6 +3,7 @@ import {
   camposVisiveis,
   formularioDe,
   hojeLocal,
+  idiomaInicial,
   linhaEmTexto,
   linhasDaConfirmacao as paresDaConfirmacao,
   linkWhatsApp,
@@ -10,7 +11,7 @@ import {
   mensagemFlutuante,
   modoDoDrawer,
   montarMensagem,
-  paginaDoIdioma,
+  paginaDoContatoDoIdioma,
   primeiraEtapaPendente,
   servicoInicial,
   tipoDeContato,
@@ -323,7 +324,7 @@ describe('mensagemFlutuante', () => {
   });
 });
 
-describe('paginaDoIdioma', () => {
+describe('paginaDoContatoDoIdioma', () => {
   const modelo = {
     nome: 'Curso de {idioma}',
     servico: 'idiomas' as const,
@@ -334,10 +335,11 @@ describe('paginaDoIdioma', () => {
     },
   };
 
-  it('põe o idioma no nome e no assunto, em minúscula no meio da frase', () => {
-    expect(paginaDoIdioma(modelo, 'Português para estrangeiros')).toEqual({
+  it('põe o idioma no nome e no assunto, em minúscula no meio da frase, e guarda qual é ele', () => {
+    expect(paginaDoContatoDoIdioma(modelo, { slug: 'portugues', nome: 'Português para estrangeiros' })).toEqual({
       nome: 'Curso de português para estrangeiros',
       servico: 'idiomas',
+      idioma: 'portugues',
       assunto: {
         neutro: 'quero saber das aulas de português para estrangeiros',
         empresa: 'quero aulas de português para estrangeiros para a minha equipe',
@@ -347,10 +349,28 @@ describe('paginaDoIdioma', () => {
   });
 
   it('chega na mensagem do botão flutuante com o idioma da página', () => {
-    const { nome, assunto } = paginaDoIdioma(modelo, 'Inglês');
+    const { nome, assunto } = paginaDoContatoDoIdioma(modelo, { slug: 'ingles', nome: 'Inglês' });
     expect(mensagemFlutuante(nome, assunto.voce, modelos)).toBe(
       'Olá, 9vee. Vim pela página Curso de inglês do site e quero aulas de inglês para mim.',
     );
+  });
+});
+
+describe('idiomaInicial', () => {
+  it('fica com o idioma do botão', () => {
+    expect(idiomaInicial({ doBotao: 'japones', escolhido: 'espanhol', daPagina: 'ingles' })).toBe('japones');
+  });
+
+  it('sem idioma no botão, mantém o que a pessoa já escolheu', () => {
+    expect(idiomaInicial({ doBotao: undefined, escolhido: 'espanhol', daPagina: 'ingles' })).toBe('espanhol');
+  });
+
+  it('sem escolha, marca o idioma da página', () => {
+    expect(idiomaInicial({ doBotao: undefined, escolhido: null, daPagina: 'ingles' })).toBe('ingles');
+  });
+
+  it('fora da página de um idioma, não marca nada', () => {
+    expect(idiomaInicial({ doBotao: undefined, escolhido: null, daPagina: null })).toBeNull();
   });
 });
 

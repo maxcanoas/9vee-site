@@ -1,4 +1,4 @@
-import { jsonParaScript, preencher, textoPuro } from './texto';
+import { jsonParaScript, minuscula, preencher, textoPuro } from './texto';
 import type { DadosDoSite } from './site';
 import type { PassoDaTrilha } from './trilha';
 
@@ -53,6 +53,11 @@ export function servico(base: URL, dados: { nome: string; tipo: string; caminho:
   };
 }
 
+/** "Curso de inglês": o nome que a lista de cursos e a página do idioma dão ao curso, como o título da página. */
+export function nomeDoCurso(modelo: string, idioma: string): string {
+  return preencher(modelo, { idioma: minuscula(idioma) });
+}
+
 /** Um Course por idioma, apontando para a página do idioma quando ela existe, e senão para a âncora dele aqui. */
 export function listaDeCursos(
   base: URL,
@@ -70,7 +75,7 @@ export function listaDeCursos(
       position: i + 1,
       item: {
         '@type': 'Course',
-        name: textoPuro(preencher(dados.modelos.nome, { idioma: idioma.nome })),
+        name: textoPuro(nomeDoCurso(dados.modelos.nome, idioma.nome)),
         description: textoPuro(preencher(dados.modelos.descricao, { idioma: idioma.nome })),
         url: new URL(idioma.pagina ?? `${dados.caminho}#${idioma.slug}`, base).href,
         provider: { '@id': new URL('/#organizacao', base).href },

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { curso, listaDeCursos, servico, telefoneInternacional, trilhaDeNavegacao } from '../../src/lib/jsonld';
+import { curso, listaDeCursos, nomeDoCurso, servico, telefoneInternacional, trilhaDeNavegacao } from '../../src/lib/jsonld';
 
 describe('telefoneInternacional', () => {
   it('escreve o número do WhatsApp no padrão internacional', () => {
@@ -43,7 +43,7 @@ describe('listaDeCursos', () => {
 
   it('aponta o curso sem página própria para a âncora do idioma', () => {
     expect(alemao.url).toBe('https://exemplo.9vee.com.br/curso-de-idiomas/#alemao');
-    expect(alemao.name).toBe('Curso de Alemão');
+    expect(alemao.name).toBe('Curso de alemão');
   });
 
   it('aponta o curso com página própria para ela', () => {
@@ -52,6 +52,13 @@ describe('listaDeCursos', () => {
 
   it('tira a pendência da descrição que o Google lê', () => {
     expect(alemao.description).toBe('Alemão com a 9vee.');
+  });
+});
+
+// O mesmo nome na lista de cursos, na página do idioma e na mensagem: o idioma em minúscula no meio da frase.
+describe('nomeDoCurso', () => {
+  it('põe o idioma no modelo, em minúscula', () => {
+    expect(nomeDoCurso('Curso de {idioma}', 'Português para estrangeiros')).toBe('Curso de português para estrangeiros');
   });
 });
 
