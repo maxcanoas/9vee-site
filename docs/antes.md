@@ -1,16 +1,18 @@
 # Retrato do antes: o site atual no Wix
 
-Registrado em 29/09/2026 para o relatório de entrega com o antes e o depois de cada item, que a proposta promete (Frente 6). Depois do cancelamento do Wix, nada disto dá para medir de novo. O depois se mede logo após o lançamento, e nem toda fonte continua a mesma:
+Registrado em 29/09/2026 para o relatório de entrega com o antes e o depois de cada item, que a proposta promete (Frente 6). Depois do cancelamento do Wix, não dá para medir de novo a velocidade nem ler de novo o HTML publicado e o painel do Wix. O GA4 e o Search Console guardam o histórico, porque o site novo usa a mesma propriedade dos dois. O depois se mede logo após o lançamento, com a régua de cada parte assim:
 
-- a velocidade usa o mesmo comando, com o Lighthouse fixo na versão 13.5.0;
-- o que o Google lê vem da mesma leitura do HTML publicado;
-- o Search Console é o mesmo, lido hoje pelo painel do Wix e depois direto nele;
-- as visitas, a origem e os cliques mudam de fonte. Hoje vêm do painel do Wix, que conta as visitas sem pedir aceite. No site novo vêm do GA4, que só conta quem aceita os cookies de estatística. O depois vai mostrar menos visitas do que o site recebe de fato, e a comparação precisa dizer isso;
-- os envios de formulário passam a ser contados pelos pedidos que chegam em contato@9vee.com.br. Ali chegam todos, com ou sem o aceite dos cookies.
+- **Velocidade:** o mesmo comando, e o script só roda com o Lighthouse 13.5.0. O Chrome é o instalado na máquina, que se atualiza sozinho: passou para a 154.0.8037.92 às 19h35 de 29/09, entre as duas medidas do Wix. A tabela registra a versão.
+- **O que o Google lê:** a mesma leitura do HTML publicado.
+- **Search Console:** a mesma propriedade, lida hoje pelo painel do Wix e depois direto nela.
+- **Visitas, origem e cliques:** hoje saem do painel do Wix, porque ainda não temos acesso ao GA4. Quando o acesso vier, o antes sai do próprio GA4, da mesma propriedade. Mesmo assim a régua muda: no Wix o GA4 conta todo visitante (consentimento concedido por padrão, `gcs=G111`), e no site novo só quem aceita os cookies de estatística. O depois vai mostrar menos visitas do que o site recebe de fato, e a comparação precisa dizer isso.
+- **Envios de formulário:** no site novo aparecem em dois lugares. O GA4 conta o evento `lead_form_submit` só de quem aceitou os cookies; na caixa contato@9vee.com.br chegam todos.
 
 ## Velocidade e qualidade (Lighthouse mobile)
 
-Medido em 29/09/2026, das 20h29 às 20h48, com o Lighthouse 13.5.0 e o Chrome 154.0.8037.92.
+Duas medidas completas das 6 páginas em 29/09/2026, as duas com o Lighthouse 13.5.0. Na comparação com o depois, vale o melhor número do Wix em cada página, entre as duas medidas, para o depois não sair favorecido.
+
+Das 20h29 às 20h48, com o Chrome 154.0.8037.92:
 
 | Página | Perf. | Acess. | Práticas | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|
@@ -21,21 +23,32 @@ Medido em 29/09/2026, das 20h29 às 20h48, com o Lighthouse 13.5.0 e o Chrome 15
 | /lms | 48 | 92 | 96 | 100 | 5.19 s | 0.000 | 1889 ms |
 | /quem-somos | 39 (2 de 3) | 92 (2 de 3) | 96 (2 de 3) | 100 (2 de 3) | 16.54 s (2 de 3) | 0.000 (2 de 3) | 3219 ms (2 de 3) |
 
-- A Performance fica entre 29 e 48. No celular simulado, o maior bloco da primeira tela (LCP) leva de 5 a 18 segundos para aparecer, e o navegador fica travado de 1,9 a 5,3 segundos (TBT) rodando script.
+Das 11h50 às 12h08, com o Chrome de antes da atualização das 19h35, de versão não registrada, e com o script anterior, que não mostrava quando uma rodada falhava:
+
+| Página | Perf. | Acess. | Práticas | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| / | 32 | 93 | 96 | 100 | 8.43 s | 0.003 | 3074 ms |
+| /curso-de-idiomas | 31 | 92 | 96 | 100 | 17.18 s | 0.000 | 3218 ms |
+| /traducao-simultanea | 32 | 92 | 96 | 100 | 17.40 s | 0.000 | 2354 ms |
+| /treinamentos | 48 | 92 | 96 | 100 | 5.54 s | 0.000 | 1949 ms |
+| /lms | 50 | 92 | 96 | 100 | 5.08 s | 0.000 | 1748 ms |
+| /quem-somos | 37 | 92 | 96 | 100 | 16.23 s | 0.000 | 2309 ms |
+
+- A Performance fica entre 29 e 50. No celular simulado, o maior bloco da primeira tela (LCP) leva de 5 a 18 segundos para aparecer, e o navegador fica travado de 1,7 a 5,3 segundos (TBT) rodando script.
 - O SEO 100 do Lighthouse só confere o básico: a página tem título e descrição e pode ser rastreada. O que o Google de fato lê está na seção abaixo.
-- Perfil mobile padrão, mediana de 3 rodadas por página, na página publicada do Wix. Cada página mede num processo próprio. Rodada em que a página não carrega fica de fora, e a célula diz de quantas rodadas o valor saiu: no `/quem-somos`, uma rodada terminou sem nada na tela (`NO_FCP`).
-- O mesmo endereço dá números diferentes em horas diferentes, e o depois precisa se comparar com a faixa:
-  - a home deu Performance 27 e CLS 0,131 às 11h02, 32 e 0,003 às 11h50, e 29 e 0,003 nesta medida;
-  - entre esta medida e a das 11h50, a Performance mudou até 3 pontos e o LCP até 1,02 s. Às 11h50, a Performance tinha dado 32 em `/`, 31 em `/curso-de-idiomas`, 32 em `/traducao-simultanea`, 48 em `/treinamentos`, 50 em `/lms` e 37 em `/quem-somos`;
-  - o TBT subiu em todas as páginas, até 2,1 s. É o valor que mais sente a máquina ocupada, e o depois precisa ser medido com ela livre.
+- Perfil mobile padrão, mediana de 3 rodadas por página, na página publicada do Wix. Cada página mede num processo próprio. Rodada em que a página não carrega fica de fora, e a célula diz de quantas rodadas o valor saiu: às 20h29, no `/quem-somos`, uma rodada terminou sem nada na tela (`NO_FCP`).
+- O mesmo endereço dá números diferentes em horas diferentes:
+  - a home deu Performance 27 e CLS 0,131 às 11h02, 32 e 0,003 às 11h50, e 29 e 0,003 às 20h29;
+  - entre as duas medidas completas, a Performance mudou até 3 pontos e o LCP até 1,02 s;
+  - o TBT foi o que mais mudou: às 20h29 ele subiu nas seis páginas, até 2,1 s.
 - Cada rodada conta como visita no GA4 e no Twipla da 9vee. Em 29/09/2026 foram cerca de 71 rodadas, em seis janelas. Na comparação de visitas desse dia, é preciso descontar:
   - das 10h37 às 10h58, a primeira medida das 6 páginas (18 rodadas), descartada: o script contava como zero a nota que o Lighthouse deixava em branco, e a home saiu com Boas práticas 0;
   - por volta das 11h00, uma rodada na home, só de Boas práticas, para achar o defeito;
   - das 11h02 às 11h06, a home de novo (3 rodadas);
   - das 11h11 às 11h25, uma segunda medida das 6 páginas, que parou na quinta por falta de memória, sem imprimir nada (de 12 a 14 rodadas);
-  - das 11h50 às 12h08, a terceira medida das 6 páginas (18 rodadas), a da comparação acima;
-  - das 20h29 às 20h48, a medida desta tabela (18 rodadas), já com o script que registra as versões.
-- Comando: `npm install --no-save lighthouse@13.5.0` e depois `node scripts/lighthouse-no-ar.ts` com os 6 endereços da tabela. No depois, os endereços novos: `/`, `/curso-de-idiomas/`, `/traducao-simultanea/`, `/treinamento-nr-1/`, `/lms/` e `/quem-somos/`.
+  - das 11h50 às 12h08, a terceira medida das 6 páginas, a da segunda tabela (18 rodadas);
+  - das 20h29 às 20h48, a quarta, a da primeira tabela (18 rodadas).
+- Comando: `npm install --no-save lighthouse@13.5.0` e depois `node scripts/lighthouse-no-ar.ts` com os 6 endereços da tabela. No depois, os endereços novos: `/`, `/curso-de-idiomas/`, `/traducao-simultanea/`, `/treinamento-nr-1/`, `/lms/` e `/quem-somos/`. No site novo as rodadas não contam como visita, porque o GA4 só carrega depois do aceite dos cookies.
 
 ## O que o Google lê em cada página
 
@@ -59,7 +72,7 @@ O Google mostra uns 60 caracteres de título e uns 160 de descrição. O site no
 | Sessões, 31/08 a 29/09 | 241, 63% a menos que nos 30 dias anteriores | painel do Wix |
 | Visitantes únicos, no mesmo período | 161, 91% novos | painel do Wix |
 | Dispositivo | 70% desktop, 30% celular | painel do Wix |
-| Origem das sessões (as cinco maiores) | direto 123, Google orgânico 81, painel do Wix 9, Bing 7, Yahoo 5 | painel do Wix |
+| Origem das sessões (cinco origens, 225 das 241 sessões) | direto 123, Google orgânico 81, painel do Wix 9, Bing 7, Yahoo 5 | painel do Wix |
 | Cliques para entrar em contato, 30 dias | 1 | painel do Wix |
 | Envios de formulário, de fevereiro a setembro de 2026 | 24: 16 no Contato Principal, 7 no Contato Inicial e 1 no Orçamento Chinês Português | painel do Wix |
 | Search Console, 7 dias até 25/09 | 227 impressões e 11 cliques | painel do Wix, ligado ao Search Console |

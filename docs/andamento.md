@@ -7,7 +7,7 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 **Fase 1, onde estamos (29/09/2026):** tickets 01 a 04 feitos, cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". Para retomar:
 
 - o lote 1 de revisão (`docs/revisao-daniella/lote-1.md`) e a mensagem de pendências (`docs/pendencias-cliente.md`) estão prontos para o Maxwell mandar à cliente, junto com o preview publicado e o texto de `docs/novidades-preview.md`;
-- o retrato do antes está em `docs/antes.md`, com a medida do Wix de 29/09 às 20h29, que já registra as versões do Lighthouse e do Chrome: o Wix não precisa ser medido de novo;
+- o retrato do antes está em `docs/antes.md`, com duas medidas completas do Wix (11h50 e 20h29 de 29/09). Na comparação vale o melhor número do Wix em cada página, e ele não precisa ser medido de novo;
 - o próximo é o ticket 05 (Tradução Simultânea), da semana 3, que usa as respostas da Daniella; sem elas, a página sai com os fatos do site atual e as pendências marcadas;
 - `npm run lote -- N` faz o build de preview e gera o lote N; `npm run build:producao` termina na trava, que ainda acusa as pendências e as marcas do MVP, como esperado.
 
@@ -264,8 +264,9 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npm test`: testes de lógica, os dois builds (preview e produção) e os testes do HTML gerado.
 - `npm run e2e`: build de preview e testes no navegador (Android e desktop no Chrome instalado, iPhone no WebKit do Playwright).
 - `node scripts/screenshots.ts etapa-6`: capturas em `relatorios/etapa-6/`, fora do git. Os roteiros vão de `etapa-1` a `etapa-6`, mais o `ajustes-cliente` da etapa 9.
-- `npm install --no-save lighthouse@13.5.0 && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção. A versão fica fixa para o depois usar a mesma régua do retrato do antes.
-- `node scripts/lighthouse-no-ar.ts <endereços completos>`: a mesma medida num site no ar, o Wix no antes e o site novo no depois. Cada rodada conta como visita no GA4 do site medido.
+- `npm install --no-save lighthouse@13.5.0 && node scripts/build.ts producao && node scripts/lighthouse.ts`: a medição das 3 páginas completas, no build de produção. Os scripts só rodam com o Lighthouse 13.5.0, a régua do retrato do antes.
+- `node scripts/lighthouse-no-ar.ts <endereços completos>`: a mesma medida num site no ar, o Wix no antes e o site novo no depois. No Wix, cada rodada conta como visita no GA4 e no Twipla; no site novo, não, porque o GA4 só carrega depois do aceite dos cookies.
+- Medida longa pede a máquina acordada: em 29/09 o Windows entrou em suspensão por inatividade às 21h05, no meio de um teste, e o processo da página caiu.
 - `node scripts/pendencias.ts`: a lista de pendências dos textos, separada entre a Daniella e o Arthur, em `relatorios/pendencias.md`.
 - `npm run lote -- 1`: faz o build de preview e monta dele o lote 1 de revisão da Daniella, em `docs/revisao-daniella/lote-1.md`.
 - `npm run deploy`: build de preview e publicação na Cloudflare (precisa do `wrangler login` antes).

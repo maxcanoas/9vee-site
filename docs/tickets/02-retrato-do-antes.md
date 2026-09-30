@@ -14,4 +14,11 @@
 - [x] O que o site atual não tem, para o antes e o depois: aviso de cookies, conversões no GA4, página de NR-1, páginas de idioma, títulos próprios.
 - [x] Tudo num documento em `docs/`, versionado.
 
-**Como ficou:** tudo em `docs/antes.md`, com o que o Google lê em cada página (título, descrição, H1, dados estruturados e imagens sem texto alternativo) além do pedido. A medida do site no ar é `scripts/lighthouse-no-ar.ts`, que divide com o `scripts/lighthouse.ts` a medida, a mediana e a tabela (`scripts/medida-lighthouse.ts`). O que a medida ensinou, já no script: nota em branco do Lighthouse não conta como zero (deu Boas práticas 0 na home); cada página mede num processo próprio, porque o Lighthouse não devolve a memória entre as rodadas; rodada que não carrega fica de fora, e a célula diz de quantas rodadas o valor saiu; e a tabela termina com as versões do Lighthouse e do Chrome, com o Lighthouse fixo em 13.5.0 para o depois usar a mesma régua. Depois da revisão, o Wix foi medido de novo com o script corrigido, às 20h29, e a tabela do documento é essa. O documento anota as seis janelas de medição do dia, cerca de 71 visitas a descontar no GA4 e no Twipla, e quanto o resultado variou entre as medidas, para o depois se comparar com uma faixa.
+**Como ficou:** tudo em `docs/antes.md`, com o que o Google lê em cada página (título, descrição, H1, dados estruturados e imagens sem texto alternativo) além do pedido. A medida do site no ar é `scripts/lighthouse-no-ar.ts`, que divide com o `scripts/lighthouse.ts` a medida e a tabela (`scripts/medida-lighthouse.ts`). O que a medida ensinou, já no script:
+
+- nota em branco do Lighthouse não conta como zero (deu Boas práticas 0 na home);
+- cada página mede num processo próprio, porque o Lighthouse não devolve a memória entre as rodadas;
+- rodada que não carrega fica de fora, e a célula diz de quantas rodadas o valor saiu;
+- o script só roda com o Lighthouse 13.5.0, e a tabela termina com as versões do Lighthouse e do Chrome. O Chrome se atualizou sozinho entre as duas medidas do dia.
+
+Depois da revisão, medi o Wix de novo com o script corrigido, às 20h29. O documento guarda as duas medidas completas e manda comparar o depois com o melhor número do Wix. Anota também as seis janelas de medição do dia: cerca de 71 visitas a descontar no GA4 e no Twipla.
