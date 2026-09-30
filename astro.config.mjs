@@ -1,7 +1,9 @@
 // @ts-check
 import { writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { defineConfig, envField, fontProviders } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
+import { tirarImagensOrfas } from './scripts/imagens-orfas.ts';
 
 // O modo vem do comando: `astro dev` é o local, e o scripts/build.ts marca o preview e a produção.
 const MODOS = /** @type {const} */ (['local', 'preview', 'producao']);
@@ -26,8 +28,22 @@ const cabecalhoNoindex = {
   },
 };
 
+/**
+ * Tira de _astro/ as imagens que nenhum arquivo do build cita, como as fotos das páginas não publicadas na produção.
+ * @type {import('astro').AstroIntegration}
+ */
+const semImagensOrfas = {
+  name: 'sem-imagens-orfas',
+  hooks: {
+    'astro:build:done': ({ dir, logger }) => {
+      const tiradas = tirarImagensOrfas(fileURLToPath(dir));
+      if (tiradas.length > 0) logger.info(`${tiradas.length} imagens sem página saíram do build: ${tiradas.join(', ')}`);
+    },
+  },
+};
+
 export default defineConfig({
-  integrations: [cabecalhoNoindex],
+  integrations: [cabecalhoNoindex, semImagensOrfas],
   // Canonical, Open Graph e sitemap sempre no domínio definitivo, em todos os modos, nunca no do preview.
   site: 'https://www.9vee.com.br',
   // A produção sai numa pasta própria: o dist/ é o que o wrangler publica, e ele não pode receber um build indexável.

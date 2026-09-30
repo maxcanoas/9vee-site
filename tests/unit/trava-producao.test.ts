@@ -1,22 +1,7 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
-import { afterEach, describe, expect, it } from 'vitest';
+import { join } from 'node:path';
+import { describe, expect, it } from 'vitest';
 import { pendenciasNoConteudo, verificarBuild, type Achado } from '../../scripts/trava-producao.ts';
-
-const pastas: string[] = [];
-
-/** Um build de mentira: cada chave é o caminho do arquivo dentro da pasta, e o valor é o conteúdo. */
-function montarBuild(arquivos: Record<string, string>): string {
-  const pasta = mkdtempSync(join(tmpdir(), 'trava-'));
-  pastas.push(pasta);
-  for (const [caminho, conteudo] of Object.entries(arquivos)) {
-    const alvo = join(pasta, caminho);
-    mkdirSync(dirname(alvo), { recursive: true });
-    writeFileSync(alvo, conteudo, 'utf8');
-  }
-  return pasta;
-}
+import { montarBuild } from './build-de-mentira.ts';
 
 const pagina = (corpo: string, cabeca = '') =>
   `<!doctype html><html lang="pt-BR"><head><title>9vee</title>${cabeca}</head><body><main id="topo">${corpo}</main></body></html>`;
@@ -24,10 +9,6 @@ const pagina = (corpo: string, cabeca = '') =>
 const LIMPA = pagina('<h1>Cursos</h1><p>Texto certo.</p><a href="/sobre/">Sobre</a><a href="#topo">Topo</a>');
 
 const regras = (achados: Achado[]) => achados.map((achado) => achado.regra);
-
-afterEach(() => {
-  for (const pasta of pastas.splice(0)) rmSync(pasta, { recursive: true, force: true });
-});
 
 describe('verificarBuild', () => {
   it('deixa passar um build limpo', () => {
