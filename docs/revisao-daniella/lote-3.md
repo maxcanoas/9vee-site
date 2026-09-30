@@ -243,7 +243,7 @@ Trabalho, viagem ou cultura. Em quatro passos você conta o objetivo, o nível e
 
 - Endereço: https://www.9vee.com.br/curso-de-idiomas/holandes/
 - Título no Google: Curso de holandês e preparatório para o Inburgering | 9vee
-- Descrição no Google: Preparatório para o Inburgering, o exame de integração que a lei holandesa pede a quem vive fora e quer se estabelecer nos Países Baixos, com língua e cultura.
+- Descrição no Google: Preparatório para o Inburgering, o exame prévio de integração dos Países Baixos, que avalia a língua holandesa e a cultura e os costumes da sociedade do país.
 - Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Curso de holandês do site e quero saber das aulas de holandês."
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Curso de holandês do site e quero aulas de holandês para a minha equipe."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Curso de holandês do site e quero aulas de holandês para mim."
@@ -256,31 +256,23 @@ Hoi
 
 ### Curso de holandês
 
-Preparação para o Inburgering, o exame de integração que a lei holandesa pede a quem vive fora e quer se estabelecer nos Países Baixos.
+Preparação para o Inburgering, o exame prévio de integração que a lei holandesa pede a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos.
 
 [Botão: Pedir aulas de holandês (para sua empresa: Pedir orçamento de holandês; para você: Quero estudar holandês)]
 
 #### Preparação para o Inburgering
 
-O exame prévio de integração, feito ainda fora do país, avalia duas partes. O preparatório trabalha as duas, com método prático e voltado para o exame.
+O preparatório trabalha as duas partes que o exame avalia, voltado para a prova.
 
-A língua
+Inburgering
 
-O seu conhecimento do holandês.
-
-A cultura
-
-A familiaridade com a cultura e os costumes da sociedade holandesa.
+O exame prévio de integração avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país.
 
 #### Perguntas sobre o holandês
 
-##### Vocês preparam também para o exame de quem já mora na Holanda?
-
-[A confirmar com o Arthur: se a 9vee prepara só para o exame prévio, feito fora do país, ou também para o de quem já mora lá]
-
 ##### Dá para estudar holandês sem ir prestar o exame?
 
-[A confirmar com o Arthur: se há curso de holandês além do preparatório, em que níveis e formatos, e se os professores são nativos]
+[A confirmar com o Arthur: se há curso de holandês além do preparatório do Inburgering, em que níveis e formatos, e se os professores são nativos]
 
 ##### Quanto custa?
 
@@ -327,7 +319,7 @@ O teste oficial de nível, usado em imigração e em universidade, que coloca vo
 
 #### Como é o preparatório
 
-Cada prova tem o seu preparatório.
+Um preparatório para o DELF e o DALF, e outro para o TCF.
 
 ##### Simulados
 
@@ -335,19 +327,19 @@ No preparatório do TCF, você faz a prova no formato dela antes do dia do exame
 
 ##### Professores nativos
 
-O preparatório do TCF é dado por professores nativos.
+Professores nativos dão o preparatório do TCF.
 
 ##### Todas as habilidades
 
 No DELF e no DALF, a preparação trabalha o que o exame cobra, na escrita e na fala.
 
-O foco é nos critérios de cada prova, com prática direcionada.
+O foco é nos critérios de cada prova.
 
 #### Perguntas sobre o francês
 
 ##### Qual prova eu devo fazer?
 
-Depende de onde você vai usar o francês. O TCF é o teste de nível pedido em imigração e em universidade; o DELF e o DALF são os diplomas oficiais [A confirmar com o Arthur: como a 9vee ajuda a escolher a prova certa].
+A 9vee prepara para as três [A confirmar com o Arthur: como a 9vee ajuda a escolher entre o DELF, o DALF e o TCF].
 
 ##### Dá para estudar francês sem ir prestar prova?
 
@@ -386,11 +378,11 @@ Para quem veio estudar, trabalhar ou viver no Brasil, do nível básico ao avan�
 
 #### Para quem é
 
-Estrangeiros que precisam do português no Brasil, e brasileiros que querem dominar melhor a própria língua.
+Estrangeiros que precisam do português no Brasil.
 
 ##### Quem mora no Brasil
 
-Para estudar, trabalhar e viver aqui com autonomia, na rua, na faculdade e no trabalho.
+Para se comunicar com autonomia na rua, na faculdade e no trabalho.
 
 ##### O profissional que veio de fora
 
@@ -400,10 +392,6 @@ A empresa contrata as aulas para o estrangeiro que entrou no time, com preparaç
 
 Preparatório com professores especializados no ensino de português para estrangeiros e na preparação para o exame.
 
-##### Brasileiros
-
-Para quem quer falar e escrever o próprio idioma com mais domínio.
-
 Para a empresa que recebe profissionais estrangeiros, veja as turmas para empresas.
 
 #### Preparação para o CELPE-Bras
@@ -412,7 +400,7 @@ O único certificado de português reconhecido oficialmente pelo governo brasile
 
 CELPE-Bras
 
-Criado pelo Ministério da Educação, é pedido por universidades brasileiras na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
+Criado pelo Ministério da Educação. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
 
 #### Como são as aulas
 
@@ -426,10 +414,6 @@ Fala, escuta, leitura e escrita, trabalhadas juntas.
 
 A gramática e a cultura brasileira entram junto com a conversa.
 
-##### Material de aula
-
-Escolhido pela 9vee, com atividades práticas.
-
 Formatos: [A confirmar com o Arthur: se o português acontece em aula particular, turma, online, presencial ou in company].
 
 #### Perguntas sobre o português para estrangeiros
@@ -442,16 +426,12 @@ O curso vai do nível básico ao avançado, e o diagnóstico do começo mostra o
 
 Pode. No pedido desta página, escolha que é para a sua empresa, e as aulas podem incluir a preparação para o CELPE-Bras.
 
-##### Vocês ajudam o funcionário estrangeiro na mudança?
-
-[A confirmar com a Daniella: se a realocação de funcionários continua, com apoio no idioma, na legislação, na documentação e na adaptação]
-
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam [A confirmar com a Daniella: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas.
 
 #### Conte para que você precisa do português.
 
-Estudo, trabalho, prova ou a vida no Brasil. Em quatro passos você diz o objetivo, o nível e o formato, e escolhe entre o WhatsApp e o contato da equipe.
+Em quatro passos você diz o objetivo, o nível e o formato. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de português (para sua empresa: Pedir orçamento de português; para você: Quero estudar português)]

@@ -5,7 +5,7 @@
 ## Texto
 
 - Todo texto visível fica em `content/`: um arquivo por página, mais o de textos compartilhados. O código não carrega frase solta, com exceção de rótulos técnicos invisíveis.
-- Página de idioma sem fato sai como esqueleto: a saudação, o título e as perguntas marcadas para quem responde, nas perguntas frequentes. Nada de texto genérico no lugar do fato.
+- Página de idioma sem fato sai como esqueleto: a saudação, o título e as perguntas marcadas para quem responde, nas perguntas frequentes. Nada de texto genérico no lugar do fato. A descrição do Google do esqueleto é provisória e não tem marca que a trava enxergue, então ele leva `esqueleto: true`, que o esquema proíbe junto com `publicada: true`: a página só vai ao ar reescrita, título e descrição inclusive.
 - As páginas de idioma ficam em `content/idiomas/`, uma por arquivo, e o nome do arquivo é o fim do endereço. A saudação, o `lang`, a família e o nome do idioma vêm de `content/site.md`, pelo campo `idioma`: não se repetem no arquivo da página.
 - Português do Brasil, frases curtas, voz ativa e segunda pessoa.
 - **(teste)** Nenhum travessão ("—") e nenhuma meia-risca ("–"). Para intervalos, use "de A1 a C2".

@@ -2,8 +2,8 @@
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá. O endereço é o da spec,
 # portugues-para-estrangeiros, e o idioma continua "portugues".
 idioma: "portugues"
-# Fora do site até o Arthur e a Daniella confirmarem as pendências desta página (formatos, começo do zero,
-# realocação e preço).
+# Fora do site até o Arthur e a Daniella confirmarem as pendências desta página (formatos, começo do zero e
+# preço). A realocação de funcionários vira um bloco aqui e na página de cursos se a Daniella confirmar.
 publicada: false
 
 seo:
@@ -17,16 +17,14 @@ topo:
 
 paraQuem:
   titulo: "Para quem é"
-  apoio: "Estrangeiros que precisam do português no Brasil, e brasileiros que querem dominar melhor a própria língua."
+  apoio: "Estrangeiros que precisam do português no Brasil."
   itens:
     - titulo: "Quem mora no Brasil"
-      texto: "Para estudar, trabalhar e viver aqui com autonomia, na rua, na faculdade e no trabalho."
+      texto: "Para se comunicar com autonomia na rua, na faculdade e no trabalho."
     - titulo: "O profissional que veio de fora"
       texto: "A empresa contrata as aulas para o estrangeiro que entrou no time, com preparação para o CELPE-Bras."
     - titulo: "Quem vai prestar o CELPE-Bras"
       texto: "Preparatório com professores especializados no ensino de português para estrangeiros e na preparação para o exame."
-    - titulo: "Brasileiros"
-      texto: "Para quem quer falar e escrever o próprio idioma com mais domínio."
   nota: "Para a empresa que recebe profissionais estrangeiros, veja as [turmas para empresas](/curso-de-idiomas/#empresas)."
 
 provas:
@@ -34,7 +32,7 @@ provas:
   apoio: "O único certificado de português reconhecido oficialmente pelo governo brasileiro."
   itens:
     - nome: "CELPE-Bras"
-      texto: "Criado pelo Ministério da Educação, é pedido por universidades brasileiras na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
+      texto: "Criado pelo Ministério da Educação. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
 
 destaque:
   id: "como-sao-as-aulas"
@@ -45,8 +43,6 @@ destaque:
       texto: "Fala, escuta, leitura e escrita, trabalhadas juntas."
     - titulo: "Gramática e cultura"
       texto: "A gramática e a cultura brasileira entram junto com a conversa."
-    - titulo: "Material de aula"
-      texto: "Escolhido pela 9vee, com atividades práticas."
   nota: "Formatos: [CONFIRMAR COM O ARTHUR: se o português acontece em aula particular, turma, online, presencial ou in company]."
 
 faq:
@@ -56,12 +52,10 @@ faq:
       resposta: "O curso vai do nível básico ao avançado, e o diagnóstico do começo mostra o seu ponto de partida [CONFIRMAR COM O ARTHUR: se há turma para quem começa do zero, e em que idioma o professor explica]."
     - pergunta: "A empresa pode contratar as aulas para um funcionário estrangeiro?"
       resposta: "Pode. No pedido desta página, escolha que é para a sua empresa, e as aulas podem incluir a preparação para o CELPE-Bras."
-    - pergunta: "Vocês ajudam o funcionário estrangeiro na mudança?"
-      resposta: "[CONFIRMAR COM A DANIELLA: se a realocação de funcionários continua, com apoio no idioma, na legislação, na documentação e na adaptação]"
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
 
 ctaFinal:
   titulo: "Conte para que você precisa do português."
-  texto: "Estudo, trabalho, prova ou a vida no Brasil. Em quatro passos você diz o objetivo, o nível e o formato, e escolhe entre o WhatsApp e o contato da equipe."
+  texto: "Em quatro passos você diz o objetivo, o nível e o formato. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

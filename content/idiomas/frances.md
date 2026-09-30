@@ -25,21 +25,21 @@ provas:
 destaque:
   id: "preparatorio"
   titulo: "Como é o preparatório"
-  apoio: "Cada prova tem o seu preparatório."
+  apoio: "Um preparatório para o DELF e o DALF, e outro para o TCF."
   itens:
     - titulo: "Simulados"
       texto: "No preparatório do TCF, você faz a prova no formato dela antes do dia do exame."
     - titulo: "Professores nativos"
-      texto: "O preparatório do TCF é dado por professores nativos."
+      texto: "Professores nativos dão o preparatório do TCF."
     - titulo: "Todas as habilidades"
       texto: "No DELF e no DALF, a preparação trabalha o que o exame cobra, na escrita e na fala."
-  nota: "O foco é nos critérios de cada prova, com prática direcionada."
+  nota: "O foco é nos critérios de cada prova."
 
 faq:
   titulo: "Perguntas sobre o francês"
   itens:
     - pergunta: "Qual prova eu devo fazer?"
-      resposta: "Depende de onde você vai usar o francês. O TCF é o teste de nível pedido em imigração e em universidade; o DELF e o DALF são os diplomas oficiais [CONFIRMAR COM O ARTHUR: como a 9vee ajuda a escolher a prova certa]."
+      resposta: "A 9vee prepara para as três [CONFIRMAR COM O ARTHUR: como a 9vee ajuda a escolher entre o DELF, o DALF e o TCF]."
     - pergunta: "Dá para estudar francês sem ir prestar prova?"
       resposta: "[CONFIRMAR COM O ARTHUR: se há curso de francês além dos preparatórios, em que níveis e formatos, e se as outras aulas também têm professor nativo]"
     - pergunta: "Quanto custa?"

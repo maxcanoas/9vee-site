@@ -1,9 +1,10 @@
 ---
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá.
 idioma: "japones"
-# Esqueleto: o site atual só traz o nome do japonês. A página fica fora do site até o Arthur responder as
-# perguntas marcadas abaixo e ela ganhar texto próprio.
+# O site atual só traz o nome do japonês: a página é um esqueleto, com as perguntas marcadas para o Arthur
+# e o preço para a Daniella. Ela só vai ao ar reescrita com os fatos, título e descrição inclusive, e sem o esqueleto.
 publicada: false
+esqueleto: true
 
 seo:
   titulo: "Curso de japonês | 9vee"
@@ -11,7 +12,7 @@ seo:
 
 topo:
   h1: "Curso de japonês"
-  apoio: "Aulas de japonês com a 9vee [CONFIRMAR COM O ARTHUR: para quem é o curso de japonês, em que níveis e formatos]."
+  apoio: "Aulas de japonês com a 9vee."
   cta: { neutro: "Pedir aulas de japonês", empresa: "Pedir orçamento de japonês", voce: "Quero estudar japonês" }
 
 faq:

@@ -7,7 +7,7 @@ const home = raizDa('/')!;
 const cursos = raizDa('/curso-de-idiomas/')!;
 
 describe('páginas de idioma', () => {
-  // Os que não têm fato são esqueletos, fora do site até o Arthur responder: mesmo assim cada idioma tem a sua.
+  // Os que não têm fato são esqueletos, fora do site até o cliente responder: mesmo assim cada idioma tem a sua.
   it('existem para os 14 idiomas da página de cursos, uma por idioma', () => {
     const daLista = cursos.querySelectorAll('#idiomas .familia__item').map((item) => item.getAttribute('id'));
     const comPagina = paginasDeIdiomaNoConteudo().map((pagina) => pagina.idioma);

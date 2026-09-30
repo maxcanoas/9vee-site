@@ -406,40 +406,48 @@ const idiomas = defineCollection({
 // vêm do idioma em content/site.md. As seções são opcionais: cada página tem as que o conteúdo dela pede.
 const paginasDeIdioma = defineCollection({
   loader: glob({ pattern: '*.md', base: `${conteudo}/idiomas` }),
-  schema: z.object({
-    idioma: z.string(),
-    publicada: z.boolean(),
-    seo,
-    topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico }),
-    paraQuem: z
-      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
-      .optional(),
-    // Os níveis que aquele idioma oferece, na escala dele: do A1 ao C2 ou a da prova do idioma (HSK, JLPT).
-    niveis: z
-      .object({
-        titulo: z.string(),
-        apoio: z.string(),
-        itens: z.array(z.object({ codigo: z.string(), rotulo: z.string(), texto: z.string() })).min(2).max(6),
-      })
-      .optional(),
-    formatos: z
-      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
-      .optional(),
-    provas: z
-      .object({ titulo: z.string(), apoio: z.string(), itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1) })
-      .optional(),
-    destaque: z
-      .object({
-        id: z.string().regex(/^[a-z-]+$/),
-        titulo: z.string(),
-        apoio: z.string(),
-        itens: z.array(tituloETexto).min(2),
-        nota: z.string(),
-      })
-      .optional(),
-    faq: faq.optional(),
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
-  }),
+  schema: z
+    .object({
+      idioma: z.string(),
+      publicada: z.boolean(),
+      // O idioma sem fato nenhum: só as perguntas, e uma descrição do Google provisória, sem marca de pendência.
+      esqueleto: z.boolean().optional(),
+      seo,
+      topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico }),
+      paraQuem: z
+        .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
+        .optional(),
+      // Os níveis que aquele idioma oferece, na escala dele: do A1 ao C2 ou a da prova do idioma (HSK, JLPT).
+      niveis: z
+        .object({
+          titulo: z.string(),
+          apoio: z.string(),
+          itens: z.array(z.object({ codigo: z.string(), rotulo: z.string(), texto: z.string() })).min(2).max(6),
+        })
+        .optional(),
+      formatos: z
+        .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
+        .optional(),
+      provas: z
+        .object({ titulo: z.string(), apoio: z.string(), itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1) })
+        .optional(),
+      destaque: z
+        .object({
+          id: z.string().regex(/^[a-z-]+$/),
+          titulo: z.string(),
+          apoio: z.string(),
+          itens: z.array(tituloETexto).min(2),
+          nota: z.string(),
+        })
+        .optional(),
+      faq: faq.optional(),
+      ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+    })
+    // A trava não enxerga a descrição provisória do esqueleto, que não tem marca: o esqueleto só vai ao ar
+    // depois de reescrito com os fatos e sem a marca.
+    .refine(({ esqueleto, publicada }) => !(esqueleto && publicada), {
+      error: 'esqueleto não pode ser publicado: escreva a página com os fatos, título e descrição inclusive, e tire o esqueleto',
+    }),
 });
 
 // As três páginas que ficam parciais no MVP: hero, um bloco curto e a etiqueta de obra.
