@@ -1,0 +1,80 @@
+---
+// A imagem em arco com o círculo da marca atrás, aparecendo por cima dos ombros dela: o visual do topo das
+// páginas internas. Entra como segunda coluna da grade do topo; no celular, fica centralizado embaixo do texto.
+import Figura from './Figura.astro';
+import CirculoMarca from './CirculoMarca.astro';
+
+interface Props {
+  imagem: { id: string; arquivo: string; alt: string };
+}
+
+const { imagem } = Astro.props;
+---
+
+<div class="arco-com-circulo">
+  <div class="arco-com-circulo__circulo" aria-hidden="true">
+    <CirculoMarca sizes="(min-width: 64rem) 21rem, (min-width: 32.5rem) 19rem, 58vw" primeiraDobra />
+  </div>
+  <div class="arco-com-circulo__quadro">
+    <Figura
+      {...imagem}
+      proporcao="4/5"
+      forma="arco"
+      primeiraDobra
+      sizes="(min-width: 64rem) 22rem, 62vw"
+      larguras={[400, 640, 800]}
+    />
+  </div>
+</div>
+
+<style>
+  /* O círculo da marca fica atrás do arco e aparece por cima dos ombros da imagem. */
+  .arco-com-circulo {
+    position: relative;
+    justify-self: center;
+    inline-size: min(62vw, 20rem);
+  }
+
+  .arco-com-circulo__quadro {
+    position: relative;
+    z-index: 1;
+  }
+
+  .arco-com-circulo__circulo {
+    position: absolute;
+    inset-block-start: -7%;
+    inset-inline: 3%;
+  }
+
+  @media (min-width: 64rem) {
+    .arco-com-circulo {
+      justify-self: end;
+      inline-size: min(100%, 22rem);
+    }
+  }
+
+  /* Parallax curto: a imagem sobe um pouco e descola do círculo. O Astro não põe escopo no nome da animação,
+     por isso ele leva o nome do componente. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      .arco-com-circulo__quadro {
+        animation-name: arco-com-circulo-quadro;
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: scroll(root);
+        animation-range: 0 70svh;
+        will-change: transform;
+      }
+    }
+  }
+
+  @keyframes arco-com-circulo-quadro {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-8%);
+    }
+  }
+</style>
