@@ -1,10 +1,10 @@
 ---
-// O topo das páginas de idioma, tipográfico e sem foto: a saudação na escrita do idioma, com a meia-lua na cor da
-// família, como na faixa de saudações da home, e o círculo da marca. A meia-lua vira o lado reto para o círculo:
-// são as duas metades que se encontram, a forma da marca.
+// O topo das páginas de idioma: a saudação na escrita do idioma, com a meia-lua na cor da família, como na faixa de
+// saudações da home, e a foto do lugar em arco, com o círculo da marca atrás, como nas páginas internas. A meia-lua
+// vira o lado reto para o círculo, que aparece por cima do arco: são as duas metades que se encontram, a forma da marca.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
-import CirculoMarca from './CirculoMarca.astro';
+import ArcoComCirculo from './ArcoComCirculo.astro';
 import Trilha from './Trilha.astro';
 import type { TextosPorPublico } from '../lib/publico';
 
@@ -12,12 +12,14 @@ interface Props {
   h1: string;
   apoio: string;
   cta: TextosPorPublico;
+  /** A foto do lugar: duas pessoas conversando numa cidade onde se fala o idioma, com um marco ao fundo. */
+  imagem: { id: string; arquivo: string; alt: string };
   idioma: { slug: string; saudacao: string; lang: string; dir?: 'rtl'; familia: string };
   /** O aviso da página que ainda não vai para o site. A produção sai sem essas páginas: só o local e o preview o mostram. */
   etiqueta?: string;
 }
 
-const { h1, apoio, cta, idioma, etiqueta } = Astro.props;
+const { h1, apoio, cta, imagem, idioma, etiqueta } = Astro.props;
 ---
 
 <section class="topo-idioma escuro tons-claros" aria-labelledby="hero-titulo" data-grupo={idioma.familia}>
@@ -30,9 +32,7 @@ const { h1, apoio, cta, idioma, etiqueta } = Astro.props;
       <p class="topo-idioma__apoio"><Texto de={apoio} /></p>
       <BotaoContato textos={cta} servico="idiomas" idioma={idioma.slug} />
     </div>
-    <div class="topo-idioma__circulo" aria-hidden="true">
-      <CirculoMarca sizes="(min-width: 64rem) 22rem, min(62vw, 20rem)" primeiraDobra />
-    </div>
+    <ArcoComCirculo imagem={imagem} />
   </div>
 </section>
 
@@ -42,9 +42,10 @@ const { h1, apoio, cta, idioma, etiqueta } = Astro.props;
     padding-block: var(--e-7) var(--secao);
   }
 
+  /* O espaço do hero das páginas internas: o círculo sobe acima do arco e precisa de folga do botão. */
   .topo-idioma__grade {
     display: grid;
-    gap: var(--e-6);
+    gap: var(--e-7);
   }
 
   .topo-idioma__texto {
@@ -101,22 +102,11 @@ const { h1, apoio, cta, idioma, etiqueta } = Astro.props;
     line-height: var(--altura-apoio);
   }
 
-  /* As medidas do visual do hero das páginas internas: no celular, centralizado embaixo do texto. */
-  .topo-idioma__circulo {
-    justify-self: center;
-    inline-size: min(62vw, 20rem);
-  }
-
   @media (min-width: 64rem) {
     .topo-idioma__grade {
       grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
       column-gap: var(--e-8);
-    }
-
-    .topo-idioma__circulo {
-      justify-self: end;
-      inline-size: min(100%, 22rem);
     }
   }
 </style>

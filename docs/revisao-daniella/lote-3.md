@@ -1,6 +1,6 @@
 # Lote 3: páginas de idioma
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 29/09/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 30/09/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Inglês
 
@@ -22,6 +22,8 @@ Hello
 Inglês para usar no trabalho, curso para crianças e adolescentes com material da Cambridge e preparação para o TOEFL.
 
 [Botão: Pedir aulas de inglês (para sua empresa: Pedir orçamento de inglês; para você: Quero estudar inglês)]
+
+[Imagem: Dois colegas conversando na ponte de Westminster, em Londres, com o Big Ben ao fundo.]
 
 #### Para quem é
 
@@ -126,6 +128,8 @@ Aulas de espanhol e preparação para o DELE, o diploma oficial do idioma, recon
 
 [Botão: Pedir aulas de espanhol (para sua empresa: Pedir orçamento de espanhol; para você: Quero estudar espanhol)]
 
+[Imagem: Dois colegas conversando numa mesa de café ao ar livre na Gran Vía, em Madri, com o edifício Metrópolis ao fundo.]
+
 #### Preparação para o DELE
 
 O diploma é emitido em centros autorizados, como os Institutos Cervantes e as embaixadas.
@@ -178,6 +182,8 @@ Fora do site até vocês responderem
 Aulas com foco na conversa desde as primeiras aulas, para o trabalho, para a viagem ou pelo interesse na cultura.
 
 [Botão: Pedir aulas de mandarim (para sua empresa: Pedir orçamento de mandarim; para você: Quero estudar mandarim)]
+
+[Imagem: Dois executivos conversando no calçadão do Bund, em Xangai, com os prédios de Pudong ao fundo.]
 
 #### Para quem é
 
@@ -260,6 +266,8 @@ Preparação para o Inburgering, o exame prévio de integração que a lei holan
 
 [Botão: Pedir aulas de holandês (para sua empresa: Pedir orçamento de holandês; para você: Quero estudar holandês)]
 
+[Imagem: Uma mulher empurrando a bicicleta e conversando com a vizinha numa ponte de canal em Amsterdã.]
+
 #### Preparação para o Inburgering
 
 O preparatório trabalha as duas partes que o exame avalia, voltado para a prova.
@@ -304,6 +312,8 @@ Bonjour
 Preparação para o DELF, o DALF e o TCF, as provas oficiais de francês, com simulados e professores nativos no preparatório do TCF.
 
 [Botão: Pedir aulas de francês (para sua empresa: Pedir orçamento de francês; para você: Quero estudar francês)]
+
+[Imagem: Um estudante conversando com uma parisiense numa rua de Paris, com a Torre Eiffel ao fundo.]
 
 #### As provas de francês
 
@@ -375,6 +385,8 @@ Olá
 Para quem veio estudar, trabalhar ou viver no Brasil, do nível básico ao avançado, com preparação para o CELPE-Bras.
 
 [Botão: Pedir aulas de português (para sua empresa: Pedir orçamento de português; para você: Quero estudar português)]
+
+[Imagem: Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, com o MASP ao fundo.]
 
 #### Para quem é
 

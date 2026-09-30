@@ -14,6 +14,10 @@ topo:
   h1: "Curso de japonês"
   apoio: "Aulas de japonês com a 9vee."
   cta: { neutro: "Pedir aulas de japonês", empresa: "Pedir orçamento de japonês", voce: "Quero estudar japonês" }
+  imagem:
+    id: "IMG-IDIOMA-JAPONES"
+    arquivo: "idioma-japones"
+    alt: "Dois colegas conversando numa rua tranquila de Tóquio, com a Tokyo Tower ao fundo."
 
 faq:
   titulo: "Perguntas sobre o japonês"

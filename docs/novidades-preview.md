@@ -2,6 +2,17 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, quarta leva (30/09): uma foto no topo de cada página de idioma
+
+- Cada página de idioma ganhou uma foto no topo, com duas pessoas conversando numa cidade onde se fala o idioma e um lugar conhecido ao fundo. No inglês é o Big Ben; no japonês, a Tokyo Tower; no português para estrangeiros, o MASP. A saudação na escrita do idioma continua ao lado.
+  - https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/ingles/
+  - https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/japones/
+  - https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/portugues-para-estrangeiros/
+- A foto fica no mesmo arco das outras páginas, com o círculo da marca atrás.
+- As páginas de idioma continuam fora do site até as respostas chegarem.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. O lote 3 foi gerado de novo e agora traz a descrição de cada foto, que a Daniella também revisa. Se ele já foi para ela, a diferença são só as seis linhas "[Imagem: ...]" das páginas escritas.
+
 ## Semana 1, terceira leva (30/09): a política de privacidade e a página de erro
 
 - O site novo tem a sua própria política de privacidade: https://9vee-preview.9vee-site.workers.dev/politica-de-privacidade/

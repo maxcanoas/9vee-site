@@ -14,6 +14,10 @@ topo:
   h1: "Curso de árabe"
   apoio: "Aulas de árabe com a 9vee."
   cta: { neutro: "Pedir aulas de árabe", empresa: "Pedir orçamento de árabe", voce: "Quero estudar árabe" }
+  imagem:
+    id: "IMG-IDIOMA-ARABE"
+    arquivo: "idioma-arabe"
+    alt: "Duas colegas conversando num terraço em Dubai, com o Burj Khalifa ao fundo."
 
 faq:
   titulo: "Perguntas sobre o árabe"

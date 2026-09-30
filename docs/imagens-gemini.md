@@ -148,7 +148,7 @@ Com a etapa 6, a lista fecha: as duas camadas do hero da home, as quatro do "Com
 
 ## Páginas de idioma
 
-Decidido em 30/09/2026, a pedido do Maxwell: o topo das páginas de idioma ganha uma foto, para o visitante reconhecer o país e o idioma logo de cara. Isso muda a decisão "Topo tipográfico, sem foto" de `docs/fase-1-spec.md`, que precisa ser atualizada.
+Decidido em 30/09/2026, a pedido do Maxwell: o topo das páginas de idioma ganha uma foto, para o visitante reconhecer o país e o idioma logo de cara. Isso mudou a decisão "Topo tipográfico, sem foto" de `docs/fase-1-spec.md`, atualizada no mesmo dia.
 
 **O conceito: a conversa no lugar.** Duas pessoas conversando numa cena do dia a dia de uma cidade onde se fala o idioma, com um marco que qualquer pessoa reconhece ao fundo. Uma delas é brasileira, a pessoa que estudou com a 9vee (no português, é o contrário: a estrangeira que veio para o Brasil). O marco diz o país; a conversa diz o que a 9vee entrega, na linha do "Para a conversa dar certo." da home. A saudação na escrita do idioma continua no topo, então a página se identifica duas vezes: pela palavra e pelo lugar.
 
@@ -167,7 +167,7 @@ Decidido em 30/09/2026, a pedido do Maxwell: o topo das páginas de idioma ganha
 - a gradação de cor do site nas sombras e nas luzes, sem pintar a arquitetura: o vermelho de Estocolmo e o terracota de Florença são o que identifica o lugar;
 - quem aparece varia em gênero e idade de uma página para outra.
 
-**Onde entra:** no `TopoIdioma`, o círculo da marca passa a ficar atrás da foto em arco, como no `HeroPagina` das páginas internas. A saudação, o H1 e o botão não mudam. Cada arquivo em `content/idiomas/` ganha um campo `imagem` (id, arquivo e alt), como os heroes das outras páginas.
+**Onde entra:** no `TopoIdioma`, pelo `ArcoComCirculo`, o mesmo arco com o círculo da marca atrás que o `HeroPagina` usa nas páginas internas. A saudação, o H1 e o botão não mudam. Cada arquivo em `content/idiomas/` tem o campo `imagem` (id, arquivo e alt) no `topo`, como os heroes das outras páginas.
 
 **Ao conferir cada imagem:**
 

@@ -14,6 +14,10 @@ topo:
   h1: "Curso de romeno"
   apoio: "Aulas de romeno com a 9vee."
   cta: { neutro: "Pedir aulas de romeno", empresa: "Pedir orçamento de romeno", voce: "Quero estudar romeno" }
+  imagem:
+    id: "IMG-IDIOMA-ROMENO"
+    arquivo: "idioma-romeno"
+    alt: "Duas pessoas conversando no jardim em frente ao Ateneu Romeno, em Bucareste."
 
 faq:
   titulo: "Perguntas sobre o romeno"

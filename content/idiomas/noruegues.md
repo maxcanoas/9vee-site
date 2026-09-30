@@ -14,6 +14,10 @@ topo:
   h1: "Curso de norueguês"
   apoio: "Aulas de norueguês com a 9vee."
   cta: { neutro: "Pedir aulas de norueguês", empresa: "Pedir orçamento de norueguês", voce: "Quero estudar norueguês" }
+  imagem:
+    id: "IMG-IDIOMA-NORUEGUES"
+    arquivo: "idioma-noruegues"
+    alt: "Duas pessoas conversando no cais de Bergen, com as casas de madeira coloridas de Bryggen ao fundo."
 
 faq:
   titulo: "Perguntas sobre o norueguês"

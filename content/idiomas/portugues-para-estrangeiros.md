@@ -14,6 +14,10 @@ topo:
   h1: "Português para estrangeiros"
   apoio: "Para quem veio estudar, trabalhar ou viver no Brasil, do nível básico ao avançado, com preparação para o CELPE-Bras."
   cta: { neutro: "Pedir aulas de português", empresa: "Pedir orçamento de português", voce: "Quero estudar português" }
+  imagem:
+    id: "IMG-IDIOMA-PORTUGUES"
+    arquivo: "idioma-portugues-para-estrangeiros"
+    alt: "Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, com o MASP ao fundo."
 
 paraQuem:
   titulo: "Para quem é"

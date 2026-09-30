@@ -415,7 +415,7 @@ const paginasDeIdioma = defineCollection({
       // O idioma sem fato nenhum: só as perguntas, e uma descrição do Google provisória, sem marca de pendência.
       esqueleto: z.boolean().optional(),
       seo,
-      topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico }),
+      topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico, imagem }),
       paraQuem: z
         .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
         .optional(),

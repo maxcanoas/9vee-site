@@ -233,7 +233,7 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
   });
 
   it('usa o círculo da marca no topo e no fechamento, como enfeite (com o logo só no fim da home)', () => {
-    const blocos = raiz.querySelectorAll('.hero__visual, .arco-com-circulo, .topo-idioma, .cta-final');
+    const blocos = raiz.querySelectorAll('.hero__visual, .arco-com-circulo, .cta-final');
     if (!SEM_CIRCULO.has(rota)) expect(blocos.length, `${rota} sem hero`).toBeGreaterThan(0);
     for (const bloco of blocos) {
       const circulo = bloco.querySelector('[aria-hidden="true"] img');

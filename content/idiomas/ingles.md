@@ -12,6 +12,10 @@ topo:
   h1: "Curso de inglês"
   apoio: "Inglês para usar no trabalho, curso para crianças e adolescentes com material da Cambridge e preparação para o TOEFL."
   cta: { neutro: "Pedir aulas de inglês", empresa: "Pedir orçamento de inglês", voce: "Quero estudar inglês" }
+  imagem:
+    id: "IMG-IDIOMA-INGLES"
+    arquivo: "idioma-ingles"
+    alt: "Dois colegas conversando na ponte de Westminster, em Londres, com o Big Ben ao fundo."
 
 paraQuem:
   titulo: "Para quem é"

@@ -12,6 +12,10 @@ topo:
   h1: "Curso de mandarim"
   apoio: "Aulas com foco na conversa desde as primeiras aulas, para o trabalho, para a viagem ou pelo interesse na cultura."
   cta: { neutro: "Pedir aulas de mandarim", empresa: "Pedir orçamento de mandarim", voce: "Quero estudar mandarim" }
+  imagem:
+    id: "IMG-IDIOMA-MANDARIM"
+    arquivo: "idioma-mandarim"
+    alt: "Dois executivos conversando no calçadão do Bund, em Xangai, com os prédios de Pudong ao fundo."
 
 paraQuem:
   titulo: "Para quem é"

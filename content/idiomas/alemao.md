@@ -14,6 +14,10 @@ topo:
   h1: "Curso de alemão"
   apoio: "Aulas de alemão com a 9vee."
   cta: { neutro: "Pedir aulas de alemão", empresa: "Pedir orçamento de alemão", voce: "Quero estudar alemão" }
+  imagem:
+    id: "IMG-IDIOMA-ALEMAO"
+    arquivo: "idioma-alemao"
+    alt: "Dois colegas atravessando a Pariser Platz em Berlim, com o Portão de Brandemburgo ao fundo."
 
 faq:
   titulo: "Perguntas sobre o alemão"

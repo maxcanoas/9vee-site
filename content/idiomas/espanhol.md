@@ -12,6 +12,10 @@ topo:
   h1: "Curso de espanhol"
   apoio: "Aulas de espanhol e preparação para o DELE, o diploma oficial do idioma, reconhecido pelo Estado espanhol."
   cta: { neutro: "Pedir aulas de espanhol", empresa: "Pedir orçamento de espanhol", voce: "Quero estudar espanhol" }
+  imagem:
+    id: "IMG-IDIOMA-ESPANHOL"
+    arquivo: "idioma-espanhol"
+    alt: "Dois colegas conversando numa mesa de café ao ar livre na Gran Vía, em Madri, com o edifício Metrópolis ao fundo."
 
 provas:
   titulo: "Preparação para o DELE"

@@ -14,6 +14,10 @@ topo:
   h1: "Curso de sueco"
   apoio: "Aulas de sueco com a 9vee."
   cta: { neutro: "Pedir aulas de sueco", empresa: "Pedir orçamento de sueco", voce: "Quero estudar sueco" }
+  imagem:
+    id: "IMG-IDIOMA-SUECO"
+    arquivo: "idioma-sueco"
+    alt: "Duas pessoas conversando na praça Stortorget, em Estocolmo, com as fachadas coloridas ao fundo."
 
 faq:
   titulo: "Perguntas sobre o sueco"

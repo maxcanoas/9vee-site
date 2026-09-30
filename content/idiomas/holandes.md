@@ -12,6 +12,10 @@ topo:
   h1: "Curso de holandês"
   apoio: "Preparação para o Inburgering, o exame prévio de integração que a lei holandesa pede a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos."
   cta: { neutro: "Pedir aulas de holandês", empresa: "Pedir orçamento de holandês", voce: "Quero estudar holandês" }
+  imagem:
+    id: "IMG-IDIOMA-HOLANDES"
+    arquivo: "idioma-holandes"
+    alt: "Uma mulher empurrando a bicicleta e conversando com a vizinha numa ponte de canal em Amsterdã."
 
 provas:
   titulo: "Preparação para o Inburgering"

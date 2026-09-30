@@ -12,6 +12,10 @@ topo:
   h1: "Curso de francês"
   apoio: "Preparação para o DELF, o DALF e o TCF, as provas oficiais de francês, com simulados e professores nativos no preparatório do TCF."
   cta: { neutro: "Pedir aulas de francês", empresa: "Pedir orçamento de francês", voce: "Quero estudar francês" }
+  imagem:
+    id: "IMG-IDIOMA-FRANCES"
+    arquivo: "idioma-frances"
+    alt: "Um estudante conversando com uma parisiense numa rua de Paris, com a Torre Eiffel ao fundo."
 
 provas:
   titulo: "As provas de francês"

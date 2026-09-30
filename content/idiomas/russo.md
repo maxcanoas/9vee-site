@@ -14,6 +14,10 @@ topo:
   h1: "Curso de russo"
   apoio: "Aulas de russo com a 9vee."
   cta: { neutro: "Pedir aulas de russo", empresa: "Pedir orçamento de russo", voce: "Quero estudar russo" }
+  imagem:
+    id: "IMG-IDIOMA-RUSSO"
+    arquivo: "idioma-russo"
+    alt: "Duas pessoas conversando na beira de um canal de São Petersburgo, com a Igreja do Salvador sobre o Sangue Derramado ao fundo."
 
 faq:
   titulo: "Perguntas sobre o russo"

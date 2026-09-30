@@ -14,6 +14,10 @@ topo:
   h1: "Curso de italiano"
   apoio: "Aulas de italiano com a 9vee."
   cta: { neutro: "Pedir aulas de italiano", empresa: "Pedir orçamento de italiano", voce: "Quero estudar italiano" }
+  imagem:
+    id: "IMG-IDIOMA-ITALIANO"
+    arquivo: "idioma-italiano"
+    alt: "Duas pessoas conversando numa rua de Florença, com a cúpula do Duomo ao fundo."
 
 faq:
   titulo: "Perguntas sobre o italiano"

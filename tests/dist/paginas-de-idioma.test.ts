@@ -25,15 +25,24 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, i
     expect(raiz, `${rota} fora do preview`).toBeDefined();
   });
 
-  it('abre com a saudação na escrita do idioma, e o círculo da marca no lugar da foto', () => {
+  it('abre com a saudação na escrita do idioma', () => {
     const saudacao = raiz!.querySelector('.topo-idioma__saudacao');
     const daLista = naLista?.querySelector('.idioma__saudacao');
     expect(saudacao?.text.trim()).toBe(daLista?.text.trim());
     expect(saudacao?.getAttribute('lang')).toBe(daLista?.getAttribute('lang'));
     expect(saudacao?.getAttribute('dir')).toBe(daLista?.getAttribute('dir'));
-    const imagens = raiz!.querySelectorAll('.topo-idioma img');
-    expect(imagens.length).toBeGreaterThan(0);
-    for (const imagem of imagens) expect(imagem.getAttribute('src')).toMatch(/\/circulo-marca\./);
+  });
+
+  // O Figura cai calado no Placeholder quando não acha o arquivo: aqui a foto tem de existir, e ser a do idioma.
+  it('mostra a foto do lugar em arco, com o círculo da marca atrás', () => {
+    const foto = raiz!.querySelector('.topo-idioma .arco-com-circulo__quadro .figura');
+    expect(foto?.tagName, 'Placeholder no lugar da foto').toBe('IMG');
+    expect(foto?.getAttribute('class')).toContain('figura--arco');
+    expect(foto?.getAttribute('alt')?.length ?? 0).toBeGreaterThanOrEqual(10);
+    expect(foto?.getAttribute('src')).toContain(`/idioma-${rota.split('/').at(-2)}.`);
+    const circulo = raiz!.querySelector('.topo-idioma [aria-hidden="true"] img');
+    expect(circulo?.getAttribute('src')).toMatch(/\/circulo-marca\./);
+    expect(circulo?.getAttribute('alt')).toBe('');
   });
 
   it('avisa no topo, só quando não está publicada, que fica fora do site', () => {
