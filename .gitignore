@@ -26,3 +26,6 @@ desktop.ini
 # kit de marca original da cliente (19 MB); o site usa a cópia parcial em assets-cliente/
 docs/Archive/
 docs/Guide.pdf
+
+# fotos das páginas de idioma como vieram do Gemini, antes do recorte da moldura, e o script de uso único que as recortou
+/imagens-originais/

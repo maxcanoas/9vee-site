@@ -145,3 +145,251 @@ Todo prompt termina com a linha: `Avoid: stock photo poses, handshake clichés, 
 ## Todas as imagens do MVP
 
 Com a etapa 6, a lista fecha: as duas camadas do hero da home, as quatro do "Como funciona", o hero do NR-1, os dois de Idiomas e os três das páginas parciais.
+
+## Páginas de idioma
+
+Decidido em 30/09/2026, a pedido do Maxwell: o topo das páginas de idioma ganha uma foto, para o visitante reconhecer o país e o idioma logo de cara. Isso muda a decisão "Topo tipográfico, sem foto" de `docs/fase-1-spec.md`, que precisa ser atualizada.
+
+**O conceito: a conversa no lugar.** Duas pessoas conversando numa cena do dia a dia de uma cidade onde se fala o idioma, com um marco que qualquer pessoa reconhece ao fundo. Uma delas é brasileira, a pessoa que estudou com a 9vee (no português, é o contrário: a estrangeira que veio para o Brasil). O marco diz o país; a conversa diz o que a 9vee entrega, na linha do "Para a conversa dar certo." da home. A saudação na escrita do idioma continua no topo, então a página se identifica duas vezes: pela palavra e pelo lugar.
+
+**Por que não as outras saídas:**
+
+- **Bandeira:** bandeira é de país, e não de idioma. O espanhol é língua de mais de vinte países; o árabe, também. No mandarim, a escolha da bandeira é assunto político. E o estilo base de todas as imagens do site já proíbe bandeira.
+- **Cartão-postal (só o monumento):** reconhece rápido, mas a página vira agência de turismo, e as 14 ficariam iguais a banco de imagens.
+- **Objeto típico (sombrero, quimono, matrioska):** é estereótipo, e ofende quem fala a língua.
+- **Letreiro na língua:** seria o jeito mais direto de mostrar o idioma, mas IA escreve mal em japonês, árabe, chinês e russo, e um nativo percebe na hora. Por isso todo prompt pede letreiro fora de foco ou fora do quadro. Quem mostra a escrita é a saudação do topo, que é texto de verdade.
+
+**Como a série fica coerente:**
+
+- mesma hora do dia (fim de tarde), mesma lente, mesma distância e duas pessoas em todas, para as 14 parecerem uma série só;
+- o marco na metade de cima e no centro, porque o site mostra a foto em arco, que corta os cantos de cima; as pessoas no terço de baixo;
+- profundidade de campo moderada, e não rasa como no resto do site: o marco precisa ficar nítido o bastante para ser reconhecido;
+- a gradação de cor do site nas sombras e nas luzes, sem pintar a arquitetura: o vermelho de Estocolmo e o terracota de Florença são o que identifica o lugar;
+- quem aparece varia em gênero e idade de uma página para outra.
+
+**Onde entra:** no `TopoIdioma`, o círculo da marca passa a ficar atrás da foto em arco, como no `HeroPagina` das páginas internas. A saudação, o H1 e o botão não mudam. Cada arquivo em `content/idiomas/` ganha um campo `imagem` (id, arquivo e alt), como os heroes das outras páginas.
+
+**Ao conferir cada imagem:**
+
+- a foto vai até a borda, sem moldura nem arco desenhado, porque o arco é o site que faz (na primeira rodada, 13 das 14 vieram com ele; veja o registro no fim);
+- o marco está certo (IA às vezes inventa andares na Torre Eiffel, colunas no Ateneu ou cúpulas na igreja de São Petersburgo);
+- nenhum letreiro com letra inventada, principalmente no japonês, no árabe, no mandarim e no russo;
+- mãos, rostos e as duas pessoas de verdade conversando, e não posando;
+- o marco inteiro dentro do quadro, com céu em cima dele, para sobreviver ao corte do arco;
+- nenhuma bandeira, marca ou logo.
+
+## Estilo base das páginas de idioma (início de todo prompt desta série)
+
+> Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile.
+
+Todo prompt desta série termina com a linha: `Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.`
+
+### Germânicas
+
+#### IMG-IDIOMA-INGLES
+
+- **Onde:** página de inglês (`/curso-de-idiomas/ingles/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Nova York, Estados Unidos.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-ingles.jpg`
+- **Alt:** Duas profissionais conversando numa calçada de Manhattan, com o Empire State Building ao fundo.
+- **Por quê:** Inglês é língua de muitos países. Nova York foi escolhida porque o inglês de trabalho e o TOEFL, que a página cita, são referência americana. A versão de Londres, logo abaixo, foi a escolhida.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her thirties, in a navy coat, and an American colleague walk and talk on a Midtown Manhattan sidewalk in New York, each holding a paper coffee cup without any logo; the street runs straight away from the camera, with the Empire State Building rising at the end of the street canyon, a yellow taxi softly blurred at the curb. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-INGLES, versão de Londres (a escolhida)
+
+- **Quando usar:** se o inglês da 9vee puxar mais para o britânico (a página também cita o material da Cambridge). Foi a escolhida, em 30/09/2026. Mesmo arquivo, `idioma-ingles.jpg`.
+- **Alt:** Dois colegas conversando na ponte de Westminster, em Londres, com o Big Ben ao fundo.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her thirties, in a navy coat, and a British colleague talk while walking along the Westminster Bridge pavement in London; behind them, the Elizabeth Tower (Big Ben) and the Houses of Parliament rise in the upper half of the picture, a red double-decker bus softly blurred on the road. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-ALEMAO
+
+- **Onde:** página de alemão (`/curso-de-idiomas/alemao/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Berlim, Alemanha.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-alemao.jpg`
+- **Alt:** Dois colegas atravessando a Pariser Platz em Berlim, com o Portão de Brandemburgo ao fundo.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian man in his forties with gray at the temples and a German colleague cross Pariser Platz in Berlin on foot, talking; the Brandenburg Gate stands behind them at mid distance, centered, with the Quadriga clearly visible on top and clear sky above it. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-HOLANDES
+
+- **Onde:** página de holandês (`/curso-de-idiomas/holandes/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Amsterdã, Países Baixos.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-holandes.jpg`
+- **Alt:** Uma mulher empurrando a bicicleta e conversando com a vizinha numa ponte de canal em Amsterdã.
+- **Por quê:** A cena é de vida cotidiana, e não de turismo, porque a página fala do Inburgering, a prova de quem vai morar nos Países Baixos.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her late twenties walks her bicycle across a small bridge over an Amsterdam canal while talking with a Dutch neighbor; behind them, the narrow gabled canal houses lean slightly along the water, with bicycles parked on the railing and trees along the quay. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-SUECO
+
+- **Onde:** página de sueco (`/curso-de-idiomas/sueco/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Estocolmo, Suécia.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-sueco.jpg`
+- **Alt:** Duas pessoas conversando na praça Stortorget, em Estocolmo, com as fachadas coloridas ao fundo.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian man in his thirties and a Swedish colleague talk at a small outdoor café table in Stortorget square, in Gamla Stan, Stockholm; behind them, the famous tall narrow merchant houses in deep red and warm orange with white window frames and stepped gables fill the upper half of the picture. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-NORUEGUES
+
+- **Onde:** página de norueguês (`/curso-de-idiomas/noruegues/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Bergen, Noruega.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-noruegues.jpg`
+- **Alt:** Duas pessoas conversando no cais de Bergen, com as casas de madeira coloridas de Bryggen ao fundo.
+- **Por quê:** Oslo é a capital, mas Bryggen é a imagem que qualquer pessoa associa à Noruega.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her forties, wearing a light rain jacket, talks with a Norwegian colleague on the harbor quay in Bergen; behind them, the row of old wooden Hanseatic houses of Bryggen with steep gables in red, ochre and white, and a green hill rising behind the rooftops. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+### Românicas
+
+#### IMG-IDIOMA-ESPANHOL
+
+- **Onde:** página de espanhol (`/curso-de-idiomas/espanhol/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Madri, Espanha.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-espanhol.jpg`
+- **Alt:** Dois colegas conversando numa mesa de café ao ar livre na Gran Vía, em Madri, com o edifício Metrópolis ao fundo.
+- **Por quê:** Madri, porque a página fala do DELE, o diploma do Estado espanhol. Se o Arthur disser que quem procura espanhol na 9vee trabalha com a América Latina, troque a cidade por Buenos Aires, com o Obelisco ao fundo.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her thirties and a Spanish colleague talk at an outdoor café table at the start of Gran Vía in Madrid; behind them, the Metrópolis building with its dark slate dome topped by the golden winged statue, cream facade and ornate columns, lit by warm evening sun. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-FRANCES
+
+- **Onde:** página de francês (`/curso-de-idiomas/frances/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Paris, França.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-frances.jpg`
+- **Alt:** Um estudante conversando com uma parisiense numa rua de Paris, com a Torre Eiffel ao fundo.
+- **Por quê:** A torre sempre de dia. A iluminação noturna da Torre Eiffel tem direito autoral, e a foto à noite pode dar problema.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian student in his twenties with a canvas tote bag talks with a Parisian woman in front of a corner café on a quiet Haussmann-style street in Paris, with cream stone facades and wrought-iron balconies on both sides; the Eiffel Tower rises at the far end of the street, in daylight. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-ITALIANO
+
+- **Onde:** página de italiano (`/curso-de-idiomas/italiano/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Florença, Itália.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-italiano.jpg`
+- **Alt:** Duas pessoas conversando numa rua de Florença, com a cúpula do Duomo ao fundo.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian man in his fifties and an Italian friend talk while walking down Via dei Servi in Florence; the terracotta dome of the Florence Cathedral by Brunelleschi rises at the end of the narrow street, between warm stone facades with green shutters. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-PORTUGUES
+
+- **Onde:** página de português para estrangeiros (`/curso-de-idiomas/portugues-para-estrangeiros/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** São Paulo, Brasil.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-portugues-para-estrangeiros.jpg`
+- **Alt:** Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, com o MASP ao fundo.
+- **Por quê:** Aqui a lógica inverte: quem aprende é o estrangeiro, e o lugar é o Brasil. São Paulo, porque a página fala de quem veio trabalhar, e é onde a 9vee atua.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: an international professional woman in her thirties, recently moved to Brazil, talks with a Brazilian colleague on the wide sidewalk of Avenida Paulista in São Paulo; behind them, the MASP museum with its long red concrete beams suspended above an open plaza, and the green trees of the avenue. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-ROMENO
+
+- **Onde:** página de romeno (`/curso-de-idiomas/romeno/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Bucareste, Romênia.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-romeno.jpg`
+- **Alt:** Duas pessoas conversando no jardim em frente ao Ateneu Romeno, em Bucareste.
+- **Por quê:** O romeno é o idioma de identificação mais fraca: poucos brasileiros reconhecem um prédio de Bucareste. Aqui a saudação "Bună" e o nome do idioma, no topo da página, fazem a maior parte do trabalho.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her forties and a Romanian colleague talk while walking along the garden path in front of the Romanian Athenaeum in Bucharest; behind them, the round neoclassical concert hall with its domed roof and its portico of six Ionic columns, surrounded by trees. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+### De outras famílias
+
+#### IMG-IDIOMA-MANDARIM
+
+- **Onde:** página de mandarim (`/curso-de-idiomas/mandarim/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Xangai, China.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-mandarim.jpg`
+- **Alt:** Dois executivos conversando no calçadão do Bund, em Xangai, com os prédios de Pudong ao fundo.
+- **Por quê:** Xangai, e não uma cena de lanternas ou dragões: o mandarim da 9vee é também o do mercado financeiro, e a cidade diz negócio.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian businessman in his forties and a Chinese business partner talk on the Bund promenade in Shanghai, both in business clothes; across the Huangpu River behind them, the Pudong skyline with the Oriental Pearl Tower and its pink spheres in the center of the picture. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-JAPONES
+
+- **Onde:** página de japonês (`/curso-de-idiomas/japones/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Tóquio, Japão.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-japones.jpg`
+- **Alt:** Dois colegas conversando numa rua tranquila de Tóquio, com a Tokyo Tower ao fundo.
+- **Por quê:** Letreiro em japonês gerado por IA costuma sair com caracteres inventados, e um japonês percebe na hora. Confira com atenção se sobrou algum.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her thirties and a Japanese colleague talk on a quiet, clean side street in the Minato district of Tokyo, lined with small trees; the red and white Tokyo Tower rises at the end of the street against a clear evening sky. Any shop signs are outside the picture or fully out of focus. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-ARABE
+
+- **Onde:** página de árabe (`/curso-de-idiomas/arabe/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** Dubai, Emirados Árabes Unidos.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-arabe.jpg`
+- **Alt:** Duas colegas conversando num terraço em Dubai, com o Burj Khalifa ao fundo.
+- **Por quê:** Dubai, pelo peso nos negócios. O árabe é língua de mais de vinte países, e se a 9vee atender mais quem tem família libanesa ou síria, vale trocar. Letreiro em árabe gerado por IA quase sempre sai errado: confira.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian woman in her thirties and an Emirati colleague in contemporary modest business clothes talk on a shaded terrace in Downtown Dubai; behind them, the Burj Khalifa rises into a clear sky, with the low sand-colored buildings of the Souk Al Bahar area in the middle ground. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+#### IMG-IDIOMA-RUSSO
+
+- **Onde:** página de russo (`/curso-de-idiomas/russo/`), topo, moldura de arco com o círculo da marca atrás.
+- **Lugar:** São Petersburgo, Rússia.
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `idioma-russo.jpg`
+- **Alt:** Duas pessoas conversando na beira de um canal de São Petersburgo, com a Igreja do Salvador sobre o Sangue Derramado ao fundo.
+- **Por quê:** São Petersburgo, e não a Praça Vermelha: a igreja identifica a Rússia do mesmo jeito, sem o peso político do Kremlin.
+- **Prompt:**
+
+  > Editorial documentary photography of everyday life abroad, late afternoon golden hour light, 50mm lens at eye level, moderate depth of field (around f/5.6) so the landmark in the background stays sharp enough to be recognized at a glance, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows and soft off-white (#F9F9F9) highlights without recoloring the architecture, photorealistic, no text, no readable signs, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. The landmark sits in the upper half, centered, entirely in the picture with open sky around its top; two people in conversation fill the lower third, seen at mid distance from the knees or waist up, slightly off center; only sky or background in the top corners and at the side edges. Both people wear contemporary everyday or business clothes, caught mid-conversation: one speaking with a light gesture, the other listening with a natural smile. Scene: a Brazilian man in his thirties and a Russian friend talk leaning on the iron railing of the Griboyedov Canal in Saint Petersburg; behind them, the Church of the Savior on Spilled Blood with its colorful twisted onion domes, reflected in the calm water. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, tourist clichés (selfies, maps, suitcases, souvenir stalls), traditional costumes, flags, fake or garbled lettering on signs and shop fronts, crowds covering the landmark, distorted or invented architecture, borders, frames or vignettes around the picture, archways or windows framing the whole view.
+
+## Todas as imagens das páginas de idioma
+
+14 imagens, uma por idioma. O inglês usou a versão de Londres. Os nomes seguem o slug de cada página: `idioma-<slug>.jpg`.
+
+## Primeira rodada das páginas de idioma (30/09/2026)
+
+O Gemini entregou as 14 em 928 × 1152. Em 13 delas ele desenhou o arco dentro da imagem, com uma margem lisa em volta, por causa da frase antiga do estilo base ("Composition for an arch-shaped frame with a rounded top"). O site já recorta o arco sozinho, e essa margem apareceria como uma faixa dentro dele. A frase saiu dos prompts acima, e a linha Avoid ganhou as molduras.
+
+As 13 foram recortadas por um script de uso único, que fica com as originais em `imagens-originais/`, fora do git:
+
+- a borda do arco desenhado foi ajustada como um círculo, pelos pontos de contraste alto, com resíduo mediano abaixo de 2 px;
+- a caixa 4:5 fica com o topo mais alto em que o arco do site cabe a 8 px ou mais da moldura, e é a mais larga entre as que ficam até 6 px abaixo desse topo. A mais larga de todas desceria até 75 px e cortaria a ponta da Torre Eiffel, a antena da Pérola do Oriente e a cruz da igreja de São Petersburgo;
+- a conferência foi pela geometria e pelo olho, com cada foto montada no arco sobre o azul-marinho e a borda ampliada 5 vezes.
+
+| Arquivo | Moldura desenhada | Recorte (x, y, largura × altura) | Largura que ficou | Observação |
+|---|---|---|---|---|
+| `idioma-alemao.jpg` | creme, em volta | 32, 22, 864 × 1080 | 93% | |
+| `idioma-espanhol.jpg` | branca, em volta | 36, 4, 856 × 1070 | 92% | "METRÓPOLIS" escrito no prédio. Aceito, porque na tela fica com poucos pixels de altura |
+| `idioma-frances.jpg` | creme, em volta | 72, 62, 784 × 980 | 84% | as pernas da mulher atravessavam a moldura de baixo; o corte fica nos joelhos |
+| `idioma-holandes.jpg` | creme, só nos cantos de cima | 10, 4, 916 × 1145 | 99% | |
+| `idioma-ingles.jpg` | branca, em volta | 80, 61, 768 × 960 | 83% | veio como `idioma-ingles-britanico.jpg` |
+| `idioma-italiano.jpg` | creme, sem a de baixo | 54, 34, 820 × 1025 | 88% | |
+| `idioma-japones.jpg` | branca, só nos cantos de cima | 10, 5, 908 × 1135 | 98% | |
+| `idioma-mandarim.jpg` | azul-marinho, em volta | 65, 5, 800 × 1000 | 86% | |
+| `idioma-noruegues.jpg` | creme, em volta | 72, 42, 784 × 980 | 84% | placa com letras num prédio de Bryggen, ilegível na tela |
+| `idioma-portugues-para-estrangeiros.jpg` | creme, em volta | 47, 35, 836 × 1045 | 90% | veio como `idioma-portugues.jpg` |
+| `idioma-romeno.jpg` | azul-marinho, só nos cantos de cima | 8, 4, 912 × 1140 | 98% | inscrição no frontão do Ateneu, ilegível na tela |
+| `idioma-russo.jpg` | azul-marinho, em volta | 94, 56, 740 × 925 | 80% | a cruz da torre central fica a uns 5 px do topo do arco. Na original, ela já ficava a 14 px do arco desenhado. Se incomodar, é a candidata a refazer |
+| `idioma-sueco.jpg` | creme, só nos cantos de cima | 8, 4, 912 × 1140 | 98% | |
+| `idioma-arabe.jpg` | nenhuma | sem recorte (928 × 1152) | 100% | o arco é de pedra e faz parte da cena. Recortar por dentro dele poria o topo do arco do site na ponta do Burj Khalifa: a abertura começa em y≈30, e a ponta da torre fica em y≈45 |
