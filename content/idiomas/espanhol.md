@@ -1,7 +1,7 @@
 ---
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá.
 idioma: "espanhol"
-# Fora do site até o Arthur confirmar as pendências desta página (quem procura, níveis e formatos).
+# Fora do site até o Arthur e a Daniella confirmarem as pendências desta página (quem procura, níveis, formatos e preço).
 publicada: false
 
 seo:

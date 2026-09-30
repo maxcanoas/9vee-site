@@ -1,16 +1,11 @@
+import { readdirSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 
-const PAGINAS = [
-  '/',
-  '/treinamento-nr-1/',
-  '/curso-de-idiomas/',
-  '/traducao-simultanea/',
-  '/lms/',
-  '/quem-somos/',
-  '/curso-de-idiomas/ingles/',
-  '/curso-de-idiomas/espanhol/',
-  '/curso-de-idiomas/mandarim/',
-];
+// As páginas de idioma saem de content/idiomas/: cada idioma novo entra aqui sozinho.
+const IDIOMAS = readdirSync(new URL('../../content/idiomas/', import.meta.url))
+  .filter((nome) => nome.endsWith('.md'))
+  .map((nome) => `/curso-de-idiomas/${nome.replace(/\.md$/, '')}/`);
+const PAGINAS = ['/', '/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/', '/lms/', '/quem-somos/', ...IDIOMAS];
 const LARGURAS = [360, 390, 768, 1280, 1920];
 
 const sobraHorizontal = (pagina: Page) =>

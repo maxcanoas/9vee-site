@@ -4,13 +4,14 @@ Atualizado em 23/09/2026, com a rodada de ajustes que a cliente pediu depois de 
 
 **Fase 1 (desde 29/09/2026):** o MVP foi aprovado e está guardado na tag `mvp-aprovado`. O trabalho segue na branch `fase-1`, com a spec em `docs/fase-1-spec.md`, os tickets em `docs/tickets/` e o cronograma em `docs/cronograma-8-semanas.md`. Desde o ticket 01, o preview se publica com `npm run build:preview && npx wrangler deploy` (ou `npm run deploy`, que faz os dois). O `SITE_URL` não existe mais: o canonical é sempre o `https://www.9vee.com.br`.
 
-**Fase 1, onde estamos (29/09/2026):** tickets 01 a 04 feitos, e o 09 (páginas de idioma) adiantado da semana 4, porque o Maxwell pediu para começar pelas páginas que ainda não existiam. Cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". Para retomar:
+**Fase 1, onde estamos (29/09/2026):** tickets 01 a 04 feitos, e o 09 e o 10 (as páginas dos 14 idiomas e o lote 3) adiantados da semana 4, porque o Maxwell pediu para começar pelas páginas que ainda não existiam. Cada um com o `code-review` nos dois eixos e as correções em commits próprios. O que cada um entregou está no próprio ticket, em "Como ficou". Para retomar:
 
 - o preview foi publicado pelo Maxwell em 29/09 à noite (`npm run deploy`, versão `cd5a3dac`), com a trilha do ticket 04 e as páginas de idioma do 09, e conferido no ar: as nove páginas em 200, a 404, o noindex no cabeçalho e na meta, o canonical no domínio definitivo e os 14 idiomas da home ainda nas âncoras, porque nenhuma página de idioma está publicada;
 - o lote 1 de revisão (`docs/revisao-daniella/lote-1.md`), a mensagem de pendências (`docs/pendencias-cliente.md`) e o texto de `docs/novidades-preview.md`, com os links das três páginas de idioma, estão prontos para o Maxwell mandar à cliente;
 - o retrato do antes está em `docs/antes.md`, com duas medidas completas do Wix (11h50 e 20h29 de 29/09). Na comparação vale o melhor número do Wix em cada página, e ele não precisa ser medido de novo;
-- as páginas de inglês, espanhol e mandarim estão no preview e fora da produção até o Arthur e a Daniella responderem (`publicada: false` em `content/idiomas/`). No preview elas abrem pelo endereço: a home e a página de cursos só levam à página publicada;
-- a ordem que recomendei para as páginas que faltam: o ticket 10 começando por holandês e francês, que têm material no site atual, depois a política de privacidade (08), que o formulário do 12 precisa, e as cidades (11) quando chegarem os fatos locais. As parciais (05 a 07) esperam as respostas da Daniella;
+- as 14 páginas de idioma estão no preview e fora da produção até o Arthur e a Daniella responderem (`publicada: false` em `content/idiomas/`). Seis têm texto do site atual (inglês, espanhol, mandarim, holandês, francês e português para estrangeiros), e oito são esqueletos com as perguntas do Arthur. No preview elas abrem pelo endereço: a home e a página de cursos só levam à página publicada;
+- o lote 3 (`docs/revisao-daniella/lote-3.md`) traz os seis idiomas escritos, pronto para a Daniella;
+- das páginas que ainda não existem, falta a política de privacidade (08), que o formulário do 12 precisa, e as cidades (11), quando chegarem os fatos locais. As parciais (05 a 07) esperam as respostas da Daniella;
 - `npm run lote -- N` faz o build de preview e gera o lote N; `npm run build:producao` termina na trava, que ainda acusa as pendências e as marcas do MVP, como esperado.
 
 ## Onde estamos
@@ -275,7 +276,7 @@ O endereço é sempre o mesmo, então o link que já foi mandado continua valend
 - `npx astro check`: tipos.
 - Variáveis de ambiente: um arquivo por modo (`.env.development`, `.env.preview` e `.env.producao`), copiado do `.env.example`. O build recusa `.env` e `.env.local`, que valeriam para todos os modos.
 
-Na última rodada (ticket 09, 29/09/2026): 127 testes de lógica, 457 do HTML e 159 no navegador (132 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
+Na última rodada (ticket 10, 29/09/2026): 133 testes de lógica, 919 do HTML e 225 no navegador (264 pulados de propósito: teclado físico e larguras rodam só no desktop, o menu em folha só no celular e o movimento só no Chromium). Um teste de persistência da escolha de público falhou uma vez no desktop, com a máquina ocupada, e passou 25 vezes seguidas na repetição.
 
 Lighthouse local da etapa 9, mediana de 3 rodadas: Performance de 99 a 100, Acessibilidade 100, Práticas 100, SEO 100 no build indexável, LCP de 1,66 s a 1,97 s e CLS até 0,001. A home ficou perto do teto de 2,0 s de LCP, porque o círculo da marca é uma imagem a mais na primeira tela. Medido antes das correções das fases 3 e 4, que só mexem em CSS e em SVG abaixo da dobra.
 

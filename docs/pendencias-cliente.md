@@ -1,6 +1,6 @@
 # Pendências para a Daniella e o Arthur
 
-Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas de inglês, espanhol e mandarim (ticket 09) trouxeram mais 12 marcações, 41 no total; a pergunta 2 do Arthur e a 7 da Daniella cobrem todas.
+Montado em 29/09/2026 a partir das 29 marcações `[CONFIRMAR]` que estão em `content/` (geradas por `node scripts/pendencias.ts`) e dos fatos que as páginas novas da Fase 1 pedem. Três marcações se repetem em duas páginas (ano de fundação, quantidade de idiomas e regulamento da Lei 14.831), então a mensagem traz 26 perguntas do MVP, mais as novas. Depois, as páginas dos 14 idiomas (tickets 09 e 10) trouxeram mais 78 marcações, 107 no total; a pergunta 2 do Arthur e as perguntas 7 e 29 da Daniella cobrem todas.
 
 A divisão entre os dois é sugestão minha, pelos papéis da proposta: a Daniella decide o site, os textos e os leads; o Arthur, as aulas e o agendamento. Os acessos que dependem do dono do domínio ficaram com o Arthur, porque o 9vee.com.br está no nome dele. Mude o que não bater.
 
@@ -75,7 +75,7 @@ Arthur, para as páginas de cada idioma e para a troca do site preciso destas re
 **Os idiomas** (cada um vai ter página própria, e página sem informação própria é punida pelo Google)
 
 1. A lista continua esta: inglês, espanhol, francês, italiano, alemão, holandês, sueco, norueguês, romeno, português para estrangeiros, mandarim, japonês, árabe e russo? Algum saiu ou entrou?
-2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova). Hoje o site só tem material próprio de inglês (crianças e adolescentes com Cambridge, TOEFL), português para estrangeiros (CELPE-Bras), espanhol (DELE), francês (DELF, DALF e TCF), holandês (Inburgering) e mandarim. Dos outros oito (alemão, italiano, sueco, norueguês, romeno, japonês, árabe e russo), o site só traz o nome. As páginas de inglês, espanhol e mandarim já estão no preview, com cada pergunta marcada como "a confirmar". No inglês falta também a idade do curso de crianças e adolescentes e o material do curso de adultos; no mandarim, como o curso ensina o pinyin, os caracteres e os tons. A página de mandarim usa o texto da página antiga do site (a "Mandarim -Old"): o curso continua com foco na conversa desde as primeiras aulas? Ela também explica os tons, a escrita e o verbo do mandarim: confira se é assim que vocês apresentam o idioma.
+2. Para cada idioma: que níveis vocês oferecem, em que formatos (particular, turma, online, presencial, in company), se os professores são nativos, para quais provas preparam e quem costuma procurar (carreira, viagem, mudança de país, prova). Hoje o site só tem material próprio de inglês (crianças e adolescentes com Cambridge, TOEFL), português para estrangeiros (CELPE-Bras), espanhol (DELE), francês (DELF, DALF e TCF), holandês (Inburgering) e mandarim. Dos outros oito (alemão, italiano, sueco, norueguês, romeno, japonês, árabe e russo), o site só traz o nome. As páginas de inglês, espanhol e mandarim já estão no preview, com cada pergunta marcada como "a confirmar". No inglês falta também a idade do curso de crianças e adolescentes e o material do curso de adultos; no mandarim, como o curso ensina o pinyin, os caracteres e os tons. A página de mandarim usa o texto da página antiga do site (a "Mandarim -Old"): o curso continua com foco na conversa desde as primeiras aulas? Ela também explica os tons, a escrita e o verbo do mandarim: confira se é assim que vocês apresentam o idioma. Holandês, francês e português para estrangeiros também já têm página, com o que o site atual diz de cada um. Os outros oito têm página só com essas perguntas: cada resposta vira o texto dela.
 3. As aulas de idioma também acontecem presencialmente? Em que cidades, e onde (na empresa do aluno, em sala da 9vee, em espaço parceiro)?
 4. Quantas horas de aula costumam levar de um nível para o outro?
 5. A 9vee emite certificado no fim do curso? De que tipo?
@@ -102,10 +102,11 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D21 | `content/home.md`, `content/lms.md` | texto do LMS na lista de serviços e nota da página LMS |
 | D24 | `content/site.md` | `rodape.pronuncia` |
 | D28 | `content/home.md`, `content/treinamento-nr-1.md` | destaque de NR-1 da home e notas do "Por que agora" |
-| A2 | `content/idiomas/ingles.md`, `content/idiomas/espanhol.md`, `content/idiomas/mandarim.md` | as pendências de cada página de idioma: níveis, formatos, professores, material, idade, HSK e escrita |
+| A2 | `content/idiomas/*.md` | as pendências de cada página de idioma: para quem é, níveis, formatos, professores, provas, material, idade, HSK, escrita e, nos oito esqueletos, as cinco perguntas de cada um |
 | A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |
 | A4 | `content/curso-de-idiomas.md`, `content/idiomas/mandarim.md` | FAQ "Quanto tempo leva para subir um nível?" e, no mandarim, "Em quanto tempo dá para conversar?" |
 | A5 | `content/curso-de-idiomas.md` | FAQ "No fim do curso eu recebo certificado?" |
 | D7 (idiomas) | `content/idiomas/*.md` | o "Quanto custa?" de cada página de idioma |
+| D29 | `content/idiomas/portugues-para-estrangeiros.md` | FAQ "Vocês ajudam o funcionário estrangeiro na mudança?" |
 
 As demais perguntas são novas da Fase 1 e ainda não têm marcação no código.

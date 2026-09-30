@@ -213,6 +213,17 @@ const roteiros: Record<string, Captura[]> = {
     // O pedido aberto pelo cabeçalho, sem idioma no botão, já sai com o idioma da página marcado.
     { nome: 'ingles-pedido-cabecalho-390', rota: '/curso-de-idiomas/ingles/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('.cabecalho__cta').click() },
   ],
+  'ticket-10': [
+    // O árabe corre da direita para a esquerda; o japonês tem a saudação mais longa; o português, o título mais longo.
+    { nome: 'arabe-topo-390', rota: '/curso-de-idiomas/arabe/', largura: 390, altura: 844 },
+    { nome: 'arabe-topo-1280', rota: '/curso-de-idiomas/arabe/', largura: 1280, altura: 800 },
+    { nome: 'japones-topo-360', rota: '/curso-de-idiomas/japones/', largura: 360, altura: 780 },
+    { nome: 'portugues-topo-360', rota: '/curso-de-idiomas/portugues-para-estrangeiros/', largura: 360, altura: 780 },
+    { nome: 'portugues-inteira-1280', rota: '/curso-de-idiomas/portugues-para-estrangeiros/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'holandes-inteira-390', rota: '/curso-de-idiomas/holandes/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'frances-inteira-1280', rota: '/curso-de-idiomas/frances/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'alemao-esqueleto-390', rota: '/curso-de-idiomas/alemao/', largura: 390, altura: 844, paginaInteira: true },
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

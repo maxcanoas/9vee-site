@@ -248,7 +248,7 @@ etiquetaMvp: "Página em construção no MVP"
 
 # O aviso das páginas de idioma que ainda não vão para o site. Só aparece no local e no preview, porque a
 # produção sai sem elas.
-naoPublicada: "Fora do site até vocês confirmarem o que está marcado"
+naoPublicada: "Fora do site até vocês responderem"
 
 # Pendências: o [CONFIRMAR COM A DANIELLA: ...] ou o [CONFIRMAR COM O ARTHUR: ...] dos textos vira esta etiqueta.
 pendencia:

@@ -23,6 +23,18 @@ const LOTES: Record<number, Lote> = {
     // O menu, o rodapé e o pedido vão no primeiro lote, que a Daniella lê primeiro.
     comTextosCompartilhados: true,
   },
+  // Os idiomas com texto próprio. Os esqueletos, que só têm as perguntas para o Arthur, entram quando ganharem texto.
+  3: {
+    titulo: 'páginas de idioma',
+    paginas: [
+      ['Inglês', '/curso-de-idiomas/ingles/'],
+      ['Espanhol', '/curso-de-idiomas/espanhol/'],
+      ['Mandarim', '/curso-de-idiomas/mandarim/'],
+      ['Holandês', '/curso-de-idiomas/holandes/'],
+      ['Francês', '/curso-de-idiomas/frances/'],
+      ['Português para estrangeiros', '/curso-de-idiomas/portugues-para-estrangeiros/'],
+    ],
+  },
 };
 
 const numero = Number(process.argv[2]);
