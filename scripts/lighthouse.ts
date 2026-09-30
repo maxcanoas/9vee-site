@@ -7,7 +7,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
-import { CABECALHO_DA_TABELA, RODADAS, linhaDaTabela, medirPagina } from './medida-lighthouse.ts';
+import { RODADAS, medirTabela } from './medida-lighthouse.ts';
 
 const PAGINAS = [
   { nome: 'Home', rota: '/' },
@@ -74,17 +74,9 @@ const linhas: string[] = [
 ];
 
 const servidor = await servir(PASTA, PORTA);
-const versoes = new Set<string>();
 try {
-  linhas.push(...CABECALHO_DA_TABELA);
-  for (const pagina of PAGINAS) {
-    const medida = await medirPagina(`http://localhost:${PORTA}${pagina.rota}`);
-    versoes.add(medida.versoes);
-    linhas.push(linhaDaTabela(pagina.nome, medida));
-    // A linha sai na hora: se uma página falhar, as de antes não se perdem.
-    console.log(linhas.at(-1));
-  }
-  linhas.push('', `Medido com ${[...versoes].join('; ')}.`, '');
+  const paginas = PAGINAS.map(({ nome, rota }) => ({ nome, url: `http://localhost:${PORTA}${rota}` }));
+  linhas.push(...(await medirTabela(paginas, (linha) => console.log(linha))), '');
 } finally {
   await new Promise((ok) => servidor.close(ok));
 }
