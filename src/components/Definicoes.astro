@@ -1,29 +1,31 @@
 ---
-// Os exames de proficiência que o site atual lista, um por linha.
+// Uma lista de definições, um termo por linha: os exames de proficiência, os pontos da metodologia.
+// O id é a âncora da seção, para o menu apontar (#provas).
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
 interface Props {
+  id: string;
   titulo: string;
   apoio: string;
   itens: { nome: string; texto: string }[];
 }
 
-const { titulo, apoio, itens } = Astro.props;
+const { id, titulo, apoio, itens } = Astro.props;
 ---
 
-<section class="provas" id="provas" aria-labelledby="provas-titulo">
-  <div class="conteiner provas__grade">
-    <CabecaDeSecao id="provas" {titulo} {apoio} class="provas__cabeca" />
+<section class="definicoes" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner definicoes__grade">
+    <CabecaDeSecao {id} {titulo} {apoio} />
 
-    <dl class="provas__lista">
+    <dl class="definicoes__lista">
       {
         itens.map((item) => (
-          <div class="prova">
-            <dt class="prova__nome">
+          <div class="definicao">
+            <dt class="definicao__nome">
               <Texto de={item.nome} />
             </dt>
-            <dd class="prova__texto">
+            <dd class="definicao__texto">
               <Texto de={item.texto} />
             </dd>
           </div>
@@ -34,50 +36,49 @@ const { titulo, apoio, itens } = Astro.props;
 </section>
 
 <style>
-  .provas {
+  .definicoes {
     padding-block: var(--secao);
   }
 
-  .provas__grade {
+  .definicoes__grade {
     display: grid;
     gap: var(--e-6);
     align-items: start;
   }
 
-
-  .provas__lista {
+  .definicoes__lista {
     display: grid;
   }
 
-  .prova {
+  .definicao {
     display: grid;
     gap: var(--e-1);
     padding-block: var(--e-4);
     border-block-start: 1px solid var(--linha);
   }
 
-  .prova__nome {
+  .definicao__nome {
     font-family: var(--fonte-titulo);
     font-size: var(--t-destaque);
     font-weight: 600;
     line-height: var(--altura-subtitulo);
   }
 
-  .prova__texto {
+  .definicao__texto {
     max-inline-size: 44ch;
     margin: 0;
     color: var(--navy-2);
   }
 
   @media (min-width: 48rem) {
-    .provas__lista {
+    .definicoes__lista {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: var(--e-6);
     }
   }
 
   @media (min-width: 64rem) {
-    .provas__grade {
+    .definicoes__grade {
       grid-template-columns: 0.8fr 1.2fr;
       column-gap: var(--e-8);
     }

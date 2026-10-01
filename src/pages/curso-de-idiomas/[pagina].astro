@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import TopoIdioma from '../../components/TopoIdioma.astro';
 import Cartoes from '../../components/Cartoes.astro';
 import Niveis from '../../components/Niveis.astro';
-import Provas from '../../components/Provas.astro';
+import Definicoes from '../../components/Definicoes.astro';
 import Pontos from '../../components/Pontos.astro';
 import Faq from '../../components/Faq.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
@@ -38,7 +38,7 @@ const jsonLd = [
   {conteudo.paraQuem && <Cartoes id="para-quem" {...conteudo.paraQuem} />}
   {conteudo.niveis && <Niveis {...conteudo.niveis} />}
   {conteudo.formatos && <Pontos id="formatos" {...conteudo.formatos} />}
-  {conteudo.provas && <Provas {...conteudo.provas} />}
+  {conteudo.provas && <Definicoes id="provas" {...conteudo.provas} />}
   {conteudo.destaque && <Pontos {...conteudo.destaque} />}
   {conteudo.faq && <Faq {...conteudo.faq} />}
   <CtaFinal {...conteudo.ctaFinal} cta={conteudo.topo.cta} servico="idiomas" idioma={idioma.slug} />

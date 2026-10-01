@@ -4,7 +4,7 @@ import HeroPagina from '../components/HeroPagina.astro';
 import Familias from '../components/Familias.astro';
 import Niveis from '../components/Niveis.astro';
 import Cartoes from '../components/Cartoes.astro';
-import Provas from '../components/Provas.astro';
+import Definicoes from '../components/Definicoes.astro';
 import Pontos from '../components/Pontos.astro';
 import ComoComeca from '../components/ComoComeca.astro';
 import Faq from '../components/Faq.astro';
@@ -42,7 +42,7 @@ const jsonLd = [
   </section>
 
   <Niveis {...pagina.niveis} />
-  <Provas {...pagina.provas} />
+  <Definicoes id="provas" {...pagina.provas} />
 
   {/* Os dois blocos de formato trocam de lugar com o público, como a spec pede.
       Esta é a vitrine de quem estuda por conta própria, então sem escolha valem os formatos primeiro. */}
