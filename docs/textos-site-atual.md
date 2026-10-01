@@ -8,6 +8,8 @@ Levantado em 30/09/2026, lendo as páginas públicas de https://www.9vee.com.br.
 
 **Decisão do Maxwell (30/09/2026):** a landing `/mandarim-portugues` (interpretação mandarim-português para o mercado financeiro) vira uma página própria no site novo, `/traducao-simultanea/mandarim/`, filha da Tradução Simultânea. As três landings (português, inglês e chinês) redirecionam para ela.
 
+**Decisão do Maxwell (01/10/2026):** duas frases jurídicas da página de treinamentos ficam fora do site novo, e são a exceção à regra de levar tudo: o PGR mal elaborado como prova em ação ajuizada "até 2046", e o certificado da Lei 14.831 como prova de boas práticas em disputa judicial. O mapa da seção 1 já traz as duas como fora.
+
 Páginas lidas: home, `/quem-somos`, `/curso-de-idiomas`, `/mandarim` (a "Mandarim -Old", curso), `/mandarim-portugues` (interpretação), `/traducao-simultanea`, `/treinamentos` (NR-1) e `/lms`. Ficaram de fora o blog, os programas online de modelo (`/challenges`), a política e os termos de uso, e as versões da landing de mandarim em inglês e em chinês.
 
 ## 1. Mapa de reaproveitamento
@@ -102,8 +104,8 @@ Legenda da coluna "Hoje no site novo": **usado** (o fato já está no site novo)
 |---|---|---|---|
 | Abertura: saúde mental como tema estratégico, atualização da NR-1 | NR-1, hero ou "Por que agora" | usado | Nada a fazer |
 | "Como a sua empresa lida com NR-1?": riscos de multa (fiscalização desde maio de 2026) | NR-1, "Por que agora" | usado | Nada a fazer |
-| Risco jurídico direto: PGR mal feito como prova em ação trabalhista "até 2046" | NR-1 | fora | Entra, mas com `[CONFIRMAR COM A DANIELLA: ...]` pedindo a leitura do advogado. É afirmação jurídica com data, e a página promete só o que tem fonte |
-| Incentivo positivo: Lei 14.831/2024 e o certificado | NR-1 | usado | Nada a fazer |
+| Risco jurídico direto: PGR mal feito como prova em ação trabalhista "até 2046" | nenhum | fora | **Não entra.** Decisão do Maxwell de 01/10/2026: é afirmação jurídica com data, que pedia a leitura de um advogado. A pergunta 37 saiu da mensagem |
+| Incentivo positivo: Lei 14.831/2024 e o certificado | NR-1 | usado | Nada a fazer. A frase de que o certificado "serve como prova de boas práticas em eventual disputa judicial" não entra, pela mesma decisão de 01/10/2026 |
 | Objetivo do treinamento (competências práticas, relações saudáveis, bem-estar, ambiente psicologicamente seguro) | NR-1 | fora | Entra |
 | Temas abordados (seis): riscos psicossociais, conversas e clima, estresse e conflitos, **Comunicação Não Violenta (CNV)**, conversas difíceis, respeito e segurança psicológica | NR-1, junto dos módulos | fora | Entra. A CNV não aparece em lugar nenhum do site novo e é um diferencial concreto |
 | Três benefícios do treinamento, que no ar vêm sem título, e benefícios para quem investe (três: segurança psicológica, prevenção de estresse crônico, ansiedade e burnout, cultura de cuidado) | NR-1, "O que a sua empresa recebe" | parcial | Entra |

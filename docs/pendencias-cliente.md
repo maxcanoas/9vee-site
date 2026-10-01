@@ -9,9 +9,11 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 **Atualizado em 30/09/2026, à noite,** por dois motivos:
 
 - o texto das perguntas passou a ser o do Word que vai para o cliente (`docs/Perguntas-9vee-Daniella-e-Arthur.docx`), que já trazia o que o material do Canva responde e as perguntas 31 a 36;
-- a decisão do reaproveitamento do site atual (`docs/fase-1-spec.md`, "Reaproveitamento do site atual"): o que o site atual responde virou confirmação, e entrou a pergunta 37.
+- a decisão do reaproveitamento do site atual (`docs/fase-1-spec.md`, "Reaproveitamento do site atual"): o que o site atual responde virou confirmação.
 
-A numeração de 1 a 30 da Daniella e de 1 a 8 do Arthur não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30, a 37 e as perguntas 2 e 3 do Arthur com o 22.
+**Atualizado em 01/10/2026:** a pergunta 37, que tinha entrado em 30/09, saiu. Ela pedia a leitura do advogado sobre duas frases jurídicas da página de treinamentos: o PGR como prova em ação ajuizada até 2046, e o certificado como prova de boas práticas em disputa judicial. O Maxwell decidiu que as duas frases não entram no site novo, então não há o que perguntar. A lista da Daniella termina na 36, e o Word, que ainda não tinha a 37, não muda por causa dela.
+
+A numeração de 1 a 30 da Daniella e de 1 a 8 do Arthur não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
 
 ## A mensagem
 
@@ -90,10 +92,6 @@ Daniella, para fechar os textos do site novo preciso destas respostas. Várias s
 35. O site atual diz que vocês atendem comunidades, empresas e órgãos públicos, e o flyer "Inglês Acessível" fala em faculdades e órgãos públicos. Esse programa continua? Se continua, ele entra como um bloco na página de cursos.
 36. A Linguae e a Lenguae, que vocês passaram como referência, têm alguma relação com a 9vee? A lista de idiomas e o tempo de mercado delas são quase iguais aos de vocês, e quero ter certeza de que o site novo não fica parecendo cópia de nenhuma das duas.
 
-**Mais uma, do site atual**
-
-37. A página de treinamentos do site atual diz duas coisas que entraram na página nova de NR-1 como "a confirmar". Primeira: um PGR mal elaborado hoje pode servir de prova em ações trabalhistas por adoecimento mental ajuizadas até 2046. Segunda: o Certificado Empresa Promotora da Saúde Mental serve de prova de boas práticas numa disputa judicial. O advogado de vocês confirma essa leitura? De onde vem o prazo de 2046?
-
 ### Para o Arthur
 
 Arthur, cada idioma vai ganhar uma página própria no site, e o Google não valoriza página sem informação própria. Por isso as perguntas sobre os idiomas são as mais importantes aqui: cada resposta sua vira o texto da página daquele idioma.
@@ -151,7 +149,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 - **05:** entram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ).
 - **21:** nenhuma marcação prevista. A D18 é confirmação.
 - **07:** a D2 continua em `content/quem-somos.md`. A faixa de números lê `content/home.md`, sem marcação nova.
-- **22:** entra a D37 em `content/treinamento-nr-1.md`; a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação.
+- **22:** a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficam fora (decisão de 01/10/2026).
 
 ## O que mudou em 30/09/2026, para atualizar o Word
 
@@ -178,7 +176,6 @@ O Word já tinha o texto das perguntas 2, 3, 4, 12, 14, 15, 17 e 24 com o materi
 | 33 | Ganhou duas frases: a página nova mostra os sete idiomas do site atual, e árabe, Libras e ASL entraram como "a confirmar" |
 | 34 | Ganhou uma frase: a interpretação remota e a por telefone entraram na página como "a confirmar" |
 | 35 | Ganhou o que o site atual diz: a 9vee atende comunidades, empresas e órgãos públicos. A dúvida passa a ser se o programa "Inglês Acessível" continua |
-| 37 | Nova. A leitura do advogado sobre as duas frases jurídicas da página de treinamentos: o PGR como prova em ação ajuizada até 2046 e o certificado como prova de boas práticas. Entra num grupo novo, "Mais uma, do site atual", depois da 36 |
 
 Não mudaram: 1 a 5, 7 a 15, 17, 20, 23 a 29, 32 e 36.
 
@@ -196,7 +193,7 @@ Não mudaram: 1 e 4 a 8.
 **O que continua com "a confirmar" no texto do site:**
 
 - páginas principais: 2, 3, 4, 5, 6 e 7, mais a 24 (o "lê-se Novee" do rodapé) e a 29 (o regulamento da Lei 14.831);
-- NR-1: 9 a 14 e a 37;
+- NR-1: 9 a 14;
 - Tradução: o que veio do Canva, na 16 (o revezamento), na 17, na 33 e na 34;
 - privacidade: 25 a 27;
 - idiomas: 2 a 5 do Arthur.

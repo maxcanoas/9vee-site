@@ -27,7 +27,6 @@
   - os do treinamento: menos riscos psicossociais, relações mais saudáveis e colaborativas, clima e cooperação entre áreas;
   - os de quem investe: segurança psicológica, prevenção de estresse crônico, ansiedade e burnout, cultura de cuidado, diálogo e responsabilidade compartilhada.
 - [ ] O subtítulo do módulo 2: liderança, comunicação com equipes comerciais e cultura da empresa.
-- [ ] O risco jurídico direto, com `[CONFIRMAR COM A DANIELLA: leitura do advogado sobre esta afirmação]` (pergunta 37). São duas frases do site atual: o PGR mal elaborado como prova em ação trabalhista ajuizada até 2046, e o certificado da Lei 14.831 como prova de boas práticas em disputa judicial.
 
 **Cursos de Idiomas** (seção 3.3):
 
@@ -55,6 +54,10 @@
 - [ ] O texto completo dos depoimentos. A fala literal traz "Novee" e palavra proibida, que os testes barram. Os trechos ficam.
 - [ ] A pendência do "lê-se Novee" continua no rodapé.
 - [ ] Os números de clientes e de profissionais continuam pendentes.
+
+**O que fica fora, por decisão de 01/10/2026:**
+
+- [ ] As duas frases jurídicas da página de treinamentos: o PGR mal elaborado como prova em ação trabalhista ajuizada até 2046 (o "risco jurídico direto"), e o certificado da Lei 14.831 como prova de boas práticas em disputa judicial. Elas entravam com pendência e com a pergunta 37, que saiu da mensagem. O certificado continua na página como já está, sem a frase da prova.
 
 **Desenho e fechamento** (os oito passos da spec, em "Como cada ticket do reaproveitamento fecha"):
 

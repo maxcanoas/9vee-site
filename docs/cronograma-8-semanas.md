@@ -53,7 +53,7 @@ A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08,
 | Até | Quem | O quê | Trava |
 |---|---|---|---|
 | Semana 2 | Daniella | As 8 primeiras perguntas da mensagem (margem e prioridade, anos, idiomas, números, depoimentos, prazo de resposta, preço, caixa do e-mail) | As pendências das páginas principais. O ticket 04 fechou sem elas: entram quando chegarem, no máximo no 17 |
-| Semana 3 | Daniella | NR-1 (perguntas 9 a 15 e 37) e privacidade (razão social, CNPJ, canal e prazos de guarda) | As pendências do NR-1 e da política. Tradução, LMS, Quem Somos e a realocação saíram daqui: viraram confirmação |
+| Semana 3 | Daniella | NR-1 (perguntas 9 a 15) e privacidade (razão social, CNPJ, canal e prazos de guarda) | As pendências do NR-1 e da política. Tradução, LMS, Quem Somos e a realocação saíram daqui: viraram confirmação |
 | Semana 4 | Arthur | A lista dos idiomas e a tabela de cada um | A publicação das páginas de idioma (tickets 09 e 10) |
 | Semana 5 | Daniella e Arthur | Os fatos de cada cidade | Ticket 11 |
 | Semana 5 | Arthur | O acesso de editor ao GA4 e de usuário completo ao Search Console | Ticket 13 |

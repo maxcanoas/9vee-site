@@ -445,9 +445,9 @@ Decisão do Maxwell de 30/09/2026, à noite. Ela muda uma regra da Fase 1: o con
 3. **Pendência só onde o site atual não resolve:**
    - quando o próprio site se contradiz (anos de mercado e quantidade de idiomas), a pendência continua;
    - quando o site não fala do assunto (preço, carga horária, cidades do presencial das aulas, dados da política), a pendência continua;
-   - afirmação jurídica com data entra com `[CONFIRMAR COM A DANIELLA: leitura do advogado sobre esta afirmação]`. É o caso do "risco jurídico direto" do NR-1: o PGR como prova em ação ajuizada "até 2046";
+   - afirmação jurídica do site atual que pede a leitura de um advogado fica fora do site novo. São duas frases da página de treinamentos: o PGR mal elaborado como prova em ação ajuizada "até 2046" (o "risco jurídico direto") e o certificado da Lei 14.831 como prova de boas práticas em disputa judicial. **Substituído em 01/10/2026:** até ali, as duas entravam com `[CONFIRMAR COM A DANIELLA: leitura do advogado sobre esta afirmação]`, e a mensagem levava a pergunta 37;
    - o resto sai da pendência e entra como fato. A seção 2 de `docs/textos-site-atual.md` lista as que o site atual já responde.
-4. **Continua fora:** endereço, "sede em São Paulo" e "venha nos visitar"; nome de empresa cliente sem autorização; foto do Canva; as versões em inglês e em chinês.
+4. **Continua fora:** endereço, "sede em São Paulo" e "venha nos visitar"; nome de empresa cliente sem autorização; foto do Canva; as versões em inglês e em chinês. Desde 01/10/2026, também as duas frases jurídicas da página de treinamentos (item 3).
 5. **Página nova: interpretação de mandarim.** A landing `/mandarim-portugues` não é o curso. É interpretação mandarim-português para o mercado financeiro.
    - Ela vira `/traducao-simultanea/mandarim/`, filha da Tradução Simultânea, publicada desde o lançamento.
    - No mapa de redirecionamentos, `/mandarim-portugues`, `/mandarim-english`, `/mandarim-chines` e os redirecionamentos antigos que levam a elas (`/mandarim-pt` e `/mandarim-portugues-1`) passam a apontar para essa página.
@@ -459,6 +459,15 @@ Decisão do Maxwell de 30/09/2026, à noite. Ela muda uma regra da Fase 1: o con
 - **"Lê-se Novee".** A pendência do rodapé continua, e a pergunta 24 não muda.
 - **Clientes e profissionais.** Os dois números continuam pendentes, como a seção 2 de `docs/textos-site-atual.md` manda. O site atual dá os mesmos números nas duas páginas, mas o Canva traz outros.
 - **Depoimentos.** Os trechos da home ficam. O texto completo não entra: a fala literal traz "Novee" e palavra proibida, que os testes barram, e a autorização de cada um ainda é pendência.
+
+### O que o Maxwell decidiu em 01/10/2026, antes da Fase 2
+
+Quatro escolhas dos documentos de 30/09 ficaram para ele confirmar ou vetar. Manteve três e mudou uma:
+
+- **CLS abaixo de 0,05:** mantido. O pedido falava em 0,1, e vale a meta desta spec, igual em todas as páginas.
+- **Campo de duração no pedido de tradução** (ticket 05): mantido.
+- **Trechos que só estão na descrição do Google do site atual:** continuam fora. São "empresas e escolas", no LMS, e "tecnologia de ponta", na Tradução.
+- **As duas frases jurídicas do NR-1:** ficam fora do site novo, e a pergunta 37 sai da mensagem. O certificado da Lei 14.831 continua na página como já estava, sem a frase da prova em disputa judicial.
 
 ### O que entra em cada página
 
