@@ -4,7 +4,7 @@
 
 **Depende de:** 01, 08.
 
-**Horas:** 6,5. **Semana:** 5 (pode subir para a 4, porque não depende do cliente).
+**Horas:** 6,5. **Semana:** 4 (era a 5; subiu em 30/09/2026, depois dos tickets do reaproveitamento do site atual).
 
 **Situação:** ready-for-agent
 

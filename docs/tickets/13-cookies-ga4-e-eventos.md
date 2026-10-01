@@ -4,7 +4,7 @@
 
 **Depende de:** 01, 08, 12.
 
-**Horas:** 6,5. **Semana:** 6.
+**Horas:** 6,5. **Semana:** 5 (era a 6; subiu em 30/09/2026, junto com o 12).
 
 **Situação:** ready-for-agent
 

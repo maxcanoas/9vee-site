@@ -8,7 +8,8 @@
   - o brief da Fase 1 (`docs/prompt-fase-1.md`);
   - a spec do MVP (`docs/mvp-spec.md`) e os padrões (`docs/padroes.md`), que continuam valendo;
   - o diagnóstico de 29/09/2026: `docs/gap-fase-1.md`, `docs/wix-inventario.md` e `docs/urls-site-atual.csv`;
-  - a rodada de perguntas de 29/09/2026, cujas decisões estão abaixo.
+  - a rodada de perguntas de 29/09/2026, cujas decisões estão abaixo;
+  - a decisão de 30/09/2026 sobre o reaproveitamento do site atual, na seção "Reaproveitamento do site atual (30/09/2026)", no fim. Ela substitui os trechos marcados como "Substituído em 30/09/2026", que ficam aqui como histórico.
 
 ## Glossário
 
@@ -56,7 +57,7 @@ A Daniella quer leads e o site bem posicionado no Google. O Arthur quer cada idi
 O site em código, o mesmo do MVP (Astro com saída estática), completo e pronto para substituir o Wix:
 
 - **Três modos de build, com a trava de produção.** O preview continua no mesmo endereço do Cloudflare, publicado pelo Maxwell, para a Daniella e o Arthur acompanharem.
-- **As seis páginas completas:** Home, Treinamento de NR-1 e Cursos de Idiomas fechadas; Tradução Simultânea, LMS e Quem Somos terminadas, sem a etiqueta de obra. Mais a política de privacidade e a 404.
+- **As seis páginas completas:** Home, Treinamento de NR-1 e Cursos de Idiomas fechadas; Tradução Simultânea, LMS e Quem Somos terminadas, sem a etiqueta de obra. Mais a política de privacidade e a 404. **Desde 30/09/2026 são sete:** entra a página de interpretação de mandarim, e as três primeiras ganham o conteúdo do site atual que tinha ficado de fora (ver "Reaproveitamento do site atual").
 - **Páginas por idioma e por cidade,** cada uma só com conteúdo próprio. As que não tiverem fato confirmado ficam fora do build de produção, sem sumir do preview.
 - **Pedido de contato com envio de verdade:**
   - pelo mesmo drawer, com o mesmo WhatsApp;
@@ -195,16 +196,17 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 
 ### Páginas
 
-- **Home, NR-1 e Cursos de Idiomas** são fechadas com as respostas do cliente. Na home, os 14 idiomas passam a levar à página de cada idioma publicado; os não publicados levam à âncora na página de cursos. Não houve pedido de ajuste do cliente além da rodada de 23/09, já aplicada.
-- **Tradução Simultânea** ganha a página completa: formatos, equipamento, idiomas, como funciona o presencial, perguntas frequentes e prova. Também ganha uma seção sobre interpretação de mandarim para o mercado financeiro, se a Daniella confirmar os fatos da landing atual. É para essa página que as três landings `mandarim-*` redirecionam.
-- **LMS e Quem Somos** ficam completas, com o que o cliente confirmar. Quem Somos não fala em sede física: a 9vee não tem endereço aberto ao público. Sai "sede em São Paulo".
+- **Home, NR-1 e Cursos de Idiomas** são fechadas com as respostas do cliente. Na home, os 14 idiomas passam a levar à página de cada idioma publicado; os não publicados levam à âncora na página de cursos. Não houve pedido de ajuste do cliente além da rodada de 23/09, já aplicada. **Substituído em 30/09/2026:** as três também ganham o que o site atual tem e ficou de fora ou resumido, sem esperar resposta (decisão 1, ticket 22).
+- **Tradução Simultânea** ganha a página completa: formatos, equipamento, idiomas, como funciona o presencial, perguntas frequentes e prova. Também ganha uma seção sobre interpretação de mandarim para o mercado financeiro, se a Daniella confirmar os fatos da landing atual. É para essa página que as três landings `mandarim-*` redirecionam. **Substituído em 30/09/2026:** o conteúdo vem do site atual, sem esperar a Daniella (decisão 1). A interpretação de mandarim vira página própria, `/traducao-simultanea/mandarim/`, e é para ela que as landings redirecionam; na Tradução fica um bloco curto, que leva à página nova (decisão 5).
+- **LMS e Quem Somos** ficam completas, com o que o cliente confirmar. Quem Somos não fala em sede física: a 9vee não tem endereço aberto ao público. Sai "sede em São Paulo". **Substituído em 30/09/2026:** as duas ficam completas com o conteúdo do site atual (decisão 1). A sede continua fora (decisão 4).
 - **Política de privacidade:** nova, curta e só sobre o site.
   - Trata do formulário e do registro do consentimento, do GA4 depois do aceite, do que fica no navegador (a escolha de público e a de cookies), de quem recebe os dados (o serviço de formulário, o Google, a hospedagem e o WhatsApp, quando a pessoa escolhe), por quanto tempo, dos direitos do titular e do canal de contato.
   - Leva razão social, CNPJ e o encarregado ou o canal do titular. Pela Resolução CD/ANPD nº 2/2022, empresa de pequeno porte pode ter um canal no lugar do encarregado.
   - A Daniella aprova, com revisão do advogado da 9vee.
   - O endereço é `/politica-de-privacidade/`, o mesmo de hoje com a barra.
 - **404:** mostra os caminhos para os serviços e não tem canonical.
-- **Realocação de funcionários:** se a Daniella confirmar que o serviço continua, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros. Não vira página própria.
+- **Realocação de funcionários:** se a Daniella confirmar que o serviço continua, ele entra como um bloco na parte de empresas da página de cursos e na página de português para estrangeiros. Não vira página própria. **Substituído em 30/09/2026:** o serviço está publicado no site atual, então o bloco entra nas duas páginas sem esperar a resposta (decisão 1, ticket 22). A pergunta 30 vira confirmação. Continua sem página própria.
+- **Interpretação de mandarim** (página nova, de 30/09/2026): `/traducao-simultanea/mandarim/`, filha da Tradução Simultânea, com o conteúdo da landing `/mandarim-portugues`. Fica fora do menu, entra no rodapé e é publicada desde o lançamento (decisão 5, ticket 21).
 
 ### Páginas por idioma
 
@@ -230,9 +232,10 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - Os textos continuam em `content/`, um arquivo por página. As páginas de idioma e de cidade ficam numa pasta cada.
 - Português do Brasil, frases curtas, voz ativa e segunda pessoa, sem travessão e sem as palavras proibidas. O `humanizar` roda em todo texto novo antes de cada lote.
 - Nenhum dado inventado. A pendência passa a dizer quem responde: `[CONFIRMAR COM A DANIELLA: ...]` ou `[CONFIRMAR COM O ARTHUR: ...]`. O formatador e a lista de pendências aceitam os dois.
+- **Desde 30/09/2026,** o que o site atual publica conta como confirmado pela 9vee e entra como fato, com a redação refeita pelos padrões. A pendência fica para o que o site atual não resolve (decisões 1 a 3 de "Reaproveitamento do site atual").
 - **Lotes de revisão:** um script faz o build de preview e monta cada lote a partir dele, com o texto limpo na ordem da página, sem código. É o build, e não o `content/`, que tem a ordem da tela e os textos que vêm de outros arquivos (a lista de idiomas, os botões, o pedido).
   - Lote 1: Home, NR-1 e Cursos de Idiomas, mandado cedo.
-  - Lote 2: Tradução, LMS, Quem Somos, privacidade e 404.
+  - Lote 2: Tradução, LMS, Quem Somos, privacidade e 404. Desde 30/09/2026, também a interpretação de mandarim.
   - Lote 3: os idiomas.
   - Lote 4: as cidades.
 - **Pendência sem resposta na semana 7:** o Maxwell decide caso a caso. A lista das abertas sai na semana 7, com a sugestão de cada uma: tirar a frase, tirar a seção ou esperar.
@@ -281,7 +284,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - Título e descrição únicos em cada página (até 60 e de 140 a 160 caracteres), um H1 por página e hierarquia de títulos sem salto, como no MVP.
 - **JSON-LD:**
   - `EducationalOrganization` em todas as páginas, sem endereço: com `alternateName` "Novee", `areaServed` (as cidades de atendimento presencial e o Brasil), `contactPoint` e `sameAs` com as redes;
-  - `Service` em NR-1, Tradução Simultânea e LMS;
+  - `Service` em NR-1, Tradução Simultânea e LMS e, desde 30/09/2026, na página de interpretação de mandarim;
   - `Course` em cada página de idioma;
   - `FAQPage` onde houver FAQ, igual ao que a página mostra;
   - `BreadcrumbList` em todas as páginas internas.
@@ -296,7 +299,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 
 - Continua a regra do MVP: nada de banco de imagens. As fotos vêm do Gemini, com os prompts em `docs/imagens-gemini.md`, no mesmo padrão (em inglês, com o estilo base e a linha "Avoid").
 - As imagens continuam em `src/assets/imagens/`, e não em `public/images/` como o brief sugere, porque o Astro só otimiza o que está em `src/`.
-- As páginas de idioma não têm foto. Cada cidade publicada tem uma foto, e Tradução, LMS e Quem Somos ganham uma ou duas imagens novas para as seções novas.
+- As páginas de idioma não têm foto. Cada cidade publicada tem uma foto, e Tradução, LMS e Quem Somos ganham uma ou duas imagens novas para as seções novas. **Mudou em 30/09/2026:** as páginas de idioma ganharam a foto do lugar (ver "Páginas por idioma"), e as imagens novas incluem o hero da página de interpretação de mandarim e as das seções que o reaproveitamento criar na home, no NR-1 e em Cursos.
 
 ### Preparação da migração (documentar, não executar)
 
@@ -309,7 +312,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
   - post com serviço: 301 para a página do serviço;
   - post com uma das cidades do presencial: 301 para a página da cidade, se ela estiver publicada e cobrir aquele serviço; senão, vale a regra do idioma ou do serviço;
   - `/mandarim` e `/blank-1`: 301 para a página do curso de mandarim, se publicada; senão, para a página de cursos;
-  - `/mandarim-portugues`, `/mandarim-english`, `/mandarim-chines`, `/mandarim-pt` e `/mandarim-portugues-1`: 301 para `/traducao-simultanea/`;
+  - `/mandarim-portugues`, `/mandarim-english`, `/mandarim-chines`, `/mandarim-pt` e `/mandarim-portugues-1`: 301 para `/traducao-simultanea/`. **Substituído em 30/09/2026:** os cinco vão para `/traducao-simultanea/mandarim/`, direto, sem corrente (decisão 5);
   - `/termo-de-uso` e `/terms-and-conditions`: 410;
   - `/challenges` e os 6 programas online: 410;
   - post sem relação com serviço, idioma ou cidade: 410;
@@ -393,7 +396,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - Os três ajustes da loja do Redação 900+: ficam de fora por enquanto. O Maxwell decidiu em 29/09/2026 que o cliente não quer mexer nesse site agora.
 - As versões em inglês e em chinês da landing de Mandarim, e qualquer versão do site em outro idioma.
 - A página de termos de uso: `/termo-de-uso` fica 410.
-- Página própria para a realocação de funcionários: no máximo um bloco, se o serviço continuar.
+- Página própria para a realocação de funcionários: no máximo um bloco, se o serviço continuar. Desde 30/09/2026 o bloco entra, porque o serviço está no site atual; a página própria continua fora.
 - O Search Console e o Bing Webmaster do site novo: ficam para o lançamento, com os passos no checklist.
 
 ## Further Notes
@@ -404,14 +407,14 @@ As perguntas estão em `docs/pendencias-cliente.md`, para o Maxwell mandar numa 
 
 - Quais páginas de idioma vão para produção, e com que conteúdo (Arthur).
 - Quais cidades têm fato local, e se a página de cidade é de tradução ou da cidade inteira (Daniella e Arthur).
-- A seção de mandarim no mercado financeiro (Daniella).
-- O bloco de realocação de funcionários (Daniella).
+- A seção de mandarim no mercado financeiro (Daniella). **Substituído em 30/09/2026:** virou página própria, com o texto da landing atual; a pergunta 18 é só confirmação.
+- O bloco de realocação de funcionários (Daniella). **Substituído em 30/09/2026:** o bloco entra; a pergunta 30 é só confirmação.
 - Os dados da política de privacidade: razão social, CNPJ e canal do titular (Daniella).
 - As 26 pendências do MVP.
 
 ### Riscos
 
-- **O tempo de resposta do cliente** é o maior risco do prazo: as páginas de idioma, de cidade, de LMS e de Quem Somos dependem de fatos que só a 9vee tem.
+- **O tempo de resposta do cliente** é o maior risco do prazo: as páginas de idioma, de cidade, de LMS e de Quem Somos dependem de fatos que só a 9vee tem. **Substituído em 30/09/2026:** LMS e Quem Somos saem dessa lista, porque o conteúdo vem do site atual. Continuam dependendo do cliente as páginas de idioma e de cidade e as pendências que o site atual não resolve.
 - **O serviço de formulário** pode recusar o endereço do preview ou o localhost. O teste vem antes de todo o resto do envio.
 - **O blog do Wix ainda recebe posts.** A mensagem ao cliente pede para parar, e o mapa é gerado de novo perto do lançamento.
 - **O HSTS de um ano** nos dois nomes exige o certificado pronto antes da troca do DNS.
@@ -420,3 +423,74 @@ As perguntas estão em `docs/pendencias-cliente.md`, para o Maxwell mandar numa 
 ### Horas e cronograma
 
 A estimativa é de cerca de 89 horas do Maxwell, com 11 a 12 horas por semana. As horas contam a sessão comigo, a revisão, os testes, o Gemini e o cliente, e não o meu tempo de execução. A distribuição por semana fica em `docs/cronograma-8-semanas.md`, e a quebra do trabalho, em `docs/tickets/`.
+
+**Substituído em 30/09/2026:** com o reaproveitamento do site atual, a estimativa sobe para cerca de 108 horas. Cabe nas 8 semanas porque os tickets das semanas 2 e 4 foram adiantados; a conta está no cronograma.
+
+## Reaproveitamento do site atual (30/09/2026)
+
+Decisão do Maxwell de 30/09/2026, à noite. Ela muda uma regra da Fase 1: o conteúdo do site atual da 9vee, o Wix, entra inteiro no site novo.
+
+- A base é `docs/textos-site-atual.md`: os textos de oito páginas do site atual, o mapa de onde cada bloco entra no site novo e a conferência com o site no ar, feita no mesmo dia.
+- O pedido do Maxwell está em `docs/prompt-reaproveitamento-site-atual.md`.
+
+### As cinco decisões
+
+1. **O site atual é fonte de fato.** O que a 9vee publica no próprio site conta como confirmado por ela. Todo conteúdo do site atual entra no site novo, e a Daniella e o Arthur corrigem depois, na revisão dos lotes. Isso substitui a regra de cortar o que "o site atual não sustenta" e a de deixar páginas parciais esperando resposta.
+2. **Reaproveitar é levar o conteúdo, e não copiar a redação.** Todo fato, lista, argumento, exemplo e seção do site atual entra. A redação passa pelas regras de `docs/padroes.md`, que continuam valendo e são testadas:
+   - sem as palavras proibidas, sem travessão e sem caixa alta em parágrafo;
+   - frases curtas, segunda pessoa e "9vee" no lugar de "Novee";
+   - o `humanizar` em todo texto novo.
+
+   A frase original que for boa e passar nas regras fica como está. Exemplo: "Quando o negócio fala mandarim, precisão não é opcional.".
+3. **Pendência só onde o site atual não resolve:**
+   - quando o próprio site se contradiz (anos de mercado e quantidade de idiomas), a pendência continua;
+   - quando o site não fala do assunto (preço, carga horária, cidades do presencial das aulas, dados da política), a pendência continua;
+   - afirmação jurídica com data entra com `[CONFIRMAR COM A DANIELLA: leitura do advogado sobre esta afirmação]`. É o caso do "risco jurídico direto" do NR-1: o PGR como prova em ação ajuizada "até 2046";
+   - o resto sai da pendência e entra como fato. A seção 2 de `docs/textos-site-atual.md` lista as que o site atual já responde.
+4. **Continua fora:** endereço, "sede em São Paulo" e "venha nos visitar"; nome de empresa cliente sem autorização; foto do Canva; as versões em inglês e em chinês.
+5. **Página nova: interpretação de mandarim.** A landing `/mandarim-portugues` não é o curso. É interpretação mandarim-português para o mercado financeiro.
+   - Ela vira `/traducao-simultanea/mandarim/`, filha da Tradução Simultânea, publicada desde o lançamento.
+   - No mapa de redirecionamentos, `/mandarim-portugues`, `/mandarim-english`, `/mandarim-chines` e os redirecionamentos antigos que levam a elas (`/mandarim-pt` e `/mandarim-portugues-1`) passam a apontar para essa página.
+   - A `/mandarim`, que é o curso, e a `/blank-1` continuam indo para `/curso-de-idiomas/mandarim/`, com a regra de sempre: sem a página do curso publicada, vão para a página de cursos.
+
+### O que o Maxwell decidiu ao aprovar o plano
+
+- **Material do Canva.** Na Tradução Simultânea, o que só existe no Canva entra no texto com pendência: a interpretação remota, os idiomas a mais, o revezamento de intérpretes e os casos atendidos. No LMS e no Quem Somos, o que só existe no Canva fica fora do texto e continua como pergunta: a EdApp, as telas, a sala de aula invertida, a IA e o plantão pelo WhatsApp (pergunta 21), e os pilares do portfólio e as pessoas (pergunta 22).
+- **"Lê-se Novee".** A pendência do rodapé continua, e a pergunta 24 não muda.
+- **Clientes e profissionais.** Os dois números continuam pendentes, como a seção 2 de `docs/textos-site-atual.md` manda. O site atual dá os mesmos números nas duas páginas, mas o Canva traz outros.
+- **Depoimentos.** Os trechos da home ficam. O texto completo não entra: a fala literal traz "Novee" e palavra proibida, que os testes barram, e a autorização de cada um ainda é pendência.
+
+### O que entra em cada página
+
+| Página | Ticket | Do site atual |
+|---|---|---|
+| LMS | 06 | O que é, a plataforma 24 horas por dia, as trilhas personalizadas, o acompanhamento de professores, os relatórios de desempenho, frequência e progresso, a metodologia, os setores atendidos e os benefícios. As três perguntas do pedido continuam. O card do LMS na home perde a pendência |
+| Tradução Simultânea | 05 | O que é, como funciona (terminologia, cabine acústica e áudio dedicado), para que serve (os cinco tipos de evento), os três formatos completos, os idiomas, o presencial e os intérpretes especializados (os seis setores). Mais o material do Canva, com pendência |
+| Interpretação de mandarim | 21 | Os três serviços, as modalidades, mais de 10 anos de experiência, private equity, bancos de investimento e empresas do portfólio, visitas e tours em fábricas e escritórios, e o retorno em até um dia útil perto do pedido |
+| Quem Somos | 07 | A história, "atendemos comunidades, empresas e órgãos públicos em todo o Brasil", os três princípios com os seus três itens, a missão e os números. Sem sede |
+| Home, NR-1, Cursos e páginas de idioma | 22 | O que o mapa marca como "fora" ou "parcial". O H1 da home aprovado no MVP fica |
+
+### Como cada ticket do reaproveitamento fecha
+
+Vale para os tickets 05, 06, 07, 21 e 22, um por vez, com parada no fim de cada um:
+
+1. **Conteúdo primeiro,** em `content/`, a partir do site atual e das cinco decisões.
+2. **Desenho das seções com a skill `frontend-design`,** carregada antes de desenhar qualquer seção nova. As páginas ficam bem maiores do que as parciais, e nenhuma vira parede de texto nem repete a mesma grade de cartões.
+   - O tipo de seção segue o conteúdo: linha do tempo, texto ao lado de imagem, lista numerada grande, comparação lado a lado, faixa escura de destaque, faixa de números, citação em destaque, acordeão para texto longo.
+   - Os componentes que já existem são reaproveitados. Componente novo só quando o conteúdo pede uma forma que não existe.
+   - A identidade fica: navy, papel, menta como única cor de ação, violeta e magenta para grupo e escolha, o grifo pela classe `.grifo`, o círculo da marca, Readex Pro nos títulos e Source Sans 3 no texto.
+   - `docs/padroes.md` vale acima da skill. Se um padrão precisar mudar, o trabalho para e o Maxwell decide.
+   - Celular primeiro, com 360 e 390 px no mesmo nível de cuidado que 1280 px.
+3. **`humanizar` nos textos e `humanizar-ui` na página,** com as correções aplicadas.
+4. **Testes:** os do HTML gerado e os do navegador da página, o de larguras e o de JSON-LD, com `npm test` e `npm run e2e` passando.
+5. **Capturas** num roteiro do ticket (`ticket-05`, `ticket-06`, `ticket-21`, `ticket-07` e `ticket-22`), em 390 e 1280 px.
+6. **Lighthouse** da página no build de produção: Performance 95 ou mais, Acessibilidade 100, LCP abaixo de 2,0 s e CLS abaixo de 0,05. O pedido falava em CLS abaixo de 0,1; vale a meta desta spec, que é mais dura. A home está no limite do LCP: o que entrar nela não vai para a primeira dobra. As páginas de idioma não publicadas não entram no build de produção e são medidas no build de preview.
+7. **`code-review` nos dois eixos,** padrões e spec, com as correções em commits próprios.
+8. **Fechamento:** "Como ficou" no ticket, o texto para o cliente em `docs/novidades-preview.md` e `docs/andamento.md` atualizado.
+
+Estes tickets não publicam o preview. O Maxwell publica com `npm run deploy` depois de ver as capturas.
+
+### Ordem e fechamento
+
+- **Ordem:** 06, 05, 21, 07 e 22, que deixaram de depender do cliente. Depois, o 12 e o 13.
+- **Fechamento:** o lote 2 sai com Tradução, LMS, Quem Somos, interpretação de mandarim, privacidade e 404. Os lotes 1 e 3 são gerados de novo, porque as páginas fechadas mudaram. A contagem das pendências é comparada com as 104 de 30/09/2026.

@@ -2,18 +2,18 @@
 
 **O que construir:** a política de privacidade nova, curta e só sobre o site, a 404 que leva aos serviços, e o lote 2 para a Daniella.
 
-**Depende de:** 04 (e 05, 06 e 07 para o lote).
+**Depende de:** 04 (e 05, 06, 07 e 21 para o lote).
 
-**Horas:** 3. **Semana:** 3.
+**Horas:** 3. **Semana:** 3 (o lote 2, na semana 4).
 
-**Situação:** feito em 30/09/2026, adiantado da semana 3, sem o lote 2. O Maxwell decidiu em 30/09 que o lote sai quando o 05 a 07 ficarem prontos.
+**Situação:** feito em 30/09/2026, adiantado da semana 3, sem o lote 2. O Maxwell decidiu em 30/09 que o lote sai quando o 05 a 07 ficarem prontos. Com o reaproveitamento do site atual, decidido no mesmo dia, o lote espera também o 21 e passa a incluir a página de interpretação de mandarim.
 
 - [x] `/politica-de-privacidade/` explica o que o formulário coleta e o registro do consentimento, o GA4 só depois do aceite, o que fica no navegador, quem recebe os dados (o serviço de formulário, o Google, a hospedagem e o WhatsApp), por quanto tempo, os direitos e o canal do titular.
 - [x] Razão social, CNPJ e canal ficam como pendência até a Daniella responder. A entrega avisa que a política passa pelo advogado da 9vee.
 - [x] O rodapé aponta para a política nova, na mesma aba.
 - [x] A política tem trilha, como toda página interna (o teste do HTML exige). O `Base` monta o `BreadcrumbList` pelo endereço, e o `trilhaDoCaminho` (`src/lib/trilha.ts`) tira o nome do menu, onde a política não está: ele passa a ler também os links do rodapé. A trilha de hoje só tem cores para o hero escuro; numa página de texto, ela precisa das cores do fundo claro.
 - [x] A 404 mostra os caminhos para os serviços e não tem canonical.
-- [ ] `docs/revisao-daniella/lote-2.md` com Tradução, LMS, Quem Somos, privacidade e 404. Fica para quando o 05 a 07 ficarem prontos.
+- [ ] `docs/revisao-daniella/lote-2.md` com Tradução, LMS, Quem Somos, interpretação de mandarim, privacidade e 404. Sai quando o 05, o 06, o 07 e o 21 ficarem prontos, no fechamento do reaproveitamento, junto com os lotes 1 e 3 gerados de novo.
 
 **Como ficou:**
 

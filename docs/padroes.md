@@ -15,6 +15,7 @@
 - **(teste)** Nenhum link genérico: "mais", "veja mais", "clique aqui", "ir", "mais informação", "mais informações", "saiba mais".
 - **(teste)** Marca: "9vee" em todo lugar. "Novee" só no rodapé ("lê-se Novee") e no `alternateName` do JSON-LD.
 - Nenhum dado inventado. O que não foi confirmado vira `[CONFIRMAR COM A DANIELLA: ...]` ou `[CONFIRMAR COM O ARTHUR: ...]`, conforme quem responde (a divisão está em `docs/pendencias-cliente.md`). A forma curta, `[CONFIRMAR: ...]`, fica com a Daniella.
+- O que o site atual da 9vee publica conta como confirmado por ela (decisão de 30/09/2026, na spec da Fase 1): entra como fato, com a redação refeita por estes padrões. A fonte é `docs/textos-site-atual.md`. A pendência fica para o que o site atual não resolve: quando ele se contradiz, quando não fala do assunto e em afirmação jurídica com data. O que só existe no material do Canva não conta como confirmado.
 - Sem caixa alta em parágrafo. Caixa alta só em rótulo de até 3 palavras.
 - Zero emoji e zero exclamação em texto de venda.
 

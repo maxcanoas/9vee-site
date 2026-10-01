@@ -4,7 +4,7 @@
 
 **Depende de:** 17 (títulos finais).
 
-**Horas:** 1,5. **Semana:** 8.
+**Horas:** 1,5. **Semana:** 7 (era a 8; subiu em 30/09/2026, para a folga ficar na última semana).
 
 **Situação:** ready-for-agent
 
