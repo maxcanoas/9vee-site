@@ -5,7 +5,14 @@
 import Texto from './Texto.astro';
 import CampoContato from './CampoContato.astro';
 import IconeWhatsApp from './IconeWhatsApp.astro';
-import { linkWhatsApp, type Campo, type DadosDoDrawer, type FormularioId, type PaginaDoContato } from '../lib/contato';
+import {
+  linkWhatsApp,
+  valorDaOpcao,
+  type Campo,
+  type DadosDoDrawer,
+  type FormularioId,
+  type PaginaDoContato,
+} from '../lib/contato';
 import { ordenarPorPublico } from '../lib/publico';
 import { AVISO_NOVA_ABA, jsonParaScript, textoPuro } from '../lib/texto';
 import type { DadosDoSite } from '../lib/site';
@@ -25,6 +32,9 @@ const dados: DadosDoDrawer = {
   pagina: pagina.nome,
   servicoDaPagina: pagina.servico ?? null,
   idiomaDaPagina: pagina.idioma ?? null,
+  marcadasDaPagina: Object.fromEntries(
+    Object.entries(pagina.marcadas ?? {}).map(([campo, opcoes]) => [campo, opcoes.map(valorDaOpcao)]),
+  ),
   servicos: Object.fromEntries(servicos.map((s) => [s.id, textoPuro(s.nome)])) as DadosDoDrawer['servicos'],
   formularios,
   idiomas,
@@ -224,7 +234,8 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
           <h3 class="etapa__titulo" id="etapa-confirmado" tabindex="-1">
             <Texto de={textos.confirmacao.titulo} />
           </h3>
-          <p class="texto-secundario"><Texto de={textos.confirmacao.texto} /></p>
+          {/* A página que promete um prazo de resposta repete a promessa aqui. */}
+          <p class="texto-secundario"><Texto de={pagina.prazo ?? textos.confirmacao.texto} /></p>
           <div class="pedido">
             <h4 class="pedido__titulo"><Texto de={textos.confirmacao.resumo} /></h4>
             <ul class="pedido__linhas" role="list" data-linhas-confirmacao></ul>

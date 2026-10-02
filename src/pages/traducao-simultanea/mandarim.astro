@@ -7,17 +7,20 @@ import ListaGrande from '../../components/ListaGrande.astro';
 import Mostra from '../../components/Mostra.astro';
 import Chamada from '../../components/Chamada.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
-import { dadosDoSite, idiomaDaPagina } from '../../lib/site';
-import { enderecoDoCurso, paginaInterpretacaoDeMandarim } from '../../lib/paginas';
+import { dadosDoSite, idiomaDoSite } from '../../lib/site';
+import { enderecoDosIdiomasPublicados, paginaInterpretacaoDeMandarim } from '../../lib/paginas';
+import { enderecoDoCurso } from '../../lib/publicacao';
 import { servico } from '../../lib/jsonld';
 
 const { data: pagina } = await paginaInterpretacaoDeMandarim();
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
-// Do idioma da página saem o lang da assinatura, a cor da família dele no grifo e o endereço do curso.
-const idioma = idiomaDaPagina(site, 'interpretacaoDeMandarim');
+const idioma = idiomaDoSite(site, pagina.idioma, 'content/interpretacao-de-mandarim.md');
+// O prazo de resposta vai abaixo dos dois botões do pedido. O Drawer repete a promessa na confirmação.
+const { prazo } = site.paginas.interpretacaoDeMandarim;
 const { assinatura, ...tese } = pagina.tese;
-const { link: rotuloDoCurso, ...curso } = pagina.curso;
+const { rotuloDoLink, ...curso } = pagina.curso;
+const enderecoDoCursoDeMandarim = enderecoDoCurso(await enderecoDosIdiomasPublicados(), idioma.slug);
 // A landing do site atual fala de visitas e tours em fábricas e escritórios no Brasil: a área atendida é o país.
 const jsonLd = [
   servico(base, {
@@ -30,9 +33,10 @@ const jsonLd = [
 ---
 
 <Base pagina="interpretacaoDeMandarim" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
-  <HeroPagina {...pagina.hero} servico="traducao" nota={pagina.prazo} />
+  <HeroPagina {...pagina.hero} servico="traducao" nota={prazo} />
   <ListaGrande id="servicos" {...pagina.servicos} />
+  {/* O grifo sai na cor da família do idioma, a mesma que ele tem na home e na página de cursos. */}
   <Mostra id="precisao" {...tese} assinatura={{ texto: assinatura, lang: idioma.lang }} grupo={idioma.familia} />
-  <Chamada id="curso" {...curso} link={{ rotulo: rotuloDoCurso, href: await enderecoDoCurso(idioma.slug) }} />
-  <CtaFinal {...pagina.ctaFinal} servico="traducao" nota={pagina.prazo} />
+  <Chamada id="curso" {...curso} link={{ rotulo: rotuloDoLink, href: enderecoDoCursoDeMandarim }} />
+  <CtaFinal {...pagina.ctaFinal} servico="traducao" nota={prazo} />
 </Base>

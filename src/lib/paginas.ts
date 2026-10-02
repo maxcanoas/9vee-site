@@ -1,7 +1,7 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import { MODO } from 'astro:env/server';
 import { entraNoBuild } from './publicacao';
-import { dadosDoSite, type DadosDoSite } from './site';
+import { dadosDoSite, idiomaDoSite, type DadosDoSite } from './site';
 import { trilhaDoCaminho } from './trilha';
 
 export async function paginaHome() {
@@ -24,8 +24,7 @@ export async function paginaTraducao() {
   return exigir(await getEntry('traducao', 'traducao-simultanea'), 'content/traducao-simultanea.md');
 }
 
-/** O endereço da página de interpretação de mandarim, filha da Tradução Simultânea. */
-const INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
+const CAMINHO_DA_INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
 
 export async function paginaInterpretacaoDeMandarim() {
   return exigir(
@@ -58,8 +57,7 @@ export async function paginasDeIdioma(): Promise<PaginaDeIdioma[]> {
   const entradas = await getCollection('paginasDeIdioma', ({ data }) => entraNoBuild(data, MODO));
   const comPagina = new Set<string>();
   return entradas.map(({ id, data }) => {
-    const idioma = site.idiomas.find((candidato) => candidato.slug === data.idioma);
-    if (!idioma) throw new Error(`content/idiomas/${id}.md aponta para "${data.idioma}", que não está nos idiomas de content/site.md`);
+    const idioma = idiomaDoSite(site, data.idioma, `content/idiomas/${id}.md`);
     if (comPagina.has(idioma.slug)) throw new Error(`O idioma "${idioma.slug}" tem mais de uma página em content/idiomas/`);
     comPagina.add(idioma.slug);
     return { id, caminho: `/curso-de-idiomas/${id}/`, idioma, conteudo: data };
@@ -75,14 +73,6 @@ export async function enderecoDosIdiomasPublicados(): Promise<Map<string, string
   return new Map(publicadas.map(({ idioma, caminho }) => [idioma.slug, caminho]));
 }
 
-/** A âncora de um idioma na lista da página de cursos: é para ela que vai o link do idioma sem página publicada. */
-export const ancoraDoIdioma = (slug: string) => `/curso-de-idiomas/#${slug}`;
-
-/** Para onde leva, de fora da página de cursos, o link do curso de um idioma: a página dele ou, sem ela, a âncora. */
-export async function enderecoDoCurso(slug: string): Promise<string> {
-  return (await enderecoDosIdiomasPublicados()).get(slug) ?? ancoraDoIdioma(slug);
-}
-
 /**
  * A trilha do endereço, com o nome das páginas que não estão no menu nem no rodapé: as de idioma, pelo nome do idioma,
  * e a de interpretação de mandarim, pelo nome que ela mesma dá. O Base (no JSON-LD) e a Trilha (na tela) usam esta.
@@ -92,7 +82,7 @@ export async function trilhaDaPagina(caminho: string) {
   const { data: mandarim } = await paginaInterpretacaoDeMandarim();
   const comNomeProprio = [
     ...(await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho })),
-    { rotulo: mandarim.nome, href: INTERPRETACAO_DE_MANDARIM },
+    { rotulo: mandarim.nomeNaTrilha, href: CAMINHO_DA_INTERPRETACAO_DE_MANDARIM },
   ];
   return trilhaDoCaminho(site, caminho, comNomeProprio);
 }

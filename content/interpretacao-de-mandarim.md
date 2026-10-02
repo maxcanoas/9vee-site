@@ -1,19 +1,24 @@
 ---
+# O idioma em content/site.md: o lang da assinatura, a cor do grifo e o endereço do curso saem de lá.
+idioma: "mandarim"
+
 seo:
   titulo: "Interpretação mandarim-português para negócios | 9vee"
   descricao: "Intérpretes de mandarim e português para reuniões com investidores, visitas de due diligence e eventos corporativos. Mais de 10 anos no mercado financeiro."
 
-# O nome da página na trilha ("Início, Tradução simultânea, Mandarim"). Ela não está no menu, e o nome continua este
-# quando o rodapé ganhar o link dela.
-nome: "Mandarim"
+# A trilha fica "Início, Tradução simultânea, Mandarim". A página não está no menu, e o nome continua este quando o
+# rodapé ganhar o link dela.
+nomeNaTrilha: "Mandarim"
 
 # Dados estruturados: o nome e o tipo do Service que o Google lê nesta página.
 servico:
   nome: "Interpretação de mandarim"
   tipo: "Interpretação simultânea, consecutiva e de acompanhamento entre mandarim e português"
 
+# O prazo de resposta, abaixo do botão, e o que o pedido já traz marcado ficam em content/site.md, em
+# paginas.interpretacaoDeMandarim.
 hero:
-  rotulo: "Para fundos, bancos de investimento e empresas do portfólio"
+  rotulo: "Para fundos de private equity, bancos de investimento e empresas do portfólio"
   h1: "Interpretação de mandarim para o mercado financeiro"
   apoio: "Intérpretes de mandarim e português para reuniões com investidores, visitas e eventos corporativos, há mais de 10 anos nesse mercado."
   cta: "Pedir intérprete de mandarim"
@@ -22,16 +27,12 @@ hero:
     arquivo: "interpretacao-mandarim-hero"
     alt: "Intérprete entre uma gestora brasileira e um investidor chinês, numa mesa de reunião."
 
-# O prazo que a landing do site atual promete, logo abaixo do botão do pedido. Só esta página promete um: nas outras,
-# o prazo continua na pergunta 6 da Daniella.
-prazo: "A 9vee responde em até um dia útil."
-
 # Os três serviços da landing do site atual, com as ocasiões de cada um.
 servicos:
   titulo: "Onde o intérprete entra"
   itens:
     - nome: "Reuniões com investidores"
-      texto: "Reuniões bilaterais, revisões de portfólio e apresentações para LPs, com intérprete do começo ao fim."
+      texto: "Reuniões bilaterais, revisões de portfólio e apresentações para LPs, com cobertura completa de interpretação."
     - nome: "Visitas"
       texto: "Due diligence e inspeção em plantas industriais, com o intérprete no local."
     - nome: "Eventos corporativos"
@@ -50,6 +51,7 @@ tese:
   itens:
     - titulo: "Mais de 10 anos"
       texto: "Interpretando entre mandarim e português para o setor financeiro."
+      numero: true
     - titulo: "Com quem"
       texto: "Gestores de fundos de private equity, bancos de investimento e as empresas do portfólio deles."
     - titulo: "Onde"
@@ -60,7 +62,7 @@ tese:
 curso:
   titulo: "Procura o curso de mandarim?"
   texto: "A 9vee também ensina mandarim, com foco na conversa desde as primeiras aulas."
-  link: "Ver o curso de mandarim"
+  rotuloDoLink: "Ver o curso de mandarim"
 
 ctaFinal:
   titulo: "Conte quando e onde vai ser."

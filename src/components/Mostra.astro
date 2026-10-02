@@ -18,7 +18,8 @@ type Props = Titulo & {
   /** A assinatura que fecha a frase, na escrita de outro idioma, com o lang dele. */
   assinatura?: { texto: string; lang: string };
   apoio: string;
-  itens: { titulo: string; texto: string }[];
+  /** O item cujo título é um número sai no tipo dos números da home e, no computador, na linha inteira. */
+  itens: { titulo: string; texto: string; numero?: boolean }[];
 };
 
 const { id, grupo, linhas, frase, assinatura, apoio, itens } = Astro.props;
@@ -64,7 +65,7 @@ const { id, grupo, linhas, frase, assinatura, apoio, itens } = Astro.props;
     <ul class="mostra__itens" role="list">
       {
         itens.map((item) => (
-          <li class="mostra__item">
+          <li class:list={['mostra__item', item.numero && 'mostra__item--numero']}>
             <h3 class="mostra__item-titulo">
               <Texto de={item.titulo} />
             </h3>
@@ -132,10 +133,11 @@ const { id, grupo, linhas, frase, assinatura, apoio, itens } = Astro.props;
     font-size: var(--t-destaque);
   }
 
-  /* Com número ímpar de itens, o primeiro abre a lista, em tipo maior. No computador ele ocupa a linha inteira, e os
-     outros ficam em pares, abaixo dele. */
-  .mostra__item:first-child:nth-last-child(odd) .mostra__item-titulo {
-    font-size: var(--t-3);
+  /* O número segue o da faixa de números da home: mesmo tamanho, mesma altura de linha e mesmo rastreio. */
+  .mostra__item--numero .mostra__item-titulo {
+    font-size: var(--t-numero);
+    line-height: 1;
+    letter-spacing: var(--rastreio-titulo);
   }
 
   .mostra__item-texto {
@@ -160,7 +162,7 @@ const { id, grupo, linhas, frase, assinatura, apoio, itens } = Astro.props;
       column-gap: var(--e-6);
     }
 
-    .mostra__item:first-child:nth-last-child(odd) {
+    .mostra__item--numero {
       grid-column: 1 / -1;
     }
   }

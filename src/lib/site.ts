@@ -17,10 +17,10 @@ export function servicoDoSite(site: DadosDoSite, id: ServicoId) {
   return servico;
 }
 
-/** O idioma de uma página, como content/site.md o descreve: o nome, a saudação, o lang e a família. */
-export function idiomaDaPagina(site: DadosDoSite, pagina: PaginaId) {
-  const idioma = site.idiomas.find(({ slug }) => slug === site.paginas[pagina].idioma);
-  if (!idioma) throw new Error(`a página "${pagina}" não diz o idioma dela em content/site.md`);
+/** O idioma que um arquivo de content/ aponta, como content/site.md o descreve: o nome, a saudação, o lang e a família. */
+export function idiomaDoSite(site: DadosDoSite, slug: string, arquivo: string) {
+  const idioma = site.idiomas.find((candidato) => candidato.slug === slug);
+  if (!idioma) throw new Error(`${arquivo} aponta para "${slug}", que não está nos idiomas de content/site.md`);
   return idioma;
 }
 

@@ -63,6 +63,8 @@ export interface DadosDoDrawer {
   pagina: string;
   servicoDaPagina: ServicoId | null;
   idiomaDaPagina: string | null;
+  /** O que a página traz marcado no pedido do serviço dela: de cada pergunta para os valores das opções. */
+  marcadasDaPagina: Record<string, string[]>;
   servicos: Record<ServicoId, string>;
   formularios: Record<FormularioId, Campo[]>;
   idiomas: IdiomaCurto[];
@@ -224,11 +226,12 @@ export function mensagemFlutuante(pagina: string, assunto: string, modelos: Mode
 export interface PaginaDoContato {
   nome: string;
   servico?: ServicoId;
-  /**
-   * Na página de um idioma, o slug dele: o pedido aberto sem idioma no botão já sai com este. Vale para a página do
-   * curso e para a de interpretação de mandarim, onde ele entra nos idiomas do evento.
-   */
+  /** Na página de um idioma, o slug dele: o pedido aberto sem idioma no botão já sai com este. */
   idioma?: string;
+  /** O que o pedido do serviço da página já traz marcado: de cada pergunta de várias respostas para as opções dela. */
+  marcadas?: Record<string, string[]>;
+  /** O prazo de resposta que a página promete: vai abaixo do botão do pedido e na confirmação dele. */
+  prazo?: string;
   assunto: TextosPorPublico;
 }
 
@@ -254,12 +257,22 @@ export function idiomaInicial(pistas: { doBotao: string | undefined; escolhido: 
 
 /**
  * As opções marcadas numa pergunta de várias respostas quando o pedido abre: as que a pessoa já tinha marcado e, sem
- * nenhuma, a do idioma da página, se a pergunta oferece esse idioma. Na página de interpretação de mandarim, o pedido
- * de tradução abre com o mandarim marcado nos idiomas do evento.
+ * nenhuma, as que a página traz marcadas. Na página de interpretação de mandarim, os idiomas do evento abrem com o
+ * mandarim, e quem trocou o idioma e reabriu o pedido encontra a própria escolha.
  */
-export function opcoesIniciais(pistas: { opcoes: readonly string[]; marcadas: readonly string[]; idiomaDaPagina: string | null }): string[] {
-  if (pistas.marcadas.length > 0) return [...pistas.marcadas];
-  return pistas.opcoes.map(valorDaOpcao).filter((valor) => valor === pistas.idiomaDaPagina);
+export function opcoesIniciais(pistas: { marcadas: readonly string[]; daPagina: readonly string[] }): string[] {
+  return [...(pistas.marcadas.length > 0 ? pistas.marcadas : pistas.daPagina)];
+}
+
+/**
+ * Se o que uma página traz marcado no pedido cabe no formulário: cada pergunta existe nele e é de várias respostas, e
+ * cada opção é uma das dela, escrita como no formulário.
+ */
+export function marcadasValidas(marcadas: Record<string, readonly string[]>, campos: readonly Campo[]): boolean {
+  return Object.entries(marcadas).every(([id, opcoes]) => {
+    const campo = campos.find((candidato) => candidato.id === id);
+    return campo?.tipo === 'multipla' && opcoes.every((opcao) => campo.opcoes.includes(opcao));
+  });
 }
 
 export function linkWhatsApp(numero: string, mensagem?: string): string {

@@ -5,7 +5,7 @@
 // Sem JavaScript o botão some (regra do base.css), e o <noscript> mantém a lista à vista.
 import Texto from './Texto.astro';
 import { atributosDoContato } from '../lib/contato';
-import { ancoraDoIdioma } from '../lib/paginas';
+import { enderecoDoCurso } from '../lib/publicacao';
 
 interface Familia {
   id: string;
@@ -34,7 +34,7 @@ interface Props {
 
 const { familias, idiomas, modo, rotuloPedido, enderecos } = Astro.props;
 // O endereço do link de cada idioma. Sem página e na própria página de cursos, não há link: há o botão do pedido.
-const destino = (slug: string) => enderecos.get(slug) ?? (modo === 'links' ? ancoraDoIdioma(slug) : undefined);
+const destino = (slug: string) => (modo === 'links' ? enderecoDoCurso(enderecos, slug) : enderecos.get(slug));
 ---
 
 <div class:list={['familias', `familias--${modo}`]}>

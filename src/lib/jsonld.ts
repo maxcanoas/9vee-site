@@ -1,3 +1,4 @@
+import { ancoraDoIdioma } from './publicacao';
 import { jsonParaScript, minuscula, preencher, textoPuro } from './texto';
 import type { DadosDoSite } from './site';
 import type { PassoDaTrilha } from './trilha';
@@ -82,7 +83,7 @@ export function listaDeCursos(
         '@type': 'Course',
         name: textoPuro(nomeDoCurso(dados.modelos.nome, idioma.nome)),
         description: textoPuro(preencher(dados.modelos.descricao, { idioma: idioma.nome })),
-        url: new URL(idioma.pagina ?? `${dados.caminho}#${idioma.slug}`, base).href,
+        url: new URL(idioma.pagina ?? ancoraDoIdioma(idioma.slug), base).href,
         provider: { '@id': new URL('/#organizacao', base).href },
       },
     })),

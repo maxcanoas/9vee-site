@@ -8,6 +8,7 @@ import {
   linhasDaConfirmacao as paresDaConfirmacao,
   linkWhatsApp,
   linhasDoPedido as paresDoPedido,
+  marcadasValidas,
   mensagemFlutuante,
   modoDoDrawer,
   montarMensagem,
@@ -375,25 +376,32 @@ describe('idiomaInicial', () => {
   });
 });
 
-// A pergunta de várias respostas, como os idiomas do evento no pedido de tradução.
+// A pergunta de várias respostas que a página já traz marcada: os idiomas do evento, na página de interpretação
+// de mandarim.
 describe('opcoesIniciais', () => {
-  const opcoes = ['Inglês', 'Mandarim', 'Crioulo haitiano', 'Outro'];
-
-  it('na página de um idioma, marca a opção dele quando a pessoa ainda não marcou nada', () => {
-    expect(opcoesIniciais({ opcoes, marcadas: [], idiomaDaPagina: 'mandarim' })).toEqual(['mandarim']);
+  it('abre com o que a página traz marcado quando a pessoa ainda não marcou nada', () => {
+    expect(opcoesIniciais({ marcadas: [], daPagina: ['mandarim'] })).toEqual(['mandarim']);
   });
 
-  it('mantém o que a pessoa já marcou, mesmo sem o idioma da página', () => {
-    expect(opcoesIniciais({ opcoes, marcadas: ['ingles', 'outro'], idiomaDaPagina: 'mandarim' })).toEqual(['ingles', 'outro']);
+  it('mantém o que a pessoa já marcou, mesmo sem a opção da página', () => {
+    expect(opcoesIniciais({ marcadas: ['ingles', 'outro'], daPagina: ['mandarim'] })).toEqual(['ingles', 'outro']);
+  });
+});
+
+describe('marcadasValidas', () => {
+  it('aceita a opção de uma pergunta de várias respostas, escrita como no formulário', () => {
+    expect(marcadasValidas({ idiomas: ['Espanhol'] }, traducao)).toBe(true);
+    expect(marcadasValidas({ idiomas: ['Inglês', 'Francês'] }, traducao)).toBe(true);
   });
 
-  it('não marca nada quando a pergunta não oferece o idioma da página', () => {
-    const conteudo = ['Idiomas', 'Treinamentos internos', 'Outro'];
-    expect(opcoesIniciais({ opcoes: conteudo, marcadas: [], idiomaDaPagina: 'mandarim' })).toEqual([]);
+  it('recusa a opção que a pergunta não oferece', () => {
+    expect(marcadasValidas({ idiomas: ['Mandarim'] }, traducao)).toBe(false);
+    expect(marcadasValidas({ idiomas: ['espanhol'] }, traducao)).toBe(false);
   });
 
-  it('fora da página de um idioma, não marca nada', () => {
-    expect(opcoesIniciais({ opcoes, marcadas: [], idiomaDaPagina: null })).toEqual([]);
+  it('recusa a pergunta que o formulário não tem e a que não é de várias respostas', () => {
+    expect(marcadasValidas({ conteudo: ['Idiomas'] }, traducao)).toBe(false);
+    expect(marcadasValidas({ formato: ['Online'] }, traducao)).toBe(false);
   });
 });
 

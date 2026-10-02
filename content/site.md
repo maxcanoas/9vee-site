@@ -143,11 +143,13 @@ paginas:
     nome: "Tradução Simultânea"
     servico: "traducao"
     assunto: { neutro: "quero tradução simultânea para um evento", empresa: "quero tradução simultânea para um evento da minha empresa", voce: "quero tradução simultânea para um evento particular" }
-  # A interpretação de mandarim é da tradução simultânea e de um idioma: o pedido dela abre com os dois marcados.
+  # O pedido aberto na página de interpretação de mandarim já traz a tradução simultânea e, nos idiomas do evento, o
+  # mandarim. Ela é a única que promete prazo, o da landing do site atual: nas outras, ele continua na pergunta 6.
   interpretacaoDeMandarim:
     nome: "Interpretação de Mandarim"
     servico: "traducao"
-    idioma: "mandarim"
+    marcadas: { idiomas: ["Mandarim"] }
+    prazo: "A 9vee responde em até um dia útil."
     assunto: { neutro: "quero um intérprete de mandarim", empresa: "quero um intérprete de mandarim para a minha empresa", voce: "quero um intérprete de mandarim para um evento particular" }
   lms:
     nome: "LMS"

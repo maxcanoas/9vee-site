@@ -13,6 +13,14 @@ export function entraNoBuild({ publicada }: { publicada: boolean }, modo: Modo):
   return publicada || modo !== 'producao';
 }
 
+/** A âncora de um idioma na lista da página de cursos: é o endereço do curso dele enquanto a página não é publicada. */
+export const ancoraDoIdioma = (slug: string) => `/curso-de-idiomas/#${slug}`;
+
+/** Para onde leva o link do curso de um idioma, de fora da página de cursos: a página dele, se publicada, ou a âncora. */
+export function enderecoDoCurso(publicados: ReadonlyMap<string, string>, slug: string): string {
+  return publicados.get(slug) ?? ancoraDoIdioma(slug);
+}
+
 /**
  * A marca lida direto do arquivo, porque a trava lê content/ sem o Astro. Arquivo sem a marca é de página que
  * está sempre no ar, como as do menu.

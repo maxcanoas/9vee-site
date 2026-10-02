@@ -42,12 +42,8 @@ const { texto, textos, servico, idioma, class: classe } = botao;
     justify-items: start;
   }
 
+  /* Sem JavaScript o botão some, pela regra do base.css, e a nota continua à vista: ela é conteúdo da página. */
   .botao-com-nota__nota {
     font-size: var(--t-pequeno);
-  }
-
-  /* Sem JavaScript o botão some, pela regra do base.css: a linha que fala do pedido some com ele. */
-  :global(:root:not(.js)) .botao-com-nota__nota {
-    display: none;
   }
 </style>

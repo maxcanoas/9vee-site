@@ -41,19 +41,39 @@ export const textosDe = (raiz: HTMLElement, seletor: string) =>
   raiz.querySelectorAll(seletor).map((no) => emUmaLinha(no.text));
 
 /**
- * Os dados do pedido que a página entrega ao script: o número, o nome da página, o serviço e o idioma que ela já
- * marca e os campos de cada formulário.
+ * Os dados do pedido que a página entrega ao script: o número, o nome da página, o que ela já traz marcado (o
+ * serviço, o idioma e as opções de cada pergunta de várias respostas) e os campos de cada formulário.
  */
 export interface IlhaDoPedido {
   numero: string;
   pagina: string;
   servicoDaPagina: string | null;
   idiomaDaPagina: string | null;
+  marcadasDaPagina: Record<string, string[]>;
   formularios: Record<string, Campo[]>;
 }
 
 export const ilhaDoPedido = (raiz: HTMLElement) =>
   JSON.parse(raiz.querySelector('#dados-contato')!.textContent) as IlhaDoPedido;
+
+/**
+ * O fechamento da página de um serviço diz em prosa o que o pedido pergunta. Cada pergunta do formulário tem a
+ * palavra dela: campo novo sem palavra derruba o teste, e o texto muda junto. Ficam fora da conta o nome da empresa,
+ * as perguntas que só detalham outra e as que a página já traz marcadas.
+ */
+export function conferirPerguntasDoFechamento(
+  raiz: HTMLElement,
+  campos: Campo[],
+  palavraDoCampo: Record<string, string>,
+  jaMarcadas: string[] = [],
+) {
+  const perguntas = campos
+    .filter((campo) => campo.id !== 'empresa' && !campo.mostrarSe && !jaMarcadas.includes(campo.id))
+    .map((campo) => campo.id);
+  expect(perguntas).toEqual(Object.keys(palavraDoCampo));
+  const fechamento = textoDe(raiz, '#contato');
+  for (const palavra of Object.values(palavraDoCampo)) expect(fechamento).toContain(palavra);
+}
 
 /** O Service da página de um serviço: o nome dele, o endereço da página e a organização como quem presta. */
 export function conferirServico(raiz: HTMLElement, { nome, caminho }: { nome: string; caminho: string }) {

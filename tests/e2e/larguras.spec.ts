@@ -52,13 +52,15 @@ for (const largura of LARGURAS) {
 }
 
 test.describe('hero das páginas internas', () => {
-  // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook.
+  // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook. Na
+  // página que promete um prazo, a medida é a da caixa do botão com a nota, que vem antes dele no HTML.
   for (const rota of COM_HERO) {
     test(`${rota}: o botão cabe inteiro na primeira tela em 1280 x 800`, async ({ page }) => {
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(rota);
       await page.evaluate(() => document.fonts.ready);
-      const caixa = await page.locator(':is(.hero-pagina, .topo-idioma) [data-abre-contato]').first().boundingBox();
+      const botao = page.locator(':is(.hero-pagina, .topo-idioma) :is(.botao-com-nota, [data-abre-contato])').first();
+      const caixa = await botao.boundingBox();
       expect(caixa!.y + caixa!.height).toBeLessThanOrEqual(800);
     });
   }

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { opcoesIniciais } from '../../src/lib/contato.ts';
 import {
   INTERPRETACAO_DE_MANDARIM,
   abrirPagina,
   carregarPaginas,
   conferirFiguraEmArco,
+  conferirPerguntasDoFechamento,
   conferirServico,
   ilhaDoPedido,
   jsonLd,
@@ -19,6 +19,7 @@ const textos = (seletor: string) => textosDe(mandarim, seletor);
 const ilha = ilhaDoPedido(mandarim);
 // O curso de mandarim, na lista da página de cursos e na página dele.
 const curso = paginasDeIdiomaNoConteudo().find((pagina) => pagina.idioma === 'mandarim')!;
+const CONFIRMACAO_DO_PEDIDO = '[data-etapa="confirmado"]';
 
 describe('interpretação de mandarim', () => {
   it('traz as cinco seções, na ordem', () => {
@@ -43,7 +44,7 @@ describe('interpretação de mandarim', () => {
 
   it('diz o serviço no título e para quem ele é', () => {
     expect(texto('h1')).toBe('Interpretação de mandarim para o mercado financeiro');
-    for (const publico of ['fundos', 'bancos de investimento', 'empresas do portfólio']) {
+    for (const publico of ['fundos de private equity', 'bancos de investimento', 'empresas do portfólio']) {
       expect(texto('.hero-pagina')).toContain(publico);
     }
   });
@@ -51,7 +52,7 @@ describe('interpretação de mandarim', () => {
   it('lista os três serviços da landing do site atual, com as ocasiões de cada um', () => {
     expect(textos('#servicos h3')).toEqual(['Reuniões com investidores', 'Visitas', 'Eventos corporativos']);
     const [reunioes, visitas, eventos] = textos('#servicos li p');
-    for (const ocasiao of ['Reuniões bilaterais', 'revisões de portfólio', 'apresentações para LPs']) {
+    for (const ocasiao of ['Reuniões bilaterais', 'revisões de portfólio', 'apresentações para LPs', 'cobertura completa']) {
       expect(reunioes).toContain(ocasiao);
     }
     for (const ocasiao of ['Due diligence', 'plantas industriais', 'no local']) expect(visitas).toContain(ocasiao);
@@ -81,8 +82,9 @@ describe('interpretação de mandarim', () => {
     expect(modalidades?.getAttribute('href')).toBe('/traducao-simultanea/#formatos');
   });
 
-  it('prova com os mais de 10 anos, com quem e onde', () => {
+  it('prova com os mais de 10 anos, em tipo de número, com quem e onde', () => {
     expect(textos('#precisao h3')).toEqual(['Mais de 10 anos', 'Com quem', 'Onde']);
+    expect(textos('#precisao .mostra__item--numero h3')).toEqual(['Mais de 10 anos']);
     const prova = texto('#precisao ul');
     for (const fato of [
       'setor financeiro',
@@ -96,17 +98,21 @@ describe('interpretação de mandarim', () => {
     }
   });
 
-  it('promete a resposta em até um dia útil junto dos dois botões do pedido', () => {
+  it('promete a resposta em até um dia útil abaixo dos dois botões do pedido e na confirmação dele', () => {
     for (const onde of ['.hero-pagina', '#contato']) {
       const caixa = mandarim.querySelector(`${onde} .botao-com-nota`);
       expect(caixa?.querySelector('[data-abre-contato]'), `sem botão em ${onde}`).not.toBeNull();
       expect(caixa?.text).toContain('em até um dia útil');
     }
+    expect(texto(CONFIRMACAO_DO_PEDIDO)).toContain('em até um dia útil');
   });
 
-  // Nas outras páginas o prazo continua na pergunta 6 da Daniella.
-  it('é a única página que promete um prazo junto do botão', () => {
-    const comPrazo = carregarPaginas().filter(({ raiz }) => raiz.querySelector('.botao-com-nota'));
+  // Nas outras páginas o prazo continua na pergunta 6 da Daniella: o botão sai sem a nota, e a confirmação do
+  // pedido, com a pendência.
+  it('é a única página que promete um prazo', () => {
+    const comPrazo = carregarPaginas().filter(
+      ({ raiz }) => raiz.querySelector('.botao-com-nota') || !raiz.querySelector(`${CONFIRMACAO_DO_PEDIDO} mark.confirmar`),
+    );
     expect(comPrazo.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
   });
 
@@ -119,26 +125,18 @@ describe('interpretação de mandarim', () => {
     }
   });
 
-  // O botão do cabeçalho não diz serviço nem idioma: o pedido que ele abre sai com os da página.
-  it('entrega ao pedido o serviço e o idioma da página', () => {
+  // O botão do cabeçalho não diz o serviço: o pedido que ele abre sai com o que a página entrega ao script. A opção
+  // marcada precisa existir no formulário que a página desenha, com o mesmo valor.
+  it('entrega ao pedido o serviço da página e o mandarim marcado nos idiomas do evento', () => {
     expect(ilha.servicoDaPagina).toBe('traducao');
-    expect(ilha.idiomaDaPagina).toBe('mandarim');
+    expect(ilha.marcadasDaPagina).toEqual({ idiomas: ['mandarim'] });
+    expect(mandarim.querySelector('input[type="checkbox"][name="traducao-idiomas"][value="mandarim"]')).not.toBeNull();
   });
 
-  // Com o formulário de verdade, o que a página entrega ao script: a regra marca o mandarim nos idiomas do evento,
-  // e só neles.
-  it('marca o mandarim nos idiomas do evento do pedido de tradução, e em mais nenhuma pergunta', () => {
-    const marcadas = Object.entries(ilha.formularios).flatMap(([formulario, campos]) =>
-      campos.flatMap((campo) =>
-        campo.tipo === 'multipla'
-          ? opcoesIniciais({ opcoes: campo.opcoes, marcadas: [], idiomaDaPagina: ilha.idiomaDaPagina }).map(
-              (valor) => `${formulario}-${campo.id}=${valor}`,
-            )
-          : [],
-      ),
-    );
-    expect(marcadas).toEqual(['traducao-idiomas=mandarim']);
-    expect(mandarim.querySelector('input[type="checkbox"][name="traducao-idiomas"][value="mandarim"]')).not.toBeNull();
+  // Nas páginas dos cursos, o pedido de tradução continua abrindo sem idioma marcado.
+  it('é a única página que traz resposta marcada no pedido', () => {
+    const comMarcadas = carregarPaginas().filter(({ raiz }) => Object.keys(ilhaDoPedido(raiz).marcadasDaPagina).length > 0);
+    expect(comMarcadas.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
   });
 
   it('diz a página e o pedido de intérprete de mandarim na mensagem do botão do WhatsApp', () => {
@@ -150,25 +148,15 @@ describe('interpretação de mandarim', () => {
     }
   });
 
-  // O fechamento diz o que já vem marcado e, em prosa, o que o pedido ainda pergunta. Cada pergunta do formulário
-  // tem a palavra dela aqui: campo novo sem palavra derruba o teste, e o texto muda junto.
-  it('diz no fechamento o que já vem marcado e cada pergunta que falta responder', () => {
-    const palavraDoCampo: Record<string, string> = {
-      data: 'data',
-      duracao: 'duração',
-      formato: 'formato',
-      participantes: 'quantas pessoas',
-      cidade: 'cidade',
-    };
-    const jaMarcado = ['empresa', 'idiomas'];
-    const perguntas = ilha.formularios.traducao
-      .filter((campo) => !jaMarcado.includes(campo.id) && !campo.mostrarSe)
-      .map((campo) => campo.id);
-    expect(perguntas).toEqual(Object.keys(palavraDoCampo));
+  it('diz no fechamento o que o pedido já traz marcado e cada pergunta que falta responder', () => {
     const fechamento = texto('#contato');
-    for (const palavra of ['tradução simultânea', 'mandarim', ...Object.values(palavraDoCampo)]) {
-      expect(fechamento).toContain(palavra);
-    }
+    for (const marcado of ['tradução simultânea', 'mandarim']) expect(fechamento).toContain(marcado);
+    conferirPerguntasDoFechamento(
+      mandarim,
+      ilha.formularios.traducao,
+      { data: 'data', duracao: 'duração', formato: 'formato', participantes: 'quantas pessoas', cidade: 'cidade' },
+      Object.keys(ilha.marcadasDaPagina),
+    );
   });
 
   // Enquanto a página do curso não está publicada, o link vai para a âncora do mandarim na página de cursos, como

@@ -1,7 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { SERVICOS } from './lib/contato';
+import { SERVICOS, formularioDe, marcadasValidas } from './lib/contato';
+import { PUBLICOS } from './lib/publico';
 
 const conteudo = './content';
 
@@ -140,8 +141,16 @@ const site = defineCollection({
           'privacidade',
           'erro404',
         ]),
-        // O idioma é o slug dele em `idiomas`: o pedido aberto na página já sai com ele marcado.
-        z.object({ nome: z.string(), servico: servicoId.optional(), idioma: z.string().optional(), assunto: porPublico }),
+        z.object({
+          nome: z.string(),
+          servico: servicoId.optional(),
+          // O que o pedido do serviço da página já traz marcado: de cada pergunta de várias respostas para as opções
+          // dela, escritas como no formulário.
+          marcadas: z.record(z.string(), z.array(z.string()).min(1)).optional(),
+          // O prazo de resposta que a página promete, abaixo do botão do pedido e na confirmação dele.
+          prazo: z.string().optional(),
+          assunto: porPublico,
+        }),
       )
       .refine(({ idioma }) => [idioma.nome, ...Object.values(idioma.assunto)].every((texto) => texto.includes('{idioma}')), {
         error: 'o modelo das páginas de idioma precisa de {idioma} no nome e em cada assunto',
@@ -237,10 +246,17 @@ const site = defineCollection({
       voltar: z.string(),
     }),
   })
-    // O pedido acha a opção a marcar pelo slug: a página que diz um idioma precisa dizer um dos que o site tem.
-    .refine(({ paginas, idiomas }) => Object.values(paginas).every(({ idioma }) => !idioma || idiomas.some(({ slug }) => slug === idioma)), {
-      error: 'página com um idioma que não está nos idiomas de content/site.md',
-    }),
+    // O pedido só marca o que o formulário do serviço da página tem. Os idiomas têm um formulário por público.
+    .refine(
+      ({ paginas, formularios }) =>
+        Object.values(paginas).every(
+          ({ servico, marcadas }) =>
+            !marcadas ||
+            (servico !== undefined &&
+              PUBLICOS.every((publico) => marcadasValidas(marcadas, formularios[formularioDe(servico, publico)]))),
+        ),
+      { error: 'página com resposta marcada que o pedido do serviço dela não tem' },
+    ),
 });
 
 const imagem = z.object({
@@ -266,6 +282,12 @@ const fechamentoDeServico = z.object({ titulo: z.string(), texto: z.string(), ro
 // As seções que mais de uma página de serviço tem: o texto corrido ao lado da imagem e a lista de definições.
 const textoComImagem = z.object({ titulo: z.string(), paragrafos: z.array(z.string()).min(1), imagem });
 const definicoes = z.object({ titulo: z.string(), apoio: z.string(), itens: z.array(nomeETexto).min(2) });
+// O que sustenta a frase em tipo de mostra, logo abaixo dela: o apoio e os itens, com a marca no item que é um
+// número. O título muda de página para página: em linhas curtas ou numa frase só.
+const sustentacaoDaMostra = {
+  apoio: z.string(),
+  itens: z.array(tituloETexto.extend({ numero: z.boolean().optional() })).min(1),
+};
 
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
@@ -500,8 +522,7 @@ const lms = defineCollection({
     // O título da seção é a frase em tipo grande, uma linha por item, com o grifo no começo de cada uma.
     plataforma: z.object({
       linhas: z.array(z.object({ grifo: z.string(), texto: z.string() })).min(1),
-      apoio: z.string(),
-      itens: z.array(tituloETexto).min(1),
+      ...sustentacaoDaMostra,
     }),
     // Só o nome de cada relatório: o site atual não diz o que cada um mostra.
     relatorios: z.object({
@@ -562,7 +583,7 @@ const traducao = defineCollection({
     }),
     interpretes: definicoes,
     // O bloco curto que apresenta a interpretação de mandarim e leva à página dela.
-    mandarim: z.object({ titulo: z.string(), texto: z.string(), link }),
+    mandarim: tituloETexto.extend({ link }),
     faq,
     ctaFinal: fechamentoDeServico,
   }),
@@ -573,23 +594,22 @@ const traducao = defineCollection({
 const interpretacaoDeMandarim = defineCollection({
   loader: glob({ pattern: 'interpretacao-de-mandarim.md', base: conteudo }),
   schema: z.object({
+    // O idioma em content/site.md: dele saem o lang da assinatura, a cor do grifo e o endereço do curso.
+    idioma: z.string(),
     seo,
-    // O nome da página na trilha: ela não está no menu nem no rodapé.
-    nome: z.string(),
+    // A página não está no menu nem no rodapé: o nome dela na trilha vem daqui.
+    nomeNaTrilha: z.string(),
     servico: tipoDoServico.extend({ nome: z.string() }),
     hero: heroDeServico,
-    // O prazo de resposta que a página promete, logo abaixo do botão do pedido.
-    prazo: z.string(),
     servicos: z.object({ titulo: z.string(), itens: z.array(nomeETexto).min(2) }),
     // O título da seção é a frase em tipo grande, com o grifo no meio dela e a assinatura na escrita do idioma.
     tese: z.object({
       frase: z.object({ antes: z.string(), grifo: z.string(), depois: z.string() }),
       assinatura: z.string(),
-      apoio: z.string(),
-      itens: z.array(tituloETexto).min(1),
+      ...sustentacaoDaMostra,
     }),
-    // A ponte para o curso de mandarim. Aqui fica só o rótulo do link: o endereço sai do código.
-    curso: z.object({ titulo: z.string(), texto: z.string(), link: z.string() }),
+    // A ponte para o curso de mandarim. O endereço do link sai do código: aqui fica só o rótulo dele.
+    curso: tituloETexto.extend({ rotuloDoLink: z.string() }),
     ctaFinal: fechamentoDeServico,
   }),
 });

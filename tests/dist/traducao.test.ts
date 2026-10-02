@@ -4,6 +4,7 @@ import {
   INTERPRETACAO_DE_MANDARIM,
   abrirPagina,
   conferirFiguraEmArco,
+  conferirPerguntasDoFechamento,
   conferirServico,
   ilhaDoPedido,
   jsonLd,
@@ -183,21 +184,15 @@ describe('tradução simultânea', () => {
     expect(validarCampos(pedido, semDuracao, 'empresa', '2026-10-01', erros)).toEqual({ duracao: 'escolha' });
   });
 
-  // O fechamento diz em prosa o que o pedido pergunta. Cada pergunta do formulário tem a palavra dela aqui: campo
-  // novo sem palavra derruba o teste, e o texto muda junto.
   it('diz no fechamento cada pergunta que o pedido de tradução faz, fora o nome da empresa', () => {
-    const palavraDoCampo: Record<string, string> = {
+    conferirPerguntasDoFechamento(traducao, pedido, {
       idiomas: 'idiomas',
       data: 'data',
       duracao: 'duração',
       formato: 'formato',
       participantes: 'quantas pessoas',
       cidade: 'cidade',
-    };
-    const perguntas = pedido.filter((campo) => campo.id !== 'empresa' && !campo.mostrarSe).map((campo) => campo.id);
-    expect(perguntas).toEqual(Object.keys(palavraDoCampo));
-    const fechamento = texto('#contato');
-    for (const palavra of Object.values(palavraDoCampo)) expect(fechamento).toContain(palavra);
+    });
   });
 
   // "Tecnologia de ponta" só aparece na descrição do Google do site atual. Os nomes de empresa esperam a
