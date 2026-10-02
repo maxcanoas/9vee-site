@@ -9,14 +9,14 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
   - como funciona a simultânea: a terminologia da área, as cabines acústicas e os sistemas de áudio;
   - os cinco tipos de evento;
   - os sete idiomas e as quatro cidades do atendimento presencial;
-  - quem são os intérpretes: a formação e as áreas de experiência;
+  - quem são os intérpretes: a formação, as áreas de experiência e onde atuam;
   - um bloco sobre a interpretação de mandarim para o mercado financeiro, que vai levar à página nova desse serviço;
   - oito perguntas de quem organiza um evento.
 - O pedido de tradução ganhou uma pergunta: quanto tempo dura o evento. É ela que diz se vai um intérprete ou dois.
 - O que aparece como "a confirmar" veio do material do Canva, e não do site atual: a interpretação remota (pergunta 34), árabe, Libras e ASL (33), o revezamento dos intérpretes (16) e os casos atendidos (17). O prazo de resposta é a pergunta 6.
-- Na parte "Como funciona a interpretação simultânea", aparece um quadro colorido com o código IMG-TRADUCAO-COMO. É o lugar de uma foto, que entra em seguida.
+- Na parte "Como funciona a interpretação simultânea" entrou uma foto nova: o público de um congresso, com a cabine de interpretação ao fundo.
 
-Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-05/` e publique com `npm run deploy`. As perguntas 16, 33 e 34 da mensagem dizem que os itens "entraram na página": elas só ficam verdadeiras no preview depois desta publicação. A foto nova está em `docs/imagens-gemini.md` (IMG-TRADUCAO-COMO). Esta leva e a do LMS podem ir juntas.
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-05/` e publique com `npm run deploy`. As perguntas 16, 33 e 34 da mensagem dizem que os itens "entraram na página": elas só ficam verdadeiras no preview depois desta publicação. A foto é a da sua segunda rodada no Gemini, de 01/10 às 23h17 (`docs/imagens-gemini.md`, "As duas rodadas das páginas completas"). Esta leva e a do LMS podem ir juntas.
 
 ## Semana 1, quinta leva (01/10): a página de LMS completa
 
@@ -29,10 +29,10 @@ Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket
   - no fim, as três perguntas que o pedido faz.
 - Logo abaixo do topo, três atalhos levam aos motivos que o site atual dá para escolher a 9vee: relatórios para o RH, flexibilidade de horários e foco em comunicação profissional.
 - Na home, o texto do LMS na lista de serviços perdeu o "a confirmar".
-- Na parte "O que é o LMS", aparece um quadro colorido com o código IMG-LMS-O-QUE-E. É o lugar de uma foto, que entra em seguida.
+- Na parte "O que é o LMS" entrou uma foto nova: uma colaboradora estudando pelo notebook em casa, à noite.
 - Ficou fora de propósito o que só aparece no material do Canva: a EdApp, as telas da plataforma, a sala de aula invertida, a IA e o plantão pelo WhatsApp. Tudo isso continua na pergunta 21 da Daniella. O texto da página nova não tem nenhum "a confirmar": o único que aparece nela é o do rodapé, sobre a pronúncia da marca, que está em todas as páginas.
 
-Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-06/` e publique com `npm run deploy`. A pergunta 21 da mensagem diz "a página nova de LMS repete isso": ela só fica verdadeira no preview depois desta publicação. A foto nova está em `docs/imagens-gemini.md` (IMG-LMS-O-QUE-E); salva em `src/assets/imagens/lms-o-que-e.jpg`, ela entra sozinha no build seguinte.
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-06/` e publique com `npm run deploy`. A pergunta 21 da mensagem diz "a página nova de LMS repete isso": ela só fica verdadeira no preview depois desta publicação. A foto IMG-LMS-O-QUE-E já está em `src/assets/imagens/lms-o-que-e.jpg`, e entra na próxima publicação.
 
 ## Semana 1, quarta leva (30/09): uma foto no topo de cada página de idioma
 
