@@ -6,7 +6,7 @@
 
 **Horas:** 5 (eram 3). **Semana:** 2.
 
-**Situação:** feito em 01/10/2026, adiantado da semana 2, logo depois do 06. Espera o ok do Maxwell. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
+**Situação:** feito em 01/10/2026, adiantado da semana 2, logo depois do 06, e aprovado pelo Maxwell no mesmo dia. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
 
 **Do site atual, como fato:**
 
@@ -114,5 +114,5 @@
   - **ficou como estava, com o porquê:**
     - o `paginaParcial('quem-somos')` e a coleção `parciais` ficaram com uma página só. Saem no ticket 07, com o Quem Somos;
     - o `capturasDaPagina`, no roteiro de capturas, e o `tests/e2e/pedido.ts` (`64f5154`) são refatorações feitas dentro do ticket. Sem elas, a Tradução seria a terceira cópia do roteiro de uma página e dos atalhos do pedido;
-    - a meia-pílula repetida no CSS dos componentes continua como proposta para o Maxwell, desde o ticket 06;
-  - **para o Maxwell decidir:** o item "Casos atendidos", em "Quem são os intérpretes", aparece só com a etiqueta "a confirmar", sem texto. O ticket pede os casos com pendência, e o repositório só tem os nomes das empresas, que esperam a autorização (pergunta 17).
+    - a meia-pílula repetida no CSS dos componentes, proposta do ticket 06, espera a revisão final (ticket 17), por decisão do Maxwell em 01/10;
+  - **decidido pelo Maxwell em 01/10:** o item "Casos atendidos", em "Quem são os intérpretes", aparece só com a etiqueta "a confirmar", sem texto, e fica como está. O ticket pede os casos com pendência, e o repositório só tem os nomes das empresas, que esperam a autorização (pergunta 17). A etiqueta mostra à Daniella o que falta, e a trava de produção não deixa a página ir ao ar com ela.

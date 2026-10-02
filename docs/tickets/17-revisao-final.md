@@ -10,6 +10,7 @@
 
 - [ ] Ajustes da revisão da Daniella aplicados nos quatro lotes, com a aprovação dela por escrito registrada.
 - [ ] `code-review` desde a tag `mvp-aprovado`, nos dois eixos, com as correções em commits próprios.
+- [ ] Se sobrar hora: levar as três formas da meia-pílula (marcador, marca de ação e separador) para o `base.css`. A proposta vem do `code-review` do ticket 06, mexe em doze componentes e não muda nada na tela. O Maxwell decidiu em 01/10/2026 que ela espera esta revisão. A prova é a mesma do ticket 05: as capturas de antes e de depois idênticas, byte a byte.
 - [ ] `humanizar-ui` e `humanizar` rodados, com as correções aplicadas.
 - [ ] Nenhuma rolagem horizontal em 360, 390, 768, 1280 e 1920 px, em todas as páginas.
 - [ ] A lista das pendências ainda abertas, com uma sugestão para cada uma, para o Maxwell decidir caso a caso.
