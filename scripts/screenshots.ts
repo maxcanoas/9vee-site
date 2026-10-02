@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { preview } from 'astro';
 import { chromium, type Page } from '@playwright/test';
 import { paginasDeIdiomaNoConteudo } from '../tests/conteudo.ts';
+import { opcao, salvarPublico, semWhatsAppDeVerdade } from '../tests/e2e/pedido.ts';
 
 interface Captura {
   nome: string;
@@ -14,6 +15,8 @@ interface Captura {
   largura: number;
   altura: number;
   paginaInteira?: boolean;
+  /** Só este trecho da página, inteiro, no lugar da tela. */
+  recorte?: string;
   movimento?: boolean;
   /** Público já salvo no localStorage antes de a página carregar. */
   publico?: 'empresa' | 'voce';
@@ -46,19 +49,20 @@ const passarMouseNaLingua = (familia: string) => async (pagina: Page) => {
   await pagina.locator(`.familia[data-grupo="${familia}"] a.idioma`).first().hover();
 };
 
-const opcao = (pagina: Page, formulario: string, texto: string) =>
-  pagina.locator(`[data-formulario="${formulario}"] label.opcao`, { hasText: texto }).first().click();
-
 const preencherNr1 = async (p: Page) => {
   await p.locator('.cabecalho__cta').click();
   await p.fill('#campo-nr1-empresa', 'Metalúrgica Exemplo');
-  await opcao(p, 'nr1', '51 a 200');
-  await opcao(p, 'nr1', 'Até 3 meses');
-  await opcao(p, 'nr1', 'Online ao vivo');
-  await opcao(p, 'nr1', 'Em construção');
+  await opcao(p, 'nr1', '51 a 200').click();
+  await opcao(p, 'nr1', 'Até 3 meses').click();
+  await opcao(p, 'nr1', 'Online ao vivo').click();
+  await opcao(p, 'nr1', 'Em construção').click();
   await p.locator('[data-continuar]').click();
   await p.fill('#campo-final-nome', 'Maria');
 };
+
+// Abre todas as respostas das perguntas frequentes: fechadas, as que levam pendência não aparecem na captura.
+const abrirRespostas = (pagina: Page) =>
+  pagina.locator('#perguntas details').evaluateAll((itens) => itens.forEach((item) => item.setAttribute('open', '')));
 
 // Abre o pedido pelo hero e responde que é para a empresa: o drawer para no passo do serviço.
 const abrirServicoComoEmpresa = async (p: Page) => {
@@ -160,8 +164,8 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'drawer-aulas-390', rota: '/', largura: 390, altura: 844, publico: 'voce', antes: (p) => p.locator('.hero__cta').click() },
     { nome: 'drawer-traducao-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
       await p.locator('.cabecalho__cta').click();
-      await opcao(p, 'traducao', 'Presencial');
-      await opcao(p, 'traducao', 'Outra');
+      await opcao(p, 'traducao', 'Presencial').click();
+      await opcao(p, 'traducao', 'Outra').click();
       await p.locator('#campo-traducao-cidadeOutra').scrollIntoViewIfNeeded();
     } },
   ],
@@ -205,7 +209,7 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'quem-somos-390', rota: '/quem-somos/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'quem-somos-1280', rota: '/quem-somos/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'quem-somos-hero-1280', rota: '/quem-somos/', largura: 1280, altura: 800, movimento: true },
-    { nome: 'traducao-drawer-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#formatos [data-abre-contato]').click() },
+    { nome: 'traducao-drawer-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#eventos [data-abre-contato]').click() },
   ],
   'ticket-04': [
     { nome: 'nr1-hero-360', rota: '/treinamento-nr-1/', largura: 360, altura: 780 },
@@ -270,7 +274,8 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'home-card-lms-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.servico[data-servico="lms"]', -120) },
     { nome: 'home-card-lms-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.servico[data-servico="lms"]', -160) },
   ],
-  // A Tradução Simultânea completa e o pedido com a pergunta nova, a da duração do evento.
+  // A Tradução Simultânea completa, as respostas das perguntas abertas e o pedido com a pergunta nova, a da
+  // duração do evento.
   'ticket-05': [
     ...capturasDaPagina('traducao', '/traducao-simultanea/', [
       'formatos',
@@ -281,6 +286,8 @@ const roteiros: Record<string, Captura[]> = {
       'mandarim',
       'perguntas',
     ]),
+    { nome: 'traducao-respostas-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, recorte: '#perguntas', antes: abrirRespostas },
+    { nome: 'traducao-respostas-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800, recorte: '#perguntas', antes: abrirRespostas },
     {
       nome: 'traducao-pedido-duracao-390',
       rota: '/traducao-simultanea/',
@@ -351,15 +358,14 @@ try {
     const movel = c.largura < 768;
     const contexto = await navegador.newContext({
       viewport: { width: c.largura, height: c.altura },
-      // Página inteira em 1x: acima de 16.384 px de altura o Chrome repete o topo na imagem.
-      deviceScaleFactor: movel && !c.paginaInteira ? 2 : 1,
+      // Página inteira em 1x: acima de 16.384 px de altura o Chrome repete o topo na imagem. O recorte sai dela.
+      deviceScaleFactor: movel && !c.paginaInteira && !c.recorte ? 2 : 1,
       isMobile: movel,
       hasTouch: movel,
       reducedMotion: c.movimento ? 'no-preference' : 'reduce',
     });
-    // O WhatsApp de verdade não abre durante as capturas.
-    await contexto.route('https://wa.me/**', (rota) => rota.fulfill({ contentType: 'text/plain', body: 'wa.me interceptado' }));
-    if (c.publico) await contexto.addInitScript((p) => localStorage.setItem('9vee:publico', p), c.publico);
+    await semWhatsAppDeVerdade(contexto);
+    if (c.publico) await salvarPublico(contexto, c.publico);
     const pagina = await contexto.newPage();
     await pagina.goto(base + c.rota, { waitUntil: 'networkidle' });
     await pagina.evaluate(() => document.fonts.ready);
@@ -367,9 +373,18 @@ try {
       await c.antes(pagina);
       await pagina.waitForTimeout(400);
     }
+    // O recorte é um pedaço da página inteira, com a tela no alto: a captura do elemento rolaria até ele, e o
+    // cabeçalho fixo sairia por cima.
+    const clip = c.recorte
+      ? await pagina.locator(c.recorte).evaluate((trecho) => {
+          const { left, top, width, height } = trecho.getBoundingClientRect();
+          return { x: left + window.scrollX, y: top + window.scrollY, width, height };
+        })
+      : undefined;
     await pagina.screenshot({
       path: fileURLToPath(new URL(`${c.nome}.png`, saida)),
-      fullPage: c.paginaInteira ?? false,
+      fullPage: c.paginaInteira ?? Boolean(clip),
+      clip,
     });
     await contexto.close();
     console.log(`ok ${c.nome}`);

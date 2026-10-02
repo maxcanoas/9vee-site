@@ -28,6 +28,25 @@ describe('servico', () => {
   it('tira a pendência da descrição que o Google lê', () => {
     expect(no.description).toBe('Treinamento de NR-1 para RH e SESMT.');
   });
+
+  it('atende o país quando a página não diz as cidades', () => {
+    expect(no.areaServed).toEqual({ '@type': 'Country', name: 'Brasil' });
+  });
+
+  // A tradução simultânea só afirma o atendimento presencial em quatro cidades: o serviço não promete o país.
+  it('atende só as cidades que a página afirma, quando ela passa as cidades', () => {
+    const presencial = servico(new URL('https://exemplo.9vee.com.br/'), {
+      nome: 'Tradução simultânea',
+      tipo: 'Interpretação',
+      caminho: '/traducao-simultanea/',
+      descricao: 'Intérpretes para eventos.',
+      cidades: ['São Paulo', 'Curitiba'],
+    });
+    expect(presencial.areaServed).toEqual([
+      { '@type': 'City', name: 'São Paulo' },
+      { '@type': 'City', name: 'Curitiba' },
+    ]);
+  });
 });
 
 describe('listaDeCursos', () => {

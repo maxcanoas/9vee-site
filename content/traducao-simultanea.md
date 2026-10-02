@@ -20,7 +20,7 @@ hero:
 # Os três formatos do site atual, com as mesmas duas perguntas para cada um.
 formatos:
   titulo: "Três formatos, conforme o encontro"
-  apoio: "A 9vee traduz de três jeitos. O que muda de um para o outro é o tipo do encontro e se a fala para ou não."
+  apoio: "A 9vee traduz de três jeitos, e cada um serve a um tipo de encontro."
   rotulos:
     quando: "Quando usar"
     como: "Como funciona"
@@ -32,14 +32,14 @@ formatos:
       quando: "Em reunião, negociação, entrevista e encontro corporativo."
       como: "O intérprete fica perto de quem fala, com contato visual, atento aos gestos e à intenção. Depois de algumas frases, a pessoa faz uma pausa, e ele termina as anotações e traduz."
     - nome: "Acompanhamento"
-      quando: "Em visitas institucionais, rodadas de negócios, reuniões e eventos corporativos."
-      como: "O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição."
+      quando: "Em visitas institucionais, rodadas de negócios, reuniões e eventos corporativos. Também em negociações, apresentações corporativas e encontros com parceiros internacionais."
+      como: "O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição. Com ele cuidando do idioma, você cuida do negócio e da parceria."
 
 comoFunciona:
   titulo: "Como funciona a interpretação simultânea"
   paragrafos:
-    - "A tradução acontece em tempo real, sem interrupção, com intérpretes profissionais e equipamento especializado."
-    - "O intérprete domina os dois idiomas e também a terminologia do assunto, seja um evento corporativo, uma conferência ou uma reunião técnica."
+    - "A tradução acontece em tempo real, sem interrupção, com intérpretes profissionais e equipamento especializado. Sem parar para traduzir, o evento, a conferência ou a reunião internacional ganha ritmo."
+    - "O intérprete domina os idiomas e também a terminologia do assunto, seja um evento corporativo, uma conferência ou uma reunião técnica."
     - "A 9vee usa equipamento profissional de interpretação, como cabines acústicas e sistemas de áudio dedicados. O público acompanha a tradução ao mesmo tempo que a fala, com conforto."
   imagem:
     id: "IMG-TRADUCAO-COMO"
@@ -83,13 +83,15 @@ interpretes:
   apoio: "Interpretar é ouvir, entender e falar em outro idioma quase ao mesmo tempo que a pessoa fala. Pede preparo técnico, raciocínio rápido e concentração."
   itens:
     - nome: "Formação"
-      texto: "São intérpretes formados em centros especializados, com anos de experiência no mercado."
+      texto: "Os intérpretes se formaram em centros especializados e têm anos de experiência no mercado."
     - nome: "Experiência por área"
       texto: "Administração, engenharia, medicina, vendas, tecnologia e negócios internacionais. A terminologia e o contexto de cada área chegam certos ao outro idioma."
+    - nome: "Onde atuam"
+      texto: "Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa, com discrição e profissionalismo."
     - nome: "Casos atendidos"
       texto: "[CONFIRMAR COM A DANIELLA: quais trabalhos de interpretação posso citar, e de quais empresas, com a autorização de cada uma]"
 
-# O bloco curto que leva à página de interpretação de mandarim. O link entra no ticket 21, quando a página existir.
+# O bloco curto que apresenta a interpretação de mandarim. O link para a página dela entra no ticket 21.
 mandarim:
   titulo: "Quando o negócio fala mandarim, precisão não é opcional."
   texto: "A 9vee faz interpretação entre mandarim e português para o mercado financeiro: reuniões com investidores, visitas de due diligence e a fábricas, conferências e roadshows."
@@ -112,7 +114,7 @@ faq:
     - pergunta: "Os intérpretes trabalham com discrição?"
       resposta: "Sim. Eles atuam em reuniões, negociações e encontros de alto nível, com discrição e profissionalismo."
     - pergunta: "Em quanto tempo a 9vee responde o pedido?"
-      resposta: "A resposta chega pelo canal que você escolher no fim do pedido, o WhatsApp ou o e-mail [CONFIRMAR COM A DANIELLA: prazo de resposta do comercial]. O pedido já vai com a data, os idiomas, a duração e a cidade do evento."
+      resposta: "A equipe da 9vee responde o pedido [CONFIRMAR COM A DANIELLA: prazo de resposta do comercial]. Ele já vai com a data, os idiomas, a duração e a cidade do evento."
 
 ctaFinal:
   titulo: "Conte como é o seu evento."

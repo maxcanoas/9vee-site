@@ -5,6 +5,7 @@ import { gzipSync } from 'node:zlib';
 import { parse, type HTMLElement } from 'node-html-parser';
 import { expect } from 'vitest';
 import { carregarPaginas as lerPaginas, type Pagina } from '../../scripts/paginas-do-build.ts';
+import type { Campo } from '../../src/lib/contato.ts';
 
 /** O build de preview, o que vai para o Cloudflare. A maior parte dos testes lê este. */
 export const DIST = fileURLToPath(new URL('../../dist/', import.meta.url));
@@ -24,6 +25,25 @@ export { PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo, type PaginaDeIdiomaNoConte
 export function abrirPagina(rota: string): HTMLElement {
   return parse(readFileSync(join(DIST, rota, 'index.html'), 'utf8'));
 }
+
+const emUmaLinha = (texto: string) => texto.replace(/\s+/g, ' ').trim();
+
+/** O texto de um trecho da página, com os espaços e as quebras de linha reduzidos a um espaço. */
+export const textoDe = (raiz: HTMLElement, seletor: string) => emUmaLinha(raiz.querySelector(seletor)?.text ?? '');
+
+/** O texto de cada elemento que o seletor acha, na ordem da página. */
+export const textosDe = (raiz: HTMLElement, seletor: string) =>
+  raiz.querySelectorAll(seletor).map((no) => emUmaLinha(no.text));
+
+/** Os dados do pedido que a página entrega ao script: o número, o nome da página e os campos de cada formulário. */
+export interface IlhaDoPedido {
+  numero: string;
+  pagina: string;
+  formularios: Record<string, Campo[]>;
+}
+
+export const ilhaDoPedido = (raiz: HTMLElement) =>
+  JSON.parse(raiz.querySelector('#dados-contato')!.textContent) as IlhaDoPedido;
 
 /** O Service da página de um serviço: o nome dele, o endereço da página e a organização como quem presta. */
 export function conferirServico(raiz: HTMLElement, { nome, caminho }: { nome: string; caminho: string }) {

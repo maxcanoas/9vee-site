@@ -1,13 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { abrirPagina, conferirFiguraEmArco, conferirServico } from './apoio';
+import { linhaEmTexto, linhasDoPedido, validarCampos } from '../../src/lib/contato.ts';
+import { abrirPagina, conferirFiguraEmArco, conferirServico, ilhaDoPedido, jsonLd, textoDe, textosDe } from './apoio';
 
 const traducao = abrirPagina('traducao-simultanea');
-const texto = (seletor: string) => traducao.querySelector(seletor)?.text.replace(/\s+/g, ' ').trim() ?? '';
-const textos = (seletor: string) => traducao.querySelectorAll(seletor).map((no) => no.text.replace(/\s+/g, ' ').trim());
-
-interface Ilha {
-  formularios: Record<string, { id: string; tipo: string; opcoes?: string[] }[]>;
-}
+const texto = (seletor: string) => textoDe(traducao, seletor);
+const textos = (seletor: string) => textosDe(traducao, seletor);
+// O pedido de tradução como a página o entrega ao script: é o formulário de verdade, de content/site.md.
+const pedido = ilhaDoPedido(traducao).formularios.traducao;
 
 describe('tradução simultânea', () => {
   it('traz as nove seções da página completa, na ordem', () => {
@@ -37,7 +36,15 @@ describe('tradução simultânea', () => {
     }
     // O que distingue cada formato no site atual: sem pausa, com pausa e anotações, ao lado do executivo.
     const formatos = texto('#formatos');
-    for (const fato of ['sem pausa', 'anotações', 'contato visual', 'visitas institucionais', 'rodadas de negócios']) {
+    for (const fato of [
+      'sem pausa',
+      'anotações',
+      'contato visual',
+      'visitas institucionais',
+      'rodadas de negócios',
+      'apresentações corporativas',
+      'parceiros internacionais',
+    ]) {
       expect(formatos).toContain(fato);
     }
   });
@@ -67,15 +74,16 @@ describe('tradução simultânea', () => {
 
   // A lista da página e a do pedido são a mesma: quem vê o idioma na página encontra a opção dele no formulário.
   it('lista na página os mesmos idiomas que o pedido de tradução oferece, fora o "Outro"', () => {
-    const ilha = JSON.parse(traducao.querySelector('#dados-contato')!.textContent) as Ilha;
-    const doPedido = ilha.formularios.traducao.find((campo) => campo.id === 'idiomas')?.opcoes ?? [];
-    const daPagina = traducao.querySelectorAll('#idiomas-e-cidades ul')[0].querySelectorAll('li').map((item) => item.text.trim());
+    const idiomas = pedido.find((campo) => campo.id === 'idiomas');
+    const doPedido = idiomas?.tipo === 'multipla' ? idiomas.opcoes : [];
+    const daPagina = textosDe(traducao.querySelectorAll('#idiomas-e-cidades ul')[0], 'li');
     expect(doPedido.filter((opcao) => opcao !== 'Outro')).toEqual(daPagina);
   });
 
-  it('diz quem são os intérpretes: a formação e os seis setores de experiência', () => {
+  it('diz quem são os intérpretes: a formação, os seis setores de experiência e onde atuam', () => {
     const interpretes = texto('#interpretes').toLowerCase();
     expect(interpretes).toContain('centros especializados');
+    expect(interpretes).toContain('ambientes corporativos e institucionais');
     for (const setor of ['administração', 'engenharia', 'medicina', 'vendas', 'tecnologia', 'negócios internacionais']) {
       expect(interpretes).toContain(setor);
     }
@@ -91,9 +99,11 @@ describe('tradução simultânea', () => {
     }
   });
 
-  it('fala da interpretação de mandarim para o mercado financeiro num bloco curto', () => {
+  // O link para a página de interpretação de mandarim entra no ticket 21, quando ela existir.
+  it('fala da interpretação de mandarim para o mercado financeiro num bloco curto, ainda sem link', () => {
     expect(texto('#mandarim h2')).toBe('Quando o negócio fala mandarim, precisão não é opcional.');
     expect(texto('#mandarim')).toContain('mercado financeiro');
+    expect(traducao.querySelector('#mandarim a')).toBeNull();
   });
 
   it('responde oito perguntas próprias', () => {
@@ -117,9 +127,7 @@ describe('tradução simultânea', () => {
 
   // A duração decide se vai um intérprete ou dois: o pedido pergunta logo depois da data.
   it('pergunta a duração do evento no pedido, depois da data, com quatro opções', () => {
-    const ilha = JSON.parse(traducao.querySelector('#dados-contato')!.textContent) as Ilha;
-    const campos = ilha.formularios.traducao;
-    expect(campos.map((campo) => campo.id)).toEqual([
+    expect(pedido.map((campo) => campo.id)).toEqual([
       'empresa',
       'idiomas',
       'data',
@@ -129,14 +137,57 @@ describe('tradução simultânea', () => {
       'cidade',
       'cidadeOutra',
     ]);
-    expect(campos.find((campo) => campo.id === 'duracao')).toMatchObject({
+    expect(pedido.find((campo) => campo.id === 'duracao')).toMatchObject({
       tipo: 'escolha',
+      obrigatorio: true,
       opcoes: ['Até 1 hora', 'Meio período', 'Dia inteiro', 'Mais de um dia'],
     });
-    const opcoes = traducao
-      .querySelectorAll('[data-formulario="traducao"] [data-campo="duracao"] label')
-      .map((opcao) => opcao.text.trim());
-    expect(opcoes).toEqual(['Até 1 hora', 'Meio período', 'Dia inteiro', 'Mais de um dia']);
+    expect(textos('[data-formulario="traducao"] [data-campo="duracao"] label')).toEqual([
+      'Até 1 hora',
+      'Meio período',
+      'Dia inteiro',
+      'Mais de um dia',
+    ]);
+  });
+
+  // Com o formulário de verdade e as funções de verdade: a resposta vai para a mensagem, e sem ela o pedido não anda.
+  it('leva a duração para a mensagem do pedido, entre a data e o formato, e cobra a resposta', () => {
+    const erros = { escolha: 'escolha', multipla: 'multipla', texto: 'texto', data: 'data' };
+    const respostas = {
+      empresa: 'Hotel Exemplo',
+      idiomas: ['ingles'],
+      data: 'sem-data',
+      duracao: 'meio-periodo',
+      formato: 'online',
+      participantes: 'ate-50',
+    };
+    expect(linhasDoPedido(pedido, respostas, []).map(linhaEmTexto)).toEqual([
+      'Empresa: Hotel Exemplo',
+      'Idiomas: inglês',
+      'Data do evento: ainda sem data',
+      'Duração: meio período',
+      'Formato: online',
+      'Participantes: até 50',
+    ]);
+    const { duracao: _semResposta, ...semDuracao } = respostas;
+    expect(validarCampos(pedido, semDuracao, 'empresa', '2026-10-01', erros)).toEqual({ duracao: 'escolha' });
+  });
+
+  // O fechamento diz em prosa o que o pedido pergunta. Cada pergunta do formulário tem a palavra dela aqui: campo
+  // novo sem palavra derruba o teste, e o texto muda junto.
+  it('diz no fechamento cada pergunta que o pedido de tradução faz, fora o nome da empresa', () => {
+    const palavraDoCampo: Record<string, string> = {
+      idiomas: 'idiomas',
+      data: 'data',
+      duracao: 'duração',
+      formato: 'formato',
+      participantes: 'quantas pessoas',
+      cidade: 'cidade',
+    };
+    const perguntas = pedido.filter((campo) => campo.id !== 'empresa' && !campo.mostrarSe).map((campo) => campo.id);
+    expect(perguntas).toEqual(Object.keys(palavraDoCampo));
+    const fechamento = texto('#contato');
+    for (const palavra of Object.values(palavraDoCampo)) expect(fechamento).toContain(palavra);
   });
 
   // "Tecnologia de ponta" só aparece na descrição do Google do site atual. Os nomes de empresa esperam a
@@ -150,6 +201,15 @@ describe('tradução simultânea', () => {
 
   it('descreve o serviço em JSON-LD, ligado à organização', () => {
     conferirServico(traducao, { nome: 'Tradução simultânea', caminho: '/traducao-simultanea/' });
+  });
+
+  // O site atual só afirma o atendimento presencial nas quatro cidades, e a remota é pendência: o serviço não
+  // promete o país inteiro ao Google.
+  it('diz ao Google que o serviço atende as quatro cidades, e não o país', () => {
+    const servico = jsonLd(traducao).find((no) => no['@type'] === 'Service');
+    expect(servico?.areaServed).toEqual(
+      ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Brasília'].map((cidade) => ({ '@type': 'City', name: cidade })),
+    );
   });
 
   it('traz as duas figuras em arco, com o texto alternativo definitivo', () => {
