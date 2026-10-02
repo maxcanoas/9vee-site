@@ -1,5 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
-import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, tituloDoPasso } from './pedido.ts';
+import type { Page } from '@playwright/test';
+import { drawer, expect, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, test, tituloDoPasso } from './pedido.ts';
 
 test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 
@@ -171,7 +171,8 @@ test.describe('drawer de contato', () => {
     expect(abriu).toBe(false);
   });
 
-  test('"Prefiro receber contato" confere o contato e mostra a confirmação simulada', async ({ page, context }) => {
+  // O que acontece depois de "Pedir contato" (o envio, a confirmação e a falha) está em envio.spec.ts.
+  test('"Prefiro receber contato" abre o campo do contato, com o foco nele', async ({ page, context }) => {
     await salvarPublico(context, 'empresa');
     await page.goto('/treinamento-nr-1/');
     await page.locator('.cabecalho__cta').click();
@@ -182,16 +183,6 @@ test.describe('drawer de contato', () => {
     await receber.click();
     await expect(receber).toHaveAttribute('aria-expanded', 'true');
     await expect(page.locator('#campo-final-contato')).toBeFocused();
-
-    await page.fill('#campo-final-contato', 'maria@exemplo');
-    await drawer(page).locator('[data-enviar-pedido]').click();
-    await expect(page.locator('#campo-final-contato-erro')).toHaveText('Informe um WhatsApp com DDD ou um e-mail.');
-
-    await page.fill('#campo-final-contato', 'maria@exemplo.com.br');
-    await drawer(page).locator('[data-enviar-pedido]').click();
-    await expect(tituloDoPasso(page)).toHaveText('Pedido anotado.');
-    await expect(drawer(page).locator('[data-linhas-confirmacao]')).toContainText('E-mail: maria@exemplo.com.br');
-    await expect(drawer(page).locator('.drawer__simulado')).toContainText('MVP: envio simulado');
   });
 
   test('tradução: a cidade some no online, e "Outra" pede o nome da cidade', async ({ page, context }) => {

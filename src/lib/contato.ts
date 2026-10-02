@@ -1,5 +1,6 @@
 // Lógica do pedido de contato, sem tela: campos por serviço, validação e mensagem do WhatsApp.
 // As perguntas, as opções, os erros e os modelos de mensagem vêm de content/site.md.
+import type { TextosDoEnvio } from './envio';
 import type { Publico, TextosPorPublico } from './publico';
 // Com a extensão, o Node carrega este módulo sem o Vite: o scripts/revisao.ts monta com ele as mensagens do lote.
 import { minuscula, preencher } from './texto.ts';
@@ -69,11 +70,16 @@ export interface DadosDoDrawer {
   formularios: Record<FormularioId, Campo[]>;
   idiomas: IdiomaCurto[];
   modelos: ModelosDeMensagem;
-  erros: TextosDeErro & { nome: string; contato: string };
+  erros: TextosDeErro & { nome: string; contato: string; consentimento: string };
   passo: string;
   titulosDetalhes: Record<FormularioId, string>;
   publicos: Record<Publico, string>;
   confirmacao: { servico: string; nome: string; contato: Record<'telefone' | 'email', string> };
+  /**
+   * O que o envio por e-mail precisa: a chave do serviço de formulário (vazia no build sem ela), os textos do
+   * e-mail, a frase do aceite, que vai nele como prova, e o rótulo do botão enquanto o pedido sai.
+   */
+  envio: { chave: string; textos: TextosDoEnvio; consentimento: string; enviando: string };
 }
 
 export const SEM_DATA = 'sem-data';

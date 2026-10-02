@@ -1,5 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
-import { salvarPublico } from './pedido.ts';
+import type { Page } from '@playwright/test';
+import { expect, salvarPublico, test } from './pedido.ts';
 
 // A ordem que a cliente pediu em 23/09/2026. A escolha de público não mexe nela.
 const ORDEM = ['idiomas', 'traducao', 'nr1', 'lms'];

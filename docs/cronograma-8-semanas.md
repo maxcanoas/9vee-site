@@ -27,10 +27,10 @@ São 20 horas a mais. O total passa de cerca de 88 para cerca de 108 horas.
 
 | Semana | Datas | Tickets | Horas | O que o cliente vê no preview |
 |---|---|---|---|---|
-| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16), a mensagem de pendências, os documentos do reaproveitamento (1,5) e o 06 LMS (4), em 01/10. **Adiantados da semana 2:** o 05 Tradução Simultânea (5), em 01/10, e o 21 Interpretação de mandarim (4), em 02/10. **Adiantados da semana 3:** o 07 Quem Somos (3,5) e o 22 Reaproveitamento nas páginas fechadas (7,5), em 02/10. **Adiantados da semana 4:** os lotes 1, 2 e 3 e a contagem das pendências (1), em 02/10 | 60,25 | As páginas de idioma com foto, a política e a 404, o LMS e a Tradução completos, já publicados. A interpretação de mandarim, o Quem Somos completo e o que faltava do site atual na home, no NR-1, em Cursos e nas páginas de idioma, quando você publicar |
-| 2 | 05/10 a 11/10 | Sem ticket próprio: o 05 e o 21 saíram na semana 1, e as 9 horas deles foram para lá. Cabe adiantar o 12 Envio real do pedido (6,5), da semana 4 | 0,75 | O que for adiantado da semana 4 |
+| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16), a mensagem de pendências, os documentos do reaproveitamento (1,5) e o 06 LMS (4), em 01/10. **Adiantados da semana 2:** o 05 Tradução Simultânea (5), em 01/10, e o 21 Interpretação de mandarim (4), em 02/10. **Adiantados da semana 3:** o 07 Quem Somos (3,5) e o 22 Reaproveitamento nas páginas fechadas (7,5), em 02/10. **Adiantados da semana 4:** os lotes 1, 2 e 3 e a contagem das pendências (1) e o 12 Envio real do pedido (6,5), em 02/10 | 66,75 | As páginas de idioma com foto, a política e a 404, o LMS e a Tradução completos, já publicados. A interpretação de mandarim, o Quem Somos completo e o que faltava do site atual na home, no NR-1, em Cursos e nas páginas de idioma, quando você publicar |
+| 2 | 05/10 a 11/10 | Sem ticket próprio: o 05 e o 21 saíram na semana 1, e as 9 horas deles foram para lá. Cabe o teste à mão do envio no preview publicado e adiantar o 13 Aviso de cookies, GA4 e eventos (6,5), da semana 5 | 0,75 | O pedido chegando de verdade (no e-mail de teste) |
 | 3 | 12/10 a 18/10 (feriado dia 12) | Sem ticket próprio: o 07 e o 22 saíram em 02/10, e as 11 horas deles foram para a semana 1 | 0,75 | O que for adiantado das semanas seguintes |
-| 4 | 19/10 a 25/10 | 12 Envio real do pedido (6,5), as imagens das páginas novas (1,5 do 16). Os lotes 1, 2 e 3 saíram em 02/10, e a hora deles foi para a semana 1 | 8,75 | O pedido chegando de verdade (no e-mail de teste) |
+| 4 | 19/10 a 25/10 | As imagens das páginas novas (1,5 do 16). Os lotes 1, 2 e 3 e o 12 saíram em 02/10, e as 7,5 horas deles foram para a semana 1 | 2,25 | As fotos das páginas novas |
 | 5 | 26/10 a 01/11 | 13 Aviso de cookies, GA4 e eventos (6,5), 11 Páginas por cidade e lote 4 (4) | 11,25 | O aviso de cookies e as cidades com fato local |
 | 6 | 02/11 a 08/11 (feriado dia 2) | 14 Arquivo do blog e mapa de redirecionamentos (3,5), 15 SEO final (2,5), as fotos das cidades (1 do 16) | 7,75 | O rodapé com as páginas novas; o mapa de redirecionamentos vai para a sua revisão |
 | 7 | 09/11 a 15/11 | 17 Revisão final (6), 18 Imagem de compartilhamento (1,5), 19 Gerador do `.htaccess` (1,5) | 9,75 | O site completo, para a Daniella e o Arthur aprovarem; a prévia de cada página no WhatsApp |
@@ -38,7 +38,7 @@ São 20 horas a mais. O total passa de cerca de 88 para cerca de 108 horas.
 
 Total: cerca de 108 horas. As horas de cada semana já contam os 0,75 de toda semana.
 
-A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08, o 09 e o 10, que eram das semanas 2, 3 e 4, o 05 e o 21, que eram da semana 2, e o 07 e o 22, que eram da semana 3. É por isso que as 20 horas novas cabem sem passar de 22/11.
+A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08, o 09 e o 10, que eram das semanas 2, 3 e 4, o 05 e o 21, que eram da semana 2, o 07 e o 22, que eram da semana 3, e os lotes e o 12, que eram da semana 4. É por isso que as 20 horas novas cabem sem passar de 22/11.
 
 ## Onde aperta
 
@@ -62,13 +62,13 @@ A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08,
 
 ## Se algo atrasar
 
-- **Se os tickets do reaproveitamento passarem do orçamento,** o 12 desce da semana 4 para a 5, e o que sobrar usa a folga das semanas 6 a 8.
+- **Os tickets do reaproveitamento e o 12 saíram na semana 1.** O que a revisão final (ticket 17) pedir a mais, pelo que o processo curto deixou de fora, usa a folga das semanas 2 a 4.
 - **Se os fatos dos idiomas ou das cidades atrasarem,** as páginas ficam não publicadas. O 12 e o 13 já subiram uma semana, porque não dependem do cliente.
 - **Página sem fato confirmado não trava o lançamento:** ela fica não publicada, e os posts dela apontam para a página do serviço ou para a de cursos.
 - **Se uma revisão da Daniella não voltar a tempo,** o lote segue para a semana 7, e o que continuar aberto entra na decisão caso a caso da semana 8.
-- **Se a Web3Forms recusar o endereço do preview ou o localhost,** paro no começo do ticket 12 e peço o seu ok para a Formspark.
+- **A Web3Forms aceitou o endereço do preview e o localhost,** no teste de 02/10. O plano B (Formspark) não entrou.
 - **Se você precisar cair para 10 horas numa semana,** saem primeiro a imagem de compartilhamento por página (vira uma por tipo de página) e o acabamento da 404.
 
 ## Folga
 
-As semanas 2 e 3 ficaram com 10 a 11 horas cada uma, porque o 05, o 21, o 07 e o 22 saíram na semana 1. A semana 4 tem de 2 a 3, sem a hora dos lotes. As semanas 6 a 8 somam de 7 a 10 horas, que é onde cabem as respostas atrasadas do cliente e o que a revisão da Daniella pedir. Não sobra folga para pedido novo: pedido fora do escopo vai para `docs/pedidos-fora-do-escopo.md`, com estimativa.
+As semanas 2 e 3 ficaram com 10 a 11 horas cada uma, porque o 05, o 21, o 07 e o 22 saíram na semana 1. A semana 4 tem de 9 a 10, sem os lotes e sem o 12. As semanas 6 a 8 somam de 7 a 10 horas, que é onde cabem as respostas atrasadas do cliente e o que a revisão da Daniella pedir. Não sobra folga para pedido novo: pedido fora do escopo vai para `docs/pedidos-fora-do-escopo.md`, com estimativa.

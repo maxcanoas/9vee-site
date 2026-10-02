@@ -189,7 +189,17 @@ drawer:
     whatsapp: "Falar agora no WhatsApp"
     receber: "Prefiro receber contato"
     rotuloContato: "Seu WhatsApp com DDD ou seu e-mail"
+    # A caixa que a pessoa marca antes de enviar. O link fica no meio da frase e leva à política, no trecho do
+    # pedido. A frase inteira vai no e-mail, como prova do que foi aceito.
+    consentimento:
+      legenda: "Privacidade"
+      antes: "Li a"
+      link: "política de privacidade"
+      depois: "e concordo que a 9vee use estes dados para responder ao meu pedido."
+    # A caixa que só robô marca. Pessoa não vê: o texto é para quem abrir o site sem o desenho.
+    isca: "Não marque esta caixa"
     enviar: "Pedir contato"
+    enviando: "Enviando"
   aberto:
     titulo: "Abrimos a conversa no WhatsApp."
     texto: "A mensagem já vai escrita com as suas respostas. Confira e envie por lá. Se o WhatsApp não abriu, use o link abaixo."
@@ -201,7 +211,20 @@ drawer:
     rotuloServico: "Serviço"
     rotuloNome: "Nome"
     rotulosContato: { telefone: "WhatsApp", email: "E-mail" }
-    simulado: "MVP: envio simulado. No site final, este pedido chega à equipe por e-mail."
+  # Quando o pedido não chega à 9vee: a tela diz e oferece o WhatsApp, com a mensagem já escrita.
+  falha:
+    titulo: "Não deu para enviar."
+    texto: "O pedido não chegou à 9vee. Mande agora pelo WhatsApp, com a mensagem já escrita com as suas respostas, ou tente de novo."
+    whatsapp: "Mandar pelo WhatsApp"
+    tentar: "Tentar de novo"
+  # O e-mail que o pedido vira. O assunto segue o formato que o comercial filtra:
+  # "[Lead site] NR-1 | Empresa | Metalúrgica Exemplo".
+  envio:
+    remetente: "Site 9vee"
+    assunto: "[Lead site] {servico} | {publico} | {quem}"
+    servicos: { nr1: "NR-1", traducao: "Tradução simultânea", idiomas: "Idiomas", lms: "LMS" }
+    publicos: { empresa: "Empresa", voce: "Pessoa física" }
+    rotulos: { publico: "Público", pagina: "Página de origem", consentimento: "Consentimento", aceitoEm: "Aceito em" }
   erros:
     escolha: "Escolha uma das opções."
     multipla: "Escolha pelo menos uma opção."
@@ -209,6 +232,7 @@ drawer:
     data: "Escolha uma data a partir de hoje ou marque que ainda não tem data."
     nome: "Escreva como podemos te chamar."
     contato: "Informe um WhatsApp com DDD ou um e-mail."
+    consentimento: "Marque a caixa para enviar o pedido."
   mensagens:
     abertura: "Olá, 9vee. Vim pela página {pagina} do site{publico}."
     publico: { empresa: " e falo pela minha empresa", voce: " e é para mim" }

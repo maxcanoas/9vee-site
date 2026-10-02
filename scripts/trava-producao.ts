@@ -69,7 +69,34 @@ export function linksQuebrados(pagina: Pagina, pasta: string): string[] {
   return problemas;
 }
 
-/** Cada regra, com o nome que o check:producao mostra e o que ela procura em cada página. Regra nova entra só aqui. */
+/**
+ * A chave do serviço de formulário que o build entrega ao pedido, lida dos dados dele no HTML. É a mesma em todas
+ * as páginas: a primeira que tem o pedido responde. Build sem pedido não tem o que conferir.
+ */
+function chaveDoPedido(paginas: Pagina[]): string | undefined {
+  for (const { raiz } of paginas) {
+    const dados = raiz.querySelector('#dados-contato')?.textContent;
+    if (dados) return (JSON.parse(dados) as { envio?: { chave?: string } }).envio?.chave ?? '';
+  }
+  return undefined;
+}
+
+/**
+ * O pedido que não chegaria à 9vee: o build sem a chave, que só oferece o WhatsApp, e o build com a chave de teste
+ * do preview, que mandaria os pedidos para o e-mail de teste.
+ */
+function pedidoSemDestino(paginas: Pagina[], chaveDeTeste: string | undefined): string[] {
+  const chave = chaveDoPedido(paginas);
+  if (chave === undefined) return [];
+  if (!chave) return ['sem a FORMULARIO_CHAVE do .env.producao: nenhum pedido chegaria à 9vee'];
+  if (chave === chaveDeTeste) return ['com a chave de teste do .env.preview: os pedidos iriam para o e-mail de teste'];
+  return [];
+}
+
+/**
+ * Cada regra, com o nome que o check:producao mostra e o que ela procura em cada página. Regra nova entra só aqui.
+ * A do formulário não tem o que procurar em cada página: ela olha o build uma vez.
+ */
 export const REGRAS = {
   pendencia: { nome: 'Pendência sem resposta', naPagina: pendencias },
   placeholder: { nome: 'Placeholder no lugar da imagem', naPagina: placeholders },
@@ -77,7 +104,8 @@ export const REGRAS = {
   noindex: { nome: 'Noindex', naPagina: noindex },
   travessao: { nome: 'Travessão ou meia-risca', naPagina: travessoes },
   link: { nome: 'Link interno quebrado', naPagina: linksQuebrados },
-} satisfies Record<string, { nome: string; naPagina: (pagina: Pagina, pasta: string) => string[] }>;
+  formulario: { nome: 'Pedido sem destino (a chave do serviço de formulário)' },
+} satisfies Record<string, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }>;
 
 export type Regra = keyof typeof REGRAS;
 
@@ -107,13 +135,18 @@ export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
   });
 }
 
-export function verificarBuild(pasta: string): Achado[] {
-  const regras = Object.entries(REGRAS) as [Regra, (typeof REGRAS)[Regra]][];
-  const achados: Achado[] = carregarPaginas(pasta).flatMap((pagina) =>
+/** A chave de teste é a do .env.preview: com ela, a trava reconhece a chave que não pode ir para a produção. */
+export function verificarBuild(pasta: string, { chaveDeTeste }: { chaveDeTeste?: string } = {}): Achado[] {
+  const regras = Object.entries(REGRAS) as [Regra, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }][];
+  const paginas = carregarPaginas(pasta);
+  const achados: Achado[] = paginas.flatMap((pagina) =>
     regras.flatMap(([regra, { naPagina }]) =>
-      naPagina(pagina, pasta).map((detalhe) => ({ regra, onde: pagina.rota, detalhe })),
+      (naPagina?.(pagina, pasta) ?? []).map((detalhe) => ({ regra, onde: pagina.rota, detalhe })),
     ),
   );
+  for (const detalhe of pedidoSemDestino(paginas, chaveDeTeste)) {
+    achados.push({ regra: 'formulario', onde: 'pedido de contato', detalhe });
+  }
   // O cabeçalho de noindex que o build de preview deixa para a Cloudflare.
   const cabecalhos = join(pasta, '_headers');
   if (existsSync(cabecalhos)) {

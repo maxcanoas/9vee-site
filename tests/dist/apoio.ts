@@ -5,7 +5,7 @@ import { gzipSync } from 'node:zlib';
 import { parse, type HTMLElement } from 'node-html-parser';
 import { expect } from 'vitest';
 import { carregarPaginas as lerPaginas, type Pagina } from '../../scripts/paginas-do-build.ts';
-import type { Campo } from '../../src/lib/contato.ts';
+import type { Campo, DadosDoDrawer } from '../../src/lib/contato.ts';
 
 /** O build de preview, o que vai para o Cloudflare. A maior parte dos testes lê este. */
 export const DIST = fileURLToPath(new URL('../../dist/', import.meta.url));
@@ -42,7 +42,8 @@ export const textosDe = (raiz: HTMLElement, seletor: string) =>
 
 /**
  * Os dados do pedido que a página entrega ao script: o número, o nome da página, o que ela já traz marcado (o
- * serviço, o idioma e as opções de cada pergunta de várias respostas) e os campos de cada formulário.
+ * serviço, o idioma e as opções de cada pergunta de várias respostas), os campos de cada formulário e o que o envio
+ * por e-mail precisa.
  */
 export interface IlhaDoPedido {
   numero: string;
@@ -51,6 +52,8 @@ export interface IlhaDoPedido {
   idiomaDaPagina: string | null;
   marcadasDaPagina: Record<string, string[]>;
   formularios: Record<string, Campo[]>;
+  erros: Record<string, string>;
+  envio: DadosDoDrawer['envio'];
 }
 
 export const ilhaDoPedido = (raiz: HTMLElement) =>

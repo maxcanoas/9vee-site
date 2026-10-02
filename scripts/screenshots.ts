@@ -7,7 +7,15 @@ import { fileURLToPath } from 'node:url';
 import { preview } from 'astro';
 import { chromium, type Page } from '@playwright/test';
 import { paginasDeIdiomaNoConteudo } from '../tests/conteudo.ts';
-import { opcao, salvarPublico, semWhatsAppDeVerdade } from '../tests/e2e/pedido.ts';
+import { TEMPO_MINIMO_DO_PEDIDO } from '../src/lib/envio.ts';
+import {
+  SERVICO_DE_FORMULARIO,
+  opcao,
+  responderComoServico,
+  salvarPublico,
+  semEnvioDeVerdade,
+  semWhatsAppDeVerdade,
+} from '../tests/e2e/pedido.ts';
 
 interface Captura {
   nome: string;
@@ -59,6 +67,25 @@ const preencherNr1 = async (p: Page) => {
   await p.locator('[data-continuar]').click();
   await p.fill('#campo-final-nome', 'Maria');
 };
+
+// O pedido de NR-1 pronto para sair por e-mail: o contato preenchido e, se a captura pedir, a caixa do
+// consentimento marcada. A espera é o tempo mínimo que o envio exige desde a abertura do pedido.
+const prepararEnvio = (contato: string, aceitar = true) => async (p: Page) => {
+  await preencherNr1(p);
+  await p.locator('[data-abre-receber]').click();
+  await p.fill('#campo-final-contato', contato);
+  if (aceitar) await p.locator('input[name="final-consentimento"]').check();
+  await p.waitForTimeout(TEMPO_MINIMO_DO_PEDIDO);
+};
+
+const enviarPedido = (contato: string, aceitar = true) => async (p: Page) => {
+  await prepararEnvio(contato, aceitar)(p);
+  await p.locator('[data-enviar-pedido]').click();
+};
+
+// O serviço de formulário respondendo com erro, para a captura da tela de quando o pedido não chega.
+const comServicoForaDoAr = (p: Page) =>
+  p.route(SERVICO_DE_FORMULARIO, (rota) => responderComoServico(rota, 500, { success: false }));
 
 // Abre tudo o que abre numa seção: fechado, o texto de dentro não aparece na captura.
 const abrirDetalhesDe = (secao: string) => (pagina: Page) =>
@@ -146,18 +173,8 @@ const roteiros: Record<string, Captura[]> = {
       await p.locator('[data-continuar]').click();
     } },
     { nome: 'drawer-final-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: preencherNr1 },
-    { nome: 'drawer-receber-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
-      await preencherNr1(p);
-      await p.locator('[data-abre-receber]').click();
-      await p.fill('#campo-final-contato', 'maria@exemplo');
-      await p.locator('[data-enviar-pedido]').click();
-    } },
-    { nome: 'drawer-confirmado-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
-      await preencherNr1(p);
-      await p.locator('[data-abre-receber]').click();
-      await p.fill('#campo-final-contato', 'maria@exemplo.com.br');
-      await p.locator('[data-enviar-pedido]').click();
-    } },
+    { nome: 'drawer-receber-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: enviarPedido('maria@exemplo') },
+    { nome: 'drawer-confirmado-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: enviarPedido('maria@exemplo.com.br') },
     { nome: 'drawer-aberto-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
       await preencherNr1(p);
       const aba = p.context().waitForEvent('page');
@@ -315,6 +332,23 @@ const roteiros: Record<string, Captura[]> = {
   ],
   // O Quem Somos completo: a página inteira, o topo e cada seção.
   'ticket-07': capturasDaPagina('quem-somos', '/quem-somos/', ['frentes', 'historia', 'missao', 'principios']),
+  // O envio de verdade do pedido: o campo do contato com a caixa do consentimento, o erro de quem não a marcou, a
+  // confirmação e a tela de quando o pedido não chega. O serviço de formulário nunca recebe nada daqui.
+  'ticket-12': [
+    { nome: 'pedido-consentimento-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: prepararEnvio('maria@exemplo.com.br') },
+    { nome: 'pedido-consentimento-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, publico: 'empresa', antes: prepararEnvio('maria@exemplo.com.br') },
+    { nome: 'pedido-sem-consentimento-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: enviarPedido('maria@exemplo.com.br', false) },
+    { nome: 'pedido-confirmado-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: enviarPedido('maria@exemplo.com.br') },
+    { nome: 'pedido-confirmado-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, publico: 'empresa', antes: enviarPedido('maria@exemplo.com.br') },
+    { nome: 'pedido-falhou-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, publico: 'empresa', antes: async (p) => {
+      await comServicoForaDoAr(p);
+      await enviarPedido('(11) 91234-5678')(p);
+    } },
+    { nome: 'pedido-falhou-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, publico: 'empresa', antes: async (p) => {
+      await comServicoForaDoAr(p);
+      await enviarPedido('(11) 91234-5678')(p);
+    } },
+  ],
   // O reaproveitamento nas páginas fechadas: as seções novas da home, do NR-1 e de Cursos, o rodapé com a frase do
   // site atual, os exames abertos, a página de cursos como a empresa a vê e as páginas de idioma que mudaram.
   'ticket-22': [
@@ -398,6 +432,7 @@ try {
       reducedMotion: c.movimento ? 'no-preference' : 'reduce',
     });
     await semWhatsAppDeVerdade(contexto);
+    await semEnvioDeVerdade(contexto);
     if (c.publico) await salvarPublico(contexto, c.publico);
     const pagina = await contexto.newPage();
     await pagina.goto(base + c.rota, { waitUntil: 'networkidle' });

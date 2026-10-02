@@ -1,6 +1,6 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { INTERPRETACAO_DE_MANDARIM, PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo } from '../conteudo.ts';
-import { salvarPublico } from './pedido.ts';
+import { expect, salvarPublico, test } from './pedido.ts';
 
 // As páginas de idioma saem de content/idiomas/: cada idioma novo entra aqui sozinho.
 const ROTAS_DE_IDIOMA = paginasDeIdiomaNoConteudo().map((pagina) => pagina.rota);

@@ -941,6 +941,8 @@ Em que cidade?
 
 [Campo: Seu WhatsApp com DDD ou seu e-mail]
 
+- Li a política de privacidade e concordo que a 9vee use estes dados para responder ao meu pedido.
+
 [Botão: Pedir contato]
 
 ###### Confira o pedido
@@ -959,7 +961,13 @@ A equipe da 9vee responde em [A confirmar com a Daniella: prazo de resposta do c
 
 ###### O que você pediu:
 
-MVP: envio simulado. No site final, este pedido chega à equipe por e-mail.
+##### Não deu para enviar.
+
+O pedido não chegou à 9vee. Mande agora pelo WhatsApp, com a mensagem já escrita com as suas respostas, ou tente de novo.
+
+[Link: Mandar pelo WhatsApp]
+
+[Botão: Tentar de novo]
 
 [Botão: Voltar]
 
@@ -1000,3 +1008,4 @@ Nos outros serviços, a linha do pedido muda para:
 - Escolha uma data a partir de hoje ou marque que ainda não tem data.
 - Escreva como podemos te chamar.
 - Informe um WhatsApp com DDD ou um e-mail.
+- Marque a caixa para enviar o pedido.

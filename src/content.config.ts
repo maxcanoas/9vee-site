@@ -184,7 +184,11 @@ const site = defineCollection({
         whatsapp: z.string(),
         receber: z.string(),
         rotuloContato: z.string(),
+        // A frase do aceite, com o link para a política no meio dela.
+        consentimento: z.object({ legenda: z.string(), antes: z.string(), link: z.string(), depois: z.string() }),
+        isca: z.string(),
         enviar: z.string(),
+        enviando: z.string(),
       }),
       aberto: z.object({ titulo: z.string(), texto: z.string(), link: z.string() }),
       confirmacao: z.object({
@@ -194,7 +198,15 @@ const site = defineCollection({
         rotuloServico: z.string(),
         rotuloNome: z.string(),
         rotulosContato: z.object({ telefone: z.string(), email: z.string() }),
-        simulado: z.string(),
+      }),
+      falha: z.object({ titulo: z.string(), texto: z.string(), whatsapp: z.string(), tentar: z.string() }),
+      // O e-mail que o pedido vira: o remetente, o assunto que o comercial filtra e os rótulos das linhas dele.
+      envio: z.object({
+        remetente: z.string(),
+        assunto: z.string().includes('{servico}').includes('{publico}').includes('{quem}'),
+        servicos: z.object({ nr1: z.string(), traducao: z.string(), idiomas: z.string(), lms: z.string() }),
+        publicos: z.object({ empresa: z.string(), voce: z.string() }),
+        rotulos: z.object({ publico: z.string(), pagina: z.string(), consentimento: z.string(), aceitoEm: z.string() }),
       }),
       erros: z.object({
         escolha: z.string(),
@@ -203,6 +215,7 @@ const site = defineCollection({
         data: z.string(),
         nome: z.string(),
         contato: z.string(),
+        consentimento: z.string(),
       }),
       mensagens: z.object({
         abertura: z.string().includes('{pagina}'),

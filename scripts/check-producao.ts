@@ -1,7 +1,8 @@
 // npm run check:producao: roda a trava sobre o build de produção e falha se sobrar algo que não pode ir ao ar.
 // O build:producao chama este script no fim, então o build de produção só "passa" com a trava limpa.
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { parseEnv } from 'node:util';
 import { REGRAS, pendenciasNoConteudo, verificarBuild, type Regra } from './trava-producao.ts';
 
 const pasta = fileURLToPath(new URL('../dist-producao/', import.meta.url));
@@ -10,9 +11,13 @@ if (!existsSync(pasta)) {
   process.exit(1);
 }
 
+// A chave de teste do pedido, que manda para o e-mail de teste: a produção não pode sair com ela.
+const envDoPreview = new URL('../.env.preview', import.meta.url);
+const chaveDeTeste = existsSync(envDoPreview) ? parseEnv(readFileSync(envDoPreview, 'utf8')).FORMULARIO_CHAVE : undefined;
+
 const achados = [
   ...pendenciasNoConteudo(fileURLToPath(new URL('../content/', import.meta.url))),
-  ...verificarBuild(pasta),
+  ...verificarBuild(pasta, { chaveDeTeste }),
 ];
 if (achados.length === 0) {
   console.log('check:producao: nada a barrar. O build de produção pode ir ao ar.');

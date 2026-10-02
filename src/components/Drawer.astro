@@ -2,6 +2,9 @@
 // O pedido de contato do site inteiro: um <dialog> que todo botão com data-abre-contato abre.
 // Passos: para quem é, serviço, detalhes do serviço e nome, com duas saídas (WhatsApp ou receber contato).
 // As perguntas vêm de content/site.md; a validação e a mensagem ficam em src/lib/contato.ts.
+// "Prefiro receber contato" manda o pedido por e-mail: a montagem está em src/lib/envio.ts, e quem entrega é o
+// src/lib/servico-de-formulario.ts, com a chave do .env do modo.
+import { FORMULARIO_CHAVE } from 'astro:env/server';
 import Texto from './Texto.astro';
 import CampoContato from './CampoContato.astro';
 import IconeWhatsApp from './IconeWhatsApp.astro';
@@ -26,6 +29,9 @@ const { site, pagina } = Astro.props;
 const { drawer: textos, formularios, servicos } = site;
 const idiomas = site.idiomas.map(({ slug, nome }) => ({ slug, nome }));
 const formularioIds = Object.keys(formularios) as FormularioId[];
+const { consentimento } = textos.final;
+// O link da caixa leva ao trecho da política que fala do pedido.
+const politicaDoPedido = `${site.rodape.privacidade.href}#pedido`;
 
 const dados: DadosDoDrawer = {
   numero: site.contato.whatsapp,
@@ -49,6 +55,12 @@ const dados: DadosDoDrawer = {
     servico: textos.confirmacao.rotuloServico,
     nome: textos.confirmacao.rotuloNome,
     contato: textos.confirmacao.rotulosContato,
+  },
+  envio: {
+    chave: FORMULARIO_CHAVE,
+    textos: textos.envio,
+    consentimento: textoPuro(`${consentimento.antes} ${consentimento.link} ${consentimento.depois}`),
+    enviando: textos.final.enviando,
   },
 };
 
@@ -200,8 +212,34 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
             </button>
             <div class="receber" id="drawer-receber" hidden>
               <CampoContato campo={campoContato} formulario="final" teclaEnter="send" />
+              <fieldset class="campo" data-campo="consentimento" aria-describedby="campo-final-consentimento-erro">
+                <legend class="visualmente-oculto">{consentimento.legenda}</legend>
+                {/* O link abre em outra aba: na mesma, a pessoa perderia o pedido que acabou de preencher. */}
+                <label class="consentimento">
+                  <input
+                    class="consentimento__caixa"
+                    type="checkbox"
+                    id="campo-final-consentimento"
+                    name="final-consentimento"
+                    aria-required="true"
+                  />
+                  <span>
+                    <Texto de={consentimento.antes} />{' '}<a href={politicaDoPedido} target="_blank" rel="noopener"
+                      ><Texto de={consentimento.link} /><span class="visualmente-oculto">{AVISO_NOVA_ABA}</span></a
+                    >{' '}<Texto de={consentimento.depois} />
+                  </span>
+                </label>
+                <p class="campo__erro" id="campo-final-consentimento-erro" hidden></p>
+              </fieldset>
+              {/* A isca: uma caixa que pessoa não vê nem alcança. Pedido que chega com ela marcada é de robô. */}
+              <div class="isca" aria-hidden="true">
+                <label>
+                  {textos.final.isca}
+                  <input type="checkbox" name="botcheck" tabindex="-1" />
+                </label>
+              </div>
               <button class="botao" type="submit" data-enviar-pedido>
-                <span><Texto de={textos.final.enviar} /></span>
+                <span data-rotulo-enviar><Texto de={textos.final.enviar} /></span>
               </button>
             </div>
           </div>
@@ -240,7 +278,21 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
             <h4 class="pedido__titulo"><Texto de={textos.confirmacao.resumo} /></h4>
             <ul class="pedido__linhas" role="list" data-linhas-confirmacao></ul>
           </div>
-          <p class="drawer__simulado"><Texto de={textos.confirmacao.simulado} /></p>
+        </section>
+
+        {/* O pedido não chegou: a mesma mensagem que iria pelo WhatsApp sai por aqui, e dá para tentar de novo. */}
+        <section class="etapa etapa--fim" data-etapa="falhou" aria-labelledby="etapa-falhou" hidden>
+          <h3 class="etapa__titulo" id="etapa-falhou" tabindex="-1"><Texto de={textos.falha.titulo} /></h3>
+          <p class="texto-secundario"><Texto de={textos.falha.texto} /></p>
+          <div class="saidas saidas--falha">
+            <a class="botao saidas__whatsapp" href={linkInicial} target="_blank" rel="noopener" data-falha-whatsapp>
+              <IconeWhatsApp />
+              <span>{textos.falha.whatsapp}<span class="visualmente-oculto">{AVISO_NOVA_ABA}</span></span>
+            </a>
+            <button class="botao botao--contorno" type="button" data-ir-para="final">
+              <span><Texto de={textos.falha.tentar} /></span>
+            </button>
+          </div>
         </section>
       </div>
 
@@ -631,6 +683,45 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
     padding-block-start: var(--e-2);
   }
 
+  /* A caixa do consentimento: o quadrado nativo na cor do texto e a frase ao lado. A linha inteira marca a caixa. */
+  .consentimento {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-3);
+    align-items: start;
+    min-block-size: var(--alvo-minimo);
+    padding-block: var(--e-2);
+    font-size: var(--t-pequeno);
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .consentimento__caixa {
+    inline-size: 1.375rem;
+    block-size: 1.375rem;
+    margin: 0;
+    accent-color: var(--navy);
+    cursor: pointer;
+  }
+
+  .consentimento__caixa[aria-invalid='true'] {
+    outline: var(--sublinhado-destaque) solid var(--magenta);
+    outline-offset: var(--foco-afastamento);
+  }
+
+  .isca {
+    display: none;
+  }
+
+  /* Enquanto o pedido sai, o botão avisa e não aceita outro toque. */
+  .saidas .botao[aria-disabled='true'] {
+    cursor: progress;
+  }
+
+  .saidas--falha {
+    inline-size: 100%;
+  }
+
   .etapa--fim {
     justify-items: start;
     gap: var(--e-4);
@@ -661,15 +752,6 @@ const linkInicial = linkWhatsApp(site.contato.whatsapp);
   .drawer__link {
     display: inline-block;
     padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
-    font-weight: 700;
-  }
-
-  .drawer__simulado {
-    padding-block: var(--e-2);
-    padding-inline: var(--e-3);
-    border: 1px dashed var(--navy-2);
-    color: var(--navy-2);
-    font-size: var(--t-rotulo);
     font-weight: 700;
   }
 

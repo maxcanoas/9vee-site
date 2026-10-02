@@ -1,6 +1,7 @@
-import { expect, test, type Locator } from '@playwright/test';
+import type { Locator } from '@playwright/test';
 import { GRUPO_DO_PUBLICO } from '../../src/lib/publico';
 import { contrasteSobreOGrifo } from './grifo.ts';
+import { expect, test } from './pedido.ts';
 
 // A cor da faixa do grifo, que abre o box-shadow calculado ("oklab(...) 0px -9.6px 0px 0px inset": a cor vem
 // de um color-mix). Faixa transparente conta como sem grifo.

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './pedido.ts';
 
 // As animações por rolagem são conferidas só no Chromium: o WebKit do Playwright não é o Safari.
 test.skip(({ browserName }) => browserName !== 'chromium', 'animação por rolagem conferida só no Chromium');

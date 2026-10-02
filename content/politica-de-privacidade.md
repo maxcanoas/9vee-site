@@ -1,7 +1,7 @@
 ---
 # A política de privacidade do site novo: curta e só sobre o site. A Daniella aprova, depois da revisão do advogado
-# da 9vee. O envio do pedido chega no ticket 12, e o aviso de cookies e o Google Analytics no 13: cada um revê aqui
-# o parágrafo dele, com o que ficou.
+# da 9vee. O envio do pedido chegou no ticket 12, e a seção "pedido" foi conferida com o que ficou: a caixa do
+# consentimento leva a ela. O aviso de cookies e o Google Analytics chegam no 13, que revê os parágrafos dele.
 seo:
   titulo: "Política de privacidade | 9vee"
   descricao: "O que o site da 9vee coleta quando você pede contato ou aceita a estatística de visitas, para quem os dados vão e como pedir para ver ou apagar os seus."

@@ -1,5 +1,4 @@
-import { expect, test } from '@playwright/test';
-import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, tituloDoPasso } from './pedido.ts';
+import { drawer, expect, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, test, tituloDoPasso } from './pedido.ts';
 
 test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 

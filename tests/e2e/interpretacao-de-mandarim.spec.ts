@@ -1,7 +1,7 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { INTERPRETACAO_DE_MANDARIM } from '../conteudo.ts';
 import { contrasteSobreOGrifo } from './grifo.ts';
-import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, tituloDoPasso } from './pedido.ts';
+import { drawer, expect, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, test, tituloDoPasso } from './pedido.ts';
 
 test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 

@@ -191,7 +191,8 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
   - as marcas do MVP: a etiqueta de obra e o aviso "MVP: envio simulado" do pedido;
   - noindex, na meta ou no cabeçalho;
   - travessão ou meia-risca em qualquer parte do HTML (texto, atributos e JSON-LD);
-  - link interno quebrado, sem barra no fim ou com âncora que não existe.
+  - link interno quebrado, sem barra no fim ou com âncora que não existe;
+  - **desde 02/10/2026 (ticket 12):** o pedido sem destino, que é o build sem a chave do serviço de formulário ou com a chave de teste do `.env.preview`. Sem a chave, nenhum pedido chegaria; com a de teste, os pedidos iriam para o e-mail do Maxwell.
 - As palavras proibidas e o resto dos padrões continuam nos testes do HTML gerado, como no MVP.
 
 ### Páginas

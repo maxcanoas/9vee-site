@@ -94,6 +94,40 @@ describe('verificarBuild', () => {
     ]);
   });
 
+  // A chave do serviço de formulário vai no HTML, com os dados do pedido, e é a mesma em todas as páginas.
+  describe('chave do pedido', () => {
+    const comPedido = (chave: string) =>
+      pagina(`<h1>Cursos</h1><script type="application/json" id="dados-contato">${JSON.stringify({ envio: { chave } })}</script>`);
+    const doPedido = (achados: Achado[]) => achados.filter((achado) => achado.regra === 'formulario');
+
+    it('barra o build que saiu sem a chave: nenhum pedido chegaria', () => {
+      const pasta = montarBuild({ 'index.html': comPedido(''), 'sobre/index.html': comPedido('') });
+      const achados = verificarBuild(pasta);
+      // Uma vez só, e não em cada página.
+      expect(achados).toHaveLength(1);
+      expect(achados[0]).toMatchObject({ regra: 'formulario', onde: 'pedido de contato' });
+      expect(achados[0].detalhe).toMatch(/sem a FORMULARIO_CHAVE/);
+    });
+
+    it('barra o build com a chave de teste do preview: os pedidos iriam para o e-mail de teste', () => {
+      const pasta = montarBuild({ 'index.html': comPedido('chave-de-teste') });
+      const achados = doPedido(verificarBuild(pasta, { chaveDeTeste: 'chave-de-teste' }));
+      expect(achados).toHaveLength(1);
+      expect(achados[0].detalhe).toMatch(/chave de teste/);
+    });
+
+    it('deixa passar o build com a chave própria da produção', () => {
+      const pasta = montarBuild({ 'index.html': comPedido('chave-da-9vee') });
+      expect(verificarBuild(pasta, { chaveDeTeste: 'chave-de-teste' })).toEqual([]);
+      expect(verificarBuild(pasta)).toEqual([]);
+    });
+
+    it('não confunde a falta da chave de teste com chave repetida', () => {
+      const pasta = montarBuild({ 'index.html': comPedido('chave-da-9vee') });
+      expect(verificarBuild(pasta, { chaveDeTeste: '' })).toEqual([]);
+    });
+  });
+
   it('confere arquivo sem exigir barra, e ignora link externo, e-mail e telefone', () => {
     const pasta = montarBuild({
       'index.html': pagina(

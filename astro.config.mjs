@@ -65,6 +65,9 @@ export default defineConfig({
   env: {
     schema: {
       MODO: envField.enum({ values: [...MODOS], context: 'server', access: 'public', default: 'local' }),
+      // A chave do serviço de formulário, do .env do modo. Vai para o HTML, com os dados do pedido: o envio sai do
+      // navegador, e a chave só permite mandar para o e-mail dela. Sem ela, o pedido oferece o WhatsApp.
+      FORMULARIO_CHAVE: envField.string({ context: 'server', access: 'public', default: '' }),
     },
   },
   vite: {

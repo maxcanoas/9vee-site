@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
 import { contrasteSobreOGrifo } from './grifo.ts';
+import { expect, test } from './pedido.ts';
 
 test.describe('página de LMS', () => {
   // O destino para logo abaixo do cabeçalho fixo, e não embaixo dele.

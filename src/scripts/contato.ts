@@ -1,6 +1,6 @@
 // O pedido de contato: abre o drawer a partir de qualquer [data-abre-contato], conduz os passos,
-// mantém o link do WhatsApp em dia com as respostas e simula o "receber contato".
-// A lógica sem tela (campos, validação e mensagem) está em src/lib/contato.ts.
+// mantém o link do WhatsApp em dia com as respostas e manda o pedido de quem prefere receber contato.
+// A lógica sem tela está em src/lib/contato.ts (campos, validação e mensagem) e em src/lib/envio.ts (o e-mail).
 import {
   ETAPAS,
   SEM_DATA,
@@ -26,11 +26,13 @@ import {
   type Respostas,
   type ServicoId,
 } from '../lib/contato';
+import { assuntoDoPedido, barreiraContraRobo, linhasDoEnvio, momentoComFuso, quemPede } from '../lib/envio';
 import { publicoValido, type Publico } from '../lib/publico';
+import { entregarPedido } from '../lib/servico-de-formulario';
 import { preencher } from '../lib/texto';
 import { aoMudarPublico, escolherPublico, publicoAtual } from './publico';
 
-type Tela = Etapa | 'aberto' | 'confirmado';
+type Tela = Etapa | 'aberto' | 'confirmado' | 'falhou';
 
 const FOCAVEIS = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 // Espera curta depois do toque numa opção, para a pessoa ver a escolha marcada antes do próximo passo.
@@ -58,10 +60,16 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   const textoDoPasso = um('[data-passo-texto]');
   const saidaWhatsApp = um<HTMLAnchorElement>('[data-saida-whatsapp]');
   const linkDeNovo = um<HTMLAnchorElement>('[data-link-whatsapp]');
+  const saidaDaFalha = um<HTMLAnchorElement>('[data-falha-whatsapp]');
   const botaoReceber = um<HTMLButtonElement>('[data-abre-receber]');
   const painelReceber = um('#drawer-receber');
   const campoNome = um<HTMLInputElement>('input[name="final-nome"]');
   const campoContato = um<HTMLInputElement>('input[name="final-contato"]');
+  const caixaDoConsentimento = um<HTMLInputElement>('input[name="final-consentimento"]');
+  const isca = um<HTMLInputElement>('input[name="botcheck"]');
+  const botaoEnviar = um<HTMLButtonElement>('[data-enviar-pedido]');
+  const rotuloEnviar = um('[data-rotulo-enviar]');
+  const textoDoEnviar = rotuloEnviar.textContent;
 
   let tela: Tela = 'publico';
   let servico: ServicoId | null = null;
@@ -70,6 +78,8 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   let toqueNoFundo = false;
   let avanco: number | undefined;
   let hoje = hojeLocal(new Date());
+  let abertoEm = Date.now();
+  let enviando = false;
 
   const formularioAtual = () => (servico ? formularioDe(servico, publicoAtual()) : null);
   const camposAtuais = (): Campo[] => {
@@ -171,6 +181,9 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     if (campoContato.hasAttribute('aria-invalid') && tipoDeContato(campoContato.value)) {
       mostrarErro(blocoDe(campoContato), undefined);
     }
+    if (caixaDoConsentimento.hasAttribute('aria-invalid') && caixaDoConsentimento.checked) {
+      mostrarErro(blocoDe(caixaDoConsentimento), undefined);
+    }
   }
 
   function marcar(nome: string, valor: string | null) {
@@ -221,6 +234,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     );
     saidaWhatsApp.href = linkWhatsApp(dados.numero, mensagem);
     linkDeNovo.href = saidaWhatsApp.href;
+    saidaDaFalha.href = saidaWhatsApp.href;
   }
 
   function linhaDoPedido(linha: LinhaDoPedido) {
@@ -295,7 +309,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   }
 
   function voltar() {
-    if (tela === 'aberto') return irPara('final');
+    if (tela === 'aberto' || tela === 'falhou') return irPara('final');
     const indice = ETAPAS.indexOf(tela as Etapa);
     if (indice > 0) irPara(ETAPAS[indice - 1]);
   }
@@ -306,25 +320,68 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     if (abrir) campoContato.focus();
   }
 
-  function enviarPedido() {
+  /** Enquanto o pedido sai, o botão diz "Enviando" e não manda outro, e o drawer não fecha: a pessoa vê o que deu. */
+  function marcarEnviando(ativo: boolean) {
+    enviando = ativo;
+    if (ativo) botaoEnviar.setAttribute('aria-disabled', 'true');
+    else botaoEnviar.removeAttribute('aria-disabled');
+    rotuloEnviar.textContent = ativo ? dados.envio.enviando : textoDoEnviar;
+  }
+
+  async function enviarPedido() {
+    if (enviando) return;
+    const publico = publicoAtual();
     const nomeOk = validarNome();
-    const tipo = tipoDeContato(campoContato.value);
+    const contato = campoContato.value.trim();
+    const tipo = tipoDeContato(contato);
+    const aceito = caixaDoConsentimento.checked;
     mostrarErro(blocoDe(campoContato), tipo ? undefined : dados.erros.contato);
+    mostrarErro(blocoDe(caixaDoConsentimento), aceito ? undefined : dados.erros.consentimento);
     if (!nomeOk) return campoNome.focus();
     if (!tipo || !servico) return campoContato.focus();
+    if (!aceito) return caixaDoConsentimento.focus();
+    if (!publico) return irPara('publico');
+
+    const respostas = lerRespostas();
     const linhas = linhasDaConfirmacao(
       {
         servico: dados.servicos[servico],
         campos: camposAtuais(),
-        respostas: lerRespostas(),
+        respostas,
         idiomas: dados.idiomas,
         nome: campoNome.value,
-        contato: campoContato.value,
+        contato,
       },
       dados.confirmacao,
     );
     um('[data-linhas-confirmacao]').replaceChildren(...linhas.map(linhaDoPedido));
-    irPara('confirmado');
+
+    // O robô que marcou a isca vê a confirmação e não manda nada. A pressa pode ser de gente: a tela diz que não
+    // foi, e a segunda tentativa já passa do tempo mínimo.
+    const barreira = barreiraContraRobo({ isca: isca.checked, abertoHa: Date.now() - abertoEm });
+    if (barreira) return irPara(barreira === 'isca' ? 'confirmado' : 'falhou');
+
+    const { textos } = dados.envio;
+    marcarEnviando(true);
+    const chegou = await entregarPedido(
+      {
+        assunto: assuntoDoPedido({ servico, publico, quem: quemPede({ publico, respostas, nome: campoNome.value }) }, textos),
+        remetente: textos.remetente,
+        linhas: linhasDoEnvio(
+          {
+            publico,
+            linhas,
+            pagina: { nome: dados.pagina, endereco: location.origin + location.pathname },
+            consentimento: { texto: dados.envio.consentimento, aceitoEm: momentoComFuso(new Date()) },
+          },
+          textos,
+        ),
+        responderPara: tipo === 'email' ? contato : undefined,
+      },
+      dados.envio.chave,
+    );
+    marcarEnviando(false);
+    irPara(chegou ? 'confirmado' : 'falhou');
   }
 
   function fecharPaineis() {
@@ -370,6 +427,9 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     marcarOpcoesDaPagina();
     hoje = hojeLocal(new Date());
     for (const data of todos<HTMLInputElement>('input[type="date"]')) data.min = hoje;
+    // O tempo mínimo do envio conta daqui, e cada pedido pede o consentimento de novo.
+    abertoEm = Date.now();
+    caixaDoConsentimento.checked = false;
     limparErros();
     alternarReceber(false);
     atualizarModo();
@@ -412,14 +472,22 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     if (evento.key === 'Tab') prenderFoco(evento);
   });
 
+  // Com o pedido saindo, o drawer espera: fechado, a pessoa não saberia se ele chegou.
+  const fechar = () => {
+    if (!enviando) dialogo.close();
+  };
+  dialogo.addEventListener('cancel', (evento) => {
+    if (enviando) evento.preventDefault();
+  });
+
   dialogo.addEventListener('click', (evento) => {
     const alvo = evento.target as Element;
     // Toque no véu (fora do painel) fecha. O Safari não tem closedby, então a conta é feita aqui.
     if (alvo === dialogo) {
-      if (toqueNoFundo) dialogo.close();
+      if (toqueNoFundo) fechar();
       return;
     }
-    if (alvo.closest('[data-fecha-contato]')) return dialogo.close();
+    if (alvo.closest('[data-fecha-contato]')) return fechar();
     const destino = alvo.closest<HTMLElement>('[data-ir-para]');
     if (destino) return irPara(destino.dataset.irPara as Etapa);
     if (alvo.closest('[data-voltar]')) return voltar();
@@ -463,7 +531,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   form.addEventListener('submit', (evento) => {
     evento.preventDefault();
     if (tela !== 'final') return continuar();
-    if (!painelReceber.hidden) return enviarPedido();
+    if (!painelReceber.hidden) return void enviarPedido();
     // Enter no nome: com o nome certo, o foco vai para a saída principal.
     if (validarNome()) saidaWhatsApp.focus();
     else campoNome.focus();

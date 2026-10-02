@@ -2,6 +2,20 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, décima leva (02/10): o pedido passa a ser enviado de verdade
+
+- O "Prefiro receber contato" do pedido agora envia de verdade. Antes ele só mostrava a confirmação; agora o pedido chega por e-mail.
+- No preview, os pedidos caem numa caixa de teste do Maxwell, e não na da 9vee: vocês podem testar à vontade. No site definitivo eles vão para o contato@9vee.com.br.
+- O que mudou na tela:
+  - antes de enviar, a pessoa marca uma caixa: "Li a política de privacidade e concordo que a 9vee use estes dados para responder ao meu pedido.", com o link para a política;
+  - o botão mostra "Enviando" enquanto o pedido sai;
+  - se o envio falhar, a tela avisa e oferece o WhatsApp, com a mensagem já escrita com as respostas, e um botão para tentar de novo;
+  - a confirmação não tem mais o aviso de "envio simulado".
+- O e-mail chega com o assunto no formato "[Lead site] NR-1 | Empresa | Nome da empresa", fácil de filtrar. Ele traz todas as respostas, o público, a página de onde o pedido saiu, o nome, o contato e o registro do consentimento: a frase aceita e a hora.
+- Para o lançamento, vamos precisar de uma chave do serviço de formulário criada com o contato@9vee.com.br. Leva um minuto, e fica para a reta final.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy` e faça o teste à mão no preview, como está no fim do ticket 12: o envio certo, o envio sem rede (a tela de falha tem de aparecer) e o da isca. Confira também os três e-mails de teste de 02/10 na sua caixa. As capturas estão em `relatorios/ticket-12/`. O lote 1 saiu de novo, com os textos novos do pedido.
+
 ## Semana 1, nona leva (02/10): o que faltava do site atual na home, no NR-1, em Cursos e nas páginas de idioma
 
 - **Home:** https://9vee-preview.9vee-site.workers.dev/
