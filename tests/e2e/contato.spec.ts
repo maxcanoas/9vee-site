@@ -1,20 +1,7 @@
-import { expect, test, type BrowserContext, type Page } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, titulo } from './pedido.ts';
 
-// O WhatsApp de verdade nunca abre nos testes: a aba nova recebe uma página de mentira.
-test.beforeEach(async ({ context }) => {
-  await context.route('https://wa.me/**', (rota) =>
-    rota.fulfill({ contentType: 'text/plain', body: 'wa.me interceptado' }),
-  );
-});
-
-const salvarPublico = (context: BrowserContext, publico: 'empresa' | 'voce') =>
-  context.addInitScript((p) => localStorage.setItem('9vee:publico', p), publico);
-
-const drawer = (p: Page) => p.locator('#drawer-contato');
-const titulo = (p: Page) => drawer(p).locator('.etapa:not([hidden]) .etapa__titulo');
-const opcao = (p: Page, formulario: string, texto: string) =>
-  p.locator(`[data-formulario="${formulario}"] label.opcao`, { hasText: texto }).first();
-const mensagemDe = (url: string) => new URL(url).searchParams.get('text') ?? '';
+test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 
 async function preencherNr1(p: Page) {
   await p.fill('#campo-nr1-empresa', 'Metalúrgica Exemplo');
