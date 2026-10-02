@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
+import { DIST, jsonLd, paginasDeIdiomaNoConteudo, textoDe, textosDe } from './apoio';
 
 const idiomas = parse(readFileSync(join(DIST, 'curso-de-idiomas', 'index.html'), 'utf8'));
 // A lista só leva à página de idioma publicada.
@@ -22,10 +22,30 @@ describe('cursos de idiomas', () => {
       'provas',
       'formatos',
       'empresas',
+      'realocacao',
+      'plataforma',
       'como-comeca',
       'perguntas',
       'contato',
     ]);
+  });
+
+  // A realocação e a ponte para o LMS são da empresa: ficam no bloco dela, e trocam de lugar junto com ele.
+  it('apresenta a realocação de funcionários e leva ao LMS dentro do bloco da empresa', () => {
+    const daEmpresa = idiomas.querySelectorAll('.modalidades > *')[1];
+    expect(daEmpresa.querySelectorAll('section').map((secao) => secao.getAttribute('id'))).toEqual([
+      'empresas',
+      'realocacao',
+      'plataforma',
+    ]);
+    expect(textosDe(idiomas, '#realocacao .chamada__ponto')).toEqual([
+      'Idioma',
+      'Orientação sobre legislação',
+      'Documentação',
+      'Adaptação cultural',
+    ]);
+    expect(textoDe(idiomas, '#realocacao')).toContain('para o colaborador e a família');
+    expect(idiomas.querySelector('#plataforma a')?.getAttribute('href')).toBe('/lms/');
   });
 
   it('deixa os dois blocos de formato trocarem de lugar com o público', () => {
@@ -88,8 +108,28 @@ describe('cursos de idiomas', () => {
   });
 
   it('lista os seis exames que o site atual prepara', () => {
-    const nomes = idiomas.querySelectorAll('#provas dt').map((dt) => dt.text.trim());
-    expect(nomes).toEqual(['TOEFL iBT', 'CELPE-Bras', 'DELE', 'DELF e DALF', 'TCF', 'Inburgering']);
+    expect(textosDe(idiomas, '#provas .acordeao__nome')).toEqual([
+      'TOEFL iBT',
+      'CELPE-Bras',
+      'DELE',
+      'DELF e DALF',
+      'TCF',
+      'Inburgering',
+    ]);
+  });
+
+  // O <details> abre sem JavaScript, e o texto de dentro está no HTML: o Google lê fechado mesmo. Não é pergunta
+  // frequente: fica fora do .faq, que o FAQPage repete.
+  it('abre em cada exame o texto completo dele, com o preparatório', () => {
+    const exames = idiomas.querySelectorAll('#provas details');
+    expect(exames).toHaveLength(6);
+    for (const exame of exames) {
+      const nome = exame.querySelector('.acordeao__nome')?.text.trim();
+      expect(exame.querySelectorAll('.acordeao__detalhe p').length, nome).toBeGreaterThanOrEqual(2);
+      expect(exame.querySelector('.acordeao__detalhe')?.text, nome).toContain('preparatório');
+    }
+    expect(idiomas.querySelectorAll('#provas .faq')).toHaveLength(0);
+    expect(textoDe(idiomas, '#provas .cabeca__apoio')).toContain('imigração');
   });
 
   it('mostra a régua do A1 ao C2', () => {
@@ -106,8 +146,12 @@ describe('cursos de idiomas', () => {
     }
   });
 
+  // A aula presencial o site atual afirma: a pendência é só das cidades. A quantidade de idiomas tem dois números
+  // no site atual, o da lista e o da parte de empresas.
   it('mostra como pendência o que o site atual não afirma', () => {
-    expect(idiomas.querySelector('#formatos mark.confirmar'), 'presencial').not.toBeNull();
+    expect(textoDe(idiomas, '#formatos .cartoes__nota')).toMatch(/^Também há aula presencial/);
+    expect(idiomas.querySelector('#formatos mark.confirmar'), 'cidades da aula presencial').not.toBeNull();
     expect(idiomas.querySelector('#idiomas mark.confirmar'), 'quantidade de idiomas').not.toBeNull();
+    expect(idiomas.querySelector('#empresas mark.confirmar'), 'os 12 idiomas da parte de empresas').not.toBeNull();
   });
 });

@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import FaixaProva from '../components/FaixaProva.astro';
 import Servicos from '../components/Servicos.astro';
 import DestaqueNr1 from '../components/DestaqueNr1.astro';
+import ListaGrande from '../components/ListaGrande.astro';
 import ComoFunciona from '../components/ComoFunciona.astro';
 import FaixaSaudacoes from '../components/FaixaSaudacoes.astro';
 import Familias from '../components/Familias.astro';
@@ -36,6 +37,7 @@ const enderecosDosIdiomas = await enderecoDosIdiomasPublicados();
   </section>
 
   <DestaqueNr1 {...home.destaqueNr1} />
+  <ListaGrande id="diferenciais" {...home.diferenciais} />
   <ComoFunciona {...home.como} />
   <Depoimentos {...home.depoimentos} />
   <Faq {...home.faq} />

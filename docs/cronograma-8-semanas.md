@@ -27,9 +27,9 @@ São 20 horas a mais. O total passa de cerca de 88 para cerca de 108 horas.
 
 | Semana | Datas | Tickets | Horas | O que o cliente vê no preview |
 |---|---|---|---|---|
-| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16), a mensagem de pendências, os documentos do reaproveitamento (1,5) e o 06 LMS (4), em 01/10. **Adiantados da semana 2:** o 05 Tradução Simultânea (5), em 01/10, e o 21 Interpretação de mandarim (4), em 02/10. **Adiantado da semana 3:** o 07 Quem Somos (3,5), em 02/10 | 51,75 | As páginas de idioma com foto, a política e a 404, o LMS e a Tradução completos, já publicados. A interpretação de mandarim e o Quem Somos completo, quando você publicar |
-| 2 | 05/10 a 11/10 | Sem ticket próprio: o 05 e o 21 saíram na semana 1, e as 9 horas deles foram para lá. Cabe adiantar o 22 Reaproveitamento nas páginas fechadas (7,5) | 0,75 | O que for adiantado da semana 3 |
-| 3 | 12/10 a 18/10 (feriado dia 12) | 22 Reaproveitamento nas páginas fechadas (7,5). O 07 Quem Somos saiu em 02/10, e as 3,5 horas dele foram para a semana 1 | 8,25 | Home, NR-1, Cursos e páginas de idioma com o conteúdo do site atual |
+| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16), a mensagem de pendências, os documentos do reaproveitamento (1,5) e o 06 LMS (4), em 01/10. **Adiantados da semana 2:** o 05 Tradução Simultânea (5), em 01/10, e o 21 Interpretação de mandarim (4), em 02/10. **Adiantados da semana 3:** o 07 Quem Somos (3,5) e o 22 Reaproveitamento nas páginas fechadas (7,5), em 02/10 | 59,25 | As páginas de idioma com foto, a política e a 404, o LMS e a Tradução completos, já publicados. A interpretação de mandarim, o Quem Somos completo e o que faltava do site atual na home, no NR-1, em Cursos e nas páginas de idioma, quando você publicar |
+| 2 | 05/10 a 11/10 | Sem ticket próprio: o 05 e o 21 saíram na semana 1, e as 9 horas deles foram para lá. Cabe adiantar os lotes 1, 2 e 3 e o 12 Envio real do pedido (6,5), da semana 4 | 0,75 | O que for adiantado da semana 4 |
+| 3 | 12/10 a 18/10 (feriado dia 12) | Sem ticket próprio: o 07 e o 22 saíram em 02/10, e as 11 horas deles foram para a semana 1 | 0,75 | O que for adiantado das semanas seguintes |
 | 4 | 19/10 a 25/10 | Lotes 1, 2 e 3 e a contagem das pendências (1), 12 Envio real do pedido (6,5), as imagens das páginas novas (1,5 do 16) | 9,75 | O pedido chegando de verdade (no e-mail de teste); os três lotes vão para a Daniella |
 | 5 | 26/10 a 01/11 | 13 Aviso de cookies, GA4 e eventos (6,5), 11 Páginas por cidade e lote 4 (4) | 11,25 | O aviso de cookies e as cidades com fato local |
 | 6 | 02/11 a 08/11 (feriado dia 2) | 14 Arquivo do blog e mapa de redirecionamentos (3,5), 15 SEO final (2,5), as fotos das cidades (1 do 16) | 7,75 | O rodapé com as páginas novas; o mapa de redirecionamentos vai para a sua revisão |
@@ -38,12 +38,12 @@ São 20 horas a mais. O total passa de cerca de 88 para cerca de 108 horas.
 
 Total: cerca de 108 horas. As horas de cada semana já contam os 0,75 de toda semana.
 
-A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08, o 09 e o 10, que eram das semanas 2, 3 e 4, o 05 e o 21, que eram da semana 2, e o 07, que era da semana 3. É por isso que as 20 horas novas cabem sem passar de 22/11.
+A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08, o 09 e o 10, que eram das semanas 2, 3 e 4, o 05 e o 21, que eram da semana 2, e o 07 e o 22, que eram da semana 3. É por isso que as 20 horas novas cabem sem passar de 22/11.
 
 ## Onde aperta
 
 1. **O total de horas.** São 20 horas a mais, quase duas semanas no seu ritmo. Elas cabem no calendário só porque umas 22 horas de orçamento das semanas 2 a 4 já saíram na semana 1. Se a conta que vale para você é a das horas, e não a do calendário, a Fase 1 ficou 20 horas mais cara.
-2. **As semanas 2 e 3.** Eram 20 horas de página nova (05, 21, 07 e 22) em duas semanas. Com o 05, o 21 e o 07 feitos na semana 1, sobram 7,5 (o 22), com capturas e parada. Desde 02/10 os tickets saem no processo curto, sem medições e sem a rodada de revisão, que voltam no ticket 17: as 6 horas dele podem não bastar.
+2. **As semanas 2 e 3.** Eram 20 horas de página nova (05, 21, 07 e 22) em duas semanas. Os quatro saíram na semana 1, e as duas semanas ficaram livres para adiantar a 4. Desde 02/10 os tickets saem no processo curto, sem medições e sem a rodada de revisão, que voltam no ticket 17 para o 07 e o 22: as 6 horas dele podem não bastar.
 3. **A revisão da Daniella.** O lote 2 sai na semana 4, uma depois do previsto, e os lotes 1 e 3 saem de novo. Ela fica com as semanas 5 e 6 para os três. Se o lote 1 já foi para ela, vale avisar que vem versão nova.
 4. **As imagens.** As seções novas pedem imagem, e o 16 cresceu. Até você gerar no Gemini, as páginas novas mostram o Placeholder no preview.
 5. **O acesso ao GA4.** O 13 subiu para a semana 5, então o acesso do Arthur precisa chegar uma semana antes.
@@ -71,4 +71,4 @@ A semana 1 soma o orçamento de tudo o que saiu nela: você adiantou o 04, o 08,
 
 ## Folga
 
-A semana 2 ficou com 10 a 11 horas, porque o 05 e o 21 saíram na semana 1. A semana 4 tem de 1 a 2. As semanas 6 a 8 somam de 7 a 10 horas, que é onde cabem as respostas atrasadas do cliente e o que a revisão da Daniella pedir. Não sobra folga para pedido novo: pedido fora do escopo vai para `docs/pedidos-fora-do-escopo.md`, com estimativa.
+As semanas 2 e 3 ficaram com 10 a 11 horas cada uma, porque o 05, o 21, o 07 e o 22 saíram na semana 1. A semana 4 tem de 1 a 2. As semanas 6 a 8 somam de 7 a 10 horas, que é onde cabem as respostas atrasadas do cliente e o que a revisão da Daniella pedir. Não sobra folga para pedido novo: pedido fora do escopo vai para `docs/pedidos-fora-do-escopo.md`, com estimativa.

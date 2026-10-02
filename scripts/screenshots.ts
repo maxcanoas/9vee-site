@@ -60,9 +60,12 @@ const preencherNr1 = async (p: Page) => {
   await p.fill('#campo-final-nome', 'Maria');
 };
 
-// Abre todas as respostas das perguntas frequentes: fechadas, as que levam pendência não aparecem na captura.
-const abrirRespostas = (pagina: Page) =>
-  pagina.locator('#perguntas details').evaluateAll((itens) => itens.forEach((item) => item.setAttribute('open', '')));
+// Abre tudo o que abre numa seção: fechado, o texto de dentro não aparece na captura.
+const abrirDetalhesDe = (secao: string) => (pagina: Page) =>
+  pagina.locator(`${secao} details`).evaluateAll((itens) => itens.forEach((item) => item.setAttribute('open', '')));
+
+// As respostas das perguntas frequentes: fechadas, as que levam pendência não aparecem na captura.
+const abrirRespostas = abrirDetalhesDe('#perguntas');
 
 // Abre o pedido pelo hero e responde que é para a empresa: o drawer para no passo do serviço.
 const abrirServicoComoEmpresa = async (p: Page) => {
@@ -312,6 +315,24 @@ const roteiros: Record<string, Captura[]> = {
   ],
   // O Quem Somos completo: a página inteira, o topo e cada seção.
   'ticket-07': capturasDaPagina('quem-somos', '/quem-somos/', ['frentes', 'historia', 'missao', 'principios']),
+  // O reaproveitamento nas páginas fechadas: as seções novas da home, do NR-1 e de Cursos, o rodapé com a frase do
+  // site atual, os exames abertos, a página de cursos como a empresa a vê e as páginas de idioma que mudaram.
+  'ticket-22': [
+    ...capturasDaPagina('home', '/', ['diferenciais']),
+    { nome: 'rodape-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('footer') },
+    { nome: 'rodape-fim-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.rodape__base', -500) },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('footer') },
+    ...capturasDaPagina('nr1', '/treinamento-nr-1/', ['temas', 'modulos', 'beneficios']),
+    ...capturasDaPagina('cursos', '/curso-de-idiomas/', ['provas', 'formatos', 'empresas', 'realocacao', 'plataforma', 'como-comeca']),
+    { nome: 'cursos-provas-abertas-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, recorte: '#provas', antes: abrirDetalhesDe('#provas') },
+    { nome: 'cursos-provas-abertas-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, recorte: '#provas', antes: abrirDetalhesDe('#provas') },
+    { nome: 'cursos-empresa-inteira-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, paginaInteira: true, publico: 'empresa' },
+    { nome: 'cursos-empresas-768', rota: '/curso-de-idiomas/', largura: 768, altura: 1024, antes: rolarAte('#empresas', -80) },
+    ...['ingles', 'portugues-para-estrangeiros', 'frances', 'espanhol', 'holandes'].flatMap((pagina): Captura[] => [
+      { nome: `${pagina}-inteira-390`, rota: `/curso-de-idiomas/${pagina}/`, largura: 390, altura: 844, paginaInteira: true },
+      { nome: `${pagina}-inteira-1280`, rota: `/curso-de-idiomas/${pagina}/`, largura: 1280, altura: 800, paginaInteira: true },
+    ]),
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

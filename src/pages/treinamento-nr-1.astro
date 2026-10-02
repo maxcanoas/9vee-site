@@ -3,7 +3,9 @@ import Base from '../layouts/Base.astro';
 import HeroPagina from '../components/HeroPagina.astro';
 import LinhaDoTempo from '../components/LinhaDoTempo.astro';
 import Pontos from '../components/Pontos.astro';
+import Definicoes from '../components/Definicoes.astro';
 import Modulos from '../components/Modulos.astro';
+import GruposDePontos from '../components/GruposDePontos.astro';
 import Formato from '../components/Formato.astro';
 import Abordagem from '../components/Abordagem.astro';
 import Faq from '../components/Faq.astro';
@@ -30,7 +32,9 @@ const jsonLd = [
   <HeroPagina {...pagina.hero} servico="nr1" />
   <LinhaDoTempo {...pagina.porQue} />
   <Pontos id="o-que-recebe" {...pagina.entrega} />
+  <Definicoes id="temas" {...pagina.temas} />
   <Modulos {...pagina.modulos} />
+  <GruposDePontos id="beneficios" {...pagina.beneficios} />
   <Formato {...pagina.formato} servico="nr1" />
   <Abordagem {...pagina.abordagem} />
   <Faq {...pagina.faq} />

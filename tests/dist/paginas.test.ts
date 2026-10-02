@@ -55,6 +55,9 @@ const LINKS_GENERICOS = new Set([
   'aqui',
 ]);
 
+// As seis redes que o rodapé do site atual lista, pelo domínio de cada uma, em ordem alfabética.
+const REDES = ['facebook.com', 'instagram.com', 'linkedin.com', 'tiktok.com', 'x.com', 'youtube.com'];
+
 // Toda página tem trilha, menos a home, que é o começo dela, e a 404, que não tem lugar no site.
 const temTrilha = (rota: string) => rota !== '/' && rota !== '/404';
 const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/']);
@@ -189,6 +192,17 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
         : idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim();
     expect(nome, `${rota} fora do menu, do rodapé e da lista de idiomas`).toBeDefined();
     expect(textoComoNoJsonLd(raiz.querySelector('nav.trilha [aria-current="page"]')!)).toBe(nome);
+  });
+
+  it('leva às seis redes do site atual no rodapé, as mesmas do sameAs da organização', () => {
+    const doRodape = raiz.querySelectorAll('footer .rodape__icone').map((link) => link.getAttribute('href') ?? '');
+    const organizacao = jsonLd(raiz).find((no) => no['@type'] === 'EducationalOrganization');
+    expect(doRodape.map((href) => new URL(href).hostname.replace(/^www\./, '')).sort()).toEqual(REDES);
+    expect(organizacao?.sameAs).toEqual(doRodape);
+  });
+
+  it('fecha o rodapé com a frase do site atual, em caixa normal', () => {
+    expect(raiz.querySelector('footer .rodape__frase')?.text.trim()).toBe('Seu próximo capítulo de sucesso começa agora.');
   });
 
   // Tirar a pendência de uma frase pode deixar sobra ("no fim do curso:."). O visitante não vê, o Google vê.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DOMINIO, carregarPaginas, ilhaDoPedido, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
+import { DOMINIO, carregarPaginas, ilhaDoPedido, jsonLd, paginasDeIdiomaNoConteudo, textoDe, textosDe } from './apoio';
 
 const preview = carregarPaginas();
 const raizDa = (rota: string) => preview.find((pagina) => pagina.rota === rota)?.raiz;
@@ -13,6 +13,28 @@ describe('páginas de idioma', () => {
     const comPagina = paginasDeIdiomaNoConteudo().map((pagina) => pagina.idioma);
     expect(comPagina).toHaveLength(14);
     expect([...comPagina].sort()).toEqual([...daLista].sort());
+  });
+
+  // O texto do bloco está num lugar só, o da página de cursos: a de português para estrangeiros o repete.
+  it('mostram a realocação de funcionários só na de português, com o texto da página de cursos', () => {
+    const comRealocacao = paginasDeIdiomaNoConteudo().filter(({ rota }) => raizDa(rota)?.querySelector('#realocacao'));
+    expect(comRealocacao.map(({ pagina }) => pagina)).toEqual(['portugues-para-estrangeiros']);
+    const daPagina = textoDe(raizDa(comRealocacao[0].rota)!, '#realocacao');
+    expect(daPagina).toContain('Realocação de funcionários');
+    expect(daPagina).toBe(textoDe(cursos, '#realocacao'));
+  });
+
+  // Cada prova com o texto completo na página do idioma dela: o exame e, ao lado, como é o preparatório.
+  it.each([
+    ['ingles', ['TOEFL iBT', 'O preparatório']],
+    ['portugues-para-estrangeiros', ['CELPE-Bras', 'O preparatório']],
+    ['espanhol', ['DELE', 'O preparatório']],
+    ['frances', ['DELF e DALF', 'TCF']],
+    ['holandes', ['Inburgering', 'O preparatório']],
+  ])('trazem na página de %s a prova do idioma e o preparatório dela', (pagina, nomes) => {
+    const raiz = raizDa(`/curso-de-idiomas/${pagina}/`)!;
+    expect(textosDe(raiz, '#provas dt')).toEqual(nomes);
+    expect(textoDe(raiz, 'main')).toMatch(/preparatório/i);
   });
 });
 

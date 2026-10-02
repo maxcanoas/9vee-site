@@ -225,6 +225,7 @@ const site = defineCollection({
       quem: z.object({ daniella: z.string(), arthur: z.string() }),
     }),
     rodape: z.object({
+      frase: z.string(),
       pronuncia: z.string(),
       atendimento: z.string(),
       tituloContato: z.string(),
@@ -339,6 +340,8 @@ const home = defineCollection({
       link,
       cta: z.string(),
     }),
+    // Os três diferenciais do site atual: o nome em tipo grande e o que ele quer dizer.
+    diferenciais: z.object({ titulo: z.string(), itens: z.array(nomeETexto).length(3) }),
     como: z.object({
       titulo: z.string(),
       etapas: z.array(z.object({ titulo: z.string(), texto: z.string(), imagem })).min(3).max(4),
@@ -389,10 +392,18 @@ const nr1 = defineCollection({
       itens: z.array(tituloETexto).min(2),
       nota: z.string(),
     }),
+    // O objetivo do treinamento, no apoio, e os temas que ele aborda.
+    temas: definicoes,
     modulos: z.object({
       titulo: z.string(),
       apoio: z.string(),
       itens: z.array(tituloETexto).length(3),
+    }),
+    // Os dois blocos de benefícios do site atual, lado a lado: os do treinamento e os de quem investe nele.
+    beneficios: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      grupos: z.array(z.object({ rotulo: z.string(), itens: z.array(z.string()).min(2) })).length(2),
     }),
     formato: z.object({
       titulo: z.string(),
@@ -434,10 +445,11 @@ const idiomas = defineCollection({
       nota: z.string(),
       cta: z.string(),
     }),
+    // Cada exame abre o texto completo dele: a linha curta fica à vista, e o detalhe vem em parágrafos.
     provas: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(nomeETexto).min(1),
+      itens: z.array(nomeETexto.extend({ detalhe: z.array(z.string()).min(1) })).min(1),
     }),
     equipe: z.object({
       titulo: z.string(),
@@ -446,6 +458,9 @@ const idiomas = defineCollection({
       nota: z.string(),
       cta: z.string(),
     }),
+    // A realocação de funcionários, que a página de português para estrangeiros também mostra, e a ponte para o LMS.
+    realocacao: tituloETexto.extend({ pontos: z.array(z.string()).min(2) }),
+    lms: tituloETexto.extend({ link }),
     como: z.object({
       titulo: z.string(),
       apoio: z.string(),
@@ -467,6 +482,8 @@ const paginasDeIdioma = defineCollection({
       publicada: z.boolean(),
       // O idioma sem fato nenhum: só as perguntas, e uma descrição do Google provisória, sem marca de pendência.
       esqueleto: z.boolean().optional(),
+      // A página que mostra o bloco de realocação de funcionários, com o texto da página de cursos.
+      realocacao: z.boolean().optional(),
       seo,
       topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico, imagem }),
       paraQuem: z

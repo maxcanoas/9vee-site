@@ -19,10 +19,12 @@ topo:
 
 provas:
   titulo: "Preparação para o Inburgering"
-  apoio: "O preparatório trabalha as duas partes que o exame avalia, voltado para a prova."
+  apoio: "O exame avalia dois pontos, e o preparatório trabalha os dois."
   itens:
     - nome: "Inburgering"
       texto: "O exame prévio de integração avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país."
+    - nome: "O preparatório"
+      texto: "Com metodologia prática e voltada para o exame, desenvolve as habilidades de língua e de cultura que a aprovação pede."
 
 faq:
   titulo: "Perguntas sobre o holandês"

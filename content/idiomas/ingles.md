@@ -38,25 +38,29 @@ formatos:
     - titulo: "Online, ao vivo"
       texto: "De qualquer cidade, no dia e no horário que você escolher."
     - titulo: "Turma in company"
-      texto: "O time estuda junto, na mesma turma e no mesmo nível, sem sair da empresa."
+      texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
   nota: "Para a equipe inteira, veja as [turmas para empresas](/curso-de-idiomas/#empresas). Aula presencial: [CONFIRMAR COM O ARTHUR: se o inglês tem aula presencial fora da empresa, e em que cidades]."
 
 provas:
   titulo: "Preparação para o TOEFL"
-  apoio: "O TOEFL mede o inglês acadêmico e é aceito por universidades do mundo todo."
+  apoio: "O TOEFL (Test of English as a Foreign Language) mede o inglês acadêmico e é um dos exames mais aceitos por universidades do mundo todo."
   itens:
     - nome: "TOEFL iBT"
-      texto: "Para quem já está no intermediário alto ou no avançado. O preparatório treina as quatro partes da prova (Reading, Listening, Speaking e Writing) no formato oficial, com técnica para cada uma."
+      texto: "O iBT (Internet Based Test) avalia o uso do inglês em contexto acadêmico, em quatro competências: Reading, Listening, Speaking e Writing."
+    - nome: "O preparatório"
+      texto: "Para quem já está no intermediário alto ou no avançado. Segue o formato oficial do exame, com técnica para cada parte da prova."
 
 destaque:
   id: "criancas"
   titulo: "Inglês para crianças e adolescentes"
-  apoio: "O curso usa o material da Cambridge University Press."
+  apoio: "O inglês começa de forma natural e leve, com aulas diferentes para cada idade."
   itens:
     - titulo: "Crianças"
-      texto: "Aprendem com atividades lúdicas, pela interação e pela curiosidade."
+      texto: "Num ambiente acolhedor, aprendem com atividades lúdicas, pela interação, pela curiosidade e pela experimentação."
     - titulo: "Adolescentes"
-      texto: "Conversam sobre temas atuais e situações do dia a dia. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso."
+      texto: "Ganham confiança e autonomia para se comunicar. As aulas partem de temas atuais e de situações do dia a dia, com conversação e pensamento crítico. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso."
+    - titulo: "Material da Cambridge"
+      texto: "O curso usa o material da Cambridge University Press, de padrão internacional, com a progressão organizada por etapas."
   nota: "Idade e formato: [CONFIRMAR COM O ARTHUR: a partir de que idade, se é turma ou aula individual e se é online ou presencial]."
 
 faq:

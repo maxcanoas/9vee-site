@@ -1,0 +1,108 @@
+---
+// Listas curtas de pontos lado a lado, cada uma com o rótulo que diz o que ela é: os benefícios do treinamento e os
+// de quem investe nele. É para o que não cabe na ListaCorrida, que pede nomes de uma ou duas palavras: aqui cada
+// ponto tem a linha dele, com a meia-pílula da marca na frente.
+import CabecaDeSecao from './CabecaDeSecao.astro';
+import Texto from './Texto.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  apoio: string;
+  grupos: { rotulo: string; itens: readonly string[] }[];
+}
+
+const { id, titulo, apoio, grupos } = Astro.props;
+---
+
+<section class="grupos" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner grupos__grade">
+    <CabecaDeSecao {id} {titulo} {apoio} />
+
+    <div class="grupos__colunas">
+      {
+        grupos.map((grupo) => (
+          <div class="grupos__grupo">
+            <h3 class="rotulo">
+              <Texto de={grupo.rotulo} />
+            </h3>
+            <ul class="grupos__lista" role="list">
+              {grupo.itens.map((item) => (
+                <li class="grupos__ponto">
+                  <Texto de={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .grupos {
+    padding-block: var(--secao);
+    background-color: var(--nevoa);
+  }
+
+  .grupos__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .grupos__colunas {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .grupos__grupo {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+    padding-block-start: var(--e-4);
+    border-block-start: 1px solid var(--navy);
+  }
+
+  .grupos__lista {
+    display: grid;
+    gap: var(--e-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .grupos__ponto {
+    position: relative;
+    max-inline-size: 36ch;
+    padding-inline-start: var(--e-5);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-destaque);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+  }
+
+  /* Marcador: a meia-pílula da marca, como nos pontos da chamada e das seções escuras. */
+  .grupos__ponto::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.15em;
+    inset-inline-start: 0;
+    inline-size: 0.5rem;
+    block-size: 1rem;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  @media (min-width: 48rem) {
+    .grupos__colunas {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-6);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .grupos__colunas {
+      column-gap: var(--e-8);
+    }
+  }
+</style>

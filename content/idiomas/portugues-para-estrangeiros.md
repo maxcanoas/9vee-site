@@ -3,8 +3,10 @@
 # portugues-para-estrangeiros, e o idioma continua "portugues".
 idioma: "portugues"
 # Fora do site até o Arthur e a Daniella confirmarem as pendências desta página (formatos, começo do zero e
-# preço). A realocação de funcionários vira um bloco aqui e na página de cursos se a Daniella confirmar.
+# preço).
 publicada: false
+# Mostra o bloco de realocação de funcionários, com o texto que está em content/curso-de-idiomas.md.
+realocacao: true
 
 seo:
   titulo: "Curso de português para estrangeiros e CELPE-Bras | 9vee"
@@ -33,20 +35,24 @@ paraQuem:
 
 provas:
   titulo: "Preparação para o CELPE-Bras"
-  apoio: "O único certificado de português reconhecido oficialmente pelo governo brasileiro."
+  apoio: "O único certificado de português reconhecido oficialmente pelo governo brasileiro, para quem quer estudar, trabalhar ou validar o diploma no Brasil."
   itens:
     - nome: "CELPE-Bras"
-      texto: "Criado pelo Ministério da Educação. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
+      texto: "Criado pelo Ministério da Educação, é aceito por universidades, empresas e instituições de outros países. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
+    - nome: "O preparatório"
+      texto: "As aulas são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame."
 
 destaque:
   id: "como-sao-as-aulas"
   titulo: "Como são as aulas"
-  apoio: "Do nível básico ao avançado, no ritmo que o professor ajusta ao seu nível e ao seu objetivo."
+  apoio: "Do nível básico ao avançado, para se comunicar com naturalidade no dia a dia, na faculdade e no trabalho."
   itens:
     - titulo: "As quatro habilidades"
-      texto: "Fala, escuta, leitura e escrita, trabalhadas juntas."
-    - titulo: "Gramática e cultura"
-      texto: "A gramática e a cultura brasileira entram junto com a conversa."
+      texto: "Fala, escuta, leitura e escrita, trabalhadas juntas, com a gramática e a cultura brasileira dentro da conversa."
+    - titulo: "Material didático"
+      texto: "Conteúdo atualizado e atividades práticas, num caminho claro do básico à fluência."
+    - titulo: "Ritmo das aulas"
+      texto: "O professor conduz o ritmo pelo nível, pelas necessidades e pelos objetivos de cada aluno. Vale para o estrangeiro e também para o brasileiro que quer aprimorar o domínio do próprio idioma."
   nota: "Formatos: [CONFIRMAR COM O ARTHUR: se o português acontece em aula particular, turma, online, presencial ou in company]."
 
 faq:

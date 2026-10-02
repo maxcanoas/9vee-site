@@ -48,6 +48,24 @@ entrega:
       texto: "Numa fiscalização, a empresa precisa mostrar quem participou, quando e o conteúdo [CONFIRMAR COM A DANIELLA: que comprovante a empresa recebe no fim e se cada participante ganha certificado]."
   nota: "O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o SESMT. O treinamento cobre a capacitação e o plano de ação."
 
+# O objetivo e os seis temas do site atual, com a Comunicação Não Violenta.
+temas:
+  titulo: "O que o treinamento aborda"
+  apoio: "O objetivo é dar aos participantes competências práticas para construir relações mais saudáveis, fortalecer o bem-estar emocional e ajudar a criar um ambiente de trabalho psicologicamente seguro e colaborativo."
+  itens:
+    - nome: "Riscos psicossociais"
+      texto: "O que são e como afetam pessoas, equipes e empresas."
+    - nome: "O peso das conversas"
+      texto: "Como as conversas do dia a dia influenciam a saúde mental e o clima da empresa."
+    - nome: "Estresse e conflito"
+      texto: "O efeito do estresse, da sobrecarga emocional e dos conflitos mal conduzidos."
+    - nome: "Comunicação Não Violenta"
+      texto: "Os fundamentos da CNV aplicados ao ambiente de trabalho."
+    - nome: "Conversas difíceis"
+      texto: "Como fazer de uma conversa difícil uma oportunidade de conexão e colaboração."
+    - nome: "Respeito e segurança psicológica"
+      texto: "Estratégias práticas para o respeito, a confiança e a segurança psicológica no dia a dia."
+
 modulos:
   titulo: "Os três módulos"
   apoio: "Na ordem em que a empresa precisa: primeiro entender, depois conduzir, depois decidir."
@@ -55,9 +73,25 @@ modulos:
     - titulo: "NR-1, saúde mental e riscos psicossociais"
       texto: "O marco legal, os conceitos e o diagnóstico. O que a norma passou a exigir, o que conta como risco psicossocial no dia a dia e como olhar para a sua empresa."
     - titulo: "Liderança preventiva, comunicação e mudança de mindset"
-      texto: "Como quem chefia percebe o problema cedo, conduz a conversa e muda práticas da rotina que pesam na equipe."
+      texto: "Liderança, comunicação com equipes comerciais e cultura da empresa. Quem chefia aprende a perceber o problema cedo, conduzir a conversa e mudar práticas da rotina que pesam na equipe."
     - titulo: "Aplicação prática, estudos de caso e plano de ação"
       texto: "A turma discute casos, decide o que faria em cada um e fecha o plano de ação da própria empresa."
+
+# Os dois blocos de benefícios do site atual: os do treinamento e os de quem investe em NR-1.
+beneficios:
+  titulo: "O que muda na empresa"
+  apoio: "O treinamento apoia a empresa na construção de um ambiente emocionalmente mais saudável e contribui para as boas práticas ligadas à NR-1."
+  grupos:
+    - rotulo: "Com o treinamento"
+      itens:
+        - "Menos riscos psicossociais no trabalho"
+        - "Relações mais saudáveis e colaborativas"
+        - "Clima melhor e mais cooperação entre as áreas"
+    - rotulo: "Para quem investe em NR-1"
+      itens:
+        - "Segurança psicológica entre as equipes"
+        - "Prevenção do estresse crônico, da ansiedade e do burnout"
+        - "Cultura de cuidado, diálogo e responsabilidade compartilhada"
 
 formato:
   titulo: "Formato e carga horária"

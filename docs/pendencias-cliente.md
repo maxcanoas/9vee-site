@@ -118,12 +118,12 @@ Arthur, cada idioma vai ganhar uma página própria no site, e o Google não val
 
 ## De onde vem cada pendência
 
-Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, com o que os tickets do reaproveitamento já fecharam: até agora, o 06, que tirou a linha da D21, o 05, que trouxe cinco da Tradução Simultânea, e o 21, que não trouxe nenhuma. São 107 marcações em `content/`, contra as 104 de 30/09.
+Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, com o que os tickets do reaproveitamento já fecharam: o 06, que tirou a linha da D21, o 05, que trouxe cinco da Tradução Simultânea, o 21 e o 07, que não trouxeram nenhuma, e o 22, que trouxe uma. São 108 marcações em `content/`, contra as 104 de 30/09.
 
 | Pergunta | Arquivo | Trecho |
 |---|---|---|
 | D2 | `content/home.md`, `content/quem-somos.md` | faixa de prova ("19 anos") e a história do Quem Somos |
-| D3 | `content/home.md`, `content/curso-de-idiomas.md` | faixa de prova ("14 idiomas") e apoio da lista de idiomas |
+| D3 | `content/home.md`, `content/curso-de-idiomas.md` | faixa de prova ("14 idiomas"), apoio da lista de idiomas e apoio de "Para a sua equipe" ("12 idiomas") |
 | D4 | `content/home.md` | faixa de prova ("+65 profissionais", "+160 clientes") |
 | D5 | `content/home.md` | as três pendências dos depoimentos |
 | D6 | `content/site.md`, `content/home.md`, `content/traducao-simultanea.md` | confirmação do drawer, "Como funciona", etapa 3, e a última pergunta do FAQ da Tradução |
@@ -139,7 +139,7 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D33 | `content/traducao-simultanea.md` | árabe, Libras e ASL, na nota de "Sete idiomas, quatro cidades" |
 | D34 | `content/traducao-simultanea.md` | a interpretação remota, no FAQ ("Dá para fazer a interpretação a distância?") |
 | A2 | `content/idiomas/*.md` | as pendências de cada página de idioma: para quem é, níveis, formatos, professores, provas, material, idade, HSK, escrita e, nos oito esqueletos, as cinco perguntas de cada um |
-| A3 | `content/curso-de-idiomas.md` | nota dos formatos (aula presencial) |
+| A3 | `content/curso-de-idiomas.md` | nota dos formatos: a aula presencial existe, e a marcação ficou só com as cidades |
 | A4 | `content/curso-de-idiomas.md`, `content/idiomas/mandarim.md` | FAQ "Quanto tempo leva para subir um nível?" e, no mandarim, "Em quanto tempo dá para conversar?" |
 | A5 | `content/curso-de-idiomas.md` | FAQ "No fim do curso eu recebo certificado?" |
 | D7 (idiomas) | `content/idiomas/*.md` | o "Quanto custa?" de cada página de idioma |
@@ -152,7 +152,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 - **05, feito em 01/10/2026:** entraram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ), uma marcação de cada.
 - **21, feito em 02/10/2026:** nenhuma marcação em `content/interpretacao-de-mandarim.md`. A D18 é confirmação. A D6 continua nos mesmos três lugares, e a página de interpretação de mandarim é a única que promete prazo: ela diz "até um dia útil", como a landing, abaixo dos botões e na confirmação do pedido, no lugar do texto com a marcação (`paginas.interpretacaoDeMandarim.prazo`, em `content/site.md`).
 - **07, feito em 02/10/2026:** a D2 continua em `content/quem-somos.md`, agora no texto da história. A faixa de números lê `content/home.md`, sem marcação nova. São 107 marcações em `content/`, como antes.
-- **22:** a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficam fora (decisão de 01/10/2026).
+- **22, feito em 02/10/2026:** a D3 ganhou um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 ficou só com as cidades; a D30 (a realocação) entrou como fato, sem marcação, na página de cursos e na de português para estrangeiros. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficaram fora (decisão de 01/10/2026). São 108 marcações em `content/`, uma a mais.
 
 ## O que mudou em 30/09/2026, para atualizar o Word
 

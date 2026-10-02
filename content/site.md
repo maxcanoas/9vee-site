@@ -270,6 +270,8 @@ pendencia:
     arthur: "o Arthur"
 
 rodape:
+  # A frase que fecha o rodapé do site atual, em caixa normal.
+  frase: "Seu próximo capítulo de sucesso começa agora."
   pronuncia: "9vee, lê-se Novee [CONFIRMAR COM A DANIELLA: a pronúncia certa da marca]."
   atendimento: "Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também online, de qualquer cidade."
   tituloContato: "Contato"

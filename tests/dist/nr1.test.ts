@@ -1,22 +1,57 @@
 import { describe, expect, it } from 'vitest';
-import { abrirPagina, conferirFiguraEmArco, conferirServico } from './apoio';
+import { abrirPagina, conferirFiguraEmArco, conferirServico, textoDe, textosDe } from './apoio';
 
 const nr1 = abrirPagina('treinamento-nr-1');
 
 describe('treinamento de NR-1', () => {
-  it('traz as oito seções do brief, na ordem', () => {
+  it('traz as seções do brief e as do site atual, na ordem', () => {
     // O hero é a única seção sem id: nada aponta para ele.
     const secoes = nr1.querySelectorAll('main section').map((secao) => secao.getAttribute('id') ?? 'hero');
     expect(secoes).toEqual([
       'hero',
       'por-que-agora',
       'o-que-recebe',
+      'temas',
       'modulos',
+      'beneficios',
       'formato',
       'abordagem',
       'perguntas',
       'contato',
     ]);
+  });
+
+  it('diz o objetivo do treinamento e lista os seis temas do site atual, com a Comunicação Não Violenta', () => {
+    expect(textoDe(nr1, '#temas .cabeca__apoio')).toMatch(/^O objetivo é /);
+    const temas = textosDe(nr1, '#temas dt');
+    expect(temas).toHaveLength(6);
+    expect(temas).toContain('Comunicação Não Violenta');
+    expect(textoDe(nr1, '#temas')).toContain('CNV');
+  });
+
+  it('traz os dois blocos de benefícios, os do treinamento e os de quem investe', () => {
+    const blocos = nr1.querySelectorAll('#beneficios .grupos__grupo');
+    expect(blocos.map((bloco) => bloco.querySelector('h3')?.text.trim())).toEqual([
+      'Com o treinamento',
+      'Para quem investe em NR-1',
+    ]);
+    for (const bloco of blocos) expect(bloco.querySelectorAll('li')).toHaveLength(3);
+    const texto = textoDe(nr1, '#beneficios');
+    for (const fato of ['riscos psicossociais', 'cooperação entre as áreas', 'burnout', 'responsabilidade compartilhada']) {
+      expect(texto).toContain(fato);
+    }
+  });
+
+  it('diz no módulo 2 o que o site atual diz dele', () => {
+    const modulos = textosDe(nr1, '#modulos .modulo');
+    expect(modulos).toHaveLength(3);
+    expect(modulos[1]).toContain('Liderança, comunicação com equipes comerciais e cultura da empresa.');
+  });
+
+  // As duas frases jurídicas da página atual ficaram fora por decisão de 01/10/2026.
+  it('não repete as duas frases jurídicas do site atual', () => {
+    const texto = textoDe(nr1, 'main');
+    expect(texto).not.toMatch(/2046|aç(ão|ões) trabalhistas?|disputa judicial|prova de boas práticas/i);
   });
 
   it('cita as fontes oficiais no "por que agora"', () => {

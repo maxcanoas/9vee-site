@@ -22,9 +22,9 @@ provas:
   apoio: "As três seguem os seis níveis do Quadro Europeu, do A1 ao C2."
   itens:
     - nome: "DELF e DALF"
-      texto: "Os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Provas escritas e orais medem a compreensão, a produção e a interação no idioma."
+      texto: "O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Provas escritas e orais medem a compreensão, a produção e a interação no idioma."
     - nome: "TCF"
-      texto: "O teste oficial de nível, usado em imigração e em universidade, que coloca você num dos seis níveis."
+      texto: "O teste oficial de nível, criado pelo CIEP (Centre International d'Études Pédagogiques), que coloca você num dos seis níveis."
 
 destaque:
   id: "preparatorio"

@@ -7,6 +7,7 @@ import Cartoes from '../../components/Cartoes.astro';
 import Niveis from '../../components/Niveis.astro';
 import Definicoes from '../../components/Definicoes.astro';
 import Pontos from '../../components/Pontos.astro';
+import Chamada from '../../components/Chamada.astro';
 import Faq from '../../components/Faq.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
 import { dadosDoSite } from '../../lib/site';
@@ -40,6 +41,7 @@ const jsonLd = [
   {conteudo.formatos && <Pontos id="formatos" {...conteudo.formatos} />}
   {conteudo.provas && <Definicoes id="provas" {...conteudo.provas} />}
   {conteudo.destaque && <Pontos {...conteudo.destaque} />}
+  {conteudo.realocacao && <Chamada id="realocacao" {...cursos.realocacao} />}
   {conteudo.faq && <Faq {...conteudo.faq} />}
   <CtaFinal {...conteudo.ctaFinal} cta={conteudo.topo.cta} servico="idiomas" idioma={idioma.slug} />
 </Base>

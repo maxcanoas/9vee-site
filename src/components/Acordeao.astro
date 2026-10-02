@@ -1,0 +1,133 @@
+---
+// Uma lista de nomes que abrem, em <details> nativo: o nome e uma linha curta ficam à vista, e o texto inteiro
+// aparece ao tocar, sem JS. É para o que tem resumo e detalhe, como os exames de proficiência. As perguntas
+// frequentes têm o componente delas (Faq), que o JSON-LD da página repete.
+import CabecaDeSecao from './CabecaDeSecao.astro';
+import Texto from './Texto.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  apoio: string;
+  itens: { nome: string; texto: string; detalhe: string[] }[];
+}
+
+const { id, titulo, apoio, itens } = Astro.props;
+---
+
+<section class="acordeao" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner acordeao__grade">
+    <CabecaDeSecao {id} {titulo} {apoio} />
+
+    <div class="acordeao__lista">
+      {
+        itens.map((item) => (
+          <details class="acordeao__item">
+            <summary class="acordeao__chamada">
+              <h3 class="acordeao__nome">
+                <Texto de={item.nome} />
+              </h3>
+              <span class="acordeao__resumo">
+                <Texto de={item.texto} />
+              </span>
+            </summary>
+            <div class="acordeao__detalhe">
+              {item.detalhe.map((paragrafo) => (
+                <p>
+                  <Texto de={paragrafo} />
+                </p>
+              ))}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .acordeao {
+    padding-block: var(--secao);
+  }
+
+  .acordeao__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: start;
+  }
+
+  .acordeao__lista {
+    border-block-end: 1px solid var(--linha);
+  }
+
+  .acordeao__item {
+    border-block-start: 1px solid var(--linha);
+  }
+
+  /* O nome em cima e o resumo embaixo, com o indicador ao lado dos dois. */
+  .acordeao__chamada {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--e-1) var(--e-4);
+    min-block-size: var(--alvo-minimo);
+    padding-block: var(--e-4);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .acordeao__chamada::-webkit-details-marker {
+    display: none;
+  }
+
+  .acordeao__nome {
+    font-size: var(--t-destaque);
+    line-height: var(--altura-subtitulo);
+    letter-spacing: 0;
+  }
+
+  .acordeao__resumo {
+    grid-column: 1;
+    color: var(--navy-2);
+  }
+
+  /* Indicador: o meio-círculo da marca, que gira quando o texto abre, como nas perguntas frequentes. */
+  .acordeao__chamada::after {
+    content: '';
+    grid-area: 1 / 2 / span 2;
+    inline-size: 0.875rem;
+    block-size: 0.4375rem;
+    border-radius: 0 0 var(--raio-pilula) var(--raio-pilula);
+    background-color: var(--magenta);
+  }
+
+  .acordeao__item[open] .acordeao__chamada::after {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .acordeao__chamada::after {
+      transition-property: transform;
+      transition-duration: var(--dur-media);
+      transition-timing-function: var(--curva);
+    }
+  }
+
+  .acordeao__detalhe {
+    display: grid;
+    gap: var(--e-3);
+    padding-block-end: var(--e-5);
+  }
+
+  .acordeao__detalhe p {
+    max-inline-size: 62ch;
+    color: var(--navy-2);
+  }
+
+  @media (min-width: 64rem) {
+    .acordeao__grade {
+      grid-template-columns: 0.8fr 1.2fr;
+      column-gap: var(--e-8);
+    }
+  }
+</style>

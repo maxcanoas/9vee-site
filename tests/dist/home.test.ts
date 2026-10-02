@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, paginasDeIdiomaNoConteudo } from './apoio';
+import { DIST, paginasDeIdiomaNoConteudo, textoDe } from './apoio';
 
 const home = parse(readFileSync(join(DIST, 'index.html'), 'utf8'));
 
@@ -26,6 +26,13 @@ describe('ordem do conteúdo', () => {
     const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
     const inicio = secoes.indexOf('servicos');
     expect(secoes.slice(inicio, inicio + 3)).toEqual(['servicos', 'idiomas', 'nr-1']);
+  });
+
+  // Abaixo da primeira dobra, que não ganha nada: a home está no limite do LCP.
+  it('põe os diferenciais do site atual depois do destaque de NR-1, antes do "como funciona"', () => {
+    const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
+    const inicio = secoes.indexOf('nr-1');
+    expect(secoes.slice(inicio, inicio + 3)).toEqual(['nr-1', 'diferenciais', 'como-funciona']);
   });
 
   // O grupo Empresas aparece três vezes: no painel do computador, no menu do celular e no rodapé.
@@ -91,6 +98,19 @@ describe('home', () => {
     const hrefs = home.querySelectorAll('#nr-1 a[target="_blank"]').map((a) => a.getAttribute('href') ?? '');
     expect(hrefs.some((h) => h.startsWith('https://www.gov.br/trabalho-e-emprego/'))).toBe(true);
     expect(hrefs.some((h) => h.startsWith('https://www.planalto.gov.br/'))).toBe(true);
+  });
+
+  it('traz os três diferenciais do site atual: a comunicação real, os professores e o diagnóstico', () => {
+    const itens = home.querySelectorAll('#diferenciais .lista-grande__item');
+    expect(itens).toHaveLength(3);
+    const texto = textoDe(home, '#diferenciais');
+    for (const fato of ['famílias imigrantes', 'no presencial e no remoto', 'diagnóstico do perfil de cada aluno']) {
+      expect(texto).toContain(fato);
+    }
+  });
+
+  it('fecha com a frase do contato do site atual', () => {
+    expect(textoDe(home, '#contato')).toContain('Grandes resultados começam com uma boa conversa.');
   });
 
   it('diz, em cada nota da faixa de números, com quem está a pendência', () => {

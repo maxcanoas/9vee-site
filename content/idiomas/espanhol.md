@@ -19,10 +19,12 @@ topo:
 
 provas:
   titulo: "Preparação para o DELE"
-  apoio: "O diploma é emitido em centros autorizados, como os Institutos Cervantes e as embaixadas."
+  apoio: "O DELE é a certificação oficial de espanhol para quem não é nativo, reconhecida pelo Estado espanhol."
   itens:
     - nome: "DELE"
-      texto: "Diploma de Español como Lengua Extranjera: o certificado oficial de espanhol para quem não é nativo."
+      texto: "Diploma de Español como Lengua Extranjera. É emitido em centros autorizados, como os Institutos Cervantes e as embaixadas."
+    - nome: "O preparatório"
+      texto: "Trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores."
 
 faq:
   titulo: "Perguntas sobre o espanhol"

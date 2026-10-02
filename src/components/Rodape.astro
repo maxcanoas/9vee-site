@@ -73,6 +73,7 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
   </div>
 
   <div class="conteiner rodape__base">
+    <p class="rodape__frase"><Texto de={rodape.frase} /></p>
     <p>{rodape.direitos}</p>
     <a href={rodape.privacidade.href}>{rodape.privacidade.rotulo}</a>
   </div>
@@ -201,6 +202,17 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
     border-block-start: 1px solid var(--linha-escura);
     color: var(--sobre-escuro);
     font-size: var(--t-pequeno);
+  }
+
+  /* A frase que fecha o site ocupa a linha inteira, acima dos direitos e da política. */
+  .rodape__frase {
+    flex-basis: 100%;
+    margin-block: var(--e-3);
+    color: var(--papel);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-3);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
   }
 
   @media (min-width: 64rem) {

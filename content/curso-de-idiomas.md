@@ -47,53 +47,91 @@ niveis:
 
 formatos:
   titulo: "Como são as aulas"
-  apoio: "Três formatos para quem estuda por conta própria. O pedido pergunta qual deles combina com o seu caso."
+  apoio: "Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. Você escolhe o dia e o horário: a aula se encaixa na sua rotina, e não o contrário."
   itens:
     - id: "particular"
       titulo: "Aula particular"
       texto: "Um professor só para você, com o conteúdo puxado para o seu objetivo. É assim que a 9vee atende executivos."
     - id: "online"
       titulo: "Aula online"
-      texto: "Ao vivo, de qualquer cidade, com o professor do outro lado da chamada."
+      texto: "Ao vivo, de qualquer cidade, no dia e no horário que você escolher."
     - id: "crianca"
       titulo: "Criança e adolescente"
-      texto: "Para quem ainda está na escola, com material da Cambridge."
-  nota: "Aula presencial: [CONFIRMAR COM O ARTHUR: se as aulas de idioma também acontecem presencialmente, e em que cidades]."
+      texto: "Inglês para quem ainda está na escola. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press."
+  nota: "Também há aula presencial [CONFIRMAR COM O ARTHUR: em que cidades as aulas de idioma presenciais acontecem, e onde]."
   cta: "Falar sobre as aulas"
 
+# Cada exame abre o texto completo do site atual: a linha curta fica à vista, e o detalhe, um parágrafo por item.
 provas:
   titulo: "Preparação para provas"
-  apoio: "Seis exames, cada um com o seu formato. Se a sua prova não está aqui, pergunte no pedido."
+  apoio: "Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para seis, com foco nos critérios de cada prova."
   itens:
     - nome: "TOEFL iBT"
       texto: "Inglês acadêmico, pedido por universidades."
+      detalhe:
+        - "O TOEFL (Test of English as a Foreign Language) é um dos exames de inglês mais aceitos por universidades e instituições acadêmicas do mundo. Ele mede o uso do idioma em contexto acadêmico, em quatro competências: Reading, Listening, Speaking e Writing."
+        - "O preparatório é para o TOEFL iBT (Internet Based Test) e para quem já está no intermediário alto ou no avançado. Segue o formato oficial do exame, com técnica para cada parte da prova."
     - nome: "CELPE-Bras"
       texto: "Português para estrangeiros, o exame oficial do Brasil."
+      detalhe:
+        - "Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países, e as universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
+        - "As aulas do preparatório são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame."
     - nome: "DELE"
-      texto: "Espanhol, do Instituto Cervantes."
+      texto: "Espanhol, o diploma oficial do idioma."
+      detalhe:
+        - "O DELE (Diploma de Español como Lengua Extranjera) é a certificação oficial de espanhol, reconhecida pelo Estado espanhol e emitida em centros autorizados, como os Institutos Cervantes e as embaixadas."
+        - "O preparatório trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores."
     - nome: "DELF e DALF"
-      texto: "Francês, os diplomas do sistema oficial da França."
+      texto: "Francês, os diplomas oficiais da França."
+      detalhe:
+        - "O DELF (Diplôme d'Études en Langue Française) e o DALF (Diplôme Approfondi de Langue Française) são emitidos pelo Ministério da Educação da França e reconhecidos internacionalmente. Vão do A1 ao C2, os seis níveis do Quadro Europeu, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma."
+        - "O preparatório trabalha todas as habilidades que o exame cobra."
     - nome: "TCF"
-      texto: "Francês, o teste de nível usado em imigração e em universidade."
+      texto: "Francês, o teste oficial de nível."
+      detalhe:
+        - "O TCF é o exame oficial de francês criado pelo CIEP (Centre International d'Études Pédagogiques). Ele coloca o candidato num dos seis níveis do Quadro Europeu, o padrão que instituições de ensino do mundo todo usam."
+        - "O preparatório tem professores nativos, prática direcionada e simulados do exame."
     - nome: "Inburgering"
-      texto: "Holandês, o exame de integração da Holanda."
+      texto: "Holandês, o exame de integração dos Países Baixos."
+      detalhe:
+        - "A lei holandesa de integração pede um exame prévio a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos. O teste avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país."
+        - "O preparatório é voltado para o exame e trabalha as duas partes: a língua e a cultura."
 
 equipe:
   titulo: "Para a sua equipe"
-  apoio: "Idioma para o time inteiro, para quem senta na diretoria ou para quem chegou de fora."
+  apoio: "Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 12 idiomas [CONFIRMAR COM A DANIELLA: quantidade de idiomas. A parte de empresas da página atual diz 12, e a home diz 14] para empresas em todo o Brasil."
   itens:
     - titulo: "Turma in company"
-      texto: "O time estuda junto, na mesma turma e no mesmo nível, sem sair da empresa."
-    - titulo: "Aula individual para a diretoria"
-      texto: "Um professor por executivo, para quem viaja, negocia ou apresenta em outra língua."
+      texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
+    - titulo: "Aula individual para executivos"
+      texto: "Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível."
     - titulo: "Português para quem veio de fora"
       texto: "Para o profissional estrangeiro que entrou no time, com preparação para o CELPE-Bras."
   nota: "O pedido pergunta idioma, número de alunos, nível da turma e formato. A proposta sai com isso na mão."
   cta: "Pedir orçamento para a equipe"
 
+# A realocação de funcionários, o serviço que o site atual oferece junto dos cursos para empresas. A página de
+# português para estrangeiros mostra este mesmo bloco.
+realocacao:
+  titulo: "Realocação de funcionários"
+  texto: "Além dos cursos, a 9vee apoia o profissional que está de mudança para outra cidade ou outro país, por transferência ou nova contratação. O atendimento é feito com discrição, para o colaborador e a família."
+  pontos:
+    - "Idioma"
+    - "Orientação sobre legislação"
+    - "Documentação"
+    - "Adaptação cultural"
+
+# A ponte para o LMS, que a página de cursos do site atual também faz.
+lms:
+  titulo: "A equipe também pode estudar pelo LMS"
+  texto: "Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real."
+  link:
+    rotulo: "Conhecer o LMS"
+    href: "/lms/"
+
 como:
   titulo: "Como começa"
-  apoio: "Três passos até a primeira aula."
+  apoio: "Três passos até a primeira aula. Depois dela, cada etapa do curso é planejada para o seu ritmo e os seus objetivos."
   etapas:
     - titulo: "Você diz o idioma e o objetivo"
       texto: "Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção."

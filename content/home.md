@@ -74,6 +74,17 @@ destaqueNr1:
   link: { rotulo: "Ver o treinamento de NR-1", href: "/treinamento-nr-1/" }
   cta: "Pedir orçamento do treinamento"
 
+# Os três diferenciais do site atual, numa seção própria, abaixo da primeira dobra.
+diferenciais:
+  titulo: "O que faz a 9vee diferente"
+  itens:
+    - nome: "Comunicação de verdade"
+      texto: "Os cursos vão além do ensino tradicional. Treinam a comunicação do dia a dia, a que dá autonomia e segurança a famílias imigrantes em qualquer país."
+    - nome: "Professores perto ou longe"
+      texto: "Professores qualificados dão aula no presencial e no remoto, com experiência prática e tecnologia educacional."
+    - nome: "Um programa por aluno"
+      texto: "Primeiro vem o diagnóstico do perfil de cada aluno. O programa é montado a partir dele."
+
 como:
   titulo: "Como funciona"
   etapas:
@@ -148,5 +159,5 @@ faq:
 
 ctaFinal:
   titulo: "Conte o que você precisa."
-  texto: "Você responde em quatro passos. No fim, decide se prefere conversar agora pelo WhatsApp ou esperar a equipe chamar."
+  texto: "Grandes resultados começam com uma boa conversa. Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar."
 ---

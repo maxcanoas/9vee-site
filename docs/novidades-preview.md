@@ -2,6 +2,31 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, nona leva (02/10): o que faltava do site atual na home, no NR-1, em Cursos e nas páginas de idioma
+
+- **Home:** https://9vee-preview.9vee-site.workers.dev/
+  - uma parte nova, "O que faz a 9vee diferente", com os três diferenciais do site atual de vocês: a comunicação do dia a dia, os professores no presencial e no remoto e o programa montado a partir do diagnóstico de cada aluno;
+  - o fim da página abre com "Grandes resultados começam com uma boa conversa.";
+  - o topo da página não mudou.
+- **Rodapé, em todas as páginas:** a frase "Seu próximo capítulo de sucesso começa agora.", agora em caixa normal.
+- **Treinamento de NR-1:** https://9vee-preview.9vee-site.workers.dev/treinamento-nr-1/
+  - "O que o treinamento aborda": o objetivo e os seis temas, com a Comunicação Não Violenta;
+  - "O que muda na empresa": os dois blocos de benefícios, os do treinamento e os de quem investe em NR-1;
+  - o módulo 2 diz o que o site atual diz dele: liderança, comunicação com equipes comerciais e cultura da empresa;
+  - as duas frases jurídicas da página atual (o PGR como prova em ação trabalhista e o certificado como prova de boas práticas) ficaram fora.
+- **Cursos de Idiomas:** https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/
+  - em "Preparação para provas", cada exame abre o texto completo ao tocar no nome dele;
+  - "Como são as aulas" fala dos professores, da prática de conversação e da escolha do dia e do horário, e diz que também há aula presencial. O que aparece como "a confirmar" são as cidades (pergunta 3 do Arthur);
+  - "Para a sua equipe" fala de novos mercados e de negociação com outros países. Os "cursos online em 12 idiomas" aparecem como "a confirmar": a home diz 14 (pergunta 3 da Daniella);
+  - duas partes novas para empresas: a realocação de funcionários (idioma, orientação sobre legislação, documentação e adaptação cultural, para o colaborador e a família) e um caminho para a página do LMS.
+- **Páginas de idioma,** que continuam fora do site até vocês responderem:
+  - inglês, com o curso de crianças e adolescentes completo: https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/ingles/
+  - português para estrangeiros, com o material didático, o ritmo das aulas, o "também para brasileiros" e a realocação: https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/portugues-para-estrangeiros/
+  - francês, espanhol e holandês, com o texto de cada prova e do preparatório dela.
+- Os textos são os do site atual, com a redação refeita. Vale conferir se cada frase ainda diz o que vocês querem dizer.
+
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-22/` e publique com `npm run deploy`. Esta leva, a do Quem Somos e a da interpretação de mandarim podem ir juntas. Os lotes 1, 2 e 3 saem depois do seu ok.
+
 ## Semana 1, oitava leva (02/10): a página Quem Somos completa
 
 - A página Quem Somos deixou de ser "em construção". Ela agora conta o que o site atual de vocês conta, sem a sede: https://9vee-preview.9vee-site.workers.dev/quem-somos/
