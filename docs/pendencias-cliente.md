@@ -11,7 +11,7 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 - o texto das perguntas passou a ser o do Word que vai para o cliente (`docs/Perguntas-9vee-Daniella-e-Arthur.docx`), que já trazia o que o material do Canva responde e as perguntas 31 a 36;
 - a decisão do reaproveitamento do site atual (`docs/fase-1-spec.md`, "Reaproveitamento do site atual"): o que o site atual responde virou confirmação.
 
-**Atualizado em 01/10/2026:** a pergunta 37, que tinha entrado em 30/09, saiu. Ela pedia a leitura do advogado sobre duas frases jurídicas da página de treinamentos: o PGR como prova em ação ajuizada até 2046, e o certificado como prova de boas práticas em disputa judicial. O Maxwell decidiu que as duas frases não entram no site novo, então não há o que perguntar. A lista da Daniella termina na 36, e o Word, que ainda não tinha a 37, não muda por causa dela.
+**Atualizado em 01/10/2026:** a pergunta 37, que tinha entrado em 30/09, saiu. Ela pedia a leitura do advogado sobre duas frases jurídicas da página de treinamentos: o PGR como prova em ação ajuizada até 2046, e o certificado como prova de boas práticas em disputa judicial. O Maxwell decidiu que as duas frases não entram no site novo, então não há o que perguntar. A lista da Daniella termina na 36, e o Word, que ainda não tinha a 37, não muda por causa dela. No mesmo dia, com o ticket 06 fechado, a pergunta 21 ganhou duas perguntas no fim (o que cada relatório mostra e se a plataforma recebe outro conteúdo além de idiomas): está em "O que mudou em 01/10/2026", no fim deste arquivo.
 
 A numeração de 1 a 30 da Daniella e de 1 a 8 do Arthur não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
 
@@ -54,7 +54,7 @@ Daniella, para fechar os textos do site novo preciso destas respostas. Várias s
 
 **LMS**
 
-21. O site atual diz que a plataforma fica disponível 24 horas por dia, com trilhas de aprendizagem personalizadas, acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH. A página nova de LMS repete isso. Continua valendo? No material do Canva, o LMS aparece também com sala de aula invertida, IA e plantão de dúvidas 24 horas pelo WhatsApp com a professora embaixadora em IA, e o print mostra a plataforma EdApp. É a EdApp, com a camada de vocês por cima? Posso descrever esses itens no site e mostrar telas da plataforma?
+21. O site atual diz que a plataforma fica disponível 24 horas por dia, com trilhas de aprendizagem personalizadas, acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH. A página nova de LMS repete isso. Continua valendo? No material do Canva, o LMS aparece também com sala de aula invertida, IA e plantão de dúvidas 24 horas pelo WhatsApp com a professora embaixadora em IA, e o print mostra a plataforma EdApp. É a EdApp, com a camada de vocês por cima? Posso descrever esses itens no site e mostrar telas da plataforma? Mais duas coisas, para completar a página. O que cada um dos três relatórios mostra? A página nova só dá o nome deles. E a plataforma recebe só os cursos de idiomas, ou também treinamentos internos e a integração de novos colaboradores? O pedido de orçamento do site novo oferece as três opções, e o site atual só fala de idiomas.
 
 **Quem somos**
 
@@ -196,3 +196,13 @@ Não mudaram: 1 e 4 a 8.
 - Tradução: o que veio do Canva, na 16 (o revezamento), na 17, na 33 e na 34;
 - privacidade: 25 a 27;
 - idiomas: 2 a 5 do Arthur.
+
+## O que mudou em 01/10/2026, para atualizar o Word
+
+Depois do ticket 06 (a página de LMS completa), por decisão do Maxwell no mesmo dia.
+
+| Pergunta | O que mudou |
+|---|---|
+| 21 | Ganhou duas perguntas no fim. Primeira: o que cada um dos três relatórios (desempenho, frequência e progresso) mostra, porque a página nova só dá o nome deles, como o site atual. Segunda: se a plataforma recebe só os cursos de idiomas ou também treinamentos internos e a integração de novos colaboradores. O pedido de orçamento do site oferece as três opções desde o MVP, e o site atual só fala de idiomas |
+
+A pergunta 37 não entra no Word: ela saiu antes de chegar a ele.

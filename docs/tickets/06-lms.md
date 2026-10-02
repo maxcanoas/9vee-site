@@ -6,7 +6,7 @@
 
 **Horas:** 4 (eram 2,5). **Semana:** 1.
 
-**Situação:** feito em 01/10/2026, com o ok do Maxwell para a Fase 2 do reaproveitamento no mesmo dia. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. É o primeiro ticket da ordem nova. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
+**Situação:** feito e aprovado pelo Maxwell em 01/10/2026, com o ok dele para a Fase 2 do reaproveitamento no mesmo dia. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. É o primeiro ticket da ordem nova. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
 
 **Do site atual, como fato:**
 
@@ -64,7 +64,7 @@
   - as três perguntas foram para o fechamento escuro, numeradas, porque a ordem é a do formulário. Um teste confere que a página anuncia tantas perguntas quantas o pedido de LMS faz;
   - a chamada do meio vem depois dos relatórios, e não depois dos setores, como no site atual. Depois dos setores, o botão dela encostaria no do fechamento;
   - os três relatórios saem só com o nome, em tipo maior. O site atual não diz o que cada um mostra, e isso continua na pergunta 21. A primeira versão explicava cada palavra, e a revisão de spec apontou que a explicação era minha, e não da 9vee.
-- **Sem FAQ:** o site atual não tem perguntas do LMS, e as respostas possíveis repetiriam as seções. O preço fica sem resposta nesta página. Se o Maxwell quiser, entra um "Quanto custa?" com pendência (pergunta 7), como no NR-1 e em Cursos.
+- **Sem FAQ:** o site atual não tem perguntas do LMS, e as respostas possíveis repetiriam as seções. O preço fica sem resposta nesta página. O Maxwell decidiu em 01/10 que o "Quanto custa?" não entra por enquanto: o preço entra quando a pergunta 7 voltar.
 - **Componentes novos,** feitos para as próximas páginas do reaproveitamento:
   - `FaixaDeAtalhos`: os atalhos do alto, com o desenho do link do menu (`LinkDoMenu`);
   - `TextoComImagem`: texto corrido ao lado da imagem em arco, com o texto antes da imagem no celular;
@@ -100,4 +100,4 @@
     - a casca comum entre o `TextoComImagem` e o `ComoComeca` (a imagem em arco e a grade) fica para o ticket 05 ou o 07, quando o `TextoComImagem` tiver o segundo uso;
     - o `Service` montado na página repete seis linhas do NR-1. A parte comum já é a função `servico`; juntar mais levaria o `astro:content` para o módulo que os testes unitários importam;
     - a meia-pílula repetida no CSS dos componentes novos já se repete em nove componentes antigos. Levar as três formas para o `base.css` mexe em todos, e fica como proposta para o Maxwell;
-  - **para o Maxwell decidir:** a terceira pergunta do fechamento fala em "treinamentos internos" e "integração de novos colaboradores". O texto é do MVP aprovado e repete as opções do pedido, mas o site atual só fala de idiomas na plataforma. Vale confirmar com a Daniella se o LMS recebe outro conteúdo.
+  - **decidido pelo Maxwell em 01/10:** a terceira pergunta do fechamento fala em "treinamentos internos" e "integração de novos colaboradores". O texto é do MVP aprovado e repete as opções do pedido, mas o site atual só fala de idiomas na plataforma. Na tela fica como está, e a pergunta 21 da Daniella ganhou duas perguntas: se a plataforma recebe outro conteúdo além de idiomas, e o que cada um dos três relatórios mostra (`docs/pendencias-cliente.md`, "O que mudou em 01/10/2026"). O Word é o Maxwell que atualiza.
