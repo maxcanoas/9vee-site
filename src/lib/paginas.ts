@@ -33,8 +33,8 @@ export async function paginaInterpretacaoDeMandarim() {
   );
 }
 
-export async function paginaParcial(id: 'quem-somos') {
-  return exigir(await getEntry('parciais', id), `content/${id}.md`);
+export async function paginaQuemSomos() {
+  return exigir(await getEntry('quemSomos', 'quem-somos'), 'content/quem-somos.md');
 }
 
 export async function paginaPrivacidade() {

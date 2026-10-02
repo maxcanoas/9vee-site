@@ -230,20 +230,23 @@ mark.confirmar {
   box-decoration-break: clone;
 }
 
-/* Um mapa só, do id do grupo em content/site.md para a cor, para o menu, o rodapé, as famílias de idiomas e o
-   título de mostra das páginas de serviço. A cor é lida onde o grupo está, então o fundo escuro troca as faixas
-   logo abaixo sem outro mapa. */
+/* Um mapa só, do id do grupo em content/ para a cor, para o menu, o rodapé, as famílias de idiomas, o título de
+   mostra das páginas de serviço e os três princípios do Quem Somos. A cor é lida onde o grupo está, então o fundo
+   escuro troca as faixas logo abaixo sem outro mapa. */
 [data-grupo='empresas'],
-[data-grupo='germanicas'] {
+[data-grupo='germanicas'],
+[data-grupo='proposito'] {
   --cor-grupo: var(--grifo-violeta);
 }
 
 [data-grupo='para-voce'],
-[data-grupo='romanicas'] {
+[data-grupo='romanicas'],
+[data-grupo='coragem'] {
   --cor-grupo: var(--grifo-magenta);
 }
 
-[data-grupo='outras'] {
+[data-grupo='outras'],
+[data-grupo='parceria'] {
   --cor-grupo: var(--grifo-menta);
 }
 

@@ -122,7 +122,7 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 
 | Pergunta | Arquivo | Trecho |
 |---|---|---|
-| D2 | `content/home.md`, `content/quem-somos.md` | faixa de prova ("19 anos") e nota do Quem Somos |
+| D2 | `content/home.md`, `content/quem-somos.md` | faixa de prova ("19 anos") e a história do Quem Somos |
 | D3 | `content/home.md`, `content/curso-de-idiomas.md` | faixa de prova ("14 idiomas") e apoio da lista de idiomas |
 | D4 | `content/home.md` | faixa de prova ("+65 profissionais", "+160 clientes") |
 | D5 | `content/home.md` | as três pendências dos depoimentos |
@@ -151,7 +151,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 - **06, feito em 01/10/2026:** a D21 saiu de `content/home.md` e de `content/lms.md`. A pergunta virou confirmação, sem marcação no código.
 - **05, feito em 01/10/2026:** entraram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ), uma marcação de cada.
 - **21, feito em 02/10/2026:** nenhuma marcação em `content/interpretacao-de-mandarim.md`. A D18 é confirmação. A D6 continua nos mesmos três lugares, e a página de interpretação de mandarim é a única que promete prazo: ela diz "até um dia útil", como a landing, abaixo dos botões e na confirmação do pedido, no lugar do texto com a marcação (`paginas.interpretacaoDeMandarim.prazo`, em `content/site.md`).
-- **07:** a D2 continua em `content/quem-somos.md`. A faixa de números lê `content/home.md`, sem marcação nova.
+- **07, feito em 02/10/2026:** a D2 continua em `content/quem-somos.md`, agora no texto da história. A faixa de números lê `content/home.md`, sem marcação nova. São 107 marcações em `content/`, como antes.
 - **22:** a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficam fora (decisão de 01/10/2026).
 
 ## O que mudou em 30/09/2026, para atualizar o Word

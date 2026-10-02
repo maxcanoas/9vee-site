@@ -1,15 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroPagina from '../components/HeroPagina.astro';
-import Cartoes from '../components/Cartoes.astro';
+import FaixaProva from '../components/FaixaProva.astro';
+import FaixaDeAtalhos from '../components/FaixaDeAtalhos.astro';
+import TextoComImagem from '../components/TextoComImagem.astro';
+import Mostra from '../components/Mostra.astro';
+import Principios from '../components/Principios.astro';
+import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite } from '../lib/site';
-import { paginaParcial } from '../lib/paginas';
+import { paginaHome, paginaQuemSomos } from '../lib/paginas';
+import { GRUPO_DO_PUBLICO } from '../lib/publico';
 
-const { data: pagina } = await paginaParcial('quem-somos');
+const { data: pagina } = await paginaQuemSomos();
+const { data: home } = await paginaHome();
 const site = await dadosDoSite();
 ---
 
 <Base pagina="quemSomos" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao}>
-  <HeroPagina {...pagina.hero} textos={site.cta} etiqueta={site.etiquetaMvp} />
-  <Cartoes id="frentes" {...pagina.bloco} textos={site.cta} />
+  <HeroPagina {...pagina.hero} textos={site.cta} />
+  {/* Os números são os da home: o mesmo dado mora num lugar só, com as mesmas pendências. */}
+  <FaixaProva {...home.prova} pendencia={site.pendencia} />
+  <FaixaDeAtalhos id="frentes" {...pagina.frentes} />
+  <TextoComImagem id="historia" {...pagina.historia} />
+  <Mostra id="missao" {...pagina.missao} grupo={GRUPO_DO_PUBLICO.empresa} />
+  <Principios id="principios" {...pagina.principios} />
+  <CtaFinal {...pagina.ctaFinal} cta={site.cta} />
 </Base>

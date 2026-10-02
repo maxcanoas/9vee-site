@@ -310,6 +310,8 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'traducao-bloco-mandarim-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800, antes: rolarAte('#mandarim', -80) },
     { nome: 'curso-de-mandarim-para-quem-390', rota: '/curso-de-idiomas/mandarim/', largura: 390, altura: 844, antes: rolarAte('#para-quem', -60) },
   ],
+  // O Quem Somos completo: a página inteira, o topo e cada seção.
+  'ticket-07': capturasDaPagina('quem-somos', '/quem-somos/', ['frentes', 'historia', 'missao', 'principios']),
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

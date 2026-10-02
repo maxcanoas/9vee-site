@@ -224,7 +224,6 @@ const site = defineCollection({
       detalhe: z.string().includes('{nota}').includes('{quem}'),
       quem: z.object({ daniella: z.string(), arthur: z.string() }),
     }),
-    etiquetaMvp: z.string(),
     rodape: z.object({
       pronuncia: z.string(),
       atendimento: z.string(),
@@ -288,6 +287,8 @@ const sustentacaoDaMostra = {
   apoio: z.string(),
   itens: z.array(tituloETexto.extend({ numero: z.boolean().optional() })).min(1),
 };
+// A frase em tipo de mostra que quebra onde couber, com o grifo no meio dela.
+const fraseComGrifo = z.object({ antes: z.string(), grifo: z.string(), depois: z.string() });
 
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
@@ -604,7 +605,7 @@ const interpretacaoDeMandarim = defineCollection({
     servicos: z.object({ titulo: z.string(), itens: z.array(nomeETexto).min(2) }),
     // O título da seção é a frase em tipo grande, com o grifo no meio dela e a assinatura na escrita do idioma.
     tese: z.object({
-      frase: z.object({ antes: z.string(), grifo: z.string(), depois: z.string() }),
+      frase: fraseComGrifo,
       assinatura: z.string(),
       ...sustentacaoDaMostra,
     }),
@@ -614,25 +615,29 @@ const interpretacaoDeMandarim = defineCollection({
   }),
 });
 
-// A página que continua parcial, como no MVP: hero, um bloco curto e a etiqueta de obra.
-const parciais = defineCollection({
+// O Quem Somos com o que o site atual conta: a história, a missão e os três princípios. Sem sede: a 9vee não tem
+// endereço aberto ao público. Os números que a página mostra são os da home.
+const quemSomos = defineCollection({
   loader: glob({ pattern: 'quem-somos.md', base: conteudo }),
   schema: z.object({
     seo,
-    hero: z.object({
-      rotulo: z.string(),
-      h1: z.string(),
-      apoio: z.string(),
-      cta: z.string().optional(),
-      imagem,
+    hero: z.object({ rotulo: z.string(), h1: z.string(), apoio: z.string(), imagem }),
+    // As quatro frentes de hoje, cada uma levando à página dela.
+    frentes: z.object({
+      titulo: z.string(),
+      itens: z.array(z.object({ rotulo: z.string(), descricao: z.string(), href: z.string() })).min(2),
     }),
-    bloco: z.object({
+    historia: textoComImagem,
+    missao: z.object({ frase: fraseComGrifo, ...sustentacaoDaMostra }),
+    // O id de cada princípio dá a cor do grifo dele, pelo mapa [data-grupo] do base.css.
+    principios: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(tituloETexto).min(2),
-      nota: z.string(),
-      cta: z.string().optional(),
+      itens: z
+        .array(nomeETexto.extend({ id: z.enum(['proposito', 'coragem', 'parceria']), itens: z.array(tituloETexto).min(2) }))
+        .min(2),
     }),
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
   }),
 });
 
@@ -666,6 +671,6 @@ export const collections = {
   lms,
   traducao,
   interpretacaoDeMandarim,
-  parciais,
+  quemSomos,
   privacidade,
 };

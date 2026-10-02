@@ -2,6 +2,21 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, oitava leva (02/10): a página Quem Somos completa
+
+- A página Quem Somos deixou de ser "em construção". Ela agora conta o que o site atual de vocês conta, sem a sede: https://9vee-preview.9vee-site.workers.dev/quem-somos/
+  - os números, os mesmos da home;
+  - as quatro frentes de hoje, cada uma levando à página dela;
+  - a história: a 9vee nasceu do sonho dos fundadores de mudar o jeito de aprender idiomas, junta educação e tecnologia, já ensinou milhares de alunos e atende comunidades, empresas e órgãos públicos em todo o Brasil;
+  - a missão, "Transformar conhecimento em confiança e ação.", em destaque;
+  - os três princípios (Propósito, Coragem e Parceria), cada um com os três itens dele, em uma frase cada.
+- Os textos dos princípios e da missão foram encurtados e reescritos: o conteúdo é o do site atual, e a redação mudou. Vale conferir se cada frase ainda diz o que vocês querem dizer (pergunta 22).
+- O que aparece como "a confirmar" é o tempo de casa: os números dizem 19 anos e o texto diz mais de 20 (pergunta 2).
+- A página não fala de sede nem de endereço, não cita as pessoas à frente da empresa (pergunta 22) e não mostra os logos de clientes (pergunta 17).
+- A foto da parte "Como a 9vee começou" ainda é a arte provisória, com o código da imagem à vista.
+
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-07/` e publique com `npm run deploy`. Falta gerar a IMG-QUEM-SOMOS-HISTORIA, com o prompt de `docs/imagens-gemini.md`. Esta leva e a da interpretação de mandarim podem ir juntas.
+
 ## Semana 1, sétima leva (02/10): a página de interpretação de mandarim
 
 - O site novo ganhou a página de interpretação de mandarim para o mercado financeiro, com o que a landing "Mandarim" do site atual de vocês diz: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/mandarim/
