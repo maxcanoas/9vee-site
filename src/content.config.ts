@@ -24,6 +24,8 @@ const faq = z.object({
 });
 
 const tituloETexto = z.object({ titulo: z.string(), texto: z.string() });
+// O item de uma lista de definições: as provas de um idioma, os pontos de uma metodologia.
+const nomeETexto = z.object({ nome: z.string(), texto: z.string() });
 
 export const servicoId = z.enum(SERVICOS);
 
@@ -234,6 +236,16 @@ const imagem = z.object({
 /** A imagem do Gemini de uma seção: o ID do documento de prompts, o nome do arquivo e o texto alternativo. */
 export type Imagem = z.infer<typeof imagem>;
 
+// O que as páginas de serviço têm em comum: o tipo do Service que o Google lê e o hero com o botão do pedido.
+const tipoDoServico = z.object({ tipo: z.string() });
+const heroDeServico = z.object({
+  rotulo: z.string(),
+  h1: z.string(),
+  apoio: z.string(),
+  cta: z.string(),
+  imagem,
+});
+
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
   schema: z.object({
@@ -315,14 +327,8 @@ const nr1 = defineCollection({
   loader: glob({ pattern: 'treinamento-nr-1.md', base: conteudo }),
   schema: z.object({
     seo,
-    servico: z.object({ tipo: z.string() }),
-    hero: z.object({
-      rotulo: z.string(),
-      h1: z.string(),
-      apoio: z.string(),
-      cta: z.string(),
-      imagem,
-    }),
+    servico: tipoDoServico,
+    hero: heroDeServico,
     porQue: z.object({
       titulo: z.string(),
       apoio: z.string(),
@@ -387,7 +393,7 @@ const idiomas = defineCollection({
     provas: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1),
+      itens: z.array(nomeETexto).min(1),
     }),
     equipe: z.object({
       titulo: z.string(),
@@ -434,7 +440,7 @@ const paginasDeIdioma = defineCollection({
         .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
         .optional(),
       provas: z
-        .object({ titulo: z.string(), apoio: z.string(), itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(1) })
+        .object({ titulo: z.string(), apoio: z.string(), itens: z.array(nomeETexto).min(1) })
         .optional(),
       destaque: z
         .object({
@@ -460,14 +466,8 @@ const lms = defineCollection({
   loader: glob({ pattern: 'lms.md', base: conteudo }),
   schema: z.object({
     seo,
-    servico: z.object({ tipo: z.string() }),
-    hero: z.object({
-      rotulo: z.string(),
-      h1: z.string(),
-      apoio: z.string(),
-      cta: z.string(),
-      imagem,
-    }),
+    servico: tipoDoServico,
+    hero: heroDeServico,
     // Os benefícios do site atual, cada um levando à seção da página que o explica.
     motivos: z.object({
       titulo: z.string(),
@@ -483,7 +483,7 @@ const lms = defineCollection({
     // O título da seção é a frase em tipo grande, uma linha por item, com o grifo no começo de cada uma.
     plataforma: z.object({
       linhas: z.array(z.object({ grifo: z.string(), texto: z.string() })).min(1),
-      destaque: z.string(),
+      apoio: z.string(),
       itens: z.array(tituloETexto).min(1),
     }),
     // Só o nome de cada relatório: o site atual não diz o que cada um mostra.
@@ -502,7 +502,7 @@ const lms = defineCollection({
     metodologia: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(2),
+      itens: z.array(nomeETexto).min(2),
     }),
     setores: z.object({
       titulo: z.string(),

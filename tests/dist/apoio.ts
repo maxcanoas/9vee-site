@@ -20,6 +20,33 @@ export function carregarPaginas(pasta = DIST): Pagina[] {
 
 export { PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo, type PaginaDeIdiomaNoConteudo } from '../conteudo.ts';
 
+/** A página de uma rota do build de preview, já lida: "lms" é o dist/lms/index.html. */
+export function abrirPagina(rota: string): HTMLElement {
+  return parse(readFileSync(join(DIST, rota, 'index.html'), 'utf8'));
+}
+
+/** O Service da página de um serviço: o nome dele, o endereço da página e a organização como quem presta. */
+export function conferirServico(raiz: HTMLElement, { nome, caminho }: { nome: string; caminho: string }) {
+  const servico = jsonLd(raiz).find((no) => no['@type'] === 'Service');
+  expect(servico).toBeDefined();
+  expect(servico?.name).toBe(nome);
+  expect(servico?.provider).toEqual({ '@id': expect.stringContaining('/#organizacao') });
+  expect(servico?.url).toEqual(expect.stringContaining(caminho));
+}
+
+/**
+ * A figura em arco de uma seção, com o texto alternativo definitivo: a imagem do Gemini se o arquivo já está em
+ * src/assets/imagens/, e senão o Placeholder com o ID à vista.
+ */
+export function conferirFiguraEmArco(figura: HTMLElement | null, idDoPlaceholder: RegExp) {
+  const alternativo = figura?.getAttribute('alt') ?? figura?.getAttribute('aria-label') ?? '';
+  expect(alternativo.length).toBeGreaterThanOrEqual(10);
+  expect(figura?.getAttribute('class')).toContain('figura--arco');
+  if (figura?.classList.contains('placeholder')) {
+    expect(figura.querySelector('.placeholder__id')?.text).toMatch(idDoPlaceholder);
+  }
+}
+
 /** Texto que a pessoa vê ou que o leitor de tela lê: sem script, style e template. */
 export function textoVisivel(raiz: HTMLElement): string {
   const copia = parse(raiz.toString());

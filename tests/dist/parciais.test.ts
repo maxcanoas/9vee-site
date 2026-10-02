@@ -1,10 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { parse, type HTMLElement } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST } from './apoio';
-
-const abrir = (rota: string) => parse(readFileSync(join(DIST, rota, 'index.html'), 'utf8'));
+import { abrirPagina } from './apoio';
 
 // O LMS saiu daqui no ticket 06: a página completa tem o teste dela, em lms.test.ts.
 const PARCIAIS = [
@@ -13,7 +8,7 @@ const PARCIAIS = [
 ] as const;
 
 describe.each(PARCIAIS)('página parcial: $nome', ({ rota, servico }) => {
-  const pagina: HTMLElement = abrir(rota);
+  const pagina = abrirPagina(rota);
 
   it('avisa no hero que a página está em construção', () => {
     const etiqueta = pagina.querySelector('main section:first-of-type .hero-pagina__etiqueta');
@@ -41,7 +36,7 @@ describe.each(PARCIAIS)('página parcial: $nome', ({ rota, servico }) => {
 });
 
 describe('tradução simultânea', () => {
-  const pagina = abrir('traducao-simultanea');
+  const pagina = abrirPagina('traducao-simultanea');
   const texto = pagina.querySelector('main')?.text.replace(/\s+/g, ' ') ?? '';
 
   it('diz onde há atendimento presencial, que é o único que o site atual afirma', () => {
@@ -59,11 +54,11 @@ describe('tradução simultânea', () => {
 
 describe('Quem Somos', () => {
   it('marca como pendência o que o site atual não conta', () => {
-    expect(abrir('quem-somos').querySelector('main mark.confirmar')).not.toBeNull();
+    expect(abrirPagina('quem-somos').querySelector('main mark.confirmar')).not.toBeNull();
   });
 
   it('mostra as quatro frentes da empresa', () => {
-    const frentes = abrir('quem-somos').querySelectorAll('#frentes .cartao__titulo').map((no) => no.text.trim());
+    const frentes = abrirPagina('quem-somos').querySelectorAll('#frentes .cartao__titulo').map((no) => no.text.trim());
     expect(frentes).toEqual(['Cursos de idiomas', 'Tradução simultânea', 'Treinamento de NR-1', 'LMS']);
   });
 });

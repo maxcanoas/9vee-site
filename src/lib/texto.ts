@@ -31,9 +31,10 @@ export const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('p
 
 /**
  * O trecho com o espaço que não quebra no lugar de cada espaço: num título em tipo grande, ele desce inteiro para a
- * linha de baixo, em vez de deixar a última palavra sozinha.
+ * linha de baixo, em vez de deixar a última palavra sozinha. Dentro dos colchetes o espaço fica como está, porque a
+ * marca de pendência e o rótulo de um link dependem dele para o formatador reconhecer.
  */
-export const comEspacoFixo = (texto: string) => texto.replaceAll(' ', '\u00a0');
+export const comEspacoFixo = (texto: string) => texto.replace(/ (?![^[\]]*\])/g, '\u00a0');
 
 /** Aviso para o leitor de tela em todo link que abre outra aba. */
 export const AVISO_NOVA_ABA = ' (abre em nova aba)';

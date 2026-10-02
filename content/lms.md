@@ -49,7 +49,7 @@ plataforma:
       texto: "por dia,"
     - grifo: "7 dias"
       texto: "por semana."
-  destaque: "A plataforma fica disponível o tempo todo, e cada colaborador estuda no momento mais conveniente para ele."
+  apoio: "A plataforma fica disponível o tempo todo, e cada colaborador estuda no momento mais conveniente para ele."
   itens:
     - titulo: "Professores por perto"
       texto: "O acompanhamento dos professores é contínuo."

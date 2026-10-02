@@ -1,10 +1,7 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, jsonLd } from './apoio';
+import { abrirPagina, conferirFiguraEmArco, conferirServico } from './apoio';
 
-const nr1 = parse(readFileSync(join(DIST, 'treinamento-nr-1', 'index.html'), 'utf8'));
+const nr1 = abrirPagina('treinamento-nr-1');
 
 describe('treinamento de NR-1', () => {
   it('traz as oito seções do brief, na ordem', () => {
@@ -44,11 +41,7 @@ describe('treinamento de NR-1', () => {
   });
 
   it('descreve o serviço em JSON-LD, ligado à organização', () => {
-    const servico = jsonLd(nr1).find((no) => no['@type'] === 'Service');
-    expect(servico).toBeDefined();
-    expect(servico?.name).toBe('Treinamento de NR-1');
-    expect(servico?.provider).toEqual({ '@id': expect.stringContaining('/#organizacao') });
-    expect(servico?.url).toEqual(expect.stringContaining('/treinamento-nr-1/'));
+    conferirServico(nr1, { nome: 'Treinamento de NR-1', caminho: '/treinamento-nr-1/' });
   });
 
   it('mostra as pendências do NR-1 como etiqueta, e não como texto cru', () => {
@@ -59,14 +52,7 @@ describe('treinamento de NR-1', () => {
     }
   });
 
-  // Imagem do Gemini se o arquivo já está em src/assets/imagens/; Placeholder com o ID à vista se não.
   it('traz a figura do hero com o texto alternativo definitivo', () => {
-    const figura = nr1.querySelector('main .figura');
-    const alternativo = figura?.getAttribute('alt') ?? figura?.getAttribute('aria-label') ?? '';
-    expect(alternativo.length).toBeGreaterThanOrEqual(10);
-    expect(figura?.getAttribute('class')).toContain('figura--arco');
-    if (figura?.classList.contains('placeholder')) {
-      expect(figura.querySelector('.placeholder__id')?.text).toBe('IMG-NR1-HERO');
-    }
+    conferirFiguraEmArco(nr1.querySelector('main .figura'), /^IMG-NR1-HERO$/);
   });
 });

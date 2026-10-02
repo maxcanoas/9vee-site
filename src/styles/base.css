@@ -223,8 +223,9 @@ mark.confirmar {
   box-decoration-break: clone;
 }
 
-/* Um mapa só, do id do grupo em content/site.md para a cor, para o menu, o rodapé e as famílias de idiomas.
-   A cor é lida onde o grupo está, então o fundo escuro troca as faixas logo abaixo sem outro mapa. */
+/* Um mapa só, do id do grupo em content/site.md para a cor, para o menu, o rodapé, as famílias de idiomas e o
+   título de mostra das páginas de serviço. A cor é lida onde o grupo está, então o fundo escuro troca as faixas
+   logo abaixo sem outro mapa. */
 [data-grupo='empresas'],
 [data-grupo='germanicas'] {
   --cor-grupo: var(--grifo-violeta);

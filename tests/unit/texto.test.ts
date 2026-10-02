@@ -189,6 +189,20 @@ describe('comEspacoFixo', () => {
     expect(comEspacoFixo('semana.')).toBe('semana.');
   });
 
+  // Dentro dos colchetes o espaço fica como está: a marca de pendência e o rótulo do link precisam dele para o
+  // formatador reconhecer.
+  it('não mexe no espaço de dentro da marca de pendência nem do rótulo de um link', () => {
+    expect(comEspacoFixo('7 dias [CONFIRMAR COM A DANIELLA: se vale no fim de semana]')).toBe(
+      '7\u00a0dias\u00a0[CONFIRMAR COM A DANIELLA: se vale no fim de semana]',
+    );
+    expect(comEspacoFixo('veja o [plano de ação](/treinamento-nr-1/) hoje')).toBe(
+      'veja\u00a0o\u00a0[plano de ação](/treinamento-nr-1/)\u00a0hoje',
+    );
+  });
+
+  it('deixa a pendência virar etiqueta no formatador', () => {
+    expect(formatar(comEspacoFixo('7 dias [CONFIRMAR: fim de semana]'))).toContain('<mark class="confirmar"');
+  });
   // O espaço fixo é texto comum: passa pelo formatador sem virar entidade nem perder a marcação em volta.
   it('convive com o formatador de texto', () => {
     expect(formatar(comEspacoFixo('7 dias'))).toBe('7\u00a0dias');

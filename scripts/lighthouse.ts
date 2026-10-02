@@ -12,13 +12,14 @@ import { RODADAS, medirTabela } from './medida-lighthouse.ts';
 
 interface Roteiro {
   paginas: { nome: string; rota: string }[];
-  /** As metas que o relatório lembra no alto, para a tabela ser lida sem abrir a spec. */
-  metas: string;
+  /** A meta de acessibilidade, a única que muda de um roteiro para o outro. */
+  acessibilidade: string;
 }
 
-const METAS_DA_SPEC = 'Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05';
-// Os tickets do reaproveitamento pedem acessibilidade 100 (spec, "Como cada ticket do reaproveitamento fecha").
-const METAS_DO_REAPROVEITAMENTO = 'Performance ≥ 95, Acessibilidade 100, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05';
+// A spec pede 95 ou mais em todas as páginas, e 100 nos tickets do reaproveitamento ("Como cada ticket do
+// reaproveitamento fecha").
+const ACESSIBILIDADE_GERAL = '≥ 95';
+const ACESSIBILIDADE_DO_REAPROVEITAMENTO = '100';
 
 // Cada ticket que fecha uma página acrescenta o roteiro dele aqui.
 const ROTEIROS: Record<string, Roteiro> = {
@@ -28,9 +29,9 @@ const ROTEIROS: Record<string, Roteiro> = {
       { nome: 'Treinamento de NR-1', rota: '/treinamento-nr-1/' },
       { nome: 'Cursos de Idiomas', rota: '/curso-de-idiomas/' },
     ],
-    metas: METAS_DA_SPEC,
+    acessibilidade: ACESSIBILIDADE_GERAL,
   },
-  'ticket-06': { paginas: [{ nome: 'LMS', rota: '/lms/' }], metas: METAS_DO_REAPROVEITAMENTO },
+  'ticket-06': { paginas: [{ nome: 'LMS', rota: '/lms/' }], acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO },
 };
 
 const nomeDoRoteiro = process.argv[2] ?? 'etapa-7';
@@ -90,7 +91,7 @@ const linhas: string[] = [
   '',
   `Medido em ${new Date().toLocaleDateString('pt-BR')} no build de produção (${PASTA}/), mediana de ${RODADAS} rodadas por página.`,
   '',
-  `Metas: ${roteiro.metas}.`,
+  `Metas: Performance ≥ 95, Acessibilidade ${roteiro.acessibilidade}, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05.`,
   '',
   'O servidor da medida manda HTML, CSS e JS com gzip, como a Cloudflare faz. Sem isso a medida castiga uns 130 KB por página que a produção nunca envia.',
   '',

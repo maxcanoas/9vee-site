@@ -1,10 +1,7 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, jsonLd } from './apoio';
+import { abrirPagina, conferirFiguraEmArco, conferirServico } from './apoio';
 
-const lms = parse(readFileSync(join(DIST, 'lms', 'index.html'), 'utf8'));
+const lms = abrirPagina('lms');
 const texto = (seletor: string) => lms.querySelector(seletor)?.text.replace(/\s+/g, ' ').trim() ?? '';
 const textos = (seletor: string) => lms.querySelectorAll(seletor).map((no) => no.text.replace(/\s+/g, ' ').trim());
 
@@ -132,24 +129,12 @@ describe('LMS', () => {
   });
 
   it('descreve o serviço em JSON-LD, ligado à organização', () => {
-    const servico = jsonLd(lms).find((no) => no['@type'] === 'Service');
-    expect(servico).toBeDefined();
-    expect(servico?.name).toBe('LMS');
-    expect(servico?.provider).toEqual({ '@id': expect.stringContaining('/#organizacao') });
-    expect(servico?.url).toEqual(expect.stringContaining('/lms/'));
+    conferirServico(lms, { nome: 'LMS', caminho: '/lms/' });
   });
 
-  // Imagem do Gemini se o arquivo já está em src/assets/imagens/; Placeholder com o ID à vista se não.
   it('traz as duas figuras em arco, com o texto alternativo definitivo', () => {
     const figuras = lms.querySelectorAll('main .figura');
     expect(figuras).toHaveLength(2);
-    for (const figura of figuras) {
-      const alternativo = figura.getAttribute('alt') ?? figura.getAttribute('aria-label') ?? '';
-      expect(alternativo.length).toBeGreaterThanOrEqual(10);
-      expect(figura.getAttribute('class')).toContain('figura--arco');
-      if (figura.classList.contains('placeholder')) {
-        expect(figura.querySelector('.placeholder__id')?.text).toMatch(/^IMG-LMS-[A-Z-]+$/);
-      }
-    }
+    for (const figura of figuras) conferirFiguraEmArco(figura, /^IMG-LMS-[A-Z-]+$/);
   });
 });

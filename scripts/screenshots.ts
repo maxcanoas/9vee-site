@@ -248,23 +248,17 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-topo-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844 },
     { nome: 'nr1-topo-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
   ],
-  // A página de LMS completa, seção por seção, o pedido aberto pela chamada do meio e o card do LMS na home.
+  // A página de LMS completa: inteira, o topo, cada seção nas duas larguras, o pedido aberto pela chamada do meio
+  // e o card do LMS na home. O nome de cada captura de seção é o da âncora dela.
   'ticket-06': [
     { nome: 'lms-inteira-390', rota: '/lms/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'lms-inteira-1280', rota: '/lms/', largura: 1280, altura: 800, paginaInteira: true },
     { nome: 'lms-topo-360', rota: '/lms/', largura: 360, altura: 780 },
     { nome: 'lms-topo-1280', rota: '/lms/', largura: 1280, altura: 800 },
-    { nome: 'lms-motivos-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAte('#motivos', -80) },
-    { nome: 'lms-o-que-e-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#motivos', -80) },
-    { nome: 'lms-plataforma-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAte('#plataforma', -60) },
-    { nome: 'lms-plataforma-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#plataforma', -80) },
-    { nome: 'lms-relatorios-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAte('#relatorios', -60) },
-    { nome: 'lms-relatorios-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#relatorios', -80) },
-    { nome: 'lms-chamada-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAte('#chamada', -60) },
-    { nome: 'lms-chamada-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#chamada', -80) },
-    { nome: 'lms-metodologia-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#metodologia', -80) },
-    { nome: 'lms-setores-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAte('#setores', -60) },
-    { nome: 'lms-setores-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte('#setores', -80) },
+    ...['motivos', 'o-que-e', 'plataforma', 'relatorios', 'chamada', 'metodologia', 'setores'].flatMap((secao): Captura[] => [
+      { nome: `lms-${secao}-390`, rota: '/lms/', largura: 390, altura: 844, antes: rolarAte(`#${secao}`, -60) },
+      { nome: `lms-${secao}-1280`, rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte(`#${secao}`, -80) },
+    ]),
     { nome: 'lms-fecho-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAteImagem('#contato', -60) },
     { nome: 'lms-fecho-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAteImagem('#contato', -80) },
     { nome: 'lms-pedido-390', rota: '/lms/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#chamada [data-abre-contato]').click() },
