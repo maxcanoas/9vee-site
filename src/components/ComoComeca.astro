@@ -1,6 +1,6 @@
 ---
 // Os três passos até a primeira aula, com a imagem ao lado.
-import Figura from './Figura.astro';
+import ComImagem from './ComImagem.astro';
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import PassosNumerados from './PassosNumerados.astro';
 import type { Imagem } from '../content.config';
@@ -15,55 +15,13 @@ interface Props {
 const { titulo, apoio, etapas, imagem } = Astro.props;
 ---
 
-<section class="comeca" id="como-comeca" aria-labelledby="comeca-titulo">
-  <div class="conteiner comeca__grade">
-    <div class="comeca__visual">
-      <Figura
-        {...imagem}
-        proporcao="4/5"
-        forma="arco"
-        sizes="(min-width: 64rem) 22rem, 62vw"
-        larguras={[400, 640, 800]}
-      />
-    </div>
-
-    <div class="comeca__texto">
-      <CabecaDeSecao id="comeca" {titulo} {apoio} />
-
-      <PassosNumerados class="comeca__etapas" itens={etapas} />
-    </div>
-  </div>
-</section>
+<ComImagem id="como-comeca" tituloId="comeca-titulo" {imagem} imagemAntes>
+  <CabecaDeSecao id="comeca" {titulo} {apoio} />
+  <PassosNumerados class="comeca__etapas" itens={etapas} />
+</ComImagem>
 
 <style>
-  .comeca {
-    padding-block: var(--secao);
-  }
-
-  .comeca__grade {
-    display: grid;
-    gap: var(--e-6);
-    align-items: center;
-  }
-
-  .comeca__visual {
-    justify-self: center;
-    inline-size: min(62vw, 20rem);
-  }
-
   .comeca__etapas {
     margin-block-start: var(--e-6);
-  }
-
-  @media (min-width: 64rem) {
-    .comeca__grade {
-      grid-template-columns: 0.8fr 1.2fr;
-      column-gap: var(--e-8);
-    }
-
-    .comeca__visual {
-      justify-self: start;
-      inline-size: min(100%, 22rem);
-    }
   }
 </style>

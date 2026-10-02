@@ -1,0 +1,81 @@
+---
+// A casca das seções com a imagem em arco ao lado do conteúdo: a imagem numa coluna e, na outra, o que a seção
+// puser aqui dentro. No computador a imagem fica à esquerda. No celular ela vem depois do conteúdo, a não ser que
+// a seção peça antes.
+import type { ComponentProps } from 'astro/types';
+import Figura from './Figura.astro';
+import type { Imagem } from '../content.config';
+
+interface Props {
+  id: string;
+  /** O id do título, que vem no conteúdo: é ele que dá nome à seção para o leitor de tela. */
+  tituloId: string;
+  imagem: Imagem;
+  imagemAntes?: boolean;
+}
+
+const { id, tituloId, imagem, imagemAntes = false } = Astro.props;
+const figura: ComponentProps<typeof Figura> = {
+  ...imagem,
+  proporcao: '4/5',
+  forma: 'arco',
+  sizes: '(min-width: 64rem) 22rem, min(62vw, 20rem)',
+  larguras: [400, 640, 800],
+};
+---
+
+<section class="com-imagem" id={id} aria-labelledby={tituloId}>
+  <div class="conteiner com-imagem__grade">
+    {
+      imagemAntes && (
+        <div class="com-imagem__visual">
+          <Figura {...figura} />
+        </div>
+      )
+    }
+    <div class="com-imagem__conteudo">
+      <slot />
+    </div>
+    {
+      !imagemAntes && (
+        <div class="com-imagem__visual">
+          <Figura {...figura} />
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .com-imagem {
+    padding-block: var(--secao);
+  }
+
+  .com-imagem__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: center;
+  }
+
+  .com-imagem__visual {
+    justify-self: center;
+    inline-size: min(62vw, 20rem);
+  }
+
+  @media (min-width: 64rem) {
+    .com-imagem__grade {
+      grid-template-columns: 0.8fr 1.2fr;
+      column-gap: var(--e-8);
+    }
+
+    .com-imagem__visual {
+      grid-area: 1 / 1;
+      justify-self: start;
+      inline-size: min(100%, 22rem);
+    }
+
+    .com-imagem__conteudo {
+      grid-area: 1 / 2;
+    }
+  }
+</style>
