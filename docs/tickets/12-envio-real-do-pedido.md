@@ -6,7 +6,7 @@
 
 **Horas:** 6,5. **Semana:** 4 (era a 5; subiu em 30/09/2026, depois dos tickets do reaproveitamento do site atual).
 
-**Situação:** feito e aprovado pelo Maxwell em 02/10/2026, adiantado da semana 4. Na aprovação ele manteve o tempo mínimo como está: quem envia cedo demais vê "Não deu para enviar." e pode tentar de novo. Falta o teste à mão no preview publicado, que depende dele: publicar e conferir os e-mails na caixa de teste. Ele parou para fazer isso antes do ticket 13. Como é ticket de funcionalidade, os testes vieram antes do código e a suíte de navegador inteira rodou. Ficaram de fora o Lighthouse e a rodada de `code-review`, pelo processo curto de 02/10.
+**Situação:** feito e aprovado pelo Maxwell em 02/10/2026, adiantado da semana 4, e fechado no mesmo dia, com o teste no preview publicado. Na aprovação ele manteve o tempo mínimo como está: quem envia cedo demais vê "Não deu para enviar." e pode tentar de novo. Como é ticket de funcionalidade, os testes vieram antes do código e a suíte de navegador inteira rodou. Ficaram de fora o Lighthouse e a rodada de `code-review`, pelo processo curto de 02/10.
 
 - [x] Antes de tudo: um envio de teste confirma que a Web3Forms aceita o endereço do preview (`workers.dev`) e o `localhost`. Aceitou os dois. O plano B (Formspark) não entrou.
 - [x] O envio fica num módulo só; trocar de serviço é trocar esse módulo e as variáveis de ambiente.
@@ -16,7 +16,7 @@
 - [x] Assunto `[Lead site] <Serviço> | <Empresa ou Pessoa física> | <nome>` e corpo com as respostas, o público, a página, o nome, o contato e o consentimento.
 - [x] "Enviando", confirmação na tela sem o aviso de envio simulado e, na falha, uma mensagem clara com a saída pelo WhatsApp e a mensagem pronta.
 - [x] Testes unitários do módulo, com o serviço simulado, e do navegador (certo, com erro e pela isca), escritos antes.
-- [ ] Envio real no preview publicado: certo, com erro e pela isca, conferido no e-mail de teste. Falta a parte que depende do Maxwell: publicar o preview e conferir a caixa. O envio certo já saiu de verdade pelo site local, em 02/10 (ver "Como ficou").
+- [x] Envio real no preview publicado: certo, com erro e pela isca, conferido no e-mail de teste. Feito em 02/10, depois da sexta publicação (versão `475856f8`): o Maxwell mandou um pedido pelo preview e confirmou que funcionou; o envio sem rede e o da isca foram conferidos no mesmo preview, sem mandar e-mail (ver "Como ficou").
 - [x] A política de privacidade descreve o envio como ficou: o serviço (a Web3Forms), o que ele guarda e por quanto tempo. O link da caixa de consentimento leva a `/politica-de-privacidade/#pedido`.
 
 **Como ficou:**
@@ -50,7 +50,10 @@
 - **Envio de verdade, à mão:** um pedido completo saiu pelo site local em 02/10, com o Chrome de janela, e o serviço respondeu que chegou. O assunto foi `[Lead site] NR-1 | Empresa | Teste do site (pode apagar)`. Com os dois envios do teste do começo, são três e-mails de teste na caixa do Maxwell.
 - **Capturas:** `relatorios/ticket-12/`, por `node scripts/screenshots.ts ticket-12`. São 7: a caixa do consentimento, o erro de quem não a marcou, a confirmação e a tela de falha.
 - **Para o ticket 13:** o evento `lead_form_submit` dispara só quando o serviço responde que o pedido chegou, e não no caso da isca, que também mostra a confirmação.
-- **O que falta, e depende do Maxwell:**
-  - conferir na caixa de teste os três e-mails de 02/10, em especial o do pedido completo: se as linhas chegaram na ordem e legíveis;
-  - publicar o preview e repetir à mão o envio certo, o com erro (com o aparelho sem rede, a tela de falha tem de aparecer) e o da isca.
+- **O teste no preview publicado,** em 02/10, na página `/treinamento-nr-1/` da versão `475856f8`:
+  - o envio certo: o Maxwell mandou um pedido de verdade e confirmou que funcionou;
+  - o envio sem rede: a tela mostrou "Não deu para enviar.", com o WhatsApp de reserva à vista e a mensagem pronta, com as respostas. Nenhuma chamada chegou ao serviço;
+  - a isca: com a caixa marcada, a tela mostrou "Pedido anotado." e nenhuma chamada chegou ao serviço;
+  - os dois últimos saíram de um roteiro no navegador, sem mandar e-mail.
+- **Para onde os pedidos vão:** a chave de teste manda para o e-mail com que o Maxwell a criou, no local e no preview. Nada vai para a 9vee até existir a chave do contato@9vee.com.br, no ticket 20.
 - **O que ficou de fora, pelo processo curto de 02/10:** o Lighthouse e o `code-review` nos dois eixos. Entram na revisão final (ticket 17).
