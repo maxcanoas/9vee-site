@@ -7,14 +7,14 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
 - A página de LMS deixou de ser "em construção". Ela agora conta o que o site atual de vocês diz da plataforma: https://9vee-preview.9vee-site.workers.dev/lms/
   - o que é o LMS, com a sigla explicada;
   - a plataforma disponível 24 horas por dia, 7 dias por semana, com o acompanhamento dos professores e as trilhas de aprendizagem;
-  - os relatórios de desempenho, frequência e progresso, que vão para os gestores e para o RH;
-  - como são as aulas: as simulações de reunião, de apresentação e de negociação, o vocabulário de negócios, o conteúdo customizado e o feedback dos professores;
+  - os relatórios de desempenho, frequência e progresso, que vão para os gestores e para o RH. A página só dá o nome dos três, como o site atual: o que cada um mostra entra quando a pergunta 21 voltar;
+  - como são as aulas, no curso online ou no presencial: as simulações de reunião, de apresentação e de negociação, o vocabulário de negócios, o conteúdo customizado e o feedback dos professores;
   - os sete setores atendidos;
   - no fim, as três perguntas que o pedido faz.
 - Logo abaixo do topo, três atalhos levam aos motivos que o site atual dá para escolher a 9vee: relatórios para o RH, flexibilidade de horários e foco em comunicação profissional.
 - Na home, o texto do LMS na lista de serviços perdeu o "a confirmar".
 - Na parte "O que é o LMS", aparece um quadro colorido com o código IMG-LMS-O-QUE-E. É o lugar de uma foto, que entra em seguida.
-- Ficou fora de propósito o que só aparece no material do Canva: a EdApp, as telas da plataforma, a sala de aula invertida, a IA e o plantão pelo WhatsApp. Tudo isso continua na pergunta 21 da Daniella. A página nova não tem nenhum "a confirmar".
+- Ficou fora de propósito o que só aparece no material do Canva: a EdApp, as telas da plataforma, a sala de aula invertida, a IA e o plantão pelo WhatsApp. Tudo isso continua na pergunta 21 da Daniella. O texto da página nova não tem nenhum "a confirmar": o único que aparece nela é o do rodapé, sobre a pronúncia da marca, que está em todas as páginas.
 
 Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-06/` e publique com `npm run deploy`. A pergunta 21 da mensagem diz "a página nova de LMS repete isso": ela só fica verdadeira no preview depois desta publicação. A foto nova está em `docs/imagens-gemini.md` (IMG-LMS-O-QUE-E); salva em `src/assets/imagens/lms-o-que-e.jpg`, ela entra sozinha no build seguinte.
 

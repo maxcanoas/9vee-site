@@ -44,10 +44,13 @@ describe('LMS', () => {
     expect(texto('#plataforma')).toMatch(/acompanhamento dos professores é contínuo/i);
   });
 
-  it('mostra os três relatórios que gestores e RH recebem', () => {
+  // O site atual só dá o nome dos três relatórios. O que cada um mostra continua na pergunta 21: a página não explica.
+  it('mostra os três relatórios que gestores e RH recebem, só com o nome de cada um', () => {
     expect(textos('#relatorios h3')).toEqual(['Desempenho', 'Frequência', 'Progresso']);
+    expect(lms.querySelectorAll('#relatorios li p')).toEqual([]);
     expect(texto('#relatorios')).toMatch(/gestores/);
     expect(texto('#relatorios')).toMatch(/RH/);
+    expect(texto('#relatorios')).toContain('mais estratégico e mensurável');
   });
 
   it('faz a chamada do meio com os três pontos do site atual', () => {
@@ -63,6 +66,8 @@ describe('LMS', () => {
       'Feedback constante',
     ]);
     for (const simulacao of ['reuniões', 'apresentações', 'negociações']) expect(texto('#metodologia')).toContain(simulacao);
+    // O site atual fala em curso "online ou presencial" na metodologia do LMS.
+    expect(texto('#metodologia')).toMatch(/online ou no presencial/);
   });
 
   it('lista os sete setores atendidos', () => {

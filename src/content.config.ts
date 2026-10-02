@@ -486,10 +486,11 @@ const lms = defineCollection({
       destaque: z.string(),
       itens: z.array(tituloETexto).min(1),
     }),
+    // Só o nome de cada relatório: o site atual não diz o que cada um mostra.
     relatorios: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(tituloETexto).min(2),
+      itens: z.array(z.object({ titulo: z.string() })).min(2),
       nota: z.string(),
     }),
     chamada: z.object({

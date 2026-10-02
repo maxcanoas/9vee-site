@@ -1,6 +1,7 @@
 ---
 // Bloco escuro de pontos: o que a empresa leva do treinamento, o que a 9vee faz pela equipe.
 // A nota fecha a coluna do título, embaixo, com o botão de contato quando a seção pede um.
+// O ponto pode vir só com o nome, quando a fonte não diz mais do que isso: aí o nome sai maior, no lugar do texto.
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
@@ -10,29 +11,32 @@ interface Props {
   id: string;
   titulo: string;
   apoio: string;
-  itens: { titulo: string; texto: string }[];
+  itens: { titulo: string; texto?: string }[];
   nota: string;
   cta?: string;
   servico?: ServicoId;
 }
 
 const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
+const soNomes = itens.every((item) => !item.texto);
 ---
 
 <section class="pontos escuro" id={id} aria-labelledby={`${id}-titulo`}>
   <div class="conteiner pontos__grade">
     <CabecaDeSecao {id} {titulo} {apoio} class="pontos__cabeca" />
 
-    <ul class="pontos__itens" role="list">
+    <ul class:list={['pontos__itens', soNomes && 'pontos__itens--so-nomes']} role="list">
       {
         itens.map((item) => (
-          <li class="ponto">
+          <li class:list={['ponto', !item.texto && 'ponto--so-nome']}>
             <h3 class="ponto__titulo">
               <Texto de={item.titulo} />
             </h3>
-            <p class="ponto__texto texto-secundario">
-              <Texto de={item.texto} />
-            </p>
+            {item.texto && (
+              <p class="ponto__texto texto-secundario">
+                <Texto de={item.texto} />
+              </p>
+            )}
           </li>
         ))
       }
@@ -89,6 +93,15 @@ const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
     margin-block-start: var(--e-2);
   }
 
+  /* Sem texto, o nome cresce, e a meia-pílula desce para o meio da linha dele (a altura da linha menos a dela). */
+  .ponto--so-nome .ponto__titulo {
+    font-size: var(--t-3);
+  }
+
+  .ponto--so-nome::before {
+    inset-block-start: calc((var(--t-3) * var(--altura-subtitulo) - 1rem) / 2);
+  }
+
   .pontos__fecho {
     display: grid;
     gap: var(--e-5);
@@ -122,6 +135,12 @@ const { id, titulo, apoio, itens, nota, cta, servico } = Astro.props;
       grid-area: 1 / 2 / span 2;
       grid-template-columns: 1fr;
       gap: var(--e-6);
+    }
+
+    /* Só nomes não enchem a coluna: em vez de se espalharem pela altura do título, ficam juntos, no meio dela. */
+    .pontos__itens--so-nomes {
+      align-content: center;
+      gap: var(--e-5);
     }
 
     /* A ressalva fecha a coluna do título, embaixo, e não sobra vazio. */

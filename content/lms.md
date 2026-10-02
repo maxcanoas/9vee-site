@@ -22,7 +22,7 @@ motivos:
   titulo: "Por que as empresas escolhem a 9vee"
   itens:
     - rotulo: "Relatórios para o RH"
-      descricao: "Desempenho, frequência e progresso de cada participante."
+      descricao: "Desempenho, frequência e progresso dos participantes."
       href: "#relatorios"
     - rotulo: "Flexibilidade de horários"
       descricao: "A plataforma fica disponível 24 horas por dia."
@@ -40,7 +40,7 @@ oQueE:
   imagem:
     id: "IMG-LMS-O-QUE-E"
     arquivo: "lms-o-que-e"
-    alt: "Colaboradora estudando pelo tablet em casa, à noite, de fones de ouvido."
+    alt: "Colaboradora estudando pelo notebook em casa, à noite, de fones de ouvido."
 
 # O título desta seção é a frase em tipo grande. O grifo marca o começo de cada linha.
 plataforma:
@@ -56,17 +56,16 @@ plataforma:
     - titulo: "Uma trilha para cada pessoa"
       texto: "Com conteúdos interativos e trilhas de aprendizagem personalizadas, cada aluno avança de acordo com o nível e os objetivos profissionais dele."
 
+# O site atual só dá o nome dos três relatórios. O que cada um mostra, e as telas, continuam na pergunta 21 da
+# Daniella: por isso os itens não têm texto.
 relatorios:
   titulo: "O que o RH acompanha"
-  apoio: "A plataforma entrega relatórios detalhados de cada participante, para os gestores e para o RH."
+  apoio: "A plataforma entrega relatórios detalhados, para os gestores e o RH acompanharem a evolução dos participantes."
   itens:
     - titulo: "Desempenho"
-      texto: "Como cada participante está se saindo."
     - titulo: "Frequência"
-      texto: "Com que regularidade cada um estuda."
     - titulo: "Progresso"
-      texto: "Quanto cada um já avançou."
-  nota: "Os relatórios valem para o curso de inglês corporativo online e para os outros cursos de idiomas para empresas, e facilitam a gestão do aprendizado."
+  nota: "Os relatórios facilitam a gestão do aprendizado e deixam o curso de inglês corporativo online mais estratégico e mensurável para o desenvolvimento da equipe. Valem também para os outros cursos de idiomas para empresas."
 
 chamada:
   titulo: "Quer melhorar a comunicação internacional da sua equipe?"
@@ -79,19 +78,19 @@ chamada:
 
 metodologia:
   titulo: "Como são as aulas"
-  apoio: "A metodologia mira a comunicação real no trabalho. O que a pessoa pratica na aula, ela usa logo em seguida, na empresa."
+  apoio: "No curso online ou no presencial, a metodologia mira a comunicação real no trabalho. O que a pessoa pratica na aula, ela usa logo em seguida, na empresa."
   itens:
     - nome: "Simulações"
       texto: "De reuniões, de apresentações e de negociações, as situações do dia a dia da empresa."
     - nome: "Vocabulário de negócios"
       texto: "As palavras que as conversas com outros países pedem."
     - nome: "Conteúdo customizado"
-      texto: "O curso pode ser montado para a necessidade da sua empresa."
+      texto: "A 9vee customiza o conteúdo para a necessidade da sua empresa."
     - nome: "Feedback constante"
-      texto: "Vem dos professores, durante todo o curso. O erro é corrigido cedo, a pessoa ganha confiança para falar e avança mais rápido."
+      texto: "Vem dos professores, durante todo o curso. Eles corrigem o erro cedo, e a pessoa ganha confiança para falar e avança mais rápido."
 
 setores:
-  titulo: "Treinamento de idiomas para o setor da sua empresa"
+  titulo: "Treinamento de idiomas para diferentes setores"
   apoio: "Os cursos de idiomas para empresas seguem o contexto profissional de cada equipe, para o conteúdo servir no dia a dia de trabalho."
   itens:
     - "Indústria"
