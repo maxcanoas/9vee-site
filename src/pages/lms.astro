@@ -9,12 +9,14 @@ import Chamada from '../components/Chamada.astro';
 import Definicoes from '../components/Definicoes.astro';
 import ListaCorrida from '../components/ListaCorrida.astro';
 import CtaFinal from '../components/CtaFinal.astro';
+import PassosNumerados from '../components/PassosNumerados.astro';
 import { dadosDoSite, servicoDoSite } from '../lib/site';
 import { paginaLms } from '../lib/paginas';
 import { servico } from '../lib/jsonld';
 import { GRUPO_DO_PUBLICO } from '../lib/publico';
 
 const { data: pagina } = await paginaLms();
+const { itens: perguntasDoPedido, ...fechamento } = pagina.ctaFinal;
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
 const jsonLd = [
@@ -37,5 +39,7 @@ const jsonLd = [
   <Chamada id="chamada" {...pagina.chamada} servico="lms" />
   <Definicoes id="metodologia" {...pagina.metodologia} />
   <ListaCorrida id="setores" {...pagina.setores} />
-  <CtaFinal {...pagina.ctaFinal} servico="lms" />
+  <CtaFinal {...fechamento} servico="lms">
+    <PassosNumerados itens={perguntasDoPedido} />
+  </CtaFinal>
 </Base>

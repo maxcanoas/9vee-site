@@ -1,0 +1,62 @@
+---
+// Uma lista numerada com o selo da marca: os passos até a primeira aula, as perguntas que o pedido faz. O número
+// só entra onde a ordem é informação. Os atributos passam direto para a lista, e com eles a marca de escopo de
+// quem chama, para o estilo dele valer aqui.
+import type { HTMLAttributes } from 'astro/types';
+import Texto from './Texto.astro';
+
+interface Props extends HTMLAttributes<'ol'> {
+  itens: { titulo: string; texto: string }[];
+}
+
+const { itens, class: classe, ...atributos } = Astro.props;
+---
+
+<ol class:list={['passos', classe]} {...atributos}>
+  {
+    itens.map((item, i) => (
+      <li class="passo">
+        <span class="selo-numero passo__numero" aria-hidden="true">
+          {i + 1}
+        </span>
+        <h3 class="passo__titulo">
+          <Texto de={item.titulo} />
+        </h3>
+        <p class="passo__texto texto-secundario">
+          <Texto de={item.texto} />
+        </p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .passos {
+    display: grid;
+    gap: var(--e-5);
+    padding: 0;
+    list-style: none;
+  }
+
+  .passo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--e-1) var(--e-4);
+    align-items: center;
+  }
+
+  /* O selo ocupa as duas linhas do passo: o título em cima, o texto embaixo. */
+  .passo__numero {
+    grid-row: span 2;
+  }
+
+  .passo__titulo {
+    align-self: end;
+    font-size: var(--t-destaque);
+  }
+
+  .passo__texto {
+    align-self: start;
+    max-inline-size: 44ch;
+  }
+</style>

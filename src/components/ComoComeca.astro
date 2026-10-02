@@ -2,7 +2,7 @@
 // Os três passos até a primeira aula, com a imagem ao lado.
 import Figura from './Figura.astro';
 import CabecaDeSecao from './CabecaDeSecao.astro';
-import Texto from './Texto.astro';
+import PassosNumerados from './PassosNumerados.astro';
 import type { Imagem } from '../content.config';
 
 interface Props {
@@ -30,23 +30,7 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
     <div class="comeca__texto">
       <CabecaDeSecao id="comeca" {titulo} {apoio} />
 
-      <ol class="comeca__etapas">
-        {
-          etapas.map((etapa, i) => (
-            <li class="passo">
-              <span class="selo-numero passo__numero" aria-hidden="true">
-                {i + 1}
-              </span>
-              <h3 class="passo__titulo">
-                <Texto de={etapa.titulo} />
-              </h3>
-              <p class="passo__texto">
-                <Texto de={etapa.texto} />
-              </p>
-            </li>
-          ))
-        }
-      </ol>
+      <PassosNumerados class="comeca__etapas" itens={etapas} />
     </div>
   </div>
 </section>
@@ -68,34 +52,7 @@ const { titulo, apoio, etapas, imagem } = Astro.props;
   }
 
   .comeca__etapas {
-    display: grid;
-    gap: var(--e-5);
     margin-block-start: var(--e-6);
-    padding: 0;
-    list-style: none;
-  }
-
-  .passo {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--e-1) var(--e-4);
-    align-items: center;
-  }
-
-  /* O selo ocupa as duas linhas do passo: o título em cima, o texto embaixo. */
-  .passo__numero {
-    grid-row: span 2;
-  }
-
-  .passo__titulo {
-    align-self: end;
-    font-size: var(--t-destaque);
-  }
-
-  .passo__texto {
-    align-self: start;
-    max-inline-size: 44ch;
-    color: var(--navy-2);
   }
 
   @media (min-width: 64rem) {
