@@ -176,6 +176,13 @@ a:hover {
   background-color: var(--nevoa);
 }
 
+/* Link forte: o link de texto que fecha um bloco e leva a outra página, em negrito, com a área de toque no padding.
+   Ele é item de grade ou de flex em quem o usa: num texto corrido, o padding não contaria na altura. */
+.link-forte {
+  padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+  font-weight: 700;
+}
+
 /* Sem JavaScript o drawer não abre: os botões que o chamam somem, e o WhatsApp segue no atalho. */
 :root:not(.js) [data-abre-contato] {
   display: none;

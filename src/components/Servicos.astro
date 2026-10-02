@@ -43,7 +43,7 @@ const { titulo, itens } = Astro.props;
             <p class="servico__texto">
               <Texto de={servico.texto} />
             </p>
-            <a class="servico__link" href={servico.link.href}>
+            <a class="servico__link link-forte" href={servico.link.href}>
               <Texto de={servico.link.rotulo} />
             </a>
           </li>
@@ -93,8 +93,6 @@ const { titulo, itens } = Astro.props;
 
   .servico__link {
     justify-self: start;
-    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
-    font-weight: 700;
   }
 
   /* Nome estável para a View Transition animar a troca de lugar. Fica no CSS, e não num style inline,

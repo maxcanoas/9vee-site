@@ -34,7 +34,7 @@ const { rotulo, data, titulo, pontos, fonte, link, cta } = Astro.props;
       </ul>
       <div class="destaque__acoes">
         <BotaoContato texto={cta} servico="nr1" />
-        <a class="destaque__link" href={link.href}><Texto de={link.rotulo} /></a>
+        <a class="link-forte" href={link.href}><Texto de={link.rotulo} /></a>
       </div>
       <p class="destaque__fonte texto-secundario"><Texto de={fonte} /></p>
     </div>
@@ -118,11 +118,6 @@ const { rotulo, data, titulo, pontos, fonte, link, cta } = Astro.props;
     align-items: center;
     gap: var(--e-3) var(--e-5);
     margin-block-start: var(--e-3);
-  }
-
-  .destaque__link {
-    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
-    font-weight: 700;
   }
 
   .destaque__fonte {

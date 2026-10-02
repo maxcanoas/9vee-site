@@ -40,7 +40,7 @@ const { id, titulo, texto, pontos, cta, servico, link, escuro = false } = Astro.
       {cta && <BotaoContato texto={cta} servico={servico} />}
       {
         link && (
-          <a class="chamada__link" href={link.href}>
+          <a class="link-forte" href={link.href}>
             <Texto de={link.rotulo} />
           </a>
         )
@@ -107,13 +107,6 @@ const { id, titulo, texto, pontos, cta, servico, link, escuro = false } = Astro.
     block-size: 1rem;
     border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
     background-color: var(--menta);
-  }
-
-  /* O link de texto dos cartões de serviço da home, com a área de toque no padding. */
-  .chamada__link {
-    display: inline-block;
-    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
-    font-weight: 700;
   }
 
   @media (min-width: 64rem) {
