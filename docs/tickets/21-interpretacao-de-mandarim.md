@@ -6,7 +6,7 @@
 
 **Horas:** 4. **Semana:** 2.
 
-**Situação:** feito em 02/10/2026, adiantado da semana 2, logo depois do 05, com o `code-review` nos dois eixos aplicado e a foto do topo no lugar. Criado em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual", decisão 5). O preview não foi publicado: o Maxwell publica depois de ver as capturas.
+**Situação:** feito em 02/10/2026, adiantado da semana 2, logo depois do 05, com o `code-review` nos dois eixos aplicado e a foto do topo no lugar, e aprovado pelo Maxwell no mesmo dia. Criado em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual", decisão 5). O preview não foi publicado: o Maxwell publica depois de ver as capturas.
 
 **Do site atual, como fato:**
 
@@ -115,4 +115,5 @@
     - a `nota` passa pelo `HeroPagina` e pelo `CtaFinal` até o `BotaoContato`. É uma prop opcional repassada: a saída sem repasse seria um contexto escondido entre o layout e o botão;
     - página fora do menu ainda pede mexer em cinco lugares (a lista de `paginas` do esquema, o `trilhaDaPagina`, o `scripts/pendencias.ts`, o teste de larguras e o desvio do teste da trilha). Juntar isso fica para o ticket 11, que traz as páginas de cidade e volta a mexer na trilha;
     - a trilha continua "Mandarim" depois que o rodapé ganhar o link porque o `trilhaDoCaminho` só lê do rodapé o link da política. Quem segura isso é o teste do HTML gerado desta página: se o ticket 15 puser o link novo entre os nomes da trilha, o teste acusa;
-    - o link das modalidades para os formatos da Tradução, que não estava na lista do ticket, fica: o porquê está em "Links".
+    - o link das modalidades para os formatos da Tradução, que não estava na lista do ticket, fica: o porquê está em "Links";
+  - **decidido pelo Maxwell em 02/10:** o H1 fica com o nome do serviço, e a frase da landing, em destaque na terceira seção; o "Mais de 10 anos" fica em tipo de número. O ticket foi para o GitHub no mesmo dia.
