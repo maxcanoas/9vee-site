@@ -52,9 +52,9 @@
   2. os atalhos (`#motivos`): os três benefícios do site atual, cada um levando à seção que o explica;
   3. o que é o LMS (`#o-que-e`), em texto ao lado de imagem, com a sigla por extenso;
   4. a plataforma (`#plataforma`): "24 horas por dia, 7 dias por semana." em tipo de mostra, com o acompanhamento contínuo dos professores e as trilhas personalizadas;
-  5. o que o RH acompanha (`#relatorios`), na faixa escura: desempenho, frequência e progresso;
+  5. o que o RH acompanha (`#relatorios`), na faixa escura: desempenho, frequência e progresso, só com o nome de cada relatório;
   6. a chamada do meio (`#chamada`), com os três pontos e o botão;
-  7. como são as aulas (`#metodologia`): as simulações, o vocabulário de negócios, o conteúdo customizado e o feedback constante;
+  7. como são as aulas (`#metodologia`), no curso online ou no presencial: as simulações, o vocabulário de negócios, o conteúdo customizado e o feedback constante;
   8. os sete setores (`#setores`);
   9. o fechamento (`#contato`), com as três perguntas do pedido numeradas e o botão.
 - **Decisões de desenho:**
@@ -63,18 +63,21 @@
   - os três benefícios viraram atalhos no alto, e não uma seção: como seção, repetiriam o que os relatórios, a plataforma e a metodologia já dizem. Assim eles servem de resumo e de caminho;
   - as três perguntas foram para o fechamento escuro, numeradas, porque a ordem é a do formulário. Um teste confere que a página anuncia tantas perguntas quantas o pedido de LMS faz;
   - a chamada do meio vem depois dos relatórios, e não depois dos setores, como no site atual. Depois dos setores, o botão dela encostaria no do fechamento;
-  - o texto de cada relatório (desempenho, frequência e progresso) só explica a palavra. O que cada tela mostra continua na pergunta 21.
+  - os três relatórios saem só com o nome, em tipo maior. O site atual não diz o que cada um mostra, e isso continua na pergunta 21. A primeira versão explicava cada palavra, e a revisão de spec apontou que a explicação era minha, e não da 9vee.
 - **Sem FAQ:** o site atual não tem perguntas do LMS, e as respostas possíveis repetiriam as seções. O preço fica sem resposta nesta página. Se o Maxwell quiser, entra um "Quanto custa?" com pendência (pergunta 7), como no NR-1 e em Cursos.
 - **Componentes novos,** feitos para as próximas páginas do reaproveitamento:
   - `FaixaDeAtalhos`: os atalhos do alto, com o desenho do link do menu (`LinkDoMenu`);
   - `TextoComImagem`: texto corrido ao lado da imagem em arco, com o texto antes da imagem no celular;
   - `Mostra`: a frase em tipo de mostra, com o grifo;
   - `Chamada`: a faixa da chamada do meio;
-  - `ListaCorrida`: os nomes em tipo grande, com a meia-lua entre eles.
+  - `ListaCorrida`: os nomes em tipo grande, com a meia-lua entre eles;
+  - `PassosNumerados`: a lista numerada com o selo da marca, que saiu do "Como começa" de Cursos e serve às duas páginas.
 - **Componentes reaproveitados:**
-  - `HeroPagina` e `Pontos`, como estavam;
+  - `HeroPagina`, como estava;
+  - `Pontos`, que passou a aceitar o ponto só com o nome: ele sai maior, e os nomes ficam juntos no meio da coluna;
   - `Definicoes`, que era o `Provas`: ganhou o id da seção e serve à metodologia. Lado a lado, o item mais curto não estica mais o espaço entre o nome e o texto;
-  - `CtaFinal`, que ganhou a lista numerada, opcional, das perguntas do pedido.
+  - `CtaFinal`, que ganhou um encaixe entre o texto e o botão. A página de LMS põe ali as perguntas do pedido, pelo `PassosNumerados`;
+  - `ComoComeca`, que passou a usar o `PassosNumerados`. As capturas da página de cursos em 390 e 1280 px saíram idênticas, byte a byte, antes e depois.
 - **Dados para o Google:** `Service` com o nome "LMS", ligado à organização. Título com 50 caracteres e descrição com 156.
 - **Home:** o card do LMS diz "com acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH", sem pendência. A descrição do serviço no pedido não mudou.
 - **Imagem nova:** IMG-LMS-O-QUE-E, com o prompt em `docs/imagens-gemini.md`. Até ela ser gerada, a seção mostra o Placeholder, que a trava de produção acusa, como as outras pendências.
@@ -84,6 +87,17 @@
   - `tests/dist/lms.test.ts`: as nove seções na ordem, os fatos de cada uma, os três botões com o LMS marcado, o `Service`, e o que fica fora (EdApp, sala de aula invertida, IA, plantão e "escolas");
   - `tests/e2e/lms.spec.ts`: os atalhos param abaixo do cabeçalho fixo e têm 44 px de altura, a chamada abre o pedido em "Sobre a plataforma", o texto dá 4,5:1 sobre o grifo e o título quebra em quatro linhas no celular;
   - o LMS saiu de `tests/dist/parciais.test.ts`, e a home confere o card;
-  - `npm test`: 140 unitários e 1.010 do HTML gerado. `npm run e2e`: 250 passaram, nos três perfis.
+  - `tests/dist/apoio.ts` ganhou o `abrirPagina`, o `conferirServico` e o `conferirFiguraEmArco`, que o NR-1, o LMS e as parciais usam;
+  - `npm test`: 142 unitários e 1.010 do HTML gerado. `npm run e2e`: 250 passaram, nos três perfis.
 - **Lighthouse** no build de produção, mediana de 3 rodadas (Lighthouse 13.5.0 e Chrome 154.0.8037.93): Performance 100, Acessibilidade 100, Boas práticas 100, SEO 100, LCP 1,58 s, CLS 0,000 e TBT 0 ms. A medida é com o Placeholder no lugar da imagem nova, que fica abaixo da primeira tela. O relatório sai em `relatorios/ticket-06/lighthouse.md`, por `node scripts/lighthouse.ts ticket-06`.
-- **Capturas:** `relatorios/ticket-06/`, por `node scripts/screenshots.ts ticket-06`: a página inteira e cada seção em 390 e 1280 px, o topo em 360 px, o pedido aberto pela chamada e o card da home.
+- **Capturas:** `relatorios/ticket-06/`, por `node scripts/screenshots.ts ticket-06`: a página inteira e cada uma das sete seções e o fechamento em 390 e 1280 px, o topo em 360 px, o pedido aberto pela chamada e o card da home. São 23 capturas.
+- **`code-review` nos dois eixos,** sobre o `bc639a5`, com as correções em três commits (`d06b6e6`, `fd807fc` e `5d070b2`):
+  - **spec, corrigido:** a explicação de cada relatório saiu; "de cada participante" virou "dos participantes", como o site atual diz; entraram o curso "online ou presencial" e o "mais estratégico e mensurável", que faltavam; o título dos setores voltou a ser "para diferentes setores"; a foto nova mostra o notebook, e não um tablet, porque o site atual não diz em que aparelhos a plataforma roda; o roteiro de capturas ganhou as seções que faltavam; e o texto das novidades deixou de dizer que a página não tem nenhum "a confirmar", porque o do rodapé continua nela;
+  - **padrões, corrigido:** a voz passiva de dois itens da metodologia; a lista numerada copiada do `ComoComeca`, que virou o `PassosNumerados`; o nome `destaque` no `Mostra`, que virou `apoio`; o `comEspacoFixo`, que estragava a marca de pendência num título de mostra; os esquemas repetidos em `src/content.config.ts`, que ganharam nome; os trechos repetidos dos testes; os nomes do roteiro de capturas e das metas do Lighthouse; e dois comentários que listavam quem usa um componente;
+  - **ficou como estava, com o porquê:**
+    - o `align-content` do `Definicoes` também vale para a lista de provas de Cursos e das páginas de idioma, que são do ticket 22. É a correção de um defeito do componente, e só aparece onde os textos de uma linha têm tamanhos diferentes;
+    - o contraste sobre o grifo saiu do teste de cores para `tests/e2e/grifo.ts`, para o teste novo não copiar a conta;
+    - a casca comum entre o `TextoComImagem` e o `ComoComeca` (a imagem em arco e a grade) fica para o ticket 05 ou o 07, quando o `TextoComImagem` tiver o segundo uso;
+    - o `Service` montado na página repete seis linhas do NR-1. A parte comum já é a função `servico`; juntar mais levaria o `astro:content` para o módulo que os testes unitários importam;
+    - a meia-pílula repetida no CSS dos componentes novos já se repete em nove componentes antigos. Levar as três formas para o `base.css` mexe em todos, e fica como proposta para o Maxwell;
+  - **para o Maxwell decidir:** a terceira pergunta do fechamento fala em "treinamentos internos" e "integração de novos colaboradores". O texto é do MVP aprovado e repete as opções do pedido, mas o site atual só fala de idiomas na plataforma. Vale confirmar com a Daniella se o LMS recebe outro conteúdo.
