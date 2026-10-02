@@ -4,15 +4,25 @@
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
+interface Formato {
+  nome: string;
+  quando: string;
+  como: string;
+}
+
 interface Props {
   id: string;
   titulo: string;
   apoio: string;
   rotulos: { quando: string; como: string };
-  itens: { nome: string; quando: string; como: string }[];
+  itens: Formato[];
 }
 
 const { id, titulo, apoio, rotulos, itens } = Astro.props;
+const linhasDe = (formato: Formato) => [
+  { rotulo: rotulos.quando, texto: formato.quando },
+  { rotulo: rotulos.como, texto: formato.como },
+];
 ---
 
 <section class="comparacao" id={id} aria-labelledby={`${id}-titulo`}>
@@ -21,28 +31,22 @@ const { id, titulo, apoio, rotulos, itens } = Astro.props;
 
     <ul class="comparacao__lista" role="list">
       {
-        itens.map((item) => (
+        itens.map((formato) => (
           <li class="comparacao__item">
             <h3 class="comparacao__nome">
-              <Texto de={item.nome} />
+              <Texto de={formato.nome} />
             </h3>
             <dl class="comparacao__linhas">
-              <div class="comparacao__linha">
-                <dt>
-                  <Texto de={rotulos.quando} />
-                </dt>
-                <dd>
-                  <Texto de={item.quando} />
-                </dd>
-              </div>
-              <div class="comparacao__linha">
-                <dt>
-                  <Texto de={rotulos.como} />
-                </dt>
-                <dd>
-                  <Texto de={item.como} />
-                </dd>
-              </div>
+              {linhasDe(formato).map((linha) => (
+                <div class="comparacao__linha">
+                  <dt class="rotulo">
+                    <Texto de={linha.rotulo} />
+                  </dt>
+                  <dd>
+                    <Texto de={linha.texto} />
+                  </dd>
+                </div>
+              ))}
             </dl>
           </li>
         ))
@@ -85,12 +89,6 @@ const { id, titulo, apoio, rotulos, itens } = Astro.props;
     display: grid;
     gap: var(--e-1);
     align-content: start;
-  }
-
-  .comparacao__linha dt {
-    color: var(--navy-2);
-    font-size: var(--t-pequeno);
-    font-weight: 700;
   }
 
   .comparacao__linha dd {

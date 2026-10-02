@@ -1,18 +1,10 @@
 import type { HTMLElement } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { carregarPaginas } from './apoio';
+import { carregarPaginas, ilhaDoPedido } from './apoio';
 
 const paginas = carregarPaginas();
 const SERVICOS = ['nr1', 'traducao', 'idiomas', 'lms'];
 const LINK_WHATSAPP = /^https:\/\/wa\.me\/5511934661917(\?text=[^\s]+)?$/;
-
-interface Ilha {
-  numero: string;
-  pagina: string;
-  formularios: Record<string, { id: string; tipo: string }[]>;
-}
-
-const ilhaDe = (raiz: HTMLElement) => JSON.parse(raiz.querySelector('#dados-contato')!.textContent) as Ilha;
 
 /** Nome acessível mínimo: label ligado, label em volta, aria-label ou aria-labelledby que resolve. */
 function temNome(entrada: HTMLElement, raiz: HTMLElement): boolean {
@@ -33,14 +25,14 @@ describe.each(paginas.map((p) => [p.rota, p] as const))('contato em %s', (_rota,
   });
 
   it('entrega ao script os dados do pedido, com o número e os cinco formulários', () => {
-    const ilha = ilhaDe(raiz);
+    const ilha = ilhaDoPedido(raiz);
     expect(ilha.numero).toBe('5511934661917');
     expect(ilha.pagina.length).toBeGreaterThan(0);
     expect(Object.keys(ilha.formularios).sort()).toEqual(['idiomasEmpresa', 'idiomasVoce', 'lms', 'nr1', 'traducao']);
   });
 
   it('desenha no HTML cada campo que os dados descrevem', () => {
-    for (const [formulario, campos] of Object.entries(ilhaDe(raiz).formularios)) {
+    for (const [formulario, campos] of Object.entries(ilhaDoPedido(raiz).formularios)) {
       for (const campo of campos) {
         expect(raiz.querySelector(`[data-formulario="${formulario}"] [data-campo="${campo.id}"]`)).not.toBeNull();
       }
@@ -95,7 +87,7 @@ describe.each(paginas.map((p) => [p.rota, p] as const))('contato em %s', (_rota,
   it('tem o atalho do WhatsApp com a página na mensagem e as versões por público', () => {
     const atalho = raiz.querySelector('[data-whatsapp-flutuante]')!;
     const mensagem = (href: string) => new URL(href).searchParams.get('text') ?? '';
-    const pagina = ilhaDe(raiz).pagina;
+    const pagina = ilhaDoPedido(raiz).pagina;
     for (const href of [
       atalho.getAttribute('href'),
       atalho.getAttribute('data-href-empresa'),

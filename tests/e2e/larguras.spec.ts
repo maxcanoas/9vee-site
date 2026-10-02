@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo } from '../conteudo.ts';
+import { salvarPublico } from './pedido.ts';
 
 // As páginas de idioma saem de content/idiomas/: cada idioma novo entra aqui sozinho.
 const ROTAS_DE_IDIOMA = paginasDeIdiomaNoConteudo().map((pagina) => pagina.rota);
@@ -29,7 +30,7 @@ for (const largura of LARGURAS) {
 
     // O passo mais largo do drawer: os 14 idiomas em pílulas.
     test('o drawer aberto não rola na horizontal', async ({ page, context }) => {
-      await context.addInitScript(() => localStorage.setItem('9vee:publico', 'voce'));
+      await salvarPublico(context, 'voce');
       await page.goto('/');
       await page.locator('.cabecalho__cta').click();
       await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();

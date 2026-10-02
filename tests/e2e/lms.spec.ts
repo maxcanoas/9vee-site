@@ -1,6 +1,5 @@
 import { expect, test } from '@playwright/test';
 import { contrasteSobreOGrifo } from './grifo.ts';
-import { drawer, salvarPublico, titulo } from './pedido.ts';
 
 test.describe('página de LMS', () => {
   // O destino para logo abaixo do cabeçalho fixo, e não embaixo dele.
@@ -27,16 +26,6 @@ test.describe('página de LMS', () => {
     for (const atalho of await page.locator('#motivos a').all()) {
       expect((await atalho.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     }
-  });
-
-  test('a chamada do meio abre o pedido com o LMS já escolhido', async ({ page, context }) => {
-    await salvarPublico(context, 'empresa');
-    await page.goto('/lms/');
-    await page.locator('#chamada [data-abre-contato]').click();
-
-    await expect(titulo(page)).toHaveText('Sobre a plataforma');
-    await expect(page.locator('[data-formulario="lms"]')).toBeVisible();
-    await expect(drawer(page).locator('[data-resumo-de="servico"]')).toContainText('LMS');
   });
 
   // O grifo passa por trás das letras do título de mostra: ali o texto também precisa de 4,5:1.

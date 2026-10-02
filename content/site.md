@@ -249,7 +249,7 @@ formularios:
     - { id: "cidade", tipo: "escolha", rotulo: "Em que cidade?", rotuloCurto: "Cidade", obrigatorio: true, opcoes: ["São Paulo", "Rio de Janeiro", "Curitiba", "Brasília", "Outra"], mostrarSe: { campo: "formato", valores: ["presencial"] } }
     - { id: "cidadeOutra", tipo: "texto", rotulo: "Qual cidade?", rotuloCurto: "Cidade", erro: "Escreva o nome da cidade.", obrigatorio: true, mostrarSe: { campo: "cidade", valores: ["outra"] }, autocomplete: "address-level2" }
 
-# A etiqueta das três páginas que ficam parciais no MVP.
+# A etiqueta da página que continua parcial, como no MVP: o Quem Somos, até o ticket 07.
 etiquetaMvp: "Página em construção no MVP"
 
 # O aviso das páginas de idioma que ainda não vão para o site. Só aparece no local e no preview, porque a

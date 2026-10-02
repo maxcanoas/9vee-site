@@ -6,7 +6,7 @@ import TextoComImagem from '../components/TextoComImagem.astro';
 import Pontos from '../components/Pontos.astro';
 import ListaCorrida from '../components/ListaCorrida.astro';
 import Definicoes from '../components/Definicoes.astro';
-import Ponte from '../components/Ponte.astro';
+import Chamada from '../components/Chamada.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite, servicoDoSite } from '../lib/site';
@@ -28,7 +28,7 @@ const jsonLd = [
   }),
   faqPage(pagina.faq.itens),
 ];
-const { atendimento } = pagina;
+const { idiomas, cidades, ...atendimento } = pagina.atendimento;
 ---
 
 <Base pagina="traducao" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
@@ -36,16 +36,9 @@ const { atendimento } = pagina;
   <Comparacao id="formatos" {...pagina.formatos} />
   <TextoComImagem id="como-funciona" {...pagina.comoFunciona} />
   <Pontos id="eventos" {...pagina.eventos} servico="traducao" />
-  {/* As cidades são as de content/site.md, as mesmas do rodapé e dos dados para o Google. */}
-  <ListaCorrida
-    id="idiomas-e-cidades"
-    titulo={atendimento.titulo}
-    apoio={atendimento.apoio}
-    grupos={[atendimento.idiomas, { rotulo: atendimento.cidades.rotulo, itens: site.cidades }]}
-    nota={atendimento.nota}
-  />
+  <ListaCorrida id="idiomas-e-cidades" {...atendimento} grupos={[idiomas, { ...cidades, itens: site.cidades }]} />
   <Definicoes id="interpretes" {...pagina.interpretes} />
-  <Ponte id="mandarim" {...pagina.mandarim} />
+  <Chamada id="mandarim" {...pagina.mandarim} escuro />
   <Faq {...pagina.faq} />
   <CtaFinal {...pagina.ctaFinal} servico="traducao" />
 </Base>

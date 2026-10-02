@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { salvarPublico } from './pedido.ts';
 
 // A ordem que a cliente pediu em 23/09/2026. A escolha de público não mexe nela.
 const ORDEM = ['idiomas', 'traducao', 'nr1', 'lms'];
@@ -77,7 +78,7 @@ test.describe('escolha de público', () => {
     await page.goto('/curso-de-idiomas/');
     expect(await ordemDosBlocos()).toEqual(['formatos', 'empresas']);
 
-    await context.addInitScript(() => localStorage.setItem('9vee:publico', 'empresa'));
+    await salvarPublico(context, 'empresa');
     await page.goto('/curso-de-idiomas/');
     expect(await ordemDosBlocos()).toEqual(['empresas', 'formatos']);
   });

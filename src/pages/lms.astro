@@ -17,6 +17,7 @@ import { GRUPO_DO_PUBLICO } from '../lib/publico';
 
 const { data: pagina } = await paginaLms();
 const { itens: perguntasDoPedido, ...fechamento } = pagina.ctaFinal;
+const { itens: setores, ...setoresAtendidos } = pagina.setores;
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
 const jsonLd = [
@@ -38,13 +39,7 @@ const jsonLd = [
   <Pontos id="relatorios" {...pagina.relatorios} />
   <Chamada id="chamada" {...pagina.chamada} servico="lms" />
   <Definicoes id="metodologia" {...pagina.metodologia} />
-  <ListaCorrida
-    id="setores"
-    titulo={pagina.setores.titulo}
-    apoio={pagina.setores.apoio}
-    grupos={[{ itens: pagina.setores.itens }]}
-    nota={pagina.setores.nota}
-  />
+  <ListaCorrida id="setores" {...setoresAtendidos} grupos={[{ itens: setores }]} />
   <CtaFinal {...fechamento} servico="lms">
     <PassosNumerados itens={perguntasDoPedido} />
   </CtaFinal>

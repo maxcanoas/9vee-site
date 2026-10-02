@@ -1,19 +1,9 @@
 import { expect, test } from '@playwright/test';
-import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, titulo } from './pedido.ts';
+import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, tituloDoPasso } from './pedido.ts';
 
 test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 
 test.describe('página de tradução simultânea', () => {
-  test('o botão do meio abre o pedido com a tradução já escolhida', async ({ page, context }) => {
-    await salvarPublico(context, 'empresa');
-    await page.goto('/traducao-simultanea/');
-    await page.locator('#eventos [data-abre-contato]').click();
-
-    await expect(titulo(page)).toHaveText('Sobre o evento');
-    await expect(page.locator('[data-formulario="traducao"]')).toBeVisible();
-    await expect(drawer(page).locator('[data-resumo-de="servico"]')).toContainText('Tradução simultânea');
-  });
-
   // A duração decide se vai um intérprete ou dois: o pedido cobra a resposta e leva para a mensagem.
   test('o pedido cobra a duração do evento e leva a resposta na mensagem do WhatsApp', async ({ page, context }) => {
     await salvarPublico(context, 'empresa');
@@ -30,7 +20,7 @@ test.describe('página de tradução simultânea', () => {
 
     await opcao(page, 'traducao', 'Meio período').click();
     await page.locator('[data-continuar]').click();
-    await expect(titulo(page)).toHaveText('Como podemos te chamar?');
+    await expect(tituloDoPasso(page)).toHaveText('Como podemos te chamar?');
     await page.fill('#campo-final-nome', 'Maria');
 
     const [aba] = await Promise.all([

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { abrirPagina, conferirFiguraEmArco, conferirServico } from './apoio';
+import { abrirPagina, conferirFiguraEmArco, conferirServico, textoDe, textosDe } from './apoio';
 
 const lms = abrirPagina('lms');
-const texto = (seletor: string) => lms.querySelector(seletor)?.text.replace(/\s+/g, ' ').trim() ?? '';
-const textos = (seletor: string) => lms.querySelectorAll(seletor).map((no) => no.text.replace(/\s+/g, ' ').trim());
+const texto = (seletor: string) => textoDe(lms, seletor);
+const textos = (seletor: string) => textosDe(lms, seletor);
 
 describe('LMS', () => {
   it('traz as nove seções da página completa, na ordem', () => {

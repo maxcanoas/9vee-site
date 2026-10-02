@@ -245,6 +245,11 @@ const heroDeServico = z.object({
   cta: z.string(),
   imagem,
 });
+// O fechamento da página de um serviço, com o rótulo fixo do botão.
+const fechamentoDeServico = z.object({ titulo: z.string(), texto: z.string(), rotulo: z.string() });
+// As seções que mais de uma página de serviço tem: o texto corrido ao lado da imagem e a lista de definições.
+const textoComImagem = z.object({ titulo: z.string(), paragrafos: z.array(z.string()).min(1), imagem });
+const definicoes = z.object({ titulo: z.string(), apoio: z.string(), itens: z.array(nomeETexto).min(2) });
 
 const home = defineCollection({
   loader: glob({ pattern: 'home.md', base: conteudo }),
@@ -362,7 +367,7 @@ const nr1 = defineCollection({
       etapas: z.array(tituloETexto).length(4),
     }),
     faq,
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string(), rotulo: z.string() }),
+    ctaFinal: fechamentoDeServico,
   }),
 });
 
@@ -475,11 +480,7 @@ const lms = defineCollection({
         .array(z.object({ rotulo: z.string(), descricao: z.string(), href: z.string().regex(/^#[a-z-]+$/) }))
         .min(2),
     }),
-    oQueE: z.object({
-      titulo: z.string(),
-      paragrafos: z.array(z.string()).min(1),
-      imagem,
-    }),
+    oQueE: textoComImagem,
     // O título da seção é a frase em tipo grande, uma linha por item, com o grifo no começo de cada uma.
     plataforma: z.object({
       linhas: z.array(z.object({ grifo: z.string(), texto: z.string() })).min(1),
@@ -499,11 +500,7 @@ const lms = defineCollection({
       pontos: z.array(z.string()).min(2),
       cta: z.string(),
     }),
-    metodologia: z.object({
-      titulo: z.string(),
-      apoio: z.string(),
-      itens: z.array(nomeETexto).min(2),
-    }),
+    metodologia: definicoes,
     setores: z.object({
       titulo: z.string(),
       apoio: z.string(),
@@ -511,12 +508,7 @@ const lms = defineCollection({
       nota: z.string(),
     }),
     // As perguntas do pedido de LMS, na ordem do formulário.
-    ctaFinal: z.object({
-      titulo: z.string(),
-      texto: z.string(),
-      itens: z.array(tituloETexto).min(1),
-      rotulo: z.string(),
-    }),
+    ctaFinal: fechamentoDeServico.extend({ itens: z.array(tituloETexto).min(1) }),
   }),
 });
 
@@ -535,11 +527,7 @@ const traducao = defineCollection({
       rotulos: z.object({ quando: z.string(), como: z.string() }),
       itens: z.array(z.object({ nome: z.string(), quando: z.string(), como: z.string() })).min(2),
     }),
-    comoFunciona: z.object({
-      titulo: z.string(),
-      paragrafos: z.array(z.string()).min(1),
-      imagem,
-    }),
+    comoFunciona: textoComImagem,
     // Só o nome de cada tipo de evento, como o site atual lista.
     eventos: z.object({
       titulo: z.string(),
@@ -556,15 +544,11 @@ const traducao = defineCollection({
       cidades: z.object({ rotulo: z.string() }),
       nota: z.string(),
     }),
-    interpretes: z.object({
-      titulo: z.string(),
-      apoio: z.string(),
-      itens: z.array(nomeETexto).min(2),
-    }),
-    // A ponte para a página de interpretação de mandarim. O link entra quando a página existir (ticket 21).
-    mandarim: z.object({ titulo: z.string(), texto: z.string(), link: link.optional() }),
+    interpretes: definicoes,
+    // O bloco curto que apresenta a interpretação de mandarim. O link para a página dela entra no ticket 21.
+    mandarim: z.object({ titulo: z.string(), texto: z.string() }),
     faq,
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string(), rotulo: z.string() }),
+    ctaFinal: fechamentoDeServico,
   }),
 });
 

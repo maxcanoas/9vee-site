@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, titulo } from './pedido.ts';
+import { drawer, mensagemDe, opcao, salvarPublico, semWhatsAppDeVerdade, tituloDoPasso } from './pedido.ts';
 
 test.beforeEach(({ context }) => semWhatsAppDeVerdade(context));
 
@@ -18,8 +18,8 @@ test.describe('drawer de contato', () => {
     await page.locator('.hero__cta').click();
 
     await expect(drawer(page)).toBeVisible();
-    await expect(titulo(page)).toHaveText('É para sua empresa ou para você?');
-    await expect(titulo(page)).toBeFocused();
+    await expect(tituloDoPasso(page)).toHaveText('É para sua empresa ou para você?');
+    await expect(tituloDoPasso(page)).toBeFocused();
     await expect(drawer(page).locator('[data-passo-texto]')).toHaveText('Passo 1 de 4');
   });
 
@@ -28,20 +28,27 @@ test.describe('drawer de contato', () => {
     await page.locator('.hero__cta').click();
     await drawer(page).locator('.metade--esquerda').click();
 
-    await expect(titulo(page)).toHaveText('Qual serviço você procura?');
+    await expect(tituloDoPasso(page)).toHaveText('Qual serviço você procura?');
     await expect(drawer(page).locator('[data-resumo-de="publico"]')).toContainText('Para a minha empresa');
     await expect(page.locator('html')).toHaveAttribute('data-publico', 'empresa');
   });
 
-  test('a página de NR-1 já chega com o serviço escolhido', async ({ page, context }) => {
-    await salvarPublico(context, 'empresa');
-    await page.goto('/treinamento-nr-1/');
-    await page.locator('.cabecalho__cta').click();
+  // O botão do cabeçalho não diz o serviço: vale o da página. Os botões do meio da página dizem o deles.
+  for (const { rota, botao, passo, formulario, servico } of [
+    { rota: '/treinamento-nr-1/', botao: '.cabecalho__cta', passo: 'Sobre o treinamento', formulario: 'nr1', servico: 'Treinamento de NR-1' },
+    { rota: '/lms/', botao: '#chamada [data-abre-contato]', passo: 'Sobre a plataforma', formulario: 'lms', servico: 'LMS' },
+    { rota: '/traducao-simultanea/', botao: '#eventos [data-abre-contato]', passo: 'Sobre o evento', formulario: 'traducao', servico: 'Tradução simultânea' },
+  ]) {
+    test(`${rota} abre o pedido com o serviço dela já escolhido`, async ({ page, context }) => {
+      await salvarPublico(context, 'empresa');
+      await page.goto(rota);
+      await page.locator(botao).click();
 
-    await expect(titulo(page)).toHaveText('Sobre o treinamento');
-    await expect(page.locator('[data-formulario="nr1"]')).toBeVisible();
-    await expect(drawer(page).locator('[data-resumo-de="servico"]')).toContainText('Treinamento de NR-1');
-  });
+      await expect(tituloDoPasso(page)).toHaveText(passo);
+      await expect(page.locator(`[data-formulario="${formulario}"]`)).toBeVisible();
+      await expect(drawer(page).locator('[data-resumo-de="servico"]')).toContainText(servico);
+    });
+  }
 
   test('quem escolheu "Para você" monta as aulas, com os idiomas já marcados como serviço', async ({ page, context }) => {
     await salvarPublico(context, 'voce');
@@ -50,7 +57,7 @@ test.describe('drawer de contato', () => {
 
     // O nome acessível ignora a versão escondida do título, como o leitor de tela.
     await expect(drawer(page)).toHaveAccessibleName('Montar suas aulas');
-    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();
   });
 
@@ -59,7 +66,7 @@ test.describe('drawer de contato', () => {
     await page.goto('/curso-de-idiomas/');
     await page.locator('#japones button').click();
 
-    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('input[name="idiomasVoce-idioma"][value="japones"]')).toBeChecked();
   });
 
@@ -80,12 +87,12 @@ test.describe('drawer de contato', () => {
     await page.goto('/curso-de-idiomas/ingles/');
     await page.locator('.topo-idioma [data-abre-contato]').click();
 
-    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('input[name="idiomasVoce-idioma"][value="ingles"]')).toBeChecked();
 
     await page.goto('/curso-de-idiomas/mandarim/');
     await page.locator('.cabecalho__cta').click();
-    await expect(titulo(page)).toHaveText('Sobre as suas aulas');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
     await expect(page.locator('input[name="idiomasVoce-idioma"][value="mandarim"]')).toBeChecked();
   });
 
@@ -121,10 +128,10 @@ test.describe('drawer de contato', () => {
     await page.locator('.hero__cta').click();
     await drawer(page).locator('.metade--esquerda').click();
     await drawer(page).locator('.servico-opcao', { hasText: 'Treinamento de NR-1' }).click();
-    await expect(titulo(page)).toHaveText('Sobre o treinamento');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre o treinamento');
     await preencherNr1(page);
 
-    await expect(titulo(page)).toHaveText('Como podemos te chamar?');
+    await expect(tituloDoPasso(page)).toHaveText('Como podemos te chamar?');
     await page.fill('#campo-final-nome', 'Maria');
 
     const saida = drawer(page).locator('[data-saida-whatsapp]');
@@ -145,7 +152,7 @@ test.describe('drawer de contato', () => {
         'Meu nome é Maria.',
       ].join('\n'),
     );
-    await expect(titulo(page)).toHaveText('Abrimos a conversa no WhatsApp.');
+    await expect(tituloDoPasso(page)).toHaveText('Abrimos a conversa no WhatsApp.');
     await expect(drawer(page).locator('[data-link-whatsapp]')).toHaveAttribute('href', aba.url());
   });
 
@@ -182,7 +189,7 @@ test.describe('drawer de contato', () => {
 
     await page.fill('#campo-final-contato', 'maria@exemplo.com.br');
     await drawer(page).locator('[data-enviar-pedido]').click();
-    await expect(titulo(page)).toHaveText('Pedido anotado.');
+    await expect(tituloDoPasso(page)).toHaveText('Pedido anotado.');
     await expect(drawer(page).locator('[data-linhas-confirmacao]')).toContainText('E-mail: maria@exemplo.com.br');
     await expect(drawer(page).locator('.drawer__simulado')).toContainText('MVP: envio simulado');
   });
@@ -193,7 +200,7 @@ test.describe('drawer de contato', () => {
     await page.locator('.cabecalho__cta').click();
     const cidade = page.locator('[data-formulario="traducao"] [data-campo="cidade"]');
     const outra = page.locator('#campo-traducao-cidadeOutra');
-    await expect(titulo(page)).toHaveText('Sobre o evento');
+    await expect(tituloDoPasso(page)).toHaveText('Sobre o evento');
 
     await opcao(page, 'traducao', 'Online').click();
     await expect(cidade).toBeHidden();
@@ -211,9 +218,9 @@ test.describe('drawer de contato', () => {
     await preencherNr1(page);
 
     await drawer(page).getByRole('button', { name: 'Alterar para quem é o pedido' }).click();
-    await expect(titulo(page)).toHaveText('É para sua empresa ou para você?');
+    await expect(tituloDoPasso(page)).toHaveText('É para sua empresa ou para você?');
     await drawer(page).locator('[data-continuar]').click();
-    await expect(titulo(page)).toHaveText('Como podemos te chamar?');
+    await expect(tituloDoPasso(page)).toHaveText('Como podemos te chamar?');
   });
 });
 
@@ -224,16 +231,16 @@ test.describe('drawer pelo teclado', () => {
     await page.goto('/');
     await page.locator('.cabecalho__cta').focus();
     await page.keyboard.press('Enter');
-    await expect(titulo(page)).toBeFocused();
+    await expect(tituloDoPasso(page)).toBeFocused();
 
     await page.keyboard.press('Tab');
     await expect(page.locator('input[name="drawer-publico"][value="empresa"]')).toBeFocused();
     await page.keyboard.press('ArrowRight');
     await expect(page.locator('input[name="drawer-publico"][value="voce"]')).toBeChecked();
-    await expect(titulo(page)).toHaveText('É para sua empresa ou para você?');
+    await expect(tituloDoPasso(page)).toHaveText('É para sua empresa ou para você?');
 
     await page.keyboard.press('Enter');
-    await expect(titulo(page)).toHaveText('Qual serviço você procura?');
+    await expect(tituloDoPasso(page)).toHaveText('Qual serviço você procura?');
   });
 
   test('Tab dá a volta dentro do drawer, Esc fecha e o foco volta ao botão', async ({ page }) => {
