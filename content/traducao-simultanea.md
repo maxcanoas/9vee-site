@@ -91,10 +91,13 @@ interpretes:
     - nome: "Casos atendidos"
       texto: "[CONFIRMAR COM A DANIELLA: quais trabalhos de interpretação posso citar, e de quais empresas, com a autorização de cada uma]"
 
-# O bloco curto que apresenta a interpretação de mandarim. O link para a página dela entra no ticket 21.
+# O bloco curto que apresenta a interpretação de mandarim e leva à página dela.
 mandarim:
   titulo: "Quando o negócio fala mandarim, precisão não é opcional."
   texto: "A 9vee faz interpretação entre mandarim e português para o mercado financeiro: reuniões com investidores, visitas de due diligence e a fábricas, conferências e roadshows."
+  link:
+    rotulo: "Ver a interpretação de mandarim"
+    href: "/traducao-simultanea/mandarim/"
 
 faq:
   titulo: "Perguntas de quem organiza"

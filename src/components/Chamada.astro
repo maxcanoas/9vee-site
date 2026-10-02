@@ -1,7 +1,7 @@
 ---
-// Uma faixa mais baixa que uma seção, com o título de um lado e o corpo do outro. No fundo claro é a chamada do
-// meio da página: a pergunta, o que a 9vee leva e o botão do pedido. No fundo escuro é o bloco curto que apresenta
-// outro serviço. É mais baixa de propósito, para ler como a virada entre duas partes da página.
+// Uma faixa mais baixa que uma seção, com o título de um lado e o corpo do outro. Com o botão, é a chamada do meio
+// da página: a pergunta, o que a 9vee leva e o pedido. Com o link, é o bloco curto que apresenta outra página e leva
+// a ela. É mais baixa de propósito, para ler como a virada entre duas partes da página.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import type { ServicoId } from '../lib/contato';
@@ -13,10 +13,11 @@ interface Props {
   pontos?: string[];
   cta?: string;
   servico?: ServicoId;
+  link?: { rotulo: string; href: string };
   escuro?: boolean;
 }
 
-const { id, titulo, texto, pontos, cta, servico, escuro = false } = Astro.props;
+const { id, titulo, texto, pontos, cta, servico, link, escuro = false } = Astro.props;
 ---
 
 <section class:list={['chamada', escuro && 'escuro']} id={id} aria-labelledby={`${id}-titulo`}>
@@ -37,6 +38,13 @@ const { id, titulo, texto, pontos, cta, servico, escuro = false } = Astro.props;
         )
       }
       {cta && <BotaoContato texto={cta} servico={servico} />}
+      {
+        link && (
+          <a class="chamada__link" href={link.href}>
+            <Texto de={link.rotulo} />
+          </a>
+        )
+      }
     </div>
   </div>
 </section>
@@ -99,6 +107,13 @@ const { id, titulo, texto, pontos, cta, servico, escuro = false } = Astro.props;
     block-size: 1rem;
     border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
     background-color: var(--menta);
+  }
+
+  /* O link de texto dos cartões de serviço da home, com a área de toque no padding. */
+  .chamada__link {
+    display: inline-block;
+    padding-block: max(0px, (var(--alvo-minimo) - 1lh) / 2);
+    font-weight: 700;
   }
 
   @media (min-width: 64rem) {

@@ -1,38 +1,63 @@
 ---
-// Uma frase em tipo de mostra, a maior da página, com o que a sustenta logo abaixo. É o título da seção.
-// Cada linha da frase abre com um trecho no grifo, na cor do grupo de quem contrata (o mapa [data-grupo] do base.css).
-// Dentro do grifo e do resto da linha o espaço não quebra: quando a linha não cabe, o resto desce inteiro
-// ("7 dias" e, embaixo, "por semana."), e não fica uma palavra sozinha.
+// Uma frase em tipo de mostra, a maior da página, com o que a sustenta logo abaixo. É o título da seção, e o grifo
+// dela sai na cor do grupo (o mapa [data-grupo] do base.css).
+// O título curto vem em linhas, cada uma com o grifo no começo. Dentro do grifo e do resto da linha o espaço não
+// quebra: quando a linha não cabe, o resto desce inteiro ("7 dias" e, embaixo, "por semana."), e não fica uma palavra
+// sozinha. O título de uma frase só leva o grifo no meio dela e quebra onde couber.
 import Texto from './Texto.astro';
 import { comEspacoFixo } from '../lib/texto';
 
-interface Props {
+type Titulo =
+  | { linhas: { grifo: string; texto: string }[]; frase?: never }
+  | { frase: { antes: string; grifo: string; depois: string }; linhas?: never };
+
+type Props = Titulo & {
   id: string;
   /** O id do grupo em content/site.md, que dá a cor do grifo. */
   grupo: string;
-  linhas: { grifo: string; texto: string }[];
+  /** A assinatura que fecha a frase, na escrita de outro idioma, com o lang dele. */
+  assinatura?: { texto: string; lang: string };
   apoio: string;
   itens: { titulo: string; texto: string }[];
-}
+};
 
-const { id, grupo, linhas, apoio, itens } = Astro.props;
+const { id, grupo, linhas, frase, assinatura, apoio, itens } = Astro.props;
 ---
 
 <section class="mostra" id={id} aria-labelledby={`${id}-titulo`} data-grupo={grupo}>
   <div class="conteiner mostra__grade">
-    <h2 id={`${id}-titulo`} class="mostra__titulo revela">
+    <div class="mostra__cabeca">
+      <h2 id={`${id}-titulo`} class="mostra__titulo revela">
+        {
+          linhas?.map((linha, i) => (
+            <>
+              {i > 0 && <br />}
+              <span class="grifo">
+                <Texto de={comEspacoFixo(linha.grifo)} />
+              </span>{' '}
+              <Texto de={comEspacoFixo(linha.texto)} />{' '}
+            </>
+          ))
+        }
+        {/* O grifo e o que vem depois dele ficam colados no código: uma quebra de linha ali vira espaço na tela, e a
+            vírgula se soltaria da palavra. */}
+        {
+          frase && (
+            <>
+              <Texto de={frase.antes} />{' '}
+              <span class="grifo"><Texto de={frase.grifo} /></span><Texto de={frase.depois} />
+            </>
+          )
+        }
+      </h2>
       {
-        linhas.map((linha, i) => (
-          <>
-            {i > 0 && <br />}
-            <span class="grifo">
-              <Texto de={comEspacoFixo(linha.grifo)} />
-            </span>{' '}
-            <Texto de={comEspacoFixo(linha.texto)} />{' '}
-          </>
-        ))
+        assinatura && (
+          <p class="mostra__assinatura" lang={assinatura.lang}>
+            {assinatura.texto}
+          </p>
+        )
       }
-    </h2>
+    </div>
 
     <p class="mostra__apoio"><Texto de={apoio} /></p>
 
@@ -64,11 +89,25 @@ const { id, grupo, linhas, apoio, itens } = Astro.props;
     gap: var(--e-6);
   }
 
+  .mostra__cabeca {
+    display: grid;
+    gap: var(--e-5);
+  }
+
   /* O overflow-wrap só age na tela mais estreita que um trecho inteiro: sem ele, o trecho empurraria a página
      para o lado. */
   .mostra__titulo {
     font-size: var(--t-mostra);
     overflow-wrap: break-word;
+  }
+
+  /* A assinatura fecha a frase do lado direito, como numa carta. */
+  .mostra__assinatura {
+    justify-self: end;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-2);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
   }
 
   .mostra__apoio {
@@ -93,6 +132,12 @@ const { id, grupo, linhas, apoio, itens } = Astro.props;
     font-size: var(--t-destaque);
   }
 
+  /* Com número ímpar de itens, o primeiro abre a lista, em tipo maior. No computador ele ocupa a linha inteira, e os
+     outros ficam em pares, abaixo dele. */
+  .mostra__item:first-child:nth-last-child(odd) .mostra__item-titulo {
+    font-size: var(--t-3);
+  }
+
   .mostra__item-texto {
     max-inline-size: 42ch;
     margin-block-start: var(--e-2);
@@ -106,13 +151,17 @@ const { id, grupo, linhas, apoio, itens } = Astro.props;
       align-items: start;
     }
 
-    .mostra__titulo {
+    .mostra__cabeca {
       grid-column: 1 / -1;
     }
 
     .mostra__itens {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: var(--e-6);
+    }
+
+    .mostra__item:first-child:nth-last-child(odd) {
+      grid-column: 1 / -1;
     }
   }
 </style>

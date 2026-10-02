@@ -224,7 +224,10 @@ export function mensagemFlutuante(pagina: string, assunto: string, modelos: Mode
 export interface PaginaDoContato {
   nome: string;
   servico?: ServicoId;
-  /** Na página de um idioma, o slug dele: o pedido aberto sem idioma no botão já sai com este. */
+  /**
+   * Na página de um idioma, o slug dele: o pedido aberto sem idioma no botão já sai com este. Vale para a página do
+   * curso e para a de interpretação de mandarim, onde ele entra nos idiomas do evento.
+   */
   idioma?: string;
   assunto: TextosPorPublico;
 }
@@ -247,6 +250,16 @@ export function paginaDoContatoDoIdioma(modelo: PaginaDoContato, idioma: { slug:
  */
 export function idiomaInicial(pistas: { doBotao: string | undefined; escolhido: string | null; daPagina: string | null }) {
   return pistas.doBotao ?? pistas.escolhido ?? pistas.daPagina;
+}
+
+/**
+ * As opções marcadas numa pergunta de várias respostas quando o pedido abre: as que a pessoa já tinha marcado e, sem
+ * nenhuma, a do idioma da página, se a pergunta oferece esse idioma. Na página de interpretação de mandarim, o pedido
+ * de tradução abre com o mandarim marcado nos idiomas do evento.
+ */
+export function opcoesIniciais(pistas: { opcoes: readonly string[]; marcadas: readonly string[]; idiomaDaPagina: string | null }): string[] {
+  if (pistas.marcadas.length > 0) return [...pistas.marcadas];
+  return pistas.opcoes.map(valorDaOpcao).filter((valor) => valor === pistas.idiomaDaPagina);
 }
 
 export function linkWhatsApp(numero: string, mensagem?: string): string {

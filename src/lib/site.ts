@@ -17,6 +17,13 @@ export function servicoDoSite(site: DadosDoSite, id: ServicoId) {
   return servico;
 }
 
+/** O idioma de uma página, como content/site.md o descreve: o nome, a saudação, o lang e a família. */
+export function idiomaDaPagina(site: DadosDoSite, pagina: PaginaId) {
+  const idioma = site.idiomas.find(({ slug }) => slug === site.paginas[pagina].idioma);
+  if (!idioma) throw new Error(`a página "${pagina}" não diz o idioma dela em content/site.md`);
+  return idioma;
+}
+
 /**
  * Junta a cada item a ordem do serviço por público, que vive em content/site.md, e devolve a lista na ordem
  * de quem ainda não escolheu. Assim o HTML sem JavaScript já sai na ordem da tela, e a ordem mora só nos números.

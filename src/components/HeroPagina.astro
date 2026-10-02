@@ -19,9 +19,11 @@ interface Props {
   servico?: ServicoId;
   /** Só nas páginas parciais: o aviso de que a página ainda não está completa. */
   etiqueta?: string;
+  /** A linha logo abaixo do botão, na página que promete um prazo de resposta. */
+  nota?: string;
 }
 
-const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.props;
+const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta, nota } = Astro.props;
 ---
 
 <section class="hero-pagina escuro" aria-labelledby="hero-titulo">
@@ -32,7 +34,7 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico, etiqueta } = Astro.prop
       <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="hero-pagina__apoio"><Texto de={apoio} /></p>
-      <BotaoContato texto={cta} textos={textos} servico={servico} />
+      <BotaoContato texto={cta} textos={textos} servico={servico} nota={nota} />
     </div>
 
     <ArcoComCirculo imagem={imagem} />

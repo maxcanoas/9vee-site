@@ -24,6 +24,16 @@ export async function paginaTraducao() {
   return exigir(await getEntry('traducao', 'traducao-simultanea'), 'content/traducao-simultanea.md');
 }
 
+/** O endereço da página de interpretação de mandarim, filha da Tradução Simultânea. */
+const INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
+
+export async function paginaInterpretacaoDeMandarim() {
+  return exigir(
+    await getEntry('interpretacaoDeMandarim', 'interpretacao-de-mandarim'),
+    'content/interpretacao-de-mandarim.md',
+  );
+}
+
 export async function paginaParcial(id: 'quem-somos') {
   return exigir(await getEntry('parciais', id), `content/${id}.md`);
 }
@@ -65,13 +75,25 @@ export async function enderecoDosIdiomasPublicados(): Promise<Map<string, string
   return new Map(publicadas.map(({ idioma, caminho }) => [idioma.slug, caminho]));
 }
 
+/** A âncora de um idioma na lista da página de cursos: é para ela que vai o link do idioma sem página publicada. */
+export const ancoraDoIdioma = (slug: string) => `/curso-de-idiomas/#${slug}`;
+
+/** Para onde leva, de fora da página de cursos, o link do curso de um idioma: a página dele ou, sem ela, a âncora. */
+export async function enderecoDoCurso(slug: string): Promise<string> {
+  return (await enderecoDosIdiomasPublicados()).get(slug) ?? ancoraDoIdioma(slug);
+}
+
 /**
- * A trilha do endereço, com o nome das páginas de idioma, que não estão no menu nem no rodapé. O Base (no JSON-LD) e
- * a Trilha (na tela) usam esta.
+ * A trilha do endereço, com o nome das páginas que não estão no menu nem no rodapé: as de idioma, pelo nome do idioma,
+ * e a de interpretação de mandarim, pelo nome que ela mesma dá. O Base (no JSON-LD) e a Trilha (na tela) usam esta.
  */
 export async function trilhaDaPagina(caminho: string) {
   const site = await dadosDoSite();
-  const comNomeProprio = (await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho }));
+  const { data: mandarim } = await paginaInterpretacaoDeMandarim();
+  const comNomeProprio = [
+    ...(await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho })),
+    { rotulo: mandarim.nome, href: INTERPRETACAO_DE_MANDARIM },
+  ];
   return trilhaDoCaminho(site, caminho, comNomeProprio);
 }
 

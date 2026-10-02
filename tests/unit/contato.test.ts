@@ -11,6 +11,7 @@ import {
   mensagemFlutuante,
   modoDoDrawer,
   montarMensagem,
+  opcoesIniciais,
   paginaDoContatoDoIdioma,
   primeiraEtapaPendente,
   servicoInicial,
@@ -371,6 +372,28 @@ describe('idiomaInicial', () => {
 
   it('fora da página de um idioma, não marca nada', () => {
     expect(idiomaInicial({ doBotao: undefined, escolhido: null, daPagina: null })).toBeNull();
+  });
+});
+
+// A pergunta de várias respostas, como os idiomas do evento no pedido de tradução.
+describe('opcoesIniciais', () => {
+  const opcoes = ['Inglês', 'Mandarim', 'Crioulo haitiano', 'Outro'];
+
+  it('na página de um idioma, marca a opção dele quando a pessoa ainda não marcou nada', () => {
+    expect(opcoesIniciais({ opcoes, marcadas: [], idiomaDaPagina: 'mandarim' })).toEqual(['mandarim']);
+  });
+
+  it('mantém o que a pessoa já marcou, mesmo sem o idioma da página', () => {
+    expect(opcoesIniciais({ opcoes, marcadas: ['ingles', 'outro'], idiomaDaPagina: 'mandarim' })).toEqual(['ingles', 'outro']);
+  });
+
+  it('não marca nada quando a pergunta não oferece o idioma da página', () => {
+    const conteudo = ['Idiomas', 'Treinamentos internos', 'Outro'];
+    expect(opcoesIniciais({ opcoes: conteudo, marcadas: [], idiomaDaPagina: 'mandarim' })).toEqual([]);
+  });
+
+  it('fora da página de um idioma, não marca nada', () => {
+    expect(opcoesIniciais({ opcoes, marcadas: [], idiomaDaPagina: null })).toEqual([]);
   });
 });
 

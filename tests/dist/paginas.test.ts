@@ -6,6 +6,7 @@ import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
   DIST,
   DOMINIO,
+  INTERPRETACAO_DE_MANDARIM,
   PAGINAS_DE_TEXTO,
   carregarPaginas,
   conferirEnderecos,
@@ -175,9 +176,9 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
 
   // O nome vem do menu, e não do trecho da mensagem do WhatsApp, que tem outra caixa e muda por outro motivo.
   // A política de privacidade está só no rodapé, e a página de idioma não está em nenhum dos dois: o nome dela é o
-  // do idioma na lista da página de cursos.
+  // do idioma na lista da página de cursos. A de interpretação de mandarim dá o próprio nome, e o teste dela confere.
   it('dá à página, na trilha, o mesmo nome que ela tem no menu, no rodapé ou na lista de idiomas', () => {
-    if (!temTrilha(rota)) return;
+    if (!temTrilha(rota) || rota === INTERPRETACAO_DE_MANDARIM) return;
     const noMenu = raiz.querySelectorAll('header a').find((link) => link.getAttribute('href') === rota);
     const noRodape = raiz.querySelectorAll('footer a').find((link) => link.getAttribute('href') === rota);
     const idioma = paginasDeIdiomaNoConteudo().find((pagina) => pagina.rota === rota)?.idioma;

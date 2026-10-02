@@ -27,7 +27,7 @@ paraQuem:
       texto: "Para conversar na viagem, com a fala treinada desde as primeiras aulas."
     - titulo: "Cultura"
       texto: "Para quem se interessa pela cultura chinesa."
-  nota: "Para quem trabalha com a China, a 9vee também leva [intérpretes de mandarim](/traducao-simultanea/) a reuniões e eventos."
+  nota: "Para quem trabalha com a China, a 9vee também leva [intérpretes de mandarim](/traducao-simultanea/mandarim/) a reuniões e eventos."
 
 destaque:
   id: "o-idioma"

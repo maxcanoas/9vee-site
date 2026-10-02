@@ -128,8 +128,20 @@ const site = defineCollection({
       ),
     paginas: z
       .record(
-        z.enum(['home', 'nr1', 'idiomas', 'idioma', 'traducao', 'lms', 'quemSomos', 'privacidade', 'erro404']),
-        z.object({ nome: z.string(), servico: servicoId.optional(), assunto: porPublico }),
+        z.enum([
+          'home',
+          'nr1',
+          'idiomas',
+          'idioma',
+          'traducao',
+          'interpretacaoDeMandarim',
+          'lms',
+          'quemSomos',
+          'privacidade',
+          'erro404',
+        ]),
+        // O idioma é o slug dele em `idiomas`: o pedido aberto na página já sai com ele marcado.
+        z.object({ nome: z.string(), servico: servicoId.optional(), idioma: z.string().optional(), assunto: porPublico }),
       )
       .refine(({ idioma }) => [idioma.nome, ...Object.values(idioma.assunto)].every((texto) => texto.includes('{idioma}')), {
         error: 'o modelo das páginas de idioma precisa de {idioma} no nome e em cada assunto',
@@ -224,7 +236,11 @@ const site = defineCollection({
       rotuloCaminhos: z.string(),
       voltar: z.string(),
     }),
-  }),
+  })
+    // O pedido acha a opção a marcar pelo slug: a página que diz um idioma precisa dizer um dos que o site tem.
+    .refine(({ paginas, idiomas }) => Object.values(paginas).every(({ idioma }) => !idioma || idiomas.some(({ slug }) => slug === idioma)), {
+      error: 'página com um idioma que não está nos idiomas de content/site.md',
+    }),
 });
 
 const imagem = z.object({
@@ -545,9 +561,35 @@ const traducao = defineCollection({
       nota: z.string(),
     }),
     interpretes: definicoes,
-    // O bloco curto que apresenta a interpretação de mandarim. O link para a página dela entra no ticket 21.
-    mandarim: z.object({ titulo: z.string(), texto: z.string() }),
+    // O bloco curto que apresenta a interpretação de mandarim e leva à página dela.
+    mandarim: z.object({ titulo: z.string(), texto: z.string(), link }),
     faq,
+    ctaFinal: fechamentoDeServico,
+  }),
+});
+
+// A interpretação de mandarim para o mercado financeiro, filha da Tradução Simultânea, com o que a landing do site
+// atual diz. Fica fora de content/idiomas/: não é a página do curso, e vai para a produção desde o lançamento.
+const interpretacaoDeMandarim = defineCollection({
+  loader: glob({ pattern: 'interpretacao-de-mandarim.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    // O nome da página na trilha: ela não está no menu nem no rodapé.
+    nome: z.string(),
+    servico: tipoDoServico.extend({ nome: z.string() }),
+    hero: heroDeServico,
+    // O prazo de resposta que a página promete, logo abaixo do botão do pedido.
+    prazo: z.string(),
+    servicos: z.object({ titulo: z.string(), itens: z.array(nomeETexto).min(2) }),
+    // O título da seção é a frase em tipo grande, com o grifo no meio dela e a assinatura na escrita do idioma.
+    tese: z.object({
+      frase: z.object({ antes: z.string(), grifo: z.string(), depois: z.string() }),
+      assinatura: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).min(1),
+    }),
+    // A ponte para o curso de mandarim. Aqui fica só o rótulo do link: o endereço sai do código.
+    curso: z.object({ titulo: z.string(), texto: z.string(), link: z.string() }),
     ctaFinal: fechamentoDeServico,
   }),
 });
@@ -603,6 +645,7 @@ export const collections = {
   paginasDeIdioma,
   lms,
   traducao,
+  interpretacaoDeMandarim,
   parciais,
   privacidade,
 };

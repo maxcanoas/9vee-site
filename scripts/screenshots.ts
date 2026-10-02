@@ -300,6 +300,16 @@ const roteiros: Record<string, Captura[]> = {
       },
     },
   ],
+  // A página de interpretação de mandarim, o pedido que ela abre, pelo botão dela e pelo do cabeçalho, com a
+  // tradução e o mandarim marcados, e as duas páginas que passaram a levar a ela.
+  'ticket-21': [
+    ...capturasDaPagina('mandarim', '/traducao-simultanea/mandarim/', ['servicos', 'precisao', 'curso']),
+    { nome: 'mandarim-pedido-pagina-390', rota: '/traducao-simultanea/mandarim/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('.hero-pagina [data-abre-contato]').click() },
+    { nome: 'mandarim-pedido-cabecalho-1280', rota: '/traducao-simultanea/mandarim/', largura: 1280, altura: 800, publico: 'empresa', antes: (p) => p.locator('.cabecalho__cta').click() },
+    { nome: 'traducao-bloco-mandarim-390', rota: '/traducao-simultanea/', largura: 390, altura: 844, antes: rolarAte('#mandarim', -60) },
+    { nome: 'traducao-bloco-mandarim-1280', rota: '/traducao-simultanea/', largura: 1280, altura: 800, antes: rolarAte('#mandarim', -80) },
+    { nome: 'curso-de-mandarim-para-quem-390', rota: '/curso-de-idiomas/mandarim/', largura: 390, altura: 844, antes: rolarAte('#para-quem', -60) },
+  ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
     { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },

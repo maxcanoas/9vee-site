@@ -19,7 +19,12 @@ export function carregarPaginas(pasta = DIST): Pagina[] {
   return lerPaginas(pasta);
 }
 
-export { PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo, type PaginaDeIdiomaNoConteudo } from '../conteudo.ts';
+export {
+  INTERPRETACAO_DE_MANDARIM,
+  PAGINAS_DE_TEXTO,
+  paginasDeIdiomaNoConteudo,
+  type PaginaDeIdiomaNoConteudo,
+} from '../conteudo.ts';
 
 /** A página de uma rota do build de preview, já lida: "lms" é o dist/lms/index.html. */
 export function abrirPagina(rota: string): HTMLElement {
@@ -35,10 +40,15 @@ export const textoDe = (raiz: HTMLElement, seletor: string) => emUmaLinha(raiz.q
 export const textosDe = (raiz: HTMLElement, seletor: string) =>
   raiz.querySelectorAll(seletor).map((no) => emUmaLinha(no.text));
 
-/** Os dados do pedido que a página entrega ao script: o número, o nome da página e os campos de cada formulário. */
+/**
+ * Os dados do pedido que a página entrega ao script: o número, o nome da página, o serviço e o idioma que ela já
+ * marca e os campos de cada formulário.
+ */
 export interface IlhaDoPedido {
   numero: string;
   pagina: string;
+  servicoDaPagina: string | null;
+  idiomaDaPagina: string | null;
   formularios: Record<string, Campo[]>;
 }
 

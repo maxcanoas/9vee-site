@@ -2,6 +2,21 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, sétima leva (02/10): a página de interpretação de mandarim
+
+- O site novo ganhou a página de interpretação de mandarim para o mercado financeiro, com o que a landing "Mandarim" do site atual de vocês diz: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/mandarim/
+  - os três serviços, cada um com as ocasiões dele: reuniões com investidores, visitas e eventos corporativos;
+  - a frase "Quando o negócio fala mandarim, precisão não é opcional.", em destaque, assinada com o 我们是 9vee;
+  - as três modalidades (simultânea, consecutiva e de acompanhamento), os mais de 10 anos, com quem vocês trabalham e onde;
+  - "A 9vee responde em até um dia útil", logo abaixo dos dois botões do pedido. É a única página do site que promete prazo: nas outras ele continua na pergunta 6.
+- O pedido aberto nessa página já vem com a tradução simultânea e o mandarim marcados.
+- Na página de Tradução Simultânea, o bloco do mandarim agora leva à página nova. A página do curso de mandarim também leva a ela.
+- No fim, a página nova leva ao curso de mandarim, para quem chegou procurando aula.
+- O texto da página não tem nenhum "a confirmar". Santander e Itaú ficaram fora, à espera da pergunta 17, e as versões em inglês e em chinês da landing não entram, como a proposta prevê.
+- A foto do topo ainda é a arte provisória, com o código da imagem à vista. A foto definitiva entra numa próxima leva.
+
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-21/` e publique com `npm run deploy`. As perguntas 6 e 18 da mensagem dizem que a página nova repete a landing: elas só ficam verdadeiras no preview depois desta publicação. Falta gerar a IMG-INTERPRETACAO-MANDARIM-HERO, com o prompt de `docs/imagens-gemini.md`: até lá, o topo mostra o Placeholder.
+
 ## Semana 1, sexta leva (01/10): a página de Tradução Simultânea completa
 
 - A página de Tradução Simultânea deixou de ser "em construção". Ela agora conta o que o site atual de vocês diz do serviço: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/

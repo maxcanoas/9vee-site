@@ -14,6 +14,7 @@ import {
   linkWhatsApp,
   modoDoDrawer,
   montarMensagem,
+  opcoesIniciais,
   primeiraEtapaPendente,
   servicoInicial,
   tipoDeContato,
@@ -188,6 +189,19 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     }
   }
 
+  // As perguntas de várias respostas de todos os formulários, como os idiomas do evento no pedido de tradução.
+  function marcarOpcoes() {
+    for (const [formulario, campos] of Object.entries(dados.formularios)) {
+      for (const campo of campos) {
+        if (campo.tipo !== 'multipla') continue;
+        const caixas = todos<HTMLInputElement>(`input[name="${formulario}-${campo.id}"]`);
+        const marcadas = caixas.filter((caixa) => caixa.checked).map((caixa) => caixa.value);
+        const iniciais = opcoesIniciais({ opcoes: campo.opcoes, marcadas, idiomaDaPagina: dados.idiomaDaPagina });
+        for (const caixa of caixas) caixa.checked = iniciais.includes(caixa.value);
+      }
+    }
+  }
+
   function atualizarModo() {
     dialogo.dataset.modo = modoDoDrawer(publicoAtual(), servico);
   }
@@ -354,6 +368,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     servico = servicoInicial({ doBotao: origem.dataset.servico, anterior: servico, daPagina: dados.servicoDaPagina, publico });
     marcar('drawer-servico', servico);
     marcarIdiomas(origem.dataset.idioma);
+    marcarOpcoes();
     hoje = hojeLocal(new Date());
     for (const data of todos<HTMLInputElement>('input[type="date"]')) data.min = hoje;
     limparErros();

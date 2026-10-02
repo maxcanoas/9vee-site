@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DOMINIO, carregarPaginas, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
+import { DOMINIO, carregarPaginas, ilhaDoPedido, jsonLd, paginasDeIdiomaNoConteudo } from './apoio';
 
 const preview = carregarPaginas();
 const raizDa = (rota: string) => preview.find((pagina) => pagina.rota === rota)?.raiz;
@@ -54,7 +54,7 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, p
       expect(botao.getAttribute('data-idioma')).toBe(idioma);
     }
     // O botão do cabeçalho não traz idioma: o pedido que ele abre sai com o da página.
-    const dados = JSON.parse(raiz!.querySelector('#dados-contato')!.textContent) as Record<string, string>;
+    const dados = ilhaDoPedido(raiz!);
     expect(dados.servicoDaPagina).toBe('idiomas');
     expect(dados.idiomaDaPagina).toBe(idioma);
   });

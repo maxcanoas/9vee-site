@@ -1,6 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { linhaEmTexto, linhasDoPedido, validarCampos } from '../../src/lib/contato.ts';
-import { abrirPagina, conferirFiguraEmArco, conferirServico, ilhaDoPedido, jsonLd, textoDe, textosDe } from './apoio';
+import {
+  INTERPRETACAO_DE_MANDARIM,
+  abrirPagina,
+  conferirFiguraEmArco,
+  conferirServico,
+  ilhaDoPedido,
+  jsonLd,
+  textoDe,
+  textosDe,
+} from './apoio';
 
 const traducao = abrirPagina('traducao-simultanea');
 const texto = (seletor: string) => textoDe(traducao, seletor);
@@ -99,11 +108,12 @@ describe('tradução simultânea', () => {
     }
   });
 
-  // O link para a página de interpretação de mandarim entra no ticket 21, quando ela existir.
-  it('fala da interpretação de mandarim para o mercado financeiro num bloco curto, ainda sem link', () => {
+  it('fala da interpretação de mandarim para o mercado financeiro num bloco curto, que leva à página dela', () => {
     expect(texto('#mandarim h2')).toBe('Quando o negócio fala mandarim, precisão não é opcional.');
     expect(texto('#mandarim')).toContain('mercado financeiro');
-    expect(traducao.querySelector('#mandarim a')).toBeNull();
+    const links = traducao.querySelectorAll('#mandarim a');
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([INTERPRETACAO_DE_MANDARIM]);
+    expect(links[0].text.trim()).toBe('Ver a interpretação de mandarim');
   });
 
   it('responde oito perguntas próprias', () => {

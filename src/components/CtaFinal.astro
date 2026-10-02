@@ -18,9 +18,11 @@ interface Props {
   idioma?: string;
   /** Na home, o círculo leva o logo no miolo. */
   logo?: boolean;
+  /** A linha logo abaixo do botão, na página que promete um prazo de resposta. */
+  nota?: string;
 }
 
-const { titulo, texto, cta, rotulo, servico, idioma, logo } = Astro.props;
+const { titulo, texto, cta, rotulo, servico, idioma, logo, nota } = Astro.props;
 ---
 
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
@@ -32,7 +34,7 @@ const { titulo, texto, cta, rotulo, servico, idioma, logo } = Astro.props;
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>
       <p class="texto-secundario"><Texto de={texto} /></p>
       <slot />
-      <BotaoContato textos={cta} texto={rotulo} servico={servico} idioma={idioma} />
+      <BotaoContato textos={cta} texto={rotulo} servico={servico} idioma={idioma} nota={nota} />
     </div>
   </div>
 </section>

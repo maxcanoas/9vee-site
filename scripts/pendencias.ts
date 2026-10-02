@@ -13,6 +13,7 @@ const PAGINAS: Record<string, string> = {
   'treinamento-nr-1.md': 'Treinamento de NR-1',
   'curso-de-idiomas.md': 'Cursos de Idiomas',
   'traducao-simultanea.md': 'Tradução Simultânea',
+  'interpretacao-de-mandarim.md': 'Interpretação de Mandarim',
   'lms.md': 'LMS',
   'quem-somos.md': 'Quem Somos',
   'politica-de-privacidade.md': 'Política de Privacidade',

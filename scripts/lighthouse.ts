@@ -36,6 +36,10 @@ const ROTEIROS: Record<string, Roteiro> = {
     paginas: [{ nome: 'Tradução Simultânea', rota: '/traducao-simultanea/' }],
     acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO,
   },
+  'ticket-21': {
+    paginas: [{ nome: 'Interpretação de Mandarim', rota: '/traducao-simultanea/mandarim/' }],
+    acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO,
+  },
 };
 
 const nomeDoRoteiro = process.argv[2] ?? 'etapa-7';

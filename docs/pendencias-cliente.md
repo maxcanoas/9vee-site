@@ -118,7 +118,7 @@ Arthur, cada idioma vai ganhar uma página própria no site, e o Google não val
 
 ## De onde vem cada pendência
 
-Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, com o que os tickets do reaproveitamento já fecharam: até agora, o 06, que tirou a linha da D21, e o 05, que trouxe cinco da Tradução Simultânea. São 107 marcações em `content/`, contra as 104 de 30/09.
+Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, com o que os tickets do reaproveitamento já fecharam: até agora, o 06, que tirou a linha da D21, o 05, que trouxe cinco da Tradução Simultânea, e o 21, que não trouxe nenhuma. São 107 marcações em `content/`, contra as 104 de 30/09.
 
 | Pergunta | Arquivo | Trecho |
 |---|---|---|
@@ -150,7 +150,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 
 - **06, feito em 01/10/2026:** a D21 saiu de `content/home.md` e de `content/lms.md`. A pergunta virou confirmação, sem marcação no código.
 - **05, feito em 01/10/2026:** entraram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ), uma marcação de cada.
-- **21:** nenhuma marcação prevista. A D18 é confirmação.
+- **21, feito em 02/10/2026:** nenhuma marcação em `content/interpretacao-de-mandarim.md`. A D18 é confirmação. A D6 continua só nos outros lugares: a página de interpretação de mandarim promete "até um dia útil", como a landing, e é a única que promete prazo.
 - **07:** a D2 continua em `content/quem-somos.md`. A faixa de números lê `content/home.md`, sem marcação nova.
 - **22:** a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficam fora (decisão de 01/10/2026).
 

@@ -1,5 +1,7 @@
 ---
 // Todo CTA do site abre o mesmo drawer de contato (etapa 3). O serviço e o idioma chegam pré-escolhidos.
+// Com a nota, o mesmo botão sai numa caixa, com uma linha pequena logo abaixo dele: o prazo de resposta, na página
+// que promete um.
 import Texto from './Texto.astro';
 import TextoPorPublico from './TextoPorPublico.astro';
 import { atributosDoContato, type ServicoId } from '../lib/contato';
@@ -10,12 +12,42 @@ interface Props {
   textos?: TextosPorPublico;
   servico?: ServicoId;
   idioma?: string;
+  nota?: string;
   class?: string;
 }
 
-const { texto, textos, servico, idioma, class: classe } = Astro.props;
+const { nota, ...botao } = Astro.props;
+const { texto, textos, servico, idioma, class: classe } = botao;
 ---
 
-<button {...atributosDoContato({ servico, idioma })} class:list={['botao', classe]}>
-  <span>{textos ? <TextoPorPublico textos={textos} /> : texto && <Texto de={texto} />}</span>
-</button>
+{
+  nota ? (
+    <div class="botao-com-nota">
+      <Astro.self {...botao} />
+      <p class="botao-com-nota__nota texto-secundario">
+        <Texto de={nota} />
+      </p>
+    </div>
+  ) : (
+    <button {...atributosDoContato({ servico, idioma })} class:list={['botao', classe]}>
+      <span>{textos ? <TextoPorPublico textos={textos} /> : texto && <Texto de={texto} />}</span>
+    </button>
+  )
+}
+
+<style>
+  .botao-com-nota {
+    display: grid;
+    gap: var(--e-2);
+    justify-items: start;
+  }
+
+  .botao-com-nota__nota {
+    font-size: var(--t-pequeno);
+  }
+
+  /* Sem JavaScript o botão some, pela regra do base.css: a linha que fala do pedido some com ele. */
+  :global(:root:not(.js)) .botao-com-nota__nota {
+    display: none;
+  }
+</style>
