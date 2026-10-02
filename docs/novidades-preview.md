@@ -25,7 +25,7 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
   - francês, espanhol e holandês, com o texto de cada prova e do preparatório dela.
 - Os textos são os do site atual, com a redação refeita. Vale conferir se cada frase ainda diz o que vocês querem dizer.
 
-Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-22/` e publique com `npm run deploy`. Esta leva, a do Quem Somos e a da interpretação de mandarim podem ir juntas. Os lotes 1, 2 e 3 saem depois do seu ok.
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-22/` e publique com `npm run deploy`. Esta leva, a do Quem Somos e a da interpretação de mandarim podem ir juntas. Os três lotes de revisão estão prontos em `docs/revisao-daniella/`, gerados em 02/10: o 1 e o 3 são versões novas, e o 2 sai pela primeira vez. Vale mandar os três depois de publicar, para os links baterem com o que ela lê.
 
 ## Semana 1, oitava leva (02/10): a página Quem Somos completa
 

@@ -1,6 +1,6 @@
 # Lote 3: páginas de idioma
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 30/09/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 02/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Inglês
 
@@ -57,29 +57,37 @@ De qualquer cidade, no dia e no horário que você escolher.
 
 ##### Turma in company
 
-O time estuda junto, na mesma turma e no mesmo nível, sem sair da empresa.
+O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho.
 
 Para a equipe inteira, veja as turmas para empresas. Aula presencial: [A confirmar com o Arthur: se o inglês tem aula presencial fora da empresa, e em que cidades].
 
 #### Preparação para o TOEFL
 
-O TOEFL mede o inglês acadêmico e é aceito por universidades do mundo todo.
+O TOEFL (Test of English as a Foreign Language) mede o inglês acadêmico e é um dos exames mais aceitos por universidades do mundo todo.
 
 TOEFL iBT
 
-Para quem já está no intermediário alto ou no avançado. O preparatório treina as quatro partes da prova (Reading, Listening, Speaking e Writing) no formato oficial, com técnica para cada uma.
+O iBT (Internet Based Test) avalia o uso do inglês em contexto acadêmico, em quatro competências: Reading, Listening, Speaking e Writing.
+
+O preparatório
+
+Para quem já está no intermediário alto ou no avançado. Segue o formato oficial do exame, com técnica para cada parte da prova.
 
 #### Inglês para crianças e adolescentes
 
-O curso usa o material da Cambridge University Press.
+O inglês começa de forma natural e leve, com aulas diferentes para cada idade.
 
 ##### Crianças
 
-Aprendem com atividades lúdicas, pela interação e pela curiosidade.
+Num ambiente acolhedor, aprendem com atividades lúdicas, pela interação, pela curiosidade e pela experimentação.
 
 ##### Adolescentes
 
-Conversam sobre temas atuais e situações do dia a dia. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso.
+Ganham confiança e autonomia para se comunicar. As aulas partem de temas atuais e de situações do dia a dia, com conversação e pensamento crítico. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso.
+
+##### Material da Cambridge
+
+O curso usa o material da Cambridge University Press, de padrão internacional, com a progressão organizada por etapas.
 
 Idade e formato: [A confirmar com o Arthur: a partir de que idade, se é turma ou aula individual e se é online ou presencial].
 
@@ -132,11 +140,15 @@ Aulas de espanhol e preparação para o DELE, o diploma oficial do idioma, recon
 
 #### Preparação para o DELE
 
-O diploma é emitido em centros autorizados, como os Institutos Cervantes e as embaixadas.
+O DELE é a certificação oficial de espanhol para quem não é nativo, reconhecida pelo Estado espanhol.
 
 DELE
 
-Diploma de Español como Lengua Extranjera: o certificado oficial de espanhol para quem não é nativo.
+Diploma de Español como Lengua Extranjera. É emitido em centros autorizados, como os Institutos Cervantes e as embaixadas.
+
+O preparatório
+
+Trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores.
 
 #### Perguntas sobre o espanhol
 
@@ -270,11 +282,15 @@ Preparação para o Inburgering, o exame prévio de integração que a lei holan
 
 #### Preparação para o Inburgering
 
-O preparatório trabalha as duas partes que o exame avalia, voltado para a prova.
+O exame avalia dois pontos, e o preparatório trabalha os dois.
 
 Inburgering
 
 O exame prévio de integração avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país.
+
+O preparatório
+
+Com metodologia prática e voltada para o exame, desenvolve as habilidades de língua e de cultura que a aprovação pede.
 
 #### Perguntas sobre o holandês
 
@@ -321,11 +337,11 @@ As três seguem os seis níveis do Quadro Europeu, do A1 ao C2.
 
 DELF e DALF
 
-Os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Provas escritas e orais medem a compreensão, a produção e a interação no idioma.
+O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Provas escritas e orais medem a compreensão, a produção e a interação no idioma.
 
 TCF
 
-O teste oficial de nível, usado em imigração e em universidade, que coloca você num dos seis níveis.
+O teste oficial de nível, criado pelo CIEP (Centre International d'Études Pédagogiques), que coloca você num dos seis níveis.
 
 #### Como é o preparatório
 
@@ -408,25 +424,42 @@ Para a empresa que recebe profissionais estrangeiros, veja as turmas para empres
 
 #### Preparação para o CELPE-Bras
 
-O único certificado de português reconhecido oficialmente pelo governo brasileiro.
+O único certificado de português reconhecido oficialmente pelo governo brasileiro, para quem quer estudar, trabalhar ou validar o diploma no Brasil.
 
 CELPE-Bras
 
-Criado pelo Ministério da Educação. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
+Criado pelo Ministério da Educação, é aceito por universidades, empresas e instituições de outros países. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
+
+O preparatório
+
+As aulas são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame.
 
 #### Como são as aulas
 
-Do nível básico ao avançado, no ritmo que o professor ajusta ao seu nível e ao seu objetivo.
+Do nível básico ao avançado, para se comunicar com naturalidade no dia a dia, na faculdade e no trabalho.
 
 ##### As quatro habilidades
 
-Fala, escuta, leitura e escrita, trabalhadas juntas.
+Fala, escuta, leitura e escrita, trabalhadas juntas, com a gramática e a cultura brasileira dentro da conversa.
 
-##### Gramática e cultura
+##### Material didático
 
-A gramática e a cultura brasileira entram junto com a conversa.
+Conteúdo atualizado e atividades práticas, num caminho claro do básico à fluência.
+
+##### Ritmo das aulas
+
+O professor conduz o ritmo pelo nível, pelas necessidades e pelos objetivos de cada aluno. Vale para o estrangeiro e também para o brasileiro que quer aprimorar o domínio do próprio idioma.
 
 Formatos: [A confirmar com o Arthur: se o português acontece em aula particular, turma, online, presencial ou in company].
+
+#### Realocação de funcionários
+
+Além dos cursos, a 9vee apoia o profissional que está de mudança para outra cidade ou outro país, por transferência ou nova contratação. O atendimento é feito com discrição, para o colaborador e a família.
+
+- Idioma
+- Orientação sobre legislação
+- Documentação
+- Adaptação cultural
 
 #### Perguntas sobre o português para estrangeiros
 

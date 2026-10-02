@@ -23,6 +23,19 @@ const LOTES: Record<number, Lote> = {
     // O menu, o rodapé e o pedido vão no primeiro lote, que a Daniella lê primeiro.
     comTextosCompartilhados: true,
   },
+  // As páginas que o reaproveitamento do site atual completou, a política e a página de erro, que não tem endereço
+  // próprio: o arquivo dela responde por todo endereço que não existe.
+  2: {
+    titulo: 'tradução, LMS, Quem Somos, privacidade e página de erro',
+    paginas: [
+      ['Tradução Simultânea', '/traducao-simultanea/'],
+      ['Interpretação de Mandarim', '/traducao-simultanea/mandarim/'],
+      ['LMS', '/lms/'],
+      ['Quem Somos', '/quem-somos/'],
+      ['Política de Privacidade', '/politica-de-privacidade/'],
+      ['Página de erro', '/404.html'],
+    ],
+  },
   // Os idiomas com texto próprio. Os esqueletos, que só têm as perguntas ao cliente, entram quando ganharem texto.
   3: {
     titulo: 'páginas de idioma',

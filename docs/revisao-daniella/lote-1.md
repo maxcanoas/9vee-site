@@ -1,6 +1,6 @@
 # Lote 1: páginas principais
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 29/09/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 02/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Home
 
@@ -68,7 +68,7 @@ Para empresas
 
 ##### LMS
 
-Plataforma para a equipe estudar a qualquer hora [A confirmar com a Daniella: o que o LMS da 9vee entrega por dentro: trilhas por nível, relatórios para o RH, conteúdo próprio].
+Plataforma para a equipe estudar a qualquer hora, com acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH.
 
 [Link: Conhecer o LMS]
 
@@ -120,6 +120,20 @@ Para RH, SESMT e diretoria
 [Link: Ver o treinamento de NR-1]
 
 Fontes: Portaria MTE nº 1.419/2024, Ministério do Trabalho e Emprego e Lei 14.831/2024.
+
+#### O que faz a 9vee diferente
+
+##### Comunicação de verdade
+
+Os cursos vão além do ensino tradicional. Treinam a comunicação do dia a dia, a que dá autonomia e segurança a famílias imigrantes em qualquer país.
+
+##### Professores perto ou longe
+
+Professores qualificados dão aula no presencial e no remoto, com experiência prática e tecnologia educacional.
+
+##### Um programa por aluno
+
+Primeiro vem o diagnóstico do perfil de cada aluno. O programa é montado a partir dele.
 
 #### Como funciona
 
@@ -185,7 +199,7 @@ Profissionais formados em centros especializados, com experiência em áreas com
 
 #### Conte o que você precisa.
 
-Você responde em quatro passos. No fim, decide se prefere conversar agora pelo WhatsApp ou esperar a equipe chamar.
+Grandes resultados começam com uma boa conversa. Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar.
 
 [Botão: Pedir orçamento (para você: Quero estudar)]
 
@@ -256,6 +270,34 @@ Numa fiscalização, a empresa precisa mostrar quem participou, quando e o conte
 
 O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o SESMT. O treinamento cobre a capacitação e o plano de ação.
 
+#### O que o treinamento aborda
+
+O objetivo é dar aos participantes competências práticas para construir relações mais saudáveis, fortalecer o bem-estar emocional e ajudar a criar um ambiente de trabalho psicologicamente seguro e colaborativo.
+
+Riscos psicossociais
+
+O que são e como afetam pessoas, equipes e empresas.
+
+O peso das conversas
+
+Como as conversas do dia a dia influenciam a saúde mental e o clima da empresa.
+
+Estresse e conflito
+
+O efeito do estresse, da sobrecarga emocional e dos conflitos mal conduzidos.
+
+Comunicação Não Violenta
+
+Os fundamentos da CNV aplicados ao ambiente de trabalho.
+
+Conversas difíceis
+
+Como fazer de uma conversa difícil uma oportunidade de conexão e colaboração.
+
+Respeito e segurança psicológica
+
+Estratégias práticas para o respeito, a confiança e a segurança psicológica no dia a dia.
+
 #### Os três módulos
 
 Na ordem em que a empresa precisa: primeiro entender, depois conduzir, depois decidir.
@@ -266,11 +308,27 @@ O marco legal, os conceitos e o diagnóstico. O que a norma passou a exigir, o q
 
 ##### Liderança preventiva, comunicação e mudança de mindset
 
-Como quem chefia percebe o problema cedo, conduz a conversa e muda práticas da rotina que pesam na equipe.
+Liderança, comunicação com equipes comerciais e cultura da empresa. Quem chefia aprende a perceber o problema cedo, conduzir a conversa e mudar práticas da rotina que pesam na equipe.
 
 ##### Aplicação prática, estudos de caso e plano de ação
 
 A turma discute casos, decide o que faria em cada um e fecha o plano de ação da própria empresa.
+
+#### O que muda na empresa
+
+O treinamento apoia a empresa na construção de um ambiente emocionalmente mais saudável e contribui para as boas práticas ligadas à NR-1.
+
+##### Com o treinamento
+
+- Menos riscos psicossociais no trabalho
+- Relações mais saudáveis e colaborativas
+- Clima melhor e mais cooperação entre as áreas
+
+##### Para quem investe em NR-1
+
+- Segurança psicológica entre as equipes
+- Prevenção do estresse crônico, da ansiedade e do burnout
+- Cultura de cuidado, diálogo e responsabilidade compartilhada
 
 #### Formato e carga horária
 
@@ -433,35 +491,59 @@ Quase nada escapa, e o tom muda conforme a sala.
 
 #### Preparação para provas
 
-Seis exames, cada um com o seu formato. Se a sua prova não está aqui, pergunte no pedido.
+Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para seis, com foco nos critérios de cada prova.
 
-TOEFL iBT
+##### TOEFL iBT
 
 Inglês acadêmico, pedido por universidades.
 
-CELPE-Bras
+O TOEFL (Test of English as a Foreign Language) é um dos exames de inglês mais aceitos por universidades e instituições acadêmicas do mundo. Ele mede o uso do idioma em contexto acadêmico, em quatro competências: Reading, Listening, Speaking e Writing.
+
+O preparatório é para o TOEFL iBT (Internet Based Test) e para quem já está no intermediário alto ou no avançado. Segue o formato oficial do exame, com técnica para cada parte da prova.
+
+##### CELPE-Bras
 
 Português para estrangeiros, o exame oficial do Brasil.
 
-DELE
+Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países, e as universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
 
-Espanhol, do Instituto Cervantes.
+As aulas do preparatório são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame.
 
-DELF e DALF
+##### DELE
 
-Francês, os diplomas do sistema oficial da França.
+Espanhol, o diploma oficial do idioma.
 
-TCF
+O DELE (Diploma de Español como Lengua Extranjera) é a certificação oficial de espanhol, reconhecida pelo Estado espanhol e emitida em centros autorizados, como os Institutos Cervantes e as embaixadas.
 
-Francês, o teste de nível usado em imigração e em universidade.
+O preparatório trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores.
 
-Inburgering
+##### DELF e DALF
 
-Holandês, o exame de integração da Holanda.
+Francês, os diplomas oficiais da França.
+
+O DELF (Diplôme d'Études en Langue Française) e o DALF (Diplôme Approfondi de Langue Française) são emitidos pelo Ministério da Educação da França e reconhecidos internacionalmente. Vão do A1 ao C2, os seis níveis do Quadro Europeu, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma.
+
+O preparatório trabalha todas as habilidades que o exame cobra.
+
+##### TCF
+
+Francês, o teste oficial de nível.
+
+O TCF é o exame oficial de francês criado pelo CIEP (Centre International d'Études Pédagogiques). Ele coloca o candidato num dos seis níveis do Quadro Europeu, o padrão que instituições de ensino do mundo todo usam.
+
+O preparatório tem professores nativos, prática direcionada e simulados do exame.
+
+##### Inburgering
+
+Holandês, o exame de integração dos Países Baixos.
+
+A lei holandesa de integração pede um exame prévio a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos. O teste avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país.
+
+O preparatório é voltado para o exame e trabalha as duas partes: a língua e a cultura.
 
 #### Como são as aulas
 
-Três formatos para quem estuda por conta própria. O pedido pergunta qual deles combina com o seu caso.
+Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. Você escolhe o dia e o horário: a aula se encaixa na sua rotina, e não o contrário.
 
 ##### Aula particular
 
@@ -469,27 +551,27 @@ Um professor só para você, com o conteúdo puxado para o seu objetivo. É assi
 
 ##### Aula online
 
-Ao vivo, de qualquer cidade, com o professor do outro lado da chamada.
+Ao vivo, de qualquer cidade, no dia e no horário que você escolher.
 
 ##### Criança e adolescente
 
-Para quem ainda está na escola, com material da Cambridge.
+Inglês para quem ainda está na escola. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press.
 
-Aula presencial: [A confirmar com o Arthur: se as aulas de idioma também acontecem presencialmente, e em que cidades].
+Também há aula presencial [A confirmar com o Arthur: em que cidades as aulas de idioma presenciais acontecem, e onde].
 
 [Botão: Falar sobre as aulas]
 
 #### Para a sua equipe
 
-Idioma para o time inteiro, para quem senta na diretoria ou para quem chegou de fora.
+Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 12 idiomas [A confirmar com a Daniella: quantidade de idiomas. A parte de empresas da página atual diz 12, e a home diz 14] para empresas em todo o Brasil.
 
 ##### Turma in company
 
-O time estuda junto, na mesma turma e no mesmo nível, sem sair da empresa.
+O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho.
 
-##### Aula individual para a diretoria
+##### Aula individual para executivos
 
-Um professor por executivo, para quem viaja, negocia ou apresenta em outra língua.
+Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível.
 
 ##### Português para quem veio de fora
 
@@ -499,11 +581,26 @@ O pedido pergunta idioma, número de alunos, nível da turma e formato. A propos
 
 [Botão: Pedir orçamento para a equipe]
 
+#### Realocação de funcionários
+
+Além dos cursos, a 9vee apoia o profissional que está de mudança para outra cidade ou outro país, por transferência ou nova contratação. O atendimento é feito com discrição, para o colaborador e a família.
+
+- Idioma
+- Orientação sobre legislação
+- Documentação
+- Adaptação cultural
+
+#### A equipe também pode estudar pelo LMS
+
+Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real.
+
+[Link: Conhecer o LMS]
+
 [Imagem: Aluno adulto na primeira aula online, com o caderno aberto ao lado do notebook.]
 
 #### Como começa
 
-Três passos até a primeira aula.
+Três passos até a primeira aula. Depois dela, cada etapa do curso é planejada para o seu ritmo e os seus objetivos.
 
 ##### Você diz o idioma e o objetivo
 
@@ -615,6 +712,8 @@ A 9vee nas redes
 - [Link: 9vee no Facebook]
 - [Link: 9vee no X]
 
+Seu próximo capítulo de sucesso começa agora.
+
 © 2026 9vee
 
 [Link: Política de privacidade]
@@ -687,6 +786,13 @@ Quais idiomas o evento precisa?
 Quando é o evento?
 
 - Ainda sem data
+
+Quanto tempo dura o evento?
+
+- Até 1 hora
+- Meio período
+- Dia inteiro
+- Mais de um dia
 
 Presencial ou online?
 

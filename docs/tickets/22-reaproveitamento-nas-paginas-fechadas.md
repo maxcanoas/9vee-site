@@ -6,7 +6,7 @@
 
 **Horas:** 7,5. **Semana:** 3.
 
-**Situação:** feito em 02/10/2026, adiantado da semana 3, no processo mais curto que o Maxwell pediu no mesmo dia: os textos e o layout, com os testes automáticos, sem as medições e sem a rodada de `code-review`. Espera o ok do Maxwell. Criado em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"). Fecha o item que ficou aberto no ticket 04, a realocação. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
+**Situação:** feito e aprovado pelo Maxwell em 02/10/2026, adiantado da semana 3, no processo mais curto que ele pediu no mesmo dia: os textos e o layout, com os testes automáticos, sem as medições e sem a rodada de `code-review`. Na aprovação ele manteve os seis temas do NR-1 sem número. Os lotes 1, 2 e 3 saíram em seguida. Criado em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"). Fecha o item que ficou aberto no ticket 04, a realocação. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
 
 **Home** (`docs/textos-site-atual.md`, seção 3.1):
 
@@ -67,7 +67,7 @@
 - [x] Capturas no roteiro `ticket-22`, em 390 e 1280 px.
 - [ ] Lighthouse: ficou de fora, pelo processo curto. Volta na revisão final (ticket 17).
 - [ ] `code-review` nos dois eixos: ficou de fora, pelo processo curto. Volta na revisão final (ticket 17).
-- [x] "Como ficou" aqui, o texto para o cliente em `docs/novidades-preview.md` e `docs/andamento.md` atualizado. Os lotes 1, 2 e 3 saem depois do ok do Maxwell. O preview não é publicado: o Maxwell publica depois de ver as capturas.
+- [x] "Como ficou" aqui, o texto para o cliente em `docs/novidades-preview.md` e `docs/andamento.md` atualizado. Os lotes 1 e 3 foram gerados de novo, e o lote 2 saiu pela primeira vez, depois do ok do Maxwell. O preview não é publicado: o Maxwell publica depois de ver as capturas.
 
 **Como ficou:**
 
@@ -100,4 +100,5 @@
 - **Componentes reaproveitados:** `ListaGrande` (os diferenciais), `Definicoes` (os temas) e `Chamada` (a realocação, com os pontos, e a ponte para o LMS, com o link).
 - **Testes:** `npm test` com 151 unitários e 1.150 do HTML gerado (eram 1.089). No navegador, o de larguras em todas as páginas, por causa do rodapé, e o da troca de público: 156 passaram.
 - **Capturas:** `relatorios/ticket-22/`, por `node scripts/screenshots.ts ticket-22`. São 55: a home, o NR-1 e Cursos inteiros e por seção, os exames abertos, o rodapé, Cursos como a empresa vê e as cinco páginas de idioma inteiras.
+- **Lotes de revisão,** em `docs/revisao-daniella/`, gerados em 02/10 depois do ok: o lote 1 (home, NR-1, Cursos e os textos de todas as páginas) e o lote 3 (os seis idiomas com texto) saíram de novo, com o que este ticket mudou. O lote 2 é novo: Tradução Simultânea, Interpretação de Mandarim, LMS, Quem Somos, Política de Privacidade e a página de erro. Ele entrou em `scripts/lote-revisao.ts`, e fecha o item que estava aberto no ticket 08.
 - **O que ficou de fora, a pedido do Maxwell em 02/10:** o Lighthouse, a suíte de navegador inteira, a comparação de capturas das outras páginas, o `code-review` nos dois eixos e as rodadas formais do `frontend-design` e do `humanizar-ui`. Entram na revisão final (ticket 17), junto com duas repetições de CSS que este ticket deixou: o abre e fecha do `Acordeao`, igual ao do `Faq`, e mais uma cópia do marcador de meia-pílula.
