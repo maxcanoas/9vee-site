@@ -393,3 +393,18 @@ As 13 foram recortadas por um script de uso único, que fica com as originais em
 | `idioma-russo.jpg` | azul-marinho, em volta | 94, 56, 740 × 925 | 80% | a cruz da torre central fica a uns 5 px do topo do arco. Na original, ela já ficava a 14 px do arco desenhado. O Maxwell decidiu manter, em 30/09 |
 | `idioma-sueco.jpg` | creme, só nos cantos de cima | 8, 4, 912 × 1140 | 98% | |
 | `idioma-arabe.jpg` | nenhuma | sem recorte (928 × 1152) | 100% | o arco é de pedra e faz parte da cena. Recortar por dentro dele poria o topo do arco do site na ponta do Burj Khalifa: a abertura começa em y≈30, e a ponta da torre fica em y≈45. O Maxwell decidiu manter o arco de pedra, em 30/09 |
+
+## Páginas completas do reaproveitamento (desde 01/10/2026)
+
+As páginas que saíram da versão parcial ganharam seções com imagem. Elas usam o estilo base do alto deste arquivo, com dois cuidados que vieram da primeira rodada das páginas de idioma: a foto vai até a borda, sem moldura nem arco desenhado, porque o arco é o site que faz, e o prompt pede 4:5 com as medidas.
+
+### IMG-LMS-O-QUE-E
+
+- **Onde:** LMS, seção "O que é o LMS" (moldura de arco, ao lado do texto; no celular, embaixo dele).
+- **Proporção e tamanho:** 4:5, 1200 × 1500.
+- **Arquivo:** `lms-o-que-e.jpg`
+- **Alt:** Colaboradora estudando pelo tablet em casa, à noite, de fones de ouvido.
+- **Por quê:** o hero já mostra a plataforma no escritório, de dia. Esta mostra o outro lado do que a seção diz, "cada um estuda no horário e no ritmo dele": fora do expediente, em casa.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Full-bleed composition: the photograph fills the whole canvas and the scene runs out to all four edges. Scene: a Brazilian woman in her forties studying a language lesson on a tablet at home in the evening, sitting on a sofa with her legs tucked up, small wireless earphones on, a notebook and a pen on the armrest; a floor lamp gives warm light from the side, and the city lights are softly out of focus through a window behind her. The tablet is turned away from the camera, so the screen is not visible. Relaxed and focused, clearly outside working hours. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, readable text or interface on the screen, borders, frames or vignettes around the picture, archways or windows framing the whole view.

@@ -27,7 +27,7 @@ São 20 horas a mais. O total passa de cerca de 88 para cerca de 108 horas.
 
 | Semana | Datas | Tickets | Horas | O que o cliente vê no preview |
 |---|---|---|---|---|
-| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16) e a mensagem de pendências. **Entra:** os documentos do reaproveitamento (1,5) e o 06 LMS (4) | 39,25 | As páginas de idioma com foto, a política e a 404, já publicadas. O LMS completo |
+| 1 | 28/09 a 04/10 | **Feito:** Fase A, 01, 02, 03, 04, 08 (sem o lote 2), 09, 10, as fotos das páginas de idioma (parte do 16), a mensagem de pendências, os documentos do reaproveitamento (1,5) e o 06 LMS (4), em 01/10 | 39,25 | As páginas de idioma com foto, a política e a 404, já publicadas. O LMS completo, quando você publicar |
 | 2 | 05/10 a 11/10 | 05 Tradução Simultânea (5), 21 Interpretação de mandarim (4) | 9,75 | A Tradução completa e a página nova de interpretação de mandarim |
 | 3 | 12/10 a 18/10 (feriado dia 12) | 07 Quem Somos (3,5), 22 Reaproveitamento nas páginas fechadas (7,5) | 11,75 | Quem Somos completa; home, NR-1, Cursos e páginas de idioma com o conteúdo do site atual |
 | 4 | 19/10 a 25/10 | Lotes 1, 2 e 3 e a contagem das pendências (1), 12 Envio real do pedido (6,5), as imagens das páginas novas (1,5 do 16) | 9,75 | O pedido chegando de verdade (no e-mail de teste); os três lotes vão para a Daniella |

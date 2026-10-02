@@ -118,7 +118,7 @@ Arthur, cada idioma vai ganhar uma página própria no site, e o Google não val
 
 ## De onde vem cada pendência
 
-Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, antes dos tickets do reaproveitamento.
+Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o número na mensagem (D é Daniella, A é Arthur). A tabela mostra o `content/` de 30/09/2026, com o que os tickets do reaproveitamento já fecharam: até agora, o 06, que tirou a linha da D21. São 102 marcações em `content/`, contra as 104 de 30/09.
 
 | Pergunta | Arquivo | Trecho |
 |---|---|---|
@@ -129,7 +129,6 @@ Para mim, na hora de aplicar as respostas. A coluna "Pergunta" aponta para o nú
 | D6 | `content/site.md`, `content/home.md` | confirmação do drawer e "Como funciona", etapa 3 |
 | D7 | `content/home.md`, `content/treinamento-nr-1.md`, `content/curso-de-idiomas.md` | as três perguntas "Quanto custa?" do FAQ |
 | D9 a D14 | `content/treinamento-nr-1.md` | formato, carga horária, turma, plano de ação, comprovante e turma inteira |
-| D21 | `content/home.md`, `content/lms.md` | texto do LMS na lista de serviços e nota da página LMS |
 | D24 | `content/site.md` | `rodape.pronuncia` |
 | D25 | `content/politica-de-privacidade.md` | razão social, CNPJ e canal do titular, em "Quem cuida dos seus dados" |
 | D26 | `content/politica-de-privacidade.md` | a data da versão, no fim, que sai depois da revisão do advogado |
@@ -145,7 +144,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 
 **O que os tickets do reaproveitamento mudam nesta tabela.** Cada um atualiza a linha dele ao fechar:
 
-- **06:** a D21 sai de `content/home.md` e de `content/lms.md`. A pergunta vira confirmação, sem marcação no código.
+- **06, feito em 01/10/2026:** a D21 saiu de `content/home.md` e de `content/lms.md`. A pergunta virou confirmação, sem marcação no código.
 - **05:** entram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ).
 - **21:** nenhuma marcação prevista. A D18 é confirmação.
 - **07:** a D2 continua em `content/quem-somos.md`. A faixa de números lê `content/home.md`, sem marcação nova.

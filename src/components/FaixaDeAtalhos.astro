@@ -1,0 +1,104 @@
+---
+// Os atalhos do alto de uma página longa: os motivos para contratar, cada um levando à seção que o explica.
+// O link tem o desenho do link do menu, com o nome e a descrição. A meia-pílula no canto diz que a linha leva a
+// algum lugar, como na lista de idiomas.
+import Texto from './Texto.astro';
+import LinkDoMenu from './LinkDoMenu.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  itens: { rotulo: string; descricao: string; href: string }[];
+}
+
+const { id, titulo, itens } = Astro.props;
+---
+
+<section class="atalhos" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner atalhos__grade">
+    <h2 id={`${id}-titulo`} class="atalhos__titulo"><Texto de={titulo} /></h2>
+    <ul class="atalhos__lista" role="list">
+      {
+        itens.map((item) => (
+          <li class="atalhos__item">
+            <LinkDoMenu class="atalhos__link" {...item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .atalhos {
+    padding-block: var(--e-6);
+    border-block-end: 1px solid var(--linha);
+  }
+
+  .atalhos__grade {
+    display: grid;
+    gap: var(--e-4);
+  }
+
+  /* O título é o rótulo da faixa: fica menor que os atalhos, que são o que a pessoa lê e toca. */
+  .atalhos__titulo {
+    color: var(--navy-2);
+    font-family: var(--fonte-texto);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+    line-height: var(--altura-texto);
+    letter-spacing: 0;
+  }
+
+  .atalhos__lista {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+
+  .atalhos__item {
+    border-block-start: 1px solid var(--linha);
+  }
+
+  .atalhos__link {
+    position: relative;
+    padding-block: var(--e-3);
+    padding-inline-end: var(--e-5);
+  }
+
+  .atalhos__link::after {
+    content: '';
+    position: absolute;
+    inset-block-start: var(--e-4);
+    inset-inline-end: 0;
+    inline-size: 0.4375rem;
+    block-size: 0.875rem;
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+    background-color: var(--menta);
+  }
+
+  /* Lado a lado, o fio que separa os atalhos fica de pé, como na faixa de números da home. */
+  @media (min-width: 48rem) {
+    .atalhos__lista {
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      column-gap: var(--e-5);
+    }
+
+    .atalhos__item {
+      border-block-start: 0;
+    }
+
+    .atalhos__item + .atalhos__item {
+      padding-inline-start: var(--e-5);
+      border-inline-start: 1px solid var(--linha);
+    }
+
+    .atalhos__link {
+      padding-block: 0;
+    }
+
+    .atalhos__link::after {
+      inset-block-start: var(--e-1);
+    }
+  }
+</style>

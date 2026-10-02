@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  comEspacoFixo,
   detalheDaPendencia,
   formatarInline,
   jsonParaScript,
@@ -175,6 +176,22 @@ describe('textoPuro', () => {
 
   it('tira também a pendência do Arthur', () => {
     expect(textoPuro('Turmas do A1 ao C2 [CONFIRMAR COM O ARTHUR: níveis oferecidos].')).toBe('Turmas do A1 ao C2.');
+  });
+});
+
+describe('comEspacoFixo', () => {
+  it('troca cada espaço pelo espaço que não quebra, para o trecho descer inteiro para a linha de baixo', () => {
+    expect(comEspacoFixo('por semana.')).toBe('por\u00a0semana.');
+    expect(comEspacoFixo('24 horas por dia,')).toBe('24\u00a0horas\u00a0por\u00a0dia,');
+  });
+
+  it('deixa como está o trecho de uma palavra só', () => {
+    expect(comEspacoFixo('semana.')).toBe('semana.');
+  });
+
+  // O espaço fixo é texto comum: passa pelo formatador sem virar entidade nem perder a marcação em volta.
+  it('convive com o formatador de texto', () => {
+    expect(formatar(comEspacoFixo('7 dias'))).toBe('7\u00a0dias');
   });
 });
 

@@ -6,9 +6,9 @@ import { DIST } from './apoio';
 
 const abrir = (rota: string) => parse(readFileSync(join(DIST, rota, 'index.html'), 'utf8'));
 
+// O LMS saiu daqui no ticket 06: a página completa tem o teste dela, em lms.test.ts.
 const PARCIAIS = [
   { nome: 'Tradução Simultânea', rota: 'traducao-simultanea', servico: 'traducao' },
-  { nome: 'LMS', rota: 'lms', servico: 'lms' },
   { nome: 'Quem Somos', rota: 'quem-somos', servico: null },
 ] as const;
 
@@ -57,13 +57,12 @@ describe('tradução simultânea', () => {
   });
 });
 
-describe('LMS e Quem Somos', () => {
-  it('marcam como pendência o que o site atual não conta', () => {
-    expect(abrir('lms').querySelector('main mark.confirmar'), 'LMS').not.toBeNull();
-    expect(abrir('quem-somos').querySelector('main mark.confirmar'), 'Quem Somos').not.toBeNull();
+describe('Quem Somos', () => {
+  it('marca como pendência o que o site atual não conta', () => {
+    expect(abrir('quem-somos').querySelector('main mark.confirmar')).not.toBeNull();
   });
 
-  it('o Quem Somos mostra as quatro frentes da empresa', () => {
+  it('mostra as quatro frentes da empresa', () => {
     const frentes = abrir('quem-somos').querySelectorAll('#frentes .cartao__titulo').map((no) => no.text.trim());
     expect(frentes).toEqual(['Cursos de idiomas', 'Tradução simultânea', 'Treinamento de NR-1', 'LMS']);
   });

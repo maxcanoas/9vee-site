@@ -59,7 +59,7 @@ servicos:
     - id: "lms"
       titulo: "LMS"
       publico: "Para empresas"
-      texto: "Plataforma para a equipe estudar a qualquer hora [CONFIRMAR COM A DANIELLA: o que o LMS da 9vee entrega por dentro: trilhas por nível, relatórios para o RH, conteúdo próprio]."
+      texto: "Plataforma para a equipe estudar a qualquer hora, com acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH."
       link: { rotulo: "Conhecer o LMS", href: "/lms/" }
 
 destaqueNr1:

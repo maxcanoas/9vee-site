@@ -16,7 +16,11 @@ export async function paginaIdiomas() {
   return exigir(await getEntry('idiomas', 'curso-de-idiomas'), 'content/curso-de-idiomas.md');
 }
 
-export async function paginaParcial(id: 'traducao-simultanea' | 'lms' | 'quem-somos') {
+export async function paginaLms() {
+  return exigir(await getEntry('lms', 'lms'), 'content/lms.md');
+}
+
+export async function paginaParcial(id: 'traducao-simultanea' | 'quem-somos') {
   return exigir(await getEntry('parciais', id), `content/${id}.md`);
 }
 

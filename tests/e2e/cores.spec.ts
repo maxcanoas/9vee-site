@@ -1,5 +1,6 @@
 import { expect, test, type Locator } from '@playwright/test';
 import { GRUPO_DO_PUBLICO } from '../../src/lib/publico';
+import { contrasteSobreOGrifo } from './grifo.ts';
 
 // A cor da faixa do grifo, que abre o box-shadow calculado ("oklab(...) 0px -9.6px 0px 0px inset": a cor vem
 // de um color-mix). Faixa transparente conta como sem grifo.
@@ -100,26 +101,9 @@ test.describe('código de cor', () => {
   // A faixa passa por trás da parte de baixo das letras: ali o texto também precisa de 4,5:1.
   test('o texto dá 4,5:1 sobre a faixa, no fundo claro e no escuro', async ({ page }) => {
     await page.goto('/');
-    const contrastes = await page.locator('#menu-movel .grifo, footer .grifo, .familia .grifo').evaluateAll((grifos) => {
-      // O canvas converte qualquer cor CSS (oklab, color-mix resolvido) para RGB.
-      const tela = document.createElement('canvas').getContext('2d')!;
-      const rgb = (cor: string) => {
-        tela.clearRect(0, 0, 1, 1);
-        tela.fillStyle = cor;
-        tela.fillRect(0, 0, 1, 1);
-        return [...tela.getImageData(0, 0, 1, 1).data.slice(0, 3)];
-      };
-      const luminancia = (cor: string) => {
-        const [r, g, b] = rgb(cor).map((v) => (v / 255 <= 0.04045 ? v / 255 / 12.92 : ((v / 255 + 0.055) / 1.055) ** 2.4));
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-      };
-      return grifos.map((grifo) => {
-        const estilo = getComputedStyle(grifo);
-        const faixa = /^(\w+\([^)]*\)|#\w+|\w+)/.exec(estilo.boxShadow)?.[1] ?? '';
-        const [a, b] = [luminancia(estilo.color), luminancia(faixa)];
-        return { texto: grifo.textContent?.trim(), razao: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) };
-      });
-    });
+    const contrastes = await page
+      .locator('#menu-movel .grifo, footer .grifo, .familia .grifo')
+      .evaluateAll(contrasteSobreOGrifo);
     expect(contrastes).toHaveLength(7);
     for (const { texto, razao } of contrastes) expect(razao, texto).toBeGreaterThanOrEqual(4.5);
   });

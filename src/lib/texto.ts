@@ -29,6 +29,12 @@ export const preencher = (modelo: string, dados: Record<string, string>) =>
 const maiuscula = (texto: string) => texto.charAt(0).toLocaleUpperCase('pt-BR') + texto.slice(1);
 export const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
 
+/**
+ * O trecho com o espaço que não quebra no lugar de cada espaço: num título em tipo grande, ele desce inteiro para a
+ * linha de baixo, em vez de deixar a última palavra sozinha.
+ */
+export const comEspacoFixo = (texto: string) => texto.replaceAll(' ', '\u00a0');
+
 /** Aviso para o leitor de tela em todo link que abre outra aba. */
 export const AVISO_NOVA_ABA = ' (abre em nova aba)';
 

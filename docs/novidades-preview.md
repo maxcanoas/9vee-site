@@ -2,6 +2,22 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, quinta leva (01/10): a página de LMS completa
+
+- A página de LMS deixou de ser "em construção". Ela agora conta o que o site atual de vocês diz da plataforma: https://9vee-preview.9vee-site.workers.dev/lms/
+  - o que é o LMS, com a sigla explicada;
+  - a plataforma disponível 24 horas por dia, 7 dias por semana, com o acompanhamento dos professores e as trilhas de aprendizagem;
+  - os relatórios de desempenho, frequência e progresso, que vão para os gestores e para o RH;
+  - como são as aulas: as simulações de reunião, de apresentação e de negociação, o vocabulário de negócios, o conteúdo customizado e o feedback dos professores;
+  - os sete setores atendidos;
+  - no fim, as três perguntas que o pedido faz.
+- Logo abaixo do topo, três atalhos levam aos motivos que o site atual dá para escolher a 9vee: relatórios para o RH, flexibilidade de horários e foco em comunicação profissional.
+- Na home, o texto do LMS na lista de serviços perdeu o "a confirmar".
+- Na parte "O que é o LMS", aparece um quadro colorido com o código IMG-LMS-O-QUE-E. É o lugar de uma foto, que entra em seguida.
+- Ficou fora de propósito o que só aparece no material do Canva: a EdApp, as telas da plataforma, a sala de aula invertida, a IA e o plantão pelo WhatsApp. Tudo isso continua na pergunta 21 da Daniella. A página nova não tem nenhum "a confirmar".
+
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-06/` e publique com `npm run deploy`. A pergunta 21 da mensagem diz "a página nova de LMS repete isso": ela só fica verdadeira no preview depois desta publicação. A foto nova está em `docs/imagens-gemini.md` (IMG-LMS-O-QUE-E); salva em `src/assets/imagens/lms-o-que-e.jpg`, ela entra sozinha no build seguinte.
+
 ## Semana 1, quarta leva (30/09): uma foto no topo de cada página de idioma
 
 - Cada página de idioma ganhou uma foto no topo, com duas pessoas conversando numa cidade onde se fala o idioma e um lugar conhecido ao fundo. No inglês é o Big Ben; no japonês, a Torre de Tóquio; no português para estrangeiros, o MASP. A saudação na escrita do idioma continua ao lado.

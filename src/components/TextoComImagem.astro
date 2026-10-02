@@ -1,0 +1,92 @@
+---
+// Texto corrido ao lado de uma imagem em arco: o que é o serviço. O primeiro parágrafo abre maior, como apoio.
+// No celular o texto vem antes da imagem; no computador a imagem fica do lado oposto ao da imagem do hero.
+import Figura from './Figura.astro';
+import Texto from './Texto.astro';
+import type { Imagem } from '../content.config';
+
+interface Props {
+  id: string;
+  titulo: string;
+  paragrafos: string[];
+  imagem: Imagem;
+}
+
+const { id, titulo, paragrafos, imagem } = Astro.props;
+const [abertura, ...demais] = paragrafos;
+---
+
+<section class="texto-imagem" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner texto-imagem__grade">
+    <div class="texto-imagem__texto">
+      <h2 id={`${id}-titulo`} class="revela"><Texto de={titulo} /></h2>
+      <p class="texto-imagem__abertura"><Texto de={abertura} /></p>
+      {
+        demais.map((paragrafo) => (
+          <p class="texto-imagem__paragrafo texto-secundario">
+            <Texto de={paragrafo} />
+          </p>
+        ))
+      }
+    </div>
+
+    <div class="texto-imagem__visual">
+      <Figura
+        {...imagem}
+        proporcao="4/5"
+        forma="arco"
+        sizes="(min-width: 64rem) 22rem, min(62vw, 20rem)"
+        larguras={[400, 640, 800]}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .texto-imagem {
+    padding-block: var(--secao);
+  }
+
+  .texto-imagem__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: center;
+  }
+
+  .texto-imagem__texto {
+    display: grid;
+    gap: var(--e-4);
+  }
+
+  .texto-imagem__abertura {
+    max-inline-size: 44ch;
+    font-size: var(--t-destaque);
+    line-height: var(--altura-apoio);
+  }
+
+  .texto-imagem__paragrafo {
+    max-inline-size: 58ch;
+  }
+
+  .texto-imagem__visual {
+    justify-self: center;
+    inline-size: min(62vw, 20rem);
+  }
+
+  @media (min-width: 64rem) {
+    .texto-imagem__grade {
+      grid-template-columns: 0.8fr 1.2fr;
+      column-gap: var(--e-8);
+    }
+
+    .texto-imagem__visual {
+      grid-area: 1 / 1;
+      justify-self: start;
+      inline-size: min(100%, 22rem);
+    }
+
+    .texto-imagem__texto {
+      grid-area: 1 / 2;
+    }
+  }
+</style>

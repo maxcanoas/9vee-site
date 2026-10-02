@@ -1,6 +1,7 @@
-// Lighthouse mobile nas 3 páginas completas do MVP, no build de produção, com a mediana de 3 rodadas.
+// Lighthouse mobile nas páginas de um roteiro, no build de produção, com a mediana de 3 rodadas. O roteiro é a
+// etapa ou o ticket que pede a medida, e o relatório sai em relatorios/<roteiro>/lighthouse.md.
 // O pacote não fica no package.json: instale antes com `npm install --no-save lighthouse@13.5.0`.
-// Uso: node scripts/build.ts producao && node scripts/lighthouse.ts
+// Uso: node scripts/build.ts producao && node scripts/lighthouse.ts <roteiro>
 import { createServer, type Server } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -9,11 +10,33 @@ import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { RODADAS, medirTabela } from './medida-lighthouse.ts';
 
-const PAGINAS = [
-  { nome: 'Home', rota: '/' },
-  { nome: 'Treinamento de NR-1', rota: '/treinamento-nr-1/' },
-  { nome: 'Cursos de Idiomas', rota: '/curso-de-idiomas/' },
-];
+interface Roteiro {
+  paginas: { nome: string; rota: string }[];
+  /** As metas que o relatório lembra no alto, para a tabela ser lida sem abrir a spec. */
+  metas: string;
+}
+
+const METAS_DA_SPEC = 'Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05';
+// Os tickets do reaproveitamento pedem acessibilidade 100 (spec, "Como cada ticket do reaproveitamento fecha").
+const METAS_DO_REAPROVEITAMENTO = 'Performance ≥ 95, Acessibilidade 100, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05';
+
+// Cada ticket que fecha uma página acrescenta o roteiro dele aqui.
+const ROTEIROS: Record<string, Roteiro> = {
+  'etapa-7': {
+    paginas: [
+      { nome: 'Home', rota: '/' },
+      { nome: 'Treinamento de NR-1', rota: '/treinamento-nr-1/' },
+      { nome: 'Cursos de Idiomas', rota: '/curso-de-idiomas/' },
+    ],
+    metas: METAS_DA_SPEC,
+  },
+  'ticket-06': { paginas: [{ nome: 'LMS', rota: '/lms/' }], metas: METAS_DO_REAPROVEITAMENTO },
+};
+
+const nomeDoRoteiro = process.argv[2] ?? 'etapa-7';
+const roteiro = ROTEIROS[nomeDoRoteiro];
+if (!roteiro) throw new Error(`Roteiro desconhecido: ${nomeDoRoteiro}. Opções: ${Object.keys(ROTEIROS).join(', ')}`);
+
 // A medida é no build de produção: é o que vai ao ar, e o único sem noindex, que derrubaria o SEO.
 const PASTA = 'dist-producao';
 const PORTA = 4501;
@@ -67,7 +90,7 @@ const linhas: string[] = [
   '',
   `Medido em ${new Date().toLocaleDateString('pt-BR')} no build de produção (${PASTA}/), mediana de ${RODADAS} rodadas por página.`,
   '',
-  'Metas: Performance ≥ 95, Acessibilidade ≥ 95, Boas práticas ≥ 95, SEO 100, LCP < 2,0 s e CLS < 0,05.',
+  `Metas: ${roteiro.metas}.`,
   '',
   'O servidor da medida manda HTML, CSS e JS com gzip, como a Cloudflare faz. Sem isso a medida castiga uns 130 KB por página que a produção nunca envia.',
   '',
@@ -75,13 +98,13 @@ const linhas: string[] = [
 
 const servidor = await servir(PASTA, PORTA);
 try {
-  const paginas = PAGINAS.map(({ nome, rota }) => ({ nome, url: `http://localhost:${PORTA}${rota}` }));
+  const paginas = roteiro.paginas.map(({ nome, rota }) => ({ nome, url: `http://localhost:${PORTA}${rota}` }));
   linhas.push(...(await medirTabela(paginas, (linha) => console.log(linha))), '');
 } finally {
   await new Promise((ok) => servidor.close(ok));
 }
 
-const saida = new URL('../relatorios/etapa-7/', import.meta.url);
+const saida = new URL(`../relatorios/${nomeDoRoteiro}/`, import.meta.url);
 await mkdir(saida, { recursive: true });
 await writeFile(new URL('lighthouse.md', saida), linhas.join('\n'), 'utf8');
 console.log(linhas.join('\n'));

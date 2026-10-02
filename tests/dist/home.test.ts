@@ -50,6 +50,14 @@ describe('home', () => {
     expect(valores).toEqual(['empresa', 'voce']);
   });
 
+  // O site atual afirma os relatórios e o acompanhamento de professores: a pendência do card saiu no ticket 06.
+  it('diz no card do LMS o que o site atual afirma, sem pendência', () => {
+    const card = home.querySelector('[data-ordenavel] > li[data-servico="lms"]');
+    expect(card?.querySelector('mark.confirmar')).toBeNull();
+    const texto = card?.querySelector('.servico__texto')?.text ?? '';
+    for (const fato of ['professores', 'relatórios', 'frequência']) expect(texto).toContain(fato);
+  });
+
   // Em todos os modos, a home só leva à página de idioma publicada. O idioma sem página publicada leva à âncora dele.
   it('liga os 14 idiomas à página publicada de cada um ou à página de cursos, com a saudação no próprio idioma', () => {
     const links = home.querySelectorAll('a.idioma');

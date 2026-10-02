@@ -455,9 +455,73 @@ const paginasDeIdioma = defineCollection({
     }),
 });
 
-// As três páginas que ficam parciais no MVP: hero, um bloco curto e a etiqueta de obra.
+// O LMS com o que o site atual diz da plataforma. A EdApp, as telas e o que só existe no Canva ficam fora do texto.
+const lms = defineCollection({
+  loader: glob({ pattern: 'lms.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    servico: z.object({ tipo: z.string() }),
+    hero: z.object({
+      rotulo: z.string(),
+      h1: z.string(),
+      apoio: z.string(),
+      cta: z.string(),
+      imagem,
+    }),
+    // Os benefícios do site atual, cada um levando à seção da página que o explica.
+    motivos: z.object({
+      titulo: z.string(),
+      itens: z
+        .array(z.object({ rotulo: z.string(), descricao: z.string(), href: z.string().regex(/^#[a-z-]+$/) }))
+        .min(2),
+    }),
+    oQueE: z.object({
+      titulo: z.string(),
+      paragrafos: z.array(z.string()).min(1),
+      imagem,
+    }),
+    // O título da seção é a frase em tipo grande, uma linha por item, com o grifo no começo de cada uma.
+    plataforma: z.object({
+      linhas: z.array(z.object({ grifo: z.string(), texto: z.string() })).min(1),
+      destaque: z.string(),
+      itens: z.array(tituloETexto).min(1),
+    }),
+    relatorios: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(tituloETexto).min(2),
+      nota: z.string(),
+    }),
+    chamada: z.object({
+      titulo: z.string(),
+      texto: z.string(),
+      pontos: z.array(z.string()).min(2),
+      cta: z.string(),
+    }),
+    metodologia: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(z.object({ nome: z.string(), texto: z.string() })).min(2),
+    }),
+    setores: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(z.string()).min(2),
+      nota: z.string(),
+    }),
+    // As perguntas do pedido de LMS, na ordem do formulário.
+    ctaFinal: z.object({
+      titulo: z.string(),
+      texto: z.string(),
+      itens: z.array(tituloETexto).min(1),
+      rotulo: z.string(),
+    }),
+  }),
+});
+
+// As duas páginas que continuam parciais, como no MVP: hero, um bloco curto e a etiqueta de obra.
 const parciais = defineCollection({
-  loader: glob({ pattern: '{traducao-simultanea,lms,quem-somos}.md', base: conteudo }),
+  loader: glob({ pattern: '{traducao-simultanea,quem-somos}.md', base: conteudo }),
   schema: z.object({
     seo,
     hero: z.object({
@@ -504,6 +568,7 @@ export const collections = {
   nr1,
   idiomas,
   paginasDeIdioma,
+  lms,
   parciais,
   privacidade,
 };

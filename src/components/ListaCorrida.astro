@@ -1,0 +1,95 @@
+---
+// Uma lista curta de nomes em tipo grande, um depois do outro, com a meia-lua da marca entre eles: os setores
+// atendidos. Não são pílulas, porque pílula, neste site, é o que se toca.
+import CabecaDeSecao from './CabecaDeSecao.astro';
+import Texto from './Texto.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  apoio: string;
+  itens: string[];
+  nota: string;
+}
+
+const { id, titulo, apoio, itens, nota } = Astro.props;
+---
+
+<section class="corrida" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner corrida__grade">
+    <CabecaDeSecao {id} {titulo} {apoio} />
+
+    <ul class="corrida__lista" role="list">
+      {
+        itens.map((item) => (
+          <li class="corrida__item">
+            <span>
+              <Texto de={item} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="corrida__nota"><Texto de={nota} /></p>
+  </div>
+</section>
+
+<style>
+  .corrida {
+    padding-block: var(--secao);
+    background-color: var(--nevoa);
+  }
+
+  .corrida__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .corrida__lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2) var(--e-4);
+    padding: 0;
+    list-style: none;
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-3);
+    font-weight: 600;
+    line-height: var(--altura-subtitulo);
+  }
+
+  .corrida__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-4);
+  }
+
+  /* Entre um nome e o seguinte, a meia-lua da marca, com a forma alternando entre as duas metades, como na faixa
+     de saudações da home. */
+  .corrida__item:not(:last-child)::after {
+    content: '';
+    flex: none;
+    inline-size: 0.22em;
+    block-size: 0.44em;
+    border-radius: var(--raio-pilula) 0 0 var(--raio-pilula);
+    background-color: var(--menta);
+  }
+
+  .corrida__item:nth-child(even)::after {
+    border-radius: 0 var(--raio-pilula) var(--raio-pilula) 0;
+  }
+
+  .corrida__nota {
+    max-inline-size: 62ch;
+    color: var(--navy-2);
+  }
+
+  /* No celular o tipo é menor para caberem dois nomes por linha: um por linha, a meia-lua ficava solta no fim. */
+  @media (min-width: 48rem) {
+    .corrida__lista {
+      font-size: var(--t-2);
+      letter-spacing: var(--rastreio-titulo);
+    }
+  }
+</style>

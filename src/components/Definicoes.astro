@@ -50,9 +50,12 @@ const { id, titulo, apoio, itens } = Astro.props;
     display: grid;
   }
 
+  /* Lado a lado, o item mais curto estica até a altura do vizinho: sem o align-content, a sobra iria para entre
+     o nome e o texto. */
   .definicao {
     display: grid;
     gap: var(--e-1);
+    align-content: start;
     padding-block: var(--e-4);
     border-block-start: 1px solid var(--linha);
   }
