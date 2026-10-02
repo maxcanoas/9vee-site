@@ -6,7 +6,7 @@
 
 **Horas:** 6,5. **Semana:** 4 (era a 5; subiu em 30/09/2026, depois dos tickets do reaproveitamento do site atual).
 
-**Situação:** feito em 02/10/2026, adiantado da semana 4. Espera o ok do Maxwell e o teste à mão no preview publicado, que depende dele: publicar e conferir os e-mails na caixa de teste. Como é ticket de funcionalidade, os testes vieram antes do código e a suíte de navegador inteira rodou. Ficaram de fora o Lighthouse e a rodada de `code-review`, pelo processo curto de 02/10.
+**Situação:** feito e aprovado pelo Maxwell em 02/10/2026, adiantado da semana 4. Na aprovação ele manteve o tempo mínimo como está: quem envia cedo demais vê "Não deu para enviar." e pode tentar de novo. Falta o teste à mão no preview publicado, que depende dele: publicar e conferir os e-mails na caixa de teste. Ele parou para fazer isso antes do ticket 13. Como é ticket de funcionalidade, os testes vieram antes do código e a suíte de navegador inteira rodou. Ficaram de fora o Lighthouse e a rodada de `code-review`, pelo processo curto de 02/10.
 
 - [x] Antes de tudo: um envio de teste confirma que a Web3Forms aceita o endereço do preview (`workers.dev`) e o `localhost`. Aceitou os dois. O plano B (Formspark) não entrou.
 - [x] O envio fica num módulo só; trocar de serviço é trocar esse módulo e as variáveis de ambiente.
