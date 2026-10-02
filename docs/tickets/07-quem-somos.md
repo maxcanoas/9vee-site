@@ -6,7 +6,7 @@
 
 **Horas:** 3,5 (eram 2). **Semana:** 3.
 
-**Situação:** feito em 02/10/2026, adiantado da semana 3, no processo mais curto que o Maxwell pediu no mesmo dia: os textos e o layout, com os testes automáticos, sem as medições e sem a rodada de `code-review`. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
+**Situação:** feito e aprovado pelo Maxwell em 02/10/2026, adiantado da semana 3, no processo mais curto que ele pediu no mesmo dia: os textos e o layout, com os testes automáticos, sem as medições e sem a rodada de `code-review`. Reescrito em 30/09/2026 pela decisão do reaproveitamento do site atual (spec, "Reaproveitamento do site atual"): a página não espera mais a resposta da Daniella. O preview não foi publicado: o Maxwell publica depois de ver as capturas.
 
 **Do site atual, como fato:**
 
