@@ -66,6 +66,21 @@ const abrirServicoComoEmpresa = async (p: Page) => {
   await p.locator('.metade--esquerda').click();
 };
 
+// As capturas de uma página completa do reaproveitamento: inteira, o topo, cada seção nas duas larguras de
+// revisão, com o nome da âncora dela, e o fechamento.
+const capturasDaPagina = (prefixo: string, rota: string, secoes: string[]): Captura[] => [
+  { nome: `${prefixo}-inteira-390`, rota, largura: 390, altura: 844, paginaInteira: true },
+  { nome: `${prefixo}-inteira-1280`, rota, largura: 1280, altura: 800, paginaInteira: true },
+  { nome: `${prefixo}-topo-360`, rota, largura: 360, altura: 780 },
+  { nome: `${prefixo}-topo-1280`, rota, largura: 1280, altura: 800 },
+  ...secoes.flatMap((secao): Captura[] => [
+    { nome: `${prefixo}-${secao}-390`, rota, largura: 390, altura: 844, antes: rolarAte(`#${secao}`, -60) },
+    { nome: `${prefixo}-${secao}-1280`, rota, largura: 1280, altura: 800, antes: rolarAte(`#${secao}`, -80) },
+  ]),
+  { nome: `${prefixo}-fecho-390`, rota, largura: 390, altura: 844, antes: rolarAteImagem('#contato', -60) },
+  { nome: `${prefixo}-fecho-1280`, rota, largura: 1280, altura: 800, antes: rolarAteImagem('#contato', -80) },
+];
+
 const roteiros: Record<string, Captura[]> = {
   'etapa-1': [
     { nome: 'cabecalho-390', rota: '/', largura: 390, altura: 844 },
@@ -248,22 +263,35 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-topo-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844 },
     { nome: 'nr1-topo-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
   ],
-  // A página de LMS completa: inteira, o topo, cada seção nas duas larguras, o pedido aberto pela chamada do meio
-  // e o card do LMS na home. O nome de cada captura de seção é o da âncora dela.
+  // A página de LMS completa, o pedido aberto pela chamada do meio e o card do LMS na home.
   'ticket-06': [
-    { nome: 'lms-inteira-390', rota: '/lms/', largura: 390, altura: 844, paginaInteira: true },
-    { nome: 'lms-inteira-1280', rota: '/lms/', largura: 1280, altura: 800, paginaInteira: true },
-    { nome: 'lms-topo-360', rota: '/lms/', largura: 360, altura: 780 },
-    { nome: 'lms-topo-1280', rota: '/lms/', largura: 1280, altura: 800 },
-    ...['motivos', 'o-que-e', 'plataforma', 'relatorios', 'chamada', 'metodologia', 'setores'].flatMap((secao): Captura[] => [
-      { nome: `lms-${secao}-390`, rota: '/lms/', largura: 390, altura: 844, antes: rolarAte(`#${secao}`, -60) },
-      { nome: `lms-${secao}-1280`, rota: '/lms/', largura: 1280, altura: 800, antes: rolarAte(`#${secao}`, -80) },
-    ]),
-    { nome: 'lms-fecho-390', rota: '/lms/', largura: 390, altura: 844, antes: rolarAteImagem('#contato', -60) },
-    { nome: 'lms-fecho-1280', rota: '/lms/', largura: 1280, altura: 800, antes: rolarAteImagem('#contato', -80) },
+    ...capturasDaPagina('lms', '/lms/', ['motivos', 'o-que-e', 'plataforma', 'relatorios', 'chamada', 'metodologia', 'setores']),
     { nome: 'lms-pedido-390', rota: '/lms/', largura: 390, altura: 844, publico: 'empresa', antes: (p) => p.locator('#chamada [data-abre-contato]').click() },
     { nome: 'home-card-lms-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.servico[data-servico="lms"]', -120) },
     { nome: 'home-card-lms-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.servico[data-servico="lms"]', -160) },
+  ],
+  // A Tradução Simultânea completa e o pedido com a pergunta nova, a da duração do evento.
+  'ticket-05': [
+    ...capturasDaPagina('traducao', '/traducao-simultanea/', [
+      'formatos',
+      'como-funciona',
+      'eventos',
+      'idiomas-e-cidades',
+      'interpretes',
+      'mandarim',
+      'perguntas',
+    ]),
+    {
+      nome: 'traducao-pedido-duracao-390',
+      rota: '/traducao-simultanea/',
+      largura: 390,
+      altura: 844,
+      publico: 'empresa',
+      antes: async (p) => {
+        await p.locator('#eventos [data-abre-contato]').click();
+        await p.locator('[data-formulario="traducao"] [data-campo="duracao"]').scrollIntoViewIfNeeded();
+      },
+    },
   ],
   'ajustes-cliente': [
     { nome: 'home-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },

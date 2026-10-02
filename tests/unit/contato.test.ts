@@ -273,6 +273,33 @@ describe('linhasDoPedido', () => {
     ]);
   });
 
+  // O pedido de tradução pergunta a duração do evento logo depois da data: é ela que decide se vai um intérprete
+  // ou dois.
+  it('leva a duração do evento ao pedido, entre a data e o formato, e cobra a resposta', () => {
+    const comDuracao: Campo[] = [
+      ...traducao.slice(0, 3),
+      {
+        id: 'duracao',
+        tipo: 'escolha',
+        rotulo: 'Quanto tempo dura o evento?',
+        rotuloCurto: 'Duração',
+        obrigatorio: true,
+        minuscula: true,
+        opcoes: ['Até 1 hora', 'Meio período', 'Dia inteiro', 'Mais de um dia'],
+      },
+      ...traducao.slice(3),
+    ];
+    const respostas = { empresa: 'Hotel Exemplo', idiomas: ['ingles'], data: 'sem-data', duracao: 'meio-periodo', formato: 'online' };
+    expect(linhasDoPedido(comDuracao, respostas, idiomas)).toEqual([
+      'Empresa: Hotel Exemplo',
+      'Idiomas: inglês',
+      'Data do evento: ainda sem data',
+      'Duração: meio período',
+      'Formato: online',
+    ]);
+    const { duracao: _semResposta, ...semDuracao } = respostas;
+    expect(validarCampos(comDuracao, semDuracao, 'empresa', '2026-10-01', erros)).toEqual({ duracao: erros.escolha });
+  });
   it('usa o nome do idioma no campo de idioma', () => {
     expect(linhasDoPedido(idiomasVoce, { idioma: 'espanhol', objetivo: 'viagem' }, idiomas)).toEqual([
       'Idioma: espanhol',

@@ -520,9 +520,57 @@ const lms = defineCollection({
   }),
 });
 
-// As duas páginas que continuam parciais, como no MVP: hero, um bloco curto e a etiqueta de obra.
+// A Tradução Simultânea com o que o site atual diz dos três formatos, do equipamento, dos idiomas e das cidades.
+// O que só existe no Canva (a remota, os idiomas a mais, o revezamento e os casos) entra com pendência.
+const traducao = defineCollection({
+  loader: glob({ pattern: 'traducao-simultanea.md', base: conteudo }),
+  schema: z.object({
+    seo,
+    servico: tipoDoServico,
+    hero: heroDeServico,
+    // Os formatos lado a lado, com as mesmas duas perguntas para cada um.
+    formatos: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      rotulos: z.object({ quando: z.string(), como: z.string() }),
+      itens: z.array(z.object({ nome: z.string(), quando: z.string(), como: z.string() })).min(2),
+    }),
+    comoFunciona: z.object({
+      titulo: z.string(),
+      paragrafos: z.array(z.string()).min(1),
+      imagem,
+    }),
+    // Só o nome de cada tipo de evento, como o site atual lista.
+    eventos: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(z.object({ titulo: z.string() })).min(2),
+      nota: z.string(),
+      cta: z.string(),
+    }),
+    // Os idiomas ficam aqui; as cidades vêm de content/site.md, e aqui fica só o rótulo delas.
+    atendimento: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      idiomas: z.object({ rotulo: z.string(), itens: z.array(z.string()).min(2) }),
+      cidades: z.object({ rotulo: z.string() }),
+      nota: z.string(),
+    }),
+    interpretes: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      itens: z.array(nomeETexto).min(2),
+    }),
+    // A ponte para a página de interpretação de mandarim. O link entra quando a página existir (ticket 21).
+    mandarim: z.object({ titulo: z.string(), texto: z.string(), link: link.optional() }),
+    faq,
+    ctaFinal: z.object({ titulo: z.string(), texto: z.string(), rotulo: z.string() }),
+  }),
+});
+
+// A página que continua parcial, como no MVP: hero, um bloco curto e a etiqueta de obra.
 const parciais = defineCollection({
-  loader: glob({ pattern: '{traducao-simultanea,quem-somos}.md', base: conteudo }),
+  loader: glob({ pattern: 'quem-somos.md', base: conteudo }),
   schema: z.object({
     seo,
     hero: z.object({
@@ -570,6 +618,7 @@ export const collections = {
   idiomas,
   paginasDeIdioma,
   lms,
+  traducao,
   parciais,
   privacidade,
 };

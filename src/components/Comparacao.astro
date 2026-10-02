@@ -1,0 +1,121 @@
+---
+// Os formatos de um serviço lado a lado, com as mesmas duas perguntas para cada um: quando usar e como funciona.
+// Quem lê compara pela linha. No celular fica um embaixo do outro. Sem cartão: o fio de cima abre cada formato.
+import CabecaDeSecao from './CabecaDeSecao.astro';
+import Texto from './Texto.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  apoio: string;
+  rotulos: { quando: string; como: string };
+  itens: { nome: string; quando: string; como: string }[];
+}
+
+const { id, titulo, apoio, rotulos, itens } = Astro.props;
+---
+
+<section class="comparacao" id={id} aria-labelledby={`${id}-titulo`}>
+  <div class="conteiner comparacao__grade">
+    <CabecaDeSecao {id} {titulo} {apoio} />
+
+    <ul class="comparacao__lista" role="list">
+      {
+        itens.map((item) => (
+          <li class="comparacao__item">
+            <h3 class="comparacao__nome">
+              <Texto de={item.nome} />
+            </h3>
+            <dl class="comparacao__linhas">
+              <div class="comparacao__linha">
+                <dt>
+                  <Texto de={rotulos.quando} />
+                </dt>
+                <dd>
+                  <Texto de={item.quando} />
+                </dd>
+              </div>
+              <div class="comparacao__linha">
+                <dt>
+                  <Texto de={rotulos.como} />
+                </dt>
+                <dd>
+                  <Texto de={item.como} />
+                </dd>
+              </div>
+            </dl>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .comparacao {
+    padding-block: var(--secao);
+  }
+
+  .comparacao__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+
+  .comparacao__lista {
+    display: grid;
+    gap: var(--e-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .comparacao__item {
+    padding-block-start: var(--e-4);
+    border-block-start: 1px solid var(--navy);
+  }
+
+  .comparacao__linhas {
+    display: grid;
+    gap: var(--e-4);
+    margin-block-start: var(--e-4);
+  }
+
+  /* Lado a lado, a linha mais curta estica até a altura da vizinha: sem o align-content, a sobra iria para entre o
+     rótulo e o texto. */
+  .comparacao__linha {
+    display: grid;
+    gap: var(--e-1);
+    align-content: start;
+  }
+
+  .comparacao__linha dt {
+    color: var(--navy-2);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+  }
+
+  .comparacao__linha dd {
+    max-inline-size: 40ch;
+    margin: 0;
+  }
+
+  /* Lado a lado, as linhas de cada formato começam na mesma altura: o formato e a lista dele seguem as linhas da
+     grade de fora, e o "Como funciona" não sobe nem desce conforme o tamanho do "Quando usar" do vizinho. */
+  @media (min-width: 64rem) {
+    .comparacao__lista {
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: var(--e-4) var(--e-6);
+    }
+
+    .comparacao__item {
+      display: grid;
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+    }
+
+    .comparacao__linhas {
+      grid-row: span 2;
+      grid-template-rows: subgrid;
+      margin-block-start: 0;
+    }
+  }
+</style>

@@ -2,6 +2,22 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 1, sexta leva (01/10): a página de Tradução Simultânea completa
+
+- A página de Tradução Simultânea deixou de ser "em construção". Ela agora conta o que o site atual de vocês diz do serviço: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/
+  - os três formatos lado a lado (simultânea, consecutiva e acompanhamento), cada um com quando usar e como funciona;
+  - como funciona a simultânea: a terminologia da área, as cabines acústicas e os sistemas de áudio;
+  - os cinco tipos de evento;
+  - os sete idiomas e as quatro cidades do atendimento presencial;
+  - quem são os intérpretes: a formação e as áreas de experiência;
+  - um bloco sobre a interpretação de mandarim para o mercado financeiro, que vai levar à página nova desse serviço;
+  - oito perguntas de quem organiza um evento.
+- O pedido de tradução ganhou uma pergunta: quanto tempo dura o evento. É ela que diz se vai um intérprete ou dois.
+- O que aparece como "a confirmar" veio do material do Canva, e não do site atual: a interpretação remota (pergunta 34), árabe, Libras e ASL (33), o revezamento dos intérpretes (16) e os casos atendidos (17). O prazo de resposta é a pergunta 6.
+- Na parte "Como funciona a interpretação simultânea", aparece um quadro colorido com o código IMG-TRADUCAO-COMO. É o lugar de uma foto, que entra em seguida.
+
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-05/` e publique com `npm run deploy`. As perguntas 16, 33 e 34 da mensagem dizem que os itens "entraram na página": elas só ficam verdadeiras no preview depois desta publicação. A foto nova está em `docs/imagens-gemini.md` (IMG-TRADUCAO-COMO). Esta leva e a do LMS podem ir juntas.
+
 ## Semana 1, quinta leva (01/10): a página de LMS completa
 
 - A página de LMS deixou de ser "em construção". Ela agora conta o que o site atual de vocês diz da plataforma: https://9vee-preview.9vee-site.workers.dev/lms/

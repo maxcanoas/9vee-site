@@ -20,7 +20,11 @@ export async function paginaLms() {
   return exigir(await getEntry('lms', 'lms'), 'content/lms.md');
 }
 
-export async function paginaParcial(id: 'traducao-simultanea' | 'quem-somos') {
+export async function paginaTraducao() {
+  return exigir(await getEntry('traducao', 'traducao-simultanea'), 'content/traducao-simultanea.md');
+}
+
+export async function paginaParcial(id: 'quem-somos') {
   return exigir(await getEntry('parciais', id), `content/${id}.md`);
 }
 

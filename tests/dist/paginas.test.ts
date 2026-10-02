@@ -56,7 +56,7 @@ const LINKS_GENERICOS = new Set([
 
 // Toda página tem trilha, menos a home, que é o começo dela, e a 404, que não tem lugar no site.
 const temTrilha = (rota: string) => rota !== '/' && rota !== '/404';
-const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/']);
+const COM_FAQ = new Set(['/', '/treinamento-nr-1/', '/curso-de-idiomas/', '/traducao-simultanea/']);
 // A 404 e as páginas de texto não têm hero nem fechamento com o círculo.
 const SEM_CIRCULO = new Set(['/404', ...PAGINAS_DE_TEXTO]);
 

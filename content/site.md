@@ -224,6 +224,8 @@ formularios:
     - { id: "empresa", tipo: "texto", rotulo: "Nome da empresa", rotuloCurto: "Empresa", erro: "Escreva o nome da empresa.", obrigatorio: true, opcionalPara: "voce", autocomplete: "organization" }
     - { id: "idiomas", tipo: "multipla", rotulo: "Quais idiomas o evento precisa?", rotuloCurto: "Idiomas", obrigatorio: true, minuscula: true, opcoes: ["Inglês", "Espanhol", "Mandarim", "Francês", "Italiano", "Crioulo haitiano", "Coreano", "Outro"] }
     - { id: "data", tipo: "data", rotulo: "Quando é o evento?", rotuloCurto: "Data do evento", obrigatorio: true, semData: "Ainda sem data" }
+    # A duração decide se vai um intérprete ou dois (o revezamento, pergunta 16 da Daniella).
+    - { id: "duracao", tipo: "escolha", rotulo: "Quanto tempo dura o evento?", rotuloCurto: "Duração", obrigatorio: true, minuscula: true, opcoes: ["Até 1 hora", "Meio período", "Dia inteiro", "Mais de um dia"] }
     - { id: "formato", tipo: "escolha", rotulo: "Presencial ou online?", rotuloCurto: "Formato", obrigatorio: true, minuscula: true, opcoes: ["Presencial", "Online", "Híbrido"] }
     - { id: "participantes", tipo: "escolha", rotulo: "Quantas pessoas vão participar?", rotuloCurto: "Participantes", obrigatorio: true, minuscula: true, opcoes: ["Até 50", "51 a 200", "201 a 500", "Mais de 500"] }
     - { id: "cidade", tipo: "escolha", rotulo: "Em que cidade?", rotuloCurto: "Cidade", obrigatorio: true, opcoes: ["São Paulo", "Rio de Janeiro", "Curitiba", "Brasília", "Outra"], ocultarSe: { campo: "formato", valores: ["online"] } }

@@ -38,7 +38,13 @@ const jsonLd = [
   <Pontos id="relatorios" {...pagina.relatorios} />
   <Chamada id="chamada" {...pagina.chamada} servico="lms" />
   <Definicoes id="metodologia" {...pagina.metodologia} />
-  <ListaCorrida id="setores" {...pagina.setores} />
+  <ListaCorrida
+    id="setores"
+    titulo={pagina.setores.titulo}
+    apoio={pagina.setores.apoio}
+    grupos={[{ itens: pagina.setores.itens }]}
+    nota={pagina.setores.nota}
+  />
   <CtaFinal {...fechamento} servico="lms">
     <PassosNumerados itens={perguntasDoPedido} />
   </CtaFinal>

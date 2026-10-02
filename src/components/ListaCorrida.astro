@@ -1,6 +1,7 @@
 ---
-// Uma lista curta de nomes em tipo grande, um depois do outro, com a meia-lua da marca entre eles: os setores
-// atendidos. Não são pílulas, porque pílula, neste site, é o que se toca.
+// Listas curtas de nomes em tipo grande, um depois do outro, com a meia-lua da marca entre eles: os setores
+// atendidos, os idiomas e as cidades. Não são pílulas, porque pílula, neste site, é o que se toca. Com mais de
+// uma lista na seção, cada uma leva o rótulo que diz o que ela é.
 import CabecaDeSecao from './CabecaDeSecao.astro';
 import Texto from './Texto.astro';
 
@@ -8,28 +9,37 @@ interface Props {
   id: string;
   titulo: string;
   apoio: string;
-  itens: string[];
+  grupos: { rotulo?: string; itens: readonly string[] }[];
   nota: string;
 }
 
-const { id, titulo, apoio, itens, nota } = Astro.props;
+const { id, titulo, apoio, grupos, nota } = Astro.props;
 ---
 
 <section class="corrida" id={id} aria-labelledby={`${id}-titulo`}>
   <div class="conteiner corrida__grade">
     <CabecaDeSecao {id} {titulo} {apoio} />
 
-    <ul class="corrida__lista" role="list">
-      {
-        itens.map((item) => (
-          <li class="corrida__item">
-            <span>
-              <Texto de={item} />
-            </span>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      grupos.map((grupo) => (
+        <div class="corrida__grupo">
+          {grupo.rotulo && (
+            <h3 class="corrida__rotulo">
+              <Texto de={grupo.rotulo} />
+            </h3>
+          )}
+          <ul class="corrida__lista" role="list">
+            {grupo.itens.map((item) => (
+              <li class="corrida__item">
+                <span>
+                  <Texto de={item} />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
 
     <p class="corrida__nota"><Texto de={nota} /></p>
   </div>
@@ -44,6 +54,21 @@ const { id, titulo, apoio, itens, nota } = Astro.props;
   .corrida__grade {
     display: grid;
     gap: var(--e-6);
+  }
+
+  .corrida__grupo {
+    display: grid;
+    gap: var(--e-3);
+  }
+
+  /* O rótulo é pequeno de propósito: quem aparece é a lista. */
+  .corrida__rotulo {
+    color: var(--navy-2);
+    font-family: var(--fonte-texto);
+    font-size: var(--t-pequeno);
+    font-weight: 700;
+    line-height: var(--altura-texto);
+    letter-spacing: 0;
   }
 
   .corrida__lista {
