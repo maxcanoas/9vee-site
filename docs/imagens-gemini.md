@@ -438,3 +438,10 @@ O Gemini entregou as duas fotos em 928 × 1152, sem arco nem moldura desenhados,
 
 - **Primeira rodada, por volta das 22h50:** a `traducao-como.jpg` veio com uma faixa lisa, quase branca, nos 22% da direita. O prompt ainda levava a frase do estilo base que pede espaço vazio à direita para texto, e o Gemini deixou esse espaço. No arco não vai texto por cima da foto, e a faixa tem quase a cor do fundo da página: a foto parecia cortada. A frase saiu dos dois prompts acima, e a linha Avoid ganhou as faixas lisas.
 - **Segunda rodada, às 23h17:** a `traducao-como.jpg` veio com a cena até as quatro bordas, sem a faixa, e a `lms-o-que-e.jpg` veio com a mesma cena da primeira, agora com a mulher digitando. As duas entraram como vieram, sem recorte.
+
+## A foto da interpretação de mandarim (02/10/2026)
+
+O Maxwell gerou a `interpretacao-mandarim-hero.jpg` em 02/10, às 9h00, com o prompt da IMG-INTERPRETACAO-MANDARIM-HERO. O arquivo tem 928 × 1152 e entrou como veio, sem recorte.
+
+- **A cena:** a gestora à esquerda, o intérprete no meio, de frente, com a mão aberta no gesto de quem explica, e o investidor à direita, de perfil, numa sala de vidro com a cidade ao fundo. É a cena do prompt, e o Alt descreve o que se vê.
+- **Conferido:** as mãos e os rostos das três pessoas, nenhum caractere, crachá ou papel legível, nenhuma bandeira, e a foto até as quatro bordas, sem moldura nem faixa lisa. No alto ficam o teto e a janela, e é isso que o arco do site corta nos cantos.

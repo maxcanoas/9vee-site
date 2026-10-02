@@ -150,7 +150,7 @@ As demais perguntas são da Fase 1 e não têm marcação no código.
 
 - **06, feito em 01/10/2026:** a D21 saiu de `content/home.md` e de `content/lms.md`. A pergunta virou confirmação, sem marcação no código.
 - **05, feito em 01/10/2026:** entraram em `content/traducao-simultanea.md` a D16 (o revezamento), a D17 (os casos atendidos), a D33 (árabe, Libras e ASL), a D34 (a interpretação remota) e a D6 (o prazo de resposta, no FAQ), uma marcação de cada.
-- **21, feito em 02/10/2026:** nenhuma marcação em `content/interpretacao-de-mandarim.md`. A D18 é confirmação. A D6 continua só nos outros lugares: a página de interpretação de mandarim promete "até um dia útil", como a landing, e é a única que promete prazo.
+- **21, feito em 02/10/2026:** nenhuma marcação em `content/interpretacao-de-mandarim.md`. A D18 é confirmação. A D6 continua nos mesmos três lugares, e a página de interpretação de mandarim é a única que promete prazo: ela diz "até um dia útil", como a landing, abaixo dos botões e na confirmação do pedido, no lugar do texto com a marcação (`paginas.interpretacaoDeMandarim.prazo`, em `content/site.md`).
 - **07:** a D2 continua em `content/quem-somos.md`. A faixa de números lê `content/home.md`, sem marcação nova.
 - **22:** a D3 ganha um trecho em `content/curso-de-idiomas.md`, os "12 idiomas" da parte de empresas; a A3 fica só com as cidades; a D30 entra como fato, sem marcação. Nenhuma marcação nova em `content/treinamento-nr-1.md`: as duas frases jurídicas ficam fora (decisão de 01/10/2026).
 

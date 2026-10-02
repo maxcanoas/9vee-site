@@ -8,14 +8,14 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
   - os três serviços, cada um com as ocasiões dele: reuniões com investidores, visitas e eventos corporativos;
   - a frase "Quando o negócio fala mandarim, precisão não é opcional.", em destaque, assinada com o 我们是 9vee;
   - as três modalidades (simultânea, consecutiva e de acompanhamento), os mais de 10 anos, com quem vocês trabalham e onde;
-  - "A 9vee responde em até um dia útil", logo abaixo dos dois botões do pedido. É a única página do site que promete prazo: nas outras ele continua na pergunta 6.
+  - "A 9vee responde em até um dia útil", logo abaixo dos dois botões do pedido e na confirmação do pedido enviado por ela. É a única página do site que promete prazo: nas outras ele continua na pergunta 6.
 - O pedido aberto nessa página já vem com a tradução simultânea e o mandarim marcados.
 - Na página de Tradução Simultânea, o bloco do mandarim agora leva à página nova. A página do curso de mandarim também leva a ela.
 - No fim, a página nova leva ao curso de mandarim, para quem chegou procurando aula.
-- O texto da página não tem nenhum "a confirmar". Santander e Itaú ficaram fora, à espera da pergunta 17, e as versões em inglês e em chinês da landing não entram, como a proposta prevê.
-- A foto do topo ainda é a arte provisória, com o código da imagem à vista. A foto definitiva entra numa próxima leva.
+- O texto da página nova não tem nenhum "a confirmar": o único que aparece nela é o do rodapé, sobre a pronúncia da marca, que está em todas as páginas. Santander e Itaú ficaram fora, à espera da pergunta 17, e as versões em inglês e em chinês da landing não entram, como a proposta prevê.
+- A foto do topo é nova: o intérprete entre uma gestora brasileira e um investidor chinês, numa mesa de reunião.
 
-Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-21/` e publique com `npm run deploy`. As perguntas 6 e 18 da mensagem dizem que a página nova repete a landing: elas só ficam verdadeiras no preview depois desta publicação. Falta gerar a IMG-INTERPRETACAO-MANDARIM-HERO, com o prompt de `docs/imagens-gemini.md`: até lá, o topo mostra o Placeholder.
+Nota para o Maxwell, não para o cliente: veja as capturas em `relatorios/ticket-21/` e publique com `npm run deploy`. As perguntas 6 e 18 da mensagem dizem que a página nova repete a landing: elas só ficam verdadeiras no preview depois desta publicação. A foto é a que você gerou em 02/10, às 9h00 (`docs/imagens-gemini.md`, "A foto da interpretação de mandarim").
 
 ## Semana 1, sexta leva (01/10): a página de Tradução Simultânea completa
 
