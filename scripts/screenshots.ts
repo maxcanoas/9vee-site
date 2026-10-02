@@ -152,7 +152,6 @@ const roteiros: Record<string, Captura[]> = {
         await rolarAte('#servicos', -80)(p);
       },
     },
-    { nome: 'nr1-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('#nr-1') },
     { nome: 'como-etapa2-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.como__etapa[data-etapa="2"]', -300) },
     { nome: 'como-etapa3-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.como__etapa[data-etapa="3"]', -200) },
     { nome: 'saudacoes-1280', rota: '/', largura: 1280, altura: 800, movimento: true, antes: rolarAte('.saudacoes', -250) },

@@ -1,5 +1,5 @@
 ---
-// O fechamento repete o círculo da marca do topo da página. O que a página puser dentro dele entra entre o texto e
+// O fechamento repete o círculo da marca do topo da página, com o logo no miolo. O que a página puser dentro dele entra entre o texto e
 // o botão: no LMS, as perguntas que o pedido faz.
 import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
@@ -16,19 +16,17 @@ interface Props {
   servico?: ServicoId;
   /** Na página de um idioma, o pedido abre com ele marcado. */
   idioma?: string;
-  /** Na home, o círculo leva o logo no miolo. */
-  logo?: boolean;
   /** A linha logo abaixo do botão, na página que promete um prazo de resposta. */
   nota?: string;
 }
 
-const { titulo, texto, cta, rotulo, servico, idioma, logo, nota } = Astro.props;
+const { titulo, texto, cta, rotulo, servico, idioma, nota } = Astro.props;
 ---
 
 <section class="cta-final escuro" id="contato" aria-labelledby="cta-final-titulo">
   <div class="conteiner cta-final__grade">
     <div class="cta-final__circulo" aria-hidden="true">
-      <CirculoMarca sizes="(min-width: 64rem) 16rem, (min-width: 27.5rem) 11rem, 40vw" logo={logo} />
+      <CirculoMarca sizes="(min-width: 64rem) 16rem, (min-width: 27.5rem) 11rem, 40vw" logo />
     </div>
     <div class="cta-final__texto">
       <h2 id="cta-final-titulo"><Texto de={titulo} /></h2>

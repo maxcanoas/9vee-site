@@ -344,15 +344,6 @@ const home = defineCollection({
         )
         .length(4),
     }),
-    destaqueNr1: z.object({
-      rotulo: z.string(),
-      data: z.string(),
-      titulo: z.string(),
-      pontos: z.array(z.string()).min(1),
-      fonte: z.string(),
-      link,
-      cta: z.string(),
-    }),
     // Os três diferenciais do site atual: o nome em tipo grande e o que ele quer dizer.
     diferenciais: z.object({ titulo: z.string(), itens: z.array(nomeETexto).length(3) }),
     como: z.object({

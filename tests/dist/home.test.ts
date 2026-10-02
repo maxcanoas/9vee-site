@@ -22,17 +22,16 @@ describe('ordem do conteúdo', () => {
     }
   });
 
-  it('põe o bloco dos idiomas logo depois da lista, antes do destaque de NR-1', () => {
+  // Os diferenciais ficam abaixo da primeira dobra, que não ganha nada: a home está no limite do LCP.
+  it('põe o bloco dos idiomas logo depois da lista, e os diferenciais antes do "como funciona"', () => {
     const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
     const inicio = secoes.indexOf('servicos');
-    expect(secoes.slice(inicio, inicio + 3)).toEqual(['servicos', 'idiomas', 'nr-1']);
+    expect(secoes.slice(inicio, inicio + 4)).toEqual(['servicos', 'idiomas', 'diferenciais', 'como-funciona']);
   });
 
-  // Abaixo da primeira dobra, que não ganha nada: a home está no limite do LCP.
-  it('põe os diferenciais do site atual depois do destaque de NR-1, antes do "como funciona"', () => {
-    const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
-    const inicio = secoes.indexOf('nr-1');
-    expect(secoes.slice(inicio, inicio + 3)).toEqual(['nr-1', 'diferenciais', 'como-funciona']);
+  // A cliente pediu em 02/10/2026 para tirar da home o destaque de NR-1, o bloco azul com a data.
+  it('não traz mais o destaque de NR-1', () => {
+    expect(home.querySelector('#nr-1')).toBeNull();
   });
 
   // O grupo Empresas aparece três vezes: no painel do computador, no menu do celular e no rodapé.
@@ -92,12 +91,6 @@ describe('home', () => {
       expect(botao.tagName).toBe('BUTTON');
       expect(botao.getAttribute('aria-haspopup')).toBe('dialog');
     }
-  });
-
-  it('cita as fontes oficiais no destaque do NR-1', () => {
-    const hrefs = home.querySelectorAll('#nr-1 a[target="_blank"]').map((a) => a.getAttribute('href') ?? '');
-    expect(hrefs.some((h) => h.startsWith('https://www.gov.br/trabalho-e-emprego/'))).toBe(true);
-    expect(hrefs.some((h) => h.startsWith('https://www.planalto.gov.br/'))).toBe(true);
   });
 
   it('traz os três diferenciais do site atual: a comunicação real, os professores e o diagnóstico', () => {

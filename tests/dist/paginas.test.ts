@@ -247,14 +247,14 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
-  it('usa o círculo da marca no topo e no fechamento, como enfeite (com o logo só no fim da home)', () => {
+  it('usa o círculo da marca no topo e no fechamento, como enfeite (com o logo só no fechamento)', () => {
     const blocos = raiz.querySelectorAll('.hero__visual, .arco-com-circulo, .cta-final');
     if (!SEM_CIRCULO.has(rota)) expect(blocos.length, `${rota} sem hero`).toBeGreaterThan(0);
     for (const bloco of blocos) {
       const circulo = bloco.querySelector('[aria-hidden="true"] img');
       expect(circulo, rota).not.toBeNull();
       expect(circulo?.getAttribute('alt')).toBe('');
-      const comLogo = rota === '/' && bloco.matches('.cta-final');
+      const comLogo = bloco.matches('.cta-final');
       expect(circulo?.getAttribute('src')).toMatch(comLogo ? /\/circulo-marca-logo\./ : /\/circulo-marca\./);
     }
   });

@@ -62,18 +62,6 @@ servicos:
       texto: "Plataforma para a equipe estudar a qualquer hora, com acompanhamento de professores e relatórios de desempenho, frequência e progresso para o RH."
       link: { rotulo: "Conhecer o LMS", href: "/lms/" }
 
-destaqueNr1:
-  rotulo: "Para RH, SESMT e diretoria"
-  data: "26 de maio de 2026"
-  titulo: "Desde essa data, a fiscalização pode multar quem deixou os riscos psicossociais fora do PGR."
-  pontos:
-    - "O PGR precisa identificar os riscos psicossociais do trabalho e trazer um plano de ação para eles."
-    - "O treinamento da 9vee prepara liderança e equipe e termina com um plano de ação. A avaliação dos riscos continua com o SESMT."
-    - "A Lei 14.831/2024 criou um certificado para empresas que cuidam da saúde mental da equipe. O regulamento que define como pedir ainda não saiu [CONFIRMAR COM A DANIELLA: situação do regulamento na data da publicação]."
-  fonte: "Fontes: [Portaria MTE nº 1.419/2024](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/sst-portarias/2024/portaria-mte-no-1-419-nr-01-gro-nova-redacao.pdf), [Ministério do Trabalho e Emprego](https://www.gov.br/trabalho-e-emprego/pt-br/noticias-e-conteudo/2025/abril/inclusao-de-fatores-de-risco-psicossociais-no-gro-comeca-em-carater-educativo-a-partir-de-maio) e [Lei 14.831/2024](https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/L14831.htm)."
-  link: { rotulo: "Ver o treinamento de NR-1", href: "/treinamento-nr-1/" }
-  cta: "Pedir orçamento do treinamento"
-
 # Os três diferenciais do site atual, numa seção própria, abaixo da primeira dobra.
 diferenciais:
   titulo: "O que faz a 9vee diferente"
