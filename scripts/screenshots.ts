@@ -406,6 +406,40 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'depoimento-largo-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.depoimento:nth-child(3)', -80) },
     { nome: 'depoimentos-baixo-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.depoimento:nth-child(2)', -120) },
   ],
+  // O parecer de UX: o hero de cada público, a grade de idiomas, o ritmo dos fundos da home, o atalho do WhatsApp
+  // sobre as perguntas, o botão do topo num notebook de 1366 x 657, os cartões e a ordem da página de cursos.
+  'ux-parecer': [
+    { nome: 'home-inteira-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'home-inteira-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'hero-neutro-1280', rota: '/', largura: 1280, altura: 800 },
+    { nome: 'hero-voce-1280', rota: '/', largura: 1280, altura: 800, publico: 'voce' },
+    { nome: 'hero-voce-390', rota: '/', largura: 390, altura: 844, publico: 'voce' },
+    { nome: 'hero-neutro-1366x657', rota: '/', largura: 1366, altura: 657 },
+    { nome: 'cabecalho-neutro-360', rota: '/', largura: 360, altura: 780 },
+    { nome: 'familias-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('.familias', -160) },
+    { nome: 'familias-hover-romanicas-1280', rota: '/', largura: 1280, altura: 800, antes: passarMouseNaLingua('romanicas') },
+    { nome: 'familias-foco-outras-1280', rota: '/', largura: 1280, altura: 800, antes: async (p) => {
+      await rolarAte('.familias', -160)(p);
+      await p.locator('.familia[data-grupo="outras"] a.idioma').first().focus();
+    } },
+    { nome: 'familias-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('.familias', -120) },
+    { nome: 'familias-cursos-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, antes: rolarAte('.familias', -160) },
+    { nome: 'diferenciais-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('#diferenciais', -80) },
+    { nome: 'diferenciais-390', rota: '/', largura: 390, altura: 844, antes: rolarAte('#diferenciais', -60) },
+    { nome: 'como-etapas-390', rota: '/', largura: 390, altura: 844, movimento: true, antes: rolarAte('.como__etapa[data-etapa="1"]', -360) },
+    { nome: 'faq-whatsapp-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('#perguntas .faq__item:nth-child(4)', -730) },
+    { nome: 'faq-whatsapp-1366', rota: '/', largura: 1366, altura: 768, antes: rolarAte('#perguntas .faq__item:nth-child(4)', -700) },
+    { nome: 'provas-whatsapp-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, antes: rolarAte('#provas .acordeao__item:nth-child(5)', -730) },
+    { nome: 'cursos-topo-1366x657', rota: '/curso-de-idiomas/', largura: 1366, altura: 657 },
+    { nome: 'cursos-topo-1536x730', rota: '/curso-de-idiomas/', largura: 1536, altura: 730 },
+    { nome: 'lms-topo-1366x657', rota: '/lms/', largura: 1366, altura: 657 },
+    { nome: 'cursos-topo-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800 },
+    { nome: 'cursos-formatos-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, antes: rolarAte('#formatos', -80) },
+    { nome: 'cursos-formatos-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, antes: rolarAte('#formatos', -60) },
+    { nome: 'cursos-voce-inteira-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, paginaInteira: true, publico: 'voce' },
+    { nome: 'cursos-empresa-inteira-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, paginaInteira: true, publico: 'empresa' },
+    { nome: 'ingles-para-quem-1280', rota: '/curso-de-idiomas/ingles/', largura: 1280, altura: 800, antes: rolarAte('#para-quem', -80) },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';

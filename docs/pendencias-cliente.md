@@ -13,6 +13,8 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 
 **Atualizado em 01/10/2026:** a pergunta 37, que tinha entrado em 30/09, saiu. Ela pedia a leitura do advogado sobre duas frases jurídicas da página de treinamentos: o PGR como prova em ação ajuizada até 2046, e o certificado como prova de boas práticas em disputa judicial. O Maxwell decidiu que as duas frases não entram no site novo, então não há o que perguntar. A lista da Daniella termina na 36, e o Word, que ainda não tinha a 37, não muda por causa dela. No mesmo dia, com o ticket 06 fechado, a pergunta 21 ganhou duas perguntas no fim (o que cada relatório mostra e se a plataforma recebe outro conteúdo além de idiomas): está em "O que mudou em 01/10/2026", no fim deste arquivo.
 
+**Atualizado em 04/10/2026:** o parecer de UX do site (o olhar de quem procura curso de idiomas) trouxe três perguntas novas para a Daniella (37 a 39) e uma para o Arthur (9). A 37 de agora é outra pergunta: a antiga saiu antes de chegar ao Word, então o número estava livre. O que muda no Word está no fim deste arquivo, em "O que mudou em 04/10/2026". O preço, que o parecer também pede, já é a pergunta 7.
+
 A numeração de 1 a 30 da Daniella e de 1 a 8 do Arthur não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
 
 ## A mensagem
@@ -92,6 +94,12 @@ Daniella, para fechar os textos do site novo preciso destas respostas. Várias s
 35. O site atual diz que vocês atendem comunidades, empresas e órgãos públicos, e o flyer "Inglês Acessível" fala em faculdades e órgãos públicos. Esse programa continua? Se continua, ele entra como um bloco na página de cursos.
 36. A Linguae e a Lenguae, que vocês passaram como referência, têm alguma relação com a 9vee? A lista de idiomas e o tempo de mercado delas são quase iguais aos de vocês, e quero ter certeza de que o site novo não fica parecendo cópia de nenhuma das duas.
 
+**Para o site prender quem procura curso de idiomas**
+
+37. Quem procura curso confia mais em outro aluno do que em empresa. Os três depoimentos do site são de diretores de empresa, e dois falam de tradução. Vocês têm alunos que topariam dar um depoimento com nome, foto e o resultado (o nível que subiram, a prova em que passaram, a mudança de país)? E a 9vee tem avaliações no Google? Se a nota for boa, ela pode aparecer no site.
+38. Posso mostrar alguns professores no site, com foto, nome, país de origem e os idiomas que ensinam? E vocês têm fotos de aulas de verdade? As fotos do site novo são geradas, e o rosto de quem dá a aula pesa mais para o aluno do que qualquer imagem.
+39. Vocês têm vídeo de aula ou dos professores? E uma ideia para a lista de idiomas: tocar no "Hello" ou no "你好" e ouvir a saudação na voz de um professor da língua. Seriam 14 áudios curtos, que dá para gravar no celular. Vocês topam?
+
 ### Para o Arthur
 
 Arthur, cada idioma vai ganhar uma página própria no site, e o Google não valoriza página sem informação própria. Por isso as perguntas sobre os idiomas são as mais importantes aqui: cada resposta sua vira o texto da página daquele idioma.
@@ -109,6 +117,10 @@ Arthur, cada idioma vai ganhar uma página própria no site, e o Google não val
 3. O site atual diz que os professores atuam no presencial e no remoto, e o site novo repete que há aula presencial. Em que cidades ela acontece, e onde (na empresa do aluno, em sala da 9vee, em espaço parceiro)?
 4. Quantas horas de aula costumam levar de um nível para o outro?
 5. A 9vee emite certificado no fim do curso? De que tipo?
+
+**A primeira aula**
+
+9. A 9vee oferece aula experimental ou teste de nível para quem chega pelo site? Se oferece, como funciona hoje: online ou presencial, quanto tempo leva e se é gratuito? Isso pode virar o segundo botão do topo do site para quem escolhe "Para você".
 
 **Acessos e contas**
 
@@ -210,3 +222,16 @@ Depois do ticket 06 (a página de LMS completa), por decisão do Maxwell no mesm
 | 21 | Ganhou duas perguntas no fim. Primeira: o que cada um dos três relatórios (desempenho, frequência e progresso) mostra, porque a página nova só dá o nome deles, como o site atual. Segunda: se a plataforma recebe só os cursos de idiomas ou também treinamentos internos e a integração de novos colaboradores. O pedido de orçamento do site oferece as três opções desde o MVP, e o site atual só fala de idiomas |
 
 A pergunta 37 não entra no Word: ela saiu antes de chegar a ele.
+
+## O que mudou em 04/10/2026, para atualizar o Word
+
+Do parecer de UX do site, feito no preview publicado, no papel de quem procura curso de idiomas. O site já tem identidade e movimento. O que falta para segurar esse visitante depende de conteúdo que só a 9vee tem.
+
+| Pergunta | O que entra | Por quê |
+|---|---|---|
+| D37 | Depoimento de aluno com resultado, e a nota do Google | Os três depoimentos de hoje são de empresa. Quem estuda por conta própria quer ver alguém como ele |
+| D38 | Professores com foto, nome, país e idiomas, e fotos reais de aula | As fotos do site são geradas. Rosto de professor é o que mais pesa na escolha de uma escola de idiomas |
+| D39 | Vídeo de aula e os 14 áudios das saudações | Ouvir o "olá" na voz de um professor é uma interação que só uma escola de idiomas tem |
+| A9 | Aula experimental ou teste de nível | Hoje o único caminho é o pedido, e o "Quanto custa?" responde "depende". Uma porta de entrada leve vira o segundo botão do topo para quem escolhe "Para você" |
+
+Ficam no Word como estavam: o preço (D7) e as páginas de idioma (A2), que o parecer também pede. A de inglês é a página mais atraente do site, e as seis com texto podem ir ao ar assim que o Arthur responder.
