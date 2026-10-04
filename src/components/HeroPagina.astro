@@ -80,4 +80,16 @@ const { rotulo, h1, apoio, cta, textos, imagem, servico, nota } = Astro.props;
       column-gap: var(--e-8);
     }
   }
+
+  /* Notebook de tela baixa (1366 x 768, a mais comum, deixa uns 657 px de página): com o respiro e os espaços de
+     sempre, o botão do LMS ficava abaixo da primeira tela. */
+  @media (min-width: 64rem) and (max-height: 48rem) {
+    .hero-pagina {
+      padding-block-start: var(--e-6);
+    }
+
+    .hero-pagina__texto {
+      gap: var(--e-4);
+    }
+  }
 </style>

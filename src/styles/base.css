@@ -132,6 +132,15 @@ a:hover {
   margin-inline: auto;
 }
 
+/* Linha com um controle na borda direita, como a meia-lua do FAQ e do acordeão. A partir de 48rem o atalho do
+   WhatsApp não se recolhe e cobria o controle quando a linha passava pelo canto. A folga só aparece quando a margem
+   da página não basta. O 100vw conta a barra de rolagem, que a margem real não tem: a diferença sai do respiro. */
+@media (min-width: 48rem) {
+  .longe-do-flutuante {
+    padding-inline-end: max(0px, var(--folga-flutuante) - max(var(--margem), (100vw - var(--largura)) / 2));
+  }
+}
+
 .prosa > * + * {
   margin-block-start: var(--e-4);
 }

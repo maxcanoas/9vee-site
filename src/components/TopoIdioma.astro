@@ -110,4 +110,16 @@ const { h1, apoio, cta, imagem, idioma, etiqueta } = Astro.props;
       column-gap: var(--e-8);
     }
   }
+
+  /* Notebook de tela baixa, como no hero das páginas internas: com a saudação em tipo de mostra, o botão do
+     português ficava abaixo da primeira tela. */
+  @media (min-width: 64rem) and (max-height: 48rem) {
+    .topo-idioma {
+      padding-block-start: var(--e-6);
+    }
+
+    .topo-idioma__texto {
+      gap: var(--e-4);
+    }
+  }
 </style>

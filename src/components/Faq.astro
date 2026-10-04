@@ -18,7 +18,7 @@ const { titulo, itens, id = 'perguntas' } = Astro.props;
       {
         itens.map((item) => (
           <details class="faq__item">
-            <summary class="faq__pergunta">
+            <summary class="faq__pergunta longe-do-flutuante">
               <h3 class="faq__texto-pergunta">
                 <Texto de={item.pergunta} />
               </h3>

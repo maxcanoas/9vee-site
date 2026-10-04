@@ -52,18 +52,26 @@ for (const largura of LARGURAS) {
 }
 
 test.describe('hero das páginas internas', () => {
-  // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook. Na
-  // página que promete um prazo, a medida é a da caixa do botão com a nota, que vem antes dele no HTML.
+  // A trilha fica no alto do hero: ela não pode empurrar o botão para fora da primeira tela de um notebook. 1366 x 657
+  // é a tela de 1366 x 768, a mais comum, menos as barras do navegador. Na página que promete um prazo, a medida é a
+  // da caixa do botão com a nota, que vem antes dele no HTML.
+  const NOTEBOOKS = [
+    [1280, 800],
+    [1366, 657],
+  ] as const;
   for (const rota of COM_HERO) {
-    test(`${rota}: o botão cabe inteiro na primeira tela em 1280 x 800`, async ({ page }) => {
-      await page.setViewportSize({ width: 1280, height: 800 });
-      await page.goto(rota);
-      await page.evaluate(() => document.fonts.ready);
-      const botao = page.locator(':is(.hero-pagina, .topo-idioma) :is(.botao-com-nota, [data-abre-contato])').first();
-      const caixa = await botao.boundingBox();
-      expect(caixa!.y + caixa!.height).toBeLessThanOrEqual(800);
-    });
+    for (const [largura, altura] of NOTEBOOKS) {
+      test(`${rota}: o botão cabe inteiro na primeira tela em ${largura} x ${altura}`, async ({ page }) => {
+        await page.setViewportSize({ width: largura, height: altura });
+        await page.goto(rota);
+        await page.evaluate(() => document.fonts.ready);
+        const botao = page.locator(':is(.hero-pagina, .topo-idioma) :is(.botao-com-nota, [data-abre-contato])').first();
+        const caixa = await botao.boundingBox();
+        expect(caixa!.y + caixa!.height).toBeLessThanOrEqual(altura);
+      });
+    }
   }
+
 
   // "Início" é mais estreito que 44 px: a área de toque em volta do centro dele precisa cair no link.
   test('o link da trilha tem 44 x 44 px de área de toque', async ({ page }) => {
@@ -82,4 +90,20 @@ test.describe('hero das páginas internas', () => {
     });
     expect(alcanca).toBe(true);
   });
+});
+
+test.describe('atalho do WhatsApp', () => {
+  // A partir de 768 px o atalho não se recolhe: a meia-lua da pergunta, na borda direita, tem de ficar antes dele.
+  for (const largura of [768, 1280, 1366]) {
+    test(`em ${largura} px ele não cobre a meia-lua das perguntas`, async ({ page }) => {
+      await page.setViewportSize({ width: largura, height: 800 });
+      await page.goto('/');
+      const fimDaMeiaLua = await page
+        .locator('.faq__pergunta')
+        .first()
+        .evaluate((resumo) => resumo.getBoundingClientRect().right - parseFloat(getComputedStyle(resumo).paddingInlineEnd));
+      const atalho = await page.locator('.whatsapp-flutuante').boundingBox();
+      expect(fimDaMeiaLua).toBeLessThan(atalho!.x);
+    });
+  }
 });

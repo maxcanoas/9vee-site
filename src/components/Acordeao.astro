@@ -23,7 +23,7 @@ const { id, titulo, apoio, itens } = Astro.props;
       {
         itens.map((item) => (
           <details class="acordeao__item">
-            <summary class="acordeao__chamada">
+            <summary class="acordeao__chamada longe-do-flutuante">
               <h3 class="acordeao__nome">
                 <Texto de={item.nome} />
               </h3>
