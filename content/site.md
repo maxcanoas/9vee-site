@@ -107,8 +107,10 @@ trilha:
   rotulo: "Você está aqui"
   inicio: "Início"
 
+# Sem escolha de público, o botão serve aos dois: "orçamento" é palavra de quem compra para a empresa. O neutro
+# cabe no cabeçalho de 360 px numa linha só, como os outros dois.
 cta:
-  neutro: "Pedir orçamento"
+  neutro: "Quero conversar"
   empresa: "Pedir orçamento"
   voce: "Quero estudar"
 
