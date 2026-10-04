@@ -40,7 +40,7 @@ const { id, titulo, apoio, itens, nota, cta, textos, servico } = Astro.props;
       }
     </ul>
 
-    <div class="cartoes__fecho">
+    <div class="cartoes__fecho longe-do-flutuante">
       <p class="cartoes__nota texto-secundario"><Texto de={nota} /></p>
       {(cta || textos) && <BotaoContato texto={cta} textos={textos} servico={servico} />}
     </div>
@@ -65,13 +65,15 @@ const { id, titulo, apoio, itens, nota, cta, textos, servico } = Astro.props;
     list-style: none;
   }
 
+  /* Fundo névoa, sem fio à vista: caixa branca com borda é a cara do campo do pedido, e o cartão não se toca.
+     O fio continua lá, transparente, para o destaque do :target não mexer no tamanho. */
   .cartao {
     display: grid;
     gap: var(--e-3);
     align-content: start;
     padding: var(--e-5);
-    border: 1px solid var(--linha);
-    background-color: var(--branco);
+    border: 1px solid transparent;
+    background-color: var(--nevoa);
   }
 
   .cartao:target {
