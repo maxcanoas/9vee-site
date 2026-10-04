@@ -125,8 +125,8 @@ const destino = (slug: string) => (modo === 'links' ? enderecoDoCurso(enderecos,
   }
 
   /* O botão precisa perder a aparência de botão: aqui ele é a própria linha da lista, alinhada com o link.
-     A meia-pílula no canto é o que diz que a linha faz alguma coisa quando tocada. Na página de cursos, o idioma
-     com página própria é link e leva a mesma meia-pílula, para a lista não misturar linha que age com linha que não. */
+     A meia-pílula no canto é o que diz que a linha faz alguma coisa quando tocada. Link e botão levam a mesma
+     meia-pílula: na home todo idioma é link, e na página de cursos a lista não mistura linha que age com linha que não. */
   button.idioma {
     padding-inline-start: 0;
     border-inline: 0;
@@ -135,14 +135,42 @@ const destino = (slug: string) => (modo === 'links' ? enderecoDoCurso(enderecos,
     text-align: start;
   }
 
-  button.idioma,
-  .familias--pedido a.idioma {
+  /* A folga da meia-pílula é a menor que a separa do texto: com mais, "こんにちは" quebrava em duas linhas em 1280. */
+  a.idioma,
+  button.idioma {
     position: relative;
-    padding-inline-end: var(--e-5);
+    isolation: isolate;
+    padding-inline-end: var(--e-4);
   }
 
-  button.idioma::after,
-  .familias--pedido a.idioma::after {
+  /* Sob o mouse e no foco, a linha vira um bloco no tom da família. O fundo passa um pouco das bordas da linha, para
+     o texto continuar alinhado com o título da família. */
+  a.idioma::before,
+  button.idioma::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline: calc(-1 * var(--e-3));
+    z-index: -1;
+    background-color: var(--fundo-grupo);
+    opacity: 0;
+  }
+
+  a.idioma:is(:hover, :focus-visible)::before,
+  button.idioma:is(:hover, :focus-visible)::before {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a.idioma::before,
+    button.idioma::before {
+      transition-property: opacity;
+      transition-duration: var(--dur-rapida);
+    }
+  }
+
+  a.idioma::after,
+  button.idioma::after {
     content: '';
     position: absolute;
     inset-block-start: var(--e-4);

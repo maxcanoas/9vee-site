@@ -51,7 +51,7 @@ test.describe('código de cor', () => {
     }
   });
 
-  test('ao passar o mouse numa língua, o sublinhado tem a cor da família dela', async ({ page, isMobile }) => {
+  test('ao passar o mouse numa língua, o sublinhado tem a cor da família dela e a linha ganha o fundo', async ({ page, isMobile }) => {
     test.skip(isMobile, 'hover só existe com mouse');
     await page.goto('/');
     for (const familia of ['germanicas', 'romanicas', 'outras']) {
@@ -60,6 +60,8 @@ test.describe('código de cor', () => {
       await lingua.hover();
       const sublinhado = await lingua.locator('.idioma__saudacao').evaluate((el) => getComputedStyle(el).textDecorationColor);
       expect(sublinhado, familia).toBe(await corDoGrifo(grupo.locator('.grifo')));
+      // O fundo aparece com transição curta: espera o valor final.
+      await expect.poll(() => lingua.evaluate((el) => getComputedStyle(el, '::before').opacity), { message: familia }).toBe('1');
     }
   });
 

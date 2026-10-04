@@ -259,6 +259,12 @@ mark.confirmar {
   --cor-grupo: var(--grifo-menta);
 }
 
+/* O tom claro do grupo, para o fundo do que se destaca sem grifo, como o idioma sob o mouse. Fica no mesmo elemento
+   que a cor, para ler a do grupo dele. Com texto navy por cima, dá mais de 5:1 nas três cores. */
+[data-grupo] {
+  --fundo-grupo: color-mix(in oklab, var(--cor-grupo) 16%, var(--papel));
+}
+
 /* No .escuro o texto do grifo é papel, e o tom da faixa segue o texto: a violeta pura dá 4,8:1 e a magenta
    escurecida, 4,6:1. A menta não serve sob texto papel (1,5:1). */
 .escuro {
