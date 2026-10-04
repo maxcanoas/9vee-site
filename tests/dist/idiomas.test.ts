@@ -13,6 +13,8 @@ const enderecoDoIdioma = new Map(
 );
 
 describe('cursos de idiomas', () => {
+  // A ordem do brief, com uma mudança do parecer de UX (04/10/2026): os passos até a primeira aula vêm logo depois
+  // dos formatos, no bloco de quem estuda, e não depois do bloco da empresa.
   it('traz as seções na ordem do brief', () => {
     // As famílias de idioma também são <section>, mas sem id: aqui entram só as seções da página.
     const secoes = idiomas.querySelectorAll('main section[id]').map((secao) => secao.getAttribute('id'));
@@ -21,12 +23,20 @@ describe('cursos de idiomas', () => {
       'niveis',
       'provas',
       'formatos',
+      'como-comeca',
       'empresas',
       'realocacao',
       'plataforma',
-      'como-comeca',
       'perguntas',
       'contato',
+    ]);
+  });
+
+  it('põe os passos até a primeira aula no bloco dos formatos, que troca de lugar com o da empresa', () => {
+    const deQuemEstuda = idiomas.querySelectorAll('.modalidades > *')[0];
+    expect(deQuemEstuda.querySelectorAll('section[id]').map((secao) => secao.getAttribute('id'))).toEqual([
+      'formatos',
+      'como-comeca',
     ]);
   });
 

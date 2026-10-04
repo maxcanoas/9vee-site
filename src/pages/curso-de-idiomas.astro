@@ -47,10 +47,12 @@ const jsonLd = [
 
   {/* Os dois blocos de formato trocam de lugar com o público, como a spec pede.
       Esta é a vitrine de quem estuda por conta própria, então sem escolha valem os formatos primeiro.
-      A realocação e a ponte para o LMS são da empresa: andam junto com o bloco dela. */}
+      Os três passos até a primeira aula andam com os formatos: quem estuda lê como são as aulas e como começa em
+      seguida, sem o bloco da empresa no meio. A realocação e a ponte para o LMS são da empresa: andam junto com o bloco dela. */}
   <div class="modalidades" data-ordenavel="voce">
     <div class="modalidade" data-ordem-empresa="2" data-ordem-voce="1">
       <Cartoes id="formatos" {...pagina.formatos} servico="idiomas" />
+      <ComoComeca {...pagina.como} />
     </div>
     <div class="modalidade" data-ordem-empresa="1" data-ordem-voce="2">
       <Pontos id="empresas" {...pagina.equipe} servico="idiomas" />
@@ -59,7 +61,6 @@ const jsonLd = [
     </div>
   </div>
 
-  <ComoComeca {...pagina.como} />
   <Faq {...pagina.faq} />
   <CtaFinal {...pagina.ctaFinal} cta={site.cta} servico="idiomas" />
 </Base>
