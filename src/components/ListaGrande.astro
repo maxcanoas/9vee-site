@@ -7,12 +7,14 @@ interface Props {
   id: string;
   titulo: string;
   itens: { nome: string; texto: string }[];
+  /** No navy: quebra uma sequência longa de seções no fundo claro. */
+  escuro?: boolean;
 }
 
-const { id, titulo, itens } = Astro.props;
+const { id, titulo, itens, escuro = false } = Astro.props;
 ---
 
-<section class="lista-grande" id={id} aria-labelledby={`${id}-titulo`}>
+<section class:list={['lista-grande', { escuro }]} id={id} aria-labelledby={`${id}-titulo`}>
   <div class="conteiner lista-grande__grade">
     <h2 id={`${id}-titulo`} class="rotulo"><Texto de={titulo} /></h2>
 
@@ -67,6 +69,16 @@ const { id, titulo, itens } = Astro.props;
     max-inline-size: 40ch;
     font-size: var(--t-destaque);
     line-height: var(--altura-apoio);
+  }
+
+  .escuro .rotulo,
+  .escuro .lista-grande__texto {
+    color: var(--sobre-escuro);
+  }
+
+  .escuro .lista-grande__itens,
+  .escuro .lista-grande__item {
+    border-color: var(--linha-escura);
   }
 
   /* Lado a lado, o texto começa na linha de base da primeira linha do nome. */
