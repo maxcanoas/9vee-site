@@ -41,6 +41,21 @@ test.describe('escolha de público', () => {
     await conferirOrdem(page);
   });
 
+  test('"Para você" troca a pessoa da frente e a frase de apoio do hero', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('.hero__frente--padrao')).toBeVisible();
+    await expect(page.locator('.hero__frente--voce')).toBeHidden();
+
+    await page.locator('.duas-metades__metade--voce').click();
+    await expect(page.locator('.hero__frente--voce')).toBeVisible();
+    await expect(page.locator('.hero__frente--padrao')).toBeHidden();
+    await expect(page.locator('.hero__apoio')).toContainText('Do inglês ao japonês', { useInnerText: true });
+
+    await page.locator('.duas-metades__metade--empresa').click();
+    await expect(page.locator('.hero__frente--padrao')).toBeVisible();
+    await expect(page.locator('.hero__apoio')).toContainText('intérpretes para eventos', { useInnerText: true });
+  });
+
   test('"Para sua empresa" volta o CTA para o orçamento e mantém a ordem', async ({ page }) => {
     await page.goto('/');
     await page.locator('.duas-metades__metade--voce').click();

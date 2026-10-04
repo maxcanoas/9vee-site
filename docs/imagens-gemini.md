@@ -36,6 +36,18 @@ Todo prompt termina com a linha: `Avoid: stock photo poses, handshake clichés, 
 
   > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition with negative space on the right for text, photorealistic, no text, no logos, no watermarks, no flags. Scene: waist-up portrait of a Brazilian woman in her thirties working as a simultaneous interpreter, wearing a light headset with a small boom microphone, three-quarter view looking slightly to the left towards an unseen stage, calm and focused expression, navy blazer over a light top. Plain solid mint green (#16DF97) studio background, even lighting, crisp edges around hair and shoulders so the subject can be cut out cleanly. Deliver a PNG with a transparent background if the tool supports it; otherwise keep the plain green background and remove it afterwards. The file the site reads must be a PNG with transparency. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names.
 
+### IMG-HOME-HERO-FRENTE-VOCE
+
+- **Onde:** home, hero, camada da frente quando a pessoa escolhe "Para você": entra no lugar da intérprete, na frente do círculo da marca.
+- **Proporção e tamanho:** 4:5, 1200 × 1500. Recortar e salvar como PNG com fundo transparente, como a da intérprete.
+- **Arquivo:** `home-hero-frente-voce.png`
+- **Alt:** Aluna de fone de ouvido, sorrindo enquanto fala numa aula de idioma online.
+- **Por quê:** veio do parecer de UX de 04/10/2026. Quem escolhe "Para você" quer aprender um idioma, e a intérprete no auditório fala com a empresa que contrata um evento. A aluna mostra a aula. Sem notebook nem tela no quadro: o recorte é só a pessoa, como o da intérprete.
+- **Ao conferir:** mãos e rosto certos, o fone sem marca, o recorte limpo no cabelo e nos ombros. Se a cena vier diferente, o Alt muda junto, em `content/home.md`.
+- **Prompt:**
+
+  > Editorial photography, natural soft light, shallow depth of field, modern Brazilian corporate and educational settings, diverse Brazilian people, warm and confident mood, color grading aligned to deep navy blue (#212D4D) shadows, soft off-white (#F9F9F9) highlights and subtle mint green (#16DF97) and magenta (#FE19D6) accents, clean composition, photorealistic, no text, no logos, no watermarks, no flags. Scene: waist-up portrait of a Brazilian woman in her twenties taking an online language class, wearing over-ear headphones with a small boom microphone, three-quarter view looking slightly to the left towards an unseen laptop, smiling naturally while she speaks, navy knit sweater over a white t-shirt. Plain solid mint green (#16DF97) studio background, even lighting, crisp edges around hair and shoulders so the subject can be cut out cleanly. Deliver a PNG with a transparent background if the tool supports it; otherwise keep the plain green background and remove it afterwards. The file the site reads must be a PNG with transparency. Aspect ratio 4:5 portrait (1200 x 1500 pixels), not 3:4. Avoid: stock photo poses, handshake clichés, exaggerated smiles, distorted hands, visible brand names, logos on the headphones, laptops, phones or screens in the frame.
+
 ### IMG-HOME-COMO-1
 
 - **Onde:** home, "Como funciona", etapa 1 (você conta o que precisa).

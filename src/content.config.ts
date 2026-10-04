@@ -310,11 +310,13 @@ const home = defineCollection({
     seo,
     hero: z.object({
       h1: z.string(),
-      apoio: z.string(),
+      apoio: porPublico,
       legendaPublico: z.string(),
       opcoes: z.object({ empresa: z.string(), voce: z.string() }),
       imagemFundo: imagem,
       imagemFrente: imagem,
+      // Quem escolhe "Para você" vê quem estuda no lugar da intérprete.
+      imagemFrenteVoce: imagem,
     }),
     prova: z.object({
       titulo: z.string(),

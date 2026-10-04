@@ -5,7 +5,11 @@ seo:
 
 hero:
   h1: "Para a conversa dar certo."
-  apoio: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
+  # O apoio e a pessoa da frente mudam com o público: quem escolhe "Para você" vê as aulas, e não o evento.
+  apoio:
+    neutro: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
+    empresa: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
+    voce: "Do inglês ao japonês, com aula particular ou online e preparação para TOEFL, DELE, DELF e CELPE-Bras."
   legendaPublico: "É para sua empresa ou para você?"
   opcoes:
     empresa: "Para sua empresa"
@@ -18,6 +22,10 @@ hero:
     id: "IMG-HOME-HERO-FRENTE"
     arquivo: "home-hero-frente"
     alt: "Intérprete com fone e microfone, concentrada, olhando para o palco."
+  imagemFrenteVoce:
+    id: "IMG-HOME-HERO-FRENTE-VOCE"
+    arquivo: "home-hero-frente-voce"
+    alt: "Aluna de fone de ouvido, sorrindo enquanto fala numa aula de idioma online."
 
 prova:
   titulo: "A 9vee em números"

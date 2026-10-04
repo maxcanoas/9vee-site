@@ -1,6 +1,7 @@
 ---
 import Figura from './Figura.astro';
 import Texto from './Texto.astro';
+import TextoPorPublico from './TextoPorPublico.astro';
 import EscolhaPublico from './EscolhaPublico.astro';
 import BotaoContato from './BotaoContato.astro';
 import CirculoMarca from './CirculoMarca.astro';
@@ -9,15 +10,24 @@ import type { Imagem } from '../content.config';
 
 interface Props {
   h1: string;
-  apoio: string;
+  apoio: TextosPorPublico;
   legendaPublico: string;
   opcoes: { empresa: string; voce: string };
   imagemFundo: Imagem;
   imagemFrente: Imagem;
+  imagemFrenteVoce: Imagem;
   cta: TextosPorPublico;
 }
 
-const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = Astro.props;
+const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, imagemFrenteVoce, cta } = Astro.props;
+// As duas pessoas da frente, a intérprete e quem estuda, saem do mesmo recorte.
+const retrato = {
+  proporcao: '4/5' as const,
+  forma: 'arco' as const,
+  recorte: true,
+  sizes: '(min-width: 64rem) 26rem, 55vw',
+  larguras: [400, 640, 800, 1040],
+};
 ---
 
 <section class="hero" aria-labelledby="hero-titulo">
@@ -29,7 +39,7 @@ const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = As
   <div class="conteiner hero__grade">
     <div class="hero__texto">
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
-      <p class="hero__apoio"><Texto de={apoio} /></p>
+      <p class="hero__apoio"><TextoPorPublico textos={apoio} /></p>
       <EscolhaPublico legenda={legendaPublico} opcoes={opcoes} />
       <BotaoContato textos={cta} class="hero__cta" />
     </div>
@@ -38,16 +48,12 @@ const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = As
       <div class="hero__circulo" aria-hidden="true">
         <CirculoMarca sizes="(min-width: 64rem) 25rem, (min-width: 27rem) 14.5rem, 54vw" primeiraDobra />
       </div>
-      <div class="hero__frente">
-        <Figura
-          {...imagemFrente}
-          proporcao="4/5"
-          forma="arco"
-          recorte
-          primeiraDobra
-          sizes="(min-width: 64rem) 26rem, 55vw"
-          larguras={[400, 640, 800, 1040]}
-        />
+      <div class="hero__frente hero__frente--padrao">
+        <Figura {...imagemFrente} {...retrato} primeiraDobra />
+      </div>
+      {/* Sem primeiraDobra: escondida, a foto de quem estuda só carrega quando o público "você" a mostra. */}
+      <div class="hero__frente hero__frente--voce">
+        <Figura {...imagemFrenteVoce} {...retrato} />
       </div>
     </div>
   </div>
@@ -133,6 +139,17 @@ const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, cta } = As
     inset-block-start: 25%;
     inset-inline-start: 20%;
     inline-size: 60%;
+  }
+
+  /* Quem escolhe "Para você" vê a aluna no lugar da intérprete. Sem escolha e para a empresa, fica a intérprete.
+     A troca vale antes da primeira pintura, pelo data-publico que o <head> põe no <html>. */
+  .hero__frente--voce,
+  :global(:root[data-publico='voce']) .hero__frente--padrao {
+    display: none;
+  }
+
+  :global(:root[data-publico='voce']) .hero__frente--voce {
+    display: block;
   }
 
   /* Centralizado com margem automática: com inset de 50%, a etiqueta só teria meia largura e quebraria. */
