@@ -100,11 +100,12 @@ const { titulo, etapas } = Astro.props;
     list-style: none;
   }
 
+  /* No celular a etapa é só um pouco mais alta que o texto: com 36svh, sobravam uns 170 px vazios entre uma e outra. */
   .como__etapa {
     display: grid;
     gap: var(--e-2);
     align-content: center;
-    min-block-size: 36svh;
+    min-block-size: 26svh;
     padding-block: var(--e-5);
   }
 
