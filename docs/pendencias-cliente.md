@@ -15,7 +15,9 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 
 **Atualizado em 04/10/2026:** o parecer de UX do site (o olhar de quem procura curso de idiomas) trouxe três perguntas novas para a Daniella (37 a 39) e uma para o Arthur (9). A 37 de agora é outra pergunta: a antiga saiu antes de chegar ao Word, então o número estava livre. O que muda no Word está no fim deste arquivo, em "O que mudou em 04/10/2026". O preço, que o parecer também pede, já é a pergunta 7.
 
-A numeração de 1 a 30 da Daniella e de 1 a 8 do Arthur não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
+**O Word que foi para a 9vee tem outra numeração.** O Maxwell mandou o `C:\Users\maxca\Downloads\Perguntas-9vee.docx` (datado de 2 de outubro, um documento só para os dois), com 25 perguntas gerais e 5 de idiomas. As respostas vão chegar por aquela numeração: o mapa para a numeração interna, e o que ficou de fora, está em "O Word enviado em 02/10/2026", no fim deste arquivo.
+
+A numeração interna, de 1 a 30 da Daniella e de 1 a 8 do Arthur, não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
 
 ## A mensagem
 
@@ -223,9 +225,48 @@ Depois do ticket 06 (a página de LMS completa), por decisão do Maxwell no mesm
 
 A pergunta 37 não entra no Word: ela saiu antes de chegar a ele.
 
+## O Word enviado em 02/10/2026
+
+O arquivo é o `C:\Users\maxca\Downloads\Perguntas-9vee.docx`, que o Maxwell mostrou em 04/10/2026. É um documento só, para a Daniella e o Arthur juntos, sem dizer quem responde cada pergunta. As gerais vão de 1 a 26, sem a 5, e as de idiomas têm numeração própria, de 1 a 5, na parte "Os idiomas". Este arquivo continua com a numeração interna. Para aplicar uma resposta, ache a linha do número enviado:
+
+| Enviada | Interna | O que mudou no envio |
+|---|---|---|
+| 1 | D1 | ganhou "O foco principal continua sendo os cursos de idiomas, correto?" |
+| 2, 3 e 4 | D2, D3 e D4 | nada |
+| (não há 5) | | o Word pula do 4 para o 6 |
+| 6, 7 e 8 | D6, D7 e D8 | nada |
+| 9 | D9 | nada: NR-1 presencial, e em que cidades |
+| 10 e 11 | D10 e D11 | nada |
+| 12 | D15 | nada: o caso do Sicredi |
+| 13 | D16 | nada |
+| 14 | D17 | nada |
+| 15 | D20 | nada: o presencial da tradução em São Paulo, no Rio, em Curitiba e em Brasília |
+| 16 | D22 | sem a frase sobre a apresentação assinada pelo Arthur Martins |
+| 17 | D23 | reescrita: pede que o site deixe claro se tudo é online ou se há algum tipo de sede |
+| 18 | D24 | nada |
+| 19 | D25 | nada |
+| 20 | D26 | mudou de sentido: pergunta se a política atual fica ou se uma nova deve ser feita. Não fala do advogado nem do foro |
+| 21 | D27 | nada |
+| 22 a 26 | D31 a D35 | nada |
+| Idiomas 1 a 5 | A1 a A5 | nada; a 3 é a das cidades da aula presencial |
+
+**Não foram:** D5 (autorização dos depoimentos), D12, D13 e D14 (o plano de ação, o comprovante e a turma com a equipe inteira, no NR-1), D18 e D19 (a landing de mandarim e as versões dela em inglês e em chinês), D21 (o LMS), D28 (o blog), D29 (a Lei 14.831, que era só aviso), D30 (a realocação), D36 (a Linguae e a Lenguae), A6 a A8 (os acessos ao GA4, ao Search Console e ao GitHub, e a zona DNS) e as do parecer de UX (D37 a D39 e A9).
+
+**O que segura o site sem pergunta enviada.** Estas marcações estão em `content/` e travam o build de produção, mas nenhuma pergunta do Word responde a elas:
+
+- D5: as três autorizações dos depoimentos, em `content/home.md`;
+- D12, D13 e D14: o plano de ação, o comprovante e a turma inteira, em `content/treinamento-nr-1.md`;
+- D26: a data da versão da política, que esperava a revisão do advogado, em `content/politica-de-privacidade.md`. A pergunta 20 enviada pode até pedir uma política nova, mas não fala de revisão.
+
+Os acessos (A6 a A8) não têm marcação, mas o ticket 13 precisa do GA4 e o 20, do Search Console e da zona DNS.
+
+**As páginas de cidade** esperam as perguntas 9, 15 e Idiomas 3 do Word enviado, que foram.
+
+**Segunda rodada:** decisão do Maxwell em 04/10/2026. O que não foi espera a 9vee responder a primeira rodada, para não sobrecarregar a cliente. Quando ela sair, a numeração começa no 27, depois da última pergunta geral enviada.
+
 ## O que mudou em 04/10/2026, para atualizar o Word
 
-Do parecer de UX do site, feito no preview publicado, no papel de quem procura curso de idiomas. O site já tem identidade e movimento. O que falta para segurar esse visitante depende de conteúdo que só a 9vee tem.
+Do parecer de UX do site, feito no preview publicado, no papel de quem procura curso de idiomas. Estas perguntas não estão no Word enviado em 02/10: vão numa próxima rodada. O site já tem identidade e movimento. O que falta para segurar esse visitante depende de conteúdo que só a 9vee tem.
 
 | Pergunta | O que entra | Por quê |
 |---|---|---|
