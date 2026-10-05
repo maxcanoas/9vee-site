@@ -462,6 +462,13 @@ O Gemini entregou as duas fotos em 928 × 1152, sem arco nem moldura desenhados,
 - **Primeira rodada, por volta das 22h50:** a `traducao-como.jpg` veio com uma faixa lisa, quase branca, nos 22% da direita. O prompt ainda levava a frase do estilo base que pede espaço vazio à direita para texto, e o Gemini deixou esse espaço. No arco não vai texto por cima da foto, e a faixa tem quase a cor do fundo da página: a foto parecia cortada. A frase saiu dos dois prompts acima, e a linha Avoid ganhou as faixas lisas.
 - **Segunda rodada, às 23h17:** a `traducao-como.jpg` veio com a cena até as quatro bordas, sem a faixa, e a `lms-o-que-e.jpg` veio com a mesma cena da primeira, agora com a mulher digitando. As duas entraram como vieram, sem recorte.
 
+## A foto da aluna do topo da home (04/10/2026)
+
+O Maxwell gerou a `home-hero-frente-voce.png` em 04/10, às 23h08, com o prompt da IMG-HOME-HERO-FRENTE-VOCE. O arquivo tem 1122 × 1402, as mesmas medidas do recorte da intérprete, com o fundo transparente, e entrou como veio.
+
+- **A cena:** a aluna de fone com microfone, suéter navy sobre camiseta branca, sorrindo enquanto fala e olhando para a esquerda, com uma das mãos num gesto de quem conversa. O gesto não estava no prompt e ficou: a mão saiu certa, com os cinco dedos. O Alt continua valendo.
+- **Conferido:** as mãos e o rosto, nenhuma marca no fone, nenhuma tela ou notebook, o recorte do cabelo sobre o navy sem halo claro e só 4 pixels esverdeados nos 5.440 da borda. No topo, ela fica no mesmo tamanho e na mesma altura da intérprete, no computador e no celular.
+
 ## A foto da interpretação de mandarim (02/10/2026)
 
 O Maxwell gerou a `interpretacao-mandarim-hero.jpg` em 02/10, às 9h00, com o prompt da IMG-INTERPRETACAO-MANDARIM-HERO. O arquivo tem 928 × 1152 e entrou como veio, sem recorte.
