@@ -9,6 +9,11 @@ interface Props {
 }
 
 const { marca, contato, redes, menu, rodape, cookies } = Astro.props.site;
+// Os grupos do menu, cada um com os links que só o rodapé tem no fim.
+const grupos = menu.grupos.map((grupo) => ({
+  ...grupo,
+  itens: [...grupo.itens, ...rodape.soNoRodape.filter((link) => link.grupo === grupo.id)],
+}));
 ---
 
 <footer class="rodape escuro">
@@ -23,7 +28,7 @@ const { marca, contato, redes, menu, rodape, cookies } = Astro.props.site;
 
     <nav class="rodape__nav" aria-label={rodape.rotuloNavegacao}>
       {
-        menu.grupos.map((grupo) => (
+        grupos.map((grupo) => (
           <div data-grupo={grupo.id}>
             <p class="rodape__rotulo" id={`rodape-${grupo.id}`}>
               <span class="grifo">{grupo.rotulo}</span>

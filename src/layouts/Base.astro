@@ -47,6 +47,9 @@ const dadosEstruturados = serializarJsonLd([
   ...(comTrilha ? [trilhaDeNavegacao(base, await trilhaDaPagina(Astro.url.pathname))] : []),
   ...jsonLd,
 ]);
+// A mesma meta tag que o Wix põe hoje em todas as páginas (docs/wix-inventario.md, conferida no ar em 06/10/2026):
+// com ela, a propriedade do Search Console continua verificada na troca. Só a produção vai para o Google.
+const VERIFICACAO_DO_SEARCH_CONSOLE = 'pn_hIzMzIKPctgmpkHXWDAaBlJQPbNxFKKO6s8ZyvCg';
 const regrasDeSpeculation = JSON.stringify({
   prerender: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }],
 });
@@ -63,6 +66,7 @@ const regrasDeSpeculation = JSON.stringify({
     <title>{tituloPuro}</title>
     <meta name="description" content={descricaoPura} />
     {!indexavel && <meta name="robots" content="noindex, nofollow" />}
+    {indexavel && <meta name="google-site-verification" content={VERIFICACAO_DO_SEARCH_CONSOLE} />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -75,8 +79,12 @@ const regrasDeSpeculation = JSON.stringify({
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f9f9f9" />
+    {/* O PNG leva o tamanho, para o Chrome preferir o SVG. O favicon.ico fica na raiz, sem link: quem o pede não
+        lê o HTML. */}
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <Font cssVariable="--fonte-titulo" preload={[{ subset: 'latin', weight: '600', style: 'normal' }]} />
     <Font cssVariable="--fonte-texto" />
     {/* Antes da primeira pintura: marca que há JS e aplica o público salvo, sem piscar.

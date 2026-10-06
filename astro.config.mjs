@@ -4,6 +4,10 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig, envField, fontProviders } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import { tirarImagensOrfas } from './scripts/imagens-orfas.ts';
+import { escreverSitemap } from './scripts/sitemap.ts';
+
+// Canonical, Open Graph e sitemap sempre no domínio definitivo, em todos os modos, nunca no do preview.
+const DOMINIO = 'https://www.9vee.com.br';
 
 // O modo vem do comando: `astro dev` é o local, e o scripts/build.ts marca o preview e a produção.
 const MODOS = /** @type {const} */ (['local', 'preview', 'producao']);
@@ -42,10 +46,23 @@ const semImagensOrfas = {
   },
 };
 
+/**
+ * O sitemap.xml, só na produção: o robots.txt do preview não aponta sitemap, e o preview não vai para o Google.
+ * @type {import('astro').AstroIntegration}
+ */
+const sitemapDaProducao = {
+  name: 'sitemap-da-producao',
+  hooks: {
+    'astro:build:done': ({ dir, logger }) => {
+      if (modo !== 'producao') return;
+      logger.info(`sitemap.xml com ${escreverSitemap(fileURLToPath(dir), DOMINIO)} páginas`);
+    },
+  },
+};
+
 export default defineConfig({
-  integrations: [cabecalhoNoindex, semImagensOrfas],
-  // Canonical, Open Graph e sitemap sempre no domínio definitivo, em todos os modos, nunca no do preview.
-  site: 'https://www.9vee.com.br',
+  integrations: [cabecalhoNoindex, semImagensOrfas, sitemapDaProducao],
+  site: DOMINIO,
   // A produção sai numa pasta própria: o dist/ é o que o wrangler publica, e ele não pode receber um build indexável.
   outDir: modo === 'producao' ? './dist-producao' : './dist',
   trailingSlash: 'always',

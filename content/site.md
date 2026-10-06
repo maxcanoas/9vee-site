@@ -317,6 +317,12 @@ rodape:
   tituloRedes: "A 9vee nas redes"
   rotuloRede: "9vee no {rede}"
   rotuloNavegacao: "Rodapé"
+  # Links que só o rodapé tem, no fim do grupo do menu indicado. A interpretação de mandarim fica fora do menu, e a
+  # trilha dela continua com o nome que a própria página dá ("Mandarim"), e não com este rótulo.
+  soNoRodape:
+    - grupo: "empresas"
+      rotulo: "Interpretação de mandarim"
+      href: "/traducao-simultanea/mandarim/"
   # A política também dá o nome do último passo da trilha dela, porque não está no menu.
   privacidade:
     rotulo: "Política de privacidade"

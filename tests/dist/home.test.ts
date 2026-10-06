@@ -34,14 +34,15 @@ describe('ordem do conteúdo', () => {
     expect(home.querySelector('#nr-1')).toBeNull();
   });
 
-  // O grupo Empresas aparece três vezes: no painel do computador, no menu do celular e no rodapé.
+  // O grupo Empresas aparece três vezes: no painel do computador, no menu do celular e no rodapé, que no fim tem
+  // também a interpretação de mandarim, fora do menu.
   it.each([
-    ['no painel do computador', '#painel-empresas .painel__lista a'],
-    ['no menu do celular', '#menu-movel [aria-labelledby="movel-empresas"] a'],
-    ['no rodapé', 'footer [aria-labelledby="rodape-empresas"] a'],
-  ])('lista o grupo Empresas %s na mesma ordem', (_onde, seletor) => {
+    ['no painel do computador', '#painel-empresas .painel__lista a', []],
+    ['no menu do celular', '#menu-movel [aria-labelledby="movel-empresas"] a', []],
+    ['no rodapé', 'footer [aria-labelledby="rodape-empresas"] a', ['/traducao-simultanea/mandarim/']],
+  ])('lista o grupo Empresas %s na mesma ordem', (_onde, seletor, soNoRodape) => {
     const hrefs = home.querySelectorAll(seletor).map((a) => a.getAttribute('href'));
-    expect(hrefs).toEqual(['/curso-de-idiomas/#empresas', '/traducao-simultanea/', '/treinamento-nr-1/', '/lms/']);
+    expect(hrefs).toEqual(['/curso-de-idiomas/#empresas', '/traducao-simultanea/', '/treinamento-nr-1/', '/lms/', ...soNoRodape]);
   });
 
   it('lista os serviços do pedido na mesma ordem', () => {

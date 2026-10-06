@@ -29,20 +29,54 @@ const favicon =
   '</svg>\n';
 await writeFile(emPublic('favicon.svg'), favicon);
 
-// Ícone do iPhone: quadrado navy (o iOS arredonda os cantos e pinta transparência de preto).
+// O mesmo favicon em PNG, no lado pedido, para o navegador que não lê SVG na aba e para o favicon.ico.
+const faviconEmPng = (lado: number) =>
+  sharp(Buffer.from(favicon.replace('<svg ', `<svg width="${lado}" height="${lado}" `)))
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+await writeFile(emPublic('favicon-32.png'), await faviconEmPng(32));
+
+// O favicon.ico, que o navegador antigo e alguns leitores de link pedem na raiz sem olhar o HTML: um ICO com o PNG de
+// 16, 32 e 48 dentro, como o Windows aceita desde o Vista. O formato: um cabeçalho de 6 bytes, uma entrada de 16
+// bytes por imagem (lado, cores, planos, bits, tamanho e onde a imagem começa) e as imagens em seguida.
+const ladosDoIco = [16, 32, 48];
+const pngsDoIco = await Promise.all(ladosDoIco.map(faviconEmPng));
+const cabecalhoDoIco = Buffer.alloc(6 + 16 * ladosDoIco.length);
+cabecalhoDoIco.writeUInt16LE(0, 0);
+cabecalhoDoIco.writeUInt16LE(1, 2);
+cabecalhoDoIco.writeUInt16LE(ladosDoIco.length, 4);
+let inicioDaImagem = cabecalhoDoIco.length;
+ladosDoIco.forEach((ladoDoIco, i) => {
+  const entrada = 6 + 16 * i;
+  cabecalhoDoIco.writeUInt8(ladoDoIco, entrada);
+  cabecalhoDoIco.writeUInt8(ladoDoIco, entrada + 1);
+  cabecalhoDoIco.writeUInt16LE(1, entrada + 4);
+  cabecalhoDoIco.writeUInt16LE(32, entrada + 6);
+  cabecalhoDoIco.writeUInt32LE(pngsDoIco[i].length, entrada + 8);
+  cabecalhoDoIco.writeUInt32LE(inicioDaImagem, entrada + 12);
+  inicioDaImagem += pngsDoIco[i].length;
+});
+await writeFile(emPublic('favicon.ico'), Buffer.concat([cabecalhoDoIco, ...pngsDoIco]));
+
+// Ícone do iPhone (180) e do manifesto (192 e 512): quadrado navy com o "9" no meio. O iOS arredonda os cantos e
+// pinta transparência de preto, e o Android recorta o de 512 em círculo: o "9" em 60% da altura cabe no recorte.
 const nove = lerSvgDoKit(await doKit('Vectors/Stamp.svg'));
 const [, , largura9, altura9] = nove.viewBox.split(/\s+/).map(Number);
-const lado = 180;
-const escala = (lado * 0.6) / altura9;
-const deslocX = (lado - largura9 * escala) / 2;
-const deslocY = (lado - altura9 * escala) / 2;
-const icone =
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${lado} ${lado}">` +
-  `<rect width="${lado}" height="${lado}" fill="${NAVY}"/>` +
-  `<g transform="translate(${deslocX.toFixed(2)} ${deslocY.toFixed(2)}) scale(${escala.toFixed(5)})">` +
-  desenhar(nove.formas, PAPEL) +
-  '</g></svg>';
-await sharp(Buffer.from(icone)).png().toFile(fileURLToPath(emPublic('apple-touch-icon.png')));
+const iconeQuadrado = (lado: number, arquivo: string) => {
+  const escala = (lado * 0.6) / altura9;
+  const deslocX = (lado - largura9 * escala) / 2;
+  const deslocY = (lado - altura9 * escala) / 2;
+  const icone =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${lado} ${lado}">` +
+    `<rect width="${lado}" height="${lado}" fill="${NAVY}"/>` +
+    `<g transform="translate(${deslocX.toFixed(2)} ${deslocY.toFixed(2)}) scale(${escala.toFixed(5)})">` +
+    desenhar(nove.formas, PAPEL) +
+    '</g></svg>';
+  return sharp(Buffer.from(icone)).png().toFile(fileURLToPath(emPublic(arquivo)));
+};
+await iconeQuadrado(180, 'apple-touch-icon.png');
+await iconeQuadrado(192, 'icone-192.png');
+await iconeQuadrado(512, 'icone-512.png');
 
 // Prévia do link (og:image): o banner do kit recortado em 1200 × 630, com o logo no centro.
 await sharp(fileURLToPath(new URL('assets-cliente/PP & Banner/Banner.png', raiz)))
@@ -91,5 +125,8 @@ await sharp(fileURLToPath(new URL('assets-cliente/PP & Banner/Profile Pic_1.png'
   .png({ compressionLevel: 9 })
   .toFile(fileURLToPath(new URL('src/assets/marca/circulo-marca-logo.png', raiz)));
 
-console.log('ativos gerados em public/: favicon.svg, apple-touch-icon.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg');
+console.log(
+  'ativos gerados em public/: favicon.svg, favicon-32.png, favicon.ico, apple-touch-icon.png, icone-192.png, ' +
+    'icone-512.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg',
+);
 console.log('e em src/assets/marca/: circulo-marca.png, circulo-marca-logo.png');

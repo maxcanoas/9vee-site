@@ -462,6 +462,12 @@ const roteiros: Record<string, Captura[]> = {
       await p.locator('footer [data-preferencias-cookies]').click();
     } },
   ],
+  // O rodapé com a interpretação de mandarim no fim do grupo Empresas (ticket 15).
+  'ticket-15': [
+    { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: 'footer' },
+    { nome: 'rodape-768', rota: '/', largura: 768, altura: 1024, recorte: 'footer' },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, recorte: 'footer' },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';

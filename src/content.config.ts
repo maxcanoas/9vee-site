@@ -257,6 +257,7 @@ const site = defineCollection({
       tituloRedes: z.string(),
       rotuloRede: z.string().includes('{rede}'),
       rotuloNavegacao: z.string(),
+      soNoRodape: z.array(link.extend({ grupo: z.string() })),
       privacidade: link,
       direitos: z.string(),
     }),
@@ -297,7 +298,11 @@ const site = defineCollection({
               PUBLICOS.every((publico) => marcadasValidas(marcadas, formularios[formularioDe(servico, publico)]))),
         ),
       { error: 'página com resposta marcada que o pedido do serviço dela não tem' },
-    ),
+    )
+    // O link só do rodapé entra num grupo do menu: num grupo que não existe, ele sumiria sem aviso.
+    .refine(({ menu, rodape }) => rodape.soNoRodape.every(({ grupo }) => menu.grupos.some(({ id }) => id === grupo)), {
+      error: 'link do rodapé num grupo que o menu não tem',
+    }),
 });
 
 const imagem = z.object({

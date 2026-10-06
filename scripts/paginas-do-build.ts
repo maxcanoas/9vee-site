@@ -20,12 +20,16 @@ export function listarArquivos(pasta: string, extensao: string): string[] {
   });
 }
 
+/** O caminho do site que um arquivo HTML do build responde: /lms/index.html é /lms/, e 404.html é /404. */
+export function rotaDoArquivo(pasta: string, arquivo: string): string {
+  const relativo = relative(pasta, arquivo).split(sep).join('/');
+  return `/${relativo.replace(/index\.html$/, '').replace(/\.html$/, '')}`;
+}
+
 export function carregarPaginas(pasta: string): Pagina[] {
   return listarArquivos(pasta, '.html').map((arquivo) => {
     const html = readFileSync(arquivo, 'utf8');
-    const relativo = relative(pasta, arquivo).split(sep).join('/');
-    const rota = `/${relativo.replace(/index\.html$/, '').replace(/\.html$/, '')}`;
-    return { arquivo, rota, html, raiz: parse(html) };
+    return { arquivo, rota: rotaDoArquivo(pasta, arquivo), html, raiz: parse(html) };
   });
 }
 
