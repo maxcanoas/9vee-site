@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { describe, expect, it } from 'vitest';
@@ -13,7 +13,7 @@ import {
 } from './apoio';
 
 // O SEO final (ticket 15): o sitemap da produção, o favicon completo, a verificação do Search Console e o link da
-// interpretação de mandarim só no rodapé.
+// interpretação de mandarim só no rodapé. E a imagem de compartilhamento de cada página (ticket 18).
 const producao = carregarPaginas(DIST_PRODUCAO);
 const preview = carregarPaginas();
 const VERIFICACAO = 'pn_hIzMzIKPctgmpkHXWDAaBlJQPbNxFKKO6s8ZyvCg';
@@ -94,6 +94,31 @@ describe('verificação do Search Console', () => {
     for (const { rota, raiz } of preview) {
       expect(raiz.querySelector('meta[name="google-site-verification"]'), rota).toBeNull();
     }
+  });
+});
+
+// A prévia de cada página (ticket 18): a imagem com o título dela, gerada no build, nos dois builds.
+describe.each([
+  ['preview', DIST, preview],
+  ['produção', DIST_PRODUCAO, producao],
+] as const)('imagem de compartilhamento no build de %s', (_build, pasta, paginas) => {
+  const internas = paginas.filter(({ rota }) => rota !== '/404');
+
+  it.each(internas.map((p) => [p.rota, p] as const))('%s aponta a própria imagem, com o título sem a marca no texto', async (rota, { raiz }) => {
+    const nome = rota.split('/').filter(Boolean).join('-') || 'inicio';
+    expect(raiz.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe(`${DOMINIO}/compartilhar/${nome}.jpg`);
+    const titulo = raiz.querySelector('title')!.text;
+    const texto = raiz.querySelector('meta[property="og:image:alt"]')?.getAttribute('content');
+    expect(texto).toBe(titulo.split(' | ').filter((parte) => parte !== '9vee').join(' | '));
+    const { format, width, height } = await sharp(join(pasta, 'compartilhar', `${nome}.jpg`)).metadata();
+    expect([format, width, height]).toEqual(['jpeg', 1200, 630]);
+  });
+
+  it('deixa a página de erro com a prévia geral, e não gera imagem que nenhuma página aponta', () => {
+    const erro = paginas.find(({ rota }) => rota === '/404')!.raiz;
+    expect(erro.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe(`${DOMINIO}/og.jpg`);
+    expect(erro.querySelector('meta[property="og:image:alt"]')?.getAttribute('content')).toBe('9vee');
+    expect(readdirSync(join(pasta, 'compartilhar')).length).toBe(internas.length);
   });
 });
 

@@ -125,8 +125,38 @@ await sharp(fileURLToPath(new URL('assets-cliente/PP & Banner/Profile Pic_1.png'
   .png({ compressionLevel: 9 })
   .toFile(fileURLToPath(new URL('src/assets/marca/circulo-marca-logo.png', raiz)));
 
+// O fundo da imagem de prévia de cada página (ticket 18), em 1200 × 630: o fundo noite do rodapé, o círculo da marca
+// saindo pela direita, como nos topos do site, e o logo claro no alto. O build escreve o título de cada página por
+// cima (scripts/compartilhamento.ts), na área livre da esquerda.
+const LARGURA_DA_PREVIA = 1200;
+const ALTURA_DA_PREVIA = 630;
+const diametroNaPrevia = 820;
+const esquerdaDoCirculo = LARGURA_DA_PREVIA - Math.round(diametroNaPrevia * 0.62);
+const acimaDaPrevia = Math.round((diametroNaPrevia - ALTURA_DA_PREVIA) / 2) - 60;
+const circuloNaPrevia = await sharp(
+  await sharp(fileURLToPath(new URL('src/assets/marca/circulo-marca.png', raiz))).resize(diametroNaPrevia).toBuffer(),
+)
+  .extract({ left: 0, top: acimaDaPrevia, width: LARGURA_DA_PREVIA - esquerdaDoCirculo, height: ALTURA_DA_PREVIA })
+  .toBuffer();
+const alturaDoLogoNaPrevia = 48;
+const logoNaPrevia = await sharp(
+  Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${logo.viewBox}" height="${alturaDoLogoNaPrevia}" ` +
+      `width="${Math.round((larguraLogo * alturaDoLogoNaPrevia) / alturaLogo)}">${desenhar(logo.formas, PAPEL)}</svg>`,
+  ),
+)
+  .png()
+  .toBuffer();
+await sharp({ create: { width: LARGURA_DA_PREVIA, height: ALTURA_DA_PREVIA, channels: 3, background: '#161e33' } })
+  .composite([
+    { input: circuloNaPrevia, left: esquerdaDoCirculo, top: 0 },
+    { input: logoNaPrevia, left: 88, top: 72 },
+  ])
+  .png({ compressionLevel: 9 })
+  .toFile(fileURLToPath(new URL('src/assets/marca/compartilhar-fundo.png', raiz)));
+
 console.log(
   'ativos gerados em public/: favicon.svg, favicon-32.png, favicon.ico, apple-touch-icon.png, icone-192.png, ' +
     'icone-512.png, og.jpg, logo-9vee.png, texturas/meias-luas.svg',
 );
-console.log('e em src/assets/marca/: circulo-marca.png, circulo-marca-logo.png');
+console.log('e em src/assets/marca/: circulo-marca.png, circulo-marca-logo.png, compartilhar-fundo.png');

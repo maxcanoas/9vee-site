@@ -5,6 +5,7 @@ import { defineConfig, envField, fontProviders } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import { tirarImagensOrfas } from './scripts/imagens-orfas.ts';
 import { escreverSitemap } from './scripts/sitemap.ts';
+import { gerarPrevias } from './scripts/compartilhamento.ts';
 
 // Canonical, Open Graph e sitemap sempre no domínio definitivo, em todos os modos, nunca no do preview.
 const DOMINIO = 'https://www.9vee.com.br';
@@ -60,8 +61,21 @@ const sitemapDaProducao = {
   },
 };
 
+/**
+ * A imagem de prévia de cada página, com o título dela, em todos os modos (ticket 18).
+ * @type {import('astro').AstroIntegration}
+ */
+const previasDasPaginas = {
+  name: 'previas-das-paginas',
+  hooks: {
+    'astro:build:done': async ({ dir, logger }) => {
+      logger.info(`${await gerarPrevias(fileURLToPath(dir))} imagens de prévia`);
+    },
+  },
+};
+
 export default defineConfig({
-  integrations: [cabecalhoNoindex, semImagensOrfas, sitemapDaProducao],
+  integrations: [cabecalhoNoindex, semImagensOrfas, sitemapDaProducao, previasDasPaginas],
   site: DOMINIO,
   // A produção sai numa pasta própria: o dist/ é o que o wrangler publica, e ele não pode receber um build indexável.
   outDir: modo === 'producao' ? './dist-producao' : './dist',

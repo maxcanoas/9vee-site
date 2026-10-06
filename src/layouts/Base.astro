@@ -13,6 +13,7 @@ import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { dadosDoSite, type PaginaId } from '../lib/site';
 import { organizacao, serializarJsonLd, trilhaDeNavegacao } from '../lib/jsonld';
 import { textoPuro } from '../lib/texto';
+import { imagemDaPagina, textoDaImagem } from '../lib/compartilhamento';
 import { trilhaDaPagina } from '../lib/paginas';
 import { paginaDoContatoDoIdioma } from '../lib/contato';
 import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
@@ -36,8 +37,10 @@ const indexavel = MODO === 'producao';
 const ga4 = MODO === 'preview' ? '' : GA4_ID;
 // A página de erro responde por qualquer endereço que não existe: ela não tem endereço próprio para apontar.
 const canonical = pagina === 'erro404' ? null : new URL(Astro.url.pathname, base).href;
-const imagemPrevia = new URL('/og.jpg', base).href;
 const tituloPuro = textoPuro(titulo);
+// Cada página tem a própria prévia, com o título dela. A de erro fica com a geral, o logo sobre a arte da marca.
+const imagemPrevia = new URL(pagina === 'erro404' ? '/og.jpg' : imagemDaPagina(Astro.url.pathname), base).href;
+const textoDaPrevia = pagina === 'erro404' ? site.marca.nome : textoDaImagem(tituloPuro, site.marca.nome);
 const descricaoPura = textoPuro(descricao);
 // A home é o começo da trilha, e a página de erro não tem lugar no site. As outras têm a trilha na tela, no
 // hero, e aqui a mesma trilha para o Google, as duas tiradas do endereço.
@@ -77,6 +80,7 @@ const regrasDeSpeculation = JSON.stringify({
     <meta property="og:image" content={imagemPrevia} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={textoDaPrevia} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f9f9f9" />
     {/* O PNG leva o tamanho, para o Chrome preferir o SVG. O favicon.ico fica na raiz, sem link: quem o pede não
