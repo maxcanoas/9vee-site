@@ -14,4 +14,5 @@
 - [ ] O JSON-LD do serviço que couber. O `Base` já monta o `BreadcrumbList` pelo endereço; falta dar ao `trilhaDoCaminho` o nome de cada cidade, e pôr a trilha na tela se a página não usar o `HeroPagina`.
 - [ ] Antes de criar as páginas, juntar o que uma página fora do menu pede hoje em cinco lugares: a lista de `paginas` do esquema de `content/site.md`, o `trilhaDaPagina`, o `scripts/pendencias.ts`, o teste de larguras e o desvio do teste da trilha. A revisão de padrões do ticket 21 apontou, e a interpretação de mandarim é o primeiro caso.
 - [ ] Links: cidade para serviço e para os idiomas com aula presencial ali; serviço e idioma para a cidade.
+- [ ] O mapa de redirecionamentos recebe as cidades publicadas: a lista `cidades` de `scripts/mapa-de-redirecionamentos.ts`, com o caminho, as palavras do endereço dos posts (bairros de São Paulo incluídos, se a página for de São Paulo) e os serviços de cada uma. Depois, gerar o mapa de novo. A regra já existe e tem teste (ticket 14).
 - [ ] Prompt da foto de cada cidade publicada; `humanizar`; `docs/revisao-daniella/lote-4.md`.
