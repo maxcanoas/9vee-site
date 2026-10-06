@@ -109,8 +109,22 @@ function pedidoSemDestino(paginas: Pagina[], chaveDeTeste: string | undefined): 
 }
 
 /**
+ * A medição que não mediria o que conta: o build sem o ID do GA4 no aviso de cookies, e o build com o ID da
+ * propriedade de teste do local, que misturaria as visitas de verdade com as de teste. Build sem aviso não tem o que
+ * conferir.
+ */
+function medicaoSemDestino(paginas: Pagina[], ga4DeTeste: string | undefined): string[] {
+  const aviso = paginas.map(({ raiz }) => raiz.querySelector('[data-aviso-cookies]')).find(Boolean);
+  if (!aviso) return [];
+  const ga4 = aviso.getAttribute('data-ga4') ?? '';
+  if (!ga4) return ['sem o GA4_ID do .env.producao: o site não mediria nada'];
+  if (ga4 === ga4DeTeste) return ['com o ID da propriedade de teste do .env.development: as visitas iriam para o teste'];
+  return [];
+}
+
+/**
  * Cada regra, com o nome que o check:producao mostra e o que ela procura em cada página. Regra nova entra só aqui.
- * A do formulário não tem o que procurar em cada página: ela olha o build uma vez.
+ * A do formulário e a da medição não têm o que procurar em cada página: elas olham o build uma vez.
  */
 export const REGRAS = {
   pendencia: { nome: 'Pendência sem resposta', naPagina: pendencias },
@@ -121,6 +135,7 @@ export const REGRAS = {
   travessao: { nome: 'Travessão ou meia-risca', naPagina: travessoes },
   link: { nome: 'Link interno quebrado', naPagina: linksQuebrados },
   formulario: { nome: 'Pedido sem destino (a chave do serviço de formulário)' },
+  medicao: { nome: 'Medição sem destino (o ID do GA4)' },
 } satisfies Record<string, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }>;
 
 export type Regra = keyof typeof REGRAS;
@@ -152,7 +167,10 @@ export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
 }
 
 /** A chave de teste é a do .env.preview: com ela, a trava reconhece a chave que não pode ir para a produção. */
-export function verificarBuild(pasta: string, { chaveDeTeste }: { chaveDeTeste?: string } = {}): Achado[] {
+export function verificarBuild(
+  pasta: string,
+  { chaveDeTeste, ga4DeTeste }: { chaveDeTeste?: string; ga4DeTeste?: string } = {},
+): Achado[] {
   const regras = Object.entries(REGRAS) as [Regra, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }][];
   const paginas = carregarPaginas(pasta);
   const achados: Achado[] = paginas.flatMap((pagina) =>
@@ -162,6 +180,9 @@ export function verificarBuild(pasta: string, { chaveDeTeste }: { chaveDeTeste?:
   );
   for (const detalhe of pedidoSemDestino(paginas, chaveDeTeste)) {
     achados.push({ regra: 'formulario', onde: 'pedido de contato', detalhe });
+  }
+  for (const detalhe of medicaoSemDestino(paginas, ga4DeTeste)) {
+    achados.push({ regra: 'medicao', onde: 'aviso de cookies', detalhe });
   }
   // O cabeçalho de noindex que o build de preview deixa para a Cloudflare.
   const cabecalhos = join(pasta, '_headers');

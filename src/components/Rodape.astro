@@ -8,7 +8,7 @@ interface Props {
   site: DadosDoSite;
 }
 
-const { marca, contato, redes, menu, rodape } = Astro.props.site;
+const { marca, contato, redes, menu, rodape, cookies } = Astro.props.site;
 ---
 
 <footer class="rodape escuro">
@@ -82,7 +82,13 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
   <div class="conteiner rodape__base">
     <p class="rodape__frase"><Texto de={rodape.frase} /></p>
     <p>{rodape.direitos}</p>
-    <a href={rodape.privacidade.href}>{rodape.privacidade.rotulo}</a>
+    <div class="rodape__legal">
+      <a href={rodape.privacidade.href}>{rodape.privacidade.rotulo}</a>
+      {/* Reabre o aviso de cookies, com as preferências abertas. Sem JavaScript, some: não há o que medir. */}
+      <button type="button" class="rodape__preferencias" data-preferencias-cookies aria-controls="aviso-cookies">
+        {cookies.rodape}
+      </button>
+    </div>
   </div>
 </footer>
 
@@ -213,6 +219,25 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
     border-block-start: 1px solid var(--linha-escura);
     color: var(--sobre-escuro);
     font-size: var(--t-pequeno);
+  }
+
+  .rodape__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--e-5);
+  }
+
+  /* O botão de preferências tem a cara do link da política, ao lado dele. */
+  .rodape__preferencias {
+    min-block-size: var(--alvo-minimo);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
   }
 
   /* A frase que fecha o site ocupa a linha inteira, acima dos direitos e da política. */

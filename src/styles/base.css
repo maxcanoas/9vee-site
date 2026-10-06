@@ -192,8 +192,10 @@ a:hover {
   font-weight: 700;
 }
 
-/* Sem JavaScript o drawer não abre: os botões que o chamam somem, e o WhatsApp segue no atalho. */
-:root:not(.js) [data-abre-contato] {
+/* Sem JavaScript o drawer não abre: os botões que o chamam somem, e o WhatsApp segue no atalho. O botão das
+   preferências de cookies também some: sem JavaScript, o GA4 não carrega, e não há o que escolher. */
+:root:not(.js) [data-abre-contato],
+:root:not(.js) [data-preferencias-cookies] {
   display: none;
 }
 

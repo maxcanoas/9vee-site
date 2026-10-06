@@ -12,8 +12,10 @@ import {
   SERVICO_DE_FORMULARIO,
   opcao,
   responderComoServico,
+  salvarCookies,
   salvarPublico,
   semEnvioDeVerdade,
+  semGoogleDeVerdade,
   semWhatsAppDeVerdade,
 } from '../tests/e2e/pedido.ts';
 
@@ -28,6 +30,8 @@ interface Captura {
   movimento?: boolean;
   /** Público já salvo no localStorage antes de a página carregar. */
   publico?: 'empresa' | 'voce';
+  /** Sem a resposta ao aviso de cookies: ele aparece no pé da tela. Sem isto, a captura é de quem já respondeu. */
+  avisoDeCookies?: boolean;
   antes?: (pagina: Page) => Promise<void>;
 }
 
@@ -440,6 +444,24 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'cursos-empresa-inteira-1280', rota: '/curso-de-idiomas/', largura: 1280, altura: 800, paginaInteira: true, publico: 'empresa' },
     { nome: 'ingles-para-quem-1280', rota: '/curso-de-idiomas/ingles/', largura: 1280, altura: 800, antes: rolarAte('#para-quem', -80) },
   ],
+  // O aviso de cookies do ticket 13: na primeira visita, com as preferências abertas e reaberto pelo rodapé.
+  'ticket-13': [
+    { nome: 'aviso-360', rota: '/', largura: 360, altura: 780, avisoDeCookies: true },
+    { nome: 'aviso-390', rota: '/curso-de-idiomas/', largura: 390, altura: 844, avisoDeCookies: true },
+    { nome: 'aviso-768', rota: '/', largura: 768, altura: 1024, avisoDeCookies: true },
+    { nome: 'aviso-1280', rota: '/', largura: 1280, altura: 800, avisoDeCookies: true },
+    { nome: 'aviso-1366x657', rota: '/treinamento-nr-1/', largura: 1366, altura: 657, avisoDeCookies: true },
+    { nome: 'preferencias-360', rota: '/', largura: 360, altura: 780, avisoDeCookies: true, antes: async (p) => {
+      await p.locator('[data-cookies="preferencias"]').click();
+    } },
+    { nome: 'preferencias-1280', rota: '/', largura: 1280, altura: 800, avisoDeCookies: true, antes: async (p) => {
+      await p.locator('[data-cookies="preferencias"]').click();
+    } },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, recorte: 'footer' },
+    { nome: 'reaberto-390', rota: '/', largura: 390, altura: 844, antes: async (p) => {
+      await p.locator('footer [data-preferencias-cookies]').click();
+    } },
+  ],
 };
 
 const etapa = process.argv[2] ?? 'etapa-1';
@@ -466,6 +488,8 @@ try {
     });
     await semWhatsAppDeVerdade(contexto);
     await semEnvioDeVerdade(contexto);
+    await semGoogleDeVerdade(contexto);
+    if (!c.avisoDeCookies) await salvarCookies(contexto, false);
     if (c.publico) await salvarPublico(contexto, c.publico);
     const pagina = await contexto.newPage();
     await pagina.goto(base + c.rota, { waitUntil: 'networkidle' });

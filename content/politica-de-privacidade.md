@@ -7,7 +7,7 @@
 # até lá, a trava de produção barra as marcas.
 # O texto do Wix está como lá, com três acertos que não mudam o sentido: os títulos em caixa normal, o "sele ção" e a
 # meia-risca antes de "LGPD", que o site não usa. A seção "pedido" é a que a caixa de consentimento do pedido abre. O
-# aviso de cookies e o Google Analytics chegam no ticket 13, que revê a seção "estatistica".
+# aviso de cookies e o Google Analytics chegaram no ticket 13, e a seção "estatistica" descreve os dois como ficaram.
 seo:
   titulo: "Política de privacidade | 9vee"
   descricao: "Como a 9vee coleta, usa, guarda e compartilha dados pessoais, no site e nos cursos, por quanto tempo os guarda e como pedir para ver ou apagar os seus."
@@ -87,14 +87,15 @@ secoes:
     titulo: "A estatística de visitas e os cookies"
     novo: true
     blocos:
-      - "O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies. Se você recusar ou não responder, ele nem carrega."
+      - 'O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies, que aparece na primeira visita, com "Aceitar", "Recusar" e "Preferências". Se você recusar ou não responder, ele nem carrega.'
       - "Com o aceite, o Google recebe dados da sua visita, como as páginas que você vê e de que busca ou link você veio. Recebe também o tipo de aparelho e de navegador e a cidade aproximada."
-      # A última frase depende do ticket 13: o link do WhatsApp leva o nome e a empresa no texto da mensagem, e o
-      # clique de saída da medição otimizada do GA4 mandaria esse endereço inteiro para o Google.
+      # A última frase depende de uma configuração da propriedade do GA4 (docs/medicao.md): o link do WhatsApp leva o
+      # nome e a empresa no texto da mensagem, e o clique de saída da medição otimizada mandaria esse endereço inteiro
+      # para o Google. Ele fica desligado no fluxo de dados, e o DebugView confere.
       - "Ele também conta os pedidos abertos e enviados e os usos do botão do WhatsApp, com o serviço e a página. No pedido enviado e no WhatsApp vai também se é para empresa ou para você, quando você já escolheu. O seu nome e o seu contato não vão para o Google."
       - "O Google grava dois cookies no seu navegador, o _ga e o _ga_ seguido de um código, que duram até 2 anos. Os dados ligados a eles ficam no Google por até 14 meses. Depois disso, sobram só os totais dos relatórios."
       - "A 9vee usa esses números para saber que páginas e que serviços trazem pedidos. O Google pode tratar os dados fora do Brasil. O que ele faz com eles está na página [como o Google usa informações de sites](https://policies.google.com/technologies/partner-sites?hl=pt-BR)."
-      - 'Para mudar a sua escolha, use o link "Preferências de cookies", no rodapé.'
+      - 'Para mudar a sua escolha, use "Preferências de cookies", no rodapé. Se você recusar depois de ter aceitado, o site apaga os cookies do Google do seu navegador e para de medir.'
 
   - id: "navegador"
     titulo: "O que fica no seu navegador"

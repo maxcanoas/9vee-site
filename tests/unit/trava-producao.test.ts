@@ -149,6 +149,33 @@ describe('verificarBuild', () => {
     });
   });
 
+  // O ID do GA4 vai no aviso de cookies, e é o mesmo em todas as páginas. A produção mede com a propriedade da 9vee.
+  describe('ID do GA4', () => {
+    const comAviso = (ga4?: string) =>
+      pagina(`<section data-aviso-cookies data-versao="1"${ga4 === undefined ? '' : ` data-ga4="${ga4}"`} hidden></section><h1>Cursos</h1>`);
+    const daMedicao = (achados: Achado[]) => achados.filter((achado) => achado.regra === 'medicao');
+
+    it('barra o build sem o ID: o site não mediria nada', () => {
+      const pasta = montarBuild({ 'index.html': comAviso(), 'sobre/index.html': comAviso() });
+      const achados = daMedicao(verificarBuild(pasta));
+      expect(achados).toHaveLength(1);
+      expect(achados[0]).toMatchObject({ onde: 'aviso de cookies' });
+      expect(achados[0].detalhe).toMatch(/sem o GA4_ID/);
+    });
+
+    it('barra o build com o ID da propriedade de teste do local', () => {
+      const pasta = montarBuild({ 'index.html': comAviso('G-TESTE12345') });
+      const achados = daMedicao(verificarBuild(pasta, { ga4DeTeste: 'G-TESTE12345' }));
+      expect(achados).toHaveLength(1);
+      expect(achados[0].detalhe).toMatch(/propriedade de teste/);
+    });
+
+    it('deixa passar o build com o ID da 9vee, e o build sem aviso nenhum', () => {
+      expect(daMedicao(verificarBuild(montarBuild({ 'index.html': comAviso('G-Y04K0CN1F9') }), { ga4DeTeste: 'G-TESTE12345' }))).toEqual([]);
+      expect(daMedicao(verificarBuild(montarBuild({ 'index.html': LIMPA })))).toEqual([]);
+    });
+  });
+
   it('confere arquivo sem exigir barra, e ignora link externo, e-mail e telefone', () => {
     const pasta = montarBuild({
       'index.html': pagina(

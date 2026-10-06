@@ -63,6 +63,12 @@ const link = (publico: keyof typeof assunto) =>
     transform: translateY(calc(100% + var(--e-4) + env(safe-area-inset-bottom)));
   }
 
+  /* No celular o aviso de cookies ocupa a largura do pé da tela: enquanto ele está aberto, o atalho sobe acima dele.
+     A altura vem do src/scripts/cookies.ts. No computador o aviso fica à esquerda, longe do atalho. */
+  :global(html[data-aviso-aberto]) .whatsapp-flutuante {
+    inset-block-end: calc(max(var(--e-3), env(safe-area-inset-bottom)) + var(--altura-aviso, 0px) + var(--e-3));
+  }
+
   /* Com o drawer ou o menu do celular abertos, o atalho some: o véu não pode deixá-lo por cima. */
   :global(html:has(.drawer[open])) .whatsapp-flutuante {
     visibility: hidden;
@@ -75,6 +81,10 @@ const link = (publico: keyof typeof assunto) =>
   @media (min-width: 48rem) {
     .whatsapp-flutuante[data-recolhido]:not(:focus-visible) {
       transform: none;
+    }
+
+    :global(html[data-aviso-aberto]) .whatsapp-flutuante {
+      inset-block-end: max(var(--e-4), env(safe-area-inset-bottom));
     }
   }
 

@@ -105,6 +105,8 @@
   --altura-cabecalho: 3.5rem;
   --z-cabecalho: 20;
   --z-flutuante: 30;
+  /* O aviso de cookies passa por cima do atalho do WhatsApp, que sobe para não ficar embaixo dele. */
+  --z-aviso: 31;
 }
 
 @media (min-width: 64rem) {

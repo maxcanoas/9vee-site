@@ -271,6 +271,7 @@ export function textosCompartilhados(html: string): string {
     '',
     ...secao('### Menu', 'header'),
     ...secao('### Rodapé', 'footer'),
+    ...secao('### Aviso de cookies (no pé da tela, na primeira visita; "Preferências" abre as duas categorias)', '[data-aviso-cookies]'),
     ...secao('### Pedido de orçamento (o painel que abre por cima da página)', 'dialog'),
     ...(dados ? mensagensDoPedido(dados) : []),
   ]

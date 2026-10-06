@@ -6,8 +6,8 @@ import { DIST, carregarPaginas, textoVisivel } from './apoio';
 
 const abrir = (arquivo: string) => parse(readFileSync(join(DIST, arquivo), 'utf8'));
 
-// O link de preferências dos cookies chega com o aviso, no ticket 13.
-const ROTULOS_AINDA_SEM_TELA = ['Preferências de cookies'];
+// Rótulo que a política cita antes de existir na tela. O "Preferências de cookies" chegou com o aviso, no ticket 13.
+const ROTULOS_AINDA_SEM_TELA: string[] = [];
 
 describe('política de privacidade', () => {
   const principal = abrir('politica-de-privacidade/index.html').querySelector('main')!;

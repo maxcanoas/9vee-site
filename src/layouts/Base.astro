@@ -1,10 +1,11 @@
 ---
 import { Font } from 'astro:assets';
-import { MODO } from 'astro:env/server';
+import { GA4_ID, MODO } from 'astro:env/server';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/movimento.css';
 import '../styles/formulario.css';
+import AvisoCookies from '../components/AvisoCookies.astro';
 import Cabecalho from '../components/Cabecalho.astro';
 import Rodape from '../components/Rodape.astro';
 import Drawer from '../components/Drawer.astro';
@@ -31,6 +32,8 @@ const site = await dadosDoSite();
 const dadosDaPagina = idioma ? paginaDoContatoDoIdioma(site.paginas.idioma, idioma) : site.paginas[pagina];
 const base = Astro.site ?? new URL(Astro.url.origin);
 const indexavel = MODO === 'producao';
+// O preview sai sem GA4, com ou sem ID: a 9vee testa o site sem misturar visitas de teste com as de verdade.
+const ga4 = MODO === 'preview' ? '' : GA4_ID;
 // A página de erro responde por qualquer endereço que não existe: ela não tem endereço próprio para apontar.
 const canonical = pagina === 'erro404' ? null : new URL(Astro.url.pathname, base).href;
 const imagemPrevia = new URL('/og.jpg', base).href;
@@ -90,6 +93,7 @@ const regrasDeSpeculation = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={dadosEstruturados} />
   </head>
   <body>
+    <AvisoCookies textos={site.cookies} ga4={ga4} depurar={MODO === 'local'} />
     <Cabecalho site={site} />
     <main id="conteudo" tabindex="-1">
       <slot />
@@ -99,6 +103,7 @@ const regrasDeSpeculation = JSON.stringify({
     <Drawer site={site} pagina={dadosDaPagina} />
     <script>
       import '../scripts/publico.ts';
+      import '../scripts/cookies.ts';
       import '../scripts/movimento.ts';
       import '../scripts/contato.ts';
     </script>

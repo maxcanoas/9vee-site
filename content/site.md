@@ -323,6 +323,28 @@ rodape:
     href: "/politica-de-privacidade/"
   direitos: "© 2026 9vee"
 
+# O aviso de cookies (ticket 13): aparece até a pessoa responder, e de novo quando a versão sobe. Mudou o texto do
+# aviso ou o que o site mede, suba a versão: a resposta antiga deixa de valer. "Aceitar" e "Recusar" têm o mesmo
+# peso na tela. O rótulo do rodapé é o que a política cita, entre aspas.
+cookies:
+  versao: 1
+  rotulo: "Aviso de cookies"
+  titulo: "Cookies de estatística"
+  texto: "Se você aceitar, o site usa o Google Analytics para contar as visitas e os pedidos, sem o seu nome e o seu contato. Se recusar, nada é medido. Os detalhes estão na [política de privacidade](/politica-de-privacidade/#estatistica)."
+  aceitar: "Aceitar"
+  recusar: "Recusar"
+  preferencias: "Preferências"
+  salvar: "Salvar escolha"
+  categorias:
+    legenda: "O que o site pode usar"
+    necessarios:
+      nome: "Necessários"
+      texto: "Guardam no seu navegador a escolha entre empresa e você e a resposta a este aviso. Ficam sempre ligados."
+    estatistica:
+      nome: "Estatística"
+      texto: "O Google Analytics conta as visitas, os pedidos e as conversas pelo WhatsApp, por serviço e por página."
+  rodape: "Preferências de cookies"
+
 erro404:
   titulo: "Página não encontrada | 9vee"
   descricao: "O endereço que você abriu não existe no site da 9vee. Volte para a página inicial ou use o menu para achar idiomas, tradução simultânea, NR-1 e LMS."

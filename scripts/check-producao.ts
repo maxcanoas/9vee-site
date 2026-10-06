@@ -14,10 +14,13 @@ if (!existsSync(pasta)) {
 // A chave de teste do pedido, que manda para o e-mail de teste: a produção não pode sair com ela.
 const envDoPreview = new URL('../.env.preview', import.meta.url);
 const chaveDeTeste = existsSync(envDoPreview) ? parseEnv(readFileSync(envDoPreview, 'utf8')).FORMULARIO_CHAVE : undefined;
+// O ID do GA4 da propriedade de teste, a do local: a produção não pode medir com ele.
+const envDoLocal = new URL('../.env.development', import.meta.url);
+const ga4DeTeste = existsSync(envDoLocal) ? parseEnv(readFileSync(envDoLocal, 'utf8')).GA4_ID || undefined : undefined;
 
 const achados = [
   ...pendenciasNoConteudo(fileURLToPath(new URL('../content/', import.meta.url))),
-  ...verificarBuild(pasta, { chaveDeTeste }),
+  ...verificarBuild(pasta, { chaveDeTeste, ga4DeTeste }),
 ];
 if (achados.length === 0) {
   console.log('check:producao: nada a barrar. O build de produção pode ir ao ar.');

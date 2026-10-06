@@ -1,6 +1,7 @@
-// O que os testes de navegador e o roteiro de capturas dividem: o `test` que nunca deixa um pedido sair de verdade,
-// os atalhos para o drawer e a mensagem que sai para o WhatsApp.
+// O que os testes de navegador e o roteiro de capturas dividem: o `test` que nunca deixa um pedido sair de verdade
+// nem um dado ir para o Google, os atalhos para o drawer e a mensagem que sai para o WhatsApp.
 import { test as base, type BrowserContext, type Page, type Route } from '@playwright/test';
+import { CHAVE_COOKIES, novaEscolha, textoDaEscolha, type EscolhaDeCookies } from '../../src/lib/cookies.ts';
 
 /** O WhatsApp de verdade nunca abre nos testes: a aba nova recebe uma página de mentira. */
 export const semWhatsAppDeVerdade = (context: BrowserContext) =>
@@ -26,16 +27,42 @@ export const responderComoServico = (rota: Route, status: number, corpo: unknown
 export const semEnvioDeVerdade = (context: BrowserContext) =>
   context.route(SERVICO_DE_FORMULARIO, (rota) => responderComoServico(rota, 200, { success: true, message: 'interceptado' }));
 
+/** O script do GA4 e o envio dos dados ao Google. Nos testes, nada chega lá: o script é de mentira. */
+export const GA4_SCRIPT = 'https://www.googletagmanager.com/gtag/js**';
+const DO_GOOGLE = /^https:\/\/([\w-]+\.)*(googletagmanager|google-analytics|analytics\.google)\.com\//;
+
+/** Nenhum teste fala com o Google: o script do GA4 vira um arquivo vazio, e qualquer envio de dados é barrado. */
+export const semGoogleDeVerdade = (context: BrowserContext) =>
+  context.route(DO_GOOGLE, (rota) =>
+    rota.request().url().startsWith('https://www.googletagmanager.com/gtag/js')
+      ? rota.fulfill({ contentType: 'text/javascript', body: '/* gtag.js de mentira */' })
+      : rota.abort(),
+  );
+
+/** A resposta ao aviso de cookies já guardada, como fica para quem volta ao site. */
+export const salvarCookies = (context: BrowserContext, estatistica: boolean, versao = 1) =>
+  context.addInitScript(
+    ([chave, valor]) => localStorage.setItem(chave, valor),
+    [CHAVE_COOKIES, textoDaEscolha(novaEscolha(estatistica, new Date(), versao))] as const,
+  );
+
 /**
- * O `test` de todo teste de navegador: com ele, nenhum pedido sai para o serviço de formulário. O
- * tests/unit/testes-de-navegador.test.ts confere que nenhum arquivo usa o do Playwright direto.
+ * O `test` de todo teste de navegador: com ele, nenhum pedido sai para o serviço de formulário e nada vai para o
+ * Google. A pessoa já respondeu ao aviso de cookies (recusou), para ele não cobrir os botões do pé da tela; o teste
+ * do aviso desliga isso com `test.use({ cookiesRespondidos: false })`. O tests/unit/testes-de-navegador.test.ts
+ * confere que nenhum arquivo usa o `test` do Playwright direto.
  */
-export const test = base.extend({
-  context: async ({ context }, use) => {
+export const test = base.extend<{ cookiesRespondidos: boolean }>({
+  cookiesRespondidos: [true, { option: true }],
+  context: async ({ context, cookiesRespondidos }, use) => {
     await semEnvioDeVerdade(context);
+    await semGoogleDeVerdade(context);
+    if (cookiesRespondidos) await salvarCookies(context, false);
     await use(context);
   },
 });
+
+export type { EscolhaDeCookies };
 
 export { expect } from '@playwright/test';
 

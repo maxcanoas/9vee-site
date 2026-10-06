@@ -1,6 +1,7 @@
 // O pedido de contato: abre o drawer a partir de qualquer [data-abre-contato], conduz os passos,
 // mantém o link do WhatsApp em dia com as respostas e manda o pedido de quem prefere receber contato.
 // A lógica sem tela está em src/lib/contato.ts (campos, validação e mensagem) e em src/lib/envio.ts (o e-mail).
+// Os três eventos de lead (a abertura, o WhatsApp e o pedido que chegou) saem pelo medir, que só manda com o aceite.
 import {
   ETAPAS,
   SEM_DATA,
@@ -30,6 +31,7 @@ import { assuntoDoPedido, barreiraContraRobo, linhasDoEnvio, momentoComFuso, que
 import { publicoValido, type Publico } from '../lib/publico';
 import { entregarPedido } from '../lib/servico-de-formulario';
 import { preencher } from '../lib/texto';
+import { medir } from './cookies';
 import { aoMudarPublico, escolherPublico, publicoAtual } from './publico';
 
 type Tela = Etapa | 'aberto' | 'confirmado' | 'falhou';
@@ -40,10 +42,11 @@ const PAUSA_DO_TOQUE = 180;
 
 const dialogo = document.querySelector<HTMLDialogElement>('dialog[data-drawer]');
 const ilha = document.getElementById('dados-contato');
-if (dialogo && ilha?.textContent) iniciarDrawer(dialogo, JSON.parse(ilha.textContent) as DadosDoDrawer);
+const dadosDaIlha = ilha?.textContent ? (JSON.parse(ilha.textContent) as DadosDoDrawer) : null;
+if (dialogo && dadosDaIlha) iniciarDrawer(dialogo, dadosDaIlha);
 
 const flutuante = document.querySelector<HTMLAnchorElement>('[data-whatsapp-flutuante]');
-if (flutuante) iniciarBotaoFlutuante(flutuante);
+if (flutuante) iniciarBotaoFlutuante(flutuante, dadosDaIlha);
 
 function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   const um = <T extends Element = HTMLElement>(seletor: string): T => {
@@ -381,6 +384,8 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
       dados.envio.chave,
     );
     marcarEnviando(false);
+    // Só o pedido que chegou conta como lead: a falha e a isca do robô não mandam nada.
+    if (chegou) medir('lead_form_submit', { servico, publico, pagina: dados.pagina });
     irPara(chegou ? 'confirmado' : 'falhou');
   }
 
@@ -437,6 +442,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     dialogo.showModal();
     ajustarAoTeclado();
     irPara(primeiraEtapaPendente({ publico, servico, detalhesCompletos: validar('detalhes', false) }));
+    medir('drawer_open', { servico, publico, pagina: dados.pagina });
   }
 
   // Tab e Shift+Tab dão a volta dentro do drawer, também no Safari, que deixaria o foco sair para a barra.
@@ -544,8 +550,14 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
       return;
     }
     atualizarLinks();
+    medir('whatsapp_click', { servico, publico: publicoAtual(), pagina: dados.pagina });
     // Depois do clique, para a troca de tela não atrapalhar a abertura do link.
     window.setTimeout(() => irPara('aberto'));
+  });
+
+  // A saída pela tela de falha também é uma conversa aberta no WhatsApp. O "Abrir de novo" não conta: é a mesma.
+  saidaDaFalha.addEventListener('click', () => {
+    medir('whatsapp_click', { servico, publico: publicoAtual(), pagina: dados.pagina });
   });
 
   dialogo.addEventListener('close', () => {
@@ -560,8 +572,11 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   });
 }
 
-function iniciarBotaoFlutuante(botao: HTMLAnchorElement) {
+function iniciarBotaoFlutuante(botao: HTMLAnchorElement, dados: DadosDoDrawer | null) {
   const neutro = botao.href;
+  botao.addEventListener('click', () => {
+    if (dados) medir('whatsapp_click', { servico: dados.servicoDaPagina, publico: publicoAtual(), pagina: dados.pagina });
+  });
   const atualizar = (publico: Publico | null) => {
     const porPublico = publico === 'empresa' ? botao.dataset.hrefEmpresa : publico === 'voce' ? botao.dataset.hrefVoce : undefined;
     botao.href = porPublico ?? neutro;

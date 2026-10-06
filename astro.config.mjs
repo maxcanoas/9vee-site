@@ -68,6 +68,9 @@ export default defineConfig({
       // A chave do serviço de formulário, do .env do modo. Vai para o HTML, com os dados do pedido: o envio sai do
       // navegador, e a chave só permite mandar para o e-mail dela. Sem ela, o pedido oferece o WhatsApp.
       FORMULARIO_CHAVE: envField.string({ context: 'server', access: 'public', default: '' }),
+      // O ID do GA4, do .env do modo: a propriedade de teste no local e a da 9vee na produção. O preview sai sem GA4,
+      // com ou sem ID (src/layouts/Base.astro). O ID vai para o HTML, no aviso de cookies, e só vale depois do aceite.
+      GA4_ID: envField.string({ context: 'server', access: 'public', default: '' }),
     },
   },
   vite: {

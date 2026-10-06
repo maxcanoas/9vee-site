@@ -260,6 +260,23 @@ const site = defineCollection({
       privacidade: link,
       direitos: z.string(),
     }),
+    // O aviso de cookies: a versão sobe quando o texto ou o que o site mede muda, e a resposta antiga deixa de valer.
+    cookies: z.object({
+      versao: z.number().int().positive(),
+      rotulo: z.string(),
+      titulo: z.string(),
+      texto: z.string(),
+      aceitar: z.string(),
+      recusar: z.string(),
+      preferencias: z.string(),
+      salvar: z.string(),
+      categorias: z.object({
+        legenda: z.string(),
+        necessarios: z.object({ nome: z.string(), texto: z.string() }),
+        estatistica: z.object({ nome: z.string(), texto: z.string() }),
+      }),
+      rodape: z.string(),
+    }),
     erro404: z.object({
       titulo: seo.shape.titulo,
       descricao: seo.shape.descricao,
