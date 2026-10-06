@@ -9,9 +9,12 @@ import { extname, join, normalize } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { RODADAS, medirTabela } from './medida-lighthouse.ts';
+import { listarArquivos, rotaDoArquivo } from './paginas-do-build.ts';
 
 interface Roteiro {
   paginas: { nome: string; rota: string }[];
+  /** Todas as páginas do build de produção, no lugar da lista. */
+  todas?: boolean;
   /** A meta de acessibilidade, a única que muda de um roteiro para o outro. */
   acessibilidade: string;
 }
@@ -40,6 +43,8 @@ const ROTEIROS: Record<string, Roteiro> = {
     paginas: [{ nome: 'Interpretação de Mandarim', rota: '/traducao-simultanea/mandarim/' }],
     acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO,
   },
+  // A revisão final mede o site inteiro, com a meta mais dura.
+  'ticket-17': { paginas: [], todas: true, acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO },
 };
 
 const nomeDoRoteiro = process.argv[2] ?? 'etapa-7';
@@ -105,9 +110,17 @@ const linhas: string[] = [
   '',
 ];
 
+const paginasDoRoteiro = roteiro.todas
+  ? listarArquivos(fileURLToPath(new URL(`../${PASTA}/`, import.meta.url)), '.html')
+      .map((arquivo) => rotaDoArquivo(fileURLToPath(new URL(`../${PASTA}/`, import.meta.url)), arquivo))
+      .filter((rota) => rota.endsWith('/'))
+      .sort()
+      .map((rota) => ({ nome: rota, rota }))
+  : roteiro.paginas;
+
 const servidor = await servir(PASTA, PORTA);
 try {
-  const paginas = roteiro.paginas.map(({ nome, rota }) => ({ nome, url: `http://localhost:${PORTA}${rota}` }));
+  const paginas = paginasDoRoteiro.map(({ nome, rota }) => ({ nome, url: `http://localhost:${PORTA}${rota}` }));
   linhas.push(...(await medirTabela(paginas, (linha) => console.log(linha))), '');
 } finally {
   await new Promise((ok) => servidor.close(ok));

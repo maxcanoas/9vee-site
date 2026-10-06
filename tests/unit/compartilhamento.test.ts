@@ -23,7 +23,9 @@ describe('textoDaImagem', () => {
   });
 });
 
-describe('imagemDePrevia', () => {
+// A primeira chamada de texto do sharp carrega as fontes do sistema, e com a suíte inteira em paralelo isso já passou
+// dos 5 s padrão uma vez em seis rodadas (06/10/2026).
+describe('imagemDePrevia', { timeout: 30_000 }, () => {
   it('gera um JPEG de 1200 × 630, com o texto escapado para a marcação da fonte', async () => {
     const { format, width, height } = await sharp(await imagemDePrevia('Cursos & idiomas <para você>')).metadata();
     expect([format, width, height]).toEqual(['jpeg', 1200, 630]);
