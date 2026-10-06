@@ -15,11 +15,30 @@ const { data: pagina } = await paginaPrivacidade();
       <p class="politica__apoio texto-secundario"><Texto de={pagina.apoio} /></p>
     </header>
 
+    {/* A legenda das marcas, enquanto o cliente revisa a mescla com a política do Wix. A trava barra a classe revisao. */}
+    {
+      pagina.revisao && (
+        <aside class="politica__legenda revisao" aria-labelledby="revisao-titulo">
+          <h2 id="revisao-titulo">
+            <Texto de={pagina.revisao.titulo} />
+          </h2>
+          <p>
+            <Texto de={pagina.revisao.texto} />
+          </p>
+        </aside>
+      )
+    }
+
     {
       pagina.secoes.map((secao) => (
-        <section class="politica__secao" id={secao.id} aria-labelledby={`${secao.id}-titulo`}>
+        <section
+          class:list={['politica__secao', secao.novo && 'politica__secao--nova revisao']}
+          id={secao.id}
+          aria-labelledby={`${secao.id}-titulo`}
+        >
           <h2 id={`${secao.id}-titulo`}>
             <Texto de={secao.titulo} />
+            {secao.novo && pagina.revisao && <span class="politica__etiqueta">{pagina.revisao.etiqueta}</span>}
           </h2>
           {secao.blocos.map((bloco) =>
             typeof bloco === 'string' ? (
@@ -84,5 +103,40 @@ const { data: pagina } = await paginaPrivacidade();
     display: grid;
     gap: var(--e-2);
     padding-inline-start: var(--e-5);
+  }
+
+  /* A revisão com o cliente: a caixa que explica as marcas e a seção que entrou inteira, com a mesma faixa menta do
+     trecho novo (ins.revisao, no base.css). */
+  .politica__legenda,
+  .politica__secao--nova {
+    padding: var(--e-5);
+    border-inline-start: 4px solid var(--menta);
+    background-color: color-mix(in oklab, var(--menta) 12%, transparent);
+  }
+
+  .politica__legenda {
+    display: grid;
+    gap: var(--e-2);
+    max-inline-size: var(--medida);
+  }
+
+  .politica__legenda h2 {
+    font-size: var(--t-destaque);
+    letter-spacing: 0;
+  }
+
+  .politica__etiqueta {
+    display: inline-block;
+    margin-inline-start: var(--e-2);
+    padding-block: var(--e-etiqueta-bloco);
+    padding-inline: var(--e-etiqueta-linha);
+    border-radius: var(--raio-pilula);
+    background-color: var(--menta);
+    color: var(--navy);
+    font-family: var(--fonte-texto);
+    font-size: var(--t-etiqueta);
+    font-weight: 700;
+    line-height: 1.35;
+    vertical-align: 0.3em;
   }
 </style>

@@ -12,6 +12,8 @@ const PENDENCIA_CRUA = /\[CONFIRMAR[^\]]*\]/g;
 // conteúdo de verdade. São a etiqueta das páginas parciais e o aviso de que o pedido não era enviado.
 const MARCAS_DO_MVP = '.hero-pagina__etiqueta, .drawer__simulado';
 const TRAVESSAO = /[—–]/g;
+// As marcas de revisão de src/lib/texto.ts que escaparam cruas, sem virar destaque.
+const REVISAO_CRUA = /\[(?:NOVO|SAI):[^\]]*\]/g;
 
 function pendencias(pagina: Pagina): string[] {
   const marcadas = pagina.raiz
@@ -29,6 +31,19 @@ function placeholders(pagina: Pagina): string[] {
 
 function marcasDoMvp(pagina: Pagina): string[] {
   return pagina.raiz.querySelectorAll(MARCAS_DO_MVP).map((marca) => marca.text.replace(/\s+/g, ' ').trim());
+}
+
+/**
+ * O que ainda está em revisão com o cliente: a legenda, a seção inteira nova (pelo título dela), o trecho novo e o que
+ * sai. Depois da aprovação, as marcas saem do conteúdo e a página vai ao ar com o texto revisado.
+ */
+function marcasDeRevisao(pagina: Pagina): string[] {
+  const marcadas = pagina.raiz.querySelectorAll('.revisao').map((marca) => {
+    const texto = (marca.querySelector('h2, h3') ?? marca).text.replace(/\s+/g, ' ').trim();
+    return texto.length > 80 ? `${texto.slice(0, 79)}…` : texto;
+  });
+  const cruas = [...pagina.html.matchAll(REVISAO_CRUA)].map(([trecho]) => trecho);
+  return [...marcadas, ...cruas];
 }
 
 function noindex(pagina: Pagina): string[] {
@@ -101,6 +116,7 @@ export const REGRAS = {
   pendencia: { nome: 'Pendência sem resposta', naPagina: pendencias },
   placeholder: { nome: 'Placeholder no lugar da imagem', naPagina: placeholders },
   obra: { nome: 'Marca do MVP (etiqueta de obra ou envio simulado)', naPagina: marcasDoMvp },
+  revisao: { nome: 'Marca de revisão (texto do cliente ainda não aprovado)', naPagina: marcasDeRevisao },
   noindex: { nome: 'Noindex', naPagina: noindex },
   travessao: { nome: 'Travessão ou meia-risca', naPagina: travessoes },
   link: { nome: 'Link interno quebrado', naPagina: linksQuebrados },

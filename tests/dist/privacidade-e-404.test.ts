@@ -32,11 +32,37 @@ describe('política de privacidade', () => {
     }
   });
 
-  // Sem as respostas, a política não vai ao ar: a trava de produção pega a marca.
-  it('deixa a razão social, o CNPJ e o canal do titular como pendência da Daniella', () => {
+  // As perguntas 19 e 21, respondidas em 05/10/2026: quem cuida dos dados, o canal do titular e os três prazos.
+  it('diz quem cuida dos dados, por onde pedir e por quanto tempo cada coisa fica guardada', () => {
+    for (const fato of ['CLOUD9 LEARNING LTDA', '42.808.102/0001-88', '1 ano, quando não vira contrato', '6 meses, como pede o Marco Civil']) {
+      expect(texto, fato).toContain(fato);
+    }
+    expect(principal.querySelector('#quem-cuida a[href="mailto:contato@9vee.com.br"]')).not.toBeNull();
+  });
+
+  // A política do Wix, que a 9vee mandou manter, com o que a política nova trazia de relevante, marcado para a 9vee
+  // ver: a legenda, as seções inteiras novas, o trecho que entrou e o que saiu. A trava de produção barra as marcas.
+  it('mostra a mescla com a política do Wix, com as marcas de revisão explicadas', () => {
+    expect(principal.querySelector('.politica__legenda h2')?.text.trim()).toBe('Para a revisão de vocês');
+    const novas = principal.querySelectorAll('.politica__secao--nova').map((secao) => secao.getAttribute('id'));
+    expect(novas).toEqual(['quem-cuida', 'pedido', 'whatsapp', 'estatistica', 'navegador', 'hospedagem', 'direitos']);
+    for (const secao of principal.querySelectorAll('.politica__secao--nova')) {
+      expect(secao.querySelector('h2 .politica__etiqueta')?.text).toBe('Novo');
+    }
+    expect(principal.querySelectorAll('ins.revisao').length).toBeGreaterThan(0);
+    expect(principal.querySelectorAll('del.revisao').map((trecho) => trecho.text)).toContain('nossa Política de Cookies');
+    // O texto do Wix continua, do começo ao fim.
+    for (const doWix of ['Apresentamos aqui nossa Política de Privacidade', 'Processamento de dados pessoais por IA', 'foro da Comarca de Arapoti']) {
+      expect(texto, doWix).toContain(doWix);
+    }
+  });
+
+  // O que a mescla levantou e só a 9vee responde: os dados de crianças, o foro e a data da versão aprovada.
+  it('deixa como pendência da Daniella o que a mescla levantou', () => {
     const notas = principal.querySelectorAll('mark.confirmar').map((marca) => marca.getAttribute('title') ?? '');
-    for (const dado of [/razão social/i, /CNPJ/, /encarregado/i]) {
-      expect(notas.some((nota) => dado.test(nota) && nota.includes('Daniella')), String(dado)).toBe(true);
+    expect(notas).toHaveLength(3);
+    for (const assunto of [/a partir de 9 anos/, /foro/, /data em que vocês aprovarem/]) {
+      expect(notas.some((nota) => assunto.test(nota) && nota.includes('Daniella')), String(assunto)).toBe(true);
     }
   });
 });

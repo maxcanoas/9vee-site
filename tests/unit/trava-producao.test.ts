@@ -58,6 +58,27 @@ describe('verificarBuild', () => {
     expect(verificarBuild(pasta)).toEqual([]);
   });
 
+  // A revisão de um texto que era do cliente (a política de privacidade) só vai ao ar depois da aprovação, sem marcas.
+  it('barra as marcas de revisão: a legenda, a seção nova, o trecho novo, o que sai e a marca crua', () => {
+    const pasta = montarBuild({
+      'politica/index.html': pagina(
+        '<aside class="politica__legenda revisao"><p>Para a revisão de vocês</p></aside>' +
+          '<section class="politica__secao revisao"><h2>Quem cuida</h2></section>' +
+          '<p>Fale <ins class="revisao">pelo e-mail</ins><del class="revisao">no item 6</del>.</p>' +
+          '<p>Prazo [NOVO: de 6 meses].</p>',
+      ),
+    });
+    const achados = verificarBuild(pasta);
+    expect(regras(achados)).toEqual(['revisao', 'revisao', 'revisao', 'revisao', 'revisao']);
+    expect(achados.map((achado) => achado.detalhe)).toEqual([
+      'Para a revisão de vocês',
+      'Quem cuida',
+      'pelo e-mail',
+      'no item 6',
+      '[NOVO: de 6 meses]',
+    ]);
+  });
+
   it('barra o noindex na meta e no cabeçalho da Cloudflare', () => {
     const pasta = montarBuild({
       'index.html': pagina('<h1>Cursos</h1>', '<meta name="robots" content="noindex, nofollow">'),

@@ -678,19 +678,23 @@ const quemSomos = defineCollection({
 });
 
 // A política de privacidade é texto corrido: parágrafos e listas se alternam na ordem do arquivo, por isso cada
-// seção tem uma lista só de blocos.
+// seção tem uma lista só de blocos. A lista pode ter um item só, como no texto da política do Wix.
+// Enquanto o cliente revisa a mescla com a política do Wix, a legenda explica as marcas, e a seção inteira nova leva
+// a etiqueta. A trava de produção barra as duas.
 const privacidade = defineCollection({
   loader: glob({ pattern: 'politica-de-privacidade.md', base: conteudo }),
   schema: z.object({
     seo,
     h1: z.string(),
     apoio: z.string(),
+    revisao: z.object({ titulo: z.string(), texto: z.string(), etiqueta: z.string() }).optional(),
     secoes: z
       .array(
         z.object({
           id: z.string().regex(/^[a-z-]+$/),
           titulo: z.string(),
-          blocos: z.array(z.union([z.string(), z.object({ itens: z.array(z.string()).min(2) })])).min(1),
+          novo: z.boolean().optional(),
+          blocos: z.array(z.union([z.string(), z.object({ itens: z.array(z.string()).min(1) })])).min(1),
         }),
       )
       .min(1),

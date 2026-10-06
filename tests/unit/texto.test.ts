@@ -41,6 +41,14 @@ describe('formatarInline', () => {
     );
   });
 
+  // A revisão de um texto que era do cliente: o trecho que entrou fica com fundo de destaque, e o que sai, riscado.
+  it('marca o trecho novo e o que sai, com link e pendência dentro', () => {
+    expect(formatar('canais oficiais[NOVO: , como o [e-mail](mailto:a@b.com)][SAI: no item 6].')).toBe(
+      'canais oficiais<ins class="revisao">, como o <a href="mailto:a@b.com">e-mail</a></ins><del class="revisao">no item 6</del>.',
+    );
+    expect(formatar('[NOVO: Prazo de [CONFIRMAR: prazo]]')).toMatch(/^<ins class="revisao">Prazo de <mark class="confirmar"[^>]*>.*<\/mark><\/ins>$/);
+  });
+
   it('não gera link para esquemas perigosos', () => {
     const html = formatar('[clique](javascript:alert(1))');
     expect(html).not.toContain('<a');
@@ -176,6 +184,10 @@ describe('textoPuro', () => {
 
   it('tira também a pendência do Arthur', () => {
     expect(textoPuro('Turmas do A1 ao C2 [CONFIRMAR COM O ARTHUR: níveis oferecidos].')).toBe('Turmas do A1 ao C2.');
+  });
+
+  it('fica com o texto revisado: o trecho novo entra, e o que sai some', () => {
+    expect(textoPuro('Fale pelos canais [SAI: do item 6][NOVO: do [e-mail](mailto:a@b.com)].')).toBe('Fale pelos canais do e-mail.');
   });
 });
 

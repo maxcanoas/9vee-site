@@ -1,8 +1,13 @@
 // A pendência diz quem responde: [CONFIRMAR COM A DANIELLA: ...] ou [CONFIRMAR COM O ARTHUR: ...].
 // A forma curta, [CONFIRMAR: ...], fica com a Daniella, que aprova os textos.
 const PENDENCIA = /\[CONFIRMAR(?: COM (A DANIELLA|O ARTHUR))?:\s*([^\]]+?)\s*\]/g;
-const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+// O rótulo do link não tem colchete: assim o link pode ficar dentro de uma marca de revisão, que também usa colchetes.
+const LINK = /\[([^[\]]+)\]\(([^)\s]+)\)/g;
 const NEGRITO = /\*\*(.+?)\*\*/g;
+// As marcas de revisão, para o cliente ver o que mudou num texto que era dele antes de aprovar: [NOVO: ...] é o trecho
+// que entrou, com fundo de destaque, e [SAI: ...] o que sai, riscado. A trava de produção barra as duas.
+const NOVO = /\[NOVO:\s*([^\]]+?)\s*\]/g;
+const SAI = /\[SAI:\s*([^\]]+?)\s*\]/g;
 // Siglas com hífen que o navegador quebraria no meio ("NR-" numa linha, "1" na outra).
 const SEM_QUEBRA = /(?<![\p{L}\d-])(NR-1|CELPE-Bras)(?![\p{L}\d-])/gu;
 
@@ -70,7 +75,7 @@ function linkHtml(rotulo: string, urlEscapada: string): string {
   return rotulo;
 }
 
-/** Texto de uma linha vindo do content/: escapa o HTML e aplica pendência, link e negrito. */
+/** Texto de uma linha vindo do content/: escapa o HTML e aplica pendência, link, negrito e as marcas de revisão. */
 export function formatarInline(texto: string, pendencia: TextosDePendencia): string {
   return escaparHtml(texto)
     .replace(SEM_QUEBRA, '<span class="sem-quebra">$1</span>')
@@ -78,7 +83,9 @@ export function formatarInline(texto: string, pendencia: TextosDePendencia): str
       etiquetaPendencia(nota, responsavelDa(marca), pendencia),
     )
     .replace(LINK, (_, rotulo: string, url: string) => linkHtml(rotulo, url))
-    .replace(NEGRITO, '<strong>$1</strong>');
+    .replace(NEGRITO, '<strong>$1</strong>')
+    .replace(NOVO, '<ins class="revisao">$1</ins>')
+    .replace(SAI, '<del class="revisao">$1</del>');
 }
 
 /** Corpo em Markdown já renderizado: só troca os marcadores de pendência. */
@@ -122,6 +129,8 @@ export function textoPuro(texto: string): string {
     .replace(PENDENCIA, '')
     .replace(LINK, '$1')
     .replace(NEGRITO, '$1')
+    .replace(SAI, '')
+    .replace(NOVO, '$1')
     .replace(/\s+([.,;:!?])/g, '$1')
     .replace(/\s{2,}/g, ' ')
     .trim();

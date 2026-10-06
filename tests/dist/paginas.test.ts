@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { FileSystemConfigLoader, HtmlValidate } from 'html-validate';
+import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
 import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
@@ -227,8 +228,12 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(html).not.toMatch(/[—–]/);
   });
 
+  // A política de privacidade do Wix é texto do cliente, que ele mandou manter como está (05/10/2026): a regra vale
+  // para o que o site escreveu, as seções novas da mescla inclusive.
   it('não usa palavra proibida', () => {
-    const copy = [textoVisivel(raiz), ...textosDeAtributo(raiz)].join(' \n ');
+    const pagina = parse(html);
+    for (const doCliente of pagina.querySelectorAll('.politica__secao:not(.politica__secao--nova)')) doCliente.remove();
+    const copy = [textoVisivel(pagina), ...textosDeAtributo(pagina)].join(' \n ');
     for (const [palavra, padrao] of PROIBIDAS) {
       expect(copy, `"${palavra}" encontrada em ${rota}`).not.toMatch(padrao);
     }
