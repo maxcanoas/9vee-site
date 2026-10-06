@@ -6,11 +6,11 @@
 
 **Horas:** 1,5. **Semana:** 7 (era a 8; subiu em 30/09/2026, para a folga ficar na última semana).
 
-**Situação:** feito em 06/10/2026, adiantado da semana 7, no processo curto, esperando o ok do Maxwell. Saiu antes do 17 porque a imagem é gerada no build a partir do título da página: quando o 17 mudar um título, a imagem muda junto.
+**Situação:** feito e aprovado pelo Maxwell em 06/10/2026, adiantado da semana 7, no processo curto. Saiu antes do 17 porque a imagem é gerada no build a partir do título da página: quando o 17 mudar um título, a imagem muda junto.
 
 - [x] Um script gera uma imagem de 1200 × 630 por página, com o título sobre a arte da marca.
 - [x] Cada página aponta para a própria imagem no Open Graph; o teste do HTML gerado confere.
-- [ ] Prévia conferida no WhatsApp, com o preview publicado. **Pendente:** pela spec, o Open Graph usa sempre `https://www.9vee.com.br`, também no preview, e o endereço da imagem cai no Wix, onde ela não existe. Fica para o lançamento (ticket 20), salvo decisão do Maxwell.
+- [ ] Prévia conferida no WhatsApp, com o preview publicado. **Pendente:** pela spec, o Open Graph usa sempre `https://www.9vee.com.br`, também no preview, e o endereço da imagem cai no Wix, onde ela não existe. Fica para o lançamento (ticket 20), por decisão do Maxwell em 06/10.
 
 ## Como ficou
 

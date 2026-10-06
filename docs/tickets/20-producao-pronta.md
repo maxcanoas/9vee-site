@@ -15,6 +15,7 @@
 - [ ] Lighthouse mobile de todas as páginas, no build de produção rodando local, com os números em `docs/lighthouse.md` e as metas batidas.
 - [ ] Teclado e leitor de tela conferidos no drawer e no aviso de cookies.
 - [ ] Teste em Android e iPhone de verdade pelo preview: WhatsApp, drawer e formulário.
+- [ ] A prévia de cada página conferida no WhatsApp, já no domínio (ticket 18): no preview ela não aparece, porque o Open Graph aponta sempre para www.9vee.com.br.
 - [ ] `docs/checklist-lancamento.md` com os passos do brief e os da spec.
 - [ ] Conferir em que país fica o servidor do site na HostGator. A política de privacidade só diz "fora do Brasil" da Web3Forms e do Google porque o servidor de e-mail da 9vee fica em Vinhedo (SP); se o do site ficar fora, a seção da hospedagem muda.
 - [ ] `README.md` de entrega.
