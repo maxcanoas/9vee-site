@@ -2,19 +2,20 @@
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá. O endereço é o da spec,
 # portugues-para-estrangeiros, e o idioma continua "portugues".
 idioma: "portugues"
-# Fora do site até o Arthur e a Daniella confirmarem as pendências desta página (formatos, começo do zero e
-# preço).
-publicada: false
+# Completa desde 05/10/2026, com as respostas do Arthur (Idiomas 2 e 3): todos os níveis, turma para quem começa do
+# zero, professor nativo que explica sempre em português (imersão), online e presencial na empresa, e o CELPE-Bras.
+# O curso também atende o brasileiro que quer aprimorar o próprio idioma.
+publicada: true
 # Mostra o bloco de realocação de funcionários, com o texto que está em content/curso-de-idiomas.md.
 realocacao: true
 
 seo:
   titulo: "Curso de português para estrangeiros e CELPE-Bras | 9vee"
-  descricao: "Português para estrangeiros que vivem no Brasil, do básico ao avançado, com fala, escuta, leitura e escrita, e preparatório para o CELPE-Bras."
+  descricao: "Português para estrangeiros que vivem no Brasil, do zero ao avançado, com professor nativo e imersão, online ou na empresa, e preparatório para o CELPE-Bras."
 
 topo:
   h1: "Português para estrangeiros"
-  apoio: "Para quem veio estudar, trabalhar ou viver no Brasil, do nível básico ao avançado, com preparação para o CELPE-Bras."
+  apoio: "Para quem veio estudar, trabalhar ou viver no Brasil, do zero ao avançado, com preparação para o CELPE-Bras."
   cta: { neutro: "Pedir aulas de português", empresa: "Pedir orçamento de português", voce: "Quero estudar português" }
   imagem:
     id: "IMG-IDIOMA-PORTUGUES"
@@ -45,25 +46,27 @@ provas:
 destaque:
   id: "como-sao-as-aulas"
   titulo: "Como são as aulas"
-  apoio: "Do nível básico ao avançado, para se comunicar com naturalidade no dia a dia, na faculdade e no trabalho."
+  apoio: "Do zero ao avançado, para se comunicar com naturalidade no dia a dia, na faculdade e no trabalho."
   itens:
+    - titulo: "Imersão"
+      texto: "O professor, nativo, fala sempre em português, desde a primeira aula. Há turma para quem começa do zero."
     - titulo: "As quatro habilidades"
       texto: "Fala, escuta, leitura e escrita, trabalhadas juntas, com a gramática e a cultura brasileira dentro da conversa."
     - titulo: "Material didático"
       texto: "Conteúdo atualizado e atividades práticas, num caminho claro do básico à fluência."
     - titulo: "Ritmo das aulas"
       texto: "O professor conduz o ritmo pelo nível, pelas necessidades e pelos objetivos de cada aluno. Vale para o estrangeiro e também para o brasileiro que quer aprimorar o domínio do próprio idioma."
-  nota: "Formatos: [CONFIRMAR COM O ARTHUR: se o português acontece em aula particular, turma, online, presencial ou in company]."
+  nota: "As aulas são online, particulares ou em grupo, e também presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro."
 
 faq:
   titulo: "Perguntas sobre o português para estrangeiros"
   itens:
     - pergunta: "Preciso saber algum português para começar?"
-      resposta: "O curso vai do nível básico ao avançado, e o diagnóstico do começo mostra o seu ponto de partida [CONFIRMAR COM O ARTHUR: se há turma para quem começa do zero, e em que idioma o professor explica]."
+      resposta: "Não. Há turma para quem começa do zero. O professor fala sempre em português, pelo método de imersão, e o diagnóstico do começo mostra o seu ponto de partida."
     - pergunta: "A empresa pode contratar as aulas para um funcionário estrangeiro?"
-      resposta: "Pode. No pedido desta página, escolha que é para a sua empresa, e as aulas podem incluir a preparação para o CELPE-Bras."
+      resposta: "Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro, e podem incluir a preparação para o CELPE-Bras."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Conte para que você precisa do português."

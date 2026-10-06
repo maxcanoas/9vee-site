@@ -1,39 +1,59 @@
 ---
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá.
 idioma: "italiano"
-# O site atual só traz o nome do italiano: a página é um esqueleto, com as perguntas marcadas para o Arthur
-# e o preço para a Daniella. Ela só vai ao ar reescrita com os fatos, título e descrição inclusive, e sem o esqueleto.
-publicada: false
-esqueleto: true
+# Escrita em 05/10/2026 com a linha do italiano na tabela do Arthur (Idiomas 2): todos os níveis, online, individual
+# e em grupo, professor nativo, CELI, CILS, PLIDA e CERT.IT, para pessoas e empresas.
+publicada: true
 
 seo:
-  titulo: "Curso de italiano | 9vee"
-  descricao: "Curso de italiano da 9vee. Conte o objetivo, o nível e o formato que você prefere em quatro passos, e fale com a equipe pelo WhatsApp ou receba o contato."
+  titulo: "Curso de italiano com professor nativo e CELI | 9vee"
+  descricao: "Aulas de italiano online com professor nativo, particulares ou em grupo, e preparação para CELI, CILS, PLIDA e CERT.IT, as certificações oficiais."
 
 topo:
   h1: "Curso de italiano"
-  apoio: "Aulas de italiano com a 9vee."
+  apoio: "Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para as certificações oficiais de italiano."
   cta: { neutro: "Pedir aulas de italiano", empresa: "Pedir orçamento de italiano", voce: "Quero estudar italiano" }
   imagem:
     id: "IMG-IDIOMA-ITALIANO"
     arquivo: "idioma-italiano"
     alt: "Duas pessoas conversando numa rua de Florença, com a cúpula do Duomo ao fundo."
 
+formatos:
+  titulo: "Como são as aulas"
+  apoio: "Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas."
+  itens:
+    - titulo: "Professor nativo"
+      texto: "Todas as aulas de italiano são dadas por professores nativos."
+    - titulo: "Particular ou em grupo"
+      texto: "Um professor só para você, com o conteúdo puxado para o seu objetivo, ou uma turma online."
+    - titulo: "Do básico ao avançado"
+      texto: "Todos os níveis, a partir do diagnóstico do seu ponto de partida. Em média, cada nível leva 40 horas de aula."
+  nota: "Para a equipe da sua empresa, veja as [turmas para empresas](/curso-de-idiomas/#empresas)."
+
+provas:
+  titulo: "Preparação para as certificações de italiano"
+  apoio: "As quatro são certificações oficiais, reconhecidas pelo governo da Itália. O preparatório segue os critérios de cada uma."
+  itens:
+    - nome: "CELI"
+      texto: "Da Universidade para Estrangeiros de Perugia."
+    - nome: "CILS"
+      texto: "Da Universidade para Estrangeiros de Siena."
+    - nome: "PLIDA"
+      texto: "Da Sociedade Dante Alighieri."
+    - nome: "CERT.IT"
+      texto: "Da Universidade Roma Tre."
+
 faq:
   titulo: "Perguntas sobre o italiano"
   itens:
-    - pergunta: "Para quem é o curso de italiano?"
-      resposta: "[CONFIRMAR COM O ARTHUR: quem costuma procurar o italiano: carreira, viagem, mudança de país ou prova]"
-    - pergunta: "Que níveis de italiano vocês dão?"
-      resposta: "[CONFIRMAR COM O ARTHUR: que níveis de italiano a 9vee oferece]"
-    - pergunta: "As aulas são online, presenciais ou na empresa?"
-      resposta: "[CONFIRMAR COM O ARTHUR: em que formatos o italiano acontece: particular, turma, online, presencial ou in company]"
-    - pergunta: "Os professores são nativos?"
-      resposta: "[CONFIRMAR COM O ARTHUR: se o italiano tem professor nativo]"
-    - pergunta: "Vocês preparam para alguma prova de italiano?"
-      resposta: "[CONFIRMAR COM O ARTHUR: se a 9vee prepara para alguma prova de italiano, e qual]"
+    - pergunta: "A certificação serve para a cidadania italiana?"
+      resposta: "Serve para o pedido de cidadania por casamento ou por residência, que exige o nível B1 numa certificação oficial, como as quatro desta página."
+    - pergunta: "Preciso saber o meu nível para começar?"
+      resposta: "Não. O diagnóstico do começo mostra onde você está e de onde a aula começa."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. As certificações de italiano têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Quer estudar italiano?"

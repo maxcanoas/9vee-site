@@ -25,7 +25,8 @@ cidades:
   - "Curitiba"
   - "Brasília"
 
-# Os 14 idiomas do site atual, por família, na ordem de procura que a proposta aponta (inglês, espanhol, mandarim).
+# Os 14 idiomas, por família, na ordem de procura que a proposta aponta (inglês, espanhol, mandarim). Desde
+# 05/10/2026, sem o romeno e com o cantonês (Idiomas 1).
 familias:
   - id: "germanicas"
     nome: "Germânicas"
@@ -47,8 +48,9 @@ idiomas:
   - { slug: "frances", nome: "Francês", saudacao: "Bonjour", lang: "fr", familia: "romanicas" }
   - { slug: "italiano", nome: "Italiano", saudacao: "Ciao", lang: "it", familia: "romanicas" }
   - { slug: "portugues", nome: "Português para estrangeiros", saudacao: "Olá", lang: "pt", familia: "romanicas" }
-  - { slug: "romeno", nome: "Romeno", saudacao: "Bună", lang: "ro", familia: "romanicas" }
   - { slug: "mandarim", nome: "Mandarim", saudacao: "你好", lang: "zh-Hans", familia: "outras" }
+  # O olá de Hong Kong, em caracteres tradicionais: o 你好 do mandarim seria a mesma saudação na tela.
+  - { slug: "cantones", nome: "Cantonês", saudacao: "哈囉", lang: "zh-Hant-HK", familia: "outras" }
   - { slug: "japones", nome: "Japonês", saudacao: "こんにちは", lang: "ja", familia: "outras" }
   - { slug: "arabe", nome: "Árabe", saudacao: "مرحبا", lang: "ar", dir: "rtl", familia: "outras" }
   - { slug: "russo", nome: "Russo", saudacao: "Привет", lang: "ru", familia: "outras" }

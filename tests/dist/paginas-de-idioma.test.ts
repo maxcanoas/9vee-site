@@ -24,14 +24,22 @@ describe('páginas de idioma', () => {
     expect(daPagina).toBe(textoDe(cursos, '#realocacao'));
   });
 
-  // Cada prova com o texto completo na página do idioma dela: o exame e, ao lado, como é o preparatório.
+  // Cada prova na página do idioma dela: as da tabela do Arthur (05/10/2026) e, onde o site atual conta, como é o
+  // preparatório. O árabe não tem a seção: a prova da tabela espera a confirmação do nome.
   it.each([
-    ['ingles', ['TOEFL iBT', 'O preparatório']],
+    ['ingles', ['TOEFL iBT', 'IELTS', 'TOEIC', 'O preparatório do TOEFL']],
     ['portugues-para-estrangeiros', ['CELPE-Bras', 'O preparatório']],
-    ['espanhol', ['DELE', 'O preparatório']],
-    ['frances', ['DELF e DALF', 'TCF']],
-    ['holandes', ['Inburgering', 'O preparatório']],
-  ])('trazem na página de %s a prova do idioma e o preparatório dela', (pagina, nomes) => {
+    ['espanhol', ['DELE', 'SIELE', 'CELU', 'O preparatório do DELE']],
+    ['frances', ['DELF e DALF', 'TCF', 'TEF', 'TFI']],
+    ['holandes', ['Inburgering', 'NT2', 'O preparatório do Inburgering']],
+    ['alemao', ['TestDaF', 'telc']],
+    ['italiano', ['CELI', 'CILS', 'PLIDA', 'CERT.IT']],
+    ['sueco', ['TISUS', 'Swedex', 'SFI e SVA']],
+    ['noruegues', ['Norskprøven']],
+    ['mandarim', []],
+    ['japones', ['JLPT']],
+    ['russo', ['TORFL (TRKI)']],
+  ])('trazem na página de %s as provas do idioma', (pagina, nomes) => {
     const raiz = raizDa(`/curso-de-idiomas/${pagina}/`)!;
     expect(textosDe(raiz, '#provas dt')).toEqual(nomes);
     expect(textoDe(raiz, 'main')).toMatch(/preparatório/i);
@@ -55,10 +63,15 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, p
     expect(saudacao?.getAttribute('dir')).toBe(daLista?.getAttribute('dir'));
   });
 
-  // O Figura cai calado no Placeholder quando não acha o arquivo: aqui a foto tem de existir, e ser a do idioma.
-  // O círculo atrás dela tem teste em toda página, e o esquema já exige o texto alternativo.
+  // O Figura cai calado no Placeholder quando não acha o arquivo: na página publicada a foto tem de existir, e ser a
+  // do idioma. A não publicada pode esperar a foto com o Placeholder, que mostra o ID dela (o cantonês, desde
+  // 05/10/2026). O círculo atrás dela tem teste em toda página, e o esquema já exige o texto alternativo.
   it('mostra a foto do próprio idioma em arco', () => {
     const foto = raiz!.querySelector('.topo-idioma .arco-com-circulo__quadro .figura');
+    if (!publicada && foto?.tagName !== 'IMG') {
+      expect(foto?.querySelector('.placeholder__id')?.text.trim()).toMatch(/^IMG-IDIOMA-[A-Z]+$/);
+      return;
+    }
     expect(foto?.tagName, 'Placeholder no lugar da foto').toBe('IMG');
     expect(foto?.getAttribute('class')).toContain('figura--arco');
     expect(foto?.getAttribute('src')).toContain(`/idioma-${pagina}.`);

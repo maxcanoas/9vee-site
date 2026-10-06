@@ -20,6 +20,8 @@ const ilha = ilhaDoPedido(mandarim);
 // O curso de mandarim, na lista da página de cursos e na página dele.
 const curso = paginasDeIdiomaNoConteudo().find((pagina) => pagina.idioma === 'mandarim')!;
 const CONFIRMACAO_DO_PEDIDO = '[data-etapa="confirmado"]';
+// Todas as páginas do preview, lidas uma vez só para os testes que comparam esta página com as outras.
+const paginas = carregarPaginas();
 
 describe('interpretação de mandarim', () => {
   it('traz as cinco seções, na ordem', () => {
@@ -110,7 +112,6 @@ describe('interpretação de mandarim', () => {
   // Nas outras páginas o prazo da pergunta 6, respondida em 05/10/2026, fica só na confirmação do pedido: o botão
   // sai sem a nota.
   it('é a única página que promete o prazo abaixo dos botões', () => {
-    const paginas = carregarPaginas();
     const comNota = paginas.filter(({ raiz }) => raiz.querySelector('.botao-com-nota'));
     expect(comNota.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
     for (const { rota, raiz } of paginas.filter(({ rota }) => rota !== INTERPRETACAO_DE_MANDARIM)) {
@@ -140,7 +141,7 @@ describe('interpretação de mandarim', () => {
 
   // Nas páginas dos cursos, o pedido de tradução continua abrindo sem idioma marcado.
   it('é a única página que traz resposta marcada no pedido', () => {
-    const comMarcadas = carregarPaginas().filter(({ raiz }) => Object.keys(ilhaDoPedido(raiz).marcadasDaPagina).length > 0);
+    const comMarcadas = paginas.filter(({ raiz }) => Object.keys(ilhaDoPedido(raiz).marcadasDaPagina).length > 0);
     expect(comMarcadas.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
   });
 

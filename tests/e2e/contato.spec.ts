@@ -61,13 +61,14 @@ test.describe('drawer de contato', () => {
     await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();
   });
 
+  // Desde 05/10/2026 o cantonês é o único idioma sem página publicada: na lista de cursos, ele é o botão do pedido.
   test('o idioma da lista de cursos já chega marcado no pedido', async ({ page, context }) => {
     await salvarPublico(context, 'voce');
     await page.goto('/curso-de-idiomas/');
-    await page.locator('#japones button').click();
+    await page.locator('#cantones button').click();
 
     await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
-    await expect(page.locator('input[name="idiomasVoce-idioma"][value="japones"]')).toBeChecked();
+    await expect(page.locator('input[name="idiomasVoce-idioma"][value="cantones"]')).toBeChecked();
   });
 
   // O idioma com página própria é link para ela; o primeiro botão da lista é de um idioma sem página.

@@ -1,39 +1,57 @@
 ---
 # O idioma em content/site.md: a saudação, o lang, a família e o nome saem de lá.
 idioma: "sueco"
-# O site atual só traz o nome do sueco: a página é um esqueleto, com as perguntas marcadas para o Arthur
-# e o preço para a Daniella. Ela só vai ao ar reescrita com os fatos, título e descrição inclusive, e sem o esqueleto.
-publicada: false
-esqueleto: true
+# Escrita em 05/10/2026 com a linha do sueco na tabela do Arthur (Idiomas 2): todos os níveis, online, individual e
+# em grupo, professor nativo, TISUS, Swedex e as provas do SFI e do SVA, para pessoas e empresas.
+publicada: true
 
 seo:
-  titulo: "Curso de sueco | 9vee"
-  descricao: "Curso de sueco da 9vee. Conte o objetivo, o nível e o formato que você prefere em quatro passos, e fale com a equipe pelo WhatsApp ou receba o contato."
+  titulo: "Curso de sueco com professor nativo e TISUS | 9vee"
+  descricao: "Aulas de sueco online com professor nativo, particulares ou em grupo, e preparação para o TISUS, o Swedex e as provas do SFI e do SVA, na Suécia."
 
 topo:
   h1: "Curso de sueco"
-  apoio: "Aulas de sueco com a 9vee."
+  apoio: "Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para as provas de quem vai estudar ou morar na Suécia."
   cta: { neutro: "Pedir aulas de sueco", empresa: "Pedir orçamento de sueco", voce: "Quero estudar sueco" }
   imagem:
     id: "IMG-IDIOMA-SUECO"
     arquivo: "idioma-sueco"
     alt: "Duas pessoas conversando na praça Stortorget, em Estocolmo, com as fachadas coloridas ao fundo."
 
+formatos:
+  titulo: "Como são as aulas"
+  apoio: "Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas."
+  itens:
+    - titulo: "Professor nativo"
+      texto: "Todas as aulas de sueco são dadas por professores nativos."
+    - titulo: "Particular ou em grupo"
+      texto: "Um professor só para você, com o conteúdo puxado para o seu objetivo, ou uma turma online."
+    - titulo: "Do básico ao avançado"
+      texto: "Todos os níveis, a partir do diagnóstico do seu ponto de partida. Em média, cada nível leva 40 horas de aula."
+  nota: "Para a equipe da sua empresa, veja as [turmas para empresas](/curso-de-idiomas/#empresas)."
+
+provas:
+  titulo: "Preparação para provas de sueco"
+  apoio: "Para entrar numa universidade sueca, comprovar o nível ou seguir os cursos para imigrantes. O preparatório segue os critérios de cada prova."
+  itens:
+    - nome: "TISUS"
+      texto: "O Test in Swedish for University Studies, que comprova o sueco pedido para estudar numa universidade da Suécia."
+    - nome: "Swedex"
+      texto: "Certificado de sueco nos níveis do Quadro Europeu, do A2 ao C1."
+    - nome: "SFI e SVA"
+      texto: "As provas do Svenska för invandrare, o curso de sueco para imigrantes, e do Svenska som andraspråk, o sueco como segunda língua."
+
 faq:
   titulo: "Perguntas sobre o sueco"
   itens:
-    - pergunta: "Para quem é o curso de sueco?"
-      resposta: "[CONFIRMAR COM O ARTHUR: quem costuma procurar o sueco: carreira, viagem, mudança de país ou prova]"
-    - pergunta: "Que níveis de sueco vocês dão?"
-      resposta: "[CONFIRMAR COM O ARTHUR: que níveis de sueco a 9vee oferece]"
-    - pergunta: "As aulas são online, presenciais ou na empresa?"
-      resposta: "[CONFIRMAR COM O ARTHUR: em que formatos o sueco acontece: particular, turma, online, presencial ou in company]"
-    - pergunta: "Os professores são nativos?"
-      resposta: "[CONFIRMAR COM O ARTHUR: se o sueco tem professor nativo]"
-    - pergunta: "Vocês preparam para alguma prova de sueco?"
-      resposta: "[CONFIRMAR COM O ARTHUR: se a 9vee prepara para alguma prova de sueco, e qual]"
+    - pergunta: "Vou morar na Suécia. Qual prova eu faço?"
+      resposta: "Depende do que você vai fazer lá: o TISUS é para estudar numa universidade, e o SFI e o SVA são os cursos para imigrantes. Conte o objetivo no pedido, e a aula parte dele."
+    - pergunta: "Preciso saber o meu nível para começar?"
+      resposta: "Não. O diagnóstico do começo mostra onde você está e de onde a aula começa."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. As provas de sueco têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e de quantas pessoas estudam [CONFIRMAR COM A DANIELLA: uma faixa de preço das aulas de idioma]. O pedido desta página já leva essas respostas."
+      resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Quer estudar sueco?"
