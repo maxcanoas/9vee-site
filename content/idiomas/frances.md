@@ -18,6 +18,7 @@ topo:
     id: "IMG-IDIOMA-FRANCES"
     arquivo: "idioma-frances"
     alt: "Um estudante conversando com uma parisiense numa rua de Paris, com a Torre Eiffel ao fundo."
+    legenda: "Paris, França"
 
 provas:
   titulo: "As provas de francês"

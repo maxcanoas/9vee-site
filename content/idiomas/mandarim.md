@@ -19,6 +19,7 @@ topo:
     id: "IMG-IDIOMA-MANDARIM"
     arquivo: "idioma-mandarim"
     alt: "Dois executivos conversando no calçadão do Bund, em Xangai, com os prédios de Pudong ao fundo."
+    legenda: "Xangai, China"
 
 paraQuem:
   titulo: "Para quem é"

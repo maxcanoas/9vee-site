@@ -1,22 +1,28 @@
 ---
 // A imagem em arco com o círculo da marca atrás, aparecendo por cima dos ombros dela: o visual do topo das
 // páginas internas. Entra como segunda coluna da grade do topo; no celular, fica centralizado embaixo do texto.
+// Com legenda, a foto vira figura e leva embaixo o lugar dela, com um alfinete de mapa: é o caso dos idiomas.
 import Figura from './Figura.astro';
 import CirculoMarca from './CirculoMarca.astro';
+import Texto from './Texto.astro';
 import type { Imagem } from '../content.config';
 
 interface Props {
   imagem: Imagem;
+  /** O lugar da foto, como "Paris, França", para quem não reconhece a cidade pelo marco. */
+  legenda?: string;
 }
 
-const { imagem } = Astro.props;
+const { imagem, legenda } = Astro.props;
+// A legenda fica dentro do quadro para subir junto com a foto no parallax, sem abrir distância dela.
+const Quadro = legenda ? 'figure' : 'div';
 ---
 
 <div class="arco-com-circulo">
   <div class="arco-com-circulo__circulo" aria-hidden="true">
     <CirculoMarca sizes="(min-width: 64rem) 21rem, (min-width: 32.5rem) 19rem, 58vw" primeiraDobra />
   </div>
-  <div class="arco-com-circulo__quadro">
+  <Quadro class="arco-com-circulo__quadro">
     <Figura
       {...imagem}
       proporcao="4/5"
@@ -25,7 +31,21 @@ const { imagem } = Astro.props;
       sizes="(min-width: 64rem) 22rem, min(62vw, 20rem)"
       larguras={[400, 640, 800]}
     />
-  </div>
+    {
+      legenda && (
+        <figcaption class="arco-com-circulo__legenda">
+          <svg class="arco-com-circulo__alfinete" viewBox="0 0 16 20" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M8 0a8 8 0 0 0-8 8c0 5.6 8 12 8 12s8-6.4 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+            />
+          </svg>
+          <span><Texto de={legenda} /></span>
+        </figcaption>
+      )
+    }
+  </Quadro>
 </div>
 
 <style>
@@ -38,6 +58,27 @@ const { imagem } = Astro.props;
   .arco-com-circulo__quadro {
     position: relative;
     z-index: 1;
+  }
+
+  /* No tom do apoio, centrada sob o arco. O alfinete leva a cor do grupo, como a meia-lua da saudação. */
+  .arco-com-circulo__legenda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--e-2);
+    margin-block-start: var(--e-4);
+    color: var(--sobre-escuro);
+    font-size: var(--t-rotulo);
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .arco-com-circulo__alfinete {
+    flex: none;
+    inline-size: 0.8em;
+    block-size: 1em;
+    color: var(--cor-grupo, var(--menta));
   }
 
   .arco-com-circulo__circulo {

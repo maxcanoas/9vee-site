@@ -526,7 +526,13 @@ const paginasDeIdioma = defineCollection({
       // A página que mostra o bloco de realocação de funcionários, com o texto da página de cursos.
       realocacao: z.boolean().optional(),
       seo,
-      topo: z.object({ h1: z.string(), apoio: z.string(), cta: porPublico, imagem }),
+      // A foto do idioma leva, embaixo, a cidade e o país dela: nem todo mundo reconhece o lugar pelo marco.
+      topo: z.object({
+        h1: z.string(),
+        apoio: z.string(),
+        cta: porPublico,
+        imagem: imagem.extend({ legenda: z.string() }),
+      }),
       paraQuem: z
         .object({ titulo: z.string(), apoio: z.string(), itens: z.array(tituloETexto).min(2), nota: z.string() })
         .optional(),

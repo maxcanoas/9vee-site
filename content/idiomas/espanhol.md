@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-ESPANHOL"
     arquivo: "idioma-espanhol"
     alt: "Dois colegas conversando numa mesa de café ao ar livre na Gran Vía, em Madri, com o edifício Metrópolis ao fundo."
+    legenda: "Madri, Espanha"
 
 formatos:
   titulo: "Como são as aulas"

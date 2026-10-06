@@ -20,7 +20,8 @@ topo:
   imagem:
     id: "IMG-IDIOMA-PORTUGUES"
     arquivo: "idioma-portugues-para-estrangeiros"
-    alt: "Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, com o MASP ao fundo."
+    alt: "Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, em São Paulo, com o MASP ao fundo."
+    legenda: "São Paulo, Brasil"
 
 paraQuem:
   titulo: "Para quem é"

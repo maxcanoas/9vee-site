@@ -19,6 +19,7 @@ topo:
     id: "IMG-IDIOMA-NORUEGUES"
     arquivo: "idioma-noruegues"
     alt: "Duas pessoas conversando no cais de Bergen, com as casas de madeira coloridas de Bryggen ao fundo."
+    legenda: "Bergen, Noruega"
 
 formatos:
   titulo: "Como são as aulas"

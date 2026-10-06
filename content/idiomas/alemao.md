@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-ALEMAO"
     arquivo: "idioma-alemao"
     alt: "Dois colegas atravessando a Pariser Platz em Berlim, com o Portão de Brandemburgo ao fundo."
+    legenda: "Berlim, Alemanha"
 
 formatos:
   titulo: "Como são as aulas"

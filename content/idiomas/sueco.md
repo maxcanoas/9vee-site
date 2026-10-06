@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-SUECO"
     arquivo: "idioma-sueco"
     alt: "Duas pessoas conversando na praça Stortorget, em Estocolmo, com as fachadas coloridas ao fundo."
+    legenda: "Estocolmo, Suécia"
 
 formatos:
   titulo: "Como são as aulas"

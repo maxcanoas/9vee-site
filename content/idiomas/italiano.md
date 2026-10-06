@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-ITALIANO"
     arquivo: "idioma-italiano"
     alt: "Duas pessoas conversando numa rua de Florença, com a cúpula do Duomo ao fundo."
+    legenda: "Florença, Itália"
 
 formatos:
   titulo: "Como são as aulas"

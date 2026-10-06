@@ -290,6 +290,11 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-topo-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844 },
     { nome: 'nr1-topo-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800 },
   ],
+  // A cidade embaixo da foto de cada idioma. No celular a foto fica abaixo do texto: sai o topo inteiro.
+  'legendas-idiomas': paginasDeIdiomaNoConteudo().flatMap(({ rota, pagina }): Captura[] => [
+    { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844, recorte: '.topo-idioma' },
+    { nome: `${pagina}-topo-1280`, rota, largura: 1280, altura: 800 },
+  ]),
   // A página de LMS completa, o pedido aberto pela chamada do meio e o card do LMS na home.
   'ticket-06': [
     ...capturasDaPagina('lms', '/lms/', ['motivos', 'o-que-e', 'plataforma', 'relatorios', 'chamada', 'metodologia', 'setores']),

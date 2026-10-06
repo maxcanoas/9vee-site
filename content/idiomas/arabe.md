@@ -19,6 +19,7 @@ topo:
     id: "IMG-IDIOMA-ARABE"
     arquivo: "idioma-arabe"
     alt: "Duas colegas conversando num terraço em Dubai, com o Burj Khalifa ao fundo."
+    legenda: "Dubai, Emirados Árabes Unidos"
 
 formatos:
   titulo: "Como são as aulas"

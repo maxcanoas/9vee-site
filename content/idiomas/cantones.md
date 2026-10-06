@@ -19,6 +19,7 @@ topo:
     id: "IMG-IDIOMA-CANTONES"
     arquivo: "idioma-cantones"
     alt: "Duas pessoas conversando no calçadão de Tsim Sha Tsui, com a baía Vitória e os prédios da ilha de Hong Kong ao fundo."
+    legenda: "Hong Kong"
 
 faq:
   titulo: "Perguntas sobre o cantonês"

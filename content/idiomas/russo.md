@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-RUSSO"
     arquivo: "idioma-russo"
     alt: "Duas pessoas conversando na beira de um canal de São Petersburgo, com a Igreja do Salvador sobre o Sangue Derramado ao fundo."
+    legenda: "São Petersburgo, Rússia"
 
 formatos:
   titulo: "Como são as aulas"

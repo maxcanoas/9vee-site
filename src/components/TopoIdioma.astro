@@ -13,14 +13,16 @@ interface Props {
   h1: string;
   apoio: string;
   cta: TextosPorPublico;
-  /** A foto do lugar: duas pessoas conversando numa cidade onde se fala o idioma, com um marco ao fundo. */
-  imagem: Imagem;
+  /** A foto do lugar: duas pessoas conversando numa cidade onde se fala o idioma, com um marco ao fundo. A legenda
+   *  é a cidade e o país, que aparecem embaixo dela. */
+  imagem: Imagem & { legenda: string };
   idioma: { slug: string; saudacao: string; lang: string; dir?: 'rtl'; familia: string };
   /** O aviso da página que ainda não vai para o site. A produção sai sem essas páginas: só o local e o preview o mostram. */
   etiqueta?: string;
 }
 
 const { h1, apoio, cta, imagem, idioma, etiqueta } = Astro.props;
+const { legenda, ...foto } = imagem;
 ---
 
 <section class="topo-idioma escuro tons-claros" aria-labelledby="hero-titulo" data-grupo={idioma.familia}>
@@ -33,7 +35,7 @@ const { h1, apoio, cta, imagem, idioma, etiqueta } = Astro.props;
       <p class="topo-idioma__apoio"><Texto de={apoio} /></p>
       <BotaoContato textos={cta} servico="idiomas" idioma={idioma.slug} />
     </div>
-    <ArcoComCirculo imagem={imagem} />
+    <ArcoComCirculo imagem={foto} legenda={legenda} />
   </div>
 </section>
 

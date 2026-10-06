@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-HOLANDES"
     arquivo: "idioma-holandes"
     alt: "Uma mulher empurrando a bicicleta e conversando com a vizinha numa ponte de canal em Amsterdã."
+    legenda: "Amsterdã, Países Baixos"
 
 formatos:
   titulo: "Como são as aulas"

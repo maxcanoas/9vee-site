@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-JAPONES"
     arquivo: "idioma-japones"
     alt: "Dois colegas conversando numa rua tranquila, com a Torre de Tóquio ao fundo."
+    legenda: "Tóquio, Japão"
 
 formatos:
   titulo: "Como são as aulas"

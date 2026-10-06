@@ -17,6 +17,7 @@ topo:
     id: "IMG-IDIOMA-INGLES"
     arquivo: "idioma-ingles"
     alt: "Dois colegas conversando na ponte de Westminster, em Londres, com o Big Ben ao fundo."
+    legenda: "Londres, Reino Unido"
 
 paraQuem:
   titulo: "Para quem é"

@@ -72,6 +72,15 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, p
     expect(foto?.getAttribute('src')).toContain(`/idioma-${pagina}.`);
   });
 
+  // Nem todo mundo reconhece o lugar pelo marco. A legenda é da figura da foto, e a cidade dela é a do texto
+  // alternativo: uma troca de foto que esqueça a legenda não passa.
+  it('diz embaixo da foto a cidade dela', () => {
+    const legenda = textoDe(raiz!, '.topo-idioma figure.arco-com-circulo__quadro > figcaption');
+    expect(legenda).toMatch(/^[^,]+(, [^,]+)?$/);
+    const alt = raiz!.querySelector('.topo-idioma .arco-com-circulo__quadro .figura')?.getAttribute('alt');
+    expect(alt).toContain(legenda.split(',')[0]);
+  });
+
   it('avisa no topo, só quando não está publicada, que fica fora do site', () => {
     expect(raiz!.querySelector('.topo-idioma__etiqueta') !== null).toBe(!publicada);
   });
