@@ -15,6 +15,8 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 
 **Atualizado em 04/10/2026:** o parecer de UX do site (o olhar de quem procura curso de idiomas) trouxe três perguntas novas para a Daniella (37 a 39) e uma para o Arthur (9). A 37 de agora é outra pergunta: a antiga saiu antes de chegar ao Word, então o número estava livre. O que muda no Word está no fim deste arquivo, em "O que mudou em 04/10/2026". O preço, que o parecer também pede, já é a pergunta 7.
 
+**Respondido em 05/10/2026:** a 9vee devolveu o Word enviado com as respostas (um .docx no Google Drive). O que cada resposta mudou no site e o rascunho da segunda rodada estão em "As respostas de 05/10/2026", no fim deste arquivo. Das 108 marcações em `content/`, sobraram 15.
+
 **O Word que foi para a 9vee tem outra numeração.** O Maxwell mandou o `C:\Users\maxca\Downloads\Perguntas-9vee.docx` (datado de 2 de outubro, um documento só para os dois), com 25 perguntas gerais e 5 de idiomas. As respostas vão chegar por aquela numeração: o mapa para a numeração interna, e o que ficou de fora, está em "O Word enviado em 02/10/2026", no fim deste arquivo.
 
 A numeração interna, de 1 a 30 da Daniella e de 1 a 8 do Arthur, não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
@@ -276,3 +278,65 @@ Do parecer de UX do site, feito no preview publicado, no papel de quem procura c
 | A9 | Aula experimental ou teste de nível | Hoje o único caminho é o pedido, e o "Quanto custa?" responde "depende". Uma porta de entrada leve vira o segundo botão do topo para quem escolhe "Para você" |
 
 Ficam no Word como estavam: o preço (D7) e as páginas de idioma (A2), que o parecer também pede. A de inglês é a página mais atraente do site, e as seis com texto podem ir ao ar assim que o Arthur responder.
+
+## As respostas de 05/10/2026
+
+A 9vee respondeu todas as perguntas do Word enviado em 02/10/2026, menos a segunda metade da 15 (que tipo de evento em cada cidade). Na tabela, a numeração é a do Word; a interna está em "O Word enviado em 02/10/2026", logo acima. As mudanças estão nos commits `997d2a4` (páginas principais), `46c8388` (política) e `0e79397` (páginas de idioma).
+
+| Enviada | O que a 9vee respondeu | O que mudou no site |
+|---|---|---|
+| 1 | Idiomas é o foco; NR-1 é prioridade agora, pelo SEO do assunto | Nada na tela. Vale para a ordem das páginas de cidade (ticket 11) e para o ticket 15 |
+| 2 | A Novee é deste ano, e carrega os números da empresa anterior: 16 anos | Home e Quem Somos com 16 anos. Na faixa, "anos de experiência", e não "de empresa" |
+| 3 | 14 idiomas, com o chinês dividido em mandarim e cantonês | "14" sem pendência em Cursos e na parte de empresas |
+| 4 | +65 profissionais, +60 clientes e +20 empresas parceiras | Faixa com cinco números, uma coluna por número no computador |
+| 6 | Proposta no mesmo dia, ou no dia seguinte se o pedido chega no fim do dia, em todos os serviços | Confirmação do pedido, "Como funciona" da home e FAQ da Tradução. A interpretação de mandarim continua com "até um dia útil" |
+| 7 | Não mostrar valores: tradução, NR-1 e turmas maiores pedem orçamento próprio | Os "Quanto custa?" respondem sem faixa de preço, em todas as páginas |
+| 8 | O contato@ é lido todo dia, e já recebe formulários e pedidos | Nada a mudar (o ticket 20 usa essa caixa) |
+| 9 | Profissionais terceirizados de São Paulo, que atendem todo o Brasil | NR-1: presencial em qualquer cidade do Brasil |
+| 10 e 11 | Dois treinamentos: o normativo (uma ou duas sessões, até 70 pessoas) e o formativo (cerca de 9 h, em 3 encontros de 3 h ou 6 de 1h30, até 35 pessoas) | NR-1: o "Formato e carga horária" mostra os dois |
+| 12 | Pode citar o Sicredi, sem o logo | NR-1: FAQ "Vocês já fizeram esse treinamento em alguma empresa?" |
+| 13 | Equipamento de empresas parceiras; o revezamento é a regra da ABRATES, que a 9vee precisa dizer que segue | Tradução: o equipamento vem de parceiros, e o FAQ cita a ABRATES |
+| 14 | Interpretação: TOTVS e Array. Idiomas: Pirelli, FGV, Sicredi e Bradesco | Os nomes, sem logo: TOTVS e Array na Tradução, os quatro na parte de empresas de Cursos. Itaú, Santander e Unicef ficam fora |
+| 15 | Há intérpretes locais e que viajam, mas a 9vee quase sempre busca profissionais na cidade do evento | Tradução: intérpretes de cada cidade, e em outra cidade a 9vee busca de lá. O JSON-LD do serviço passa a atender o país |
+| 16 | A história nova, em seis parágrafos; nomes e cargos ficam de fora | Quem Somos: a história reescrita pelos padrões do site, em quatro parágrafos |
+| 17 | Atende majoritariamente de SP; Perfil no Google "Novee Learning Solutions", na R. Dona Teresa Margarida, 66 | Rodapé e JSON-LD com o nome e o endereço (escolha do Maxwell, em 05/10, no lugar da decisão antiga da spec). Topo do Quem Somos: "De São Paulo, atende..." |
+| 18 | Pode tirar o "a confirmar" e pôr "Novee Learning Solutions" no rodapé | Feito |
+| 19 | CLOUD9 LEARNING LTDA, CNPJ 42.808.102/0001-88, e o contato@ para os pedidos sobre dados | Política e JSON-LD (`legalName`) |
+| 20 | "A mesma" | O Maxwell decidiu mesclar: o texto é a política do Wix, com o que a nova traz de relevante marcado para a 9vee ver (legenda, etiqueta "Novo", trechos que entram e que saem). A trava de produção barra as marcas |
+| 21 | Acessos ao servidor 6 meses (Marco Civil); pedidos 1 ano sem fechamento e 5 com; WhatsApp como os pedidos, com as regras da Meta | Política: os três prazos |
+| 22 | Os dois telefones valem; o do Canva é o da Daniella, para contatos corporativos | Nada a mudar: o site fica com o (11) 93466-1917 |
+| 23 | Tirar a "elaboração de PGR" | Nada a mudar: o site já diz que o PGR fica com a empresa e o SESMT |
+| 24 | Inglês, espanhol, francês, italiano, japonês, coreano, mandarim, cantonês, árabe, holandês, alemão e Libras | Tradução e pedido com os 12. Saem o crioulo haitiano e a ASL |
+| 25 | Pode oferecer a remota, pelo Zoom e por telefone | FAQ da Tradução sem pendência |
+| 26 | O Inglês Acessível continua | Cursos: bloco do Inglês Acessível, só com o nome e o público, que é o que o material diz |
+| Idiomas 1 | Sai o romeno; entra o cantonês | Sai a página e a foto do romeno; entra a de cantonês, como esqueleto fora do site, e o olá 哈囉 na grade. O prompt da foto de Hong Kong está em `docs/imagens-gemini.md` |
+| Idiomas 2 | A tabela dos 14 e as dúvidas de inglês, mandarim, holandês, francês e português | As 13 páginas com texto e publicadas (`publicada: true`). Mandarim sem descrever o método, como a 9vee pediu |
+| Idiomas 3 | Presencial só dentro de empresas, em SP e no RJ | Cursos e páginas de inglês, espanhol e português. O pedido "Para mim" não pergunta mais formato nem cidade (escolha do Maxwell) |
+| Idiomas 4 | Em média 40 horas por nível | FAQ de Cursos e das páginas de idioma |
+| Idiomas 5 | Certificado simples, com as horas cursadas | FAQ de Cursos e das páginas de idioma |
+
+**O que sobrou em `content/` (15 marcações):**
+
+- home: as três autorizações dos depoimentos (D5, não foi);
+- NR-1: o plano de ação, o comprovante e a turma inteira (D12 a D14, não foram) e o regulamento da Lei 14.831 (D29, é aviso);
+- política: os dados de crianças, o foro de Arapoti e a data da versão aprovada, as três novas da mescla;
+- cantonês: as cinco perguntas da página, fora do site.
+
+### Segunda rodada, rascunho
+
+Pela decisão de 04/10/2026, a numeração do Word começa no 27. A ordem fica com o Maxwell. Primeiro as que nasceram das respostas:
+
+- **Logos.** Na 14, vocês liberaram citar a TOTVS e a Array na interpretação, e a Pirelli, a FGV, o Sicredi e o Bradesco nos idiomas. O site cita os nomes, sem logo. Alguma dessas empresas autorizou por escrito o uso do logo?
+- **Aula presencial.** A tabela diz presencial in company em São Paulo para inglês, espanhol e português, e a resposta 3 diz São Paulo e Rio. O site diz São Paulo e Rio para os três. Está certo? Outro idioma tem aula na empresa?
+- **Cantonês.** A tabela não trouxe a linha dele: níveis, formatos, professor nativo, provas e quem costuma procurar.
+- **Árabe.** A tabela diz que vocês preparam para o "AAPT". Não achei prova com esse nome (existe o APT, da Avant). Qual é a prova? Hoje a página diz só que há preparação, sem o nome.
+- **Norueguês.** A tabela cita o Test i norsk, høyere nivå (o Bergenstesten), que deixou de ser aplicado sozinho em 2022, quando o Norskprøven passou a ir até o C1. A página cita só o Norskprøven. Vocês preparam para mais alguma prova?
+- **Inglês Acessível.** O que é o programa, além do público (faculdades e órgãos públicos)? Formato, duração, se é online. Hoje o bloco só tem o nome e o público.
+- **Tradução por cidade.** A segunda metade da 15 ficou sem resposta: que tipo de evento vocês mais fazem em São Paulo, no Rio, em Curitiba e em Brasília? É o que as páginas de cidade vão dizer.
+- **Endereço.** O endereço do Perfil no Google recebe aluno ou cliente? O site mostra o endereço no rodapé, sem convite para visita. E qual é o link do Perfil? Ele entra nos dados do Google e, se a nota for boa, pode aparecer no site (D37).
+- **"16 anos de experiência".** Na home ficou "anos de experiência", e não "de empresa", porque a 9vee é deste ano. Está bom assim?
+- **Política: crianças.** A política atual diz que a 9vee não trata dados de crianças, e o inglês atende a partir de 9 anos. Como fica a frase? Pela LGPD, dado de criança pede o consentimento de um dos pais.
+- **Política: foro.** A política atual elege o foro de Arapoti (PR), e a 9vee fica em São Paulo. Continua?
+- **Política: aprovação.** Vocês aprovam a mescla, com os trechos marcados? A data da aprovação vira a data da versão.
+
+Depois, as que não foram na primeira rodada (numeração interna, texto nas seções acima): D5 (autorização dos depoimentos), D12 a D14 (plano de ação, comprovante e turma inteira no NR-1, agora com os dois formatos de treinamento), D18 e D19 (a landing de mandarim e as versões dela), D21 (LMS), D28 (blog), D30 (realocação), D36 (Linguae e Lenguae), D37 a D39 e A9 (o parecer de UX) e A6 a A8 (acessos e zona DNS). A D26 (advogado e foro) virou as duas da política, acima.

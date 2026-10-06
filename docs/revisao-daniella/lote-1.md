@@ -1,6 +1,6 @@
 # Lote 1: páginas principais
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 02/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 05/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Home
 
@@ -15,28 +15,24 @@ Textos do site novo da 9vee para a revisão da Daniella, gerados em 02/10/2026 a
 
 ### Para a conversa dar certo.
 
-Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho.
+Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho. (para você: Do inglês ao japonês, em aula online particular ou em grupo, com preparação para TOEFL, IELTS, DELE, DELF e CELPE-Bras.)
 
 É para sua empresa ou para você?
 
 - Para sua empresa
 - Para você
 
-[Botão: Pedir orçamento (para você: Quero estudar)]
+[Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
 [Imagem: Intérprete com fone e microfone, concentrada, olhando para o palco.]
 
-- 19 · anos de empresa
+[Imagem: Aluna de fone de ouvido, sorrindo enquanto fala numa aula de idioma online.]
+
+- 16 · anos de experiência
 - 14 · idiomas
 - +65 · profissionais
-- +160 · clientes
-
-a confirmar · Números do site atual
-
-- com a Daniella: ano de fundação. O site diz 19 anos nos números e mais de 20 no Quem Somos
-- com a Daniella: quantidade de idiomas. A home diz 14 e a página de cursos diz inglês e mais 11
-- com a Daniella: quantos profissionais são hoje, entre professores, intérpretes e equipe
-- com a Daniella: quantos clientes, contando empresas e alunos
+- +60 · clientes
+- +20 · empresas parceiras
 
 #### O que a 9vee faz
 
@@ -44,7 +40,7 @@ Para você e para empresas
 
 ##### Cursos de idiomas
 
-Aula particular, online ou para a equipe inteira, com preparação para TOEFL, DELE, DELF e CELPE-Bras.
+Aula online, particular ou em grupo, e turmas na empresa, com preparação para TOEFL, DELE, DELF e CELPE-Bras.
 
 [Link: Ver os cursos de idiomas]
 
@@ -94,32 +90,16 @@ Vieram do latim, como o português.
 - [Link: Bonjour · Francês]
 - [Link: Ciao · Italiano]
 - [Link: Olá · Português para estrangeiros]
-- [Link: Bună · Romeno]
 
 ##### De outras famílias
 
 Cada uma com a sua escrita.
 
 - [Link: 你好 · Mandarim]
+- [Link: 哈囉 · Cantonês]
 - [Link: こんにちは · Japonês]
 - [Link: مرحبا · Árabe]
 - [Link: Привет · Russo]
-
-Para RH, SESMT e diretoria
-
-26 de maio de 2026
-
-#### Desde essa data, a fiscalização pode multar quem deixou os riscos psicossociais fora do PGR.
-
-- O PGR precisa identificar os riscos psicossociais do trabalho e trazer um plano de ação para eles.
-- O treinamento da 9vee prepara liderança e equipe e termina com um plano de ação. A avaliação dos riscos continua com o SESMT.
-- A Lei 14.831/2024 criou um certificado para empresas que cuidam da saúde mental da equipe. O regulamento que define como pedir ainda não saiu [A confirmar com a Daniella: situação do regulamento na data da publicação].
-
-[Botão: Pedir orçamento do treinamento]
-
-[Link: Ver o treinamento de NR-1]
-
-Fontes: Portaria MTE nº 1.419/2024, Ministério do Trabalho e Emprego e Lei 14.831/2024.
 
 #### O que faz a 9vee diferente
 
@@ -155,7 +135,7 @@ No curso, começa por um diagnóstico do seu nível. No evento, pela data e pelo
 
 ##### Você recebe a proposta
 
-Com formato e valor [A confirmar com a Daniella: em quanto tempo a proposta costuma sair].
+Com formato e valor, quase sempre no mesmo dia. Pedido que chega no fim do dia tem resposta no dia seguinte.
 
 ##### Começa
 
@@ -179,11 +159,11 @@ Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas · Autorização de us
 
 ##### Vocês atendem fora de São Paulo?
 
-Sim. A tradução simultânea tem atendimento presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também podem ser online, de qualquer cidade.
+Sim. As aulas são online, de qualquer cidade, e o treinamento de NR-1 vai até a empresa em todo o Brasil. A tradução simultânea é presencial em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília, e em outras cidades com intérpretes de lá.
 
 ##### Quanto custa?
 
-Depende do formato e do tamanho do grupo [A confirmar com a Daniella: uma faixa de preço por serviço, para dar um ponto de partida aqui]. Com as respostas do formulário, a equipe já fala de valor no primeiro contato [A confirmar com a Daniella: se o comercial responde com valor já no primeiro contato].
+Depende do serviço, do formato e do tamanho do grupo. Tradução, NR-1 e turmas maiores têm orçamento próprio, combinado com você. O pedido já leva as suas respostas, e a proposta costuma sair no mesmo dia.
 
 ##### O treinamento de NR-1 deixa a empresa em dia com a norma?
 
@@ -191,7 +171,7 @@ Ele cobre uma parte: a capacitação sobre riscos psicossociais e o plano de aç
 
 ##### As aulas são para empresa ou para pessoa física?
 
-Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula particular e online, e preparação para provas como TOEFL e DELE.
+Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula online, particular ou em grupo, e preparação para provas como TOEFL e DELE.
 
 ##### Quem são os intérpretes?
 
@@ -201,7 +181,7 @@ Profissionais formados em centros especializados, com experiência em áreas com
 
 Grandes resultados começam com uma boa conversa. Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar.
 
-[Botão: Pedir orçamento (para você: Quero estudar)]
+[Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
 ## Treinamento de NR-1
 
@@ -332,19 +312,19 @@ O treinamento apoia a empresa na construção de um ambiente emocionalmente mais
 
 #### Formato e carga horária
 
-Conte quantas pessoas são e qual é o prazo da sua empresa. O formulário leva as respostas junto com o pedido.
+São dois treinamentos, um mais curto e um mais longo. Conte quantas pessoas são e qual é o prazo da sua empresa: o formulário leva as respostas junto com o pedido.
 
 Como acontece
 
-Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa [A confirmar com a Daniella: se o treinamento também é presencial e em que cidades].
+Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e já atende empresas de outros estados.
 
-Carga horária
+Workshop normativo
 
-[A confirmar com a Daniella: carga horária total do treinamento e em quantos encontros ela é dividida]
+O mais curto, com foco no que a norma pede. Uma ou duas sessões, para até 70 pessoas.
 
-Turma
+Curso formativo
 
-[A confirmar com a Daniella: mínimo e máximo de pessoas por turma]
+O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30, como for melhor para a empresa. Até 35 pessoas por turma.
 
 [Botão: Pedir orçamento do treinamento]
 
@@ -378,6 +358,10 @@ Não sozinho. Ele cobre a capacitação sobre riscos psicossociais e termina com
 
 RH, SESMT e quem responde por equipe. O módulo 2 é escrito para quem chefia [A confirmar com a Daniella: se a 9vee também faz turma com a equipe inteira, e não só com a liderança].
 
+##### Vocês já fizeram esse treinamento em alguma empresa?
+
+Sim. O Sicredi fez com a 9vee um programa de capacitação para gerentes de agência, em dois workshops.
+
 ##### Já temos um programa de saúde mental. O treinamento serve?
 
 Serve. O formulário pergunta isso logo no começo, para a equipe saber o que já existe antes de montar a turma.
@@ -388,7 +372,7 @@ O primeiro módulo começa do começo: conceito e marco legal, antes de qualquer
 
 ##### Quanto custa?
 
-Depende do formato e do tamanho da turma [A confirmar com a Daniella: uma faixa de preço do treinamento de NR-1, para dar um ponto de partida aqui]. O pedido desta página já vai com o tamanho da empresa e o prazo.
+Depende do formato e do tamanho da turma, e o orçamento é montado para a sua empresa. O pedido desta página já vai com o tamanho da empresa e o prazo, e a proposta costuma sair no mesmo dia.
 
 #### Conte como está a sua empresa.
 
@@ -411,55 +395,46 @@ Para você e para a sua equipe
 
 ### Cursos de idiomas para você e para a sua empresa
 
-Do inglês ao japonês, com aula particular, online ou para a equipe inteira, e preparação para as provas de proficiência.
+Do inglês ao japonês, com aula online particular ou em grupo, turmas para a equipe da empresa e preparação para as provas de proficiência.
 
-[Botão: Pedir orçamento (para você: Quero estudar)]
+[Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
 [Imagem: Aluna adulta numa aula de idioma, sorrindo enquanto fala com a professora.]
 
 #### Os idiomas que a 9vee ensina
 
-São 14 [A confirmar com a Daniella: quantidade de idiomas. A home diz 14 e a página atual diz inglês e mais 11], agrupados por família. Escolha o seu para pedir informação com ele já marcado.
+São 14, agrupados por família. Escolha o seu para pedir informação com ele já marcado.
 
 ##### Germânicas
 
 O inglês e as línguas do centro e do norte da Europa.
 
-[Botão: Hello · Inglês]
-
-[Botão: Hallo · Alemão]
-
-[Botão: Hoi · Holandês]
-
-[Botão: Hej · Sueco]
-
-[Botão: Hei · Norueguês]
+- [Link: Hello · Inglês]
+- [Link: Hallo · Alemão]
+- [Link: Hoi · Holandês]
+- [Link: Hej · Sueco]
+- [Link: Hei · Norueguês]
 
 ##### Românicas
 
 Vieram do latim, como o português.
 
-[Botão: Hola · Espanhol]
-
-[Botão: Bonjour · Francês]
-
-[Botão: Ciao · Italiano]
-
-[Botão: Olá · Português para estrangeiros]
-
-[Botão: Bună · Romeno]
+- [Link: Hola · Espanhol]
+- [Link: Bonjour · Francês]
+- [Link: Ciao · Italiano]
+- [Link: Olá · Português para estrangeiros]
 
 ##### De outras famílias
 
 Cada uma com a sua escrita.
 
-[Botão: 你好 · Mandarim]
+- [Link: 你好 · Mandarim]
 
-[Botão: こんにちは · Japonês]
+[Botão: 哈囉 · Cantonês]
 
-[Botão: مرحبا · Árabe]
-
-[Botão: Привет · Russo]
+- [Link: こんにちは · Japonês]
+- [Link: مرحبا · Árabe]
+- [Link: Привет · Russo]
 
 #### Do A1 ao C2, em português claro
 
@@ -491,7 +466,7 @@ Quase nada escapa, e o tom muda conforme a sala.
 
 #### Preparação para provas
 
-Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para seis, com foco nos critérios de cada prova.
+Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para as provas de cada idioma que ensina, com foco nos critérios de cada uma. Aqui estão seis, e a página de cada idioma mostra as outras.
 
 ##### TOEFL iBT
 
@@ -543,58 +518,23 @@ O preparatório é voltado para o exame e trabalha as duas partes: a língua e a
 
 #### Como são as aulas
 
-Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. Você escolhe o dia e o horário: a aula se encaixa na sua rotina, e não o contrário.
+Professores nativos dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário.
 
 ##### Aula particular
 
 Um professor só para você, com o conteúdo puxado para o seu objetivo. É assim que a 9vee atende executivos.
 
-##### Aula online
+##### Aula em grupo
 
-Ao vivo, de qualquer cidade, no dia e no horário que você escolher.
+Uma turma online, ao vivo, de qualquer cidade do Brasil.
 
 ##### Criança e adolescente
 
-Inglês para quem ainda está na escola. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press.
+Inglês a partir de 9 anos. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press.
 
-Também há aula presencial [A confirmar com o Arthur: em que cidades as aulas de idioma presenciais acontecem, e onde].
+Aula presencial, só dentro de empresas, em São Paulo e no Rio de Janeiro. Veja as turmas para empresas.
 
 [Botão: Falar sobre as aulas]
-
-#### Para a sua equipe
-
-Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 12 idiomas [A confirmar com a Daniella: quantidade de idiomas. A parte de empresas da página atual diz 12, e a home diz 14] para empresas em todo o Brasil.
-
-##### Turma in company
-
-O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho.
-
-##### Aula individual para executivos
-
-Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível.
-
-##### Português para quem veio de fora
-
-Para o profissional estrangeiro que entrou no time, com preparação para o CELPE-Bras.
-
-O pedido pergunta idioma, número de alunos, nível da turma e formato. A proposta sai com isso na mão.
-
-[Botão: Pedir orçamento para a equipe]
-
-#### Realocação de funcionários
-
-Além dos cursos, a 9vee apoia o profissional que está de mudança para outra cidade ou outro país, por transferência ou nova contratação. O atendimento é feito com discrição, para o colaborador e a família.
-
-- Idioma
-- Orientação sobre legislação
-- Documentação
-- Adaptação cultural
-
-#### A equipe também pode estudar pelo LMS
-
-Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real.
-
-[Link: Conhecer o LMS]
 
 [Imagem: Aluno adulto na primeira aula online, com o caderno aberto ao lado do notebook.]
 
@@ -614,6 +554,47 @@ Antes de fechar a turma, para a aula começar no ponto certo.
 
 No formato que você escolheu, no ritmo que o diagnóstico apontou.
 
+#### Para a sua equipe
+
+Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 14 idiomas, para empresas de todo o Brasil. Inglês, espanhol e português para estrangeiros também têm aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro.
+
+##### Turma in company
+
+O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho.
+
+##### Aula individual para executivos
+
+Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível.
+
+##### Português para quem veio de fora
+
+Para o profissional estrangeiro que entrou no time, com preparação para o CELPE-Bras.
+
+Pirelli, FGV, Sicredi e Bradesco já contrataram os cursos da 9vee. O pedido pergunta idioma, número de alunos, nível da turma e formato, e a proposta sai com isso na mão.
+
+[Botão: Pedir orçamento para a equipe]
+
+#### Inglês Acessível
+
+O programa de inglês da 9vee para faculdades e órgãos públicos. Conte no pedido quantas pessoas vão estudar.
+
+[Botão: Pedir orçamento do programa]
+
+#### Realocação de funcionários
+
+Além dos cursos, a 9vee apoia o profissional que está de mudança para outra cidade ou outro país, por transferência ou nova contratação. O atendimento é feito com discrição, para o colaborador e a família.
+
+- Idioma
+- Orientação sobre legislação
+- Documentação
+- Adaptação cultural
+
+#### A equipe também pode estudar pelo LMS
+
+Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real.
+
+[Link: Conhecer o LMS]
+
 #### Perguntas de quem vai estudar
 
 ##### Não sei o meu nível. Tem problema?
@@ -622,25 +603,25 @@ Não. O diagnóstico acontece antes de fechar a turma, e é ele que diz onde voc
 
 ##### Quanto tempo leva para subir um nível?
 
-Depende do seu ponto de partida e de quanto você pratica fora da aula [A confirmar com o Arthur: quantas horas de aula costumam levar de um nível para o outro].
+Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula.
 
 ##### Vocês atendem criança e adolescente?
 
-Sim, com material da Cambridge. No pedido, diga a idade junto com o idioma.
+Sim, no inglês, a partir de 9 anos, com material da Cambridge. No pedido, diga a idade junto com o idioma.
 
 ##### No fim do curso eu recebo certificado?
 
-As provas de proficiência têm certificado próprio, emitido por quem aplica o exame. O certificado da própria 9vee ainda está em aberto [A confirmar com o Arthur: se a 9vee emite certificado no fim do curso, e de que tipo].
+Sim. No fim do curso, a 9vee emite um certificado com as horas cursadas. As provas de proficiência têm certificado próprio, emitido por quem aplica o exame.
 
 ##### Quanto custa?
 
-Depende do idioma, do formato e de quantas pessoas estudam [A confirmar com a Daniella: uma faixa de preço das aulas de idioma, para dar um ponto de partida aqui]. O pedido desta página já leva essas respostas.
+Depende do idioma, do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Conte o que você quer falar.
 
 Você escolhe o idioma, o objetivo, o nível e o formato em quatro passos. No fim, decide entre falar agora no WhatsApp ou receber o contato da equipe.
 
-[Botão: Pedir orçamento (para você: Quero estudar)]
+[Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
 ## Textos que aparecem em todas as páginas
 
@@ -668,7 +649,7 @@ Para você
 - [Link: Preparação para provas · TOEFL, DELE, DELF, CELPE-Bras e outras]
 - [Link: Quem somos]
 
-[Botão: Pedir orçamento (para você: Quero estudar)]
+[Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
 [Botão: Menu]
 
@@ -678,7 +659,7 @@ Para você
 
 A 9vee ensina idiomas, leva intérpretes a eventos e dá treinamento de NR-1 sobre saúde mental no trabalho.
 
-9vee, lê-se Novee [A confirmar com a Daniella: a pronúncia certa da marca].
+9vee, lê-se Novee.
 
 Empresas
 
@@ -695,11 +676,13 @@ Para você
 
 Contato
 
-Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também online, de qualquer cidade.
+Aulas online para todo o Brasil. Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília.
 
 WhatsApp (11) 93466-1917
 
 [Link: contato@9vee.com.br]
+
+Novee Learning Solutions R. Dona Teresa Margarida, 66 Vila Clementino, São Paulo, SP 04037-040
 
 [Link: Quem somos]
 
@@ -733,7 +716,7 @@ Seu próximo capítulo de sucesso começa agora.
 
 ##### Qual serviço você procura?
 
-- Cursos de idiomas Aula particular, online ou para a equipe inteira
+- Cursos de idiomas Aula online, particular ou em grupo, e turmas na empresa
 - Tradução simultânea Intérpretes em cabine ou ao lado de executivos
 - Treinamento de NR-1 Saúde mental e riscos psicossociais para RH, SESMT e liderança
 - LMS Plataforma de estudo para a equipe da empresa
@@ -777,10 +760,15 @@ Quais idiomas o evento precisa?
 - Inglês
 - Espanhol
 - Mandarim
+- Cantonês
 - Francês
 - Italiano
-- Crioulo haitiano
+- Alemão
+- Holandês
+- Japonês
 - Coreano
+- Árabe
+- Libras
 - Outro
 
 Quando é o evento?
@@ -856,8 +844,8 @@ Qual idioma?
 - Francês
 - Italiano
 - Português para estrangeiros
-- Romeno
 - Mandarim
+- Cantonês
 - Japonês
 - Árabe
 - Russo
@@ -895,8 +883,8 @@ Qual idioma você quer estudar?
 - Francês
 - Italiano
 - Português para estrangeiros
-- Romeno
 - Mandarim
+- Cantonês
 - Japonês
 - Árabe
 - Russo
@@ -915,21 +903,6 @@ Qual é o seu nível hoje?
 - Intermediário
 - Avançado
 - Não sei
-
-Presencial ou online?
-
-- Presencial
-- Online
-
-Em que cidade?
-
-- São Paulo
-- Rio de Janeiro
-- Curitiba
-- Brasília
-- Outra
-
-[Campo: Qual cidade?]
 
 ##### Como podemos te chamar?
 
@@ -957,7 +930,7 @@ A mensagem já vai escrita com as suas respostas. Confira e envie por lá. Se o 
 
 ##### Pedido anotado.
 
-A equipe da 9vee responde em [A confirmar com a Daniella: prazo de resposta do comercial].
+A proposta costuma sair no mesmo dia. Se o pedido chega no fim do dia, ela sai no dia seguinte.
 
 ###### O que você pediu:
 

@@ -135,7 +135,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 ### Maxwell: busca
 
 44. Como Maxwell, quero canonical, sitemap e Open Graph sempre com `https://www.9vee.com.br`, nunca com o endereço do preview.
-45. Como Maxwell, quero JSON-LD de organização sem endereço, de serviço, de curso, de FAQ e de trilha, conforme o tipo da página.
+45. Como Maxwell, quero JSON-LD de organização sem endereço, de serviço, de curso, de FAQ e de trilha, conforme o tipo da página. **Mudou em 05/10/2026:** a organização leva o endereço e o nome do Perfil da Empresa no Google, que a 9vee mandou (pergunta 17 do Word), e a razão social; o rodapé mostra os dois.
 46. Como Maxwell, quero que o preview nunca seja indexado e que a produção nunca saia com noindex.
 47. Como Maxwell, quero que o Search Console continue verificado depois da troca.
 48. Como Maxwell, quero que o sitemap de produção liste só as páginas publicadas.
@@ -222,7 +222,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 ### Páginas por cidade
 
 - **Regra de publicação:** a página de uma cidade só vai para produção com fato local real: que serviços são presenciais ali, que tipo de evento ou turma, como a equipe atende. Sem isso até a semana 5, a página não entra, e os posts daquela cidade apontam para a página do serviço, como a proposta previa.
-- Não há endereço, mapa nem "venha nos visitar".
+- Não há endereço, mapa nem "venha nos visitar". **Mudou em 05/10/2026:** o endereço do Perfil no Google fica no rodapé, em todas as páginas; mapa e convite para visita continuam fora. A 9vee respondeu que, na tradução, quase sempre busca intérpretes na cidade do evento; o tipo de evento por cidade ficou sem resposta e vai na segunda rodada.
 - **Decisão que depende da resposta do cliente,** tomada na semana 4 ou 5:
   - se só a tradução for presencial, a página vira "Tradução simultânea em <cidade>", dentro de Tradução Simultânea;
   - se aulas ou NR-1 também forem presenciais, ela vira uma página da cidade, com todos os serviços presenciais de lá.

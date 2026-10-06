@@ -63,6 +63,12 @@ function textoInline(no: Node): string {
   // A pendência aparece por extenso, com quem responde: é o que a Daniella precisa ver.
   if (ehPendencia(no)) return `[${no.getAttribute('title') ?? 'A confirmar'}]`;
   if (ignorado(no)) return '';
+  // As marcas de revisão de um texto que era do cliente: o lote diz o que entra e o que sai, como a tela mostra com a
+  // cor e o risco, e a etiqueta da seção inteira nova sai entre colchetes, separada do título.
+  if (no.classList.contains('revisao') && (no.tagName === 'INS' || no.tagName === 'DEL')) {
+    return `[${no.tagName === 'INS' ? 'Entra' : 'Sai'}: ${limpar(no.childNodes.map(textoInline).join(''))}]`;
+  }
+  if (no.classList.contains('politica__etiqueta')) return ` [${limpar(no.text)}]`;
   if (no.tagName === 'BR') return ' ';
   const porPublico = elementos(no).filter((filho) => filho.hasAttribute('data-publico-texto'));
   if (porPublico.length > 0) return textoPorPublico(porPublico);

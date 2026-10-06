@@ -36,7 +36,8 @@ const LOTES: Record<number, Lote> = {
       ['Página de erro', '/404.html'],
     ],
   },
-  // Os idiomas com texto próprio. Os esqueletos, que só têm as perguntas ao cliente, entram quando ganharem texto.
+  // Os idiomas com texto próprio. Os sete que eram esqueleto ganharam texto em 05/10/2026, com a tabela do Arthur. O
+  // cantonês, que só tem as perguntas ao cliente, entra quando ganhar texto.
   3: {
     titulo: 'páginas de idioma',
     paginas: [
@@ -46,6 +47,13 @@ const LOTES: Record<number, Lote> = {
       ['Holandês', '/curso-de-idiomas/holandes/'],
       ['Francês', '/curso-de-idiomas/frances/'],
       ['Português para estrangeiros', '/curso-de-idiomas/portugues-para-estrangeiros/'],
+      ['Alemão', '/curso-de-idiomas/alemao/'],
+      ['Italiano', '/curso-de-idiomas/italiano/'],
+      ['Sueco', '/curso-de-idiomas/sueco/'],
+      ['Norueguês', '/curso-de-idiomas/noruegues/'],
+      ['Japonês', '/curso-de-idiomas/japones/'],
+      ['Árabe', '/curso-de-idiomas/arabe/'],
+      ['Russo', '/curso-de-idiomas/russo/'],
     ],
   },
 };

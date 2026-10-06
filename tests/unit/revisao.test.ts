@@ -87,6 +87,19 @@ describe('textoDaPagina', () => {
       expect(texto).not.toContain(trecho);
     }
   });
+
+  // A política mesclada com a do Wix: no lote, sem a cor e o risco da tela, a marca diz o que entra e o que sai.
+  it('diz o que entra e o que sai no texto em revisão, e separa a etiqueta da seção nova', () => {
+    const politica = PAGINA.replace(
+      '<section><h2>Perguntas</h2>',
+      '<section><h2>Quem cuida dos seus dados<span class="politica__etiqueta">Novo</span></h2>' +
+        '<p>Conforme <del class="revisao">nossa Política de Cookies</del> <ins class="revisao"><a href="#estatistica">a estatística</a></ins>.</p></section>' +
+        '<section><h2>Perguntas</h2>',
+    );
+    const revisado = textoDaPagina({ nome: 'Política de Privacidade', html: politica });
+    expect(revisado).toContain('Quem cuida dos seus dados [Novo]');
+    expect(revisado).toContain('Conforme [Sai: nossa Política de Cookies] [Entra: a estatística].');
+  });
 });
 
 const COMPARTILHADOS = `<!doctype html><html lang="pt-BR"><head><title>9vee</title></head><body>

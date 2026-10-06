@@ -2,6 +2,34 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima primeira leva (05/10): as respostas de vocês no site
+
+Obrigado pelas respostas. Quase tudo já está no preview:
+
+- **Números:** 16 anos de experiência, 14 idiomas, +65 profissionais, +60 clientes e +20 empresas parceiras, na home e no Quem Somos.
+- **Prazo e preço:** o pedido confirma que a proposta costuma sair no mesmo dia. Os "Quanto custa?" explicam o que muda o valor, sem mostrar preço.
+- **Rodapé:** "9vee, lê-se Novee.", e o nome e o endereço do Perfil no Google (Novee Learning Solutions, R. Dona Teresa Margarida, 66).
+- **Cursos de Idiomas:** https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/
+  - a aula presencial aparece só dentro de empresas, em São Paulo e no Rio. Para quem estuda por conta própria, o pedido não pergunta mais "presencial ou online";
+  - inglês a partir de 9 anos, 40 horas por nível em média e o certificado com as horas cursadas;
+  - Pirelli, FGV, Sicredi e Bradesco citados, sem logo, e um bloco novo do Inglês Acessível.
+- **Páginas de idioma:** as 13 estão completas, com a tabela que vocês preencheram, e agora a home e a página de cursos levam a elas. O romeno saiu, e o cantonês entrou na lista, com o olá 哈囉. A página dele espera a linha da tabela, que não veio.
+- **Treinamento de NR-1:** https://9vee-preview.9vee-site.workers.dev/treinamento-nr-1/
+  - os dois formatos, o workshop normativo e o curso formativo, com a carga horária e o tamanho da turma de cada um;
+  - presencial em qualquer cidade do Brasil;
+  - o Sicredi citado, sem logo.
+- **Tradução Simultânea:** https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/
+  - os 12 idiomas de hoje, com a Libras;
+  - o equipamento de empresas parceiras, a regra da ABRATES, a interpretação remota e os intérpretes da cidade do evento;
+  - TOTVS e Array citadas, sem logo.
+- **Quem Somos:** a história que vocês mandaram, reescrita no tom do site. Vale conferir se ela ainda diz o que vocês querem dizer.
+- **Política de privacidade:** https://9vee-preview.9vee-site.workers.dev/politica-de-privacidade/
+  - como vocês pediram, ela é a política atual. Entrou nela o que a política nova tinha de importante, e tudo isso está marcado: as seções com a etiqueta "Novo", os trechos com fundo verde e os riscados, que saem. A legenda no alto explica;
+  - três pontos ficaram como "a confirmar": os dados de crianças (o inglês atende a partir de 9 anos), o foro de Arapoti e a data da aprovação.
+- Umas poucas perguntas novas surgiram com as respostas. Elas vão numa segunda rodada, curta.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Os três lotes de revisão saíram de novo em 05/10, em `docs/revisao-daniella/`: o 3 agora tem as 13 páginas de idioma. A foto do cantonês (IMG-IDIOMA-CANTONES) está em `docs/imagens-gemini.md`, para gerar quando quiser: a página fica fora do site até a linha da tabela chegar. O rascunho da segunda rodada está no fim de `docs/pendencias-cliente.md`.
+
 ## Semana 1, décima leva (02/10): o pedido passa a ser enviado de verdade
 
 - O "Prefiro receber contato" do pedido agora envia de verdade. Antes ele só mostrava a confirmação; agora o pedido chega por e-mail.
