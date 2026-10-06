@@ -136,6 +136,7 @@ export const REGRAS = {
   link: { nome: 'Link interno quebrado', naPagina: linksQuebrados },
   formulario: { nome: 'Pedido sem destino (a chave do serviço de formulário)' },
   medicao: { nome: 'Medição sem destino (o ID do GA4)' },
+  redirecionamento: { nome: 'Redirecionamento para página que não está no build (o .htaccess)' },
 } satisfies Record<string, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }>;
 
 export type Regra = keyof typeof REGRAS;
@@ -166,6 +167,21 @@ export function pendenciasNoConteudo(pastaDoConteudo: string): Achado[] {
   });
 }
 
+/**
+ * Os 301 do .htaccess (ticket 19) que levam a uma página fora do build: a página deixou de ser publicada depois que o
+ * mapa foi gerado. As regras gerais (https, www e a barra no fim) não têm destino fixo e ficam de fora.
+ */
+export function redirecionamentosQuebrados(pasta: string): string[] {
+  const arquivo = join(pasta, '.htaccess');
+  if (!existsSync(arquivo)) return [];
+  return readFileSync(arquivo, 'utf8')
+    .split('\n')
+    .flatMap((linha) => {
+      const [, origem, destino] = /^RewriteRule (\S+) https:\/\/www\.9vee\.com\.br(\/[^\s%$]*) \[R=301,L\]$/.exec(linha) ?? [];
+      return destino && !existsSync(arquivoDaRota(pasta, destino)) ? [`${origem} leva a ${destino}, que não está no build`] : [];
+    });
+}
+
 /** A chave de teste é a do .env.preview: com ela, a trava reconhece a chave que não pode ir para a produção. */
 export function verificarBuild(
   pasta: string,
@@ -183,6 +199,9 @@ export function verificarBuild(
   }
   for (const detalhe of medicaoSemDestino(paginas, ga4DeTeste)) {
     achados.push({ regra: 'medicao', onde: 'aviso de cookies', detalhe });
+  }
+  for (const detalhe of redirecionamentosQuebrados(pasta)) {
+    achados.push({ regra: 'redirecionamento', onde: '.htaccess', detalhe });
   }
   // O cabeçalho de noindex que o build de preview deixa para a Cloudflare.
   const cabecalhos = join(pasta, '_headers');

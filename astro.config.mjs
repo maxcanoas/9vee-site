@@ -1,11 +1,13 @@
 // @ts-check
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, envField, fontProviders } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import { tirarImagensOrfas } from './scripts/imagens-orfas.ts';
 import { escreverSitemap } from './scripts/sitemap.ts';
 import { gerarPrevias } from './scripts/compartilhamento.ts';
+import { lerCsv } from './scripts/csv.ts';
+import { montarHtaccess } from './scripts/htaccess.ts';
 
 // Canonical, Open Graph e sitemap sempre no domínio definitivo, em todos os modos, nunca no do preview.
 const DOMINIO = 'https://www.9vee.com.br';
@@ -62,6 +64,22 @@ const sitemapDaProducao = {
 };
 
 /**
+ * O .htaccess da HostGator, só na produção (ticket 19): o mapa de redirecionamentos aprovado (docs/redirects.csv),
+ * o domínio canônico, a barra no fim, a compressão e o cache. A trava confere que cada 301 leva a uma página do build.
+ * @type {import('astro').AstroIntegration}
+ */
+const htaccessDaProducao = {
+  name: 'htaccess-da-producao',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      if (modo !== 'producao') return;
+      const mapa = lerCsv(await readFile(new URL('./docs/redirects.csv', import.meta.url), 'utf8'));
+      await writeFile(new URL('.htaccess', dir), montarHtaccess(mapa.map(({ origem, destino, tipo }) => ({ origem, destino, tipo }))));
+    },
+  },
+};
+
+/**
  * A imagem de prévia de cada página, com o título dela, em todos os modos (ticket 18).
  * @type {import('astro').AstroIntegration}
  */
@@ -75,7 +93,7 @@ const previasDasPaginas = {
 };
 
 export default defineConfig({
-  integrations: [cabecalhoNoindex, semImagensOrfas, sitemapDaProducao, previasDasPaginas],
+  integrations: [cabecalhoNoindex, semImagensOrfas, sitemapDaProducao, htaccessDaProducao, previasDasPaginas],
   site: DOMINIO,
   // A produção sai numa pasta própria: o dist/ é o que o wrangler publica, e ele não pode receber um build indexável.
   outDir: modo === 'producao' ? './dist-producao' : './dist',

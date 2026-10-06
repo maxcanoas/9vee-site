@@ -1,8 +1,10 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { linksQuebrados } from '../../scripts/trava-producao.ts';
+import { lerCsv } from '../../scripts/csv.ts';
+import { linksQuebrados, redirecionamentosQuebrados } from '../../scripts/trava-producao.ts';
 import {
+  DIST,
   DIST_PRODUCAO,
   DOMINIO,
   carregarPaginas,
@@ -46,6 +48,20 @@ describe('build de produção', () => {
     const arquivo = join(DIST_PRODUCAO, '_headers');
     const cabecalhos = existsSync(arquivo) ? readFileSync(arquivo, 'utf8') : '';
     expect(cabecalhos).not.toMatch(/X-Robots-Tag/i);
+  });
+
+  // O .htaccess da HostGator (ticket 19): uma regra para cada 301 e 410 do mapa aprovado, e todo 301 numa página do build.
+  it('leva o .htaccess com o mapa de redirecionamentos, sem destino fora do build', () => {
+    const htaccess = readFileSync(join(DIST_PRODUCAO, '.htaccess'), 'utf8');
+    const mapa = lerCsv(readFileSync(new URL('../../docs/redirects.csv', import.meta.url), 'utf8'));
+    // Só as do mapa: as regras gerais (https, www e a barra no fim) têm %{REQUEST_URI} ou $1 no destino.
+    expect(htaccess.match(/^RewriteRule \^\S+\$ https:\/\/www\.9vee\.com\.br\/[^\s$%]* \[R=301,L\]$/gm)).toHaveLength(mapa.filter(({ tipo }) => tipo === '301').length);
+    expect(htaccess.match(/^RewriteRule \S+ - \[G,L\]$/gm)).toHaveLength(mapa.filter(({ tipo }) => tipo === '410').length);
+    expect(redirecionamentosQuebrados(DIST_PRODUCAO)).toEqual([]);
+  });
+
+  it('deixa o .htaccess fora do preview, que vai para o Cloudflare', () => {
+    expect(existsSync(join(DIST, '.htaccess'))).toBe(false);
   });
 
   it('libera o robots.txt e aponta o sitemap do domínio definitivo', () => {
