@@ -2,6 +2,14 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima terceira leva (06/10): o rodapé e o ícone do site
+
+- O rodapé ganhou o link "Interpretação de mandarim", no fim do grupo Empresas. A página continua fora do menu de cima.
+- O ícone do site (o "9" no círculo azul) já aparecia na aba do navegador e no iPhone. Agora aparece também na tela inicial do Android, quando alguém salva o site, e nos navegadores mais antigos.
+- O site definitivo já sai com a lista de páginas para o Google (o sitemap) e com a mesma verificação do Search Console que o Wix usa hoje. Assim, na troca, o Google continua reconhecendo vocês como donos do site. No preview nada disso aparece, porque ele não vai para o Google.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. O sitemap e a verificação só existem no build de produção (`npm run build:producao`).
+
 ## Semana 2, décima segunda leva (05/10): o aviso de cookies
 
 - Na primeira visita, o site mostra um aviso no pé da tela, "Cookies de estatística", com três botões: "Aceitar", "Recusar" e "Preferências". Aceitar e recusar têm o mesmo peso, como a LGPD pede.
