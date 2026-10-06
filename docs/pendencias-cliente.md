@@ -322,7 +322,7 @@ A 9vee respondeu todas as perguntas do Word enviado em 02/10/2026, menos a segun
 - política: os dados de crianças, o foro de Arapoti e a data da versão aprovada, as três novas da mescla;
 - cantonês: as cinco perguntas da página, fora do site.
 
-### Segunda rodada, rascunho
+### Segunda rodada, rascunho (virou o Word, logo abaixo)
 
 Pela decisão de 04/10/2026, a numeração do Word começa no 27. A ordem fica com o Maxwell. Primeiro as que nasceram das respostas:
 
@@ -340,3 +340,41 @@ Pela decisão de 04/10/2026, a numeração do Word começa no 27. A ordem fica c
 - **Política: aprovação.** Vocês aprovam a mescla, com os trechos marcados? A data da aprovação vira a data da versão.
 
 Depois, as que não foram na primeira rodada (numeração interna, texto nas seções acima): D5 (autorização dos depoimentos), D12 a D14 (plano de ação, comprovante e turma inteira no NR-1, agora com os dois formatos de treinamento), D18 e D19 (a landing de mandarim e as versões dela), D21 (LMS), D28 (blog), D30 (realocação), D36 (Linguae e Lenguae), D37 a D39 e A9 (o parecer de UX) e A6 a A8 (acessos e zona DNS). A D26 (advogado e foro) virou as duas da política, acima.
+
+### O Word da segunda rodada (05/10/2026)
+
+O arquivo é o `docs/Perguntas-9vee-segunda-rodada.docx`, no mesmo desenho do Word de 02/10: um documento só, para os dois, com as perguntas de 27 a 55. Ele substitui o rascunho acima. Para aplicar uma resposta, ache a linha do número enviado:
+
+| Enviada | Interna | Assunto |
+|---|---|---|
+| 27 | nova (era a D26) | Aprovação da política mesclada e a data da versão |
+| 28 | nova | Dados de crianças na política (o inglês é a partir de 9 anos) |
+| 29 | nova (era a D26) | Foro de Arapoti |
+| 30 | D5 | Autorização dos três depoimentos e dos logos |
+| 31 | nova | Logos da TOTVS, da Array, da Pirelli, da FGV, do Sicredi e do Bradesco |
+| 32 | nova | "16 anos de experiência" na home |
+| 33 | nova, com a parte da D37 sobre o Google | Link do Perfil no Google, a nota e se o endereço recebe visitas |
+| 34 | nova | A linha do cantonês na tabela |
+| 35 | nova | Presencial na empresa: o Rio para os três idiomas, e outros idiomas |
+| 36 | nova | A prova do árabe ("AAPT") |
+| 37 | nova | O Bergenstesten no norueguês |
+| 38 | nova | O que é o Inglês Acessível |
+| 39 | D30 | Realocação de funcionários |
+| 40 | A9 | Aula experimental ou teste de nível |
+| 41 | D37 | Depoimento de aluno |
+| 42 | D38 | Professores com foto e fotos de aula |
+| 43 | D39 | Vídeo e os 14 áudios das saudações |
+| 44 | D12 | Roteiro de 90 dias do Sicredi, agora no curso formativo |
+| 45 | D13 | Comprovante do NR-1, nos dois formatos |
+| 46 | D14 | Para quem é cada formato do NR-1 |
+| 47 | D20, segunda metade | Tipo de evento por cidade |
+| 48 | D18 | O texto da página de interpretação de mandarim |
+| 49 | D19 | As versões em inglês e em chinês da landing |
+| 50 | D21 | LMS |
+| 51 | D28 | Blog do Wix |
+| 52 | D36 | Linguae e Lenguae |
+| 53 | A6 | Acessos ao GA4 e ao Search Console |
+| 54 | A7 | GitHub |
+| 55 | A8 | Zona DNS |
+
+Ficou de fora só a D29 (o regulamento da Lei 14.831), que é aviso: o Maxwell confere de novo na semana da publicação.
