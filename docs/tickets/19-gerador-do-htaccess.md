@@ -6,7 +6,7 @@
 
 **Horas:** 1,5. **Semana:** 7 (era a 8; subiu em 30/09/2026, para a folga ficar na última semana).
 
-**Situação:** feito em 06/10/2026, adiantado da semana 7, no processo curto, esperando o ok do Maxwell. O teste num Apache de verdade só dá para fazer na HostGator, no lançamento: está no ticket 20.
+**Situação:** feito e aprovado pelo Maxwell em 06/10/2026, adiantado da semana 7, no processo curto, com o HSTS. O teste num Apache de verdade só dá para fazer na HostGator, no lançamento: está no ticket 20.
 
 - [x] O script gera o `.htaccess` a partir do `docs/redirects.csv` aprovado: os 301 e os 410 do mapa, HTTPS forçado, domínio com www, barra no fim, compressão, cache e as páginas de erro 404 e 410.
 - [x] Testes unitários a partir de um CSV de exemplo.
