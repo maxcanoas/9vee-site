@@ -63,15 +63,10 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, p
     expect(saudacao?.getAttribute('dir')).toBe(daLista?.getAttribute('dir'));
   });
 
-  // O Figura cai calado no Placeholder quando não acha o arquivo: na página publicada a foto tem de existir, e ser a
-  // do idioma. A não publicada pode esperar a foto com o Placeholder, que mostra o ID dela (o cantonês, desde
-  // 05/10/2026). O círculo atrás dela tem teste em toda página, e o esquema já exige o texto alternativo.
+  // O Figura cai calado no Placeholder quando não acha o arquivo: aqui a foto tem de existir, e ser a do idioma.
+  // O círculo atrás dela tem teste em toda página, e o esquema já exige o texto alternativo.
   it('mostra a foto do próprio idioma em arco', () => {
     const foto = raiz!.querySelector('.topo-idioma .arco-com-circulo__quadro .figura');
-    if (!publicada && foto?.tagName !== 'IMG') {
-      expect(foto?.querySelector('.placeholder__id')?.text.trim()).toMatch(/^IMG-IDIOMA-[A-Z]+$/);
-      return;
-    }
     expect(foto?.tagName, 'Placeholder no lugar da foto').toBe('IMG');
     expect(foto?.getAttribute('class')).toContain('figura--arco');
     expect(foto?.getAttribute('src')).toContain(`/idioma-${pagina}.`);

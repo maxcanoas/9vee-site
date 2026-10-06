@@ -3,7 +3,7 @@
 idioma: "cantones"
 # O cantonês entrou na lista em 05/10/2026, no lugar do romeno (Idiomas 1), mas a tabela do Arthur não trouxe a linha
 # dele: a página é um esqueleto, com as perguntas marcadas para o Arthur. Ela só vai ao ar reescrita com os fatos,
-# título e descrição inclusive, e sem o esqueleto. A foto IMG-IDIOMA-CANTONES ainda não foi gerada.
+# título e descrição inclusive, e sem o esqueleto. A foto IMG-IDIOMA-CANTONES entrou em 05/10/2026, à noite.
 publicada: false
 esqueleto: true
 
