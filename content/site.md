@@ -2,12 +2,22 @@
 marca:
   nome: "9vee"
   nomeAlternativo: "Novee"
+  # O nome do Perfil da Empresa no Google e a razão social (perguntas 17, 18 e 19, respondidas em 05/10/2026).
+  nomeComercial: "Novee Learning Solutions"
+  razaoSocial: "CLOUD9 LEARNING LTDA"
   resumo: "A 9vee ensina idiomas, leva intérpretes a eventos e dá treinamento de NR-1 sobre saúde mental no trabalho."
 
 contato:
   whatsapp: "5511934661917"
   whatsappExibicao: "(11) 93466-1917"
   email: "contato@9vee.com.br"
+  # O endereço do Perfil da Empresa no Google, igual a ele, no rodapé e no JSON-LD. Sem "venha nos visitar".
+  endereco:
+    rua: "R. Dona Teresa Margarida, 66"
+    bairro: "Vila Clementino"
+    cidade: "São Paulo"
+    uf: "SP"
+    cep: "04037-040"
 
 cidades:
   - "São Paulo"
@@ -117,7 +127,7 @@ cta:
 # Ordem dos serviços por público, na home e no drawer. Sem escolha, vale a de empresa.
 # Desde 23/09/2026 é a mesma para os dois públicos, a que a cliente pediu: idiomas, tradução, NR-1 e LMS.
 servicos:
-  - { id: "idiomas", nome: "Cursos de idiomas", descricao: "Aula particular, online ou para a equipe inteira", ordemEmpresa: 1, ordemVoce: 1 }
+  - { id: "idiomas", nome: "Cursos de idiomas", descricao: "Aula online, particular ou em grupo, e turmas na empresa", ordemEmpresa: 1, ordemVoce: 1 }
   - { id: "traducao", nome: "Tradução simultânea", descricao: "Intérpretes em cabine ou ao lado de executivos", ordemEmpresa: 2, ordemVoce: 2 }
   - { id: "nr1", nome: "Treinamento de NR-1", descricao: "Saúde mental e riscos psicossociais para RH, SESMT e liderança", ordemEmpresa: 3, ordemVoce: 3 }
   - { id: "lms", nome: "LMS", descricao: "Plataforma de estudo para a equipe da empresa", ordemEmpresa: 4, ordemVoce: 4 }
@@ -146,7 +156,8 @@ paginas:
     servico: "traducao"
     assunto: { neutro: "quero tradução simultânea para um evento", empresa: "quero tradução simultânea para um evento da minha empresa", voce: "quero tradução simultânea para um evento particular" }
   # O pedido aberto na página de interpretação de mandarim já traz a tradução simultânea e, nos idiomas do evento, o
-  # mandarim. Ela é a única que promete prazo, o da landing do site atual: nas outras, ele continua na pergunta 6.
+  # mandarim. Ela promete o prazo da landing do site atual, abaixo dos botões. Nas outras, o prazo fica só na
+  # confirmação do pedido (drawer.confirmacao), com a resposta da pergunta 6.
   interpretacaoDeMandarim:
     nome: "Interpretação de Mandarim"
     servico: "traducao"
@@ -208,7 +219,7 @@ drawer:
     link: "Abrir o WhatsApp de novo"
   confirmacao:
     titulo: "Pedido anotado."
-    texto: "A equipe da 9vee responde em [CONFIRMAR COM A DANIELLA: prazo de resposta do comercial]."
+    texto: "A proposta costuma sair no mesmo dia. Se o pedido chega no fim do dia, ela sai no dia seguinte."
     resumo: "O que você pediu:"
     rotuloServico: "Serviço"
     rotuloNome: "Nome"
@@ -256,7 +267,7 @@ formularios:
     - { id: "programa", tipo: "escolha", rotulo: "Já existe um programa de saúde mental ou de adequação à NR-1?", rotuloCurto: "Programa em andamento", obrigatorio: true, minuscula: true, opcoes: ["Sim", "Não", "Em construção"] }
   traducao:
     - { id: "empresa", tipo: "texto", rotulo: "Nome da empresa", rotuloCurto: "Empresa", erro: "Escreva o nome da empresa.", obrigatorio: true, opcionalPara: "voce", autocomplete: "organization" }
-    - { id: "idiomas", tipo: "multipla", rotulo: "Quais idiomas o evento precisa?", rotuloCurto: "Idiomas", obrigatorio: true, minuscula: true, opcoes: ["Inglês", "Espanhol", "Mandarim", "Francês", "Italiano", "Crioulo haitiano", "Coreano", "Outro"] }
+    - { id: "idiomas", tipo: "multipla", rotulo: "Quais idiomas o evento precisa?", rotuloCurto: "Idiomas", obrigatorio: true, minuscula: true, opcoes: ["Inglês", "Espanhol", "Mandarim", "Cantonês", "Francês", "Italiano", "Alemão", "Holandês", "Japonês", "Coreano", "Árabe", "Libras", "Outro"] }
     - { id: "data", tipo: "data", rotulo: "Quando é o evento?", rotuloCurto: "Data do evento", obrigatorio: true, semData: "Ainda sem data" }
     # A duração decide se vai um intérprete ou dois (o revezamento, pergunta 16 da Daniella).
     - { id: "duracao", tipo: "escolha", rotulo: "Quanto tempo dura o evento?", rotuloCurto: "Duração", obrigatorio: true, minuscula: true, opcoes: ["Até 1 hora", "Meio período", "Dia inteiro", "Mais de um dia"] }
@@ -275,13 +286,12 @@ formularios:
     - { id: "alunos", tipo: "escolha", rotulo: "Quantas pessoas vão estudar?", rotuloCurto: "Alunos", obrigatorio: true, minuscula: true, opcoes: ["1", "2 a 10", "11 a 50", "Mais de 50"] }
     - { id: "nivel", tipo: "escolha", rotulo: "Qual é o nível da turma?", rotuloCurto: "Nível", obrigatorio: true, minuscula: true, opcoes: ["Iniciante", "Intermediário", "Avançado", "Misto ou não sei"] }
     - { id: "formato", tipo: "escolha", rotulo: "Em que formato?", rotuloCurto: "Formato", obrigatorio: true, minuscula: true, opcoes: ["Presencial", "Online", "Híbrido"] }
+  # Sem formato nem cidade: para quem estuda por conta própria, a aula é online. A presencial só acontece dentro de
+  # empresas, em São Paulo e no Rio de Janeiro (Idiomas 3, respondida em 05/10/2026).
   idiomasVoce:
     - { id: "idioma", tipo: "idioma", rotulo: "Qual idioma você quer estudar?", rotuloCurto: "Idioma", obrigatorio: true, minuscula: true }
     - { id: "objetivo", tipo: "escolha", rotulo: "Para quê?", rotuloCurto: "Objetivo", obrigatorio: true, minuscula: true, opcoes: ["Carreira", "Viagem", "Prova de proficiência", "Mudança de país"] }
     - { id: "nivel", tipo: "escolha", rotulo: "Qual é o seu nível hoje?", rotuloCurto: "Nível atual", obrigatorio: true, minuscula: true, opcoes: ["Nunca estudei", "Básico", "Intermediário", "Avançado", "Não sei"] }
-    - { id: "formato", tipo: "escolha", rotulo: "Presencial ou online?", rotuloCurto: "Formato", obrigatorio: true, minuscula: true, opcoes: ["Presencial", "Online"] }
-    - { id: "cidade", tipo: "escolha", rotulo: "Em que cidade?", rotuloCurto: "Cidade", obrigatorio: true, opcoes: ["São Paulo", "Rio de Janeiro", "Curitiba", "Brasília", "Outra"], mostrarSe: { campo: "formato", valores: ["presencial"] } }
-    - { id: "cidadeOutra", tipo: "texto", rotulo: "Qual cidade?", rotuloCurto: "Cidade", erro: "Escreva o nome da cidade.", obrigatorio: true, mostrarSe: { campo: "cidade", valores: ["outra"] }, autocomplete: "address-level2" }
 
 # O aviso das páginas de idioma que ainda não vão para o site. Só aparece no local e no preview, porque a
 # produção sai sem elas.
@@ -298,8 +308,8 @@ pendencia:
 rodape:
   # A frase que fecha o rodapé do site atual, em caixa normal.
   frase: "Seu próximo capítulo de sucesso começa agora."
-  pronuncia: "9vee, lê-se Novee [CONFIRMAR COM A DANIELLA: a pronúncia certa da marca]."
-  atendimento: "Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também online, de qualquer cidade."
+  pronuncia: "9vee, lê-se Novee."
+  atendimento: "Aulas online para todo o Brasil. Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília."
   tituloContato: "Contato"
   rotuloWhatsapp: "WhatsApp"
   tituloRedes: "A 9vee nas redes"

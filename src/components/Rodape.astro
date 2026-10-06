@@ -47,6 +47,13 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
       <p>
         <a href={`mailto:${contato.email}`}>{contato.email}</a>
       </p>
+      {/* O nome e o endereço como estão no Perfil da Empresa no Google. */}
+      <address class="rodape__endereco texto-secundario">
+        {marca.nomeComercial}<br />
+        {contato.endereco.rua}<br />
+        {contato.endereco.bairro}, {contato.endereco.cidade}, {contato.endereco.uf}<br />
+        {contato.endereco.cep}
+      </address>
       <p><a href={menu.quemSomos.href}>{menu.quemSomos.rotulo}</a></p>
     </div>
 
@@ -161,6 +168,10 @@ const { marca, contato, redes, menu, rodape } = Astro.props.site;
 
   .rodape__contato .rodape__rotulo {
     margin-block-end: var(--e-1);
+  }
+
+  .rodape__endereco {
+    font-style: normal;
   }
 
   .rodape__icones {

@@ -25,6 +25,7 @@ describe('cursos de idiomas', () => {
       'formatos',
       'como-comeca',
       'empresas',
+      'ingles-acessivel',
       'realocacao',
       'plataforma',
       'perguntas',
@@ -40,14 +41,18 @@ describe('cursos de idiomas', () => {
     ]);
   });
 
-  // A realocação e a ponte para o LMS são da empresa: ficam no bloco dela, e trocam de lugar junto com ele.
-  it('apresenta a realocação de funcionários e leva ao LMS dentro do bloco da empresa', () => {
+  // O Inglês Acessível, a realocação e a ponte para o LMS são de instituição e de empresa: ficam no bloco dela, e
+  // trocam de lugar junto com ele.
+  it('apresenta o Inglês Acessível e a realocação de funcionários, e leva ao LMS, dentro do bloco da empresa', () => {
     const daEmpresa = idiomas.querySelectorAll('.modalidades > *')[1];
     expect(daEmpresa.querySelectorAll('section').map((secao) => secao.getAttribute('id'))).toEqual([
       'empresas',
+      'ingles-acessivel',
       'realocacao',
       'plataforma',
     ]);
+    expect(textoDe(idiomas, '#ingles-acessivel')).toContain('faculdades e órgãos públicos');
+    expect(idiomas.querySelector('#ingles-acessivel [data-abre-contato]')?.getAttribute('data-servico')).toBe('idiomas');
     expect(textosDe(idiomas, '#realocacao .chamada__ponto')).toEqual([
       'Idioma',
       'Orientação sobre legislação',
@@ -156,12 +161,12 @@ describe('cursos de idiomas', () => {
     }
   });
 
-  // A aula presencial o site atual afirma: a pendência é só das cidades. A quantidade de idiomas tem dois números
-  // no site atual, o da lista e o da parte de empresas.
-  it('mostra como pendência o que o site atual não afirma', () => {
-    expect(textoDe(idiomas, '#formatos .cartoes__nota')).toMatch(/^Também há aula presencial/);
-    expect(idiomas.querySelector('#formatos mark.confirmar'), 'cidades da aula presencial').not.toBeNull();
-    expect(idiomas.querySelector('#idiomas mark.confirmar'), 'quantidade de idiomas').not.toBeNull();
-    expect(idiomas.querySelector('#empresas mark.confirmar'), 'os 12 idiomas da parte de empresas').not.toBeNull();
+  // Respondidas em 05/10/2026: a aula presencial só acontece dentro de empresas, em São Paulo e no Rio, e são 14
+  // idiomas, na lista e na parte de empresas. A página não tem mais pendência.
+  it('diz que a aula presencial é só na empresa, e conta 14 idiomas, sem pendência', () => {
+    expect(textoDe(idiomas, '#formatos .cartoes__nota')).toMatch(/^Aula presencial, só dentro de empresas, em São Paulo e no Rio de Janeiro/);
+    expect(textoDe(idiomas, '#idiomas')).toContain('São 14');
+    expect(textoDe(idiomas, '#empresas')).toContain('14 idiomas');
+    expect(idiomas.querySelector('main mark.confirmar')).toBeNull();
   });
 });

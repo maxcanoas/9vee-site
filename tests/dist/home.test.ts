@@ -106,10 +106,13 @@ describe('home', () => {
     expect(textoDe(home, '#contato')).toContain('Grandes resultados começam com uma boa conversa.');
   });
 
-  it('diz, em cada nota da faixa de números, com quem está a pendência', () => {
-    const notas = home.querySelectorAll('.prova__lista-notas li').map((nota) => nota.text.replace(/\s+/g, ' ').trim());
-    expect(notas.length).toBeGreaterThan(0);
-    for (const nota of notas) expect(nota).toMatch(/^com (a Daniella|o Arthur): \S/);
+  // Os cinco números que a Daniella confirmou em 05/10/2026: sem pendência, a faixa não tem a lista de notas.
+  it('mostra os números confirmados, sem pendência, um por coluna no computador', () => {
+    const itens = home.querySelectorAll('.prova__item').map((item) => item.text.replace(/\s+/g, ' ').trim());
+    expect(itens).toEqual(['16 anos de experiência', '14 idiomas', '+65 profissionais', '+60 clientes', '+20 empresas parceiras']);
+    expect(home.querySelector('.prova__notas')).toBeNull();
+    expect(home.querySelector('.prova__numero--pendente')).toBeNull();
+    expect(home.querySelector('.prova__lista')?.getAttribute('style')).toBe('--colunas: 5');
   });
 
   it('marca cada depoimento com a autorização a confirmar', () => {

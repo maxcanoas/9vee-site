@@ -1,12 +1,12 @@
 ---
 seo:
   titulo: "Quem somos | 9vee"
-  descricao: "A 9vee nasceu do sonho dos fundadores de mudar o jeito de aprender idiomas. Hoje ensina idiomas, leva intérpretes a eventos e treina equipes em todo o Brasil."
+  descricao: "A 9vee nasceu da paixão pela educação. De São Paulo, ensina idiomas, leva intérpretes a eventos e treina equipes, com um programa feito para cada cliente."
 
 hero:
   rotulo: "Sobre a 9vee"
   h1: "Quem somos"
-  apoio: "A 9vee ensina idiomas, leva intérpretes a eventos e treina equipes em saúde mental no trabalho. Atende comunidades, empresas e órgãos públicos em todo o Brasil."
+  apoio: "A 9vee ensina idiomas, leva intérpretes a eventos e treina equipes em saúde mental no trabalho. De São Paulo, atende comunidades, empresas e órgãos públicos em todo o Brasil."
   imagem:
     id: "IMG-QUEM-SOMOS-HERO"
     arquivo: "quem-somos-hero"
@@ -29,14 +29,15 @@ frentes:
       descricao: "A plataforma onde a equipe da empresa estuda a qualquer hora."
       href: "/lms/"
 
-# A história do site atual, sem a sede. O tempo de casa continua com a pendência: os números dizem 19 anos.
+# A história que a 9vee mandou em 05/10/2026 (pergunta 16), no lugar da do site atual. Os 16 anos são da trajetória
+# da equipe, que veio da empresa anterior, como os números da home. Nomes e cargos ficam de fora, a pedido dela.
 historia:
   titulo: "Como a 9vee começou"
   paragrafos:
-    - "A 9vee nasceu do sonho dos fundadores de mudar o jeito de aprender idiomas."
-    - "Desde o começo, ela junta educação e tecnologia. Virou uma empresa de educação com base tecnológica, por onde já passaram milhares de alunos."
-    - "São mais de 20 anos de mercado [CONFIRMAR COM A DANIELLA: ano de fundação. Os números dizem 19 anos e o Quem Somos atual diz mais de 20]. Hoje a 9vee atende comunidades, empresas e órgãos públicos em todo o Brasil."
-    - "No portfólio estão os cursos de idiomas e os serviços de tradução e interpretação, com metas claras e aplicação prática."
+    - "A 9vee nasceu da paixão pela educação e da vontade de transformar conhecimento em resultado para quem aprende."
+    - "Ela é formada por profissionais, especialistas e professores para quem a educação sempre foi mais do que uma profissão. Em 16 anos de trajetória, alunos e clientes reconheceram a qualidade, o cuidado e os resultados desse trabalho. Dessas experiências, e da percepção de que dava para fazer mais, surgiu a 9vee."
+    - "O propósito é levar educação de qualidade, personalizada e eficiente, ligada à necessidade de cada cliente. Não existe um formato único que sirva para todos: cada pessoa, empresa e projeto tem desafios, objetivos e contextos diferentes, e é isso que orienta cada serviço."
+    - "Hoje a 9vee junta experiência, conhecimento e tecnologia para montar cada curso, tradução e treinamento a partir do que o cliente precisa. O compromisso é o mesmo do começo: entregar qualidade e um trabalho que gere valor de verdade para quem aprende e para quem contrata."
   imagem:
     id: "IMG-QUEM-SOMOS-HISTORIA"
     arquivo: "quem-somos-historia"

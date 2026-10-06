@@ -107,13 +107,18 @@ describe('interpretação de mandarim', () => {
     expect(texto(CONFIRMACAO_DO_PEDIDO)).toContain('em até um dia útil');
   });
 
-  // Nas outras páginas o prazo continua na pergunta 6 da Daniella: o botão sai sem a nota, e a confirmação do
-  // pedido, com a pendência.
-  it('é a única página que promete um prazo', () => {
-    const comPrazo = carregarPaginas().filter(
-      ({ raiz }) => raiz.querySelector('.botao-com-nota') || !raiz.querySelector(`${CONFIRMACAO_DO_PEDIDO} mark.confirmar`),
-    );
-    expect(comPrazo.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
+  // Nas outras páginas o prazo da pergunta 6, respondida em 05/10/2026, fica só na confirmação do pedido: o botão
+  // sai sem a nota.
+  it('é a única página que promete o prazo abaixo dos botões', () => {
+    const paginas = carregarPaginas();
+    const comNota = paginas.filter(({ raiz }) => raiz.querySelector('.botao-com-nota'));
+    expect(comNota.map(({ rota }) => rota)).toEqual([INTERPRETACAO_DE_MANDARIM]);
+    for (const { rota, raiz } of paginas.filter(({ rota }) => rota !== INTERPRETACAO_DE_MANDARIM)) {
+      const confirmacao = raiz.querySelector(CONFIRMACAO_DO_PEDIDO);
+      if (!confirmacao) continue;
+      expect(confirmacao.text, rota).toContain('A proposta costuma sair no mesmo dia.');
+      expect(confirmacao.querySelector('mark.confirmar'), rota).toBeNull();
+    }
   });
 
   it('abre o pedido com a tradução simultânea, no começo e no fim', () => {

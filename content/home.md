@@ -9,7 +9,7 @@ hero:
   apoio:
     neutro: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
     empresa: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
-    voce: "Do inglês ao japonês, com aula particular ou online e preparação para TOEFL, DELE, DELF e CELPE-Bras."
+    voce: "Do inglês ao japonês, em aula online particular ou em grupo, com preparação para TOEFL, IELTS, DELE, DELF e CELPE-Bras."
   legendaPublico: "É para sua empresa ou para você?"
   opcoes:
     empresa: "Para sua empresa"
@@ -27,24 +27,25 @@ hero:
     arquivo: "home-hero-frente-voce"
     alt: "Aluna de fone de ouvido, sorrindo enquanto fala numa aula de idioma online."
 
+# Os números que a Daniella confirmou em 05/10/2026 (perguntas 2 a 4). A 9vee de hoje é deste ano, e os 16 anos
+# são da trajetória da equipe, que veio da empresa anterior: por isso "de experiência", e não "de empresa".
 prova:
   titulo: "A 9vee em números"
   itens:
-    - valor: 19
-      rotulo: "anos de empresa"
-      pendencia: "[CONFIRMAR COM A DANIELLA: ano de fundação. O site diz 19 anos nos números e mais de 20 no Quem Somos]"
+    - valor: 16
+      rotulo: "anos de experiência"
     - valor: 14
       rotulo: "idiomas"
-      pendencia: "[CONFIRMAR COM A DANIELLA: quantidade de idiomas. A home diz 14 e a página de cursos diz inglês e mais 11]"
     - valor: 65
       prefixo: "+"
       rotulo: "profissionais"
-      pendencia: "[CONFIRMAR COM A DANIELLA: quantos profissionais são hoje, entre professores, intérpretes e equipe]"
-    - valor: 160
+    - valor: 60
       prefixo: "+"
       rotulo: "clientes"
-      pendencia: "[CONFIRMAR COM A DANIELLA: quantos clientes, contando empresas e alunos]"
-  aviso: "Números do site atual"
+    - valor: 20
+      prefixo: "+"
+      rotulo: "empresas parceiras"
+  aviso: "Números a confirmar"
 
 servicos:
   titulo: "O que a 9vee faz"
@@ -52,7 +53,7 @@ servicos:
     - id: "idiomas"
       titulo: "Cursos de idiomas"
       publico: "Para você e para empresas"
-      texto: "Aula particular, online ou para a equipe inteira, com preparação para TOEFL, DELE, DELF e CELPE-Bras."
+      texto: "Aula online, particular ou em grupo, e turmas na empresa, com preparação para TOEFL, DELE, DELF e CELPE-Bras."
       link: { rotulo: "Ver os cursos de idiomas", href: "/curso-de-idiomas/" }
     - id: "traducao"
       titulo: "Tradução simultânea"
@@ -97,7 +98,7 @@ como:
         arquivo: "home-como-2"
         alt: "Professora ouvindo um aluno adulto numa sala clara, com um caderno aberto na mesa."
     - titulo: "Você recebe a proposta"
-      texto: "Com formato e valor [CONFIRMAR COM A DANIELLA: em quanto tempo a proposta costuma sair]."
+      texto: "Com formato e valor, quase sempre no mesmo dia. Pedido que chega no fim do dia tem resposta no dia seguinte."
       imagem:
         id: "IMG-HOME-COMO-3"
         arquivo: "home-como-3"
@@ -143,13 +144,13 @@ faq:
   titulo: "Perguntas antes de contratar"
   itens:
     - pergunta: "Vocês atendem fora de São Paulo?"
-      resposta: "Sim. A tradução simultânea tem atendimento presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília. Aulas e treinamentos também podem ser online, de qualquer cidade."
+      resposta: "Sim. As aulas são online, de qualquer cidade, e o treinamento de NR-1 vai até a empresa em todo o Brasil. A tradução simultânea é presencial em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília, e em outras cidades com intérpretes de lá."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e do tamanho do grupo [CONFIRMAR COM A DANIELLA: uma faixa de preço por serviço, para dar um ponto de partida aqui]. Com as respostas do formulário, a equipe já fala de valor no primeiro contato [CONFIRMAR COM A DANIELLA: se o comercial responde com valor já no primeiro contato]."
+      resposta: "Depende do serviço, do formato e do tamanho do grupo. Tradução, NR-1 e turmas maiores têm orçamento próprio, combinado com você. O pedido já leva as suas respostas, e a proposta costuma sair no mesmo dia."
     - pergunta: "O treinamento de NR-1 deixa a empresa em dia com a norma?"
       resposta: "Ele cobre uma parte: a capacitação sobre riscos psicossociais e o plano de ação do último módulo. A avaliação dos riscos no PGR continua com a empresa e o SESMT. [Veja o que o treinamento entrega](/treinamento-nr-1/#o-que-recebe)."
     - pergunta: "As aulas são para empresa ou para pessoa física?"
-      resposta: "Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula particular e online, e preparação para provas como TOEFL e DELE."
+      resposta: "Para os dois. Empresas contratam turmas, aula individual para executivos e o LMS. Para você, há aula online, particular ou em grupo, e preparação para provas como TOEFL e DELE."
     - pergunta: "Quem são os intérpretes?"
       resposta: "Profissionais formados em centros especializados, com experiência em áreas como engenharia, medicina, tecnologia e negócios internacionais."
 

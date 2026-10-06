@@ -14,13 +14,22 @@ export function organizacao(site: DadosDoSite, base: URL) {
     '@type': 'EducationalOrganization',
     '@id': new URL('/#organizacao', base).href,
     name: site.marca.nome,
-    alternateName: site.marca.nomeAlternativo,
+    alternateName: [site.marca.nomeAlternativo, site.marca.nomeComercial],
+    legalName: site.marca.razaoSocial,
     description: textoPuro(site.marca.resumo),
     url: new URL('/', base).href,
     logo: new URL('/logo-9vee.png', base).href,
     email: site.contato.email,
     telephone: telefone,
-    // Sem endereço: a 9vee não tem sede aberta ao público. A área atendida diz onde ela trabalha.
+    // O endereço do Perfil da Empresa no Google, igual a ele. A área atendida diz onde ela trabalha.
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: `${site.contato.endereco.rua}, ${site.contato.endereco.bairro}`,
+      addressLocality: site.contato.endereco.cidade,
+      addressRegion: site.contato.endereco.uf,
+      postalCode: site.contato.endereco.cep,
+      addressCountry: 'BR',
+    },
     areaServed: [
       ...site.cidades.map((cidade) => ({ '@type': 'City', name: cidade })),
       { '@type': 'Country', name: 'Brasil' },

@@ -79,12 +79,27 @@ describe('treinamento de NR-1', () => {
     conferirServico(nr1, { nome: 'Treinamento de NR-1', caminho: '/treinamento-nr-1/' });
   });
 
-  it('mostra as pendências do NR-1 como etiqueta, e não como texto cru', () => {
-    const etiquetas = nr1.querySelectorAll('main mark.confirmar');
-    expect(etiquetas.length).toBeGreaterThanOrEqual(5);
-    for (const secao of ['#formato', '#o-que-recebe']) {
-      expect(nr1.querySelector(`${secao} mark.confirmar`), `sem pendência em ${secao}`).not.toBeNull();
+  // O formato, a carga horária e a turma foram respondidos em 05/10/2026 (perguntas 9 a 11). Seguem como pendência
+  // o plano de ação, o comprovante, a turma inteira e o regulamento da Lei 14.831, que ainda não foram à 9vee.
+  it('mostra as pendências que restam como etiqueta, e não como texto cru', () => {
+    expect(nr1.querySelector('#formato mark.confirmar')).toBeNull();
+    expect(nr1.querySelectorAll('#o-que-recebe mark.confirmar')).toHaveLength(2);
+    expect(nr1.querySelectorAll('main mark.confirmar')).toHaveLength(4);
+  });
+
+  it('descreve os dois treinamentos e o presencial em todo o Brasil', () => {
+    const formato = nr1.querySelectorAll('#formato dt').map((dt) => dt.text.trim());
+    expect(formato).toEqual(['Como acontece', 'Workshop normativo', 'Curso formativo']);
+    const texto = nr1.querySelector('#formato')?.text.replace(/\s+/g, ' ') ?? '';
+    for (const fato of ['em qualquer cidade do Brasil', 'para até 70 pessoas', 'Cerca de 9 horas', 'Até 35 pessoas']) {
+      expect(texto, fato).toContain(fato);
     }
+  });
+
+  it('cita o Sicredi no FAQ, sem logo', () => {
+    const faq = nr1.querySelector('.faq')?.text.replace(/\s+/g, ' ') ?? '';
+    expect(faq).toContain('O Sicredi fez com a 9vee um programa de capacitação para gerentes de agência');
+    expect(nr1.querySelector('.faq svg[aria-label*="Sicredi"], .faq img[alt*="Sicredi"]')).toBeNull();
   });
 
   it('traz a figura do hero com o texto alternativo definitivo', () => {

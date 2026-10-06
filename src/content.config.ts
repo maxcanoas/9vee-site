@@ -66,12 +66,23 @@ const site = defineCollection({
     marca: z.object({
       nome: z.literal('9vee'),
       nomeAlternativo: z.string(),
+      // O nome do Perfil da Empresa no Google, que o rodapé mostra junto do endereço, e a razão social.
+      nomeComercial: z.string(),
+      razaoSocial: z.string(),
       resumo: z.string(),
     }),
     contato: z.object({
       whatsapp: z.string().regex(/^55\d{10,11}$/),
       whatsappExibicao: z.string(),
       email: z.email(),
+      // O endereço do Perfil da Empresa no Google, escrito igual a ele.
+      endereco: z.object({
+        rua: z.string(),
+        bairro: z.string(),
+        cidade: z.string(),
+        uf: z.string().regex(/^[A-Z]{2}$/),
+        cep: z.string().regex(/^\d{5}-\d{3}$/),
+      }),
     }),
     cidades: z.array(z.string()).min(1),
     familias: z.array(z.object({ id: z.string(), nome: z.string(), descricao: z.string() })).min(1),
@@ -466,6 +477,8 @@ const idiomas = defineCollection({
     }),
     // A realocação de funcionários, que a página de português para estrangeiros também mostra, e a ponte para o LMS.
     realocacao: tituloETexto.extend({ pontos: z.array(z.string()).min(2) }),
+    // O programa de inglês para faculdades e órgãos públicos, com o botão do pedido.
+    inglesAcessivel: tituloETexto.extend({ cta: z.string() }),
     lms: tituloETexto.extend({ link }),
     como: z.object({
       titulo: z.string(),
@@ -573,8 +586,8 @@ const lms = defineCollection({
   }),
 });
 
-// A Tradução Simultânea com o que o site atual diz dos três formatos, do equipamento, dos idiomas e das cidades.
-// O que só existe no Canva (a remota, os idiomas a mais, o revezamento e os casos) entra com pendência.
+// A Tradução Simultânea com o que o site atual diz dos três formatos, do equipamento, dos idiomas e das cidades, e
+// com o que a 9vee confirmou em 05/10/2026: a remota, os 12 idiomas, o revezamento da ABRATES e os clientes citáveis.
 const traducao = defineCollection({
   loader: glob({ pattern: 'traducao-simultanea.md', base: conteudo }),
   schema: z.object({
@@ -638,8 +651,8 @@ const interpretacaoDeMandarim = defineCollection({
   }),
 });
 
-// O Quem Somos com o que o site atual conta: a história, a missão e os três princípios. Sem sede: a 9vee não tem
-// endereço aberto ao público. Os números que a página mostra são os da home.
+// O Quem Somos com a história que a 9vee mandou e, do site atual, a missão e os três princípios. O endereço do
+// Perfil da Empresa no Google fica no rodapé. Os números que a página mostra são os da home.
 const quemSomos = defineCollection({
   loader: glob({ pattern: 'quem-somos.md', base: conteudo }),
   schema: z.object({

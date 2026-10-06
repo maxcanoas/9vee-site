@@ -122,18 +122,28 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     conferirEnderecos({ arquivo, rota, html, raiz });
   });
 
-  it('descreve a organização em JSON-LD, com Novee como nome alternativo', () => {
+  it('descreve a organização em JSON-LD, com Novee e o nome do Perfil no Google como nomes alternativos', () => {
     const organizacao = jsonLd(raiz).find((no) => no['@type'] === 'EducationalOrganization');
     expect(organizacao).toBeDefined();
     expect(organizacao?.name).toBe('9vee');
-    expect(organizacao?.alternateName).toBe('Novee');
+    expect(organizacao?.alternateName).toEqual(['Novee', 'Novee Learning Solutions']);
+    expect(organizacao?.legalName).toBe('CLOUD9 LEARNING LTDA');
   });
 
-  // A 9vee não tem sede aberta ao público: a área atendida, o contato e as redes dizem onde encontrá-la.
-  it('não dá endereço à organização, e diz onde ela atende e como falar com ela', () => {
-    const nos = jsonLd(raiz);
-    const organizacao = nos.find((no) => no['@type'] === 'EducationalOrganization');
-    expect(JSON.stringify(nos)).not.toMatch(/PostalAddress|LocalBusiness|"address"/);
+  // O endereço é o do Perfil da Empresa no Google, escrito igual a ele, como o rodapé mostra.
+  it('dá à organização o endereço do Perfil no Google, e diz onde ela atende e como falar com ela', () => {
+    const organizacao = jsonLd(raiz).find((no) => no['@type'] === 'EducationalOrganization');
+    expect(organizacao?.address).toEqual({
+      '@type': 'PostalAddress',
+      streetAddress: 'R. Dona Teresa Margarida, 66, Vila Clementino',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      postalCode: '04037-040',
+      addressCountry: 'BR',
+    });
+    const rodape = raiz.querySelector('footer address')?.text.replace(/\s+/g, ' ');
+    expect(rodape).toContain('Novee Learning Solutions');
+    expect(rodape).toContain('R. Dona Teresa Margarida, 66');
     expect(organizacao?.areaServed).toContainEqual({ '@type': 'Country', name: 'Brasil' });
     expect(organizacao?.contactPoint).toMatchObject({ '@type': 'ContactPoint', email: expect.stringContaining('@') });
     expect(organizacao?.sameAs).toEqual(expect.arrayContaining([expect.stringMatching(/^https:\/\//)]));
@@ -231,10 +241,12 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
-  it('escreve "Novee" só uma vez, no rodapé', () => {
+  // A marca é 9vee. O Novee aparece só no rodapé: na pronúncia e no nome do Perfil da Empresa no Google.
+  it('escreve "Novee" só no rodapé', () => {
+    const rodape = raiz.querySelector('footer');
     const texto = textoVisivel(raiz);
-    expect(texto.match(/Novee/g)).toHaveLength(1);
-    expect(raiz.querySelector('footer')?.text).toContain('Novee');
+    expect(texto.match(/Novee/g)).toHaveLength(2);
+    expect(rodape?.text.match(/Novee/g)).toHaveLength(2);
   });
 
   it('não deixa marcador de pendência cru', () => {

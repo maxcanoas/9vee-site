@@ -74,11 +74,25 @@ describe('tradução simultânea', () => {
     ]);
   });
 
-  it('lista os sete idiomas com intérprete e as quatro cidades do atendimento presencial', () => {
+  // A lista de hoje, da pergunta 24, respondida em 05/10/2026: sai o crioulo haitiano e entram cinco, com a Libras.
+  it('lista os 12 idiomas com intérprete e as quatro cidades do atendimento presencial', () => {
     const [idiomas, cidades] = traducao
       .querySelectorAll('#idiomas-e-cidades ul')
       .map((lista) => lista.querySelectorAll('li').map((item) => item.text.trim()));
-    expect(idiomas).toEqual(['Inglês', 'Espanhol', 'Mandarim', 'Francês', 'Italiano', 'Crioulo haitiano', 'Coreano']);
+    expect(idiomas).toEqual([
+      'Inglês',
+      'Espanhol',
+      'Mandarim',
+      'Cantonês',
+      'Francês',
+      'Italiano',
+      'Alemão',
+      'Holandês',
+      'Japonês',
+      'Coreano',
+      'Árabe',
+      'Libras',
+    ]);
     expect(cidades).toEqual(['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Brasília']);
   });
 
@@ -99,13 +113,13 @@ describe('tradução simultânea', () => {
     }
   });
 
-  // O que só existe no material do Canva entra com pendência (perguntas 16, 17, 33 e 34), e o prazo de resposta
-  // continua na pergunta 6. O resto da página é fato do site atual.
-  it('marca como pendência só o que veio do Canva e o prazo de resposta', () => {
-    const pendencias = traducao.querySelectorAll('main mark.confirmar').map((marca) => marca.getAttribute('title') ?? '');
-    expect(pendencias).toHaveLength(5);
-    for (const assunto of [/Libras/, /Zoom/, /revezamento/, /trabalhos de interpretação/, /prazo de resposta/]) {
-      expect(pendencias.some((pendencia) => assunto.test(pendencia)), String(assunto)).toBe(true);
+  // As cinco pendências da página (o revezamento, os clientes, os idiomas, a remota e o prazo) foram respondidas em
+  // 05/10/2026. A regra do revezamento é a da ABRATES, que a 9vee precisa dizer que segue.
+  it('responde o que era pendência: o revezamento da ABRATES, a remota, o prazo e o equipamento de parceiros', () => {
+    expect(traducao.querySelector('main mark.confirmar')).toBeNull();
+    const pagina = texto('main');
+    for (const fato of ['regra da ABRATES', 'pelo Zoom', 'no mesmo dia', 'fornecido por empresas parceiras', 'busca intérpretes de lá']) {
+      expect(pagina, fato).toContain(fato);
     }
   });
 
@@ -195,26 +209,25 @@ describe('tradução simultânea', () => {
     });
   });
 
-  // "Tecnologia de ponta" só aparece na descrição do Google do site atual. Os nomes de empresa esperam a
-  // autorização de cada uma (pergunta 17).
-  it('deixa fora "tecnologia de ponta" e os nomes de empresa cliente', () => {
+  // "Tecnologia de ponta" só aparece na descrição do Google do site atual. Dos clientes de interpretação, a 9vee
+  // liberou só a TOTVS e a Array (pergunta 14 enviada, respondida em 05/10/2026), e nenhum logo.
+  it('cita só a TOTVS e a Array entre os clientes, sem logo, e deixa fora "tecnologia de ponta"', () => {
     const pagina = [texto('main'), traducao.querySelector('meta[name="description"]')?.getAttribute('content')].join(' ');
-    for (const fora of [/tecnologia de ponta/i, /Ita[uú]/, /Santander/i, /TOTVS/i, /Unicef/i, /(?<!\p{L})Array(?!\p{L})/u]) {
+    for (const fora of [/tecnologia de ponta/i, /Ita[uú]/, /Santander/i, /Unicef/i]) {
       expect(pagina, String(fora)).not.toMatch(fora);
     }
+    expect(texto('#interpretes')).toContain('TOTVS e Array');
+    expect(traducao.querySelector('#interpretes svg, #interpretes img')).toBeNull();
   });
 
   it('descreve o serviço em JSON-LD, ligado à organização', () => {
     conferirServico(traducao, { nome: 'Tradução simultânea', caminho: '/traducao-simultanea/' });
   });
 
-  // O site atual só afirma o atendimento presencial nas quatro cidades, e a remota é pendência: o serviço não
-  // promete o país inteiro ao Google.
-  it('diz ao Google que o serviço atende as quatro cidades, e não o país', () => {
+  // Com a remota e os intérpretes que a 9vee busca na cidade do evento, o serviço atende o país (perguntas 15 e 25).
+  it('diz ao Google que o serviço atende o país', () => {
     const servico = jsonLd(traducao).find((no) => no['@type'] === 'Service');
-    expect(servico?.areaServed).toEqual(
-      ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Brasília'].map((cidade) => ({ '@type': 'City', name: cidade })),
-    );
+    expect(servico?.areaServed).toEqual({ '@type': 'Country', name: 'Brasil' });
   });
 
   it('traz as duas figuras em arco, com o texto alternativo definitivo', () => {

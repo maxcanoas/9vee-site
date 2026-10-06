@@ -42,18 +42,18 @@ describe('Quem Somos', () => {
     ]);
   });
 
-  it('conta a história do site atual: o sonho dos fundadores, a tecnologia, os alunos e quem a 9vee atende', () => {
+  // A história que a 9vee mandou em 05/10/2026, no lugar da do site atual, com os 16 anos dos números.
+  it('conta a história que a 9vee mandou, com os 16 anos de trajetória e sem pendência', () => {
     const historia = texto('#historia');
-    for (const fato of ['sonho dos fundadores', 'educação e tecnologia', 'milhares de alunos', 'comunidades, empresas e órgãos públicos', 'tradução e interpretação']) {
+    for (const fato of ['paixão pela educação', 'profissionais, especialistas e professores', '16 anos de trajetória', 'Não existe um formato único']) {
       expect(historia).toContain(fato);
     }
+    expect(historia).not.toMatch(/sonho dos fundadores|milhares de alunos|mais de 20 anos/);
+    expect(pagina.querySelector('main mark.confirmar')).toBeNull();
   });
 
-  // O site atual se contradiz: 19 anos nos números e mais de 20 no texto. A pendência continua.
-  it('mantém a pendência do tempo de casa', () => {
-    const pendencias = pagina.querySelectorAll('#historia mark.confirmar').map((marca) => marca.getAttribute('title') ?? '');
-    expect(pendencias).toHaveLength(1);
-    expect(pendencias[0]).toMatch(/ano de fundação/);
+  it('diz de onde a 9vee atende, no topo', () => {
+    expect(texto('.hero-pagina')).toContain('De São Paulo, atende comunidades, empresas e órgãos públicos em todo o Brasil');
   });
 
   it('põe a missão em destaque, com o grifo em "confiança e ação"', () => {
@@ -68,7 +68,7 @@ describe('Quem Somos', () => {
     }
   });
 
-  // Os nomes de clientes e as pessoas à frente da empresa esperam as perguntas 17 e 22.
+  // As pessoas à frente da empresa ficam de fora, a pedido da 9vee (pergunta 16).
   it('abre o pedido no começo e no fim, sem serviço marcado', () => {
     for (const onde of ['.hero-pagina', '#contato']) {
       const botao = pagina.querySelector(`${onde} [data-abre-contato]`);

@@ -1,7 +1,7 @@
 ---
 seo:
   titulo: "Tradução simultânea para eventos e reuniões | 9vee"
-  descricao: "Intérpretes de inglês, espanhol, mandarim, francês, italiano, crioulo haitiano e coreano para congressos e reuniões. Presencial em SP, RJ, Curitiba e Brasília."
+  descricao: "Intérpretes de inglês, espanhol, mandarim, Libras e mais oito idiomas para congressos, reuniões e visitas. Presencial em SP, RJ, Curitiba e Brasília."
 
 # Dados estruturados: o tipo do Service que o Google lê nesta página.
 servico:
@@ -10,7 +10,7 @@ servico:
 hero:
   rotulo: "Para quem organiza congresso, reunião ou visita"
   h1: "Tradução simultânea para eventos e reuniões"
-  apoio: "Intérpretes em sete idiomas, com cabine e sistema de áudio no congresso ou ao lado do executivo na reunião."
+  apoio: "Intérpretes em 12 idiomas, com cabine e sistema de áudio no congresso ou ao lado do executivo na reunião."
   cta: "Pedir orçamento de tradução"
   imagem:
     id: "IMG-TRADUCAO-HERO"
@@ -40,7 +40,7 @@ comoFunciona:
   paragrafos:
     - "A tradução acontece em tempo real, sem interrupção, com intérpretes profissionais e equipamento especializado. Sem parar para traduzir, o evento, a conferência ou a reunião internacional ganha ritmo."
     - "O intérprete domina os idiomas e também a terminologia do assunto, seja um evento corporativo, uma conferência ou uma reunião técnica."
-    - "A 9vee usa equipamento profissional de interpretação, como cabines acústicas e sistemas de áudio dedicados. O público acompanha a tradução ao mesmo tempo que a fala, com conforto."
+    - "A 9vee usa equipamento profissional de interpretação, como cabines acústicas e sistemas de áudio e de transmissão, fornecido por empresas parceiras. O público acompanha a tradução ao mesmo tempo que a fala, com conforto."
   imagem:
     id: "IMG-TRADUCAO-COMO"
     arquivo: "traducao-como"
@@ -59,24 +59,30 @@ eventos:
   nota: "Ela serve ao evento grande e à reunião estratégica com pessoas de várias nacionalidades."
   cta: "Pedir orçamento de tradução"
 
-# Os idiomas são os do pedido de tradução (formularios.traducao, em content/site.md), menos o "Outro". As cidades
-# vêm da lista de cidades de content/site.md: aqui fica só o rótulo delas.
+# Os idiomas são os do pedido de tradução (formularios.traducao, em content/site.md), menos o "Outro": a lista de
+# hoje, da pergunta 24, respondida em 05/10/2026. As cidades vêm da lista de cidades de content/site.md: aqui fica só
+# o rótulo delas. Os intérpretes são da cidade do evento (pergunta 15).
 atendimento:
-  titulo: "Sete idiomas, quatro cidades"
-  apoio: "Os intérpretes da 9vee trabalham com o inglês e mais seis idiomas. O atendimento presencial é em quatro cidades."
+  titulo: "12 idiomas, quatro cidades"
+  apoio: "Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinais ao cantonês. O atendimento presencial é em quatro cidades, com intérpretes que moram nelas."
   idiomas:
     rotulo: "Idiomas"
     itens:
       - "Inglês"
       - "Espanhol"
       - "Mandarim"
+      - "Cantonês"
       - "Francês"
       - "Italiano"
-      - "Crioulo haitiano"
+      - "Alemão"
+      - "Holandês"
+      - "Japonês"
       - "Coreano"
+      - "Árabe"
+      - "Libras"
   cidades:
     rotulo: "Atendimento presencial"
-  nota: "Também há intérpretes de árabe, de Libras e de ASL [CONFIRMAR COM A DANIELLA: se a 9vee tem hoje intérpretes de árabe, de Libras e de ASL]. Se o seu evento pede outro idioma, diga no pedido."
+  nota: "Em outra cidade, a 9vee busca intérpretes de lá. No interior, perto de uma capital, o intérprete pode ir até o evento. Se o seu evento pede outro idioma, diga no pedido."
 
 interpretes:
   titulo: "Quem são os intérpretes"
@@ -88,8 +94,8 @@ interpretes:
       texto: "Administração, engenharia, medicina, vendas, tecnologia e negócios internacionais. A terminologia e o contexto de cada área chegam certos ao outro idioma."
     - nome: "Onde atuam"
       texto: "Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa, com discrição e profissionalismo."
-    - nome: "Casos atendidos"
-      texto: "[CONFIRMAR COM A DANIELLA: quais trabalhos de interpretação posso citar, e de quais empresas, com a autorização de cada uma]"
+    - nome: "Quem já contratou"
+      texto: "TOTVS e Array estão entre as empresas que já contrataram os intérpretes da 9vee."
 
 # O bloco curto que apresenta a interpretação de mandarim e leva à página dela.
 mandarim:
@@ -105,19 +111,19 @@ faq:
     - pergunta: "Simultânea ou consecutiva: qual eu peço?"
       resposta: "A simultânea, quando o evento não pode parar: o intérprete traduz enquanto a pessoa fala. A consecutiva, quando cabe uma pausa a cada trecho, como em reunião, negociação e entrevista."
     - pergunta: "Que equipamento a simultânea usa?"
-      resposta: "Equipamento profissional de interpretação, como cabines acústicas e sistemas de áudio dedicados. É com ele que o público ouve a tradução enquanto a pessoa fala."
+      resposta: "Equipamento profissional de interpretação, como cabines acústicas e sistemas de áudio e de transmissão. Ele vem de empresas parceiras da 9vee, e é com ele que o público ouve a tradução enquanto a pessoa fala."
     - pergunta: "Em que idiomas há intérprete?"
-      resposta: "Em inglês, espanhol, mandarim, francês, italiano, crioulo haitiano e coreano. O pedido tem a opção \"Outro\", para o idioma que não está na lista."
+      resposta: "Em inglês, espanhol, mandarim, cantonês, francês, italiano, alemão, holandês, japonês, coreano, árabe e Libras. O pedido tem a opção \"Outro\", para o idioma que não está na lista."
     - pergunta: "Em que cidades a 9vee atende?"
-      resposta: "O atendimento presencial é em São Paulo, Rio de Janeiro, Curitiba e Brasília."
+      resposta: "O atendimento presencial é em São Paulo, Rio de Janeiro, Curitiba e Brasília, com intérpretes de cada cidade. Em outra cidade, a 9vee busca intérpretes de lá."
     - pergunta: "Dá para fazer a interpretação a distância?"
-      resposta: "Dá, pelo Zoom, com um canal de áudio para cada idioma, ou por telefone [CONFIRMAR COM A DANIELLA: se a 9vee oferece interpretação remota pelo Zoom e por telefone]."
+      resposta: "Dá, pelo Zoom, com um canal de áudio para cada idioma, ou por telefone."
     - pergunta: "Quantos intérpretes o meu evento precisa?"
-      resposta: "Depende da duração. Um intérprete trabalha até 1 hora seguida; acima disso, entram dois, que se alternam [CONFIRMAR COM A DANIELLA: se a regra do revezamento dos intérpretes é essa]. Por isso o pedido pergunta quanto tempo o evento dura."
+      resposta: "Depende da duração. A 9vee segue a regra da ABRATES, a Associação Brasileira de Tradutores e Intérpretes: um intérprete trabalha até 1 hora seguida, e acima disso entram dois, que se alternam. Por isso o pedido pergunta quanto tempo o evento dura."
     - pergunta: "Os intérpretes trabalham com discrição?"
       resposta: "Sim. Eles atuam em reuniões, negociações e encontros de alto nível, com discrição e profissionalismo."
     - pergunta: "Em quanto tempo a 9vee responde o pedido?"
-      resposta: "A equipe da 9vee responde o pedido [CONFIRMAR COM A DANIELLA: prazo de resposta do comercial]. Ele já vai com a data, os idiomas, a duração e a cidade do evento."
+      resposta: "A proposta costuma sair no mesmo dia, porque o pedido já vai com a data, os idiomas, a duração e a cidade do evento. Se ele chega no fim do dia, a resposta sai no dia seguinte."
 
 ctaFinal:
   titulo: "Conte como é o seu evento."

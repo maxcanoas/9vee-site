@@ -26,7 +26,8 @@ const notas = itens.flatMap((item) =>
 <section class="prova" aria-labelledby="prova-titulo">
   <div class="conteiner">
     <h2 id="prova-titulo" class="visualmente-oculto">{titulo}</h2>
-    <ul class="prova__lista" role="list">
+    {/* Uma coluna por número no computador: a faixa cabe numa linha só, com quatro ou cinco números. */}
+    <ul class="prova__lista" role="list" style={`--colunas: ${itens.length}`}>
       {
         itens.map((item) => (
           <li class="prova__item">
@@ -67,7 +68,9 @@ const notas = itens.flatMap((item) =>
     border-block-end: 1px solid var(--linha);
   }
 
+  /* A lista é a medida dos números no computador (veja a regra no fim). */
   .prova__lista {
+    container-type: inline-size;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--e-5) var(--e-4);
@@ -81,10 +84,16 @@ const notas = itens.flatMap((item) =>
     align-content: start;
   }
 
+  /* No celular, com um número a mais nas duas colunas, o último fica com a linha inteira, e não sozinho na metade. */
+  .prova__item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
   .prova__numero {
     justify-self: start;
     font-family: var(--fonte-titulo);
     font-size: var(--t-numero);
+    white-space: nowrap;
     font-weight: 600;
     line-height: 1;
     letter-spacing: var(--rastreio-titulo);
@@ -149,7 +158,17 @@ const notas = itens.flatMap((item) =>
 
   @media (min-width: 48rem) {
     .prova__lista {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(var(--colunas), minmax(0, 1fr));
+    }
+
+    /* Com cinco colunas num tablet, o número diminui junto com a faixa, para o "+" não quebrar a linha. Todos ficam
+       do mesmo tamanho, porque a medida é a lista, e não a coluna de cada um. */
+    .prova__numero {
+      font-size: min(var(--t-numero), calc(28cqi / var(--colunas)));
+    }
+
+    .prova__item:last-child:nth-child(odd) {
+      grid-column: auto;
     }
 
     .prova__item + .prova__item {

@@ -93,16 +93,18 @@ beneficios:
         - "Prevenção do estresse crônico, da ansiedade e do burnout"
         - "Cultura de cuidado, diálogo e responsabilidade compartilhada"
 
+# Os dois treinamentos que a 9vee tem, um mais curto e focado na norma, outro mais longo e formativo, e o presencial
+# em todo o Brasil (perguntas 9 a 11, respondidas em 05/10/2026). A turma mínima não veio na resposta.
 formato:
   titulo: "Formato e carga horária"
   itens:
     - rotulo: "Como acontece"
-      valor: "Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa [CONFIRMAR COM A DANIELLA: se o treinamento também é presencial e em que cidades]."
-    - rotulo: "Carga horária"
-      valor: "[CONFIRMAR COM A DANIELLA: carga horária total do treinamento e em quantos encontros ela é dividida]"
-    - rotulo: "Turma"
-      valor: "[CONFIRMAR COM A DANIELLA: mínimo e máximo de pessoas por turma]"
-  texto: "Conte quantas pessoas são e qual é o prazo da sua empresa. O formulário leva as respostas junto com o pedido."
+      valor: "Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e já atende empresas de outros estados."
+    - rotulo: "Workshop normativo"
+      valor: "O mais curto, com foco no que a norma pede. Uma ou duas sessões, para até 70 pessoas."
+    - rotulo: "Curso formativo"
+      valor: "O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30, como for melhor para a empresa. Até 35 pessoas por turma."
+  texto: "São dois treinamentos, um mais curto e um mais longo. Conte quantas pessoas são e qual é o prazo da sua empresa: o formulário leva as respostas junto com o pedido."
   cta: "Pedir orçamento do treinamento"
 
 abordagem:
@@ -125,12 +127,14 @@ faq:
       resposta: "Não sozinho. Ele cobre a capacitação sobre riscos psicossociais e termina com um plano de ação. A avaliação dos riscos e o PGR continuam com a empresa e o SESMT."
     - pergunta: "Quem precisa participar?"
       resposta: "RH, SESMT e quem responde por equipe. O módulo 2 é escrito para quem chefia [CONFIRMAR COM A DANIELLA: se a 9vee também faz turma com a equipe inteira, e não só com a liderança]."
+    - pergunta: "Vocês já fizeram esse treinamento em alguma empresa?"
+      resposta: "Sim. O Sicredi fez com a 9vee um programa de capacitação para gerentes de agência, em dois workshops."
     - pergunta: "Já temos um programa de saúde mental. O treinamento serve?"
       resposta: "Serve. O formulário pergunta isso logo no começo, para a equipe saber o que já existe antes de montar a turma."
     - pergunta: "E se a empresa nunca falou do assunto com a equipe?"
       resposta: "O primeiro módulo começa do começo: conceito e marco legal, antes de qualquer exercício. Ninguém precisa chegar sabendo."
     - pergunta: "Quanto custa?"
-      resposta: "Depende do formato e do tamanho da turma [CONFIRMAR COM A DANIELLA: uma faixa de preço do treinamento de NR-1, para dar um ponto de partida aqui]. O pedido desta página já vai com o tamanho da empresa e o prazo."
+      resposta: "Depende do formato e do tamanho da turma, e o orçamento é montado para a sua empresa. O pedido desta página já vai com o tamanho da empresa e o prazo, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Conte como está a sua empresa."
