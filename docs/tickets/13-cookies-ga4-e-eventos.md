@@ -6,7 +6,7 @@
 
 **Horas:** 6,5. **Semana:** 5 (era a 6; subiu em 30/09/2026, junto com o 12).
 
-**Situação:** feito em 05/10/2026, adiantado da semana 5, no processo curto. Como é ticket de funcionalidade, os testes de lógica vieram antes do código e a suíte de navegador inteira rodou. Faltam dois itens que são do Maxwell, na propriedade do GA4: a conferência no DebugView, com a propriedade de teste, e o clique de saída desligado (veja `docs/medicao.md`).
+**Situação:** feito e aprovado pelo Maxwell em 05/10/2026, adiantado da semana 5, no processo curto. Como é ticket de funcionalidade, os testes de lógica vieram antes do código e a suíte de navegador inteira rodou. Faltam dois itens que são do Maxwell, na propriedade do GA4: a conferência no DebugView, com a propriedade de teste, e o clique de saída desligado (veja `docs/medicao.md`).
 
 - [x] Aviso com "Aceitar", "Recusar" e "Preferências", com o mesmo peso visual; preferências com necessários (sempre ligados) e estatística; a escolha fica no navegador, com data e versão; um link no rodapé reabre.
 - [x] Teclado e leitor de tela: foco visível, ordem certa, rótulos claros, sem prender o foco da página.
