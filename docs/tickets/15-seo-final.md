@@ -6,7 +6,7 @@
 
 **Horas:** 2,5 (eram 2). **Semana:** 6.
 
-**Situação:** feito em 06/10/2026, adiantado da semana 6, no processo curto, esperando o ok do Maxwell. O 11 (cidades) ainda não existe: os dois links cruzados que dependem dele ficam para o 11, que já pede página de cidade ligada a serviço e a idioma.
+**Situação:** feito e aprovado pelo Maxwell em 06/10/2026, adiantado da semana 6, no processo curto. O 11 (cidades) ainda não existe: os dois links cruzados que dependem dele ficam para o 11, que já pede página de cidade ligada a serviço e a idioma.
 
 - [x] `/sitemap.xml` gerado a cada build de produção, só com as páginas publicadas. A página de interpretação de mandarim (`/traducao-simultanea/mandarim/`) entra desde o lançamento.
 - [x] Favicon completo: SVG, ICO, os PNG de 32, 180, 192 e 512 e o manifesto.
