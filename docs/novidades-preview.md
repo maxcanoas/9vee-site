@@ -2,6 +2,17 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima segunda leva (05/10): o aviso de cookies
+
+- Na primeira visita, o site mostra um aviso no pé da tela, "Cookies de estatística", com três botões: "Aceitar", "Recusar" e "Preferências". Aceitar e recusar têm o mesmo peso, como a LGPD pede.
+- Só com o aceite o site mede as visitas e os pedidos, com o mesmo Google Analytics que vocês já têm. Quem recusa não manda nada para o Google. O nome e o contato de quem pede nunca vão.
+- O site conta três coisas, por serviço, por página e por público (empresa ou você): os pedidos abertos, os pedidos que chegam e as conversas abertas no WhatsApp. Com isso, dá para ver por mês quantos leads vieram de cada serviço.
+- A escolha pode ser mudada a qualquer hora, por "Preferências de cookies", no rodapé.
+- No preview o aviso aparece, mas nada é medido: só o site definitivo mede. Assim os testes de vocês não se misturam com as visitas de verdade.
+- A política de privacidade explica o aviso como ele ficou.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Para conferir os eventos no DebugView, ponha o ID da sua propriedade de teste em `GA4_ID`, no `.env.development`, e siga `docs/medicao.md`. Desligue lá também o clique de saída da medição otimizada, nas duas propriedades: sem isso, o GA4 mandaria o link do WhatsApp com o nome da pessoa.
+
 ## Semana 2, décima primeira leva (05/10): as respostas de vocês no site
 
 Obrigado pelas respostas. Quase tudo já está no preview:

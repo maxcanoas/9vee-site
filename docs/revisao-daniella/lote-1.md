@@ -701,6 +701,27 @@ Seu próximo capítulo de sucesso começa agora.
 
 [Link: Política de privacidade]
 
+[Botão: Preferências de cookies]
+
+### Aviso de cookies (no pé da tela, na primeira visita; "Preferências" abre as duas categorias)
+
+Cookies de estatística
+
+Se você aceitar, o site usa o Google Analytics para contar as visitas e os pedidos, sem o seu nome e o seu contato. Se recusar, nada é medido. Os detalhes estão na política de privacidade.
+
+O que o site pode usar
+
+- Necessários · Guardam no seu navegador a escolha entre empresa e você e a resposta a este aviso. Ficam sempre ligados.
+- Estatística · O Google Analytics conta as visitas, os pedidos e as conversas pelo WhatsApp, por serviço e por página.
+
+[Botão: Aceitar]
+
+[Botão: Recusar]
+
+[Botão: Preferências]
+
+[Botão: Salvar escolha]
+
 ### Pedido de orçamento (o painel que abre por cima da página)
 
 #### Pedir orçamento / Montar suas aulas

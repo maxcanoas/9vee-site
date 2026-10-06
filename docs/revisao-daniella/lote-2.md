@@ -574,7 +574,7 @@ No WhatsApp da 9vee, a conversa fica guardada pelos mesmos prazos do pedido: 1 a
 
 #### A estatística de visitas e os cookies [Novo]
 
-O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies. Se você recusar ou não responder, ele nem carrega.
+O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies, que aparece na primeira visita, com "Aceitar", "Recusar" e "Preferências". Se você recusar ou não responder, ele nem carrega.
 
 Com o aceite, o Google recebe dados da sua visita, como as páginas que você vê e de que busca ou link você veio. Recebe também o tipo de aparelho e de navegador e a cidade aproximada.
 
@@ -584,7 +584,7 @@ O Google grava dois cookies no seu navegador, o _ga e o _ga_ seguido de um códi
 
 A 9vee usa esses números para saber que páginas e que serviços trazem pedidos. O Google pode tratar os dados fora do Brasil. O que ele faz com eles está na página como o Google usa informações de sites.
 
-Para mudar a sua escolha, use o link "Preferências de cookies", no rodapé.
+Para mudar a sua escolha, use "Preferências de cookies", no rodapé. Se você recusar depois de ter aceitado, o site apaga os cookies do Google do seu navegador e para de medir.
 
 #### O que fica no seu navegador [Novo]
 
