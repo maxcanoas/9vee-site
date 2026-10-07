@@ -8,6 +8,9 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
 - Curitiba e Brasília, onde o presencial é a tradução, têm a página "Tradução simultânea em Curitiba" e "em Brasília", dentro da Tradução Simultânea: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/curitiba/ e https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/brasilia/
 - As quatro mostram no alto o aviso "Fora do site até vocês responderem". Elas só vão para o site definitivo quando vocês disserem que tipo de evento mais fazem em cada cidade (a pergunta 47 do Word). Sem isso, as quatro diriam a mesma coisa, só com o nome da cidade trocado, e o Google trata página assim como cópia.
 - Os textos estão no lote 4 de revisão, para a Daniella.
+- O Quem Somos ganhou, no fim, "Histórias construídas com grandes parceiros", como no site atual, com os nomes que vocês liberaram: TOTVS e Array na interpretação; Pirelli, FGV, Sicredi e Bradesco nos cursos. Só os nomes, sem logo.
+- Na revisão dos textos, voltaram trechos do site atual que tinham ficado de fora: "segurança, clareza e autoridade" nas aulas para executivos, o foco nos critérios de cada prova no francês e o exame prévio, feito antes da mudança, no holandês. O diagnóstico agora aparece onde o site atual põe: nas primeiras aulas, com os seus objetivos e o seu nível.
+- Os lotes 1, 2 e 3 foram gerados de novo com essas mudanças. Se a Daniella já começou a revisão, a versão de 07/10 é a que conta.
 
 - Cada cidade tem uma foto no topo, na série das fotos dos idiomas: um intérprete conversando com um executivo de fora, com um marco da cidade ao fundo (a Ponte Estaiada, o Pão de Açúcar, a estufa do Jardim Botânico e o Congresso Nacional).
 
