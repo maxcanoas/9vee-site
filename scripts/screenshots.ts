@@ -6,7 +6,7 @@ import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { preview } from 'astro';
 import { chromium, type Page } from '@playwright/test';
-import { paginasDeIdiomaNoConteudo } from '../tests/conteudo.ts';
+import { paginasDeCidadeNoConteudo, paginasDeIdiomaNoConteudo } from '../tests/conteudo.ts';
 import { TEMPO_MINIMO_DO_PEDIDO } from '../src/lib/envio.ts';
 import {
   SERVICO_DE_FORMULARIO,
@@ -345,6 +345,11 @@ const roteiros: Record<string, Captura[]> = {
     ...capturasDaPagina('sao-paulo', '/sao-paulo/', ['traducao', 'idiomas', 'nr1']),
     ...capturasDaPagina('curitiba', '/traducao-simultanea/curitiba/', ['traducao', 'nr1']),
   ],
+  // A foto de cada cidade no arco do topo, no celular e no computador.
+  'fotos-cidades': paginasDeCidadeNoConteudo().flatMap(({ rota, pagina }): Captura[] => [
+    { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844, recorte: '.hero-pagina' },
+    { nome: `${pagina}-topo-1280`, rota, largura: 1280, altura: 800 },
+  ]),
   // O envio de verdade do pedido: o campo do contato com a caixa do consentimento, o erro de quem não a marcou, a
   // confirmação e a tela de quando o pedido não chega. O serviço de formulário nunca recebe nada daqui.
   'ticket-12': [
