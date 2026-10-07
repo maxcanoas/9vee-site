@@ -32,7 +32,11 @@ export const preencher = (modelo: string, dados: Record<string, string>) =>
   modelo.replace(/\{(\w+)\}/g, (_, chave: string) => dados[chave] ?? '');
 
 const maiuscula = (texto: string) => texto.charAt(0).toLocaleUpperCase('pt-BR') + texto.slice(1);
-export const minuscula = (texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
+
+/** O texto como literal dentro de uma expressão regular: os sinais dela escapados. */
+export const escaparRegex = (texto: string) => texto.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+export const minuscula =(texto: string) => texto.charAt(0).toLocaleLowerCase('pt-BR') + texto.slice(1);
 
 /**
  * O trecho com o espaço que não quebra no lugar de cada espaço: num título em tipo grande, ele desce inteiro para a

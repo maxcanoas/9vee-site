@@ -1,6 +1,10 @@
 // As regras do mapa de redirecionamentos (ticket 14; spec, "Preparação da migração"): para onde vai cada URL do site
 // atual quando o domínio passar para o site novo. O destino é sempre uma página do build de produção, então nunca é
 // página não publicada nem outra URL que redireciona (sem corrente).
+import { CAMINHO_DA_INTERPRETACAO_DE_MANDARIM as INTERPRETACAO_DE_MANDARIM, caminhoDoIdioma } from '../src/lib/caminhos.ts';
+import { caminhoDaCidade, TIPOS_DE_CIDADE } from '../src/lib/cidades.ts';
+
+export { INTERPRETACAO_DE_MANDARIM };
 
 export type Tipo = '301' | '410' | '200';
 
@@ -12,11 +16,10 @@ export interface Destino {
 
 export type ServicoDoPost = 'idiomas' | 'traducao' | 'lms';
 
-/** Uma página de cidade publicada: as palavras do endereço que apontam para ela e os serviços que ela cobre. */
+/** Uma página de cidade publicada e as palavras do endereço dos posts que apontam para ela. */
 export interface CidadePublicada {
   caminho: string;
   termos: readonly string[];
-  servicos: readonly ServicoDoPost[];
 }
 
 export interface SiteNovo {
@@ -27,8 +30,25 @@ export interface SiteNovo {
 }
 
 export const CURSOS = '/curso-de-idiomas/';
-export const INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
 const SUMIU = null;
+
+// As palavras do endereço dos posts que apontam para cada página de cidade (o nome do arquivo em content/cidades/), com
+// os bairros de São Paulo que o blog cita.
+const TERMOS_DAS_CIDADES: Record<string, readonly string[]> = {
+  'sao-paulo': ['sao-paulo', 'sp', 'av-paulista', 'faria-lima', 'itaim-bibi', 'jardins', 'perdizes', 'pinheiros', 'tatuape', 'vila-madalena', 'vila-mariana', 'vila-olimpia'],
+  'rio-de-janeiro': ['rio-de-janeiro'],
+  curitiba: ['curitiba'],
+  brasilia: ['brasilia'],
+};
+
+/** As cidades cuja página está no build de produção, isto é, publicada, no endereço do tipo dela. */
+export function cidadesPublicadas(paginas: ReadonlySet<string>): CidadePublicada[] {
+  return Object.entries(TERMOS_DAS_CIDADES).flatMap(([id, termos]) =>
+    TIPOS_DE_CIDADE.map((tipo) => caminhoDaCidade(id, tipo))
+      .filter((caminho) => paginas.has(caminho))
+      .map((caminho) => ({ caminho, termos })),
+  );
+}
 
 // As páginas do site atual e o destino de cada uma no site novo. O curso de mandarim depende da publicação.
 const PAGINAS_ANTIGAS: Record<string, string | ((site: SiteNovo) => Destino) | null> = {
@@ -59,7 +79,7 @@ const MOTIVO_DA_PAGINA_QUE_SUMIU: Record<string, string> = {
   '/challenges': 'lista do app Programas Online, que não vai para o site novo',
 };
 
-// As palavras do endereço do post que apontam cada idioma, pelo slug do idioma em content/site.md.
+// As palavras do endereço do post que apontam cada idioma, pelo nome do arquivo da página dele em content/idiomas/.
 const TERMOS_DOS_IDIOMAS: Record<string, readonly string[]> = {
   ingles: ['ingles', 'toefl'],
   espanhol: ['espanhol'],
@@ -74,9 +94,10 @@ const TERMOS_DOS_IDIOMAS: Record<string, readonly string[]> = {
   russo: ['russo'],
   arabe: ['arabe'],
   'portugues-para-estrangeiros': ['portugues-para-estrangeiros'],
+  cantones: ['cantones'],
 };
 
-// As palavras que apontam um serviço, quando o post não fala de idioma nenhum.
+// As palavras que apontam um serviço. A tradução vale antes do idioma; o LMS e os idiomas em geral, só sem idioma.
 const TERMOS_DOS_SERVICOS: Record<ServicoDoPost, readonly string[]> = {
   traducao: ['traducao', 'interpretacao'],
   lms: ['lms'],
@@ -95,37 +116,49 @@ const NOME_DO_SERVICO: Record<ServicoDoPost, string> = {
   lms: 'LMS',
 };
 
-/** O fim do endereço do post, sem acento e entre hífens, para achar palavra inteira: "-curso-de-alemao-em-...-". */
-function palavrasDoPost(caminho: string): string {
+/** O fim do endereço do post, decodificado e sem acento: "curso-de-alemao-em-porto-alegre". */
+export function slugDoPost(caminho: string): string {
   const fim = decodeURIComponent(caminho.replace(/^\/post\//, '').replace(/\/$/, ''));
-  return `-${fim.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()}-`;
+  return fim.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
+
+/** O slug entre hífens, para achar palavra inteira: "-curso-de-alemao-em-...-". */
+const palavrasDoPost = (caminho: string) => `-${slugDoPost(caminho)}-`;
 
 const cita = (palavras: string, termos: readonly string[]) => termos.some((termo) => palavras.includes(`-${termo}-`));
 
 function paginaDoIdioma(slug: string, site: SiteNovo): Destino {
-  const caminho = `/curso-de-idiomas/${slug}/`;
+  const caminho = caminhoDoIdioma(slug);
   return site.paginas.has(caminho)
     ? { destino: caminho, tipo: '301', motivo: `curso de ${slug}` }
     : { destino: CURSOS, tipo: '301', motivo: `curso de ${slug}, cuja página não está publicada` };
 }
 
-/** O destino de um post do blog, pelo idioma, pelo serviço e pela cidade que o endereço cita. */
+/**
+ * O destino de um post do blog, pelo serviço, pela cidade e pelo idioma que o endereço cita. O post de tradução ou de
+ * interpretação é do serviço, mesmo citando um idioma: "interpretacao-...-mandarim" é da interpretação, e não do curso.
+ * Só ele vai para a página da cidade publicada (decisão de 07/10/2026); o de idioma fica no idioma.
+ */
 export function destinoDoPost(caminho: string, site: SiteNovo): Destino {
   const palavras = palavrasDoPost(caminho);
-  const idiomas = Object.keys(TERMOS_DOS_IDIOMAS).filter((slug) => cita(palavras, TERMOS_DOS_IDIOMAS[slug]));
-  const servico: ServicoDoPost | undefined =
-    idiomas.length > 0 ? 'idiomas' : (Object.keys(TERMOS_DOS_SERVICOS) as ServicoDoPost[]).find((s) => cita(palavras, TERMOS_DOS_SERVICOS[s]));
-  if (!servico) return { destino: '', tipo: '410', motivo: 'post sem idioma, serviço ou cidade no endereço' };
+  const idiomas = Object.keys(TERMOS_DOS_IDIOMAS).filter((pagina) => cita(palavras, TERMOS_DOS_IDIOMAS[pagina]));
 
-  const cidade = site.cidades.find((c) => c.servicos.includes(servico) && cita(palavras, c.termos));
-  if (cidade) return { destino: cidade.caminho, tipo: '301', motivo: `post da cidade, que cobre ${NOME_DO_SERVICO[servico]}` };
+  if (cita(palavras, TERMOS_DOS_SERVICOS.traducao)) {
+    const cidade = site.cidades.find((c) => cita(palavras, c.termos));
+    if (cidade) return { destino: cidade.caminho, tipo: '301', motivo: 'post de tradução da cidade' };
+    if (idiomas.includes('mandarim') && site.paginas.has(INTERPRETACAO_DE_MANDARIM)) {
+      return { destino: INTERPRETACAO_DE_MANDARIM, tipo: '301', motivo: 'post de interpretação de mandarim' };
+    }
+    return { destino: PAGINA_DO_SERVICO.traducao, tipo: '301', motivo: `post sobre ${NOME_DO_SERVICO.traducao}` };
+  }
 
   if (idiomas.length === 1) {
     const destino = paginaDoIdioma(idiomas[0], site);
     return { ...destino, motivo: `post sobre ${destino.motivo}` };
   }
   if (idiomas.length > 1) return { destino: CURSOS, tipo: '301', motivo: `post sobre mais de um idioma (${idiomas.join(', ')})` };
+  const servico = (['lms', 'idiomas'] as const).find((s) => cita(palavras, TERMOS_DOS_SERVICOS[s]));
+  if (!servico) return { destino: '', tipo: '410', motivo: 'post sem idioma, serviço ou cidade no endereço' };
   return { destino: PAGINA_DO_SERVICO[servico], tipo: '301', motivo: `post sobre ${NOME_DO_SERVICO[servico]}` };
 }
 
@@ -185,14 +218,16 @@ export function comExcecao(regra: Destino, excecao: string): Pick<LinhaDoMapa, '
   return valor === '410' ? { destino: '', tipo: '410' } : { destino: valor, tipo: '301' };
 }
 
-/** Os problemas do mapa: destino que não é página do site novo, corrente, 200 fora do mesmo endereço. */
+/**
+ * Os problemas do mapa: destino que não é página do site novo, origem que pode formar corrente, 200 fora do mesmo
+ * endereço. Não há corrente porque nenhuma origem termina em barra e todo destino, página do build, termina.
+ */
 export function problemasDoMapa(linhas: readonly LinhaDoMapa[], site: SiteNovo): string[] {
-  const redirecionadas = new Set(linhas.filter((l) => l.tipo !== '200').map((l) => l.origem));
   return linhas.flatMap(({ origem, destino, tipo }) => {
     if (tipo === '410') return destino ? [`${origem}: 410 com destino`] : [];
     if (tipo === '200') return destino === origem ? [] : [`${origem}: 200 para outro endereço`];
     if (!destino) return [`${origem}: 301 sem destino`];
-    if (redirecionadas.has(destino)) return [`${origem}: corrente, ${destino} também redireciona`];
+    if (origem.endsWith('/')) return [`${origem}: origem com a barra do fim, que pode coincidir com um destino e formar corrente`];
     if (!site.paginas.has(destino)) return [`${origem}: ${destino} não é página do build de produção`];
     return [];
   });

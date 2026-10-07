@@ -8,6 +8,7 @@ import Chamada from '../components/Chamada.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite } from '../lib/site';
 import { servico } from '../lib/jsonld';
+import { DADOS_DO_TIPO } from '../lib/cidades';
 import type { PaginaDeCidade } from '../lib/paginas';
 
 type Props = PaginaDeCidade;
@@ -15,7 +16,7 @@ type Props = PaginaDeCidade;
 const { conteudo } = Astro.props;
 const site = await dadosDoSite();
 const base = Astro.site ?? new URL(Astro.url.origin);
-const servicoDoPedido = conteudo.tipo === 'traducao' ? 'traducao' : undefined;
+const { modelo, servicoDoPedido } = DADOS_DO_TIPO[conteudo.tipo];
 const jsonLd = conteudo.servicos.map((bloco) =>
   servico(base, {
     ...bloco.servico,
@@ -28,7 +29,7 @@ const jsonLd = conteudo.servicos.map((bloco) =>
 ---
 
 <Base
-  pagina={conteudo.tipo === 'traducao' ? 'traducaoNaCidade' : 'cidade'}
+  pagina={modelo}
   naCidade={conteudo.naCidade}
   titulo={conteudo.seo.titulo}
   descricao={conteudo.seo.descricao}

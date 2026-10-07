@@ -241,27 +241,24 @@ export interface PaginaDoContato {
   assunto: TextosPorPublico;
 }
 
-/** A página de um idioma sai de um modelo só, com o idioma no meio da frase: "quero aulas de inglês". */
-export function paginaDoContatoDoIdioma(modelo: PaginaDoContato, idioma: { slug: string; nome: string }): PaginaDoContato {
-  const dados = { idioma: minuscula(idioma.nome) };
+/** O nome e o pedido de uma página que sai de um modelo, com os dados dela no meio das frases. */
+function preencherModelo(modelo: PaginaDoContato, dados: Record<string, string>): PaginaDoContato {
   const { neutro, empresa, voce } = modelo.assunto;
   return {
     ...modelo,
     nome: preencher(modelo.nome, dados),
-    idioma: idioma.slug,
     assunto: { neutro: preencher(neutro, dados), empresa: preencher(empresa, dados), voce: preencher(voce, dados) },
   };
 }
 
+/** A página de um idioma sai de um modelo só, com o idioma no meio da frase: "quero aulas de inglês". */
+export function paginaDoContatoDoIdioma(modelo: PaginaDoContato, idioma: { slug: string; nome: string }): PaginaDoContato {
+  return { ...preencherModelo(modelo, { idioma: minuscula(idioma.nome) }), idioma: idioma.slug };
+}
+
 /** A página de uma cidade sai de um modelo só, com a cidade e a preposição dela: "tradução simultânea no Rio de Janeiro". */
 export function paginaDoContatoDaCidade(modelo: PaginaDoContato, naCidade: string): PaginaDoContato {
-  const dados = { naCidade };
-  const { neutro, empresa, voce } = modelo.assunto;
-  return {
-    ...modelo,
-    nome: preencher(modelo.nome, dados),
-    assunto: { neutro: preencher(neutro, dados), empresa: preencher(empresa, dados), voce: preencher(voce, dados) },
-  };
+  return preencherModelo(modelo, { naCidade });
 }
 
 /**

@@ -3,6 +3,7 @@
 //
 // A ordem importa. Primeiro o mapa, com o destino já em https e www, para a URL antiga chegar à nova num salto só, de
 // qualquer endereço (http, sem www). Depois o domínio canônico, e por fim a barra no fim do endereço.
+import { escaparRegex } from '../src/lib/texto.ts';
 
 export interface LinhaDoHtaccess {
   origem: string;
@@ -15,7 +16,9 @@ const DOMINIO = 'https://www.9vee.com.br';
 /** O caminho como o Apache compara no .htaccess: sem a barra do começo, decodificado e com os sinais da regex escapados. */
 export function padraoDaOrigem(origem: string): string {
   const caminho = decodeURIComponent(origem).replace(/^\//, '');
-  return `^${caminho.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`;
+  // O Apache separa a regra nos espaços: a linha sairia inválida, e o site inteiro responderia com erro 500.
+  if (/\s/.test(caminho)) throw new Error(`${origem}: origem com espaço, que o .htaccess não aceita como regra`);
+  return `^${escaparRegex(caminho)}$`;
 }
 
 /** As regras do mapa: 301 com destino completo e 410 com a flag G. O 200 (a mesma página) não pede regra. */
@@ -28,7 +31,6 @@ export function regrasDoMapa(linhas: readonly LinhaDoHtaccess[]): string[] {
   });
 }
 
-/** O .htaccess inteiro. */
 export function montarHtaccess(linhas: readonly LinhaDoHtaccess[]): string {
   return `# Gerado pelo build de produção (scripts/htaccess.ts) a partir de docs/redirects.csv. Não editar à mão: mude o
 # mapa e gere o build de novo.

@@ -17,18 +17,18 @@ import { imagemDaPagina, textoDaImagem } from '../lib/compartilhamento';
 import { trilhaDaPagina } from '../lib/paginas';
 import { paginaDoContatoDaCidade, paginaDoContatoDoIdioma } from '../lib/contato';
 import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
+import type { ModeloDeCidade } from '../lib/cidades';
 
 // As páginas de idioma e de cidade saem de um modelo: o nome da página na mensagem e o pedido saem do idioma ou da
 // cidade, que só elas dizem.
-type PaginaDeCidade = 'cidade' | 'traducaoNaCidade';
 type Props = {
   titulo: string;
   descricao: string;
   jsonLd?: Record<string, unknown>[];
 } & (
-  | { pagina: Exclude<PaginaId, 'idioma' | PaginaDeCidade>; idioma?: never; naCidade?: never }
+  | { pagina: Exclude<PaginaId, 'idioma' | ModeloDeCidade>; idioma?: never; naCidade?: never }
   | { pagina: 'idioma'; idioma: { slug: string; nome: string }; naCidade?: never }
-  | { pagina: PaginaDeCidade; naCidade: string; idioma?: never }
+  | { pagina: ModeloDeCidade; naCidade: string; idioma?: never }
 );
 
 const { pagina, idioma, naCidade, titulo, descricao, jsonLd = [] } = Astro.props;

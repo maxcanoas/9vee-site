@@ -25,6 +25,13 @@ describe('padraoDaOrigem', () => {
   });
 });
 
+describe('padraoDaOrigem com espaço', () => {
+  // O Apache separa a regra nos espaços: a linha sairia inválida, e o site inteiro responderia com erro 500.
+  it('recusa a origem com espaço, antes de escrever o arquivo', () => {
+    expect(() => padraoDaOrigem('/post/curso%20de%20ingles')).toThrow(/espaço/);
+  });
+});
+
 describe('regrasDoMapa', () => {
   it('leva o 301 ao destino completo, dá 410 com a flag G e não escreve regra para o 200', () => {
     expect(regrasDoMapa(MAPA)).toEqual([

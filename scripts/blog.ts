@@ -2,6 +2,7 @@
 // post convertido em Markdown (ticket 14). Fica de fora o bloco "MAIS VISITADOS", que fecha todos os posts com uma
 // lista de links para os outros.
 import { parse, type HTMLElement, type Node } from 'node-html-parser';
+import { slugDoPost } from './redirecionamentos.ts';
 
 export interface PostDoBlog {
   titulo: string;
@@ -22,8 +23,7 @@ export function imagemOriginal(endereco: string): string {
 
 /** O nome do arquivo do post: o fim do endereço, sem acento. */
 export function nomeDoArquivo(url: string): string {
-  const fim = decodeURIComponent(new URL(url).pathname.replace(/^\/post\//, '').replace(/\/$/, ''));
-  return `${fim.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()}.md`;
+  return `${slugDoPost(new URL(url).pathname)}.md`;
 }
 
 const ehElemento = (no: Node): no is HTMLElement => no.nodeType === 1;

@@ -1,5 +1,6 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import { MODO } from 'astro:env/server';
+import { CAMINHO_DA_INTERPRETACAO_DE_MANDARIM, caminhoDoIdioma } from './caminhos';
 import { caminhoDaCidade } from './cidades';
 import type { ServicoId } from './contato';
 import { entraNoBuild } from './publicacao';
@@ -25,8 +26,6 @@ export async function paginaLms() {
 export async function paginaTraducao() {
   return exigir(await getEntry('traducao', 'traducao-simultanea'), 'content/traducao-simultanea.md');
 }
-
-const CAMINHO_DA_INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
 
 export async function paginaInterpretacaoDeMandarim() {
   return exigir(
@@ -62,7 +61,7 @@ export async function paginasDeIdioma(): Promise<PaginaDeIdioma[]> {
     const idioma = idiomaDoSite(site, data.idioma, `content/idiomas/${id}.md`);
     if (comPagina.has(idioma.slug)) throw new Error(`O idioma "${idioma.slug}" tem mais de uma página em content/idiomas/`);
     comPagina.add(idioma.slug);
-    return { id, caminho: `/curso-de-idiomas/${id}/`, idioma, conteudo: data };
+    return { id, caminho: caminhoDoIdioma(id), idioma, conteudo: data };
   });
 }
 

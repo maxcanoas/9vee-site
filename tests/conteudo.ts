@@ -4,6 +4,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { CAMINHO_DA_INTERPRETACAO_DE_MANDARIM, caminhoDoIdioma } from '../src/lib/caminhos.ts';
 import { caminhoDaCidade, TIPOS_DE_CIDADE, type TipoDeCidade } from '../src/lib/cidades.ts';
 import { publicadaNoArquivo } from '../src/lib/publicacao.ts';
 import { partesDoArquivo } from '../src/lib/texto.ts';
@@ -12,7 +13,7 @@ import { partesDoArquivo } from '../src/lib/texto.ts';
 export const PAGINAS_DE_TEXTO = ['/politica-de-privacidade/'];
 
 /** A página de interpretação de mandarim, filha da Tradução Simultânea e fora do menu. */
-export const INTERPRETACAO_DE_MANDARIM = '/traducao-simultanea/mandarim/';
+export const INTERPRETACAO_DE_MANDARIM = CAMINHO_DA_INTERPRETACAO_DE_MANDARIM;
 
 export interface PaginaDeIdiomaNoConteudo {
   rota: string;
@@ -33,7 +34,7 @@ export function paginasDeIdiomaNoConteudo(): PaginaDeIdiomaNoConteudo[] {
       const idioma = /^idioma:\s*"([^"]+)"/m.exec(partesDoArquivo(arquivo).frontmatter)?.[1];
       if (!idioma) throw new Error(`content/idiomas/${nome} sem o idioma no frontmatter`);
       const pagina = nome.replace(/\.md$/, '');
-      return { rota: `/curso-de-idiomas/${pagina}/`, pagina, idioma, publicada: publicadaNoArquivo(arquivo) };
+      return { rota: caminhoDoIdioma(pagina), pagina, idioma, publicada: publicadaNoArquivo(arquivo) };
     });
 }
 

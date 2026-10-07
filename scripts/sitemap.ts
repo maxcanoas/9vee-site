@@ -1,5 +1,5 @@
-// O sitemap da produção: as páginas que o build gerou. A página de idioma não publicada não chega ao build de
-// produção, então também não chega aqui. O endereço é /sitemap.xml, o que o Search Console já conhece do Wix.
+// O sitemap da produção: as páginas que o build gerou. A página de idioma ou de cidade não publicada não chega ao
+// build de produção, então também não chega aqui. O endereço é /sitemap.xml, o que o Search Console já conhece do Wix.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { listarArquivos, rotaDoArquivo } from './paginas-do-build.ts';

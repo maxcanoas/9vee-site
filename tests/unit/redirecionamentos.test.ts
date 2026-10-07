@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   CURSOS,
   INTERPRETACAO_DE_MANDARIM,
+  cidadesPublicadas,
   comExcecao,
   destinoDe,
   problemasDoMapa,
@@ -110,6 +111,11 @@ describe('os posts do blog', () => {
     ['servico-de-interpretacao-simultanea-para-conferencias-em-natal', '301 /traducao-simultanea/'],
     ['lms-learning-management-system-em-curitiba', '301 /lms/'],
     ['professores-nativos', '410'],
+    // O cantonês, que entrou em 05/10/2026, sem página publicada: vai para Cursos, e não sai em 410.
+    ['aulas-de-cantones-online', `301 ${CURSOS}`],
+    // O post de tradução ou de interpretação é do serviço, mesmo citando um idioma.
+    ['interpretacao-simultanea-de-mandarim-em-reunioes', `301 ${INTERPRETACAO_DE_MANDARIM}`],
+    ['traducao-simultanea-em-ingles-para-congressos', '301 /traducao-simultanea/'],
   ])('%s: %s', (fim, esperado) => {
     expect(destino(post(fim))).toBe(esperado);
   });
@@ -118,13 +124,27 @@ describe('os posts do blog', () => {
     expect(destino(post('curso-de-espanhol-em-maringa'))).toBe('301 /curso-de-idiomas/');
   });
 
-  it('leva o post da cidade à página dela quando ela está publicada e cobre o serviço do post', () => {
-    const comCuritiba: SiteNovo = {
-      paginas: new Set([...site.paginas, '/cidades/curitiba/']),
-      cidades: [{ caminho: '/cidades/curitiba/', termos: ['curitiba'], servicos: ['traducao'] }],
-    };
-    expect(destino(post('traducao-simultanea-de-eventos-em-curitiba'), comCuritiba)).toBe('301 /cidades/curitiba/');
-    expect(destino(post('curso-de-ingles-em-curitiba'), comCuritiba)).toBe('301 /curso-de-idiomas/ingles/');
+  // As cidades decididas em 07/10/2026: só o post de tradução vai para a página da cidade, e só quando ela está no
+  // build de produção. O de idioma fica no idioma, porque a aula de quem estuda por conta própria é online.
+  describe('com São Paulo e Curitiba publicadas', () => {
+    const paginas = new Set([...site.paginas, '/sao-paulo/', '/traducao-simultanea/curitiba/']);
+    const comCidades: SiteNovo = { paginas, cidades: cidadesPublicadas(paginas) };
+
+    it.each([
+      ['traducao-simultanea-de-eventos-em-sao-paulo', '301 /sao-paulo/'],
+      ['servico-de-interpretacao-simultanea-para-conferencias-na-faria-lima', '301 /sao-paulo/'],
+      ['traducao-simultanea-de-eventos-em-curitiba', '301 /traducao-simultanea/curitiba/'],
+      ['traducao-simultanea-de-eventos-em-brasilia', '301 /traducao-simultanea/'],
+      ['aprender-ingles-em-sao-paulo', '301 /curso-de-idiomas/ingles/'],
+      ['curso-de-ingles-em-curitiba', '301 /curso-de-idiomas/ingles/'],
+      ['lms-learning-management-system-em-curitiba', '301 /lms/'],
+    ])('%s: %s', (fim, esperado) => {
+      expect(destino(post(fim), comCidades)).toBe(esperado);
+    });
+
+    it('não leva nada à cidade cuja página não está no build', () => {
+      expect(cidadesPublicadas(site.paginas)).toEqual([]);
+    });
   });
 });
 
@@ -137,12 +157,13 @@ describe('a exceção e a conferência do mapa', () => {
     expect(comExcecao(destinoDe(pagina('/lms'), site), '410')).toEqual({ destino: '', tipo: '410' });
   });
 
-  it('acusa destino fora do site novo, corrente e 301 sem destino', () => {
+  // O mapa não forma corrente porque nenhuma origem termina em barra, e todo destino, página do build, termina.
+  it('acusa destino fora do site novo, origem com a barra do fim e 301 sem destino', () => {
     expect(
       problemasDoMapa(
         [
           { origem: '/a', destino: '/curso-de-idiomas/sueco/', tipo: '301', excecao: '' },
-          { origem: '/b', destino: '/c', tipo: '301', excecao: '' },
+          { origem: '/b/', destino: '/lms/', tipo: '301', excecao: '' },
           { origem: '/c', destino: '/lms/', tipo: '301', excecao: '' },
           { origem: '/d', destino: '', tipo: '301', excecao: '' },
           { origem: '/', destino: '/', tipo: '200', excecao: '' },
@@ -152,7 +173,7 @@ describe('a exceção e a conferência do mapa', () => {
       ),
     ).toEqual([
       '/a: /curso-de-idiomas/sueco/ não é página do build de produção',
-      '/b: corrente, /c também redireciona',
+      '/b/: origem com a barra do fim, que pode coincidir com um destino e formar corrente',
       '/d: 301 sem destino',
     ]);
   });

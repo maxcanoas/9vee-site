@@ -1,7 +1,7 @@
 ---
 // As páginas das cidades onde só a tradução é presencial, dentro da Tradução Simultânea.
-import PaginaDeCidade from '../../layouts/PaginaDeCidade.astro';
-import { paginasDeCidade, type PaginaDeCidade as Pagina } from '../../lib/paginas';
+import Cidade from '../../layouts/Cidade.astro';
+import { paginasDeCidade, type PaginaDeCidade } from '../../lib/paginas';
 
 export async function getStaticPaths() {
   return (await paginasDeCidade())
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     .map((pagina) => ({ params: { cidade: pagina.id }, props: pagina }));
 }
 
-type Props = Pagina;
+type Props = PaginaDeCidade;
 ---
 
-<PaginaDeCidade {...Astro.props} />
+<Cidade {...Astro.props} />
