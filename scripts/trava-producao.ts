@@ -108,17 +108,19 @@ function pedidoSemDestino(paginas: Pagina[], chaveDeTeste: string | undefined): 
   return [];
 }
 
+/** A propriedade do GA4 que a 9vee já tem (spec, "mesmo GA4 e Search Console"): o antes e o depois no mesmo relatório. */
+export const GA4_DA_9VEE = 'G-Y04K0CN1F9';
+
 /**
- * A medição que não mediria o que conta: o build sem o ID do GA4 no aviso de cookies, e o build com o ID da
- * propriedade de teste do local, que misturaria as visitas de verdade com as de teste. Build sem aviso não tem o que
- * conferir.
+ * A medição que não mediria o que conta: o build sem o ID do GA4 no aviso de cookies, e o build com outro ID, o da
+ * propriedade de teste do local ou um digitado errado. Build sem aviso não tem o que conferir.
  */
-function medicaoSemDestino(paginas: Pagina[], ga4DeTeste: string | undefined): string[] {
+function medicaoSemDestino(paginas: Pagina[]): string[] {
   const aviso = paginas.map(({ raiz }) => raiz.querySelector('[data-aviso-cookies]')).find(Boolean);
   if (!aviso) return [];
   const ga4 = aviso.getAttribute('data-ga4') ?? '';
   if (!ga4) return ['sem o GA4_ID do .env.producao: o site não mediria nada'];
-  if (ga4 === ga4DeTeste) return ['com o ID da propriedade de teste do .env.development: as visitas iriam para o teste'];
+  if (ga4 !== GA4_DA_9VEE) return [`com o ID ${ga4}, que não é o da propriedade da 9vee (${GA4_DA_9VEE}): as visitas iriam para outro lugar`];
   return [];
 }
 
@@ -185,7 +187,7 @@ export function redirecionamentosQuebrados(pasta: string): string[] {
 /** A chave de teste é a do .env.preview: com ela, a trava reconhece a chave que não pode ir para a produção. */
 export function verificarBuild(
   pasta: string,
-  { chaveDeTeste, ga4DeTeste }: { chaveDeTeste?: string; ga4DeTeste?: string } = {},
+  { chaveDeTeste }: { chaveDeTeste?: string } = {},
 ): Achado[] {
   const regras = Object.entries(REGRAS) as [Regra, { nome: string; naPagina?: (pagina: Pagina, pasta: string) => string[] }][];
   const paginas = carregarPaginas(pasta);
@@ -197,7 +199,7 @@ export function verificarBuild(
   for (const detalhe of pedidoSemDestino(paginas, chaveDeTeste)) {
     achados.push({ regra: 'formulario', onde: 'pedido de contato', detalhe });
   }
-  for (const detalhe of medicaoSemDestino(paginas, ga4DeTeste)) {
+  for (const detalhe of medicaoSemDestino(paginas)) {
     achados.push({ regra: 'medicao', onde: 'aviso de cookies', detalhe });
   }
   for (const detalhe of redirecionamentosQuebrados(pasta)) {

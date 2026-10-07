@@ -163,15 +163,15 @@ describe('verificarBuild', () => {
       expect(achados[0].detalhe).toMatch(/sem o GA4_ID/);
     });
 
-    it('barra o build com o ID da propriedade de teste do local', () => {
-      const pasta = montarBuild({ 'index.html': comAviso('G-TESTE12345') });
-      const achados = daMedicao(verificarBuild(pasta, { ga4DeTeste: 'G-TESTE12345' }));
+    // Qualquer outro ID mandaria as visitas para outro lugar: o da propriedade de teste do local ou um digitado errado.
+    it.each(['G-TESTE12345', 'G-Y04K0CN1F8'])('barra o build com o ID %s, que não é o da 9vee', (ga4) => {
+      const achados = daMedicao(verificarBuild(montarBuild({ 'index.html': comAviso(ga4) })));
       expect(achados).toHaveLength(1);
-      expect(achados[0].detalhe).toMatch(/propriedade de teste/);
+      expect(achados[0].detalhe).toMatch(/não é o da propriedade da 9vee \(G-Y04K0CN1F9\)/);
     });
 
     it('deixa passar o build com o ID da 9vee, e o build sem aviso nenhum', () => {
-      expect(daMedicao(verificarBuild(montarBuild({ 'index.html': comAviso('G-Y04K0CN1F9') }), { ga4DeTeste: 'G-TESTE12345' }))).toEqual([]);
+      expect(daMedicao(verificarBuild(montarBuild({ 'index.html': comAviso('G-Y04K0CN1F9') })))).toEqual([]);
       expect(daMedicao(verificarBuild(montarBuild({ 'index.html': LIMPA })))).toEqual([]);
     });
   });

@@ -1,12 +1,6 @@
 import { gravarPublico, lerPublico, ordenarPorPublico, publicoValido, type Publico } from '../lib/publico';
+import { armazenamento } from './armazenamento';
 
-const armazenamento = (() => {
-  try {
-    return window.localStorage;
-  } catch {
-    return undefined;
-  }
-})();
 
 const ouvintes = new Set<(publico: Publico | null) => void>();
 

@@ -81,6 +81,8 @@
   --raio-pilula: 999px;
   --raio-arco: 999px 999px 0 0;
   --alvo-minimo: 2.75rem;
+  /* A caixa de marcar do pedido e do aviso de cookies: da altura da primeira linha do texto pequeno ao lado dela. */
+  --caixa-de-marcar: 1.375rem;
   /* O fio entre as duas metades: faz ler "duas partes que se encontram", e não um gráfico de pizza. */
   --fio-metades: 3px;
   /* Sublinhado de destaque: item do menu, idioma e número pendente. */

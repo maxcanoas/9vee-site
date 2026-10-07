@@ -1,8 +1,8 @@
 // npm run check:producao: roda a trava sobre o build de produção e falha se sobrar algo que não pode ir ao ar.
 // O build:producao chama este script no fim, então o build de produção só "passa" com a trava limpa.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { parseEnv } from 'node:util';
+import { lerDoEnv } from './ler-env.ts';
 import { REGRAS, pendenciasNoConteudo, verificarBuild, type Regra } from './trava-producao.ts';
 
 const pasta = fileURLToPath(new URL('../dist-producao/', import.meta.url));
@@ -11,16 +11,14 @@ if (!existsSync(pasta)) {
   process.exit(1);
 }
 
-// A chave de teste do pedido, que manda para o e-mail de teste: a produção não pode sair com ela.
-const envDoPreview = new URL('../.env.preview', import.meta.url);
-const chaveDeTeste = existsSync(envDoPreview) ? parseEnv(readFileSync(envDoPreview, 'utf8')).FORMULARIO_CHAVE : undefined;
-// O ID do GA4 da propriedade de teste, a do local: a produção não pode medir com ele.
-const envDoLocal = new URL('../.env.development', import.meta.url);
-const ga4DeTeste = existsSync(envDoLocal) ? parseEnv(readFileSync(envDoLocal, 'utf8')).GA4_ID || undefined : undefined;
+// A chave de teste do pedido, que manda para o e-mail de teste: a produção não pode sair com ela. Sem o .env.preview
+// nesta máquina, a trava não tem com o que comparar, e diz isso.
+const chaveDeTeste = lerDoEnv('.env.preview', 'FORMULARIO_CHAVE');
+if (!chaveDeTeste) console.warn('check:producao: sem a FORMULARIO_CHAVE no .env.preview, a chave de teste não foi comparada.');
 
 const achados = [
   ...pendenciasNoConteudo(fileURLToPath(new URL('../content/', import.meta.url))),
-  ...verificarBuild(pasta, { chaveDeTeste, ga4DeTeste }),
+  ...verificarBuild(pasta, { chaveDeTeste }),
 ];
 if (achados.length === 0) {
   console.log('check:producao: nada a barrar. O build de produção pode ir ao ar.');

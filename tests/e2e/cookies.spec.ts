@@ -1,5 +1,5 @@
 import type { BrowserContext, Page } from '@playwright/test';
-import { CHAVE_COOKIES } from '../../src/lib/cookies.ts';
+import { CHAVE_COOKIES, novaEscolha, textoDaEscolha } from '../../src/lib/cookies.ts';
 import { TEMPO_MINIMO_DO_PEDIDO } from '../../src/lib/envio.ts';
 import {
   drawer,
@@ -182,6 +182,46 @@ test.describe('GA4 com Consent Mode v2', () => {
     expect(await page.evaluate((id) => Reflect.get(window, `ga-disable-${id}`), ID)).toBe(true);
     expect((await filaDoGtag(page)).at(-1)?.slice(0, 2)).toEqual(['consent', 'update']);
 
+    await page.locator('.cabecalho__cta').click();
+    expect(await eventos(page)).toEqual([]);
+  });
+
+  // A página que já media continua viva quando a recusa acontece fora dela: noutra aba, ou noutra página antes de a
+  // pessoa voltar a esta pelo cache do navegador. A política promete que, depois da recusa, nada mais é medido.
+  const desligado = (p: Page) => p.evaluate((id) => Reflect.get(window, `ga-disable-${id}`), ID);
+
+  test('a recusa feita noutra aba desliga o GA4 da página que já media', async ({ page, context }) => {
+    await salvarCookies(context, true);
+    await comGa4(page);
+    await page.goto('/');
+    await expect.poll(() => page.evaluate(() => Reflect.has(window, 'gtag'))).toBe(true);
+    expect(await desligado(page)).toBe(false);
+
+    const outraAba = await context.newPage();
+    await outraAba.goto('/lms/');
+    await outraAba.locator('footer [data-preferencias-cookies]').click();
+    await aviso(outraAba).locator('input[name="cookies-estatistica"]').uncheck();
+    await botaoDoAviso(outraAba, 'Salvar escolha').click();
+
+    await expect.poll(() => desligado(page)).toBe(true);
+    expect((await filaDoGtag(page)).at(-1)).toEqual(['consent', 'update', expect.objectContaining({ analytics_storage: 'denied' })]);
+  });
+
+  test('a página que volta do cache do navegador depois da recusa para de medir', async ({ page, context }) => {
+    await salvarCookies(context, true);
+    await comGa4(page);
+    await page.goto('/');
+    await expect.poll(() => page.evaluate(() => Reflect.has(window, 'gtag'))).toBe(true);
+
+    // A recusa gravada noutra página, e a volta a esta pelo cache, que o navegador avisa com o pageshow persistido.
+    await page.evaluate(
+      ([chave, valor]) => {
+        localStorage.setItem(chave, valor);
+        dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
+      },
+      [CHAVE_COOKIES, textoDaEscolha(novaEscolha(false, new Date(), 1))] as const,
+    );
+    expect(await desligado(page)).toBe(true);
     await page.locator('.cabecalho__cta').click();
     expect(await eventos(page)).toEqual([]);
   });

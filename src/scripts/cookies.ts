@@ -14,6 +14,7 @@ import {
   type EscolhaDeCookies,
 } from '../lib/cookies';
 import { parametrosDoEvento, type DadosDoEvento, type EventoDeLead } from '../lib/medicao';
+import { armazenamento } from './armazenamento';
 
 declare global {
   interface Window {
@@ -22,17 +23,12 @@ declare global {
   }
 }
 
-const armazenamento = (() => {
-  try {
-    return window.localStorage;
-  } catch {
-    return undefined;
-  }
-})();
-
 const aviso = document.querySelector<HTMLElement>('[data-aviso-cookies]');
 const versao = Number(aviso?.dataset.versao ?? 0);
 const ga4 = aviso?.dataset.ga4 ?? '';
+// A chave que o gtag.js lê na janela para parar de medir: com ela em true, nada sai, nem a medição automática.
+const DESLIGA_GA4 = `ga-disable-${ga4}`;
+const CAIXA_DA_ESTATISTICA = 'input[name="cookies-estatistica"]';
 // Só no local: com o modo de depuração, os eventos aparecem no DebugView da propriedade de teste.
 const depurar = aviso?.hasAttribute('data-ga4-depurar') ?? false;
 const raiz = document.documentElement;
@@ -49,7 +45,7 @@ function lerGuardada(): EscolhaDeCookies | null {
 }
 
 /** O GA4 está ligado e com o aceite: só assim um evento sai. */
-const medindo = () => Boolean(window.gtag) && carregaGa4(escolha, ga4) && !Reflect.get(window, `ga-disable-${ga4}`);
+const medindo = () => Boolean(window.gtag) && carregaGa4(escolha, ga4) && !Reflect.get(window, DESLIGA_GA4);
 
 /** Manda um dos três eventos de lead, se a pessoa aceitou a estatística. Sem o aceite, nada sai. */
 export function medir(evento: EventoDeLead, dados: DadosDoEvento): void {
@@ -58,7 +54,7 @@ export function medir(evento: EventoDeLead, dados: DadosDoEvento): void {
 
 function ligarGa4() {
   if (!carregaGa4(escolha, ga4)) return;
-  Reflect.set(window, `ga-disable-${ga4}`, false);
+  Reflect.set(window, DESLIGA_GA4, false);
   if (window.gtag) {
     window.gtag('consent', 'update', consentimentoDoGoogle(escolha));
     return;
@@ -81,7 +77,7 @@ function ligarGa4() {
 
 /** Quem recusa depois de ter aceitado: o GA4 para nesta página, e os cookies do Google saem do navegador. */
 function desligarGa4() {
-  if (ga4) Reflect.set(window, `ga-disable-${ga4}`, true);
+  if (ga4) Reflect.set(window, DESLIGA_GA4, true);
   window.gtag?.('consent', 'update', consentimentoDoGoogle(null));
   for (const nome of cookiesDoGa4(document.cookie)) {
     for (const dominio of ['', ...dominiosDoCookie(location.hostname)]) {
@@ -112,7 +108,7 @@ function esconder() {
 function abrirPreferencias(abrir: boolean) {
   if (!aviso) return;
   const categorias = aviso.querySelector<HTMLElement>('#aviso-cookies-categorias')!;
-  const estatistica = aviso.querySelector<HTMLInputElement>('input[name="cookies-estatistica"]')!;
+  const estatistica = aviso.querySelector<HTMLInputElement>(CAIXA_DA_ESTATISTICA)!;
   categorias.hidden = !abrir;
   estatistica.checked = escolha?.estatistica ?? false;
   aviso.querySelector('[data-cookies="preferencias"]')!.setAttribute('aria-expanded', String(abrir));
@@ -138,15 +134,16 @@ function medirAltura() {
   if (aviso && !aviso.hidden) raiz.style.setProperty('--altura-aviso', `${aviso.offsetHeight}px`);
 }
 
-/** Aplica a resposta guardada: o aviso aparece sem ela, e o GA4 liga com o aceite. */
+/**
+ * Aplica a resposta guardada: o aviso aparece sem ela, o GA4 liga com o aceite, e a página que já media para quando a
+ * resposta deixa de ser o aceite, dada noutra aba ou noutra página antes de a pessoa voltar a esta.
+ */
 function aplicarGuardada() {
   escolha = lerGuardada();
-  if (escolha) {
-    if (aviso && !aviso.hidden && !abridor) esconder();
-    if (escolha.estatistica) ligarGa4();
-  } else {
-    mostrar(false);
-  }
+  if (escolha?.estatistica) ligarGa4();
+  else if (window.gtag) desligarGa4();
+  if (!escolha) mostrar(false);
+  else if (aviso && !aviso.hidden && !abridor) esconder();
 }
 
 if (aviso) {
@@ -155,10 +152,10 @@ if (aviso) {
     const acao = (evento.target as Element).closest<HTMLElement>('[data-cookies]')?.dataset.cookies;
     if (acao === 'aceitar') decidir(true);
     else if (acao === 'recusar') decidir(false);
-    else if (acao === 'salvar') decidir(aviso.querySelector<HTMLInputElement>('input[name="cookies-estatistica"]')!.checked);
+    else if (acao === 'salvar') decidir(aviso.querySelector<HTMLInputElement>(CAIXA_DA_ESTATISTICA)!.checked);
     else if (acao === 'preferencias') {
       abrirPreferencias(true);
-      aviso.querySelector<HTMLInputElement>('input[name="cookies-estatistica"]')!.focus();
+      aviso.querySelector<HTMLInputElement>(CAIXA_DA_ESTATISTICA)!.focus();
     }
   });
   // Esc fecha o aviso reaberto pelo rodapé, sem mudar a escolha. O primeiro aviso só sai com uma resposta.
@@ -170,7 +167,7 @@ if (aviso) {
     if (!botao) return;
     abridor = botao;
     mostrar(true);
-    aviso.querySelector<HTMLInputElement>('input[name="cookies-estatistica"]')!.focus();
+    aviso.querySelector<HTMLInputElement>(CAIXA_DA_ESTATISTICA)!.focus();
   });
   aplicarGuardada();
   // Página restaurada do cache (voltar) ou pré-renderizada antes da resposta: vale o que está guardado agora.
@@ -178,4 +175,7 @@ if (aviso) {
     if (evento.persisted) aplicarGuardada();
   });
   document.addEventListener('prerenderingchange', aplicarGuardada);
+  addEventListener('storage', (evento) => {
+    if (evento.key === CHAVE_COOKIES) aplicarGuardada();
+  });
 }

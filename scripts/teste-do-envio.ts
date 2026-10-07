@@ -2,18 +2,16 @@
 // do endereço do preview? Abre cada endereço no Chrome e manda dali um envio de teste, com a chave do .env.preview.
 // Cada envio aceito vira um e-mail na caixa da chave: são dois, e podem ser apagados.
 // Uso: npm run build:preview && node scripts/teste-do-envio.ts
-import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { parseEnv } from 'node:util';
 import { preview } from 'astro';
 import { chromium } from '@playwright/test';
+import { lerDoEnv } from './ler-env.ts';
 
 const SERVICO = 'https://api.web3forms.com/submit';
 const PREVIEW_NO_AR = 'https://9vee-preview.9vee-site.workers.dev/';
 
 const raiz = new URL('../', import.meta.url);
-const arquivoDaChave = new URL('.env.preview', raiz);
-const chave = existsSync(arquivoDaChave) ? parseEnv(readFileSync(arquivoDaChave, 'utf8')).FORMULARIO_CHAVE : undefined;
+const chave = lerDoEnv('.env.preview', 'FORMULARIO_CHAVE');
 if (!chave) {
   console.error('Falta a FORMULARIO_CHAVE no .env.preview (veja o .env.example). Nada foi enviado.');
   process.exit(1);

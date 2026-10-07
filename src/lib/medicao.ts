@@ -18,8 +18,8 @@ export interface DadosDoEvento {
  * relatório não juntar tudo em "(not set)". O nome e o contato de quem pede nunca vão: a política promete.
  */
 export function parametrosDoEvento(evento: EventoDeLead, { servico, publico, pagina }: DadosDoEvento): Record<string, string> {
-  const doServico = { servico: servico ?? 'nenhum', pagina };
+  const daAbertura = { servico: servico ?? 'nenhum', pagina };
   // A abertura conta o serviço e a página: o público pode mudar dentro do drawer, e o envio e o WhatsApp levam o final.
-  if (evento === 'drawer_open') return doServico;
-  return { servico: doServico.servico, publico: publico ?? 'sem_escolha', pagina };
+  if (evento === 'drawer_open') return daAbertura;
+  return { ...daAbertura, publico: publico ?? 'sem_escolha' };
 }

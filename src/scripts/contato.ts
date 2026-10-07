@@ -29,6 +29,7 @@ import {
 } from '../lib/contato';
 import { assuntoDoPedido, barreiraContraRobo, linhasDoEnvio, momentoComFuso, quemPede } from '../lib/envio';
 import { publicoValido, type Publico } from '../lib/publico';
+import type { EventoDeLead } from '../lib/medicao';
 import { entregarPedido } from '../lib/servico-de-formulario';
 import { preencher } from '../lib/texto';
 import { medir } from './cookies';
@@ -331,6 +332,11 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     rotuloEnviar.textContent = ativo ? dados.envio.enviando : textoDoEnviar;
   }
 
+  /** Os eventos de lead do pedido levam o serviço escolhido nele e a página. */
+  function medirPedido(evento: EventoDeLead, publico = publicoAtual()) {
+    medir(evento, { servico, publico, pagina: dados.pagina });
+  }
+
   async function enviarPedido() {
     if (enviando) return;
     const publico = publicoAtual();
@@ -366,26 +372,30 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
 
     const { textos } = dados.envio;
     marcarEnviando(true);
-    const chegou = await entregarPedido(
-      {
-        assunto: assuntoDoPedido({ servico, publico, quem: quemPede({ publico, respostas, nome: campoNome.value }) }, textos),
-        remetente: textos.remetente,
-        linhas: linhasDoEnvio(
-          {
-            publico,
-            linhas,
-            pagina: { nome: dados.pagina, endereco: location.origin + location.pathname },
-            consentimento: { texto: dados.envio.consentimento, aceitoEm: momentoComFuso(new Date()) },
-          },
-          textos,
-        ),
-        responderPara: tipo === 'email' ? contato : undefined,
-      },
-      dados.envio.chave,
-    );
-    marcarEnviando(false);
+    let chegou = false;
+    try {
+      chegou = await entregarPedido(
+        {
+          assunto: assuntoDoPedido({ servico, publico, quem: quemPede({ publico, respostas, nome: campoNome.value }) }, textos),
+          remetente: textos.remetente,
+          linhas: linhasDoEnvio(
+            {
+              publico,
+              linhas,
+              pagina: { nome: dados.pagina, endereco: location.origin + location.pathname },
+              consentimento: { texto: dados.envio.consentimento, aceitoEm: momentoComFuso(new Date()) },
+            },
+            textos,
+          ),
+          responderPara: tipo === 'email' ? contato : undefined,
+        },
+        dados.envio.chave,
+      );
+    } finally {
+      marcarEnviando(false);
+    }
     // Só o pedido que chegou conta como lead: a falha e a isca do robô não mandam nada.
-    if (chegou) medir('lead_form_submit', { servico, publico, pagina: dados.pagina });
+    if (chegou) medirPedido('lead_form_submit', publico);
     irPara(chegou ? 'confirmado' : 'falhou');
   }
 
@@ -442,7 +452,7 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
     dialogo.showModal();
     ajustarAoTeclado();
     irPara(primeiraEtapaPendente({ publico, servico, detalhesCompletos: validar('detalhes', false) }));
-    medir('drawer_open', { servico, publico, pagina: dados.pagina });
+    medirPedido('drawer_open', publico);
   }
 
   // Tab e Shift+Tab dão a volta dentro do drawer, também no Safari, que deixaria o foco sair para a barra.
@@ -494,6 +504,8 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
       return;
     }
     if (alvo.closest('[data-fecha-contato]')) return fechar();
+    // Enquanto o pedido sai, a tela fica onde está: quem leva à confirmação ou à falha é a resposta.
+    if (enviando) return;
     const destino = alvo.closest<HTMLElement>('[data-ir-para]');
     if (destino) return irPara(destino.dataset.irPara as Etapa);
     if (alvo.closest('[data-voltar]')) return voltar();
@@ -550,15 +562,13 @@ function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
       return;
     }
     atualizarLinks();
-    medir('whatsapp_click', { servico, publico: publicoAtual(), pagina: dados.pagina });
+    medirPedido('whatsapp_click');
     // Depois do clique, para a troca de tela não atrapalhar a abertura do link.
     window.setTimeout(() => irPara('aberto'));
   });
 
   // A saída pela tela de falha também é uma conversa aberta no WhatsApp. O "Abrir de novo" não conta: é a mesma.
-  saidaDaFalha.addEventListener('click', () => {
-    medir('whatsapp_click', { servico, publico: publicoAtual(), pagina: dados.pagina });
-  });
+  saidaDaFalha.addEventListener('click', () => medirPedido('whatsapp_click'));
 
   dialogo.addEventListener('close', () => {
     window.clearTimeout(avanco);
