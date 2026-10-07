@@ -35,8 +35,8 @@ describe('tradução simultânea', () => {
     ]);
   });
 
-  it('saiu das páginas parciais: sem a etiqueta de obra', () => {
-    expect(traducao.querySelector('.hero-pagina__etiqueta')).toBeNull();
+  it('está no site: sem o aviso de fora do site', () => {
+    expect(traducao.querySelector('.aviso-nao-publicada')).toBeNull();
   });
 
   it('põe os três formatos lado a lado, cada um com quando usar e como funciona', () => {

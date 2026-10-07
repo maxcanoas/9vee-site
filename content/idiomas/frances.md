@@ -25,7 +25,7 @@ provas:
   apoio: "Para estudar, trabalhar ou imigrar. A escolha depende do seu objetivo e do destino."
   itens:
     - nome: "DELF e DALF"
-      texto: "O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Vão do A1 ao C2, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma."
+      texto: "O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Vão do A1 ao C2, os seis níveis do Quadro Europeu Comum de Referência para Línguas, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma."
     - nome: "TCF"
       texto: "O teste oficial de nível, criado pelo CIEP (Centre International d'Études Pédagogiques), que coloca você num dos seis níveis do Quadro Europeu."
     - nome: "TEF"
@@ -41,10 +41,10 @@ destaque:
     - titulo: "Professores nativos"
       texto: "Todas as aulas de francês, com ou sem prova, são dadas por professores nativos."
     - titulo: "Simulados"
-      texto: "No preparatório do TCF, você faz a prova no formato dela antes do dia do exame."
+      texto: "No preparatório do TCF, a prática é direcionada para a prova, com simulados no formato dela antes do dia do exame."
     - titulo: "Todas as habilidades"
       texto: "No DELF e no DALF, a preparação trabalha o que o exame cobra, na escrita e na fala."
-  nota: "As aulas são online, ao vivo, particulares ou em grupo, em todos os níveis."
+  nota: "O foco é nos critérios de cada prova. As aulas são online, ao vivo, particulares ou em grupo, em todos os níveis."
 
 faq:
   titulo: "Perguntas sobre o francês"

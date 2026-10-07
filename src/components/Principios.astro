@@ -8,7 +8,7 @@ interface Props {
   id: string;
   titulo: string;
   apoio: string;
-  itens: { id: string; nome: string; texto: string; itens: { titulo: string; texto: string }[] }[];
+  itens: { id: string; nome: string; texto: string; detalhes: { titulo: string; texto: string }[] }[];
 }
 
 const { id, titulo, apoio, itens } = Astro.props;
@@ -31,7 +31,7 @@ const { id, titulo, apoio, itens } = Astro.props;
               <Texto de={principio.texto} />
             </p>
             <ul class="principio__itens" role="list">
-              {principio.itens.map((item) => (
+              {principio.detalhes.map((item) => (
                 <li class="principio__item">
                   <h4 class="principio__item-titulo">
                     <Texto de={item.titulo} />

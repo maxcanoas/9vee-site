@@ -64,18 +64,18 @@ principios:
   itens:
     - id: "proposito"
       nome: "Propósito"
-      texto: "O que leva a visão à prática e melhora a vida de quem aprende."
-      itens:
+      texto: "O que leva a visão à prática e melhora a vida dos clientes da 9vee."
+      detalhes:
         - titulo: "Cuidar para mudar"
           texto: "Cada projeto leva o compromisso com resultados que mudam a trajetória de quem aprende."
         - titulo: "O aluno no centro"
-          texto: "As decisões começam e terminam no aluno. Os professores recebem metodologia, tecnologia e suporte contínuo."
+          texto: "As decisões começam e terminam no aluno, e os professores recebem metodologia, tecnologia e suporte contínuo."
         - titulo: "Melhorar sempre"
           texto: "Cada detalhe de cada interação é revisto e aprimorado."
     - id: "coragem"
       nome: "Coragem"
       texto: "O que faz a intenção virar ação."
-      itens:
+      detalhes:
         - titulo: "O momento é agora"
           texto: "Pensar grande e agir logo, porque o mundo não desacelera."
         - titulo: "Execução"
@@ -85,14 +85,25 @@ principios:
     - id: "parceria"
       nome: "Parceria"
       texto: "A base de um time que cresce junto."
-      itens:
+      detalhes:
         - titulo: "Evolução contínua"
           texto: "Feedback, aprendizado e até os desafios servem para melhorar os processos."
         - titulo: "Desafiar, alinhar, executar"
-          texto: "Diálogo aberto e direto, com espaço para discordar. Definida a direção, todos se comprometem com ela."
+          texto: "Diálogo aberto e direto, com espaço para discordar e o compromisso de todos com a direção definida."
         - titulo: "Um time, um propósito"
           texto: "O coletivo vem antes do individual, com colaboração, inclusão e responsabilidade compartilhada."
 
+# "Histórias construídas com grandes parceiros", do site atual, que lá traz cinco logos sem nome. Aqui ficam só os
+# nomes que a 9vee liberou em 05/10/2026 (pergunta 14), sem logo, como a Tradução e Cursos já citam.
+parceiros:
+  titulo: "Histórias construídas com grandes parceiros"
+  apoio: "Algumas das empresas que já contrataram os intérpretes e os cursos da 9vee."
+  grupos:
+    - rotulo: "Interpretação"
+      itens: ["TOTVS", "Array"]
+    - rotulo: "Cursos de idiomas"
+      itens: ["Pirelli", "FGV", "Sicredi", "Bradesco"]
+  nota: "Veja como funcionam a [tradução simultânea](/traducao-simultanea/) e as [turmas para empresas](/curso-de-idiomas/#empresas)."
 ctaFinal:
   titulo: "Conte o que você precisa."
   texto: "Você responde em quatro passos. No fim, decide se prefere conversar agora pelo WhatsApp ou esperar a equipe chamar."

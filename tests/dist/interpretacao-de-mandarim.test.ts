@@ -30,8 +30,8 @@ describe('interpretação de mandarim', () => {
     expect(secoes).toEqual(['hero', 'servicos', 'precisao', 'curso', 'contato']);
   });
 
-  it('é uma página completa: sem a etiqueta de obra e sem pendência', () => {
-    expect(mandarim.querySelector('.hero-pagina__etiqueta')).toBeNull();
+  it('é uma página completa: sem o aviso de fora do site e sem pendência', () => {
+    expect(mandarim.querySelector('.aviso-nao-publicada')).toBeNull();
     expect(mandarim.querySelectorAll('main mark.confirmar')).toEqual([]);
   });
 

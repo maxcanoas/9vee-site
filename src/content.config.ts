@@ -415,7 +415,7 @@ const home = defineCollection({
         .min(1),
     }),
     faq,
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+    ctaFinal: tituloETexto,
   }),
 });
 
@@ -498,7 +498,7 @@ const idiomas = defineCollection({
     provas: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(nomeETexto.extend({ detalhe: z.array(z.string()).min(1) })).min(1),
+      itens: z.array(nomeETexto.extend({ paragrafos: z.array(z.string()).min(1) })).min(1),
     }),
     equipe: z.object({
       titulo: z.string(),
@@ -519,7 +519,7 @@ const idiomas = defineCollection({
       imagem,
     }),
     faq,
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+    ctaFinal: tituloETexto,
   }),
 });
 
@@ -570,7 +570,7 @@ const paginasDeIdioma = defineCollection({
         })
         .optional(),
       faq: faq.optional(),
-      ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+      ctaFinal: tituloETexto,
     })
     // A trava não enxerga a descrição provisória do esqueleto, que não tem marca: o esqueleto só vai ao ar
     // depois de reescrito com os fatos e sem a marca.
@@ -621,7 +621,7 @@ const lms = defineCollection({
     motivos: z.object({
       titulo: z.string(),
       itens: z
-        .array(z.object({ rotulo: z.string(), descricao: z.string(), href: z.string().regex(/^#[a-z-]+$/) }))
+        .array(link.extend({ descricao: z.string(), href: z.string().regex(/^#[a-z-]+$/) }))
         .min(2),
     }),
     oQueE: textoComImagem,
@@ -730,7 +730,7 @@ const quemSomos = defineCollection({
     // As quatro frentes de hoje, cada uma levando à página dela.
     frentes: z.object({
       titulo: z.string(),
-      itens: z.array(z.object({ rotulo: z.string(), descricao: z.string(), href: z.string() })).min(2),
+      itens: z.array(link.extend({ descricao: z.string() })).min(2),
     }),
     historia: textoComImagem,
     missao: z.object({ frase: fraseComGrifo, ...sustentacaoDaMostra }),
@@ -739,10 +739,17 @@ const quemSomos = defineCollection({
       titulo: z.string(),
       apoio: z.string(),
       itens: z
-        .array(nomeETexto.extend({ id: z.enum(['proposito', 'coragem', 'parceria']), itens: z.array(tituloETexto).min(2) }))
+        .array(nomeETexto.extend({ id: z.enum(['proposito', 'coragem', 'parceria']), detalhes: z.array(tituloETexto).min(2) }))
         .min(2),
     }),
-    ctaFinal: z.object({ titulo: z.string(), texto: z.string() }),
+    // Os clientes que a 9vee liberou para citar, só com o nome, numa lista por frente.
+    parceiros: z.object({
+      titulo: z.string(),
+      apoio: z.string(),
+      grupos: z.array(z.object({ rotulo: z.string(), itens: z.array(z.string()).min(1) })).min(1),
+      nota: z.string(),
+    }),
+    ctaFinal: tituloETexto,
   }),
 });
 

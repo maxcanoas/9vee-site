@@ -76,7 +76,7 @@ diferenciais:
   titulo: "O que faz a 9vee diferente"
   itens:
     - nome: "Comunicação de verdade"
-      texto: "Os cursos vão além do ensino tradicional. Treinam a comunicação do dia a dia, a que dá autonomia e segurança a famílias imigrantes em qualquer país."
+      texto: "Os cursos vão além do ensino tradicional. Desenvolvem a comunicação real, a que dá autonomia, segurança e novas oportunidades a famílias imigrantes em qualquer país."
     - nome: "Professores perto ou longe"
       texto: "Professores qualificados dão aula no presencial e no remoto, com experiência prática e tecnologia educacional."
     - nome: "Um programa por aluno"
@@ -92,7 +92,7 @@ como:
         arquivo: "home-como-1"
         alt: "Mãos segurando um celular numa mesa de café, escrevendo uma mensagem."
     - titulo: "A equipe estuda o pedido"
-      texto: "No curso, começa por um diagnóstico do seu nível. No evento, pela data e pelos idiomas."
+      texto: "No curso, começa pelo idioma e pelo objetivo. No evento, pela data e pelos idiomas."
       imagem:
         id: "IMG-HOME-COMO-2"
         arquivo: "home-como-2"

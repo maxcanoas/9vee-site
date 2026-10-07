@@ -9,7 +9,7 @@ interface Props {
   id: string;
   titulo: string;
   apoio: string;
-  itens: { nome: string; texto: string; detalhe: string[] }[];
+  itens: { nome: string; texto: string; paragrafos: string[] }[];
 }
 
 const { id, titulo, apoio, itens } = Astro.props;
@@ -32,7 +32,7 @@ const { id, titulo, apoio, itens } = Astro.props;
               </span>
             </summary>
             <div class="acordeao__detalhe">
-              {item.detalhe.map((paragrafo) => (
+              {item.paragrafos.map((paragrafo) => (
                 <p>
                   <Texto de={paragrafo} />
                 </p>

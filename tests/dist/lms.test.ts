@@ -22,8 +22,8 @@ describe('LMS', () => {
     ]);
   });
 
-  it('saiu das páginas parciais: sem a etiqueta de obra e sem pendência', () => {
-    expect(lms.querySelector('.hero-pagina__etiqueta')).toBeNull();
+  it('está no site: sem o aviso de fora do site e sem pendência', () => {
+    expect(lms.querySelector('.aviso-nao-publicada')).toBeNull();
     expect(lms.querySelectorAll('main mark.confirmar')).toEqual([]);
   });
 

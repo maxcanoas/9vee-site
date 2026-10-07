@@ -36,7 +36,7 @@ formatos:
   apoio: "Todas com professor nativo. No pedido, você escolhe o formato que combina com a sua rotina."
   itens:
     - titulo: "Aula individual"
-      texto: "Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico."
+      texto: "Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico. A meta é falar com segurança, clareza e autoridade."
     - titulo: "Online, ao vivo"
       texto: "Particular ou em grupo, de qualquer cidade, no dia e no horário que você escolher."
     - titulo: "Turma in company"

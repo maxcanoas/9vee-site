@@ -7,14 +7,14 @@ const texto = (seletor: string) => textoDe(pagina, seletor);
 const textos = (seletor: string) => textosDe(pagina, seletor);
 
 describe('Quem Somos', () => {
-  it('traz as sete seções da página completa, na ordem', () => {
+  it('traz as oito seções da página completa, na ordem', () => {
     // O hero e a faixa de números não têm id: nada aponta para eles.
     const secoes = pagina.querySelectorAll('main > section').map((secao) => secao.getAttribute('id') ?? secao.classNames.split(' ')[0]);
-    expect(secoes).toEqual(['hero-pagina', 'prova', 'frentes', 'historia', 'missao', 'principios', 'contato']);
+    expect(secoes).toEqual(['hero-pagina', 'prova', 'frentes', 'historia', 'missao', 'principios', 'parceiros', 'contato']);
   });
 
-  it('saiu das páginas parciais: sem a etiqueta de obra', () => {
-    expect(pagina.querySelector('.hero-pagina__etiqueta')).toBeNull();
+  it('está no site: sem o aviso de fora do site', () => {
+    expect(pagina.querySelector('.aviso-nao-publicada')).toBeNull();
   });
 
   // A 9vee não tem sede aberta ao público: nada de sede, endereço ou convite para visita.
@@ -68,7 +68,6 @@ describe('Quem Somos', () => {
     }
   });
 
-  // As pessoas à frente da empresa ficam de fora, a pedido da 9vee (pergunta 16).
   it('abre o pedido no começo e no fim, sem serviço marcado', () => {
     for (const onde of ['.hero-pagina', '#contato']) {
       const botao = pagina.querySelector(`${onde} [data-abre-contato]`);

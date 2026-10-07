@@ -5,6 +5,7 @@ import FaixaProva from '../components/FaixaProva.astro';
 import FaixaDeAtalhos from '../components/FaixaDeAtalhos.astro';
 import TextoComImagem from '../components/TextoComImagem.astro';
 import Mostra from '../components/Mostra.astro';
+import ListaCorrida from '../components/ListaCorrida.astro';
 import Principios from '../components/Principios.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite } from '../lib/site';
@@ -24,5 +25,6 @@ const site = await dadosDoSite();
   <TextoComImagem id="historia" {...pagina.historia} />
   <Mostra id="missao" {...pagina.missao} grupo={GRUPO_DO_PUBLICO.empresa} />
   <Principios id="principios" {...pagina.principios} />
+  <ListaCorrida id="parceiros" {...pagina.parceiros} />
   <CtaFinal {...pagina.ctaFinal} cta={site.cta} />
 </Base>

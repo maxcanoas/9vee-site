@@ -47,7 +47,7 @@ niveis:
 
 formatos:
   titulo: "Como são as aulas"
-  apoio: "Professores nativos dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário."
+  apoio: "Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário."
   itens:
     - id: "particular"
       titulo: "Aula particular"
@@ -64,36 +64,36 @@ formatos:
 # Cada exame abre o texto completo do site atual: a linha curta fica à vista, e o detalhe, um parágrafo por item.
 provas:
   titulo: "Preparação para provas"
-  apoio: "Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para as provas de cada idioma que ensina, com foco nos critérios de cada uma. Aqui estão seis, e a página de cada idioma mostra as outras."
+  apoio: "Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para essas provas, com foco nos critérios de cada uma. Aqui estão seis, e a página de cada idioma mostra as outras."
   itens:
     - nome: "TOEFL iBT"
       texto: "Inglês acadêmico, pedido por universidades."
-      detalhe:
+      paragrafos:
         - "O TOEFL (Test of English as a Foreign Language) é um dos exames de inglês mais aceitos por universidades e instituições acadêmicas do mundo. Ele mede o uso do idioma em contexto acadêmico, em quatro competências: Reading, Listening, Speaking e Writing."
         - "O preparatório é para o TOEFL iBT (Internet Based Test) e para quem já está no intermediário alto ou no avançado. Segue o formato oficial do exame, com técnica para cada parte da prova."
     - nome: "CELPE-Bras"
       texto: "Português para estrangeiros, o exame oficial do Brasil."
-      detalhe:
-        - "Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países, e as universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
+      paragrafos:
+        - "Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros."
         - "As aulas do preparatório são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame."
     - nome: "DELE"
       texto: "Espanhol, o diploma oficial do idioma."
-      detalhe:
+      paragrafos:
         - "O DELE (Diploma de Español como Lengua Extranjera) é a certificação oficial de espanhol, reconhecida pelo Estado espanhol e emitida em centros autorizados, como os Institutos Cervantes e as embaixadas."
         - "O preparatório trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores."
     - nome: "DELF e DALF"
       texto: "Francês, os diplomas oficiais da França."
-      detalhe:
+      paragrafos:
         - "O DELF (Diplôme d'Études en Langue Française) e o DALF (Diplôme Approfondi de Langue Française) são emitidos pelo Ministério da Educação da França e reconhecidos internacionalmente. Vão do A1 ao C2, os seis níveis do Quadro Europeu, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma."
         - "O preparatório trabalha todas as habilidades que o exame cobra."
     - nome: "TCF"
       texto: "Francês, o teste oficial de nível."
-      detalhe:
+      paragrafos:
         - "O TCF é o exame oficial de francês criado pelo CIEP (Centre International d'Études Pédagogiques). Ele coloca o candidato num dos seis níveis do Quadro Europeu, o padrão que instituições de ensino do mundo todo usam."
         - "O preparatório tem professores nativos, prática direcionada e simulados do exame."
     - nome: "Inburgering"
       texto: "Holandês, o exame de integração dos Países Baixos."
-      detalhe:
+      paragrafos:
         - "A lei holandesa de integração pede um exame prévio a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos. O teste avalia o conhecimento da língua holandesa e a familiaridade com a cultura e os costumes da sociedade do país."
         - "O preparatório é voltado para o exame e trabalha as duas partes: a língua e a cultura."
 
@@ -104,7 +104,7 @@ equipe:
     - titulo: "Turma in company"
       texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
     - titulo: "Aula individual para executivos"
-      texto: "Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível."
+      texto: "Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. Mais do que fluência, a meta é segurança, clareza e autoridade na comunicação internacional."
     - titulo: "Português para quem veio de fora"
       texto: "Para o profissional estrangeiro que entrou no time, com preparação para o CELPE-Bras."
   nota: "Pirelli, FGV, Sicredi e Bradesco já contrataram os cursos da 9vee. O pedido pergunta idioma, número de alunos, nível da turma e formato, e a proposta sai com isso na mão."
@@ -142,10 +142,10 @@ como:
   etapas:
     - titulo: "Você diz o idioma e o objetivo"
       texto: "Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção."
-    - titulo: "A 9vee faz o diagnóstico do seu nível"
-      texto: "Antes de fechar a turma, para a aula começar no ponto certo."
+    - titulo: "A 9vee manda a proposta"
+      texto: "Costuma sair no mesmo dia. Se o pedido chega no fim do dia, ela sai no dia seguinte."
     - titulo: "A primeira aula acontece"
-      texto: "No formato que você escolheu, no ritmo que o diagnóstico apontou."
+      texto: "No formato que você escolheu. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele."
   imagem:
     id: "IMG-IDIOMAS-COMO"
     arquivo: "idiomas-como"
@@ -155,7 +155,7 @@ faq:
   titulo: "Perguntas de quem vai estudar"
   itens:
     - pergunta: "Não sei o meu nível. Tem problema?"
-      resposta: "Não. O diagnóstico acontece antes de fechar a turma, e é ele que diz onde você está e de onde a aula começa."
+      resposta: "Não. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele."
     - pergunta: "Quanto tempo leva para subir um nível?"
       resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
     - pergunta: "Vocês atendem criança e adolescente?"

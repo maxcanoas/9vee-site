@@ -41,7 +41,7 @@ entrega:
   apoio: "Três coisas saem do treinamento e ficam na empresa depois que a turma acaba."
   itens:
     - titulo: "Liderança que sabe conduzir a conversa"
-      texto: "Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar terapeuta da equipe. É o módulo 2 inteiro."
+      texto: "Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar terapeuta da equipe."
     - titulo: "Um plano de ação escrito pela sua equipe"
       texto: "O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar [CONFIRMAR COM A DANIELLA: como a 9vee entrega o plano de ação no fim do treinamento]."
     - titulo: "Registro da capacitação"
@@ -51,7 +51,7 @@ entrega:
 # O objetivo e os seis temas do site atual, com a Comunicação Não Violenta.
 temas:
   titulo: "O que o treinamento aborda"
-  apoio: "O objetivo é dar aos participantes competências práticas para construir relações mais saudáveis, fortalecer o bem-estar emocional e ajudar a criar um ambiente de trabalho psicologicamente seguro e colaborativo."
+  apoio: "O objetivo é dar aos participantes competências práticas para relações mais saudáveis e para o bem-estar emocional. Com elas, os participantes ajudam a criar um ambiente de trabalho psicologicamente seguro e colaborativo."
   itens:
     - nome: "Riscos psicossociais"
       texto: "O que são e como afetam pessoas, equipes e empresas."

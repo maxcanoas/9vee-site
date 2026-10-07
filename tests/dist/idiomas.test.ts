@@ -147,6 +147,39 @@ describe('cursos de idiomas', () => {
     expect(textoDe(idiomas, '#provas .cabeca__apoio')).toContain('imigração');
   });
 
+  // O DELE e o CELPE-Bras aparecem aqui e na página do idioma, cada um com o texto dele: quem muda um fato num lugar
+  // tem de mudar no outro.
+  it.each([
+    [
+      'DELE',
+      'espanhol',
+      [
+        'é a certificação oficial de espanhol, reconhecida pelo Estado espanhol e emitida em centros autorizados, como os Institutos Cervantes e as embaixadas',
+        'Trabalha os principais conteúdos de gramática, com muita prática e análise de provas de anos anteriores',
+      ],
+    ],
+    [
+      'CELPE-Bras',
+      'portugues-para-estrangeiros',
+      [
+        'o único certificado de português reconhecido oficialmente pelo governo brasileiro',
+        'é aceito por universidades, empresas e instituições de outros países',
+        'As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros',
+        'professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame',
+      ],
+    ],
+  ])('diz do %s o mesmo que a página do idioma', (exame, pagina, fatos) => {
+    const noAcordeao = idiomas
+      .querySelectorAll('#provas details')
+      .find((item) => item.querySelector('.acordeao__nome')?.text.trim() === exame);
+    const naPagina = parse(readFileSync(join(DIST, 'curso-de-idiomas', pagina, 'index.html'), 'utf8')).querySelector('#provas');
+    const semCaixa = (texto = '') => texto.replace(/\s+/g, ' ').toLocaleLowerCase('pt-BR');
+    for (const fato of fatos) {
+      expect(semCaixa(noAcordeao?.text), `${exame} em Cursos`).toContain(semCaixa(fato));
+      expect(semCaixa(naPagina?.text), `${exame} na página do idioma`).toContain(semCaixa(fato));
+    }
+  });
+
   it('mostra a régua do A1 ao C2', () => {
     const codigos = idiomas.querySelectorAll('#niveis .nivel__codigo').map((no) => no.text.trim());
     expect(codigos).toEqual(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);

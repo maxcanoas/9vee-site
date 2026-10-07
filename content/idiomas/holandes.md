@@ -33,7 +33,7 @@ formatos:
 
 provas:
   titulo: "Preparação para o Inburgering e o NT2"
-  apoio: "A lei holandesa de integração pede um exame a cidadãos estrangeiros que querem se estabelecer nos Países Baixos. O preparatório trabalha a língua e a cultura que a aprovação pede."
+  apoio: "A lei holandesa de integração pede um exame prévio, feito antes da mudança, a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos. O preparatório trabalha a língua e a cultura que a aprovação pede."
   itens:
     - nome: "Inburgering"
       texto: "O exame de integração tem a prova de língua, nos níveis A1, A2 ou B1, conforme a etapa, e a KNM, que avalia o conhecimento da cultura e dos costumes da sociedade do país."

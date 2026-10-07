@@ -26,7 +26,7 @@ const LOTES: Record<number, Lote> = {
   // As páginas que o reaproveitamento do site atual completou, a política e a página de erro, que não tem endereço
   // próprio: o arquivo dela responde por todo endereço que não existe.
   2: {
-    titulo: 'tradução, LMS, Quem Somos, privacidade e página de erro',
+    titulo: 'tradução, interpretação de mandarim, LMS, Quem Somos, privacidade e página de erro',
     paginas: [
       ['Tradução Simultânea', '/traducao-simultanea/'],
       ['Interpretação de Mandarim', '/traducao-simultanea/mandarim/'],
