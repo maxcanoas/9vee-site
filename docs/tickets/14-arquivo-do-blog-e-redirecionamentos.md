@@ -30,7 +30,7 @@
   - `/post/professores-nativos`, o único post 410, porque o endereço não cita idioma nem serviço. Virou a exceção `/curso-de-idiomas/`, com o ok do Maxwell.
   - `/accessibility-statement` vai para `/lms/` e `/our-team` para `/traducao-simultanea/`, porque é para lá que o Wix leva hoje.
   - os 11 posts de idiomas em geral ou de mais de um idioma, que vão para `/curso-de-idiomas/`.
-  - 136 posts citam São Paulo, Rio, Curitiba, Brasília ou um bairro de São Paulo. Por enquanto vão para o idioma ou o serviço; mudam quando o 11 publicar as cidades.
+  - 136 posts citam São Paulo, Rio, Curitiba, Brasília ou um bairro de São Paulo. Por enquanto vão para o idioma ou o serviço. **Mudou em 07/10/2026 (ticket 11):** só os de tradução vão para a cidade, quando a página dela for publicada (14 posts: 5 de São Paulo, com a Faria Lima e a Paulista, e 3 de cada uma das outras); os de idioma ficam no idioma, porque a aula de quem estuda por conta própria é online. A regra e os termos de cada cidade estão em `scripts/redirecionamentos.ts` (`cidadesPublicadas`), com teste.
 - **Rodar de novo perto do lançamento:** `node scripts/arquivo-do-blog.ts` (só pede os posts que faltam) e `node scripts/build.ts producao && node scripts/mapa-de-redirecionamentos.ts` (traz os posts novos da cópia).
 - **Os testes:** 36 de lógica novos (`tests/unit/redirecionamentos.test.ts` e `tests/unit/blog.test.ts`). `npm test` com 239 testes de lógica e 1.511 do HTML.
 - **Ficou de fora,** pelo processo curto: a rodada de `code-review`, que volta no ticket 17.

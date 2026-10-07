@@ -6,10 +6,10 @@
 
 **Horas:** 6. **Semana:** 7.
 
-**Situação:** parte técnica em andamento desde 06/10/2026, adiantada da semana 7, a pedido do Maxwell: suíte de navegador e Lighthouse feitos; falta o `code-review`. A parte da Daniella espera a revisão dela.
+**Situação:** parte técnica feita em 06/10 e 07/10/2026, adiantada da semana 7, a pedido do Maxwell: suíte de navegador, Lighthouse e `code-review` nos quatro grupos. A parte da Daniella espera a revisão dela. O Lighthouse de 06/10 é anterior às páginas de cidade e às mudanças de 07/10: medir de novo no ticket 20.
 
 - [ ] Ajustes da revisão da Daniella aplicados nos quatro lotes, com a aprovação dela por escrito registrada.
-- [ ] `code-review` desde a tag `mvp-aprovado`, nos dois eixos, com as correções em commits próprios.
+- [x] `code-review` desde a tag `mvp-aprovado`, nos dois eixos, com as correções em commits próprios. Feito em 07/10/2026, em quatro grupos (registro em "Andamento").
 - [ ] Se sobrar hora: levar as três formas da meia-pílula (marcador, marca de ação e separador) para o `base.css`. A proposta vem do `code-review` do ticket 06, mexe em doze componentes e não muda nada na tela. O Maxwell decidiu em 01/10/2026 que ela espera esta revisão. A prova é a mesma do ticket 05: as capturas de antes e de depois idênticas, byte a byte.
 - [ ] O que os tickets feitos no processo curto deixaram de fora, a pedido do Maxwell em 02/10/2026: o Lighthouse de cada página, a suíte de navegador inteira e o `code-review` do ticket. Começa pelo 07 (Quem Somos) e segue com o 22 (home, NR-1, Cursos e cinco páginas de idioma) e o 12 (o envio do pedido, que rodou a suíte de navegador inteira e ficou sem o Lighthouse e o `code-review`); cada ticket diz no "Como ficou" dele o que ficou de fora.
 - [ ] Duas repetições de CSS que o 22 deixou, para o `code-review` decidir: o abre e fecha do `Acordeao` é igual ao do `Faq` (a chamada, o meio-círculo que gira e o texto de dentro), e o `GruposDePontos` traz mais uma cópia do marcador de meia-pílula, que entra na proposta do item acima.
@@ -51,3 +51,12 @@
 - padrões: a faixa de números sem estilo inline (`data-colunas`), com o validador barrando variável em `style`; o `padroes.md` com o endereço e o nome comercial de 05/10; os valores soltos do grupo em tokens, com o mesmo valor; a foto da aluna carregando com a página, em prioridade baixa, para a troca de público não mostrar o arco vazio; o alfinete da legenda sem a cor reserva, pintado pelo `fill` (é forma, não texto); a etiqueta "Novo" da política no menta claro, com contorno; e o endereço do JSON-LD lido uma vez;
 - ficaram para o item "se sobrar hora": as repetições (topo compacto, pílula de etiqueta, marcas de revisão na trava, afastamento do WhatsApp) e o apoio de empresa opcional na home. A repetição entre as sete páginas de idioma de 05/10 fica para a revisão da Daniella;
 - `npm test` inteiro passou, e os testes de navegador de público, cores e movimento também. Capturas do que mudou na tela no roteiro `code-review-17`. Os quatro lotes foram gerados de novo.
+
+**Code-review, grupo 4 (15, 14, 18, 19 e 11), 07/10/2026:** os mesmos dois revisores, sobre `a0faae8`, `ed28a67`, `4ff0e8a`, `58aca94`, `8bc683c` e `100f02b`. Nada quebra a migração: a amostra de 17 linhas do mapa está certa, toda regra do `.htaccess` tem âncora, não há corrente, e as cidades seguem a decisão de 07/10. O Maxwell pediu a explicação detalhada de cada correção (nenhuma muda a tela) e escolheu aplicar a spec inteira e os padrões 1 a 7:
+
+- spec: os tickets 15 e 14 atualizados (os links cruzados feitos no 11; 14 posts de tradução, e não 136, mudam com as cidades); a regra das cidades do mapa no módulo com teste (`cidadesPublicadas`), testada nos endereços decididos; o cantonês na lista de idiomas do mapa (um post dele iria para Cursos, e não para 410); e o serviço de tradução antes do idioma (o post de interpretação que cita o mandarim vai para a página de interpretação de mandarim, e não para o curso);
+- padrões: o `.htaccess` recusa a origem com espaço antes de gerar o arquivo (evita o erro 500); a checagem de corrente, que nunca disparava, virou a conferência que de fato impede corrente (nenhuma origem termina em barra); três comentários corrigidos; o campo de serviços da cidade saiu; um `preencherModelo` no contato, um `escaparRegex` e um `slugDoPost` só, e `src/lib/caminhos.ts` com o endereço da página de idioma e o da interpretação de mandarim; e as cidades com o que muda por tipo num mapa só (`DADOS_DO_TIPO`), o layout renomeado para `Cidade.astro` e o tipo do `Base` para `ModeloDeCidade`;
+- ficaram para o item "se sobrar hora": o domínio num lugar só (com o `.htaccess` passando os destinos à trava sem regex) e as repetições maiores (a medida da imagem de prévia e a linha do `.htaccess`);
+- `npm test` inteiro passou (271 de lógica e 1.805 do HTML), e o mapa gerado de novo saiu idêntico: nenhuma URL mudou de destino.
+
+**Code-review da revisão final: feito em 07/10/2026,** nos quatro grupos. O que ficou para o item "se sobrar hora" está anotado em cada grupo.

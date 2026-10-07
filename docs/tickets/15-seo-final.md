@@ -11,7 +11,7 @@
 - [x] `/sitemap.xml` gerado a cada build de produção, só com as páginas publicadas. A página de interpretação de mandarim (`/traducao-simultanea/mandarim/`) entra desde o lançamento.
 - [x] Favicon completo: SVG, ICO, os PNG de 32, 180, 192 e 512 e o manifesto.
 - [x] A meta tag de verificação do Search Console no build de produção.
-- [ ] Menu e rodapé com as páginas novas publicadas; links cruzados de serviço para idioma, de idioma para cidade e de cidade para serviço. **Feito:** menu e rodapé, e serviço para idioma (a home e Cursos levam a cada página de idioma publicada, desde o ticket 09). **Fica para o 11:** idioma para cidade e cidade para serviço, porque ainda não há página de cidade.
+- [x] Menu e rodapé com as páginas novas publicadas; links cruzados de serviço para idioma, de idioma para cidade e de cidade para serviço. **Feito:** menu e rodapé, e serviço para idioma (a home e Cursos levam a cada página de idioma publicada, desde o ticket 09). **Feito no 11, em 07/10/2026:** cidade para serviço e para os idiomas com aula na empresa; serviço e idioma para a cidade, que só viram link quando a página da cidade for publicada.
 - [x] A página de interpretação de mandarim no rodapé, no grupo Empresas, e fora do menu. Hoje o rodapé mostra os mesmos grupos do menu (`menu.grupos`, em `content/site.md`): o link só do rodapé pede um campo próprio. A trilha da página continua "Mandarim", o nome que ela mesma dá, e não o rótulo do rodapé.
 - [x] Os links cruzados da página de interpretação de mandarim, conferidos: a Tradução e o curso de mandarim levam a ela, e ela leva ao curso (ticket 21).
 - [x] Testes do HTML gerado cobrem o sitemap, o favicon, a verificação e os links.
