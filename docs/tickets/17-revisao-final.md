@@ -15,7 +15,7 @@
 - [ ] Duas repetições de CSS que o 22 deixou, para o `code-review` decidir: o abre e fecha do `Acordeao` é igual ao do `Faq` (a chamada, o meio-círculo que gira e o texto de dentro), e o `GruposDePontos` traz mais uma cópia do marcador de meia-pílula, que entra na proposta do item acima.
 - [ ] `humanizar-ui` e `humanizar` rodados, com as correções aplicadas.
 - [x] Nenhuma rolagem horizontal em 360, 390, 768, 1280 e 1920 px, em todas as páginas (teste de larguras, na suíte inteira de 06/10).
-- [ ] A lista das pendências ainda abertas, com uma sugestão para cada uma, para o Maxwell decidir caso a caso.
+- [x] A lista das pendências ainda abertas, com uma sugestão para cada uma, para o Maxwell decidir caso a caso. Feita em 07/10/2026: `docs/pendencias-decisao.md`. A decisão é na semana 8, com o que a 9vee não tiver respondido até lá.
 - [ ] Preview completo publicado para a aprovação da Daniella e do Arthur.
 
 ## Andamento
