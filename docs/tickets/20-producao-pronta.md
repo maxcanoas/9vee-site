@@ -11,6 +11,7 @@
 - [ ] As pendências abertas decididas pelo Maxwell e aplicadas.
 - [ ] `npm run build:producao` passa no `check:producao`.
 - [ ] A chave de produção do pedido: criada na Web3Forms com o contato@9vee.com.br (quem recebe o e-mail com a chave é a 9vee) e gravada no `.env.producao`, em `FORMULARIO_CHAVE`. Sem ela, a trava barra o build, e ela também barra a chave de teste. Depois, um pedido de verdade pelo build de produção, conferido na caixa da 9vee.
+- [ ] **Bloqueia a publicação:** na propriedade do GA4 da 9vee (`G-Y04K0CN1F9`), o clique de saída da medição otimizada desligado e o parâmetro `text` na redação de dados, como manda `docs/medicao.md` ("O que o Maxwell configura na propriedade", passos 1 e 2). Conferido no DebugView: o clique no atalho do WhatsApp não manda o endereço do link. Sem isso, o texto da mensagem, com o nome e a empresa, chega ao Google, e a política promete que não chega. A trava não enxerga a propriedade, então este passo é à mão (code-review do ticket 17, 07/10/2026).
 - [ ] A regra da trava para as marcas do MVP (`obra`) ficou sem o que procurar: a etiqueta de obra saiu no ticket 07, e o aviso de envio simulado, no 12. Decidir se ela sai da trava e da spec.
 - [ ] Lighthouse mobile de todas as páginas, no build de produção rodando local, com os números em `docs/lighthouse.md` e as metas batidas.
 - [ ] Teclado e leitor de tela conferidos no drawer e no aviso de cookies.
