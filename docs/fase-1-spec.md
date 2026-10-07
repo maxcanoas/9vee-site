@@ -226,6 +226,12 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - **Decisão que depende da resposta do cliente,** tomada na semana 4 ou 5:
   - se só a tradução for presencial, a página vira "Tradução simultânea em <cidade>", dentro de Tradução Simultânea;
   - se aulas ou NR-1 também forem presenciais, ela vira uma página da cidade, com todos os serviços presenciais de lá.
+- **Decidido em 07/10/2026 (ticket 11), pelo Maxwell, com as respostas de 05/10:**
+  - São Paulo e Rio de Janeiro têm aula de idioma dentro da empresa: viram página da cidade, em `/sao-paulo/` e `/rio-de-janeiro/`, com a tradução, a aula na empresa e o NR-1;
+  - Curitiba e Brasília só têm a tradução presencial: viram "Tradução simultânea em Curitiba" e "em Brasília", em `/traducao-simultanea/curitiba/` e `/traducao-simultanea/brasilia/`;
+  - o NR-1 vai a qualquer cidade do Brasil, com a equipe de São Paulo, então não decide o tipo da página: entra nas quatro como um bloco que leva à página dele;
+  - as quatro ficam não publicadas até a resposta da pergunta 47 do Word de 05/10 (o tipo de evento em cada cidade);
+  - no mapa de redirecionamentos, só os posts de tradução de uma cidade vão para a página dela; os de idioma vão para a página do idioma, porque a aula de quem estuda por conta própria é online.
 - Cada página liga para os serviços e para os idiomas com aula presencial naquela cidade.
 
 ### Conteúdo e revisão

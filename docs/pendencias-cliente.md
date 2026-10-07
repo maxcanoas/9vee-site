@@ -262,7 +262,7 @@ O arquivo é o `C:\Users\maxca\Downloads\Perguntas-9vee.docx`, que o Maxwell mos
 
 Os acessos (A6 a A8) não têm marcação, mas o ticket 13 precisa do GA4 e o 20, do Search Console e da zona DNS.
 
-**As páginas de cidade** esperam as perguntas 9, 15 e Idiomas 3 do Word enviado, que foram.
+**As páginas de cidade** esperam as perguntas 9, 15 e Idiomas 3 do Word enviado, que foram. **Desde 07/10/2026 (ticket 11),** as quatro estão no preview e esperam só a pergunta 47 do Word de 05/10 (o tipo de evento em cada cidade): cada uma tem uma marcação dela, para a Daniella, no bloco da tradução, e fica fora da produção até a resposta. Com elas, `node scripts/pendencias.ts` conta 19.
 
 **Segunda rodada:** decisão do Maxwell em 04/10/2026. O que não foi espera a 9vee responder a primeira rodada, para não sobrecarregar a cliente. Quando ela sair, a numeração começa no 27, depois da última pergunta geral enviada.
 
@@ -367,7 +367,7 @@ O arquivo é o `docs/Perguntas-9vee-segunda-rodada.docx`, no mesmo desenho do Wo
 | 44 | D12 | Roteiro de 90 dias do Sicredi, agora no curso formativo |
 | 45 | D13 | Comprovante do NR-1, nos dois formatos |
 | 46 | D14 | Para quem é cada formato do NR-1 |
-| 47 | D20, segunda metade | Tipo de evento por cidade |
+| 47 | D20, segunda metade | Tipo de evento por cidade. Segura a publicação das quatro páginas de cidade (`content/cidades/`) |
 | 48 | D18 | O texto da página de interpretação de mandarim |
 | 49 | D19 | As versões em inglês e em chinês da landing |
 | 50 | D21 | LMS |

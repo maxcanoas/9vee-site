@@ -2,6 +2,15 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima quarta leva (07/10): as páginas das cidades
+
+- O preview ganhou uma página para cada cidade do atendimento presencial. São Paulo e Rio de Janeiro têm a página da cidade, com a tradução simultânea, a aula de idioma dentro da empresa e o treinamento de NR-1: https://9vee-preview.9vee-site.workers.dev/sao-paulo/ e https://9vee-preview.9vee-site.workers.dev/rio-de-janeiro/
+- Curitiba e Brasília, onde o presencial é a tradução, têm a página "Tradução simultânea em Curitiba" e "em Brasília", dentro da Tradução Simultânea: https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/curitiba/ e https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/brasilia/
+- As quatro mostram no alto o aviso "Fora do site até vocês responderem". Elas só vão para o site definitivo quando vocês disserem que tipo de evento mais fazem em cada cidade (a pergunta 47 do Word). Sem isso, as quatro diriam a mesma coisa, só com o nome da cidade trocado, e o Google trata página assim como cópia.
+- Os textos estão no lote 4 de revisão, para a Daniella.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Mande junto o `docs/revisao-daniella/lote-4.md`. As fotos das cidades aparecem como espaço reservado com o código (IMG-CIDADE-...) até você gerar as quatro no Gemini, com os prompts de `docs/imagens-gemini.md`.
+
 ## Semana 2, décima terceira leva (06/10): o rodapé, o ícone do site e a cidade nas fotos dos idiomas
 
 - Nas páginas de idioma, a foto do topo agora traz embaixo a cidade e o país, como "Paris, França". Assim, quem não reconhece o marco ao fundo fica sabendo que lugar é aquele.
