@@ -8,7 +8,7 @@
 
 **Situação:** ready-for-agent
 
-- [ ] As pendências abertas decididas pelo Maxwell e aplicadas.
+- [ ] As pendências abertas decididas pelo Maxwell e aplicadas. **Decididas em 07/10/2026:** o que a 9vee não tiver respondido até a semana 8 segue a sugestão de `docs/pendencias-decisao.md`, que o Maxwell aprovou.
 - [ ] `npm run build:producao` passa no `check:producao`.
 - [ ] A chave de produção do pedido: criada na Web3Forms com o contato@9vee.com.br (quem recebe o e-mail com a chave é a 9vee) e gravada no `.env.producao`, em `FORMULARIO_CHAVE`. Sem ela, a trava barra o build, e ela também barra a chave de teste. Depois, um pedido de verdade pelo build de produção, conferido na caixa da 9vee.
 - [ ] **Bloqueia a publicação:** na propriedade do GA4 da 9vee (`G-Y04K0CN1F9`), o clique de saída da medição otimizada desligado e o parâmetro `text` na redação de dados, como manda `docs/medicao.md` ("O que o Maxwell configura na propriedade", passos 1 e 2). Conferido no DebugView: o clique no atalho do WhatsApp não manda o endereço do link. Sem isso, o texto da mensagem, com o nome e a empresa, chega ao Google, e a política promete que não chega. A trava não enxerga a propriedade, então este passo é à mão (code-review do ticket 17, 07/10/2026).

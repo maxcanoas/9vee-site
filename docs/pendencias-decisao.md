@@ -2,6 +2,8 @@
 
 Montado em 07/10/2026 (ticket 17), com o site como está no preview da 14ª publicação. É a lista para a decisão caso a caso que a spec e o cronograma marcam para a semana 8 (16/11 a 22/11): o que a 9vee não responder até lá é decidido pelo Maxwell, e aplicado no ticket 20. A numeração é a do Word da segunda rodada (`docs/Perguntas-9vee-segunda-rodada.docx`, perguntas 27 a 55). O texto completo de cada pergunta está em `docs/pendencias-cliente.md`.
 
+**Aprovado pelo Maxwell em 07/10/2026:** na semana 8, o que a 9vee não tiver respondido é aplicado como está aqui, sem nova rodada de perguntas. O que ela responder vale sobre a sugestão.
+
 Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier e por quê. Nenhuma sugestão inventa fato: quando falta a resposta, o trecho sai ou fica só com o que a 9vee já confirmou.
 
 ## 1. Travam a produção
