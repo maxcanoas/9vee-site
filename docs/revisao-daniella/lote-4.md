@@ -129,7 +129,7 @@ Intérpretes que moram em Curitiba, em cabine nos congressos e ao lado de execut
 
 #### Eventos em Curitiba
 
-[A confirmar com a Daniella: que tipo de evento a 9vee mais faz em Curitiba (pergunta 47)] Em cidades perto de Curitiba, o intérprete pode ir até o evento.
+[A confirmar com a Daniella: que tipo de evento a 9vee mais faz em Curitiba (pergunta 47)] A 9vee também tem intérpretes que viajam até o evento.
 
 [Link: Como funciona a tradução simultânea]
 
@@ -170,7 +170,7 @@ Intérpretes que moram em Brasília, em cabine nos congressos e ao lado de execu
 
 #### Eventos em Brasília
 
-[A confirmar com a Daniella: que tipo de evento a 9vee mais faz em Brasília (pergunta 47)] Em cidades perto de Brasília, o intérprete pode ir até o evento.
+[A confirmar com a Daniella: que tipo de evento a 9vee mais faz em Brasília (pergunta 47)] A 9vee também tem intérpretes que viajam até o evento.
 
 [Link: Como funciona a tradução simultânea]
 

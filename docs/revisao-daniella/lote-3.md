@@ -45,7 +45,7 @@ Todo curso começa com um diagnóstico do seu nível e do seu objetivo.
 
 #### Como são as aulas
 
-Todas com professor nativo. No pedido, você escolhe o formato que combina com a sua rotina.
+Todas com professor nativo. Para quem estuda por conta própria, a aula é online e ao vivo, no dia e no horário que você escolher.
 
 ##### Aula individual
 
@@ -113,13 +113,21 @@ Dá. A aula individual para executivos trabalha reunião, call, negociação e a
 
 O material é escolhido para o objetivo de cada aluno. No inglês de negócios, um dos preferidos da 9vee é a série Market Leader. O material da Cambridge é o do curso de crianças e adolescentes.
 
+##### Quanto tempo leva cada nível?
+
+Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula.
+
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. O TOEFL, o IELTS e o TOEIC têm certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Conte para que você quer o inglês.
 
-Trabalho, prova, escola ou viagem. Em quatro passos você diz o objetivo, o nível e o formato, e decide se fala agora no WhatsApp ou recebe o contato.
+Trabalho, prova, escola ou viagem. Em quatro passos você conta o seu nível e o que procura, e decide se fala agora no WhatsApp ou recebe o contato.
 
 [Botão: Pedir aulas de inglês (para sua empresa: Pedir orçamento de inglês; para você: Quero estudar inglês)]
 
@@ -198,13 +206,17 @@ Todos, do básico ao avançado. O diagnóstico do começo mostra o seu nível, e
 
 Para quem estuda por conta própria, online e ao vivo, de qualquer cidade. Para empresas, também há aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro.
 
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. O DELE, o SIELE e o CELU têm certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Vai prestar o DELE ou quer falar espanhol?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de espanhol (para sua empresa: Pedir orçamento de espanhol; para você: Quero estudar espanhol)]
 
@@ -283,7 +295,7 @@ O mandarim se escreve com caracteres. A pronúncia vai em pinyin, com as letras 
 
 Fica igual para todas as pessoas e todos os tempos. Não há conjugação para decorar.
 
-Cada professor leva a escrita e os tons no ritmo do aluno, com a conversa sempre à frente.
+Todas as aulas são com professor nativo, online e ao vivo, particulares ou em grupo.
 
 #### Perguntas sobre o mandarim
 
@@ -299,13 +311,17 @@ A conversa começa nas primeiras aulas. Para subir de nível, a média é de 40 
 
 Preparam. O HSK é a prova oficial de proficiência em mandarim do governo chinês, e o preparatório segue os critérios dela.
 
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. O HSK tem certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Comece pelo seu objetivo.
 
-Trabalho, viagem ou cultura. Em quatro passos você conta o objetivo, o nível e o formato, e escolhe entre falar agora no WhatsApp ou receber o contato.
+Trabalho, viagem ou cultura. Em quatro passos você conta o seu nível e o que procura, e escolhe entre falar agora no WhatsApp ou receber o contato.
 
 [Botão: Pedir aulas de mandarim (para sua empresa: Pedir orçamento de mandarim; para você: Quero estudar mandarim)]
 
@@ -376,13 +392,17 @@ Dá. Além do preparatório, há o curso regular de holandês, em todos os níve
 
 O Inburgering é o exame de integração de quem vai morar no país. O NT2 comprova o holandês como segunda língua, para estudar e trabalhar lá.
 
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. O Inburgering e o NT2 têm certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Vai se mudar para os Países Baixos?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de holandês (para sua empresa: Pedir orçamento de holandês; para você: Quero estudar holandês)]
 
@@ -457,13 +477,21 @@ Depende do que você precisa e de para onde vai, a França ou o Quebec. Conte is
 
 Dá. Além dos preparatórios, há o curso regular de francês, para aprender o idioma, em todos os níveis, online, particular ou em grupo, com professor nativo.
 
+##### Quanto tempo leva cada nível?
+
+Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula.
+
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Qual prova de francês você vai fazer?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de francês (para sua empresa: Pedir orçamento de francês; para você: Quero estudar francês)]
 
@@ -561,13 +589,21 @@ Não. Há turma para quem começa do zero. O professor fala sempre em português
 
 Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro, e podem incluir a preparação para o CELPE-Bras.
 
+##### Quanto tempo leva cada nível?
+
+Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula.
+
+##### No fim do curso eu recebo certificado?
+
+Sim, um certificado da 9vee com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame.
+
 ##### Quanto custa?
 
 Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
 
 #### Conte para que você precisa do português.
 
-Em quatro passos você diz o objetivo, o nível e o formato. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de português (para sua empresa: Pedir orçamento de português; para você: Quero estudar português)]
 
@@ -644,7 +680,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar alemão?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de alemão (para sua empresa: Pedir orçamento de alemão; para você: Quero estudar alemão)]
 
@@ -729,7 +765,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar italiano?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de italiano (para sua empresa: Pedir orçamento de italiano; para você: Quero estudar italiano)]
 
@@ -810,7 +846,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar sueco?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de sueco (para sua empresa: Pedir orçamento de sueco; para você: Quero estudar sueco)]
 
@@ -883,7 +919,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar norueguês?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de norueguês (para sua empresa: Pedir orçamento de norueguês; para você: Quero estudar norueguês)]
 
@@ -956,7 +992,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar japonês?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de japonês (para sua empresa: Pedir orçamento de japonês; para você: Quero estudar japonês)]
 
@@ -1025,7 +1061,7 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar árabe?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de árabe (para sua empresa: Pedir orçamento de árabe; para você: Quero estudar árabe)]
 
@@ -1098,6 +1134,6 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 
 #### Quer estudar russo?
 
-Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de russo (para sua empresa: Pedir orçamento de russo; para você: Quero estudar russo)]

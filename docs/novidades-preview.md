@@ -10,7 +10,9 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
 - Os textos estão no lote 4 de revisão, para a Daniella.
 - O Quem Somos ganhou, no fim, "Histórias construídas com grandes parceiros", como no site atual, com os nomes que vocês liberaram: TOTVS e Array na interpretação; Pirelli, FGV, Sicredi e Bradesco nos cursos. Só os nomes, sem logo.
 - Na revisão dos textos, voltaram trechos do site atual que tinham ficado de fora: "segurança, clareza e autoridade" nas aulas para executivos, o foco nos critérios de cada prova no francês e o exame prévio, feito antes da mudança, no holandês. O diagnóstico agora aparece onde o site atual põe: nas primeiras aulas, com os seus objetivos e o seu nível.
-- Os lotes 1, 2 e 3 foram gerados de novo com essas mudanças. Se a Daniella já começou a revisão, a versão de 07/10 é a que conta.
+- As páginas de idioma ganharam, nas perguntas frequentes, as respostas de vocês sobre as 40 horas por nível e o certificado com as horas cursadas. O fim de cada página não fala mais em escolher o formato, porque o pedido de quem estuda por conta própria não pergunta isso.
+- A Tradução e o rodapé deixam claro que a tradução é presencial em qualquer cidade, com intérpretes que moram em São Paulo, no Rio, em Curitiba e em Brasília, e que nas outras cidades a 9vee busca intérpretes de lá. O rodapé também diz que o NR-1 vai até a empresa em todo o Brasil.
+- Os lotes 1, 2, 3 e 4 foram gerados de novo com essas mudanças. Se a Daniella já começou a revisão, a versão de 07/10 é a que conta.
 
 - Cada cidade tem uma foto no topo, na série das fotos dos idiomas: um intérprete conversando com um executivo de fora, com um marco da cidade ao fundo (a Ponte Estaiada, o Pão de Açúcar, a estufa do Jardim Botânico e o Congresso Nacional).
 

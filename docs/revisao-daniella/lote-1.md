@@ -48,7 +48,7 @@ Para empresas
 
 ##### Tradução simultânea
 
-Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online.
+Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial, com intérpretes da cidade do evento, ou online.
 
 [Link: Ver como funciona a tradução simultânea]
 
@@ -316,7 +316,7 @@ São dois treinamentos, um mais curto e um mais longo. Conte quantas pessoas sã
 
 Como acontece
 
-Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e já atende empresas de outros estados.
+Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e atende todo o Brasil.
 
 Workshop normativo
 
@@ -324,7 +324,7 @@ O mais curto, com foco no que a norma pede. Uma ou duas sessões, para até 70 p
 
 Curso formativo
 
-O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30, como for melhor para a empresa. Até 35 pessoas por turma.
+O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30. Até 35 pessoas por turma.
 
 [Botão: Pedir orçamento do treinamento]
 
@@ -384,7 +384,7 @@ São cinco perguntas sobre tamanho, prazo e o que já existe por lá. No fim, vo
 
 - Endereço: https://www.9vee.com.br/curso-de-idiomas/
 - Título no Google: Cursos de idiomas para você e sua empresa | 9vee
-- Descrição no Google: Aulas de inglês, espanhol, mandarim e outras línguas, online, particulares ou para equipes, com preparação para TOEFL, DELE, DELF e CELPE-Bras. Veja os níveis.
+- Descrição no Google: Aulas online de inglês, espanhol, mandarim e outras línguas, particulares, em grupo ou para equipes, com preparação para TOEFL, DELE, DELF e CELPE-Bras.
 - Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero saber dos cursos de idiomas."
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para a minha equipe."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Cursos de Idiomas do site e quero aulas de idioma para mim."
@@ -619,7 +619,7 @@ Depende do idioma, do formato e de quantas pessoas estudam. O pedido desta pági
 
 #### Conte o que você quer falar.
 
-Você escolhe o idioma, o objetivo, o nível e o formato em quatro passos. No fim, decide entre falar agora no WhatsApp ou receber o contato da equipe.
+Em quatro passos você escolhe o idioma e conta o seu nível e o que procura. No fim, decide entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
@@ -677,7 +677,7 @@ Para você
 
 Contato
 
-Aulas online para todo o Brasil. Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília.
+Aulas online para todo o Brasil. NR-1 e tradução simultânea presenciais em qualquer cidade, com intérpretes que moram em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília.
 
 WhatsApp (11) 93466-1917
 

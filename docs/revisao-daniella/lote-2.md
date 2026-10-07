@@ -87,7 +87,7 @@ Ela serve ao evento grande e à reunião estratégica com pessoas de várias nac
 
 #### 12 idiomas, quatro cidades
 
-Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinais ao cantonês. O atendimento presencial é em quatro cidades, com intérpretes que moram nelas.
+Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinais ao cantonês. Nas quatro cidades abaixo, eles moram na cidade do evento.
 
 ##### Idiomas
 
@@ -104,14 +104,14 @@ Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinai
 - Árabe
 - Libras
 
-##### Atendimento presencial
+##### Intérpretes que moram na cidade
 
 - São Paulo
 - Rio de Janeiro
 - Curitiba
 - Brasília
 
-Em outra cidade, a 9vee busca intérpretes de lá. No interior, perto de uma capital, o intérprete pode ir até o evento. Se o seu evento pede outro idioma, diga no pedido.
+Em outra cidade, a 9vee quase sempre busca intérpretes de lá, e também tem intérpretes que viajam até o evento. Se o seu evento pede outro idioma, diga no pedido.
 
 #### Quem são os intérpretes
 
@@ -155,7 +155,7 @@ Em inglês, espanhol, mandarim, cantonês, francês, italiano, alemão, holandê
 
 ##### Em que cidades a 9vee atende?
 
-O atendimento presencial é em São Paulo, Rio de Janeiro, Curitiba e Brasília, com intérpretes de cada cidade. Em outra cidade, a 9vee busca intérpretes de lá.
+Em todo o Brasil. Em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília, com intérpretes que moram na cidade. Em outra cidade, a 9vee quase sempre busca intérpretes de lá.
 
 ##### Dá para fazer a interpretação a distância?
 
@@ -638,7 +638,7 @@ Nós armazenamos os dados pessoais somente pelo período necessário para cumpri
 
 [Entra: Os prazos de guarda são estes:]
 
-- [Entra: pedidos de orçamento que chegam pelo site ou por e-mail: 1 ano, quando não viram contrato, e 5 anos, quando viram;]
+- [Entra: pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;]
 - [Entra: conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;]
 - [Entra: registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet.]
 
