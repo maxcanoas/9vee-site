@@ -12,13 +12,17 @@ import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import CabecaDeSecao from '../components/CabecaDeSecao.astro';
 import { dadosDoSite } from '../lib/site';
-import { enderecoDosIdiomasPublicados, paginaIdiomas } from '../lib/paginas';
+import { enderecoDasCidadesPublicadas, enderecoDosIdiomasPublicados, paginaIdiomas } from '../lib/paginas';
+import { ligarCidades } from '../lib/cidades';
 import { faqPage, listaDeCursos } from '../lib/jsonld';
 
 const { data: pagina } = await paginaIdiomas();
 const site = await dadosDoSite();
 const enderecosDosIdiomas = await enderecoDosIdiomasPublicados();
 const base = Astro.site ?? new URL(Astro.url.origin);
+// A nota da aula presencial leva à página da cidade, quando ela está publicada.
+const cidadesComAula = await enderecoDasCidadesPublicadas('idiomas');
+const formatos = { ...pagina.formatos, nota: ligarCidades(pagina.formatos.nota, cidadesComAula) };
 const idiomas = site.idiomas.map((idioma) => ({ ...idioma, pagina: enderecosDosIdiomas.get(idioma.slug) }));
 const jsonLd = [
   listaDeCursos(base, { caminho: Astro.url.pathname, modelos: pagina.curso, idiomas }),
@@ -52,7 +56,7 @@ const jsonLd = [
       e de empresa: andam junto com o bloco dela. */}
   <div class="modalidades" data-ordenavel="voce">
     <div class="modalidade" data-ordem-empresa="2" data-ordem-voce="1">
-      <Cartoes id="formatos" {...pagina.formatos} servico="idiomas" />
+      <Cartoes id="formatos" {...formatos} servico="idiomas" />
       <ComoComeca {...pagina.como} />
     </div>
     <div class="modalidade" data-ordem-empresa="1" data-ordem-voce="2">

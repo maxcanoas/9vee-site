@@ -10,28 +10,28 @@ import {
   carregarPaginas,
   conferirEnderecos,
   conferirRobotsLiberado,
-  paginasDeIdiomaNoConteudo,
+  paginasComPublicacaoNoConteudo,
 } from './apoio';
 
 // O build de produção é o que vai ao ar e o que o Lighthouse mede para o SEO 100: sem noindex em lugar nenhum.
 describe('build de produção', () => {
   const paginas = carregarPaginas(DIST_PRODUCAO);
   const preview = carregarPaginas();
-  const naoPublicadas = paginasDeIdiomaNoConteudo().filter((pagina) => !pagina.publicada).map((pagina) => pagina.rota);
+  const naoPublicadas = paginasComPublicacaoNoConteudo().filter((pagina) => !pagina.publicada).map((pagina) => pagina.rota);
 
-  it('gera as páginas do preview, menos as de idioma não publicadas', () => {
+  it('gera as páginas do preview, menos as de idioma e de cidade não publicadas', () => {
     const esperadas = preview.map((p) => p.rota).filter((rota) => !naoPublicadas.includes(rota));
     expect(paginas.map((p) => p.rota).sort()).toEqual(esperadas.sort());
   });
 
-  it('deixa cada página de idioma não publicada só no preview', () => {
-    for (const { rota, publicada } of paginasDeIdiomaNoConteudo()) {
+  it('deixa cada página de idioma e de cidade não publicada só no preview', () => {
+    for (const { rota, publicada } of paginasComPublicacaoNoConteudo()) {
       expect(preview.some((p) => p.rota === rota), `${rota} no preview`).toBe(true);
       expect(paginas.some((p) => p.rota === rota), `${rota} na produção`).toBe(publicada);
     }
   });
 
-  // A home e a página de cursos só levam à página de idioma publicada: a que ficou fora nunca vira link quebrado.
+  // As páginas só levam à página de idioma ou de cidade publicada: a que ficou fora nunca vira link quebrado.
   it.each(paginas.map((p) => [p.rota, p] as const))('%s só liga para páginas da produção', (_rota, pagina) => {
     expect(linksQuebrados(pagina, DIST_PRODUCAO)).toEqual([]);
   });

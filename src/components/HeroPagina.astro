@@ -4,6 +4,7 @@ import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import ArcoComCirculo from './ArcoComCirculo.astro';
 import Trilha from './Trilha.astro';
+import AvisoNaoPublicada from './AvisoNaoPublicada.astro';
 import type { ServicoId } from '../lib/contato';
 import type { TextosPorPublico } from '../lib/publico';
 import type { Imagem } from '../content.config';
@@ -19,15 +20,18 @@ interface Props {
   servico?: ServicoId;
   /** A linha logo abaixo do botão, na página que promete um prazo de resposta. */
   nota?: string;
+  /** O aviso da página de cidade que ainda não vai para o site. */
+  etiqueta?: string;
 }
 
-const { rotulo, h1, apoio, cta, textos, imagem, servico, nota } = Astro.props;
+const { rotulo, h1, apoio, cta, textos, imagem, servico, nota, etiqueta } = Astro.props;
 ---
 
 <section class="hero-pagina escuro" aria-labelledby="hero-titulo">
   <div class="conteiner hero-pagina__grade">
     <div class="hero-pagina__texto">
       <Trilha />
+      {etiqueta && <AvisoNaoPublicada texto={etiqueta} />}
       <p class="hero-pagina__rotulo"><Texto de={rotulo} /></p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="hero-pagina__apoio"><Texto de={apoio} /></p>

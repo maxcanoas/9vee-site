@@ -166,6 +166,15 @@ paginas:
     marcadas: { idiomas: ["Mandarim"] }
     prazo: "A 9vee responde em até um dia útil."
     assunto: { neutro: "quero um intérprete de mandarim", empresa: "quero um intérprete de mandarim para a minha empresa", voce: "quero um intérprete de mandarim para um evento particular" }
+  # Modelos das páginas de cidade: o {naCidade} vira o nome dela com a preposição ("em São Paulo", "no Rio de
+  # Janeiro"). A página da cidade tem mais de um serviço, então o pedido dela começa pela escolha do serviço.
+  cidade:
+    nome: "Atendimento {naCidade}"
+    assunto: { neutro: "quero um orçamento {naCidade}", empresa: "quero um orçamento para a minha empresa {naCidade}", voce: "quero um orçamento para mim {naCidade}" }
+  traducaoNaCidade:
+    nome: "Tradução simultânea {naCidade}"
+    servico: "traducao"
+    assunto: { neutro: "quero tradução simultânea para um evento {naCidade}", empresa: "quero tradução simultânea para um evento da minha empresa {naCidade}", voce: "quero tradução simultânea para um evento particular {naCidade}" }
   lms:
     nome: "LMS"
     servico: "lms"
@@ -295,8 +304,8 @@ formularios:
     - { id: "objetivo", tipo: "escolha", rotulo: "Para quê?", rotuloCurto: "Objetivo", obrigatorio: true, minuscula: true, opcoes: ["Carreira", "Viagem", "Prova de proficiência", "Mudança de país"] }
     - { id: "nivel", tipo: "escolha", rotulo: "Qual é o seu nível hoje?", rotuloCurto: "Nível atual", obrigatorio: true, minuscula: true, opcoes: ["Nunca estudei", "Básico", "Intermediário", "Avançado", "Não sei"] }
 
-# O aviso das páginas de idioma que ainda não vão para o site. Só aparece no local e no preview, porque a
-# produção sai sem elas.
+# O aviso das páginas de idioma e de cidade que ainda não vão para o site. Só aparece no local e no preview, porque
+# a produção sai sem elas.
 naoPublicada: "Fora do site até vocês responderem"
 
 # Pendências: o [CONFIRMAR COM A DANIELLA: ...] ou o [CONFIRMAR COM O ARTHUR: ...] dos textos vira esta etiqueta.

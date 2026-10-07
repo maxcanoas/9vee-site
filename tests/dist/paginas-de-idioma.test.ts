@@ -82,7 +82,7 @@ describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, p
   });
 
   it('avisa no topo, só quando não está publicada, que fica fora do site', () => {
-    expect(raiz!.querySelector('.topo-idioma__etiqueta') !== null).toBe(!publicada);
+    expect(raiz!.querySelector('.aviso-nao-publicada') !== null).toBe(!publicada);
   });
 
   it('abre o pedido com os cursos de idiomas e o idioma da página marcados', () => {

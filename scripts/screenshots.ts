@@ -340,6 +340,11 @@ const roteiros: Record<string, Captura[]> = {
   ],
   // O Quem Somos completo: a página inteira, o topo e cada seção.
   'ticket-07': capturasDaPagina('quem-somos', '/quem-somos/', ['frentes', 'historia', 'missao', 'principios']),
+  // As páginas de cidade, uma de cada tipo: São Paulo, com os três serviços presenciais, e Curitiba, a de tradução.
+  'ticket-11': [
+    ...capturasDaPagina('sao-paulo', '/sao-paulo/', ['traducao', 'idiomas', 'nr1']),
+    ...capturasDaPagina('curitiba', '/traducao-simultanea/curitiba/', ['traducao', 'nr1']),
+  ],
   // O envio de verdade do pedido: o campo do contato com a caixa do consentimento, o erro de quem não a marcou, a
   // confirmação e a tela de quando o pedido não chega. O serviço de formulário nunca recebe nada daqui.
   'ticket-12': [

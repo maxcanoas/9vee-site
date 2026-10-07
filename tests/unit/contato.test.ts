@@ -13,6 +13,7 @@ import {
   modoDoDrawer,
   montarMensagem,
   opcoesIniciais,
+  paginaDoContatoDaCidade,
   paginaDoContatoDoIdioma,
   primeiraEtapaPendente,
   servicoInicial,
@@ -354,6 +355,37 @@ describe('paginaDoContatoDoIdioma', () => {
     const { nome, assunto } = paginaDoContatoDoIdioma(modelo, { slug: 'ingles', nome: 'Inglês' });
     expect(mensagemFlutuante(nome, assunto.voce, modelos)).toBe(
       'Olá, 9vee. Vim pela página Curso de inglês do site e quero aulas de inglês para mim.',
+    );
+  });
+});
+
+describe('paginaDoContatoDaCidade', () => {
+  const modelo = {
+    nome: 'Tradução simultânea {naCidade}',
+    servico: 'traducao' as const,
+    assunto: {
+      neutro: 'quero tradução simultânea para um evento {naCidade}',
+      empresa: 'quero tradução simultânea para um evento da minha empresa {naCidade}',
+      voce: 'quero tradução simultânea para um evento particular {naCidade}',
+    },
+  };
+
+  it('põe a cidade, com a preposição dela, no nome e no assunto', () => {
+    expect(paginaDoContatoDaCidade(modelo, 'no Rio de Janeiro')).toEqual({
+      nome: 'Tradução simultânea no Rio de Janeiro',
+      servico: 'traducao',
+      assunto: {
+        neutro: 'quero tradução simultânea para um evento no Rio de Janeiro',
+        empresa: 'quero tradução simultânea para um evento da minha empresa no Rio de Janeiro',
+        voce: 'quero tradução simultânea para um evento particular no Rio de Janeiro',
+      },
+    });
+  });
+
+  it('chega na mensagem do botão flutuante com a cidade da página', () => {
+    const { nome, assunto } = paginaDoContatoDaCidade(modelo, 'em Curitiba');
+    expect(mensagemFlutuante(nome, assunto.empresa, modelos)).toBe(
+      'Olá, 9vee. Vim pela página Tradução simultânea em Curitiba do site e quero tradução simultânea para um evento da minha empresa em Curitiba.',
     );
   });
 });

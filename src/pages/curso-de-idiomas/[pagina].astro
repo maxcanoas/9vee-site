@@ -11,7 +11,8 @@ import Chamada from '../../components/Chamada.astro';
 import Faq from '../../components/Faq.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
 import { dadosDoSite } from '../../lib/site';
-import { paginaIdiomas, paginasDeIdioma, type PaginaDeIdioma } from '../../lib/paginas';
+import { enderecoDasCidadesPublicadas, paginaIdiomas, paginasDeIdioma, type PaginaDeIdioma } from '../../lib/paginas';
+import { ligarCidades } from '../../lib/cidades';
 import { curso, faqPage, nomeDoCurso } from '../../lib/jsonld';
 
 export async function getStaticPaths() {
@@ -32,13 +33,21 @@ const jsonLd = [
   }),
   ...(conteudo.faq ? [faqPage(conteudo.faq.itens)] : []),
 ];
+// Onde a aula presencial cita a cidade, ela leva à página da cidade, quando publicada.
+const cidadesComAula = await enderecoDasCidadesPublicadas('idiomas');
+const ligar = (texto: string) => ligarCidades(texto, cidadesComAula);
+const formatos = conteudo.formatos && {
+  ...conteudo.formatos,
+  nota: ligar(conteudo.formatos.nota),
+  itens: conteudo.formatos.itens.map((item) => ({ ...item, texto: ligar(item.texto) })),
+};
 ---
 
 <Base pagina="idioma" idioma={idioma} titulo={conteudo.seo.titulo} descricao={conteudo.seo.descricao} jsonLd={jsonLd}>
   <TopoIdioma {...conteudo.topo} idioma={idioma} etiqueta={conteudo.publicada ? undefined : site.naoPublicada} />
   {conteudo.paraQuem && <Cartoes id="para-quem" {...conteudo.paraQuem} />}
   {conteudo.niveis && <Niveis {...conteudo.niveis} />}
-  {conteudo.formatos && <Pontos id="formatos" {...conteudo.formatos} />}
+  {formatos && <Pontos id="formatos" {...formatos} />}
   {conteudo.provas && <Definicoes id="provas" {...conteudo.provas} />}
   {conteudo.destaque && <Pontos {...conteudo.destaque} />}
   {conteudo.realocacao && <Chamada id="realocacao" {...cursos.realocacao} />}

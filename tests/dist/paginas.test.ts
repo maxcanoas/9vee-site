@@ -13,6 +13,7 @@ import {
   conferirEnderecos,
   conferirRobotsLiberado,
   jsonLd,
+  paginasDeCidadeNoConteudo,
   paginasDeIdiomaNoConteudo,
   tamanhoDoJs,
   textoComoNoJsonLd,
@@ -189,19 +190,21 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
   });
 
   // O nome vem do menu, e não do trecho da mensagem do WhatsApp, que tem outra caixa e muda por outro motivo.
-  // A política de privacidade está só no rodapé, e a página de idioma não está em nenhum dos dois: o nome dela é o
-  // do idioma na lista da página de cursos. A de interpretação de mandarim dá o próprio nome, e o teste dela confere.
-  it('dá à página, na trilha, o mesmo nome que ela tem no menu, no rodapé ou na lista de idiomas', () => {
+  // A política de privacidade está só no rodapé, e as páginas de idioma e de cidade não estão em nenhum dos dois: o
+  // nome da de idioma é o da lista da página de cursos, e o da de cidade é o da cidade. A de interpretação de mandarim
+  // dá o próprio nome, e o teste dela confere.
+  it('dá à página, na trilha, o mesmo nome que ela tem no menu, no rodapé, na lista de idiomas ou na cidade', () => {
     if (!temTrilha(rota) || rota === INTERPRETACAO_DE_MANDARIM) return;
     const noMenu = raiz.querySelectorAll('header a').find((link) => link.getAttribute('href') === rota);
     const noRodape = raiz.querySelectorAll('footer a').find((link) => link.getAttribute('href') === rota);
     const idioma = paginasDeIdiomaNoConteudo().find((pagina) => pagina.rota === rota)?.idioma;
+    const cidade = paginasDeCidadeNoConteudo().find((pagina) => pagina.rota === rota)?.cidade;
     const nome = noMenu
       ? (noMenu.querySelector('.link-do-menu__nome') ?? noMenu).text.trim()
       : noRodape
         ? noRodape.text.trim()
-        : idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim();
-    expect(nome, `${rota} fora do menu, do rodapé e da lista de idiomas`).toBeDefined();
+        : (cidade ?? (idioma && cursos.querySelector(`#${idioma} .idioma__nome`)?.text.trim()));
+    expect(nome, `${rota} fora do menu, do rodapé, da lista de idiomas e das cidades`).toBeDefined();
     expect(textoComoNoJsonLd(raiz.querySelector('nav.trilha [aria-current="page"]')!)).toBe(nome);
   });
 

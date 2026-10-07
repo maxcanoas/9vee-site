@@ -15,22 +15,29 @@ import { organizacao, serializarJsonLd, trilhaDeNavegacao } from '../lib/jsonld'
 import { textoPuro } from '../lib/texto';
 import { imagemDaPagina, textoDaImagem } from '../lib/compartilhamento';
 import { trilhaDaPagina } from '../lib/paginas';
-import { paginaDoContatoDoIdioma } from '../lib/contato';
+import { paginaDoContatoDaCidade, paginaDoContatoDoIdioma } from '../lib/contato';
 import { CHAVE_PUBLICO, PUBLICOS } from '../lib/publico';
 
-// A página de idioma, e só ela, diz qual é o idioma: o nome da página na mensagem e o pedido saem dele.
+// As páginas de idioma e de cidade saem de um modelo: o nome da página na mensagem e o pedido saem do idioma ou da
+// cidade, que só elas dizem.
+type PaginaDeCidade = 'cidade' | 'traducaoNaCidade';
 type Props = {
   titulo: string;
   descricao: string;
   jsonLd?: Record<string, unknown>[];
 } & (
-  | { pagina: Exclude<PaginaId, 'idioma'>; idioma?: never }
-  | { pagina: 'idioma'; idioma: { slug: string; nome: string } }
+  | { pagina: Exclude<PaginaId, 'idioma' | PaginaDeCidade>; idioma?: never; naCidade?: never }
+  | { pagina: 'idioma'; idioma: { slug: string; nome: string }; naCidade?: never }
+  | { pagina: PaginaDeCidade; naCidade: string; idioma?: never }
 );
 
-const { pagina, idioma, titulo, descricao, jsonLd = [] } = Astro.props;
+const { pagina, idioma, naCidade, titulo, descricao, jsonLd = [] } = Astro.props;
 const site = await dadosDoSite();
-const dadosDaPagina = idioma ? paginaDoContatoDoIdioma(site.paginas.idioma, idioma) : site.paginas[pagina];
+const dadosDaPagina = idioma
+  ? paginaDoContatoDoIdioma(site.paginas.idioma, idioma)
+  : naCidade
+    ? paginaDoContatoDaCidade(site.paginas[pagina], naCidade)
+    : site.paginas[pagina];
 const base = Astro.site ?? new URL(Astro.url.origin);
 const indexavel = MODO === 'producao';
 // O preview sai sem GA4, com ou sem ID: a 9vee testa o site sem misturar visitas de teste com as de verdade.

@@ -22,6 +22,8 @@ export function carregarPaginas(pasta = DIST): Pagina[] {
 export {
   INTERPRETACAO_DE_MANDARIM,
   PAGINAS_DE_TEXTO,
+  paginasComPublicacaoNoConteudo,
+  paginasDeCidadeNoConteudo,
   paginasDeIdiomaNoConteudo,
   type PaginaDeIdiomaNoConteudo,
 } from '../conteudo.ts';

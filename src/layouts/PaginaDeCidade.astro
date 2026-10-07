@@ -1,0 +1,45 @@
+---
+// A página de uma cidade, com o texto de content/cidades/: o topo, um bloco por serviço presencial na cidade, cada um
+// levando à página do serviço, e o fechamento. A de tradução abre o pedido já na tradução simultânea; a da cidade tem
+// mais de um serviço e deixa a pessoa escolher.
+import Base from './Base.astro';
+import HeroPagina from '../components/HeroPagina.astro';
+import Chamada from '../components/Chamada.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import { dadosDoSite } from '../lib/site';
+import { servico } from '../lib/jsonld';
+import type { PaginaDeCidade } from '../lib/paginas';
+
+type Props = PaginaDeCidade;
+
+const { conteudo } = Astro.props;
+const site = await dadosDoSite();
+const base = Astro.site ?? new URL(Astro.url.origin);
+const servicoDoPedido = conteudo.tipo === 'traducao' ? 'traducao' : undefined;
+const jsonLd = conteudo.servicos.map((bloco) =>
+  servico(base, {
+    ...bloco.servico,
+    caminho: Astro.url.pathname,
+    ancora: bloco.id,
+    descricao: bloco.texto,
+    cidades: [conteudo.cidade],
+  }),
+);
+---
+
+<Base
+  pagina={conteudo.tipo === 'traducao' ? 'traducaoNaCidade' : 'cidade'}
+  naCidade={conteudo.naCidade}
+  titulo={conteudo.seo.titulo}
+  descricao={conteudo.seo.descricao}
+  jsonLd={jsonLd}
+>
+  <HeroPagina {...conteudo.hero} servico={servicoDoPedido} etiqueta={conteudo.publicada ? undefined : site.naoPublicada} />
+  {/* O topo e o fechamento são escuros: o bloco escuro fica só entre dois claros, para nenhum encostar no outro. */}
+  {
+    conteudo.servicos.map(({ id, titulo, texto, pontos, link }, i, blocos) => (
+      <Chamada {id} {titulo} {texto} {pontos} {link} escuro={i % 2 === 1 && i < blocos.length - 1} />
+    ))
+  }
+  <CtaFinal {...conteudo.ctaFinal} servico={servicoDoPedido} />
+</Base>

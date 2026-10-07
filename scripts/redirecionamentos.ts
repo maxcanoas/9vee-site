@@ -22,7 +22,7 @@ export interface CidadePublicada {
 export interface SiteNovo {
   /** Os caminhos das páginas do build de produção, com a barra no fim. */
   paginas: ReadonlySet<string>;
-  /** Vazia até o ticket 11 publicar as páginas de cidade. */
+  /** As páginas de cidade publicadas: vazia enquanto nenhuma está no build de produção. */
   cidades: readonly CidadePublicada[];
 }
 

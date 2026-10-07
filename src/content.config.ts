@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { TIPOS_DE_CIDADE } from './lib/cidades';
 import { SERVICOS, formularioDe, marcadasValidas } from './lib/contato';
 import { PUBLICOS } from './lib/publico';
 
@@ -147,6 +148,8 @@ const site = defineCollection({
           'idioma',
           'traducao',
           'interpretacaoDeMandarim',
+          'cidade',
+          'traducaoNaCidade',
           'lms',
           'quemSomos',
           'privacidade',
@@ -165,8 +168,15 @@ const site = defineCollection({
       )
       .refine(({ idioma }) => [idioma.nome, ...Object.values(idioma.assunto)].every((texto) => texto.includes('{idioma}')), {
         error: 'o modelo das páginas de idioma precisa de {idioma} no nome e em cada assunto',
-      }),
-    // O aviso das páginas de idioma ainda não publicadas, que só o local e o preview mostram.
+      })
+      .refine(
+        ({ cidade, traducaoNaCidade }) =>
+          [cidade, traducaoNaCidade].every((modelo) =>
+            [modelo.nome, ...Object.values(modelo.assunto)].every((texto) => texto.includes('{naCidade}')),
+          ),
+        { error: 'os modelos das páginas de cidade precisam de {naCidade} no nome e em cada assunto' },
+      ),
+    // O aviso das páginas de idioma e de cidade ainda não publicadas, que só o local e o preview mostram.
     naoPublicada: z.string(),
     drawer: z.object({
       titulo: z.object({ orcamento: z.string(), aulas: z.string() }),
@@ -569,6 +579,37 @@ const paginasDeIdioma = defineCollection({
     }),
 });
 
+// Uma página por cidade de atendimento presencial, em content/cidades/ (ticket 11). O nome do arquivo é o fim do
+// endereço, e o tipo diz onde ela fica (src/lib/cidades.ts). Cada serviço presencial na cidade é um bloco que leva à
+// página do serviço, com o Service que o Google lê para ele naquela cidade.
+const paginasDeCidade = defineCollection({
+  loader: glob({ pattern: '*.md', base: `${conteudo}/cidades` }),
+  schema: z.object({
+    // A cidade como content/site.md a escreve, que é o nome dela na trilha, e com a preposição, para o nome da página
+    // no pedido e no WhatsApp: "no Rio de Janeiro".
+    cidade: z.string(),
+    naCidade: z.string().regex(/^(em|no|na) /),
+    tipo: z.enum(TIPOS_DE_CIDADE),
+    publicada: z.boolean(),
+    seo,
+    hero: heroDeServico,
+    servicos: z
+      .array(
+        z.object({
+          id: servicoId,
+          titulo: z.string(),
+          texto: z.string(),
+          pontos: z.array(z.string()).min(2).optional(),
+          link,
+          servico: tipoDoServico.extend({ nome: z.string() }),
+        }),
+      )
+      .min(1),
+    ctaFinal: fechamentoDeServico,
+  })
+  .refine(({ cidade, naCidade }) => naCidade.endsWith(` ${cidade}`), { error: 'naCidade precisa terminar com o nome da cidade' }),
+});
+
 // O LMS com o que o site atual diz da plataforma. A EdApp, as telas e o que só existe no Canva ficam fora do texto.
 const lms = defineCollection({
   loader: glob({ pattern: 'lms.md', base: conteudo }),
@@ -736,6 +777,7 @@ export const collections = {
   nr1,
   idiomas,
   paginasDeIdioma,
+  paginasDeCidade,
   lms,
   traducao,
   interpretacaoDeMandarim,

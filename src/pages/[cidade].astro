@@ -1,0 +1,15 @@
+---
+// As páginas das cidades onde há mais do que a tradução presencial, na raiz do site.
+import PaginaDeCidade from '../layouts/PaginaDeCidade.astro';
+import { paginasDeCidade, type PaginaDeCidade as Pagina } from '../lib/paginas';
+
+export async function getStaticPaths() {
+  return (await paginasDeCidade())
+    .filter((pagina) => pagina.conteudo.tipo === 'cidade')
+    .map((pagina) => ({ params: { cidade: pagina.id }, props: pagina }));
+}
+
+type Props = Pagina;
+---
+
+<PaginaDeCidade {...Astro.props} />

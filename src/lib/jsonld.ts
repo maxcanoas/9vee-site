@@ -47,15 +47,16 @@ export function organizacao(site: DadosDoSite, base: URL) {
 
 /**
  * Um serviço da 9vee, ligado à organização pelo @id. A área atendida é o país nos serviços online, que alcançam
- * qualquer cidade. O serviço que a 9vee só afirma presencial passa as cidades, e a área atendida são elas.
+ * qualquer cidade. O serviço que a 9vee só afirma presencial passa as cidades, e a área atendida são elas. A página
+ * com mais de um serviço dá a cada um a âncora da seção dele.
  */
 export function servico(
   base: URL,
-  dados: { nome: string; tipo: string; caminho: string; descricao: string; cidades?: readonly string[] },
+  dados: { nome: string; tipo: string; caminho: string; descricao: string; cidades?: readonly string[]; ancora?: string },
 ) {
   return {
     '@type': 'Service',
-    '@id': new URL(`${dados.caminho}#servico`, base).href,
+    '@id': new URL(`${dados.caminho}#${dados.ancora ?? 'servico'}`, base).href,
     name: dados.nome,
     serviceType: dados.tipo,
     description: textoPuro(dados.descricao),

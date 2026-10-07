@@ -10,7 +10,8 @@ import Chamada from '../components/Chamada.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { dadosDoSite, servicoDoSite } from '../lib/site';
-import { paginaTraducao } from '../lib/paginas';
+import { enderecoDasCidadesPublicadas, paginaTraducao } from '../lib/paginas';
+import { ligarCidades } from '../lib/cidades';
 import { faqPage, servico } from '../lib/jsonld';
 
 const { data: pagina } = await paginaTraducao();
@@ -28,6 +29,9 @@ const jsonLd = [
   faqPage(pagina.faq.itens),
 ];
 const { idiomas, cidades, ...atendimento } = pagina.atendimento;
+// A cidade com página publicada leva a ela.
+const cidadesComPagina = await enderecoDasCidadesPublicadas('traducao');
+const itensDasCidades = site.cidades.map((cidade) => ligarCidades(cidade, cidadesComPagina));
 ---
 
 <Base pagina="traducao" titulo={pagina.seo.titulo} descricao={pagina.seo.descricao} jsonLd={jsonLd}>
@@ -35,7 +39,7 @@ const { idiomas, cidades, ...atendimento } = pagina.atendimento;
   <Comparacao id="formatos" {...pagina.formatos} />
   <TextoComImagem id="como-funciona" {...pagina.comoFunciona} />
   <Pontos id="eventos" {...pagina.eventos} servico="traducao" />
-  <ListaCorrida id="idiomas-e-cidades" {...atendimento} grupos={[idiomas, { ...cidades, itens: site.cidades }]} />
+  <ListaCorrida id="idiomas-e-cidades" {...atendimento} grupos={[idiomas, { ...cidades, itens: itensDasCidades }]} />
   <Definicoes id="interpretes" {...pagina.interpretes} />
   <Chamada id="mandarim" {...pagina.mandarim} escuro />
   <Faq {...pagina.faq} />

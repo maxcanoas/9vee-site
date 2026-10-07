@@ -9,7 +9,7 @@ import {
   INTERPRETACAO_DE_MANDARIM,
   abrirPagina,
   carregarPaginas,
-  paginasDeIdiomaNoConteudo,
+  paginasComPublicacaoNoConteudo,
 } from './apoio';
 
 // O SEO final (ticket 15): o sitemap da produção, o favicon completo, a verificação do Search Console e o link da
@@ -31,8 +31,8 @@ describe('sitemap', () => {
     expect(enderecos).toContain(`${DOMINIO}${INTERPRETACAO_DE_MANDARIM}`);
   });
 
-  it('deixa fora a página de idioma não publicada', () => {
-    const naoPublicadas = paginasDeIdiomaNoConteudo().filter(({ publicada }) => !publicada);
+  it('deixa fora a página de idioma ou de cidade não publicada', () => {
+    const naoPublicadas = paginasComPublicacaoNoConteudo().filter(({ publicada }) => !publicada);
     expect(naoPublicadas.length).toBeGreaterThan(0);
     for (const { rota } of naoPublicadas) expect(enderecos).not.toContain(`${DOMINIO}${rota}`);
   });

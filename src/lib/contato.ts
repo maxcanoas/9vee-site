@@ -253,6 +253,17 @@ export function paginaDoContatoDoIdioma(modelo: PaginaDoContato, idioma: { slug:
   };
 }
 
+/** A página de uma cidade sai de um modelo só, com a cidade e a preposição dela: "tradução simultânea no Rio de Janeiro". */
+export function paginaDoContatoDaCidade(modelo: PaginaDoContato, naCidade: string): PaginaDoContato {
+  const dados = { naCidade };
+  const { neutro, empresa, voce } = modelo.assunto;
+  return {
+    ...modelo,
+    nome: preencher(modelo.nome, dados),
+    assunto: { neutro: preencher(neutro, dados), empresa: preencher(empresa, dados), voce: preencher(voce, dados) },
+  };
+}
+
 /**
  * O idioma a marcar num grupo do pedido quando ele abre: o do botão, o que a pessoa já tinha escolhido e, na
  * página de um idioma, o dela. Quem trocou o idioma e reabriu pelo cabeçalho encontra a própria escolha.

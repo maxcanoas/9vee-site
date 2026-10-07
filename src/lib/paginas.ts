@@ -1,5 +1,7 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import { MODO } from 'astro:env/server';
+import { caminhoDaCidade } from './cidades';
+import type { ServicoId } from './contato';
 import { entraNoBuild } from './publicacao';
 import { dadosDoSite, idiomaDoSite, type DadosDoSite } from './site';
 import { trilhaDoCaminho } from './trilha';
@@ -73,15 +75,50 @@ export async function enderecoDosIdiomasPublicados(): Promise<Map<string, string
   return new Map(publicadas.map(({ idioma, caminho }) => [idioma.slug, caminho]));
 }
 
+export interface PaginaDeCidade {
+  /** O nome do arquivo em content/cidades/, que é o fim do endereço. */
+  id: string;
+  caminho: string;
+  conteudo: CollectionEntry<'paginasDeCidade'>['data'];
+}
+
+/** As páginas de cidade deste build, pela mesma regra de publicação das de idioma. */
+export async function paginasDeCidade(): Promise<PaginaDeCidade[]> {
+  const site = await dadosDoSite();
+  const entradas = await getCollection('paginasDeCidade', ({ data }) => entraNoBuild(data, MODO));
+  const comPagina = new Set<string>();
+  return entradas.map(({ id, data }) => {
+    if (!site.cidades.includes(data.cidade)) {
+      throw new Error(`content/cidades/${id}.md aponta para "${data.cidade}", que não está nas cidades de content/site.md`);
+    }
+    if (comPagina.has(data.cidade)) throw new Error(`A cidade "${data.cidade}" tem mais de uma página em content/cidades/`);
+    comPagina.add(data.cidade);
+    return { id, caminho: caminhoDaCidade(id, data.tipo), conteudo: data };
+  });
+}
+
+/**
+ * Da cidade para o endereço da página dela, só das publicadas e só das que têm o serviço, em todos os modos: é para
+ * elas que as páginas dos serviços e dos idiomas levam.
+ */
+export async function enderecoDasCidadesPublicadas(servico: ServicoId): Promise<Map<string, string>> {
+  const publicadas = (await paginasDeCidade()).filter(
+    ({ conteudo }) => conteudo.publicada && conteudo.servicos.some(({ id }) => id === servico),
+  );
+  return new Map(publicadas.map(({ conteudo, caminho }) => [conteudo.cidade, caminho]));
+}
+
 /**
  * A trilha do endereço, com o nome das páginas que não estão no menu nem no rodapé: as de idioma, pelo nome do idioma,
- * e a de interpretação de mandarim, pelo nome que ela mesma dá. O Base (no JSON-LD) e a Trilha (na tela) usam esta.
+ * as de cidade, pelo nome da cidade, e a de interpretação de mandarim, pelo nome que ela mesma dá. O Base (no
+ * JSON-LD) e a Trilha (na tela) usam esta.
  */
 export async function trilhaDaPagina(caminho: string) {
   const site = await dadosDoSite();
   const { data: mandarim } = await paginaInterpretacaoDeMandarim();
   const comNomeProprio = [
     ...(await paginasDeIdioma()).map((pagina) => ({ rotulo: pagina.idioma.nome, href: pagina.caminho })),
+    ...(await paginasDeCidade()).map((pagina) => ({ rotulo: pagina.conteudo.cidade, href: pagina.caminho })),
     { rotulo: mandarim.nomeNaTrilha, href: CAMINHO_DA_INTERPRETACAO_DE_MANDARIM },
   ];
   return trilhaDoCaminho(site, caminho, comNomeProprio);

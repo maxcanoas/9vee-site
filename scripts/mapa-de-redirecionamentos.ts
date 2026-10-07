@@ -5,6 +5,7 @@
 // Uso: node scripts/build.ts producao && node scripts/mapa-de-redirecionamentos.ts
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { caminhoDaCidade, TIPOS_DE_CIDADE } from '../src/lib/cidades.ts';
 import { escreverCsv, lerCsv } from './csv.ts';
 import { listarArquivos, rotaDoArquivo } from './paginas-do-build.ts';
 import { comExcecao, destinoDe, problemasDoMapa, type CidadePublicada, type SiteNovo } from './redirecionamentos.ts';
@@ -18,12 +19,23 @@ if (!existsSync(build)) {
   console.error('Falta o build de produção: rode node scripts/build.ts producao antes.');
   process.exit(1);
 }
-// O ticket 11 liga aqui as páginas de cidade publicadas, com os termos do endereço e os serviços de cada uma.
-const cidades: CidadePublicada[] = [];
-const site: SiteNovo = {
-  paginas: new Set(listarArquivos(build, '.html').map((arquivo) => rotaDoArquivo(build, arquivo)).filter((rota) => rota.endsWith('/'))),
-  cidades,
+// As palavras do endereço dos posts que apontam para cada página de cidade (o nome do arquivo em content/cidades/),
+// com os bairros de São Paulo que o blog cita. Só os posts de tradução vão para a cidade (decisão de 07/10/2026): os
+// de idioma vão para a página do idioma, porque a aula de quem estuda por conta própria é online.
+const TERMOS_DAS_CIDADES: Record<string, string[]> = {
+  'sao-paulo': ['sao-paulo', 'sp', 'av-paulista', 'faria-lima', 'itaim-bibi', 'jardins', 'perdizes', 'pinheiros', 'tatuape', 'vila-madalena', 'vila-mariana', 'vila-olimpia'],
+  'rio-de-janeiro': ['rio-de-janeiro'],
+  curitiba: ['curitiba'],
+  brasilia: ['brasilia'],
 };
+const paginas = new Set(listarArquivos(build, '.html').map((arquivo) => rotaDoArquivo(build, arquivo)).filter((rota) => rota.endsWith('/')));
+// A cidade entra quando a página dela está no build de produção, isto é, publicada, no endereço do tipo dela.
+const cidades: CidadePublicada[] = Object.entries(TERMOS_DAS_CIDADES).flatMap(([id, termos]) =>
+  TIPOS_DE_CIDADE.map((tipo) => caminhoDaCidade(id, tipo))
+    .filter((caminho) => paginas.has(caminho))
+    .map((caminho) => ({ caminho, termos, servicos: ['traducao'] as const })),
+);
+const site: SiteNovo = { paginas, cidades };
 
 const antigas = lerCsv(readFileSync(emDocs('urls-site-atual.csv'), 'utf8')).map(({ url, caminho, tipo, titulo, observacao }) => ({
   url,

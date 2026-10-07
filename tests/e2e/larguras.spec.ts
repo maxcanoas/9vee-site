@@ -1,9 +1,10 @@
 import type { Page } from '@playwright/test';
-import { INTERPRETACAO_DE_MANDARIM, PAGINAS_DE_TEXTO, paginasDeIdiomaNoConteudo } from '../conteudo.ts';
+import { INTERPRETACAO_DE_MANDARIM, PAGINAS_DE_TEXTO, paginasDeCidadeNoConteudo, paginasDeIdiomaNoConteudo } from '../conteudo.ts';
 import { expect, salvarPublico, test } from './pedido.ts';
 
-// As páginas de idioma saem de content/idiomas/: cada idioma novo entra aqui sozinho.
+// As páginas de idioma e de cidade saem de content/: cada página nova entra aqui sozinha.
 const ROTAS_DE_IDIOMA = paginasDeIdiomaNoConteudo().map((pagina) => pagina.rota);
+const ROTAS_DE_CIDADE = paginasDeCidadeNoConteudo().map((pagina) => pagina.rota);
 const COM_HERO = [
   '/treinamento-nr-1/',
   '/curso-de-idiomas/',
@@ -12,6 +13,7 @@ const COM_HERO = [
   '/lms/',
   '/quem-somos/',
   ...ROTAS_DE_IDIOMA,
+  ...ROTAS_DE_CIDADE,
 ];
 // As páginas de texto não têm hero, e a 404 responde por qualquer endereço que não existe.
 const PAGINAS = ['/', ...COM_HERO, ...PAGINAS_DE_TEXTO, '/pagina-que-nao-existe/'];

@@ -1,0 +1,26 @@
+---
+// O aviso da página de idioma ou de cidade que ainda não vai para o site. A produção sai sem essas páginas: só o local
+// e o preview o mostram, no alto do topo, sobre o fundo escuro.
+import Texto from './Texto.astro';
+
+interface Props {
+  texto: string;
+}
+
+const { texto } = Astro.props;
+---
+
+<p class="aviso-nao-publicada"><Texto de={texto} /></p>
+
+<style>
+  /* Tracejado: o mesmo contorno das pendências, porque o aviso também é de coisa a confirmar. */
+  .aviso-nao-publicada {
+    padding-block: var(--e-1);
+    padding-inline: var(--e-3);
+    border: 1px dashed var(--sobre-escuro);
+    border-radius: var(--raio-pilula);
+    color: var(--sobre-escuro);
+    font-size: var(--t-rotulo);
+    font-weight: 700;
+  }
+</style>

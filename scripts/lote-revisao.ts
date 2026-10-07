@@ -56,6 +56,16 @@ const LOTES: Record<number, Lote> = {
       ['Russo', '/curso-de-idiomas/russo/'],
     ],
   },
+  // As cidades do presencial (ticket 11), na ordem da prioridade da pergunta 1: as duas com mais serviços primeiro.
+  4: {
+    titulo: 'cidades',
+    paginas: [
+      ['São Paulo', '/sao-paulo/'],
+      ['Rio de Janeiro', '/rio-de-janeiro/'],
+      ['Tradução simultânea em Curitiba', '/traducao-simultanea/curitiba/'],
+      ['Tradução simultânea em Brasília', '/traducao-simultanea/brasilia/'],
+    ],
+  },
 };
 
 const numero = Number(process.argv[2]);

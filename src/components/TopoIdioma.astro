@@ -6,6 +6,7 @@ import Texto from './Texto.astro';
 import BotaoContato from './BotaoContato.astro';
 import ArcoComCirculo from './ArcoComCirculo.astro';
 import Trilha from './Trilha.astro';
+import AvisoNaoPublicada from './AvisoNaoPublicada.astro';
 import type { TextosPorPublico } from '../lib/publico';
 import type { Imagem } from '../content.config';
 
@@ -29,7 +30,7 @@ const { legenda, ...foto } = imagem;
   <div class="conteiner topo-idioma__grade">
     <div class="topo-idioma__texto">
       <Trilha />
-      {etiqueta && <p class="topo-idioma__etiqueta"><Texto de={etiqueta} /></p>}
+      {etiqueta && <AvisoNaoPublicada texto={etiqueta} />}
       <p class="topo-idioma__saudacao" lang={idioma.lang} dir={idioma.dir}>{idioma.saudacao}</p>
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="topo-idioma__apoio"><Texto de={apoio} /></p>
@@ -55,17 +56,6 @@ const { legenda, ...foto } = imagem;
     display: grid;
     gap: var(--e-5);
     justify-items: start;
-  }
-
-  /* Tracejado: o mesmo contorno das pendências, porque o aviso também é de coisa a confirmar. */
-  .topo-idioma__etiqueta {
-    padding-block: var(--e-1);
-    padding-inline: var(--e-3);
-    border: 1px dashed var(--sobre-escuro);
-    border-radius: var(--raio-pilula);
-    color: var(--sobre-escuro);
-    font-size: var(--t-rotulo);
-    font-weight: 700;
   }
 
   .topo-idioma__saudacao {
