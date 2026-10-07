@@ -222,7 +222,7 @@ mark.confirmar {
   font-family: var(--fonte-texto);
   font-size: var(--t-etiqueta);
   font-weight: 700;
-  line-height: 1.35;
+  line-height: var(--altura-etiqueta);
   vertical-align: 0.08em;
   white-space: nowrap;
 }
@@ -230,7 +230,7 @@ mark.confirmar {
 /* Revisão de um texto que era do cliente: o trecho que entrou, com fundo menta, e o que sai, riscado em magenta. Fica
    só até ele aprovar: a trava de produção barra a classe. */
 ins.revisao {
-  background-color: color-mix(in oklab, var(--menta) 24%, transparent);
+  background-color: var(--menta-revisao);
   color: inherit;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
@@ -240,7 +240,7 @@ ins.revisao {
 del.revisao {
   color: var(--navy-2);
   text-decoration-color: var(--magenta);
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: var(--sublinhado-destaque);
 }
 
 /* Grifo: a faixa de marca-texto atrás da parte de baixo das letras, na cor do grupo (--cor-grupo).
@@ -280,7 +280,7 @@ del.revisao {
 /* O tom claro do grupo, para o fundo do que se destaca sem grifo, como o idioma sob o mouse. Fica no mesmo elemento
    que a cor, para ler a do grupo dele. Com texto navy por cima, dá mais de 5:1 nas três cores. */
 [data-grupo] {
-  --fundo-grupo: color-mix(in oklab, var(--cor-grupo) 16%, var(--papel));
+  --fundo-grupo: color-mix(in oklab, var(--cor-grupo) var(--mistura-fundo-grupo), var(--papel));
 }
 
 /* No .escuro o texto do grifo é papel, e o tom da faixa segue o texto: a violeta pura dá 4,8:1 e a magenta

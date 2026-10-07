@@ -49,10 +49,12 @@ faq:
       resposta: "Dá. Além do preparatório, há o curso regular de holandês, em todos os níveis, online, particular ou em grupo, com professor nativo."
     - pergunta: "Qual é a diferença entre o Inburgering e o NT2?"
       resposta: "O Inburgering é o exame de integração de quem vai morar no país. O NT2 comprova o holandês como segunda língua, para estudar e trabalhar lá."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. O Inburgering e o NT2 têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Vai se mudar para os Países Baixos?"
-  texto: "Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

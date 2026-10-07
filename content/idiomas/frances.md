@@ -53,10 +53,14 @@ faq:
       resposta: "Depende do que você precisa e de para onde vai, a França ou o Quebec. Conte isso no pedido, e a equipe ajuda a escolher a prova."
     - pergunta: "Dá para estudar francês sem ir prestar prova?"
       resposta: "Dá. Além dos preparatórios, há o curso regular de francês, para aprender o idioma, em todos os níveis, online, particular ou em grupo, com professor nativo."
+    - pergunta: "Quanto tempo leva cada nível?"
+      resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Qual prova de francês você vai fazer?"
-  texto: "Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

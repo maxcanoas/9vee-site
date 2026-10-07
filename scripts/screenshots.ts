@@ -345,6 +345,15 @@ const roteiros: Record<string, Captura[]> = {
     ...capturasDaPagina('sao-paulo', '/sao-paulo/', ['traducao', 'idiomas', 'nr1']),
     ...capturasDaPagina('curitiba', '/traducao-simultanea/curitiba/', ['traducao', 'nr1']),
   ],
+  // O que o code-review do grupo 3 (ticket 17) mudou na tela: a etiqueta "Novo" sem cara de botão, o alfinete da
+  // legenda pintado pelo fill, a faixa de números sem estilo inline e o rodapé com o atendimento novo.
+  'code-review-17': [
+    { nome: 'politica-novo-1280', rota: '/politica-de-privacidade/', largura: 1280, altura: 800, recorte: '.politica__secao--nova >> nth=0' },
+    { nome: 'legenda-alemao-390', rota: '/curso-de-idiomas/alemao/', largura: 390, altura: 844, recorte: '.topo-idioma' },
+    { nome: 'faixa-numeros-1280', rota: '/', largura: 1280, altura: 800, recorte: '.prova' },
+    { nome: 'faixa-numeros-390', rota: '/', largura: 390, altura: 844, recorte: '.prova' },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('footer') },
+  ],
   // A foto de cada cidade no arco do topo, no celular e no computador.
   'fotos-cidades': paginasDeCidadeNoConteudo().flatMap(({ rota, pagina }): Captura[] => [
     { nome: `${pagina}-topo-390`, rota, largura: 390, altura: 844, recorte: '.hero-pagina' },

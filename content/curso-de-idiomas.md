@@ -1,12 +1,12 @@
 ---
 seo:
   titulo: "Cursos de idiomas para você e sua empresa | 9vee"
-  descricao: "Aulas de inglês, espanhol, mandarim e outras línguas, online, particulares ou para equipes, com preparação para TOEFL, DELE, DELF e CELPE-Bras. Veja os níveis."
+  descricao: "Aulas online de inglês, espanhol, mandarim e outras línguas, particulares, em grupo ou para equipes, com preparação para TOEFL, DELE, DELF e CELPE-Bras."
 
 # Dados estruturados: um Course por idioma, montado com estes modelos.
 curso:
   nome: "Curso de {idioma}"
-  descricao: "{idioma} com a 9vee: aula particular, online ou para a equipe da empresa, do primeiro contato ao domínio."
+  descricao: "{idioma} com a 9vee: aula online, particular ou em grupo, e turmas para a equipe da empresa, do primeiro contato ao domínio."
 
 hero:
   rotulo: "Para você e para a sua equipe"
@@ -167,5 +167,5 @@ faq:
 
 ctaFinal:
   titulo: "Conte o que você quer falar."
-  texto: "Você escolhe o idioma, o objetivo, o nível e o formato em quatro passos. No fim, decide entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos você escolhe o idioma e conta o seu nível e o que procura. No fim, decide entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

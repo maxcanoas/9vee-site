@@ -27,7 +27,7 @@ const notas = itens.flatMap((item) =>
   <div class="conteiner">
     <h2 id="prova-titulo" class="visualmente-oculto">{titulo}</h2>
     {/* Uma coluna por número no computador: a faixa cabe numa linha só, com quatro ou cinco números. */}
-    <ul class="prova__lista" role="list" style={`--colunas: ${itens.length}`}>
+    <ul class="prova__lista" role="list" data-colunas={itens.length}>
       {
         itens.map((item) => (
           <li class="prova__item">
@@ -111,6 +111,12 @@ const notas = itens.flatMap((item) =>
     text-align: end;
   }
 
+  .prova__lista[data-colunas='1'] { --colunas: 1; }
+  .prova__lista[data-colunas='2'] { --colunas: 2; }
+  .prova__lista[data-colunas='3'] { --colunas: 3; }
+  .prova__lista[data-colunas='4'] { --colunas: 4; }
+  .prova__lista[data-colunas='5'] { --colunas: 5; }
+
   .prova__valor[data-digitos='2'] {
     min-inline-size: 2ch;
   }
@@ -164,7 +170,7 @@ const notas = itens.flatMap((item) =>
     /* Com cinco colunas num tablet, o número diminui junto com a faixa, para o "+" não quebrar a linha. Todos ficam
        do mesmo tamanho, porque a medida é a lista, e não a coluna de cada um. */
     .prova__numero {
-      font-size: min(var(--t-numero), calc(28cqi / var(--colunas)));
+      font-size: min(var(--t-numero), calc(var(--numero-na-faixa) / var(--colunas)));
     }
 
     .prova__item:last-child:nth-child(odd) {

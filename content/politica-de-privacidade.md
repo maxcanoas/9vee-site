@@ -132,7 +132,7 @@ secoes:
       - "Nós armazenamos os dados pessoais somente pelo período necessário para cumprir as finalidades informadas, para cumprir nossas obrigações legais, regulatórias ou para preservação de direitos. Terminado o prazo de armazenamento, os dados pessoais serão anonimizados ou excluídos, utilizando método seguro de descarte."
       - "[NOVO: Os prazos de guarda são estes:]"
       - itens:
-          - "[NOVO: pedidos de orçamento que chegam pelo site ou por e-mail: 1 ano, quando não viram contrato, e 5 anos, quando viram;]"
+          - "[NOVO: pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;]"
           - "[NOVO: conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;]"
           - "[NOVO: registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet.]"
       - "Nos comprometemos a respeitar os direitos à privacidade, à proteção dos dados pessoais e dos registros dos seus usuários, e asseguramos que cuidará para que eventuais terceiros com quem referidos dados sejam compartilhados respeitem os termos desta Política de Privacidade."

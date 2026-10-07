@@ -99,11 +99,11 @@ formato:
   titulo: "Formato e carga horária"
   itens:
     - rotulo: "Como acontece"
-      valor: "Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e já atende empresas de outros estados."
+      valor: "Online ao vivo, com a turma junta na chamada, ou presencial na sua empresa, em qualquer cidade do Brasil. A equipe do treinamento é de São Paulo e atende todo o Brasil."
     - rotulo: "Workshop normativo"
       valor: "O mais curto, com foco no que a norma pede. Uma ou duas sessões, para até 70 pessoas."
     - rotulo: "Curso formativo"
-      valor: "O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30, como for melhor para a empresa. Até 35 pessoas por turma."
+      valor: "O mais longo, para formar quem participa. Cerca de 9 horas, em 3 encontros de 3 horas ou 6 de 1h30. Até 35 pessoas por turma."
   texto: "São dois treinamentos, um mais curto e um mais longo. Conte quantas pessoas são e qual é o prazo da sua empresa: o formulário leva as respostas junto com o pedido."
   cta: "Pedir orçamento do treinamento"
 

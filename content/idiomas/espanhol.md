@@ -53,10 +53,12 @@ faq:
       resposta: "Todos, do básico ao avançado. O diagnóstico do começo mostra o seu nível, e cada nível leva em média 40 horas de aula."
     - pergunta: "As aulas são online ou presenciais?"
       resposta: "Para quem estuda por conta própria, online e ao vivo, de qualquer cidade. Para empresas, também há aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. O DELE, o SIELE e o CELU têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Vai prestar o DELE ou quer falar espanhol?"
-  texto: "Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

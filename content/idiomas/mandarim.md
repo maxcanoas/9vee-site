@@ -56,7 +56,7 @@ destaque:
       texto: "O mandarim se escreve com caracteres. A pronúncia vai em pinyin, com as letras do nosso alfabeto e o tom marcado em cima."
     - titulo: "O verbo"
       texto: "Fica igual para todas as pessoas e todos os tempos. Não há conjugação para decorar."
-  nota: "Cada professor leva a escrita e os tons no ritmo do aluno, com a conversa sempre à frente."
+  nota: "Todas as aulas são com professor nativo, online e ao vivo, particulares ou em grupo."
 
 faq:
   titulo: "Perguntas sobre o mandarim"
@@ -67,10 +67,12 @@ faq:
       resposta: "A conversa começa nas primeiras aulas. Para subir de nível, a média é de 40 horas de aula por nível."
     - pergunta: "Vocês preparam para o HSK?"
       resposta: "Preparam. O HSK é a prova oficial de proficiência em mandarim do governo chinês, e o preparatório segue os critérios dela."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. O HSK tem certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Comece pelo seu objetivo."
-  texto: "Trabalho, viagem ou cultura. Em quatro passos você conta o objetivo, o nível e o formato, e escolhe entre falar agora no WhatsApp ou receber o contato."
+  texto: "Trabalho, viagem ou cultura. Em quatro passos você conta o seu nível e o que procura, e escolhe entre falar agora no WhatsApp ou receber o contato."
 ---

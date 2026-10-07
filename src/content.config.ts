@@ -372,7 +372,9 @@ const home = defineCollection({
             pendencia: z.string().optional(),
           }),
         )
-        .min(1),
+        // Uma coluna por número no computador: o CSS da faixa vai até cinco.
+        .min(1)
+        .max(5),
       aviso: z.string(),
     }),
     servicos: z.object({

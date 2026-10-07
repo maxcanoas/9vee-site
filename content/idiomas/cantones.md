@@ -9,7 +9,7 @@ esqueleto: true
 
 seo:
   titulo: "Curso de cantonês | 9vee"
-  descricao: "Curso de cantonês da 9vee. Conte o objetivo, o nível e o formato que você prefere em quatro passos, e fale com a equipe pelo WhatsApp ou receba o contato."
+  descricao: "Curso de cantonês da 9vee. Conte o seu nível e o que você procura em quatro passos, e fale agora com a equipe pelo WhatsApp ou receba o contato dela."
 
 topo:
   h1: "Curso de cantonês"
@@ -39,5 +39,5 @@ faq:
 
 ctaFinal:
   titulo: "Quer estudar cantonês?"
-  texto: "Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

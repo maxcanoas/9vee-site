@@ -26,7 +26,7 @@ hero:
 servicos:
   - id: "traducao"
     titulo: "Eventos em Curitiba"
-    texto: "[CONFIRMAR COM A DANIELLA: que tipo de evento a 9vee mais faz em Curitiba (pergunta 47)] Em cidades perto de Curitiba, o intérprete pode ir até o evento."
+    texto: "[CONFIRMAR COM A DANIELLA: que tipo de evento a 9vee mais faz em Curitiba (pergunta 47)] A 9vee também tem intérpretes que viajam até o evento."
     link: { rotulo: "Como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     servico: { nome: "Tradução simultânea em Curitiba", tipo: "Interpretação simultânea, consecutiva e de acompanhamento" }
   - id: "nr1"

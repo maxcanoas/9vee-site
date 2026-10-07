@@ -113,7 +113,7 @@ describe('home', () => {
     expect(itens).toEqual(['16 anos de experiência', '14 idiomas', '+65 profissionais', '+60 clientes', '+20 empresas parceiras']);
     expect(home.querySelector('.prova__notas')).toBeNull();
     expect(home.querySelector('.prova__numero--pendente')).toBeNull();
-    expect(home.querySelector('.prova__lista')?.getAttribute('style')).toBe('--colunas: 5');
+    expect(home.querySelector('.prova__lista')?.getAttribute('data-colunas')).toBe('5');
   });
 
   it('marca cada depoimento com a autorização a confirmar', () => {

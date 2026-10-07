@@ -58,5 +58,5 @@ faq:
 
 ctaFinal:
   titulo: "Quer estudar italiano?"
-  texto: "Conte o objetivo, o nível e o formato em quatro passos. No fim, você escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

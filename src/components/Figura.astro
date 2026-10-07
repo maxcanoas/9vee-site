@@ -15,6 +15,8 @@ interface Props {
   prioridade?: boolean;
   /** Na primeira tela sem ser a imagem principal: carrega já, sem a prioridade alta. */
   primeiraDobra?: boolean;
+  /** Carrega com a página, mas depois do resto: a foto escondida que uma escolha na tela pode mostrar. */
+  prioridadeBaixa?: boolean;
   forma?: 'reta' | 'arco';
   recorte?: boolean;
 }
@@ -28,6 +30,7 @@ const {
   sizes = '100vw',
   prioridade = false,
   primeiraDobra = false,
+  prioridadeBaixa = false,
   forma = 'reta',
   recorte = false,
 } = Astro.props;
@@ -56,7 +59,8 @@ const classeProporcao = `proporcao-${proporcao.replace('/', '-')}`;
       widths={larguras}
       sizes={sizes}
       priority={prioridade}
-      loading={primeiraDobra && !prioridade ? 'eager' : undefined}
+      loading={(primeiraDobra || prioridadeBaixa) && !prioridade ? 'eager' : undefined}
+      fetchpriority={prioridadeBaixa ? 'low' : undefined}
       class:list={['figura', `figura--${forma}`, classeProporcao]}
     />
   ) : (

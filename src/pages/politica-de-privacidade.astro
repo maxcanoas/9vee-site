@@ -110,8 +110,8 @@ const { data: pagina } = await paginaPrivacidade();
   .politica__legenda,
   .politica__secao--nova {
     padding: var(--e-5);
-    border-inline-start: 4px solid var(--menta);
-    background-color: color-mix(in oklab, var(--menta) 12%, transparent);
+    border-inline-start: var(--fio-revisao) solid var(--menta);
+    background-color: var(--menta-veu);
   }
 
   .politica__legenda {
@@ -130,13 +130,14 @@ const { data: pagina } = await paginaPrivacidade();
     margin-inline-start: var(--e-2);
     padding-block: var(--e-etiqueta-bloco);
     padding-inline: var(--e-etiqueta-linha);
+    border: 1px solid var(--menta);
     border-radius: var(--raio-pilula);
-    background-color: var(--menta);
+    background-color: var(--menta-revisao);
     color: var(--navy);
     font-family: var(--fonte-texto);
     font-size: var(--t-etiqueta);
     font-weight: 700;
-    line-height: 1.35;
-    vertical-align: 0.3em;
+    line-height: var(--altura-etiqueta);
+    vertical-align: var(--etiqueta-no-titulo);
   }
 </style>

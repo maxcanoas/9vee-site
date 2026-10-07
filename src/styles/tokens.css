@@ -14,6 +14,9 @@
   --menta-forte: color-mix(in oklab, var(--menta), var(--navy) 14%);
   --magenta: #fe19d6;
   --magenta-veu: color-mix(in oklab, var(--magenta) 9%, transparent);
+  /* As marcas da revisão de um texto do cliente: o fundo do bloco novo e, mais forte, o do trecho que entrou. */
+  --menta-veu: color-mix(in oklab, var(--menta) 12%, transparent);
+  --menta-revisao: color-mix(in oklab, var(--menta) 24%, transparent);
   --violeta: #5c58f4;
   --veu: color-mix(in oklab, var(--noite) 62%, transparent);
   --papel-veu: color-mix(in oklab, var(--papel) 12%, transparent);
@@ -58,6 +61,8 @@
   --altura-apoio: 1.45;
   --altura-subtitulo: 1.2;
   --altura-titulo: 1.06;
+  --altura-rotulo: 1.3;
+  --altura-etiqueta: 1.35;
   --rastreio-titulo: -0.025em;
   --medida: 64ch;
 
@@ -87,6 +92,14 @@
   --fio-metades: 3px;
   /* Sublinhado de destaque: item do menu, idioma e número pendente. */
   --sublinhado-destaque: 2px;
+  /* A faixa da esquerda do bloco em revisão. */
+  --fio-revisao: 4px;
+  /* Quanto do fundo do grupo é a cor dele: o resto é papel. */
+  --mistura-fundo-grupo: 16%;
+  /* O número da faixa de números diminui com a largura dela, dividida pelas colunas (unidade do contêiner). */
+  --numero-na-faixa: 28cqi;
+  /* A etiqueta dentro de um título sobe para o meio das letras grandes. */
+  --etiqueta-no-titulo: 0.3em;
   /* Grifo: a faixa sobe da base da caixa do texto e cobre uns 60% da altura das minúsculas.
      A medida vale para a Readex Pro, a fonte de todo rótulo com grifo; a Source Sans desce mais e pediria outra. */
   --grifo-altura: 0.6em;

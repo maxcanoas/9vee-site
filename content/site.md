@@ -320,7 +320,7 @@ rodape:
   # A frase que fecha o rodapé do site atual, em caixa normal.
   frase: "Seu próximo capítulo de sucesso começa agora."
   pronuncia: "9vee, lê-se Novee."
-  atendimento: "Aulas online para todo o Brasil. Tradução presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília."
+  atendimento: "Aulas online para todo o Brasil. NR-1 e tradução simultânea presenciais em qualquer cidade, com intérpretes que moram em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília."
   tituloContato: "Contato"
   rotuloWhatsapp: "WhatsApp"
   tituloRedes: "A 9vee nas redes"

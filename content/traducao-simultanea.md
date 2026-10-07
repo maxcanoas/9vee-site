@@ -64,7 +64,7 @@ eventos:
 # o rótulo delas. Os intérpretes são da cidade do evento (pergunta 15).
 atendimento:
   titulo: "12 idiomas, quatro cidades"
-  apoio: "Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinais ao cantonês. O atendimento presencial é em quatro cidades, com intérpretes que moram nelas."
+  apoio: "Os intérpretes da 9vee trabalham com 12 idiomas, da Língua Brasileira de Sinais ao cantonês. Nas quatro cidades abaixo, eles moram na cidade do evento."
   idiomas:
     rotulo: "Idiomas"
     itens:
@@ -81,8 +81,8 @@ atendimento:
       - "Árabe"
       - "Libras"
   cidades:
-    rotulo: "Atendimento presencial"
-  nota: "Em outra cidade, a 9vee busca intérpretes de lá. No interior, perto de uma capital, o intérprete pode ir até o evento. Se o seu evento pede outro idioma, diga no pedido."
+    rotulo: "Intérpretes que moram na cidade"
+  nota: "Em outra cidade, a 9vee quase sempre busca intérpretes de lá, e também tem intérpretes que viajam até o evento. Se o seu evento pede outro idioma, diga no pedido."
 
 interpretes:
   titulo: "Quem são os intérpretes"
@@ -115,7 +115,7 @@ faq:
     - pergunta: "Em que idiomas há intérprete?"
       resposta: "Em inglês, espanhol, mandarim, cantonês, francês, italiano, alemão, holandês, japonês, coreano, árabe e Libras. O pedido tem a opção \"Outro\", para o idioma que não está na lista."
     - pergunta: "Em que cidades a 9vee atende?"
-      resposta: "O atendimento presencial é em São Paulo, Rio de Janeiro, Curitiba e Brasília, com intérpretes de cada cidade. Em outra cidade, a 9vee busca intérpretes de lá."
+      resposta: "Em todo o Brasil. Em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília, com intérpretes que moram na cidade. Em outra cidade, a 9vee quase sempre busca intérpretes de lá."
     - pergunta: "Dá para fazer a interpretação a distância?"
       resposta: "Dá, pelo Zoom, com um canal de áudio para cada idioma, ou por telefone."
     - pergunta: "Quantos intérpretes o meu evento precisa?"

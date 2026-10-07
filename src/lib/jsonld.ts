@@ -10,6 +10,7 @@ export function telefoneInternacional(numero: string): string {
 
 export function organizacao(site: DadosDoSite, base: URL) {
   const telefone = telefoneInternacional(site.contato.whatsapp);
+  const { endereco } = site.contato;
   return {
     '@type': 'EducationalOrganization',
     '@id': new URL('/#organizacao', base).href,
@@ -24,10 +25,10 @@ export function organizacao(site: DadosDoSite, base: URL) {
     // O endereço do Perfil da Empresa no Google, igual a ele. A área atendida diz onde ela trabalha.
     address: {
       '@type': 'PostalAddress',
-      streetAddress: `${site.contato.endereco.rua}, ${site.contato.endereco.bairro}`,
-      addressLocality: site.contato.endereco.cidade,
-      addressRegion: site.contato.endereco.uf,
-      postalCode: site.contato.endereco.cep,
+      streetAddress: `${endereco.rua}, ${endereco.bairro}`,
+      addressLocality: endereco.cidade,
+      addressRegion: endereco.uf,
+      postalCode: endereco.cep,
       addressCountry: 'BR',
     },
     areaServed: [

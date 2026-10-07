@@ -33,7 +33,7 @@ paraQuem:
 
 formatos:
   titulo: "Como são as aulas"
-  apoio: "Todas com professor nativo. No pedido, você escolhe o formato que combina com a sua rotina."
+  apoio: "Todas com professor nativo. Para quem estuda por conta própria, a aula é online e ao vivo, no dia e no horário que você escolher."
   itens:
     - titulo: "Aula individual"
       texto: "Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico. A meta é falar com segurança, clareza e autoridade."
@@ -78,10 +78,14 @@ faq:
       resposta: "Dá. A aula individual para executivos trabalha reunião, call, negociação e apresentação, com o plano montado a partir de um diagnóstico do seu dia a dia."
     - pergunta: "Que material o curso de adultos usa?"
       resposta: "O material é escolhido para o objetivo de cada aluno. No inglês de negócios, um dos preferidos da 9vee é a série Market Leader. O material da Cambridge é o do curso de crianças e adolescentes."
+    - pergunta: "Quanto tempo leva cada nível?"
+      resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. O TOEFL, o IELTS e o TOEIC têm certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Conte para que você quer o inglês."
-  texto: "Trabalho, prova, escola ou viagem. Em quatro passos você diz o objetivo, o nível e o formato, e decide se fala agora no WhatsApp ou recebe o contato."
+  texto: "Trabalho, prova, escola ou viagem. Em quatro passos você conta o seu nível e o que procura, e decide se fala agora no WhatsApp ou recebe o contato."
 ---

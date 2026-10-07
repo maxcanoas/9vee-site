@@ -51,9 +51,9 @@ const retrato = {
       <div class="hero__frente hero__frente--padrao">
         <Figura {...imagemFrente} {...retrato} primeiraDobra />
       </div>
-      {/* Sem primeiraDobra: escondida, a foto de quem estuda só carrega quando o público "você" a mostra. */}
+      {/* Escondida até a escolha "Para você": carrega com a página, depois do resto, para a troca não mostrar o arco vazio. */}
       <div class="hero__frente hero__frente--voce">
-        <Figura {...imagemFrenteVoce} {...retrato} />
+        <Figura {...imagemFrenteVoce} {...retrato} prioridadeBaixa />
       </div>
     </div>
   </div>

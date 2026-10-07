@@ -66,10 +66,14 @@ faq:
       resposta: "Não. Há turma para quem começa do zero. O professor fala sempre em português, pelo método de imersão, e o diagnóstico do começo mostra o seu ponto de partida."
     - pergunta: "A empresa pode contratar as aulas para um funcionário estrangeiro?"
       resposta: "Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro, e podem incluir a preparação para o CELPE-Bras."
+    - pergunta: "Quanto tempo leva cada nível?"
+      resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
+    - pergunta: "No fim do curso eu recebo certificado?"
+      resposta: "Sim, um certificado da 9vee com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 
 ctaFinal:
   titulo: "Conte para que você precisa do português."
-  texto: "Em quatro passos você diz o objetivo, o nível e o formato. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
+  texto: "Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe."
 ---

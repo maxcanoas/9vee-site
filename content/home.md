@@ -45,6 +45,7 @@ prova:
     - valor: 20
       prefixo: "+"
       rotulo: "empresas parceiras"
+  # O rótulo do aviso que abre a lista das pendências: só aparece quando algum número tem uma.
   aviso: "Números a confirmar"
 
 servicos:
@@ -58,7 +59,7 @@ servicos:
     - id: "traducao"
       titulo: "Tradução simultânea"
       publico: "Para empresas"
-      texto: "Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial em São Paulo, Rio de Janeiro, Curitiba e Brasília, ou online."
+      texto: "Intérpretes em cabine nos congressos e ao lado de executivos em visitas e negociações. Presencial, com intérpretes da cidade do evento, ou online."
       link: { rotulo: "Ver como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     - id: "nr1"
       titulo: "Treinamento de NR-1"
