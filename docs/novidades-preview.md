@@ -9,7 +9,9 @@ Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo cur
 - As quatro mostram no alto o aviso "Fora do site até vocês responderem". Elas só vão para o site definitivo quando vocês disserem que tipo de evento mais fazem em cada cidade (a pergunta 47 do Word). Sem isso, as quatro diriam a mesma coisa, só com o nome da cidade trocado, e o Google trata página assim como cópia.
 - Os textos estão no lote 4 de revisão, para a Daniella.
 
-Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Mande junto o `docs/revisao-daniella/lote-4.md`. As fotos das cidades aparecem como espaço reservado com o código (IMG-CIDADE-...) até você gerar as quatro no Gemini, com os prompts de `docs/imagens-gemini.md`.
+- Cada cidade tem uma foto no topo, na série das fotos dos idiomas: um intérprete conversando com um executivo de fora, com um marco da cidade ao fundo (a Ponte Estaiada, o Pão de Açúcar, a estufa do Jardim Botânico e o Congresso Nacional).
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Mande junto o `docs/revisao-daniella/lote-4.md`.
 
 ## Semana 2, décima terceira leva (06/10): o rodapé, o ícone do site e a cidade nas fotos dos idiomas
 
