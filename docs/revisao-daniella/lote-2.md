@@ -1,6 +1,6 @@
-# Lote 2: tradução, LMS, Quem Somos, privacidade e página de erro
+# Lote 2: tradução, interpretação de mandarim, LMS, Quem Somos, privacidade e página de erro
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 05/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Tradução Simultânea
 
@@ -435,7 +435,7 @@ Propósito, coragem e parceria guiam o trabalho da 9vee.
 
 ##### Propósito
 
-O que leva a visão à prática e melhora a vida de quem aprende.
+O que leva a visão à prática e melhora a vida dos clientes da 9vee.
 
 ###### Cuidar para mudar
 
@@ -443,7 +443,7 @@ Cada projeto leva o compromisso com resultados que mudam a trajetória de quem a
 
 ###### O aluno no centro
 
-As decisões começam e terminam no aluno. Os professores recebem metodologia, tecnologia e suporte contínuo.
+As decisões começam e terminam no aluno, e os professores recebem metodologia, tecnologia e suporte contínuo.
 
 ###### Melhorar sempre
 
@@ -475,11 +475,29 @@ Feedback, aprendizado e até os desafios servem para melhorar os processos.
 
 ###### Desafiar, alinhar, executar
 
-Diálogo aberto e direto, com espaço para discordar. Definida a direção, todos se comprometem com ela.
+Diálogo aberto e direto, com espaço para discordar e o compromisso de todos com a direção definida.
 
 ###### Um time, um propósito
 
 O coletivo vem antes do individual, com colaboração, inclusão e responsabilidade compartilhada.
+
+#### Histórias construídas com grandes parceiros
+
+Algumas das empresas que já contrataram os intérpretes e os cursos da 9vee.
+
+##### Interpretação
+
+- TOTVS
+- Array
+
+##### Cursos de idiomas
+
+- Pirelli
+- FGV
+- Sicredi
+- Bradesco
+
+Veja como funcionam a tradução simultânea e as turmas para empresas.
 
 #### Conte o que você precisa.
 

@@ -1,6 +1,6 @@
 # Lote 3: páginas de idioma
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 05/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Inglês
 
@@ -22,6 +22,8 @@ Inglês com professor nativo para usar no trabalho, curso para crianças a parti
 [Botão: Pedir aulas de inglês (para sua empresa: Pedir orçamento de inglês; para você: Quero estudar inglês)]
 
 [Imagem: Dois colegas conversando na ponte de Westminster, em Londres, com o Big Ben ao fundo.]
+
+Londres, Reino Unido
 
 #### Para quem é
 
@@ -47,7 +49,7 @@ Todas com professor nativo. No pedido, você escolhe o formato que combina com a
 
 ##### Aula individual
 
-Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico.
+Para executivos: reunião, call, negociação e apresentação em inglês, com o plano montado a partir de um diagnóstico. A meta é falar com segurança, clareza e autoridade.
 
 ##### Online, ao vivo
 
@@ -142,6 +144,8 @@ Aulas de espanhol com professor nativo, do básico ao avançado, e preparação 
 
 [Imagem: Dois colegas conversando numa mesa de café ao ar livre na Gran Vía, em Madri, com o edifício Metrópolis ao fundo.]
 
+Madri, Espanha
+
 #### Como são as aulas
 
 Para quem estuda por conta própria e para empresas, de qualquer cidade do Brasil.
@@ -224,6 +228,8 @@ Aulas online com professor nativo e foco na conversa desde as primeiras aulas, p
 [Botão: Pedir aulas de mandarim (para sua empresa: Pedir orçamento de mandarim; para você: Quero estudar mandarim)]
 
 [Imagem: Dois executivos conversando no calçadão do Bund, em Xangai, com os prédios de Pudong ao fundo.]
+
+Xangai, China
 
 #### Para quem é
 
@@ -324,6 +330,8 @@ Curso regular e preparação para o Inburgering e o NT2, os exames de quem vai m
 
 [Imagem: Uma mulher empurrando a bicicleta e conversando com a vizinha numa ponte de canal em Amsterdã.]
 
+Amsterdã, Países Baixos
+
 #### Como são as aulas
 
 Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas.
@@ -344,7 +352,7 @@ Para a equipe da sua empresa, veja as turmas para empresas.
 
 #### Preparação para o Inburgering e o NT2
 
-A lei holandesa de integração pede um exame a cidadãos estrangeiros que querem se estabelecer nos Países Baixos. O preparatório trabalha a língua e a cultura que a aprovação pede.
+A lei holandesa de integração pede um exame prévio, feito antes da mudança, a cidadãos estrangeiros que vivem no exterior e querem se estabelecer nos Países Baixos. O preparatório trabalha a língua e a cultura que a aprovação pede.
 
 Inburgering
 
@@ -399,13 +407,15 @@ Curso regular e preparação para o DELF, o DALF, o TCF, o TEF e o TFI, com prof
 
 [Imagem: Um estudante conversando com uma parisiense numa rua de Paris, com a Torre Eiffel ao fundo.]
 
+Paris, França
+
 #### As provas de francês
 
 Para estudar, trabalhar ou imigrar. A escolha depende do seu objetivo e do destino.
 
 DELF e DALF
 
-O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Vão do A1 ao C2, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma.
+O Diplôme d'Études en Langue Française e o Diplôme Approfondi de Langue Française são os diplomas oficiais do Ministério da Educação da França, reconhecidos internacionalmente. Vão do A1 ao C2, os seis níveis do Quadro Europeu Comum de Referência para Línguas, com provas escritas e orais que medem a compreensão, a produção e a interação no idioma.
 
 TCF
 
@@ -429,13 +439,13 @@ Todas as aulas de francês, com ou sem prova, são dadas por professores nativos
 
 ##### Simulados
 
-No preparatório do TCF, você faz a prova no formato dela antes do dia do exame.
+No preparatório do TCF, a prática é direcionada para a prova, com simulados no formato dela antes do dia do exame.
 
 ##### Todas as habilidades
 
 No DELF e no DALF, a preparação trabalha o que o exame cobra, na escrita e na fala.
 
-As aulas são online, ao vivo, particulares ou em grupo, em todos os níveis.
+O foco é nos critérios de cada prova. As aulas são online, ao vivo, particulares ou em grupo, em todos os níveis.
 
 #### Perguntas sobre o francês
 
@@ -476,7 +486,9 @@ Para quem veio estudar, trabalhar ou viver no Brasil, do zero ao avançado, com 
 
 [Botão: Pedir aulas de português (para sua empresa: Pedir orçamento de português; para você: Quero estudar português)]
 
-[Imagem: Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, com o MASP ao fundo.]
+[Imagem: Uma profissional estrangeira conversando com uma colega brasileira na Avenida Paulista, em São Paulo, com o MASP ao fundo.]
+
+São Paulo, Brasil
 
 #### Para quem é
 
@@ -580,6 +592,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 
 [Imagem: Dois colegas atravessando a Pariser Platz em Berlim, com o Portão de Brandemburgo ao fundo.]
 
+Berlim, Alemanha
+
 #### Como são as aulas
 
 Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas.
@@ -654,6 +668,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 [Botão: Pedir aulas de italiano (para sua empresa: Pedir orçamento de italiano; para você: Quero estudar italiano)]
 
 [Imagem: Duas pessoas conversando numa rua de Florença, com a cúpula do Duomo ao fundo.]
+
+Florença, Itália
 
 #### Como são as aulas
 
@@ -738,6 +754,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 
 [Imagem: Duas pessoas conversando na praça Stortorget, em Estocolmo, com as fachadas coloridas ao fundo.]
 
+Estocolmo, Suécia
+
 #### Como são as aulas
 
 Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas.
@@ -817,6 +835,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 
 [Imagem: Duas pessoas conversando no cais de Bergen, com as casas de madeira coloridas de Bryggen ao fundo.]
 
+Bergen, Noruega
+
 #### Como são as aulas
 
 Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas.
@@ -887,6 +907,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 [Botão: Pedir aulas de japonês (para sua empresa: Pedir orçamento de japonês; para você: Quero estudar japonês)]
 
 [Imagem: Dois colegas conversando numa rua tranquila, com a Torre de Tóquio ao fundo.]
+
+Tóquio, Japão
 
 #### Como são as aulas
 
@@ -959,6 +981,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 
 [Imagem: Duas colegas conversando num terraço em Dubai, com o Burj Khalifa ao fundo.]
 
+Dubai, Emirados Árabes Unidos
+
 #### Como são as aulas
 
 Online e ao vivo, de qualquer cidade do Brasil, para quem estuda por conta própria e para empresas.
@@ -1025,6 +1049,8 @@ Aulas online com professor nativo, particulares ou em grupo, do básico ao avan�
 [Botão: Pedir aulas de russo (para sua empresa: Pedir orçamento de russo; para você: Quero estudar russo)]
 
 [Imagem: Duas pessoas conversando na beira de um canal de São Petersburgo, com a Igreja do Salvador sobre o Sangue Derramado ao fundo.]
+
+São Petersburgo, Rússia
 
 #### Como são as aulas
 

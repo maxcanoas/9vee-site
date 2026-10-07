@@ -1,6 +1,6 @@
 # Lote 1: páginas principais
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 05/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Home
 
@@ -105,7 +105,7 @@ Cada uma com a sua escrita.
 
 ##### Comunicação de verdade
 
-Os cursos vão além do ensino tradicional. Treinam a comunicação do dia a dia, a que dá autonomia e segurança a famílias imigrantes em qualquer país.
+Os cursos vão além do ensino tradicional. Desenvolvem a comunicação real, a que dá autonomia, segurança e novas oportunidades a famílias imigrantes em qualquer país.
 
 ##### Professores perto ou longe
 
@@ -131,7 +131,7 @@ Pelo formulário aqui mesmo ou pelo WhatsApp. São quatro passos, quase todos de
 
 ##### A equipe estuda o pedido
 
-No curso, começa por um diagnóstico do seu nível. No evento, pela data e pelos idiomas.
+No curso, começa pelo idioma e pelo objetivo. No evento, pela data e pelos idiomas.
 
 ##### Você recebe a proposta
 
@@ -238,7 +238,7 @@ Três coisas saem do treinamento e ficam na empresa depois que a turma acaba.
 
 ##### Liderança que sabe conduzir a conversa
 
-Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar terapeuta da equipe. É o módulo 2 inteiro.
+Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar terapeuta da equipe.
 
 ##### Um plano de ação escrito pela sua equipe
 
@@ -252,7 +252,7 @@ O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o
 
 #### O que o treinamento aborda
 
-O objetivo é dar aos participantes competências práticas para construir relações mais saudáveis, fortalecer o bem-estar emocional e ajudar a criar um ambiente de trabalho psicologicamente seguro e colaborativo.
+O objetivo é dar aos participantes competências práticas para relações mais saudáveis e para o bem-estar emocional. Com elas, os participantes ajudam a criar um ambiente de trabalho psicologicamente seguro e colaborativo.
 
 Riscos psicossociais
 
@@ -466,7 +466,7 @@ Quase nada escapa, e o tom muda conforme a sala.
 
 #### Preparação para provas
 
-Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para as provas de cada idioma que ensina, com foco nos critérios de cada uma. Aqui estão seis, e a página de cada idioma mostra as outras.
+Os exames de proficiência são pedidos em processos de imigração, em vagas de trabalho no exterior e na entrada em universidades, mestrados e MBAs. A 9vee prepara para essas provas, com foco nos critérios de cada uma. Aqui estão seis, e a página de cada idioma mostra as outras.
 
 ##### TOEFL iBT
 
@@ -480,7 +480,7 @@ O preparatório é para o TOEFL iBT (Internet Based Test) e para quem já está 
 
 Português para estrangeiros, o exame oficial do Brasil.
 
-Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países, e as universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
+Para quem quer estudar, trabalhar ou validar o diploma no Brasil. Criado pelo Ministério da Educação, o CELPE-Bras é o único certificado de português reconhecido oficialmente pelo governo brasileiro. É aceito por universidades, empresas e instituições de outros países. As universidades brasileiras pedem o certificado na graduação, na pós e na revalidação do diploma de profissionais estrangeiros.
 
 As aulas do preparatório são dadas por professores especializados no ensino de português para estrangeiros, com experiência na preparação de candidatos para o exame.
 
@@ -518,7 +518,7 @@ O preparatório é voltado para o exame e trabalha as duas partes: a língua e a
 
 #### Como são as aulas
 
-Professores nativos dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário.
+Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário.
 
 ##### Aula particular
 
@@ -546,13 +546,13 @@ Três passos até a primeira aula. Depois dela, cada etapa do curso é planejada
 
 Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção.
 
-##### A 9vee faz o diagnóstico do seu nível
+##### A 9vee manda a proposta
 
-Antes de fechar a turma, para a aula começar no ponto certo.
+Costuma sair no mesmo dia. Se o pedido chega no fim do dia, ela sai no dia seguinte.
 
 ##### A primeira aula acontece
 
-No formato que você escolheu, no ritmo que o diagnóstico apontou.
+No formato que você escolheu. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele.
 
 #### Para a sua equipe
 
@@ -564,7 +564,7 @@ O time estuda junto, na mesma turma e no mesmo nível, com material prático e a
 
 ##### Aula individual para executivos
 
-Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível.
+Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. Mais do que fluência, a meta é segurança, clareza e autoridade na comunicação internacional.
 
 ##### Português para quem veio de fora
 
@@ -599,7 +599,7 @@ Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do trei
 
 ##### Não sei o meu nível. Tem problema?
 
-Não. O diagnóstico acontece antes de fechar a turma, e é ele que diz onde você está e de onde a aula começa.
+Não. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele.
 
 ##### Quanto tempo leva para subir um nível?
 
@@ -667,6 +667,7 @@ Empresas
 - [Link: Tradução simultânea]
 - [Link: Treinamento de NR-1]
 - [Link: LMS]
+- [Link: Interpretação de mandarim]
 
 Para você
 
