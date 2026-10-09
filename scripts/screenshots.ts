@@ -515,6 +515,37 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'nr1-beneficios-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, recorte: '#beneficios' },
     { nome: 'lms-chamada-1280', rota: '/lms/', largura: 1280, altura: 800, recorte: '#chamada' },
   ],
+  // O carrossel dos depoimentos (09/10/2026): na home, no começo e depois de duas setas, e na página de holandês, onde
+  // os dois cabem no computador e as setas somem.
+  'depoimentos': [
+    { nome: 'home-390', rota: '/', largura: 390, altura: 844, recorte: '#depoimentos' },
+    { nome: 'home-360', rota: '/', largura: 360, altura: 780, recorte: '#depoimentos' },
+    { nome: 'home-1280', rota: '/', largura: 1280, altura: 800, recorte: '#depoimentos' },
+    // A tela, e não o recorte: a captura da página inteira muda o tamanho da janela e desfaz a rolagem da faixa.
+    {
+      nome: 'home-1280-andou',
+      rota: '/',
+      largura: 1280,
+      altura: 800,
+      antes: async (p) => {
+        await rolarAte('#depoimentos', -80)(p);
+        await p.locator('[data-carrossel-proximo]').click();
+        await p.locator('[data-carrossel-proximo]').click();
+      },
+    },
+    {
+      nome: 'home-390-andou',
+      rota: '/',
+      largura: 390,
+      altura: 844,
+      antes: async (p) => {
+        await rolarAte('#depoimentos-trilho', -120)(p);
+        await p.locator('[data-carrossel-proximo]').click();
+      },
+    },
+    { nome: 'holandes-1280', rota: '/curso-de-idiomas/holandes/', largura: 1280, altura: 800, recorte: '#depoimentos' },
+    { nome: 'holandes-390', rota: '/curso-de-idiomas/holandes/', largura: 390, altura: 844, recorte: '#depoimentos' },
+  ],
   // O rodapé com a interpretação de mandarim no fim do grupo Empresas (ticket 15).
   'ticket-15': [
     { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: 'footer' },

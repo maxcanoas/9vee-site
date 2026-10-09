@@ -256,6 +256,41 @@ const site = defineCollection({
       detalhe: z.string().includes('{nota}').includes('{quem}'),
       quem: z.object({ daniella: z.string(), arthur: z.string() }),
     }),
+    // Os depoimentos, num lugar só: a home mostra todos, e a página de um idioma, os que citam aquele idioma.
+    depoimentos: z.object({
+      rotulos: z.object({
+        autorizacao: z.string(),
+        traducao: z.string(),
+        anterior: z.string(),
+        proximo: z.string(),
+        noIdioma: z.string().includes('{idioma}'),
+      }),
+      itens: z
+        .array(
+          z
+            .object({
+              id: z.string().regex(/^[a-z-]+$/),
+              trecho: z.string(),
+              /** A língua da fala, quando não é o português: vira o lang dela, e a tradução vem logo abaixo. */
+              lingua: z.string().regex(/^[a-z]{2}$/).optional(),
+              traducao: z.string().optional(),
+              nome: z.string(),
+              cargo: z.string(),
+              empresa: z.string(),
+              /** Nome do arquivo em src/assets/logos/, sem o .svg. */
+              logo: z.string().regex(/^[a-z-]+$/).optional(),
+              servico: z.string(),
+              /** Os slugs dos idiomas cuja página mostra este depoimento. */
+              idiomas: z.array(z.string()).optional(),
+              pendencia: z.string().optional(),
+            })
+            .refine(({ lingua, traducao }) => (lingua === undefined) === (traducao === undefined), {
+              error: 'a fala em outra língua leva a tradução, e só ela',
+            }),
+        )
+        .min(1)
+        .refine((itens) => new Set(itens.map(({ id }) => id)).size === itens.length, { error: 'id de depoimento repetido' }),
+    }),
     rodape: z.object({
       frase: z.string(),
       pronuncia: z.string(),
@@ -311,7 +346,13 @@ const site = defineCollection({
     // O link só do rodapé entra num grupo do menu: num grupo que não existe, ele sumiria sem aviso.
     .refine(({ menu, rodape }) => rodape.soNoRodape.every(({ grupo }) => menu.grupos.some(({ id }) => id === grupo)), {
       error: 'link do rodapé num grupo que o menu não tem',
-    }),
+    })
+    // O depoimento só vai para a página de um idioma que existe: com o slug errado, ele sumiria sem aviso.
+    .refine(
+      ({ depoimentos, idiomas }) =>
+        depoimentos.itens.every((depoimento) => (depoimento.idiomas ?? []).every((slug) => idiomas.some((idioma) => idioma.slug === slug))),
+      { error: 'depoimento com um idioma que a lista não tem' },
+    ),
 });
 
 const imagem = z.object({
@@ -399,24 +440,8 @@ const home = defineCollection({
       etapas: z.array(z.object({ titulo: z.string(), texto: z.string(), imagem })).min(3).max(4),
     }),
     idiomas: z.object({ titulo: z.string(), apoio: z.string() }),
-    depoimentos: z.object({
-      titulo: z.string(),
-      rotuloAutorizacao: z.string(),
-      itens: z
-        .array(
-          z.object({
-            trecho: z.string(),
-            nome: z.string(),
-            cargo: z.string(),
-            empresa: z.string(),
-            /** Nome do arquivo em src/assets/logos/, sem o .svg. */
-            logo: z.string().regex(/^[a-z-]+$/).optional(),
-            servico: z.string(),
-            pendencia: z.string().optional(),
-          }),
-        )
-        .min(1),
-    }),
+    // Só o título da seção: as falas estão em content/site.md.
+    depoimentos: z.object({ titulo: z.string() }),
     faq,
     ctaFinal: tituloETexto,
   }),

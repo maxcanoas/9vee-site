@@ -124,28 +124,9 @@ idiomas:
 
 # A 9vee confirmou em 08/10/2026 (pergunta 30 da segunda rodada) que tem a autorização por escrito de cada pessoa
 # para a fala e de cada empresa para o logo, e que as falas são deles, como estão aqui.
+# Os depoimentos, todos, no carrossel. As falas ficam em content/site.md, que as páginas de idioma também usam.
 depoimentos:
   titulo: "Quem já contratou"
-  rotuloAutorizacao: "Autorização de uso:"
-  itens:
-    - trecho: "Em momentos decisivos para o nosso negócio, cada palavra importa."
-      nome: "Eduardo Martins"
-      cargo: "Diretor de Vendas"
-      empresa: "Nissan"
-      logo: "nissan"
-      servico: "Tradução simultânea"
-    - trecho: "Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam."
-      nome: "Bruno Teixeira"
-      cargo: "Gerente de Produção"
-      empresa: "General Motors"
-      logo: "general-motors"
-      servico: "Tradução simultânea"
-    - trecho: "Os professores são altamente qualificados e preparados para atender executivos e líderes (...)."
-      nome: "Pedro Cavalcante"
-      cargo: "Diretor"
-      empresa: "Embraer"
-      logo: "embraer"
-      servico: "Cursos de idiomas"
 
 faq:
   titulo: "Perguntas antes de contratar"

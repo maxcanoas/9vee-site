@@ -34,7 +34,7 @@ const experimental = {
   <FaixaProva {...home.prova} pendencia={site.pendencia} />
   <Servicos titulo={home.servicos.titulo} itens={comOrdemDoServico(site, home.servicos.itens)} />
   {/* Os depoimentos logo depois dos serviços, para a prova de empresa real aparecer cedo (humanizar-ui, 09/10/2026). */}
-  <Depoimentos {...home.depoimentos} />
+  <Depoimentos titulo={home.depoimentos.titulo} itens={site.depoimentos.itens} rotulos={site.depoimentos.rotulos} />
 
   <section class="idiomas-home" id="idiomas" aria-labelledby="idiomas-titulo">
     <FaixaSaudacoes idiomas={site.idiomas} />

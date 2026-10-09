@@ -9,11 +9,13 @@ import Definicoes from '../../components/Definicoes.astro';
 import Pontos from '../../components/Pontos.astro';
 import Chamada from '../../components/Chamada.astro';
 import Faq from '../../components/Faq.astro';
+import Depoimentos from '../../components/Depoimentos.astro';
 import CtaFinal from '../../components/CtaFinal.astro';
 import { dadosDoSite } from '../../lib/site';
 import { enderecoDasCidadesPublicadas, paginaIdiomas, paginasDeIdioma, type PaginaDeIdioma } from '../../lib/paginas';
 import { ligarCidades } from '../../lib/cidades';
 import { curso, faqPage, nomeDoCurso } from '../../lib/jsonld';
+import { minuscula, preencher } from '../../lib/texto';
 
 export async function getStaticPaths() {
   return (await paginasDeIdioma()).map((pagina) => ({ params: { pagina: pagina.id }, props: pagina }));
@@ -36,6 +38,8 @@ const jsonLd = [
 // Onde a aula presencial cita a cidade, ela leva à página da cidade, quando publicada.
 const cidadesComAula = await enderecoDasCidadesPublicadas('idiomas');
 const ligar = (texto: string) => ligarCidades(texto, cidadesComAula);
+// Os depoimentos que citam este idioma, de content/site.md, logo depois das provas: são a prova de quem já estudou.
+const depoimentos = site.depoimentos.itens.filter((depoimento) => depoimento.idiomas?.includes(idioma.slug));
 const formatos = conteudo.formatos && {
   ...conteudo.formatos,
   nota: ligar(conteudo.formatos.nota),
@@ -49,6 +53,15 @@ const formatos = conteudo.formatos && {
   {conteudo.niveis && <Niveis {...conteudo.niveis} />}
   {formatos && <Pontos id="formatos" {...formatos} />}
   {conteudo.provas && <Definicoes id="provas" {...conteudo.provas} />}
+  {
+    depoimentos.length > 0 && (
+      <Depoimentos
+        titulo={preencher(site.depoimentos.rotulos.noIdioma, { idioma: minuscula(idioma.nome) })}
+        itens={depoimentos}
+        rotulos={site.depoimentos.rotulos}
+      />
+    )
+  }
   {conteudo.destaque && <Pontos {...conteudo.destaque} />}
   {conteudo.realocacao && <Chamada id="realocacao" {...cursos.realocacao} />}
   {conteudo.faq && <Faq {...conteudo.faq} />}

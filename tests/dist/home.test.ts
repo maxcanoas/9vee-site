@@ -120,23 +120,54 @@ describe('home', () => {
     expect(home.querySelector('.prova__lista')?.getAttribute('data-colunas')).toBe('5');
   });
 
-  // A 9vee confirmou as três autorizações em 08/10/2026 (pergunta 30 da segunda rodada).
-  it('mostra os depoimentos sem a marca de autorização a confirmar', () => {
-    expect(home.querySelectorAll('.depoimento')).toHaveLength(3);
+  // Os seis depoimentos de content/site.md, no carrossel, na ordem de lá: empresa e aluno alternados. A 9vee confirmou
+  // as autorizações dos três de empresa em 08/10/2026 (pergunta 30); os três de 09/10 vieram da Daniella.
+  it('mostra os seis depoimentos no carrossel, sem a marca de autorização a confirmar', () => {
+    const nomes = home.querySelectorAll('#depoimentos .depoimento__nome').map((nome) => nome.text.trim());
+    expect(nomes).toEqual(['Eduardo Martins', 'Elian Ferreira', 'Bruno Teixeira', 'Fabrício', 'Pedro Cavalcante', 'Elian Ferreira']);
     for (const depoimento of home.querySelectorAll('.depoimento')) {
       expect(depoimento.querySelector('mark.confirmar')).toBeNull();
       expect(depoimento.querySelector('.depoimento__autorizacao')).toBeNull();
     }
   });
 
-  // O leitor de tela já ouve o nome da empresa na linha do cargo: o logo repetiria.
-  it('põe o logo da empresa ao lado do nome em cada depoimento, escondido do leitor de tela', () => {
-    for (const depoimento of home.querySelectorAll('.depoimento')) {
+  // O leitor de tela já ouve o nome da empresa na linha do cargo: o logo repetiria. Os de 09/10 vão sem logo, porque a
+  // autorização das empresas não veio.
+  it('põe o logo da empresa ao lado do nome nos depoimentos autorizados, escondido do leitor de tela', () => {
+    const comLogo = home.querySelectorAll('.depoimento').filter((depoimento) => depoimento.querySelector('.depoimento__logo'));
+    expect(comLogo.map((depoimento) => depoimento.querySelector('.depoimento__nome')?.text.trim())).toEqual([
+      'Eduardo Martins',
+      'Bruno Teixeira',
+      'Pedro Cavalcante',
+    ]);
+    for (const depoimento of comLogo) {
       const logo = depoimento.querySelector('figcaption .depoimento__logo svg');
-      expect(logo, depoimento.querySelector('.depoimento__nome')?.text.trim()).not.toBeNull();
       expect(logo?.getAttribute('aria-hidden')).toBe('true');
       expect(logo?.querySelector('path')).not.toBeNull();
     }
+  });
+
+  // A fala em inglês sai no original, com o lang dela, e a tradução logo abaixo (escolha do Maxwell em 09/10/2026).
+  it('mostra a fala em inglês no original, marcada como inglês, com a tradução embaixo', () => {
+    const emIngles = home.querySelectorAll('.depoimento__fala[lang="en"]');
+    expect(emIngles).toHaveLength(2);
+    for (const fala of emIngles) {
+      const traducao = fala.closest('figure')?.querySelector('.depoimento__traducao');
+      expect(traducao?.text.trim()).toMatch(/^Em português: “/);
+      expect(traducao?.getAttribute('lang')).toBeUndefined();
+    }
+    expect(home.querySelectorAll('.depoimento__traducao')).toHaveLength(2);
+  });
+
+  // A faixa recebe o foco, para quem usa o teclado rolar com as setas, e as setas dizem o que controlam.
+  it('dá à faixa o foco do teclado e o nome da seção, e liga as setas a ela', () => {
+    const trilho = home.querySelector('#depoimentos-trilho');
+    expect(trilho?.getAttribute('tabindex')).toBe('0');
+    expect(trilho?.getAttribute('aria-labelledby')).toBe('depoimentos-titulo');
+    const setas = home.querySelectorAll('#depoimentos .depoimentos__seta');
+    expect(setas.map((seta) => seta.getAttribute('aria-label'))).toEqual(['Depoimento anterior', 'Próximo depoimento']);
+    for (const seta of setas) expect(seta.getAttribute('aria-controls')).toBe('depoimentos-trilho');
+    expect(home.querySelector('[data-carrossel-pontos]')?.getAttribute('aria-hidden')).toBe('true');
   });
 });
 

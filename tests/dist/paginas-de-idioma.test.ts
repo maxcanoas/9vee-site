@@ -48,6 +48,23 @@ describe('páginas de idioma', () => {
   });
 });
 
+// Os depoimentos que citam o idioma, de content/site.md (09/10/2026): hoje, só os dois de holandês.
+describe('depoimentos nas páginas de idioma', () => {
+  it('mostra no holandês os dois depoimentos de quem estudou holandês, logo depois das provas', () => {
+    const holandes = raizDa('/curso-de-idiomas/holandes/')!;
+    expect(textoDe(holandes, '#depoimentos-titulo')).toBe('Quem já estudou holandês com a 9vee');
+    expect(textosDe(holandes, '#depoimentos .depoimento__nome')).toEqual(['Elian Ferreira', 'Fabrício']);
+    const secoes = holandes.querySelectorAll('main > section[id]').map((secao) => secao.id);
+    expect(secoes[secoes.indexOf('provas') + 1]).toBe('depoimentos');
+  });
+
+  it('não mostra a seção nos idiomas que nenhum depoimento cita', () => {
+    for (const { rota } of paginasDeIdiomaNoConteudo().filter(({ idioma }) => idioma !== 'holandes')) {
+      expect(raizDa(rota)?.querySelector('#depoimentos'), rota).toBeNull();
+    }
+  });
+});
+
 describe.each(paginasDeIdiomaNoConteudo())('página de idioma $rota', ({ rota, pagina, idioma, publicada }) => {
   const raiz = raizDa(rota);
   // O idioma como a página de cursos o mostra: a saudação, o lang e o nome vêm de content/site.md.

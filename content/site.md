@@ -316,6 +316,66 @@ pendencia:
     daniella: "a Daniella"
     arthur: "o Arthur"
 
+# Os depoimentos de quem já contratou a 9vee, num lugar só. A home mostra todos no carrossel, na ordem daqui, e a
+# página de um idioma mostra os que têm o slug dele em "idiomas". O trecho é literal, com "(...)" onde a fala foi
+# cortada. A fala em outra língua leva o lang dela e a tradução logo abaixo (escolha do Maxwell em 09/10/2026).
+# Os três de empresa têm autorização por escrito para a fala e o logo (pergunta 30, respondida em 08/10/2026). Os três
+# que a Daniella mandou em 09/10/2026 vão sem logo: a autorização das empresas não veio. A ordem alterna empresa e aluno.
+depoimentos:
+  rotulos:
+    autorizacao: "Autorização de uso:"
+    traducao: "Em português:"
+    anterior: "Depoimento anterior"
+    proximo: "Próximo depoimento"
+    # O título da seção na página de um idioma: o {idioma} vira o nome dele, em minúscula.
+    noIdioma: "Quem já estudou {idioma} com a 9vee"
+  itens:
+    - id: "eduardo-martins"
+      trecho: "Em momentos decisivos para o nosso negócio, cada palavra importa."
+      nome: "Eduardo Martins"
+      cargo: "Diretor de Vendas"
+      empresa: "Nissan"
+      logo: "nissan"
+      servico: "Tradução simultânea"
+    - id: "elian-ferreira-inburgering"
+      trecho: "After living in the Netherlands for many years and attending several courses, I still didn’t feel fully prepared to take the Inburgerings exams. (...) I was able to pass the Inburgerings tests on my first attempt."
+      lingua: "en"
+      traducao: "Depois de muitos anos morando nos Países Baixos e de vários cursos, ainda me faltava preparo para os exames do Inburgering. (...) Passei nas provas do Inburgering na primeira tentativa."
+      nome: "Elian Ferreira"
+      cargo: "Finance Process Development"
+      empresa: "PVH Europe B.V."
+      servico: "Preparação para o Inburgering"
+      idiomas: ["holandes"]
+    - id: "bruno-teixeira"
+      trecho: "Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam."
+      nome: "Bruno Teixeira"
+      cargo: "Gerente de Produção"
+      empresa: "General Motors"
+      logo: "general-motors"
+      servico: "Tradução simultânea"
+    - id: "fabricio"
+      trecho: "Minha filha e eu fazemos aulas particulares de holandês com a Novee. (...) A Novee possui uma didática muito clara e personalizada, adaptando o conteúdo às necessidades e aos objetivos de cada aluno."
+      nome: "Fabrício"
+      cargo: "Diretor de Serviços ao Cliente"
+      empresa: "Embraer NL"
+      servico: "Aulas particulares de holandês"
+      idiomas: ["holandes"]
+    - id: "pedro-cavalcante"
+      trecho: "Os professores são altamente qualificados e preparados para atender executivos e líderes (...)."
+      nome: "Pedro Cavalcante"
+      cargo: "Diretor"
+      empresa: "Embraer"
+      logo: "embraer"
+      servico: "Cursos de idiomas"
+    - id: "elian-ferreira"
+      trecho: "Working with Daniella and her team for the past 3+ years has been a fantastic experience. (...) I frequently refer colleagues to their services (...)."
+      lingua: "en"
+      traducao: "Trabalhar com a Daniella e a equipe dela nos últimos mais de 3 anos tem sido uma experiência fantástica. (...) Indico os serviços deles com frequência a colegas (...)."
+      nome: "Elian Ferreira"
+      cargo: "Finance Process Development"
+      empresa: "PVH Europe B.V."
+      servico: "Cursos de idiomas"
+
 rodape:
   # A frase que fecha o rodapé do site atual, em caixa normal.
   frase: "Seu próximo capítulo de sucesso começa agora."

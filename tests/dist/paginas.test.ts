@@ -257,11 +257,13 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     }
   });
 
-  // A marca é 9vee. O Novee aparece só no rodapé: na pronúncia e no nome do Perfil da Empresa no Google.
+  // A marca é 9vee. O Novee aparece só no rodapé: na pronúncia e no nome do Perfil da Empresa no Google. A fala de um
+  // cliente sai como ele escreveu, e pode dizer Novee: ela não conta.
   it('escreve "Novee" só no rodapé', () => {
     const rodape = raiz.querySelector('footer');
-    const texto = textoVisivel(raiz);
-    expect(texto.match(/Novee/g)).toHaveLength(2);
+    const contar = (texto: string) => texto.match(/Novee/g)?.length ?? 0;
+    const nasFalas = raiz.querySelectorAll('blockquote').reduce((soma, fala) => soma + contar(fala.text), 0);
+    expect(contar(textoVisivel(raiz)) - nasFalas).toBe(2);
     expect(rodape?.text.match(/Novee/g)).toHaveLength(2);
   });
 
