@@ -2,6 +2,20 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima oitava leva (09/10): os depoimentos novos, num carrossel
+
+- Os depoimentos que a Daniella mandou entraram no site: os dois do Elian Ferreira, da PVH Europe, e o do Fabrício, da Embraer NL. Com os da Nissan, da General Motors e da Embraer, são seis.
+- Na home, eles ficam num carrossel: um por vez no celular, dois no computador. A pessoa passa com o dedo ou com as setas, e uns pontinhos mostram em qual está. O carrossel não anda sozinho, para dar tempo de ler.
+- Os depoimentos do Elian aparecem em inglês, como ele escreveu, com a tradução em português logo abaixo. Cada fala aparece num trecho, com "(...)" onde foi cortada, como nos outros depoimentos do site.
+- A página de holandês ganhou a seção "Quem já estudou holandês com a 9vee", com o depoimento do Elian sobre o Inburgering e o do Fabrício: https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/holandes/
+- Três perguntas:
+  - o Elian e o Fabrício autorizaram por escrito o uso da fala e do nome no site? E a PVH e a Embraer NL autorizam o logo? Por enquanto, os três aparecem sem logo;
+  - o Fabrício prefere aparecer com o sobrenome?
+  - o depoimento do Elian sobre os mais de 3 anos de parceria é de que serviço? Por enquanto, o cartão diz "Cursos de idiomas".
+- Os lotes 1 e 3 de revisão foram gerados de novo, com os depoimentos.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`.
+
 ## Semana 2, décima sétima leva (09/10): a revisão dos textos
 
 - Na home, "Quem já contratou" subiu para logo depois de "O que a 9vee faz". Os depoimentos da Nissan, da General Motors e da Embraer aparecem bem antes na rolagem.

@@ -76,13 +76,33 @@ Plataforma para a equipe estudar a qualquer hora, com acompanhamento de professo
 
 Eduardo Martins · Diretor de Vendas, Nissan · Tradução simultânea
 
+“After living in the Netherlands for many years and attending several courses, I still didn’t feel fully prepared to take the Inburgerings exams. (...) I was able to pass the Inburgerings tests on my first attempt.”
+
+Em português: “Depois de muitos anos morando nos Países Baixos e de vários cursos, ainda me faltava preparo para os exames do Inburgering. (...) Passei nas provas do Inburgering na primeira tentativa.”
+
+Elian Ferreira · Finance Process Development, PVH Europe B.V. · Preparação para o Inburgering
+
 “Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam.”
 
 Bruno Teixeira · Gerente de Produção, General Motors · Tradução simultânea
 
+“Minha filha e eu fazemos aulas particulares de holandês com a Novee. (...) A Novee possui uma didática muito clara e personalizada, adaptando o conteúdo às necessidades e aos objetivos de cada aluno.”
+
+Fabrício · Diretor de Serviços ao Cliente, Embraer NL · Aulas particulares de holandês
+
 “Os professores são altamente qualificados e preparados para atender executivos e líderes (...).”
 
 Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas
+
+“Working with Daniella and her team for the past 3+ years has been a fantastic experience. (...) I frequently refer colleagues to their services (...).”
+
+Em português: “Trabalhar com a Daniella e a equipe dela nos últimos mais de 3 anos tem sido uma experiência fantástica. (...) Indico os serviços deles com frequência a colegas (...).”
+
+Elian Ferreira · Finance Process Development, PVH Europe B.V. · Cursos de idiomas
+
+[Botão: Depoimento anterior]
+
+[Botão: Próximo depoimento]
 
 #### Qual língua você quer falar?
 

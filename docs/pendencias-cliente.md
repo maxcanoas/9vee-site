@@ -422,3 +422,11 @@ O Maxwell mandou o Word v2 à 9vee em 08/10/2026, renumerado de 1 a 20, e as res
 | 20 | 50 | A plataforma é a LearnWorlds (o print da EdApp é antigo, de um parceiro); não há mais professora embaixadora; os relatórios mostram duração da sessão, data de acesso, o que o aluno aprendeu, metas cumpridas e o resultado dos nivelamentos; recebe idiomas, treinamentos internos e integração | LMS: o texto de cada relatório e os treinamentos internos e a integração na plataforma. O nome da LearnWorlds e as telas ficam fora |
 
 Com isso, `node scripts/pendencias.ts` conta 1 marcação (a Lei 14.831, que é aviso), contra as 16 de 08/10. Os 14 idiomas e as 4 cidades estão publicados.
+
+### Os depoimentos novos (09/10/2026)
+
+A Daniella mandou ao Maxwell três depoimentos, num arquivo de texto: dois do Elian Ferreira (Finance Process Development, PVH Europe B.V.), em inglês, um sobre os mais de 3 anos de parceria e outro sobre o Inburgering, passado na primeira tentativa, e um do Fabrício (Diretor de Serviços ao Cliente, Embraer NL), em português, sobre as aulas particulares de holandês dele e da filha. O Maxwell decidiu, pelas perguntas de escolha: um carrossel sem movimento sozinho, com setas e arrasto; os dois do Elian, no original em inglês com a tradução embaixo; e os dois de holandês também na página de holandês.
+
+No site: os seis depoimentos ficam em `content/site.md` (`depoimentos`), num lugar só. A home mostra todos, e a página de um idioma mostra os que citam aquele idioma. Cada fala aparece num trecho, com "(...)" onde foi cortada. Os três novos vão sem logo.
+
+Perguntas que foram na nota da 18ª leva: a autorização por escrito da fala, do nome e do logo; o sobrenome do Fabrício; e o serviço do depoimento do Elian sobre a parceria, que o cartão chama de "Cursos de idiomas".

@@ -32,6 +32,9 @@ O site já tem uma posição que não depende da resposta. A resposta só melhor
 | O programa na Graded, citado na resposta 2 | Não aparece | Fica fora. A resposta não diz se foi curso para os alunos ou treinamento da equipe da escola, e o nome não tem autorização |
 | A nota do Google (parte da 33) | O link do Perfil no rodapé, sem nota | Fica sem a nota |
 | Os órgãos públicos do Inglês Acessível (estavam no flyer) | Saíram do bloco, que segue a resposta 9: centros acadêmicos universitários | Ficam fora. Voltam se a 9vee disser que o programa também os atende |
+| A autorização dos três depoimentos de 09/10 (Elian Ferreira, duas falas, e Fabrício) e dos logos da PVH e da Embraer NL | Os três no carrossel da home, e dois na página de holandês, sem logo | Ficam assim. Foi a Daniella quem mandou as falas; a pergunta da autorização por escrito vai na nota da 18ª leva, como foi a 30 |
+| O serviço do depoimento do Elian sobre os mais de 3 anos de parceria | "Cursos de idiomas" | Fica assim. A pergunta vai na nota da 18ª leva |
+| O sobrenome do Fabrício | Só o primeiro nome, como ele assinou | Fica assim |
 
 ## 3. Acessos: sem eles, o site não vai ao ar
 

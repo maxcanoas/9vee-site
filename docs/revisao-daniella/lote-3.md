@@ -394,6 +394,22 @@ O preparatório do Inburgering
 
 Com metodologia prática e voltada para o exame, desenvolve as habilidades de língua e de cultura que a aprovação pede.
 
+#### Quem já estudou holandês com a 9vee
+
+“After living in the Netherlands for many years and attending several courses, I still didn’t feel fully prepared to take the Inburgerings exams. (...) I was able to pass the Inburgerings tests on my first attempt.”
+
+Em português: “Depois de muitos anos morando nos Países Baixos e de vários cursos, ainda me faltava preparo para os exames do Inburgering. (...) Passei nas provas do Inburgering na primeira tentativa.”
+
+Elian Ferreira · Finance Process Development, PVH Europe B.V. · Preparação para o Inburgering
+
+“Minha filha e eu fazemos aulas particulares de holandês com a Novee. (...) A Novee possui uma didática muito clara e personalizada, adaptando o conteúdo às necessidades e aos objetivos de cada aluno.”
+
+Fabrício · Diretor de Serviços ao Cliente, Embraer NL · Aulas particulares de holandês
+
+[Botão: Depoimento anterior]
+
+[Botão: Próximo depoimento]
+
 #### Perguntas sobre o holandês
 
 ##### Dá para estudar holandês sem ir prestar o exame?
