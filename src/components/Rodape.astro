@@ -85,7 +85,11 @@ const grupos = menu.grupos.map((grupo) => ({
 
   <div class="conteiner rodape__base">
     <p class="rodape__frase"><Texto de={rodape.frase} /></p>
-    <p>{rodape.direitos}</p>
+    <div class="rodape__assinatura">
+      <p>{rodape.direitos}</p>
+      {/* O crédito de quem desenvolveu o site, com o link para o site dele. */}
+      <p><Texto de={rodape.credito} /></p>
+    </div>
     <div class="rodape__legal">
       <a href={rodape.privacidade.href}>{rodape.privacidade.rotulo}</a>
       {/* Reabre o aviso de cookies, com as preferências abertas. Sem JavaScript, some: não há o que medir. */}
@@ -225,9 +229,12 @@ const grupos = menu.grupos.map((grupo) => ({
     font-size: var(--t-pequeno);
   }
 
+  /* Os direitos e o crédito, juntos à esquerda; a política e as preferências, à direita. */
+  .rodape__assinatura,
   .rodape__legal {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0 var(--e-5);
   }
 

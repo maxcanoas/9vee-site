@@ -546,6 +546,12 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'holandes-1280', rota: '/curso-de-idiomas/holandes/', largura: 1280, altura: 800, recorte: '#depoimentos' },
     { nome: 'holandes-390', rota: '/curso-de-idiomas/holandes/', largura: 390, altura: 844, recorte: '#depoimentos' },
   ],
+  // O crédito de quem desenvolveu o site, ao lado dos direitos, no fim do rodapé (09/10/2026).
+  'credito': [
+    { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: '.rodape__base' },
+    { nome: 'rodape-768', rota: '/', largura: 768, altura: 1024, recorte: '.rodape__base' },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, recorte: '.rodape__base' },
+  ],
   // O rodapé com a interpretação de mandarim no fim do grupo Empresas (ticket 15).
   'ticket-15': [
     { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: 'footer' },

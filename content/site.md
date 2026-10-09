@@ -398,6 +398,9 @@ rodape:
     rotulo: "Política de privacidade"
     href: "/politica-de-privacidade/"
   direitos: "© 2026 9vee"
+  # O crédito de quem desenvolveu o site, ao lado dos direitos, com o link para o site dele (pedido do Maxwell em
+  # 09/10/2026). O link de fora abre em nova aba.
+  credito: "Desenvolvido por [DEVMRMORAES](https://devmrmoraes.com.br)"
 
 # O aviso de cookies (ticket 13): aparece até a pessoa responder, e de novo quando a versão sobe. Mudou o texto do
 # aviso ou o que o site mede, suba a versão: a resposta antiga deixa de valer. "Aceitar" e "Recusar" têm o mesmo

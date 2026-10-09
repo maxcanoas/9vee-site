@@ -221,6 +221,14 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(organizacao?.sameAs).toEqual([...doRodape, 'https://share.google/2l0jYMdugOo5em3DR']);
   });
 
+  it('dá o crédito de quem desenvolveu o site, com o link para o site dele, em nova aba', () => {
+    const credito = raiz.querySelector('footer .rodape__assinatura a');
+    expect(credito?.text).toContain('DEVMRMORAES');
+    expect(credito?.getAttribute('href')).toBe('https://devmrmoraes.com.br');
+    expect(credito?.getAttribute('target')).toBe('_blank');
+    expect(credito?.getAttribute('rel')).toBe('noopener');
+  });
+
   it('fecha o rodapé com a frase do site atual, em caixa normal', () => {
     expect(raiz.querySelector('footer .rodape__frase')?.text.trim()).toBe('Seu próximo capítulo de sucesso começa agora.');
   });

@@ -304,6 +304,7 @@ const site = defineCollection({
       soNoRodape: z.array(link.extend({ grupo: z.string() })),
       privacidade: link,
       direitos: z.string(),
+      credito: z.string(),
     }),
     // O aviso de cookies: a versão sobe quando o texto ou o que o site mede muda, e a resposta antiga deixa de valer.
     cookies: z.object({
