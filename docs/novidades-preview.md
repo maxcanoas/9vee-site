@@ -2,6 +2,16 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima quinta leva (08/10): as respostas da segunda rodada
+
+- Os três depoimentos da home (Nissan, General Motors e Embraer) não mostram mais "Autorização de uso: a confirmar". Vocês confirmaram as autorizações, e a seção fica como está, com a fala, o nome, o cargo e o logo.
+- Os nomes da TOTVS, da Array, da Pirelli, da FGV, do Sicredi e do Bradesco continuam sem logo, porque o logo não tem autorização por escrito.
+- A home continua com "16 anos de experiência", como vocês aprovaram.
+- O Word da segunda rodada tem uma versão 2, sem as perguntas que vocês já responderam e sem as que saíram. As que ficaram mantêm o número.
+- O lote 1 de revisão foi gerado de novo, sem as marcas dos depoimentos.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Mande junto o `docs/Perguntas-9vee-segunda-rodada-v2.docx`.
+
 ## Semana 2, décima quarta leva (07/10): as páginas das cidades
 
 - O preview ganhou uma página para cada cidade do atendimento presencial. São Paulo e Rio de Janeiro têm a página da cidade, com a tradução simultânea, a aula de idioma dentro da empresa e o treinamento de NR-1: https://9vee-preview.9vee-site.workers.dev/sao-paulo/ e https://9vee-preview.9vee-site.workers.dev/rio-de-janeiro/

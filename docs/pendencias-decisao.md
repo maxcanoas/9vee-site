@@ -2,6 +2,8 @@
 
 Montado em 07/10/2026 (ticket 17), com o site como está no preview da 14ª publicação. É a lista para a decisão caso a caso que a spec e o cronograma marcam para a semana 8 (16/11 a 22/11): o que a 9vee não responder até lá é decidido pelo Maxwell, e aplicado no ticket 20. A numeração é a do Word da segunda rodada (`docs/Perguntas-9vee-segunda-rodada.docx`, perguntas 27 a 55). O texto completo de cada pergunta está em `docs/pendencias-cliente.md`.
 
+**Atualizado em 08/10/2026:** a 9vee respondeu a 30, a 31 e a 32, e o Maxwell tirou do Word a 43 e as de 51 a 55. O Word novo é o `docs/Perguntas-9vee-segunda-rodada-v2.docx`, com os mesmos números. A 30 foi para "Respondidas", no fim; nas outras, a resposta ou a saída do Word está marcada no próprio item.
+
 **Aprovado pelo Maxwell em 07/10/2026:** na semana 8, o que a 9vee não tiver respondido é aplicado como está aqui, sem nova rodada de perguntas. O que ela responder vale sobre a sugestão.
 
 Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier e por quê. Nenhuma sugestão inventa fato: quando falta a resposta, o trecho sai ou fica só com o que a 9vee já confirmou.
@@ -9,13 +11,6 @@ Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier 
 ## 1. Travam a produção
 
 Estas têm marca de pendência em `content/`, e a trava de produção não deixa o build passar com elas. Precisam de resposta ou de decisão.
-
-### 30. Autorização dos três depoimentos da home
-
-- **Hoje:** a home mostra as falas de Eduardo Martins (Nissan), Bruno Teixeira (General Motors) e Pedro Cavalcante (Embraer), com nome, cargo e o logo da empresa. As falas vêm do site atual.
-- **Sugestão, sem resposta:** a seção de depoimentos sai da home.
-- **Por quê:** nome de pessoa e logo de empresa grande sem autorização por escrito são o ponto de maior risco jurídico do site. Tirar o logo e manter o nome não resolve o da pessoa, e o depoimento sem nome parece inventado. A prova social continua com os números da home e com os seis clientes que a 9vee liberou (TOTVS, Array, Pirelli, FGV, Sicredi e Bradesco), na Tradução, em Cursos e no Quem Somos.
-- **Meio-termo, se a Daniella confirmar por escrito que as falas são deles:** ficam a fala, o nome e o cargo, sem os logos.
 
 ### 27. Aprovação da política de privacidade e a data da versão
 
@@ -82,8 +77,8 @@ Estas não travam nada. O site já tem uma posição que não depende da respost
 
 | Pergunta | O site hoje | Sugestão, sem resposta |
 |---|---|---|
-| 31. Logos dos seis clientes liberados | Só os nomes, sem logo | Fica assim. Logo só com autorização por escrito |
-| 32. "16 anos de experiência" | "Anos de experiência", e não "de empresa" | Fica assim. Os 16 anos são a resposta 2 da 9vee |
+| 31. Logos dos seis clientes liberados | Só os nomes, sem logo | **Respondida em 08/10:** as seis autorizaram o nome, e nenhuma o logo. Fica assim |
+| 32. "16 anos de experiência" | "Anos de experiência", e não "de empresa" | **Respondida em 08/10:** "Sim, está ótimo". Fica assim |
 | 33. Perfil no Google (visitas, link e nota) | O endereço no rodapé, sem convite para visita, sem link e sem nota | Fica assim. O link e a nota entram se vierem |
 | 35. Aula na empresa no Rio e em outros idiomas | São Paulo e Rio para inglês, espanhol e português | Fica assim. É a resposta Idiomas 3 |
 | 36. A prova do árabe ("AAPT") | Diz que há preparação, sem o nome da prova | Fica assim |
@@ -93,16 +88,18 @@ Estas não travam nada. O site já tem uma posição que não depende da respost
 | 40. Aula experimental ou teste de nível | Nada | Fica sem. O site não promete o que a 9vee não confirmou |
 | 41. Depoimento de aluno e avaliações no Google | Nada | Fica sem |
 | 42. Professores com foto e fotos de aula | As fotos do site são geradas, sem rosto de professor real | Fica assim |
-| 43. Vídeo de aula e os 14 áudios das saudações | Nada | Fica sem |
+| 43. Vídeo de aula e os 14 áudios das saudações | Nada | **Saiu do Word em 08/10.** Fica sem |
 | 48. O texto da interpretação de mandarim | A página reescreve a landing do site atual | Fica assim. O site atual publica a landing |
 | 49. As versões em inglês e em chinês da landing | Os três endereços levam à página nova, em português | Fica assim, como a proposta prevê |
 | 50. LMS (EdApp, os três relatórios, o que a plataforma recebe) | A página com o que o site atual diz, sem a EdApp e sem telas | Fica assim |
-| 51. Parar de publicar no blog do Wix | O mapa cobre os 505 posts copiados em 06/10 | Na semana do lançamento, copiar os posts novos e gerar o mapa de novo, haja resposta ou não |
-| 52. Linguae e Lenguae | Nada | Fica sem. Não muda o site |
+| 51. Parar de publicar no blog do Wix | O mapa cobre os 505 posts copiados em 06/10 | **Saiu do Word em 08/10.** Na semana do lançamento, copiar os posts novos e gerar o mapa de novo, haja resposta ou não |
+| 52. Linguae e Lenguae | Nada | **Saiu do Word em 08/10.** Fica sem. Não muda o site |
 
 ## 4. Acessos: sem eles, o site não vai ao ar
 
 Estas não mudam texto, mas o lançamento depende delas.
+
+**As três saíram do Word em 08/10/2026, a pedido do Maxwell.** Os acessos continuam necessários para o lançamento, e as sugestões abaixo continuam valendo.
 
 ### 53. Acesso ao Google Analytics e ao Search Console da 9vee
 
@@ -121,3 +118,10 @@ Estas não mudam texto, mas o lançamento depende delas.
 
 - **Por que importa:** é onde o site vai morar. Sem ele, a Fase 1 termina com o site pronto para ir ao ar, mas não no ar. Com ele: testar o `.htaccess`, conferir o país do servidor (a política fala disso) e apontar o domínio.
 - **Sugestão:** pedir junto com a mensagem desta leva, para chegar antes da semana 8.
+
+## Respondidas
+
+### 30. Autorização dos três depoimentos da home (respondida em 08/10/2026)
+
+- **Resposta:** "Sim". A 9vee tem a autorização por escrito de Eduardo Martins, Bruno Teixeira e Pedro Cavalcante para a fala e da Nissan, da General Motors e da Embraer para o logo, e as falas são deles, como estão no site.
+- **No site:** as três marcas saíram da home. A seção fica com fala, nome, cargo e logo, e não trava mais a produção.

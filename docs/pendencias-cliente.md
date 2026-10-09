@@ -17,6 +17,8 @@ Já ajustada às decisões de 29/09/2026: o acesso à HostGator fica para depois
 
 **Respondido em 05/10/2026:** a 9vee devolveu o Word enviado com as respostas (um .docx no Google Drive). O que cada resposta mudou no site e o rascunho da segunda rodada estão em "As respostas de 05/10/2026", no fim deste arquivo. Das 108 marcações em `content/`, sobraram 15.
 
+**Atualizado em 08/10/2026:** a 9vee respondeu a 30, a 31 e a 32 da segunda rodada, e o Maxwell tirou do Word a 43 e as de 51 a 55. O Word novo e o que cada resposta mudou estão em "A versão 2 da segunda rodada", no fim deste arquivo.
+
 **O Word que foi para a 9vee tem outra numeração.** O Maxwell mandou o `C:\Users\maxca\Downloads\Perguntas-9vee.docx` (datado de 2 de outubro, um documento só para os dois), com 25 perguntas gerais e 5 de idiomas. As respostas vão chegar por aquela numeração: o mapa para a numeração interna, e o que ficou de fora, está em "O Word enviado em 02/10/2026", no fim deste arquivo.
 
 A numeração interna, de 1 a 30 da Daniella e de 1 a 8 do Arthur, não mudou. O que mudou em cada pergunta está no fim deste arquivo, para atualizar o Word. As perguntas que dizem "a página nova repete" só ficam verdadeiras no preview depois que o ticket daquela página for publicado: a 21 com o ticket 06; a 16, a 33 e a 34 com o 05; a 6 e a 18 com o 21; a 22 com o 07; e a 30 e as perguntas 2 e 3 do Arthur com o 22.
@@ -378,3 +380,16 @@ O arquivo é o `docs/Perguntas-9vee-segunda-rodada.docx`, no mesmo desenho do Wo
 | 55 | A8 | Zona DNS |
 
 Ficou de fora só a D29 (o regulamento da Lei 14.831), que é aviso: o Maxwell confere de novo na semana da publicação.
+
+### A versão 2 da segunda rodada (08/10/2026)
+
+A 9vee respondeu três perguntas do Word de 05/10, e o Maxwell tirou outras seis. As respostas vieram para o Maxwell, num arquivo de texto com numeração própria (de 1 a 9). O Word novo é o `docs/Perguntas-9vee-segunda-rodada-v2.docx`: as perguntas que ficaram mantêm o número da primeira versão, e a introdução diz quais saíram.
+
+| Enviada | Resposta ou decisão | O que mudou no site |
+|---|---|---|
+| 30 | "Sim": a 9vee tem a autorização por escrito de cada pessoa para a fala e de cada empresa para o logo, e as falas são deles | As três marcas saíram dos depoimentos da home (`content/home.md`). A seção fica com fala, nome, cargo e logo |
+| 31 | As seis empresas autorizaram o nome. O logo não tem autorização, e a 9vee diz que tira o logo se receber alguma notificação | Nada: o site já cita só os nomes, sem logo. O comentário do Quem Somos registra a resposta |
+| 32 | "Sim, está ótimo" | Nada: a home já diz "16 anos de experiência". O comentário da home registra a resposta |
+| 43, 51 a 55 | Saíram do Word, a pedido do Maxwell | Nada. As sugestões de `docs/pendencias-decisao.md` para essas perguntas continuam valendo |
+
+Com isso, `node scripts/pendencias.ts` conta 16 marcações, contra as 19 de 07/10.
