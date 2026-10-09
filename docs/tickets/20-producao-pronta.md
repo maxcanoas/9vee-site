@@ -6,7 +6,7 @@
 
 **Horas:** 7,75. **Semana:** 8.
 
-**Situação:** ready-for-agent
+**Situação:** em andamento desde 09/10/2026, adiantado da semana 8: o checklist de lançamento e o README estão feitos. O resto espera os acessos e as respostas da 9vee, ou é medição e conferência que ficam para perto do lançamento.
 
 - [ ] As pendências abertas decididas pelo Maxwell e aplicadas. **Decididas em 07/10/2026:** o que a 9vee não tiver respondido até a semana 8 segue a sugestão de `docs/pendencias-decisao.md`, que o Maxwell aprovou.
 - [ ] `npm run build:producao` passa no `check:producao`.
@@ -18,6 +18,6 @@
 - [ ] Teste em Android e iPhone de verdade pelo preview: WhatsApp, drawer e formulário.
 - [ ] A prévia de cada página conferida no WhatsApp, já no domínio (ticket 18): no preview ela não aparece, porque o Open Graph aponta sempre para www.9vee.com.br.
 - [ ] O `.htaccess` testado na HostGator (ticket 19): uma amostra do mapa com `curl -I` (301 num salto, 410), http e sem www, a barra no fim, a compressão e o cache. Se o `Options` der erro 500, a linha sai do `scripts/htaccess.ts`.
-- [ ] `docs/checklist-lancamento.md` com os passos do brief e os da spec.
+- [x] `docs/checklist-lancamento.md` com os passos do brief e os da spec. Feito em 09/10/2026, com a zona DNS de 29/09, o teste do site novo antes da troca do DNS (`curl --resolve`) e a volta para o Wix se algo der errado.
 - [ ] Conferir em que país fica o servidor do site na HostGator. A política de privacidade só diz "fora do Brasil" da Web3Forms e do Google porque o servidor de e-mail da 9vee fica em Vinhedo (SP); se o do site ficar fora, a seção da hospedagem muda.
-- [ ] `README.md` de entrega.
+- [x] `README.md` de entrega. Feito em 09/10/2026, com os itens do brief (item 15) e da spec.
