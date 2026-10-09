@@ -188,7 +188,7 @@ O site em código, o mesmo do MVP (Astro com saída estática), completo e pront
 - **Trava de produção:** o `check:producao` roda sobre o build de produção e falha se encontrar:
   - pendência, no HTML (a marca na tela ou o `[CONFIRMAR` cru) ou na fonte, em `content/`, porque a faixa de números e o texto puro do título, da descrição e do JSON-LD não deixam marca no HTML;
   - o Placeholder de imagem;
-  - as marcas do MVP: a etiqueta de obra e o aviso "MVP: envio simulado" do pedido;
+  - as marcas do MVP: a etiqueta de obra e o aviso "MVP: envio simulado" do pedido. As duas saíram do site (no ticket 07 e no 12), e a regra fica como guarda, para uma delas não voltar por engano com um componente antigo (decisão do Maxwell em 09/10/2026);
   - noindex, na meta ou no cabeçalho;
   - travessão ou meia-risca em qualquer parte do HTML (texto, atributos e JSON-LD);
   - link interno quebrado, sem barra no fim ou com âncora que não existe;

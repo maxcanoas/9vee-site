@@ -29,6 +29,8 @@ function placeholders(pagina: Pagina): string[] {
     .map((placeholder) => placeholder.querySelector('.placeholder__id')?.text.trim() || 'Placeholder sem ID');
 }
 
+// As duas marcas do MVP saíram do site (tickets 07 e 12). A regra fica como guarda, para uma delas não voltar por
+// engano com um componente antigo (decisão do Maxwell em 09/10/2026).
 function marcasDoMvp(pagina: Pagina): string[] {
   return pagina.raiz.querySelectorAll(MARCAS_DO_MVP).map((marca) => marca.text.replace(/\s+/g, ' ').trim());
 }
