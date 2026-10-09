@@ -17,7 +17,7 @@ Duas regras valem do começo ao fim:
 - [ ] Acesso de usuário completo ao Search Console.
 - [ ] A Daniella e o Arthur aprovaram o preview, e a Daniella aprovou os textos por escrito (os quatro lotes de `docs/revisao-daniella/`).
 - [ ] O que a 9vee não respondeu foi decidido pela lista de `docs/pendencias-decisao.md` e aplicado.
-- [ ] Perguntar quem mexeu na zona DNS em 29/09/2026 (o serial da zona mudou nesse dia).
+- [x] Perguntar quem mexeu na zona DNS em 29/09/2026 (o serial da zona mudou nesse dia): a 9vee respondeu em 09/10/2026 que foi o robô da HostGator.
 
 ### O build de produção
 
@@ -96,7 +96,7 @@ Duas regras valem do começo ao fim:
 ## 6. Na entrega
 
 - [ ] Montar a publicação automática na HostGator, que precisa do acesso a ela.
-- [ ] Transferir o repositório para uma organização da 9vee no GitHub (pergunta 54).
+- [ ] Criar a organização da 9vee no GitHub e transferir o repositório para ela. A 9vee respondeu em 09/10/2026 que o Maxwell cria a conta (pergunta 54, resposta 13 da terceira rodada).
 - [ ] O `README.md` entregue.
 
 ## Se algo der errado

@@ -131,8 +131,8 @@ describe('home', () => {
     }
   });
 
-  // O leitor de tela já ouve o nome da empresa na linha do cargo: o logo repetiria. Os de 09/10 vão sem logo, porque a
-  // autorização das empresas não veio.
+  // O leitor de tela já ouve o nome da empresa na linha do cargo: o logo repetiria. Os de 09/10 vão sem logo, porque o
+  // site só usa os logos da Nissan, da General Motors e da Embraer (decisão do Maxwell em 09/10/2026).
   it('põe o logo da empresa ao lado do nome nos depoimentos autorizados, escondido do leitor de tela', () => {
     const comLogo = home.querySelectorAll('.depoimento').filter((depoimento) => depoimento.querySelector('.depoimento__logo'));
     expect(comLogo.map((depoimento) => depoimento.querySelector('.depoimento__nome')?.text.trim())).toEqual([

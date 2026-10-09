@@ -4,6 +4,7 @@
 # guarda (pergunta 21) e os direitos. A 9vee aprovou a mescla em 09/10/2026 (resposta 1 da segunda rodada v2): as marcas
 # de revisão saíram, e a data da versão é a da aprovação. Na mesma rodada, a frase das crianças foi reescrita com a
 # resposta 2 (quem contrata é o responsável, ou a escola), e o foro de Arapoti ficou (resposta 3, o endereço fiscal).
+# A 9vee aprovou a frase nova das crianças em 09/10/2026 (resposta 11 da terceira rodada), e a data da versão fica.
 # O texto do Wix está como lá, com três acertos que não mudam o sentido: os títulos em caixa normal, o "sele ção" e a
 # meia-risca antes de "LGPD", que o site não usa. A seção "pedido" é a que a caixa de consentimento do pedido abre. O
 # aviso de cookies e o Google Analytics chegaram no ticket 13, e a seção "estatistica" descreve os dois como ficaram.

@@ -1,6 +1,6 @@
 # Logos das empresas dos depoimentos
 
-Os três logos que aparecem ao lado do nome nos depoimentos da home, a pedido da cliente (23/09/2026). Não são do kit da 9vee: são marcas das empresas, e o site atual da 9vee não publica nenhum deles.
+Os três logos que aparecem ao lado do nome nos depoimentos da home, a pedido da cliente (23/09/2026). Só estes três entram no site: em 09/10/2026 o Maxwell decidiu que os depoimentos novos, mesmo com a autorização da empresa, ficam sem logo. Não são do kit da 9vee: são marcas das empresas, e o site atual da 9vee não publica nenhum deles.
 
 | Arquivo | Empresa | Fonte | Licença do desenho |
 |---|---|---|---|

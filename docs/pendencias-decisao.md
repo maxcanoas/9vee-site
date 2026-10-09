@@ -8,6 +8,8 @@ Montado em 07/10/2026 (ticket 17), com o site como está no preview da 14ª publ
 
 **Atualizado em 09/10/2026, à noite:** tudo o que ainda falta pedir (os grupos 2 e 3, menos a Graded e a nota do Google, que ficam fora sem pergunta) foi para o Word da terceira rodada, `docs/Perguntas-9vee-terceira-rodada.docx`, com as perguntas de 1 a 13. O mapa está em `docs/pendencias-cliente.md`, em "A terceira rodada". As sugestões daqui continuam valendo para o que não for respondido.
 
+**Atualizado em 09/10/2026, mais tarde:** a 9vee respondeu 7 das 13 perguntas da terceira rodada (5 a 8 e 11 a 13), e nenhuma muda o que o site mostra. O Maxwell decidiu que o site só usa os logos que já tinha (Nissan, General Motors e Embraer), então os depoimentos novos continuam sem logo. As 6 que faltaram foram para `docs/Perguntas-9vee-terceira-rodada-v2.docx`, de 1 a 6. O mapa está em `docs/pendencias-cliente.md`, em "As respostas da terceira rodada".
+
 **Aprovado pelo Maxwell em 07/10/2026:** na semana 8, o que a 9vee não tiver respondido é aplicado como está aqui, sem nova rodada de perguntas. O que ela responder vale sobre a sugestão.
 
 Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier e por quê. Nenhuma sugestão inventa fato: quando falta a resposta, o trecho sai ou fica só com o que a 9vee já confirmou.
@@ -28,15 +30,10 @@ O site já tem uma posição que não depende da resposta. A resposta só melhor
 
 | Assunto | O site hoje | Sugestão, sem resposta |
 |---|---|---|
-| Cidade da aula presencial do cantonês (a linha diz "Online e Presencial", sem cidade) | "Também há aula presencial: conte no pedido a sua cidade." | Fica assim. A pergunta vai na nota da 16ª leva |
-| A frase das crianças na política, escrita com a resposta 2 | "O curso de inglês também atende crianças, a partir de 9 anos. Quando o aluno é menor de idade, quem contrata o curso e assina o contrato é o pai, a mãe ou o responsável legal, ou a escola..." | Fica assim. A frase vai na nota da leva, para a 9vee ver. Se ela pedir mudança, a data da versão muda junto |
-| 41. Depoimento de aluno | Nada | A 9vee vai mandar o material direto ao Maxwell. Sem ele, fica sem |
+| Cidade da aula presencial do cantonês (a linha diz "Online e Presencial", sem cidade) | "Também há aula presencial: conte no pedido a sua cidade." | Fica assim. A pergunta está no Word da terceira rodada v2 (a 5) |
 | O programa na Graded, citado na resposta 2 | Não aparece | Fica fora. A resposta não diz se foi curso para os alunos ou treinamento da equipe da escola, e o nome não tem autorização |
 | A nota do Google (parte da 33) | O link do Perfil no rodapé, sem nota | Fica sem a nota |
-| Os órgãos públicos do Inglês Acessível (estavam no flyer) | Saíram do bloco, que segue a resposta 9: centros acadêmicos universitários | Ficam fora. Voltam se a 9vee disser que o programa também os atende |
-| A autorização dos três depoimentos de 09/10 (Elian Ferreira, duas falas, e Fabrício) e dos logos da PVH e da Embraer NL | Os três no carrossel da home, e dois na página de holandês, sem logo | Ficam assim. Foi a Daniella quem mandou as falas; a pergunta da autorização por escrito vai na nota da 18ª leva, como foi a 30 |
-| O serviço do depoimento do Elian sobre os mais de 3 anos de parceria | "Cursos de idiomas" | Fica assim. A pergunta vai na nota da 18ª leva |
-| O sobrenome do Fabrício | Só o primeiro nome, como ele assinou | Fica assim |
+| Os órgãos públicos do Inglês Acessível (estavam no flyer) | Saíram do bloco, que segue a resposta 9: centros acadêmicos universitários | Ficam fora. Voltam se a 9vee disser que o programa também os atende. A pergunta está no Word da terceira rodada v2 (a 6) |
 
 ## 3. Acessos: sem eles, o site não vai ao ar
 
@@ -46,25 +43,33 @@ Estas não mudam texto, mas o lançamento depende delas.
 
 ### 53. Acesso ao Google Analytics e ao Search Console da 9vee
 
-**O GA4 chegou em 09/10/2026:** o Arthur deu ao Maxwell acesso de administrador. O que foi feito e o que fica para o dia da troca está em `docs/medicao.md`. Falta o Search Console.
+**O GA4 chegou em 09/10/2026:** o Arthur deu ao Maxwell acesso de administrador. O que foi feito e o que fica para o dia da troca está em `docs/medicao.md`. Falta o Search Console, que está no Word da terceira rodada v2 (a 2).
 
 - **Por que importa:** na propriedade do GA4 da 9vee é preciso desligar os "Cliques de saída" e pôr o `text` na redação de dados (`docs/medicao.md`). Sem isso, o nome e a empresa do texto do WhatsApp chegam ao Google, e a política promete que não chegam. No Search Console vão o sitemap novo e as 15 URLs que saem do ar (`docs/remocoes-search-console.txt`).
 - **Sugestão, sem resposta:** mandar ao Arthur os dois passos do GA4, com prints, para ele fazer, e pedir o print da tela depois. O Search Console continua verificado na troca, porque a meta tag é a mesma do Wix. O sitemap e as remoções podem esperar o acesso, alguns dias depois do lançamento.
 
-### 54. GitHub em nome da 9vee
-
-- **Sugestão, sem resposta:** na entrega, eu crio uma organização em nome da 9vee e passo a propriedade a eles depois, como a própria pergunta propõe.
-
-### 55. A zona DNS alterada em 29/09
-
-- **Sugestão, sem resposta:** antes de apontar o domínio, exportar a zona inteira na HostGator e conferir cada registro. O e-mail da 9vee fica na HostGator: os registros de e-mail (MX, SPF, DKIM) não podem mudar no apontamento.
-
-### Acesso à HostGator (sem número, ainda não pedido no Word)
+### Acesso à HostGator (pergunta 1 do Word da terceira rodada v2)
 
 - **Por que importa:** é onde o site vai morar. Sem ele, a Fase 1 termina com o site pronto para ir ao ar, mas não no ar. Com ele: testar o `.htaccess`, conferir o país do servidor (a política fala disso) e apontar o domínio.
-- **Sugestão:** pedir junto com a mensagem desta leva, para chegar antes da semana 8.
+- **Sugestão:** pedido na terceira rodada, sem resposta. Vai de novo como a primeira pergunta da versão 2, para chegar antes da semana 8.
+
+### A chave da Web3Forms e a aprovação dos textos (perguntas 3 e 4 do Word da terceira rodada v2)
+
+- **Por que importa:** sem a chave, a trava barra o build de produção; sem a aprovação dos quatro lotes e do preview, o site não vai ao ar (`docs/checklist-lancamento.md`).
 
 ## Respondidas
+
+### As respostas da terceira rodada (09/10/2026)
+
+| Pergunta | Resposta | No site |
+|---|---|---|
+| Autorização dos depoimentos de 09/10 | "Sim, tudo está autorizado" | A fala e o nome ficam. Os logos da PVH e da Embraer NL não entram: o Maxwell decidiu que o site só usa os logos que já tinha |
+| Sobrenome do Fabrício | "Que apareça apenas como Fabrício" | Nada a mudar |
+| Serviço do depoimento do Elian sobre a parceria | "Que fique com essa informação apenas" | Continua "Cursos de idiomas" |
+| 41. Depoimento de aluno | Os depoimentos já foram enviados e estão no site | Os do Elian e do Fabrício são de aluno. A 41 fecha |
+| A frase das crianças na política | "Perfeito, é isso mesmo." | Nada a mudar. A data da versão fica 9 de outubro de 2026 |
+| 55. Zona DNS alterada em 29/09 | Foi o robô da HostGator | Nada. O checklist continua mandando exportar a zona antes de mexer |
+| 54. GitHub | O Maxwell cria a conta da 9vee | Na entrega, o Maxwell cria a organização e transfere o repositório |
 
 ### 30. Autorização dos três depoimentos da home (respondida em 08/10/2026)
 
@@ -93,7 +98,6 @@ O detalhe de cada uma, com o número do Word que foi, está em `docs/pendencias-
 | 38. Inglês Acessível | Aula presencial em grupo, de inglês e espanhol, dentro de faculdades, para centros acadêmicos, com foco em SP e RJ | O bloco diz isso |
 | 39. Realocação | Continua | Nada a mudar |
 | 40. Aula experimental | Nivelamento e aula experimental grátis, online, marcados pelo WhatsApp | Botão "Aula experimental grátis" no topo da home para quem escolhe "Para você" e uma pergunta nova no FAQ de Cursos e dos 14 idiomas (escolha do Maxwell) |
-| 41. Depoimento de aluno | Vão mandar ao Maxwell | Aberta, no grupo 2 |
 | 42. Fotos | As fotos geradas ficam | Nada a mudar |
 | 44. Plano de ação | O roteiro de 90 dias é do curso formativo, e pode ir ao site | O NR-1 descreve o roteiro |
 | 45. Comprovante | Certificado simples de participação e horas, quando pedem, em todos os cursos e workshops | "Certificado de participação" no NR-1, e "é só pedir" no certificado dos cursos |

@@ -462,3 +462,31 @@ Vão em anexo o Word da terceira rodada, com o que falta para o site ir ao ar, e
 | 11 | A frase das crianças na política | Nota da 16ª leva | Fica como está |
 | 12 | Quem mexeu na zona DNS em 29/09 | 55 | Exportar a zona inteira antes de mexer |
 | 13 | GitHub em nome da 9vee | 54 | O Maxwell cria a organização e passa a propriedade depois |
+
+### As respostas da terceira rodada (09/10/2026)
+
+As respostas chegaram no próprio Word, que ficou na Área de Trabalho do Maxwell (`Perguntas-9vee-terceira-rodada.docx`). O Word que foi tinha dois ajustes do Maxwell: sem o parágrafo do agradecimento, e a pergunta 2 começando por "Se tiverem". A 9vee respondeu 7 das 13. Nenhuma resposta muda o que o site mostra.
+
+| Enviada | O que a 9vee respondeu | O que mudou |
+|---|---|---|
+| 5 | "Sim, tudo está autorizado" | A fala e o nome do Elian e do Fabrício ficam. O Maxwell decidiu que o site só usa os logos que já tinha (Nissan, General Motors e Embraer): os três depoimentos novos continuam sem logo. O comentário dos depoimentos em `content/site.md` registra isso |
+| 6 | "Que apareça apenas como Fabrício" | Nada |
+| 7 | "Que fique com essa informação apenas" | Nada: o cartão continua "Cursos de idiomas" |
+| 8 | "Depoimentos já foram enviados e já estão no site." | Nada: os do Elian e do Fabrício são os de aluno, e a 41 fecha |
+| 11 | "Perfeito, é isso mesmo." | Nada. O comentário da política registra a aprovação, e a data da versão fica 9 de outubro de 2026 |
+| 12 | "Alterado pelo robô da Hostgator" | O item do checklist de lançamento foi marcado |
+| 13 | "O programador Maxwell vai criar uma conta no github para a 9vee" | O item da entrega no checklist diz isso |
+| 1 a 4, 9 e 10 | Sem resposta | Foram para a versão 2, logo abaixo |
+
+### A versão 2 da terceira rodada (09/10/2026)
+
+O arquivo é o `docs/Perguntas-9vee-terceira-rodada-v2.docx`, no mesmo desenho, só com as seis perguntas sem resposta, numeradas de 1 a 6. Mantém os dois ajustes do Maxwell (sem o agradecimento da segunda rodada, e o "Se tiverem" da pergunta do Search Console) e abre com um agradecimento curto pelas respostas. Os quatro lotes vão de novo junto, porque a pergunta 4 fala deles.
+
+| Na v2 | Na v1 | Assunto |
+|---|---|---|
+| 1 | 1 | Acesso ao cPanel da HostGator |
+| 2 | 2 | Search Console, permissão "Completo" |
+| 3 | 3 | O e-mail da Web3Forms com a chave de produção |
+| 4 | 4 | Aprovação dos quatro lotes e do preview |
+| 5 | 9 | Cidade da aula presencial de cantonês |
+| 6 | 10 | Órgãos públicos no Inglês Acessível |

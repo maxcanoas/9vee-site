@@ -320,7 +320,9 @@ pendencia:
 # página de um idioma mostra os que têm o slug dele em "idiomas". O trecho é literal, com "(...)" onde a fala foi
 # cortada. A fala em outra língua leva o lang dela e a tradução logo abaixo (escolha do Maxwell em 09/10/2026).
 # Os três de empresa têm autorização por escrito para a fala e o logo (pergunta 30, respondida em 08/10/2026). Os três
-# que a Daniella mandou em 09/10/2026 vão sem logo: a autorização das empresas não veio. A ordem alterna empresa e aluno.
+# que a Daniella mandou em 09/10/2026 têm a autorização da fala e do nome (respostas 5 a 7 da terceira rodada: o Fabrício
+# só pelo primeiro nome, e o serviço do Elian continua "Cursos de idiomas"). Eles vão sem logo: o site só usa os logos
+# da Nissan, da General Motors e da Embraer (decisão do Maxwell em 09/10/2026). A ordem alterna empresa e aluno.
 depoimentos:
   rotulos:
     autorizacao: "Autorização de uso:"
