@@ -116,9 +116,12 @@ describe('home', () => {
     expect(home.querySelector('.prova__lista')?.getAttribute('data-colunas')).toBe('5');
   });
 
-  it('marca cada depoimento com a autorização a confirmar', () => {
+  // A 9vee confirmou as três autorizações em 08/10/2026 (pergunta 30 da segunda rodada).
+  it('mostra os depoimentos sem a marca de autorização a confirmar', () => {
+    expect(home.querySelectorAll('.depoimento')).toHaveLength(3);
     for (const depoimento of home.querySelectorAll('.depoimento')) {
-      expect(depoimento.querySelector('mark.confirmar')).not.toBeNull();
+      expect(depoimento.querySelector('mark.confirmar')).toBeNull();
+      expect(depoimento.querySelector('.depoimento__autorizacao')).toBeNull();
     }
   });
 

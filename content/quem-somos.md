@@ -94,7 +94,8 @@ principios:
           texto: "O coletivo vem antes do individual, com colaboração, inclusão e responsabilidade compartilhada."
 
 # "Histórias construídas com grandes parceiros", do site atual, que lá traz cinco logos sem nome. Aqui ficam só os
-# nomes que a 9vee liberou em 05/10/2026 (pergunta 14), sem logo, como a Tradução e Cursos já citam.
+# nomes que a 9vee liberou em 05/10/2026 (pergunta 14), sem logo, como a Tradução e Cursos já citam. Em 08/10/2026
+# (pergunta 31 da segunda rodada) a 9vee confirmou que as seis autorizaram o nome, mas nenhuma autorizou o logo.
 parceiros:
   titulo: "Histórias construídas com grandes parceiros"
   apoio: "Algumas das empresas que já contrataram os intérpretes e os cursos da 9vee."

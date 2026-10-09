@@ -28,7 +28,8 @@ hero:
     alt: "Aluna de fone de ouvido, sorrindo enquanto fala numa aula de idioma online."
 
 # Os números que a Daniella confirmou em 05/10/2026 (perguntas 2 a 4). A 9vee de hoje é deste ano, e os 16 anos
-# são da trajetória da equipe, que veio da empresa anterior: por isso "de experiência", e não "de empresa".
+# são da trajetória da equipe, que veio da empresa anterior: por isso "de experiência", e não "de empresa". A 9vee
+# aprovou o "16 anos de experiência" em 08/10/2026 (pergunta 32 da segunda rodada).
 prova:
   titulo: "A 9vee em números"
   itens:
@@ -115,6 +116,8 @@ idiomas:
   titulo: "Qual língua você quer falar?"
   apoio: "Agrupadas por família, com um olá em cada uma. Escolha a sua para ver como são as aulas."
 
+# A 9vee confirmou em 08/10/2026 (pergunta 30 da segunda rodada) que tem a autorização por escrito de cada pessoa
+# para a fala e de cada empresa para o logo, e que as falas são deles, como estão aqui.
 depoimentos:
   titulo: "Quem já contratou"
   rotuloAutorizacao: "Autorização de uso:"
@@ -125,21 +128,18 @@ depoimentos:
       empresa: "Nissan"
       logo: "nissan"
       servico: "Tradução simultânea"
-      pendencia: "[CONFIRMAR COM A DANIELLA: autorização por escrito de Eduardo Martins para a fala e da Nissan para o logo, e confirmação de que a fala é dele]"
     - trecho: "Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam."
       nome: "Bruno Teixeira"
       cargo: "Gerente de Produção"
       empresa: "General Motors"
       logo: "general-motors"
       servico: "Tradução simultânea"
-      pendencia: "[CONFIRMAR COM A DANIELLA: autorização por escrito de Bruno Teixeira para a fala e da General Motors para o logo, e confirmação de que a fala é dele]"
     - trecho: "Os professores são altamente qualificados e preparados para atender executivos e líderes (...)."
       nome: "Pedro Cavalcante"
       cargo: "Diretor"
       empresa: "Embraer"
       logo: "embraer"
       servico: "Cursos de idiomas"
-      pendencia: "[CONFIRMAR COM A DANIELLA: autorização por escrito de Pedro Cavalcante para a fala e da Embraer para o logo, e confirmação de que a fala é dele]"
 
 faq:
   titulo: "Perguntas antes de contratar"

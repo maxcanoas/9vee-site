@@ -1,6 +1,6 @@
 # Lote 1: páginas principais
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 08/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Home
 
@@ -145,15 +145,15 @@ A aula, a turma de NR-1 ou o evento, presencial ou online, na data combinada.
 
 “Em momentos decisivos para o nosso negócio, cada palavra importa.”
 
-Eduardo Martins · Diretor de Vendas, Nissan · Tradução simultânea · Autorização de uso: [A confirmar com a Daniella: autorização por escrito de Eduardo Martins para a fala e da Nissan para o logo, e confirmação de que a fala é dele]
+Eduardo Martins · Diretor de Vendas, Nissan · Tradução simultânea
 
 “Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam.”
 
-Bruno Teixeira · Gerente de Produção, General Motors · Tradução simultânea · Autorização de uso: [A confirmar com a Daniella: autorização por escrito de Bruno Teixeira para a fala e da General Motors para o logo, e confirmação de que a fala é dele]
+Bruno Teixeira · Gerente de Produção, General Motors · Tradução simultânea
 
 “Os professores são altamente qualificados e preparados para atender executivos e líderes (...).”
 
-Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas · Autorização de uso: [A confirmar com a Daniella: autorização por escrito de Pedro Cavalcante para a fala e da Embraer para o logo, e confirmação de que a fala é dele]
+Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas
 
 #### Perguntas antes de contratar
 
