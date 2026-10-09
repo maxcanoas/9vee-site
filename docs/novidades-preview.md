@@ -2,6 +2,12 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima nona leva (09/10): o crédito no rodapé
+
+- No fim do rodapé, ao lado do "© 2026 9vee", entrou "Desenvolvido por DEVMRMORAES", com o link para o site de quem fez o site.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. O lote 1 foi gerado de novo, com o rodapé.
+
 ## Semana 2, décima oitava leva (09/10): os depoimentos novos, num carrossel
 
 - Os depoimentos que a Daniella mandou entraram no site: os dois do Elian Ferreira, da PVH Europe, e o do Fabrício, da Embraer NL. Com os da Nissan, da General Motors e da Embraer, são seis.

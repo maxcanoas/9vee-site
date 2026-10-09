@@ -724,6 +724,8 @@ Seu próximo capítulo de sucesso começa agora.
 
 © 2026 9vee
 
+Desenvolvido por DEVMRMORAES
+
 [Link: Política de privacidade]
 
 [Botão: Preferências de cookies]
