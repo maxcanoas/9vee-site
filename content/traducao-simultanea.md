@@ -33,7 +33,7 @@ formatos:
       como: "O intérprete fica perto de quem fala, com contato visual, atento aos gestos e à intenção. Depois de algumas frases, a pessoa faz uma pausa, e ele termina as anotações e traduz."
     - nome: "Acompanhamento"
       quando: "Em visitas institucionais, rodadas de negócios, reuniões e eventos corporativos. Também em negociações, apresentações corporativas e encontros com parceiros internacionais."
-      como: "O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição. Com ele cuidando do idioma, você cuida do negócio e da parceria."
+      como: "O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição."
 
 comoFunciona:
   titulo: "Como funciona a interpretação simultânea"
@@ -93,7 +93,7 @@ interpretes:
     - nome: "Experiência por área"
       texto: "Administração, engenharia, medicina, vendas, tecnologia e negócios internacionais. A terminologia e o contexto de cada área chegam certos ao outro idioma."
     - nome: "Onde atuam"
-      texto: "Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa, com discrição e profissionalismo."
+      texto: "Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa."
     - nome: "Quem já contratou"
       texto: "TOTVS e Array estão entre as empresas que já contrataram os intérpretes da 9vee."
 
@@ -121,7 +121,7 @@ faq:
     - pergunta: "Quantos intérpretes o meu evento precisa?"
       resposta: "Depende da duração. A 9vee segue a regra da ABRATES, a Associação Brasileira de Tradutores e Intérpretes: um intérprete trabalha até 1 hora seguida, e acima disso entram dois, que se alternam. Por isso o pedido pergunta quanto tempo o evento dura."
     - pergunta: "Os intérpretes trabalham com discrição?"
-      resposta: "Sim. Eles atuam em reuniões, negociações e encontros de alto nível, com discrição e profissionalismo."
+      resposta: "Sim. A discrição faz parte do trabalho deles em reuniões, negociações e encontros de alto nível."
     - pergunta: "Em quanto tempo a 9vee responde o pedido?"
       resposta: "A proposta costuma sair no mesmo dia, porque o pedido já vai com a data, os idiomas, a duração e a cidade do evento. Se ele chega no fim do dia, a resposta sai no dia seguinte."
 

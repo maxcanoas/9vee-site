@@ -22,11 +22,12 @@ describe('ordem do conteúdo', () => {
     }
   });
 
-  // Os diferenciais ficam abaixo da primeira dobra, que não ganha nada: a home está no limite do LCP.
-  it('põe o bloco dos idiomas logo depois da lista, e os diferenciais antes do "como funciona"', () => {
+  // Os diferenciais ficam abaixo da primeira dobra, que não ganha nada: a home está no limite do LCP. Os depoimentos
+  // vêm logo depois dos serviços desde o humanizar-ui de 09/10/2026, para a prova de empresa real aparecer cedo.
+  it('põe os depoimentos e os idiomas logo depois da lista, e os diferenciais antes do "como funciona"', () => {
     const secoes = home.querySelectorAll('main > section[id]').map((secao) => secao.id);
     const inicio = secoes.indexOf('servicos');
-    expect(secoes.slice(inicio, inicio + 4)).toEqual(['servicos', 'idiomas', 'diferenciais', 'como-funciona']);
+    expect(secoes.slice(inicio, inicio + 5)).toEqual(['servicos', 'depoimentos', 'idiomas', 'diferenciais', 'como-funciona']);
   });
 
   // A cliente pediu em 02/10/2026 para tirar da home o destaque de NR-1, o bloco azul com a data.
@@ -98,13 +99,16 @@ describe('home', () => {
     const itens = home.querySelectorAll('#diferenciais .lista-grande__item');
     expect(itens).toHaveLength(3);
     const texto = textoDe(home, '#diferenciais');
-    for (const fato of ['famílias imigrantes', 'no presencial e no remoto', 'diagnóstico do perfil de cada aluno']) {
+    for (const fato of ['família imigrante', 'presencial na empresa', 'diagnóstico do perfil de cada aluno']) {
       expect(texto).toContain(fato);
     }
   });
 
-  it('fecha com a frase do contato do site atual', () => {
-    expect(textoDe(home, '#contato')).toContain('Grandes resultados começam com uma boa conversa.');
+  // A frase do contato do site atual ("Grandes resultados começam com uma boa conversa.") saiu no humanizar de
+  // 09/10/2026: era um chamado genérico. O fechamento diz o que acontece.
+  it('fecha dizendo como o pedido funciona', () => {
+    expect(textoDe(home, '#contato')).toContain('Você responde em quatro passos');
+    expect(textoDe(home, '#contato')).not.toContain('Grandes resultados');
   });
 
   // Os cinco números que a Daniella confirmou em 05/10/2026: sem pendência, a faixa não tem a lista de notas.

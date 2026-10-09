@@ -1,7 +1,7 @@
 ---
 seo:
   titulo: "Quem somos | 9vee"
-  descricao: "A 9vee nasceu da paixão pela educação. De São Paulo, ensina idiomas, leva intérpretes a eventos e treina equipes, com um programa feito para cada cliente."
+  descricao: "A 9vee é de São Paulo. Ensina idiomas, leva intérpretes a eventos e treina equipes em NR-1, com 16 anos de experiência e um programa para cada cliente."
 
 hero:
   rotulo: "Sobre a 9vee"
@@ -34,10 +34,10 @@ frentes:
 historia:
   titulo: "Como a 9vee começou"
   paragrafos:
-    - "A 9vee nasceu da paixão pela educação e da vontade de transformar conhecimento em resultado para quem aprende."
-    - "Ela é formada por profissionais, especialistas e professores para quem a educação sempre foi mais do que uma profissão. Em 16 anos de trajetória, alunos e clientes reconheceram a qualidade, o cuidado e os resultados desse trabalho. Dessas experiências, e da percepção de que dava para fazer mais, surgiu a 9vee."
-    - "O propósito é levar educação de qualidade, personalizada e eficiente, ligada à necessidade de cada cliente. Não existe um formato único que sirva para todos: cada pessoa, empresa e projeto tem desafios, objetivos e contextos diferentes, e é isso que orienta cada serviço."
-    - "Hoje a 9vee junta experiência, conhecimento e tecnologia para montar cada curso, tradução e treinamento a partir do que o cliente precisa. O compromisso é o mesmo do começo: entregar qualidade e um trabalho que gere valor de verdade para quem aprende e para quem contrata."
+    - "A 9vee nasceu da vontade de transformar conhecimento em resultado para quem aprende."
+    - "Ela é formada por profissionais, especialistas e professores, com 16 anos de trajetória. Alunos e clientes reconheceram esse trabalho, e dessa experiência, e da percepção de que dava para fazer mais, surgiu a 9vee."
+    - "O propósito é levar educação ligada à necessidade de cada cliente. Não existe um formato único que sirva para todos: cada pessoa, empresa e projeto tem objetivos e contextos diferentes, e é isso que orienta cada serviço."
+    - "Hoje, cada curso, tradução e treinamento parte do que o cliente precisa. O compromisso é o mesmo do começo: um trabalho que valha para quem aprende e para quem contrata."
   imagem:
     id: "IMG-QUEM-SOMOS-HISTORIA"
     arquivo: "quem-somos-historia"
@@ -49,7 +49,7 @@ missao:
     antes: "Transformar conhecimento em"
     grifo: "confiança e ação"
     depois: "."
-  apoio: "É a missão da 9vee. Aprender vai além de guardar conteúdo: é ganhar clareza, segurança e capacidade de usar o que se sabe."
+  apoio: "É a missão da 9vee. A aula só termina quando a pessoa consegue usar o que aprendeu."
   itens:
     - titulo: "Do saber ao fazer"
       texto: "Informação vira competência, competência vira confiança, e confiança vira ação."
@@ -77,7 +77,7 @@ principios:
       texto: "O que faz a intenção virar ação."
       detalhes:
         - titulo: "O momento é agora"
-          texto: "Pensar grande e agir logo, porque o mundo não desacelera."
+          texto: "Pensar grande e agir logo."
         - titulo: "Execução"
           texto: "Objetivos claros, prioridade para o que dá resultado e recursos bem usados."
         - titulo: "Dedicação integral"

@@ -84,9 +84,9 @@ diferenciais:
   titulo: "O que faz a 9vee diferente"
   itens:
     - nome: "Comunicação de verdade"
-      texto: "Os cursos vão além do ensino tradicional. Desenvolvem a comunicação real, a que dá autonomia, segurança e novas oportunidades a famílias imigrantes em qualquer país."
+      texto: "A aula treina a conversa do dia a dia, a que uma família imigrante precisa para se virar em qualquer país."
     - nome: "Professores perto ou longe"
-      texto: "Professores qualificados dão aula no presencial e no remoto, com experiência prática e tecnologia educacional."
+      texto: "Aula presencial na empresa, em São Paulo e no Rio de Janeiro, ou online, de qualquer cidade do Brasil."
     - nome: "Um programa por aluno"
       texto: "Primeiro vem o diagnóstico do perfil de cada aluno. O programa é montado a partir dele."
 
@@ -163,5 +163,5 @@ faq:
 
 ctaFinal:
   titulo: "Conte o que você precisa."
-  texto: "Grandes resultados começam com uma boa conversa. Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar."
+  texto: "Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar."
 ---

@@ -10,7 +10,7 @@ servico:
 hero:
   rotulo: "Para RH e treinamento corporativo"
   h1: "LMS para o treinamento de idiomas da sua equipe"
-  apoio: "A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanhamento pedagógico. A empresa recebe relatórios de evolução, frequência e resultados."
+  apoio: "A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanhamento pedagógico. O RH recebe relatórios de desempenho, frequência e progresso."
   cta: "Pedir o LMS"
   imagem:
     id: "IMG-LMS-HERO"
@@ -36,7 +36,6 @@ oQueE:
   paragrafos:
     - "LMS é a sigla de Learning Management System, o sistema de gestão de aprendizagem. É uma plataforma digital para a empresa organizar, acompanhar e melhorar o treinamento da equipe."
     - "No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele. Além dos cursos de idiomas, a plataforma recebe os treinamentos internos da empresa e a integração de novos colaboradores."
-    - "O modelo virou padrão no desenvolvimento profissional porque junta horário flexível, acompanhamento pedagógico e eficiência no treinamento das equipes."
   imagem:
     id: "IMG-LMS-O-QUE-E"
     arquivo: "lms-o-que-e"
@@ -69,15 +68,15 @@ relatorios:
       texto: "A data de cada acesso e quanto tempo durou a sessão."
     - titulo: "Progresso"
       texto: "O que cada aluno aprendeu e que metas cumpriu."
-  nota: "Os relatórios facilitam a gestão do aprendizado e deixam o curso de inglês corporativo online mais estratégico e mensurável para o desenvolvimento da equipe. Valem também para os outros cursos de idiomas para empresas."
+  nota: "Com eles, o curso de inglês corporativo online tem número para mostrar: quem estudou, por quanto tempo e o que aprendeu. Valem também para os outros cursos de idiomas para empresas."
 
 chamada:
-  titulo: "Quer melhorar a comunicação internacional da sua equipe?"
-  texto: "Converse com a equipe da 9vee sobre o que a sua empresa precisa e receba uma proposta."
+  titulo: "A plataforma vem com os cursos e os professores da 9vee."
+  texto: "A proposta sai com o tamanho da equipe e o conteúdo que entra na plataforma."
   pontos:
-    - "Cursos customizados"
-    - "Professores especializados"
-    - "Plataforma LMS"
+    - "Cursos em 14 idiomas"
+    - "Professores que acompanham a turma"
+    - "Relatórios para o RH"
   cta: "Pedir o LMS"
 
 metodologia:

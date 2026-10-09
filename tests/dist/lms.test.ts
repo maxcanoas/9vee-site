@@ -51,12 +51,14 @@ describe('LMS', () => {
     ]);
     expect(texto('#relatorios')).toMatch(/gestores/);
     expect(texto('#relatorios')).toMatch(/RH/);
-    expect(texto('#relatorios')).toContain('mais estratégico e mensurável');
+    expect(texto('#relatorios')).toContain('curso de inglês corporativo online');
   });
 
-  it('faz a chamada do meio com os três pontos do site atual', () => {
-    expect(texto('#chamada h2')).toBe('Quer melhorar a comunicação internacional da sua equipe?');
-    expect(textos('#chamada li')).toEqual(['Cursos customizados', 'Professores especializados', 'Plataforma LMS']);
+  // Os três pontos do site atual ("Cursos customizados", "Professores especializados", "Plataforma LMS") viraram fatos
+  // no humanizar de 09/10/2026.
+  it('faz a chamada do meio com o que vem com a plataforma', () => {
+    expect(texto('#chamada h2')).toBe('A plataforma vem com os cursos e os professores da 9vee.');
+    expect(textos('#chamada li')).toEqual(['Cursos em 14 idiomas', 'Professores que acompanham a turma', 'Relatórios para o RH']);
   });
 
   it('lista os quatro pontos da metodologia', () => {

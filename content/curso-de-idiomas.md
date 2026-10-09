@@ -47,7 +47,7 @@ niveis:
 
 formatos:
   titulo: "Como são as aulas"
-  apoio: "Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário."
+  apoio: "As aulas são de conversa, online e ao vivo, com o conteúdo puxado para o seu objetivo. Você escolhe o dia e o horário."
   itens:
     - id: "particular"
       titulo: "Aula particular"
@@ -104,7 +104,7 @@ equipe:
     - titulo: "Turma in company"
       texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
     - titulo: "Aula individual para executivos"
-      texto: "Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. Mais do que fluência, a meta é segurança, clareza e autoridade na comunicação internacional."
+      texto: "Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. A meta é segurança, clareza e autoridade na comunicação internacional."
     - titulo: "Português para quem veio de fora"
       texto: "Para o profissional estrangeiro que entrou no time, com preparação para o CELPE-Bras."
   nota: "Pirelli, FGV, Sicredi e Bradesco já contrataram os cursos da 9vee. O pedido pergunta idioma, número de alunos, nível da turma e formato, e a proposta sai com isso na mão."
@@ -133,7 +133,7 @@ inglesAcessivel:
 # A ponte para o LMS, que a página de cursos do site atual também faz.
 lms:
   titulo: "A equipe também pode estudar pelo LMS"
-  texto: "Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real."
+  texto: "Na plataforma da 9vee, a equipe estuda a qualquer hora, e o RH vê a frequência e o progresso de cada pessoa."
   link:
     rotulo: "Conhecer o LMS"
     href: "/lms/"

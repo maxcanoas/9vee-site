@@ -454,7 +454,7 @@ const nr1 = defineCollection({
     // Os dois blocos de benefícios do site atual, lado a lado: os do treinamento e os de quem investe nele.
     beneficios: z.object({
       titulo: z.string(),
-      apoio: z.string(),
+      apoio: z.string().optional(),
       grupos: z.array(z.object({ rotulo: z.string(), itens: z.array(z.string()).min(2) })).length(2),
     }),
     formato: z.object({

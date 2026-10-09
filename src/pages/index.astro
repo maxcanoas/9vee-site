@@ -33,6 +33,8 @@ const experimental = {
   <Hero {...home.hero} cta={site.cta} experimental={experimental} />
   <FaixaProva {...home.prova} pendencia={site.pendencia} />
   <Servicos titulo={home.servicos.titulo} itens={comOrdemDoServico(site, home.servicos.itens)} />
+  {/* Os depoimentos logo depois dos serviços, para a prova de empresa real aparecer cedo (humanizar-ui, 09/10/2026). */}
+  <Depoimentos {...home.depoimentos} />
 
   <section class="idiomas-home" id="idiomas" aria-labelledby="idiomas-titulo">
     <FaixaSaudacoes idiomas={site.idiomas} />
@@ -45,7 +47,6 @@ const experimental = {
 
   <ListaGrande id="diferenciais" {...home.diferenciais} escuro />
   <ComoFunciona {...home.como} />
-  <Depoimentos {...home.depoimentos} />
   <Faq {...home.faq} />
   <CtaFinal {...home.ctaFinal} cta={site.cta} />
 </Base>

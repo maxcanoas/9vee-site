@@ -41,7 +41,7 @@ formatos:
       texto: "Particular ou em grupo, de qualquer cidade, no dia e no horário que você escolher."
     - titulo: "Turma in company"
       texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
-  nota: "Aula presencial, só dentro da empresa, em São Paulo e no Rio de Janeiro. Para a equipe inteira, veja as [turmas para empresas](/curso-de-idiomas/#empresas)."
+  nota: "Aula presencial, dentro de empresas e faculdades, em São Paulo e no Rio de Janeiro. Para a equipe inteira, veja as [turmas para empresas](/curso-de-idiomas/#empresas)."
 
 provas:
   titulo: "Preparação para provas de inglês"
@@ -62,7 +62,7 @@ destaque:
   apoio: "O inglês começa de forma natural e leve, com aulas diferentes para cada idade."
   itens:
     - titulo: "Crianças"
-      texto: "Num ambiente acolhedor, aprendem com atividades lúdicas, pela interação, pela curiosidade e pela experimentação."
+      texto: "Aprendem com atividades lúdicas, brincando e conversando com a turma."
     - titulo: "Adolescentes"
       texto: "Ganham confiança e autonomia para se comunicar. As aulas partem de temas atuais e de situações do dia a dia, com conversação e pensamento crítico. A escrita e a gramática entram junto, no contexto da aula, e o vocabulário cresce com o uso."
     - titulo: "Material da Cambridge"

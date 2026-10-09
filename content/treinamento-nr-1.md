@@ -51,7 +51,7 @@ entrega:
 # O objetivo e os seis temas do site atual, com a Comunicação Não Violenta.
 temas:
   titulo: "O que o treinamento aborda"
-  apoio: "O objetivo é dar aos participantes competências práticas para relações mais saudáveis e para o bem-estar emocional. Com elas, os participantes ajudam a criar um ambiente de trabalho psicologicamente seguro e colaborativo."
+  apoio: "Seis temas, do que é risco psicossocial à conversa difícil."
   itens:
     - nome: "Riscos psicossociais"
       texto: "O que são e como afetam pessoas, equipes e empresas."
@@ -80,7 +80,6 @@ modulos:
 # Os dois blocos de benefícios do site atual: os do treinamento e os de quem investe em NR-1.
 beneficios:
   titulo: "O que muda na empresa"
-  apoio: "O treinamento apoia a empresa na construção de um ambiente emocionalmente mais saudável e contribui para as boas práticas ligadas à NR-1."
   grupos:
     - rotulo: "Com o treinamento"
       itens:

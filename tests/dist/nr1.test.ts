@@ -21,8 +21,10 @@ describe('treinamento de NR-1', () => {
     ]);
   });
 
-  it('diz o objetivo do treinamento e lista os seis temas do site atual, com a Comunicação Não Violenta', () => {
-    expect(textoDe(nr1, '#temas .cabeca__apoio')).toMatch(/^O objetivo é /);
+  // O apoio do site atual ("O objetivo é dar aos participantes competências práticas...") virou o resumo dos temas
+  // no humanizar de 09/10/2026.
+  it('resume os temas e lista os seis temas do site atual, com a Comunicação Não Violenta', () => {
+    expect(textoDe(nr1, '#temas .cabeca__apoio')).toMatch(/^Seis temas, /);
     const temas = textosDe(nr1, '#temas dt');
     expect(temas).toHaveLength(6);
     expect(temas).toContain('Comunicação Não Violenta');

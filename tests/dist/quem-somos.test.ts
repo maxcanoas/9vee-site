@@ -45,7 +45,7 @@ describe('Quem Somos', () => {
   // A história que a 9vee mandou em 05/10/2026, no lugar da do site atual, com os 16 anos dos números.
   it('conta a história que a 9vee mandou, com os 16 anos de trajetória e sem pendência', () => {
     const historia = texto('#historia');
-    for (const fato of ['paixão pela educação', 'profissionais, especialistas e professores', '16 anos de trajetória', 'Não existe um formato único']) {
+    for (const fato of ['transformar conhecimento em resultado', 'profissionais, especialistas e professores', '16 anos de trajetória', 'Não existe um formato único']) {
       expect(historia).toContain(fato);
     }
     expect(historia).not.toMatch(/sonho dos fundadores|milhares de alunos|mais de 20 anos/);

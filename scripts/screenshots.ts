@@ -505,6 +505,16 @@ const roteiros: Record<string, Captura[]> = {
     { nome: 'rio-idiomas-390', rota: '/rio-de-janeiro/', largura: 390, altura: 844, recorte: '#idiomas' },
     { nome: 'rio-idiomas-1280', rota: '/rio-de-janeiro/', largura: 1280, altura: 800, recorte: '#idiomas' },
   ],
+  // O humanizar do ticket 17 (09/10/2026): a home com "Quem já contratou" logo depois dos serviços, o "O que muda na
+  // empresa" do NR-1 sem o texto de apoio e a chamada do LMS com os pontos novos.
+  'humanizar-17': [
+    { nome: 'home-inteira-390', rota: '/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'home-inteira-1280', rota: '/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'home-depoimentos-1280', rota: '/', largura: 1280, altura: 800, antes: rolarAte('#depoimentos', -80) },
+    { nome: 'nr1-beneficios-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, recorte: '#beneficios' },
+    { nome: 'nr1-beneficios-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, recorte: '#beneficios' },
+    { nome: 'lms-chamada-1280', rota: '/lms/', largura: 1280, altura: 800, recorte: '#chamada' },
+  ],
   // O rodapé com a interpretação de mandarim no fim do grupo Empresas (ticket 15).
   'ticket-15': [
     { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: 'footer' },
