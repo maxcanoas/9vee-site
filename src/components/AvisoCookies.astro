@@ -34,18 +34,31 @@ const { categorias } = textos;
 
     <fieldset class="aviso-cookies__categorias" id="aviso-cookies-categorias" hidden>
       <legend class="rotulo">{categorias.legenda}</legend>
+      {/* O leitor de tela ouve o nome da categoria como nome da caixa, e a explicação como descrição dela. Com o
+          rótulo inteiro como nome, a caixa se chamava pela explicação toda. O label continua a área de clique. */}
       <label class="aviso-cookies__categoria">
-        <input type="checkbox" checked disabled />
+        <input
+          type="checkbox"
+          checked
+          disabled
+          aria-labelledby="cookies-necessarios-nome"
+          aria-describedby="cookies-necessarios-explica"
+        />
         <span>
-          <span class="aviso-cookies__nome">{categorias.necessarios.nome}</span>
-          <span class="aviso-cookies__explica">{categorias.necessarios.texto}</span>
+          <span class="aviso-cookies__nome" id="cookies-necessarios-nome">{categorias.necessarios.nome}</span>
+          <span class="aviso-cookies__explica" id="cookies-necessarios-explica">{categorias.necessarios.texto}</span>
         </span>
       </label>
       <label class="aviso-cookies__categoria">
-        <input type="checkbox" name="cookies-estatistica" />
+        <input
+          type="checkbox"
+          name="cookies-estatistica"
+          aria-labelledby="cookies-estatistica-nome"
+          aria-describedby="cookies-estatistica-explica"
+        />
         <span>
-          <span class="aviso-cookies__nome">{categorias.estatistica.nome}</span>
-          <span class="aviso-cookies__explica">{categorias.estatistica.texto}</span>
+          <span class="aviso-cookies__nome" id="cookies-estatistica-nome">{categorias.estatistica.nome}</span>
+          <span class="aviso-cookies__explica" id="cookies-estatistica-explica">{categorias.estatistica.texto}</span>
         </span>
       </label>
     </fieldset>

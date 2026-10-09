@@ -45,6 +45,10 @@ const ROTEIROS: Record<string, Roteiro> = {
   },
   // A revisão final mede o site inteiro, com a meta mais dura.
   'ticket-17': { paginas: [], todas: true, acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO },
+  // A produção pronta mede o site inteiro de novo, com as cidades, o cantonês e o carrossel (ticket 20).
+  'ticket-20': { paginas: [], todas: true, acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO },
+  // A home de novo, sozinha: na medida de todas, o TBT dela foi de 3 ms (06/10) para 115 ms.
+  'ticket-20-home': { paginas: [{ nome: 'Home', rota: '/' }], acessibilidade: ACESSIBILIDADE_DO_REAPROVEITAMENTO },
 };
 
 const nomeDoRoteiro = process.argv[2] ?? 'etapa-7';

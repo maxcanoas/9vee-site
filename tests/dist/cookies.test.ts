@@ -35,6 +35,16 @@ describe.each(carregarPaginas().map((pagina) => [pagina.rota, pagina] as const))
     expect(caixas[1].hasAttribute('checked')).toBe(false);
   });
 
+  // O leitor de tela ouve o nome da categoria como nome da caixa, e a explicação como descrição (ticket 20, 09/10/2026).
+  it('dá a cada caixa o nome da categoria e a explicação como descrição', () => {
+    const caixas = aviso!.querySelectorAll('#aviso-cookies-categorias input[type="checkbox"]');
+    const textoDo = (id: string | undefined) => aviso!.querySelector(`#${id}`)?.text.trim();
+    expect(caixas.map((caixa) => textoDo(caixa.getAttribute('aria-labelledby')))).toEqual(['Necessários', 'Estatística']);
+    for (const caixa of caixas) {
+      expect(textoDo(caixa.getAttribute('aria-describedby'))?.length, caixa.getAttribute('aria-describedby')).toBeGreaterThan(20);
+    }
+  });
+
   it('leva à política, no trecho da estatística', () => {
     expect(aviso!.querySelector('a')?.getAttribute('href')).toBe('/politica-de-privacidade/#estatistica');
   });
