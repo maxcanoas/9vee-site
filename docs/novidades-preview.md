@@ -2,6 +2,16 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima sétima leva (09/10): a revisão dos textos
+
+- Na home, "Quem já contratou" subiu para logo depois de "O que a 9vee faz". Os depoimentos da Nissan, da General Motors e da Embraer aparecem bem antes na rolagem.
+- Alguns textos que vieram do site atual ficaram mais diretos, sem mudar o que dizem: os diferenciais e o fechamento da home, "Como são as aulas" e as aulas para executivos em Cursos, o LMS, dois parágrafos do NR-1, as aulas de inglês para crianças e um trecho da Tradução.
+- No Quem Somos, a história e a missão ficaram mais curtas. Os fatos continuam os mesmos: a equipe com 16 anos de trajetória, a 9vee que nasceu dela e o compromisso de partir do que cada cliente precisa.
+- A página de inglês agora diz que a aula presencial acontece dentro de empresas e faculdades, em São Paulo e no Rio de Janeiro.
+- Os lotes 1, 2 e 3 de revisão foram gerados de novo com esses textos. Se a Daniella já começou a revisão, a versão de hoje é a que conta.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Se ainda não mandou a décima sexta leva, mande as duas juntas.
+
 ## Semana 2, décima sexta leva (09/10): as respostas do Word da segunda rodada, versão 2
 
 Obrigado pelas respostas. Tudo já está no preview:

@@ -59,7 +59,7 @@ Particular ou em grupo, de qualquer cidade, no dia e no horário que você escol
 
 O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho.
 
-Aula presencial, só dentro da empresa, em São Paulo e no Rio de Janeiro. Para a equipe inteira, veja as turmas para empresas.
+Aula presencial, dentro de empresas e faculdades, em São Paulo e no Rio de Janeiro. Para a equipe inteira, veja as turmas para empresas.
 
 #### Preparação para provas de inglês
 
@@ -87,7 +87,7 @@ O inglês começa de forma natural e leve, com aulas diferentes para cada idade.
 
 ##### Crianças
 
-Num ambiente acolhedor, aprendem com atividades lúdicas, pela interação, pela curiosidade e pela experimentação.
+Aprendem com atividades lúdicas, brincando e conversando com a turma.
 
 ##### Adolescentes
 

@@ -70,6 +70,20 @@ Plataforma para a equipe estudar a qualquer hora, com acompanhamento de professo
 
 [Link: Conhecer o LMS]
 
+#### Quem já contratou
+
+“Em momentos decisivos para o nosso negócio, cada palavra importa.”
+
+Eduardo Martins · Diretor de Vendas, Nissan · Tradução simultânea
+
+“Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam.”
+
+Bruno Teixeira · Gerente de Produção, General Motors · Tradução simultânea
+
+“Os professores são altamente qualificados e preparados para atender executivos e líderes (...).”
+
+Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas
+
 #### Qual língua você quer falar?
 
 Agrupadas por família, com um olá em cada uma. Escolha a sua para ver como são as aulas.
@@ -107,11 +121,11 @@ Cada uma com a sua escrita.
 
 ##### Comunicação de verdade
 
-Os cursos vão além do ensino tradicional. Desenvolvem a comunicação real, a que dá autonomia, segurança e novas oportunidades a famílias imigrantes em qualquer país.
+A aula treina a conversa do dia a dia, a que uma família imigrante precisa para se virar em qualquer país.
 
 ##### Professores perto ou longe
 
-Professores qualificados dão aula no presencial e no remoto, com experiência prática e tecnologia educacional.
+Aula presencial na empresa, em São Paulo e no Rio de Janeiro, ou online, de qualquer cidade do Brasil.
 
 ##### Um programa por aluno
 
@@ -143,20 +157,6 @@ Com formato e valor, quase sempre no mesmo dia. Pedido que chega no fim do dia t
 
 A aula, a turma de NR-1 ou o evento, presencial ou online, na data combinada.
 
-#### Quem já contratou
-
-“Em momentos decisivos para o nosso negócio, cada palavra importa.”
-
-Eduardo Martins · Diretor de Vendas, Nissan · Tradução simultânea
-
-“Na produção, cada decisão precisa ser clara e bem compreendida. (...) sentimos uma diferença imediata na forma como nossas equipes globais se conectavam.”
-
-Bruno Teixeira · Gerente de Produção, General Motors · Tradução simultânea
-
-“Os professores são altamente qualificados e preparados para atender executivos e líderes (...).”
-
-Pedro Cavalcante · Diretor, Embraer · Cursos de idiomas
-
 #### Perguntas antes de contratar
 
 ##### Vocês atendem fora de São Paulo?
@@ -181,7 +181,7 @@ Profissionais formados em centros especializados, com experiência em áreas com
 
 #### Conte o que você precisa.
 
-Grandes resultados começam com uma boa conversa. Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar.
+Você responde em quatro passos e decide se prefere falar agora pelo WhatsApp ou esperar a equipe chamar.
 
 [Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
 
@@ -254,7 +254,7 @@ O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o
 
 #### O que o treinamento aborda
 
-O objetivo é dar aos participantes competências práticas para relações mais saudáveis e para o bem-estar emocional. Com elas, os participantes ajudam a criar um ambiente de trabalho psicologicamente seguro e colaborativo.
+Seis temas, do que é risco psicossocial à conversa difícil.
 
 Riscos psicossociais
 
@@ -297,8 +297,6 @@ Liderança, comunicação com equipes comerciais e cultura da empresa. Quem chef
 A turma discute casos, decide o que faria em cada um e fecha o plano de ação da própria empresa.
 
 #### O que muda na empresa
-
-O treinamento apoia a empresa na construção de um ambiente emocionalmente mais saudável e contribui para as boas práticas ligadas à NR-1.
 
 ##### Com o treinamento
 
@@ -518,7 +516,7 @@ O preparatório é voltado para o exame e trabalha as duas partes: a língua e a
 
 #### Como são as aulas
 
-Professores qualificados dão aulas dinâmicas, interativas e personalizadas, com prática de conversação. A aula é online e ao vivo, e você escolhe o dia e o horário: ela se encaixa na sua rotina, e não o contrário.
+As aulas são de conversa, online e ao vivo, com o conteúdo puxado para o seu objetivo. Você escolhe o dia e o horário.
 
 ##### Aula particular
 
@@ -564,7 +562,7 @@ O time estuda junto, na mesma turma e no mesmo nível, com material prático e a
 
 ##### Aula individual para executivos
 
-Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. Mais do que fluência, a meta é segurança, clareza e autoridade na comunicação internacional.
+Para reunião estratégica, conference call, negociação e apresentação. Começa por um diagnóstico do executivo e segue um plano próprio, com horário flexível. A meta é segurança, clareza e autoridade na comunicação internacional.
 
 ##### Português para quem veio de fora
 
@@ -591,7 +589,7 @@ Além dos cursos, a 9vee apoia o profissional que está de mudança para outra c
 
 #### A equipe também pode estudar pelo LMS
 
-Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do treinamento, centraliza a gestão e acompanha os resultados em tempo real.
+Na plataforma da 9vee, a equipe estuda a qualquer hora, e o RH vê a frequência e o progresso de cada pessoa.
 
 [Link: Conhecer o LMS]
 

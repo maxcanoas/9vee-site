@@ -55,7 +55,7 @@ Em visitas institucionais, rodadas de negócios, reuniões e eventos corporativo
 
 Como funciona
 
-O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição. Com ele cuidando do idioma, você cuida do negócio e da parceria.
+O intérprete fica ao lado dos executivos e da equipe e traduz na hora, com sensibilidade cultural e discrição.
 
 #### Como funciona a interpretação simultânea
 
@@ -127,7 +127,7 @@ Administração, engenharia, medicina, vendas, tecnologia e negócios internacio
 
 Onde atuam
 
-Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa, com discrição e profissionalismo.
+Em ambientes corporativos e institucionais, da reunião de alto nível à visita a uma empresa.
 
 Quem já contratou
 
@@ -167,7 +167,7 @@ Depende da duração. A 9vee segue a regra da ABRATES, a Associação Brasileira
 
 ##### Os intérpretes trabalham com discrição?
 
-Sim. Eles atuam em reuniões, negociações e encontros de alto nível, com discrição e profissionalismo.
+Sim. A discrição faz parte do trabalho deles em reuniões, negociações e encontros de alto nível.
 
 ##### Em quanto tempo a 9vee responde o pedido?
 
@@ -263,7 +263,7 @@ Para RH e treinamento corporativo
 
 ### LMS para o treinamento de idiomas da sua equipe
 
-A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanhamento pedagógico. A empresa recebe relatórios de evolução, frequência e resultados.
+A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanhamento pedagógico. O RH recebe relatórios de desempenho, frequência e progresso.
 
 [Botão: Pedir o LMS]
 
@@ -280,8 +280,6 @@ A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanh
 LMS é a sigla de Learning Management System, o sistema de gestão de aprendizagem. É uma plataforma digital para a empresa organizar, acompanhar e melhorar o treinamento da equipe.
 
 No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele. Além dos cursos de idiomas, a plataforma recebe os treinamentos internos da empresa e a integração de novos colaboradores.
-
-O modelo virou padrão no desenvolvimento profissional porque junta horário flexível, acompanhamento pedagógico e eficiência no treinamento das equipes.
 
 [Imagem: Colaboradora estudando pelo notebook em casa, à noite, de fones de ouvido.]
 
@@ -313,15 +311,15 @@ A data de cada acesso e quanto tempo durou a sessão.
 
 O que cada aluno aprendeu e que metas cumpriu.
 
-Os relatórios facilitam a gestão do aprendizado e deixam o curso de inglês corporativo online mais estratégico e mensurável para o desenvolvimento da equipe. Valem também para os outros cursos de idiomas para empresas.
+Com eles, o curso de inglês corporativo online tem número para mostrar: quem estudou, por quanto tempo e o que aprendeu. Valem também para os outros cursos de idiomas para empresas.
 
-#### Quer melhorar a comunicação internacional da sua equipe?
+#### A plataforma vem com os cursos e os professores da 9vee.
 
-Converse com a equipe da 9vee sobre o que a sua empresa precisa e receba uma proposta.
+A proposta sai com o tamanho da equipe e o conteúdo que entra na plataforma.
 
-- Cursos customizados
-- Professores especializados
-- Plataforma LMS
+- Cursos em 14 idiomas
+- Professores que acompanham a turma
+- Relatórios para o RH
 
 [Botão: Pedir o LMS]
 
@@ -381,7 +379,7 @@ Idiomas, treinamentos internos, integração de novos colaboradores, ou uma mist
 
 - Endereço: https://www.9vee.com.br/quem-somos/
 - Título no Google: Quem somos | 9vee
-- Descrição no Google: A 9vee nasceu da paixão pela educação. De São Paulo, ensina idiomas, leva intérpretes a eventos e treina equipes, com um programa feito para cada cliente.
+- Descrição no Google: A 9vee é de São Paulo. Ensina idiomas, leva intérpretes a eventos e treina equipes em NR-1, com 16 anos de experiência e um programa para cada cliente.
 - Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Quem Somos do site e quero pedir um orçamento."
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Quem Somos do site e quero um orçamento para a minha empresa."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Quem Somos do site e quero saber das aulas de idioma para mim."
@@ -413,19 +411,19 @@ A 9vee ensina idiomas, leva intérpretes a eventos e treina equipes em saúde me
 
 #### Como a 9vee começou
 
-A 9vee nasceu da paixão pela educação e da vontade de transformar conhecimento em resultado para quem aprende.
+A 9vee nasceu da vontade de transformar conhecimento em resultado para quem aprende.
 
-Ela é formada por profissionais, especialistas e professores para quem a educação sempre foi mais do que uma profissão. Em 16 anos de trajetória, alunos e clientes reconheceram a qualidade, o cuidado e os resultados desse trabalho. Dessas experiências, e da percepção de que dava para fazer mais, surgiu a 9vee.
+Ela é formada por profissionais, especialistas e professores, com 16 anos de trajetória. Alunos e clientes reconheceram esse trabalho, e dessa experiência, e da percepção de que dava para fazer mais, surgiu a 9vee.
 
-O propósito é levar educação de qualidade, personalizada e eficiente, ligada à necessidade de cada cliente. Não existe um formato único que sirva para todos: cada pessoa, empresa e projeto tem desafios, objetivos e contextos diferentes, e é isso que orienta cada serviço.
+O propósito é levar educação ligada à necessidade de cada cliente. Não existe um formato único que sirva para todos: cada pessoa, empresa e projeto tem objetivos e contextos diferentes, e é isso que orienta cada serviço.
 
-Hoje a 9vee junta experiência, conhecimento e tecnologia para montar cada curso, tradução e treinamento a partir do que o cliente precisa. O compromisso é o mesmo do começo: entregar qualidade e um trabalho que gere valor de verdade para quem aprende e para quem contrata.
+Hoje, cada curso, tradução e treinamento parte do que o cliente precisa. O compromisso é o mesmo do começo: um trabalho que valha para quem aprende e para quem contrata.
 
 [Imagem: Professora dando aula de idioma por vídeo, de fones de ouvido, com um caderno ao lado do notebook.]
 
 #### Transformar conhecimento em confiança e ação.
 
-É a missão da 9vee. Aprender vai além de guardar conteúdo: é ganhar clareza, segurança e capacidade de usar o que se sabe.
+É a missão da 9vee. A aula só termina quando a pessoa consegue usar o que aprendeu.
 
 ##### Do saber ao fazer
 
@@ -461,7 +459,7 @@ O que faz a intenção virar ação.
 
 ###### O momento é agora
 
-Pensar grande e agir logo, porque o mundo não desacelera.
+Pensar grande e agir logo.
 
 ###### Execução
 
