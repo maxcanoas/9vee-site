@@ -14,6 +14,9 @@ export const DIST_PRODUCAO = fileURLToPath(new URL('../../dist-producao/', impor
 
 export const DOMINIO = 'https://www.9vee.com.br';
 
+// As seções da política que o site escreveu, na mescla com o texto do Wix. O resto é texto do cliente.
+export const ESCRITAS_PELO_SITE = ['quem-cuida', 'pedido', 'whatsapp', 'estatistica', 'navegador', 'hospedagem', 'direitos'];
+
 export function carregarPaginas(pasta = DIST): Pagina[] {
   if (!existsSync(pasta)) throw new Error(`${pasta} não existe: rode "npm test", que faz os builds antes dos testes`);
   return lerPaginas(pasta);

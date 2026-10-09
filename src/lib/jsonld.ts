@@ -22,20 +22,18 @@ export function organizacao(site: DadosDoSite, base: URL) {
     logo: new URL('/logo-9vee.png', base).href,
     email: site.contato.email,
     telephone: telefone,
-    // O endereço do Perfil da Empresa no Google, igual a ele. A área atendida diz onde ela trabalha.
+    // A cidade do Perfil da Empresa no Google, sem a rua. A área atendida diz onde ela trabalha.
     address: {
       '@type': 'PostalAddress',
-      streetAddress: `${endereco.rua}, ${endereco.bairro}`,
       addressLocality: endereco.cidade,
       addressRegion: endereco.uf,
-      postalCode: endereco.cep,
       addressCountry: 'BR',
     },
     areaServed: [
       ...site.cidades.map((cidade) => ({ '@type': 'City', name: cidade })),
       { '@type': 'Country', name: 'Brasil' },
     ],
-    sameAs: site.redes.map((rede) => rede.url),
+    sameAs: [...site.redes.map((rede) => rede.url), site.contato.perfilGoogle],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',

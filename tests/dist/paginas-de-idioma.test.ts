@@ -25,7 +25,7 @@ describe('páginas de idioma', () => {
   });
 
   // Cada prova na página do idioma dela: as da tabela do Arthur (05/10/2026) e, onde o site atual conta, como é o
-  // preparatório. O árabe não tem a seção: a prova da tabela espera a confirmação do nome.
+  // preparatório. O APT do árabe, a prova de cidadania do norueguês e o COPE do cantonês vieram na segunda rodada v2.
   it.each([
     ['ingles', ['TOEFL iBT', 'IELTS', 'TOEIC', 'O preparatório do TOEFL']],
     ['portugues-para-estrangeiros', ['CELPE-Bras', 'O preparatório']],
@@ -35,7 +35,9 @@ describe('páginas de idioma', () => {
     ['alemao', ['TestDaF', 'telc']],
     ['italiano', ['CELI', 'CILS', 'PLIDA', 'CERT.IT']],
     ['sueco', ['TISUS', 'Swedex', 'SFI e SVA']],
-    ['noruegues', ['Norskprøven']],
+    ['noruegues', ['Norskprøven', 'Statsborgerprøven']],
+    ['arabe', ['APT']],
+    ['cantones', ['COPE']],
     ['mandarim', []],
     ['japones', ['JLPT']],
     ['russo', ['TORFL (TRKI)']],

@@ -31,10 +31,13 @@ describe('sitemap', () => {
     expect(enderecos).toContain(`${DOMINIO}${INTERPRETACAO_DE_MANDARIM}`);
   });
 
-  it('deixa fora a página de idioma ou de cidade não publicada', () => {
-    const naoPublicadas = paginasComPublicacaoNoConteudo().filter(({ publicada }) => !publicada);
-    expect(naoPublicadas.length).toBeGreaterThan(0);
-    for (const { rota } of naoPublicadas) expect(enderecos).not.toContain(`${DOMINIO}${rota}`);
+  // Desde 09/10/2026 (respostas 5 e 17 da segunda rodada v2), as páginas de idioma e de cidade estão todas publicadas.
+  // A regra continua valendo para a próxima que entrar sem texto.
+  it('traz a página de idioma ou de cidade publicada, e deixa fora a não publicada', () => {
+    for (const { rota, publicada } of paginasComPublicacaoNoConteudo()) {
+      if (publicada) expect(enderecos).toContain(`${DOMINIO}${rota}`);
+      else expect(enderecos).not.toContain(`${DOMINIO}${rota}`);
+    }
   });
 
   it('não existe no preview, que não vai para o Google', () => {

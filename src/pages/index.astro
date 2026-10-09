@@ -12,16 +12,25 @@ import Depoimentos from '../components/Depoimentos.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { comOrdemDoServico, dadosDoSite } from '../lib/site';
+import { linkWhatsApp, mensagemFlutuante } from '../lib/contato';
 import { enderecoDosIdiomasPublicados, paginaHome } from '../lib/paginas';
 import { faqPage } from '../lib/jsonld';
 
 const { data: home } = await paginaHome();
 const site = await dadosDoSite();
 const enderecosDosIdiomas = await enderecoDosIdiomasPublicados();
+// O WhatsApp da aula experimental, com a mensagem no modelo do botão flutuante.
+const experimental = {
+  rotulo: home.hero.experimental.rotulo,
+  href: linkWhatsApp(
+    site.contato.whatsapp,
+    mensagemFlutuante(site.paginas.home.nome, home.hero.experimental.assunto, site.drawer.mensagens),
+  ),
+};
 ---
 
 <Base pagina="home" titulo={home.seo.titulo} descricao={home.seo.descricao} jsonLd={[faqPage(home.faq.itens)]}>
-  <Hero {...home.hero} cta={site.cta} />
+  <Hero {...home.hero} cta={site.cta} experimental={experimental} />
   <FaixaProva {...home.prova} pendencia={site.pendencia} />
   <Servicos titulo={home.servicos.titulo} itens={comOrdemDoServico(site, home.servicos.itens)} />
 

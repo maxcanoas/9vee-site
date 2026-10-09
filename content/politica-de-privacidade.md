@@ -1,10 +1,9 @@
 ---
 # A política de privacidade é a do Wix, que a 9vee mandou manter (pergunta 20, respondida em 05/10/2026), mesclada com o
 # que a política escrita para o site novo trazia de relevante: quem cuida dos dados, o que o site coleta, os prazos de
-# guarda (pergunta 21) e os direitos. Pedido do Maxwell em 05/10/2026: o que veio da nova fica destacado, para a 9vee
-# ver e entender antes de aprovar. A seção inteira nova tem "novo: true"; o trecho novo dentro do texto do Wix é
-# [NOVO: ...], e o que sai dele é [SAI: ...]. Com a aprovação, saem as marcas e a "revisao", e a página pode ir ao ar:
-# até lá, a trava de produção barra as marcas.
+# guarda (pergunta 21) e os direitos. A 9vee aprovou a mescla em 09/10/2026 (resposta 1 da segunda rodada v2): as marcas
+# de revisão saíram, e a data da versão é a da aprovação. Na mesma rodada, a frase das crianças foi reescrita com a
+# resposta 2 (quem contrata é o responsável, ou a escola), e o foro de Arapoti ficou (resposta 3, o endereço fiscal).
 # O texto do Wix está como lá, com três acertos que não mudam o sentido: os títulos em caixa normal, o "sele ção" e a
 # meia-risca antes de "LGPD", que o site não usa. A seção "pedido" é a que a caixa de consentimento do pedido abre. O
 # aviso de cookies e o Google Analytics chegaram no ticket 13, e a seção "estatistica" descreve os dois como ficaram.
@@ -15,11 +14,6 @@ seo:
 h1: "Política de privacidade"
 apoio: "A 9vee respeita o direito à privacidade e zela pela segurança dos dados pessoais a que tem acesso em suas atividades."
 
-revisao:
-  titulo: "Para a revisão de vocês"
-  texto: "Esta é a política de privacidade atual de vocês, a do Wix, com o que a política escrita para o site novo traz de importante. As seções com a etiqueta “Novo” e os trechos [NOVO: com fundo verde] vieram da política nova. Os trechos [SAI: riscados] saem do texto atual. A etiqueta “a confirmar” marca o que ainda precisa de resposta. Quando vocês aprovarem, as marcas saem, e a política vai ao ar como ficou."
-  etiqueta: "Novo"
-
 secoes:
   - id: "politica"
     titulo: "Da política de privacidade"
@@ -28,7 +22,6 @@ secoes:
 
   - id: "quem-cuida"
     titulo: "Quem cuida dos seus dados"
-    novo: true
     blocos:
       - "A 9vee é a CLOUD9 LEARNING LTDA, CNPJ 42.808.102/0001-88. É ela quem decide o que fazer com os dados pessoais de que trata esta política."
       - "Para qualquer pedido sobre os seus dados, escreva para [contato@9vee.com.br](mailto:contato@9vee.com.br)."
@@ -57,7 +50,7 @@ secoes:
       - "**Dados adicionais de cadastro e preferências.** Esses dados são coletados no cadastro inicial ou por meio de ação específica e nos ajudam a promover ações de diversidade junto a parceiros comprometidos com o tema e a realizar a seleção em projetos ou processos seletivos direcionados para públicos específicos. Os dados podem incluir:"
       - itens:
           - "Escolaridade, faixa etária, estado, cidade, gênero, autodeclaração de cor/raça/etnia, faixa de renda familiar/mensal, deficiência (PcD), etc."
-      - "**Dados de identificação digital.** São informações digitais, geralmente coletadas de forma automática, por meio de cookies, que identificam o usuário durante a navegação na Plataforma, utilizadas para melhorar a performance e qualidade dos serviços, garantir a segurança cibernética da Plataforma e cumprir exigências legais ([SAI: conheça nossa Política de Cookies, disponível em nosso site] [NOVO: os cookies do site estão em [A estatística de visitas e os cookies](#estatistica)]). Os dados podem incluir:"
+      - "**Dados de identificação digital.** São informações digitais, geralmente coletadas de forma automática, por meio de cookies, que identificam o usuário durante a navegação na Plataforma, utilizadas para melhorar a performance e qualidade dos serviços, garantir a segurança cibernética da Plataforma e cumprir exigências legais (os cookies do site estão em [A estatística de visitas e os cookies](#estatistica)). Os dados podem incluir:"
       - itens:
           - "Endereço IP, informações sobre o dispositivo do usuário (sistema operacional, navegador, etc.), geolocalização, etc."
       - "**Dados de utilização do serviço.** Esses dados estão relacionados aos nossos serviços e são originados a partir da sua utilização. Os dados podem incluir:"
@@ -65,11 +58,10 @@ secoes:
           - "Nome do curso em que o usuário está matriculado, quantidade de aulas assistidas, tarefas concluídas, avaliações e notas, progresso total, certificado, etc."
       - "**Dados oriundos de terceiros.** São informações do usuário que recebemos por meio de terceiros que prestam serviços ou que firmam parcerias, como serviço de validação de cadastro, parcerias para concessão de bolsas de estudos, etc."
       - "Nosso servidor não coleta automaticamente nenhuma informação sobre o domínio ou endereço de e-mail de nossos visitantes."
-      - "Nossos produtos e serviços são destinados ao público adolescente e adulto. Dessa forma, não coletamos, solicitamos ou, de qualquer outra forma, tratamos dados pessoalmente identificáveis de crianças. [CONFIRMAR COM A DANIELLA: o curso de inglês atende a partir de 9 anos, e esta frase diz que a 9vee não trata dados de crianças. Como ela fica?]"
+      - "O curso de inglês também atende crianças, a partir de 9 anos. Quando o aluno é menor de idade, quem contrata o curso e assina o contrato é o pai, a mãe ou o responsável legal, ou a escola, quando as aulas acontecem dentro dela. Os dados de crianças são tratados com o consentimento de um dos pais ou do responsável legal, como pede a LGPD. Pelo site, quem pede aula para uma criança é o adulto, com os dados dele."
 
   - id: "pedido"
     titulo: "Quando você pede contato pelo site"
-    novo: true
     blocos:
       - 'Se você escolhe "Prefiro receber contato", o site manda o pedido à 9vee. Ele leva as suas respostas, o seu nome e o WhatsApp ou o e-mail que você deixou. A 9vee usa esses dados para responder e montar a proposta.'
       - "O pedido só sai com a caixa de consentimento marcada. Junto com ele vai a prova de que você concordou: o texto da caixa, a data e a hora e a página de onde o pedido saiu."
@@ -78,14 +70,12 @@ secoes:
 
   - id: "whatsapp"
     titulo: "Quando você fala pelo WhatsApp"
-    novo: true
     blocos:
       - "O botão do WhatsApp só abre o aplicativo com a mensagem escrita. Quem manda é você, do seu WhatsApp para o da 9vee, e a mensagem não passa pelo site."
       - "No WhatsApp da 9vee, a conversa fica guardada pelos mesmos prazos do pedido: 1 ano, quando não vira contrato, e 5 anos, quando vira. O WhatsApp é da Meta, que tem regras próprias para os dados de quem usa o aplicativo."
 
   - id: "estatistica"
     titulo: "A estatística de visitas e os cookies"
-    novo: true
     blocos:
       - 'O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies, que aparece na primeira visita, com "Aceitar", "Recusar" e "Preferências". Se você recusar ou não responder, ele nem carrega.'
       - "Com o aceite, o Google recebe dados da sua visita, como as páginas que você vê e de que busca ou link você veio. Recebe também o tipo de aparelho e de navegador e a cidade aproximada."
@@ -99,13 +89,11 @@ secoes:
 
   - id: "navegador"
     titulo: "O que fica no seu navegador"
-    novo: true
     blocos:
       - 'O site guarda duas escolhas suas no navegador. Uma é a escolha entre "Para sua empresa" e "Para você", que muda os textos das páginas. A outra é a sua resposta ao aviso de cookies, com a data e a versão do aviso. Para apagar as duas, limpe os dados do site nas configurações do navegador.'
 
   - id: "hospedagem"
     titulo: "A hospedagem do site"
-    novo: true
     blocos:
       - "O site e a caixa de e-mail da 9vee ficam na HostGator. Como todo servidor, o do site anota cada acesso: o endereço IP, a data e a hora, a página pedida e o navegador. A 9vee guarda esses registros por 6 meses, como pede o Marco Civil da Internet, para cuidar da segurança do site."
 
@@ -130,11 +118,11 @@ secoes:
     blocos:
       - "Os dados pessoais podem vir a ser armazenados em bancos de dados de terceiros, inclusive no exterior, desde que respeitem a privacidade e a proteção de dados dos usuários em nível condizente com aquele oferecido pela legislação brasileira e por esta Política de Privacidade, além de apresentarem condições adequadas de segurança no armazenamento e processamento desses dados."
       - "Nós armazenamos os dados pessoais somente pelo período necessário para cumprir as finalidades informadas, para cumprir nossas obrigações legais, regulatórias ou para preservação de direitos. Terminado o prazo de armazenamento, os dados pessoais serão anonimizados ou excluídos, utilizando método seguro de descarte."
-      - "[NOVO: Os prazos de guarda são estes:]"
+      - "Os prazos de guarda são estes:"
       - itens:
-          - "[NOVO: pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;]"
-          - "[NOVO: conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;]"
-          - "[NOVO: registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet.]"
+          - "pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;"
+          - "conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;"
+          - "registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet."
       - "Nos comprometemos a respeitar os direitos à privacidade, à proteção dos dados pessoais e dos registros dos seus usuários, e asseguramos que cuidará para que eventuais terceiros com quem referidos dados sejam compartilhados respeitem os termos desta Política de Privacidade."
       - "Nós poderemos compartilhar seus dados pessoais nas circunstâncias abaixo, mediante processos seguros e respeitando a confidencialidade e privacidade:"
       - itens:
@@ -144,7 +132,7 @@ secoes:
           - "Em caso de reestruturação societária, incorporação, fusão ou venda da Empresa, nos termos da legislação aplicável;"
           - "Para cumprir os Termos de Uso da Plataforma, inclusive para apuração de violações;"
           - "Para proteger os direitos dos usuários, nos termos da legislação aplicável;"
-          - "Com terceiros proprietários de cookies que utilizamos em nossas páginas, conforme descrito em [SAI: nossa Política de Cookies] [NOVO: [A estatística de visitas e os cookies](#estatistica)];"
+          - "Com terceiros proprietários de cookies que utilizamos em nossas páginas, conforme descrito em [A estatística de visitas e os cookies](#estatistica);"
           - "Com terceiros que atuem em áreas afins à educação e que sejam relacionados a áreas de interesse do nosso público-alvo, com quem venha a firmar contratos, onerosos ou não;"
       - "Não compartilharemos os dados pessoais para qualquer finalidade que esteja em desacordo com a legislação vigente ou com esta Política de Privacidade."
 
@@ -190,7 +178,6 @@ secoes:
 
   - id: "direitos"
     titulo: "Os seus direitos"
-    novo: true
     blocos:
       - "Pela LGPD, você pode pedir à 9vee, quando quiser:"
       - itens:
@@ -213,13 +200,13 @@ secoes:
       - "Não nos responsabilizamos pelo conteúdo de tais aplicativos nem pelo manuseio das informações por terceiros. Por isso, recomendamos que os usuários sempre leiam as normas de relacionamento e política de privacidade específicas dentro do próprio aplicativo ou site do parceiro ou patrocinador que colete suas informações."
       - "A Política de Privacidade se aplica às informações coletadas através da Plataforma, do site e do aplicativo, incluindo, também, o uso interno necessário à prestação dos serviços propostos. A seleção de colaboradores poderá ser realizada em plataformas próprias."
       - "Caso algum ponto desta Política seja considerado inaplicável pela Autoridade Nacional de Proteção de Dados ou por alguma autoridade judicial, as demais condições permanecerão em pleno vigor."
-      - "Esta Política será interpretada segundo a legislação brasileira, no idioma português, sendo eleito o foro da Comarca de Arapoti, Estado do Paraná, para resolver qualquer controvérsia que envolva este documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável. [CONFIRMAR COM A DANIELLA: se o foro continua o de Arapoti (PR), já que a 9vee fica em São Paulo]"
+      - "Esta Política será interpretada segundo a legislação brasileira, no idioma português, sendo eleito o foro da Comarca de Arapoti, Estado do Paraná, para resolver qualquer controvérsia que envolva este documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável."
 
   - id: "canais"
     titulo: "Contato"
     blocos:
       - "Comentários, críticas e sugestões são sempre bem-vindos, pois entendemos que o diálogo transparente é parte essencial do compromisso com a proteção de dados e com a melhoria contínua de nossos serviços."
-      - "Caso o usuário tenha qualquer dúvida, questionamento ou reclamação relacionada à nossa Política de Privacidade, ou ainda deseje exercer quaisquer dos direitos previstos na Lei Geral de Proteção de Dados (LGPD) [SAI: e indicados no item 6] [NOVO: e listados em [Os seus direitos](#direitos)], poderá entrar em contato por meio de nossos canais oficiais[NOVO: , como o e-mail [contato@9vee.com.br](mailto:contato@9vee.com.br)]."
+      - "Caso o usuário tenha qualquer dúvida, questionamento ou reclamação relacionada à nossa Política de Privacidade, ou ainda deseje exercer quaisquer dos direitos previstos na Lei Geral de Proteção de Dados (LGPD) e listados em [Os seus direitos](#direitos), poderá entrar em contato por meio de nossos canais oficiais, como o e-mail [contato@9vee.com.br](mailto:contato@9vee.com.br)."
 
-versao: "[SAI: Atualizado em 5 de março de 2026.] [NOVO: Atualizado em [CONFIRMAR COM A DANIELLA: a data em que vocês aprovarem esta versão]. Quando a política mudar, esta data muda junto.]"
+versao: "Atualizado em 9 de outubro de 2026. Quando a política mudar, esta data muda junto."
 ---

@@ -486,6 +486,25 @@ const roteiros: Record<string, Captura[]> = {
       await p.locator('footer [data-preferencias-cookies]').click();
     } },
   ],
+  // As respostas da segunda rodada v2 (09/10/2026) que mexem no layout: o botão da aula experimental no topo da home,
+  // só para quem escolhe "Para você", o rodapé com a cidade e o link do Perfil no Google, os relatórios do LMS com
+  // texto, o que o NR-1 entrega, a página do cantonês e o Rio com dois idiomas.
+  'segunda-rodada-v2': [
+    { nome: 'home-topo-voce-360', rota: '/', largura: 360, altura: 780, publico: 'voce' },
+    { nome: 'home-topo-voce-390', rota: '/', largura: 390, altura: 844, publico: 'voce' },
+    { nome: 'home-topo-voce-1280', rota: '/', largura: 1280, altura: 800, publico: 'voce' },
+    { nome: 'home-topo-empresa-390', rota: '/', largura: 390, altura: 844, publico: 'empresa' },
+    { nome: 'rodape-390', rota: '/', largura: 390, altura: 844, recorte: '.rodape__contato' },
+    { nome: 'rodape-1280', rota: '/', largura: 1280, altura: 800, recorte: 'footer' },
+    { nome: 'lms-relatorios-390', rota: '/lms/', largura: 390, altura: 844, recorte: '#relatorios' },
+    { nome: 'lms-relatorios-1280', rota: '/lms/', largura: 1280, altura: 800, recorte: '#relatorios' },
+    { nome: 'nr1-recebe-390', rota: '/treinamento-nr-1/', largura: 390, altura: 844, recorte: '#o-que-recebe' },
+    { nome: 'nr1-recebe-1280', rota: '/treinamento-nr-1/', largura: 1280, altura: 800, recorte: '#o-que-recebe' },
+    { nome: 'cantones-inteira-390', rota: '/curso-de-idiomas/cantones/', largura: 390, altura: 844, paginaInteira: true },
+    { nome: 'cantones-inteira-1280', rota: '/curso-de-idiomas/cantones/', largura: 1280, altura: 800, paginaInteira: true },
+    { nome: 'rio-idiomas-390', rota: '/rio-de-janeiro/', largura: 390, altura: 844, recorte: '#idiomas' },
+    { nome: 'rio-idiomas-1280', rota: '/rio-de-janeiro/', largura: 1280, altura: 800, recorte: '#idiomas' },
+  ],
   // O rodapé com a interpretação de mandarim no fim do grupo Empresas (ticket 15).
   'ticket-15': [
     { nome: 'rodape-360', rota: '/', largura: 360, altura: 780, recorte: 'footer' },

@@ -49,6 +49,13 @@ if (dialogo && dadosDaIlha) iniciarDrawer(dialogo, dadosDaIlha);
 const flutuante = document.querySelector<HTMLAnchorElement>('[data-whatsapp-flutuante]');
 if (flutuante) iniciarBotaoFlutuante(flutuante, dadosDaIlha);
 
+// O botão da aula experimental, no topo da home, também abre uma conversa pelo WhatsApp, sobre aulas de idioma.
+for (const link of document.querySelectorAll<HTMLAnchorElement>('[data-whatsapp-experimental]')) {
+  link.addEventListener('click', () => {
+    if (dadosDaIlha) medir('whatsapp_click', { servico: 'idiomas', publico: publicoAtual(), pagina: dadosDaIlha.pagina });
+  });
+}
+
 function iniciarDrawer(dialogo: HTMLDialogElement, dados: DadosDoDrawer) {
   const um = <T extends Element = HTMLElement>(seletor: string): T => {
     const achado = dialogo.querySelector<T>(seletor);

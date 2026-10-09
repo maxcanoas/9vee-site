@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'node-html-parser';
 import { describe, expect, it } from 'vitest';
-import { DIST, carregarPaginas, textoVisivel } from './apoio';
+import { DIST, ESCRITAS_PELO_SITE, carregarPaginas, textoVisivel } from './apoio';
 
 const abrir = (arquivo: string) => parse(readFileSync(join(DIST, arquivo), 'utf8'));
 
@@ -40,30 +40,28 @@ describe('política de privacidade', () => {
     expect(principal.querySelector('#quem-cuida a[href="mailto:contato@9vee.com.br"]')).not.toBeNull();
   });
 
-  // A política do Wix, que a 9vee mandou manter, com o que a política nova trazia de relevante, marcado para a 9vee
-  // ver: a legenda, as seções inteiras novas, o trecho que entrou e o que saiu. A trava de produção barra as marcas.
-  it('mostra a mescla com a política do Wix, com as marcas de revisão explicadas', () => {
-    expect(principal.querySelector('.politica__legenda h2')?.text.trim()).toBe('Para a revisão de vocês');
-    const novas = principal.querySelectorAll('.politica__secao--nova').map((secao) => secao.getAttribute('id'));
-    expect(novas).toEqual(['quem-cuida', 'pedido', 'whatsapp', 'estatistica', 'navegador', 'hospedagem', 'direitos']);
-    for (const secao of principal.querySelectorAll('.politica__secao--nova')) {
-      expect(secao.querySelector('h2 .politica__etiqueta')?.text).toBe('Novo');
-    }
-    expect(principal.querySelectorAll('ins.revisao').length).toBeGreaterThan(0);
-    expect(principal.querySelectorAll('del.revisao').map((trecho) => trecho.text)).toContain('nossa Política de Cookies');
+  // A política do Wix, que a 9vee mandou manter, com o que a política nova trazia de relevante. A 9vee aprovou a mescla
+  // em 09/10/2026 (resposta 1 da segunda rodada v2): a legenda, a etiqueta das seções novas e as marcas saíram.
+  it('publica a mescla aprovada, sem as marcas de revisão', () => {
+    expect(principal.querySelector('.politica__legenda')).toBeNull();
+    expect(principal.querySelectorAll('.revisao, .politica__secao--nova, .politica__etiqueta')).toHaveLength(0);
+    const secoes = principal.querySelectorAll('.politica__secao').map((secao) => secao.getAttribute('id'));
+    for (const nova of ESCRITAS_PELO_SITE) expect(secoes, nova).toContain(nova);
+    expect(texto).not.toContain('nossa Política de Cookies');
     // O texto do Wix continua, do começo ao fim.
     for (const doWix of ['Apresentamos aqui nossa Política de Privacidade', 'Processamento de dados pessoais por IA', 'foro da Comarca de Arapoti']) {
       expect(texto, doWix).toContain(doWix);
     }
   });
 
-  // O que a mescla levantou e só a 9vee responde: os dados de crianças, o foro e a data da versão aprovada.
-  it('deixa como pendência da Daniella o que a mescla levantou', () => {
-    const notas = principal.querySelectorAll('mark.confirmar').map((marca) => marca.getAttribute('title') ?? '');
-    expect(notas).toHaveLength(3);
-    for (const assunto of [/a partir de 9 anos/, /foro/, /data em que vocês aprovarem/]) {
-      expect(notas.some((nota) => assunto.test(nota) && nota.includes('Daniella')), String(assunto)).toBe(true);
+  // O que a mescla levantou, respondido na mesma rodada: os dados de crianças (resposta 2), o foro (resposta 3) e a
+  // data da versão, que é a da aprovação.
+  it('responde ao que a mescla levantou, sem pendência', () => {
+    expect(principal.querySelectorAll('mark.confirmar')).toHaveLength(0);
+    for (const fato of ['a partir de 9 anos', 'o pai, a mãe ou o responsável legal, ou a escola', 'Atualizado em 9 de outubro de 2026']) {
+      expect(texto, fato).toContain(fato);
     }
+    expect(texto).not.toContain('não coletamos, solicitamos');
   });
 });
 

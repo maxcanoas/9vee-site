@@ -61,26 +61,24 @@ test.describe('drawer de contato', () => {
     await expect(page.locator('[data-formulario="idiomasVoce"]')).toBeVisible();
   });
 
-  // Desde 05/10/2026 o cantonês é o único idioma sem página publicada: na lista de cursos, ele é o botão do pedido.
-  test('o idioma da lista de cursos já chega marcado no pedido', async ({ page, context }) => {
+  // Desde 09/10/2026 os 14 idiomas têm página publicada (o cantonês entrou com a resposta 5 da segunda rodada v2): na
+  // lista de cursos, cada um é link para a página dele, e nenhum é mais o botão do pedido.
+  test('o idioma da lista de cursos leva à página dele', async ({ page, context }) => {
     await salvarPublico(context, 'voce');
     await page.goto('/curso-de-idiomas/');
-    await page.locator('#cantones button').click();
+    await expect(page.locator('#idiomas button[data-idioma]')).toHaveCount(0);
+    await page.locator('#cantones a').click();
 
-    await expect(tituloDoPasso(page)).toHaveText('Sobre as suas aulas');
-    await expect(page.locator('input[name="idiomasVoce-idioma"][value="cantones"]')).toBeChecked();
+    await expect(page).toHaveURL(/\/curso-de-idiomas\/cantones\/$/);
   });
 
-  // O idioma com página própria é link para ela; o primeiro botão da lista é de um idioma sem página.
-  test('a empresa que escolhe um idioma cai no formulário de turma', async ({ page, context }) => {
+  test('a empresa que pede um idioma cai no formulário de turma, com ele marcado', async ({ page, context }) => {
     await salvarPublico(context, 'empresa');
-    await page.goto('/curso-de-idiomas/');
-    const botao = page.locator('#idiomas button[data-idioma]').first();
-    const idioma = await botao.getAttribute('data-idioma');
-    await botao.click();
+    await page.goto('/curso-de-idiomas/cantones/');
+    await page.locator('.topo-idioma [data-abre-contato]').click();
 
     await expect(page.locator('[data-formulario="idiomasEmpresa"]')).toBeVisible();
-    await expect(page.locator(`input[name="idiomasEmpresa-idioma"][value="${idioma}"]`)).toBeChecked();
+    await expect(page.locator('input[name="idiomasEmpresa-idioma"][value="cantones"]')).toBeChecked();
   });
 
   test('na página de um idioma, o botão do topo e o do cabeçalho já saem com o idioma marcado', async ({ page, context }) => {

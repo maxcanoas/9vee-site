@@ -1,20 +1,22 @@
 ---
 # A página de São Paulo (ticket 11). A 9vee é de São Paulo, e aqui há mais do que a tradução presencial: a aula de
 # idioma dentro da empresa (Idiomas 3, respondida em 05/10/2026) e o treinamento de NR-1, com a equipe da cidade
-# (pergunta 9). Fica fora do site até a 9vee dizer que tipo de evento mais faz aqui (pergunta 47 do Word de 05/10).
+# (pergunta 9). O tipo de trabalho mais comum na cidade veio em 09/10/2026 (resposta 17 da segunda rodada v2, a
+# pergunta 47): interpretação dentro de empresas, nas reuniões periódicas de quem tem a sede no exterior e nos
+# treinamentos de software em inglês. Com ela, a página entrou no site.
 cidade: "São Paulo"
 naCidade: "em São Paulo"
 tipo: "cidade"
-publicada: false
+publicada: true
 
 seo:
   titulo: "Intérpretes, aulas e NR-1 em São Paulo | 9vee"
-  descricao: "Intérpretes que moram em São Paulo, aula de inglês, espanhol e português dentro da empresa e treinamento de NR-1 com a equipe da 9vee na cidade."
+  descricao: "Intérpretes em São Paulo para reuniões e treinamentos dentro da empresa, aula de inglês, espanhol e português na empresa e treinamento de NR-1."
 
 hero:
   rotulo: "Presencial em São Paulo"
   h1: "Intérpretes, aulas e NR-1 em São Paulo"
-  apoio: "A 9vee é de São Paulo. Na cidade, ela leva intérpretes aos eventos, dá aula de idioma dentro da empresa e treina equipes em saúde mental no trabalho."
+  apoio: "A 9vee é de São Paulo. Na cidade, ela leva intérpretes às reuniões e aos treinamentos das empresas, dá aula de idioma dentro delas e treina equipes em saúde mental no trabalho."
   cta: "Pedir orçamento"
   imagem:
     id: "IMG-CIDADE-SAO-PAULO"
@@ -26,7 +28,7 @@ hero:
 servicos:
   - id: "traducao"
     titulo: "Tradução simultânea com intérpretes da cidade"
-    texto: "Nos congressos, reuniões e visitas em São Paulo, os intérpretes moram na cidade. São 12 idiomas, de Libras ao cantonês, com a cabine e o equipamento de empresas parceiras. [CONFIRMAR COM A DANIELLA: que tipo de evento a 9vee mais faz em São Paulo (pergunta 47)]"
+    texto: "Em São Paulo, o trabalho mais comum é dentro das empresas: as reuniões periódicas de quem tem a sede no exterior, como a dos resultados do trimestre, e os treinamentos de software dados em inglês, como os de SAP. Os intérpretes moram na cidade. São 12 idiomas, de Libras ao cantonês, com o equipamento de empresas parceiras."
     link: { rotulo: "Como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     servico: { nome: "Tradução simultânea em São Paulo", tipo: "Interpretação simultânea, consecutiva e de acompanhamento" }
   - id: "idiomas"
@@ -45,7 +47,7 @@ servicos:
     servico: { nome: "Treinamento de NR-1 em São Paulo", tipo: "Treinamento corporativo" }
 
 ctaFinal:
-  titulo: "Tem um evento ou uma turma em São Paulo?"
+  titulo: "Tem uma reunião, um evento ou uma turma em São Paulo?"
   texto: "Conte o que você precisa. A proposta costuma sair no mesmo dia."
   rotulo: "Pedir orçamento"
 ---

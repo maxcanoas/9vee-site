@@ -5,6 +5,7 @@ import TextoPorPublico from './TextoPorPublico.astro';
 import EscolhaPublico from './EscolhaPublico.astro';
 import BotaoContato from './BotaoContato.astro';
 import CirculoMarca from './CirculoMarca.astro';
+import { AVISO_NOVA_ABA } from '../lib/texto';
 import type { TextosPorPublico } from '../lib/publico';
 import type { Imagem } from '../content.config';
 
@@ -17,9 +18,11 @@ interface Props {
   imagemFrente: Imagem;
   imagemFrenteVoce: Imagem;
   cta: TextosPorPublico;
+  /** O segundo botão, só para quem escolhe "Para você": a aula experimental, pelo WhatsApp. */
+  experimental: { rotulo: string; href: string };
 }
 
-const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, imagemFrenteVoce, cta } = Astro.props;
+const { h1, apoio, legendaPublico, opcoes, imagemFundo, imagemFrente, imagemFrenteVoce, cta, experimental } = Astro.props;
 // As duas pessoas da frente, a intérprete e quem estuda, saem do mesmo recorte.
 const retrato = {
   proporcao: '4/5' as const,
@@ -41,7 +44,18 @@ const retrato = {
       <h1 id="hero-titulo"><Texto de={h1} /></h1>
       <p class="hero__apoio"><TextoPorPublico textos={apoio} /></p>
       <EscolhaPublico legenda={legendaPublico} opcoes={opcoes} />
-      <BotaoContato textos={cta} class="hero__cta" />
+      <div class="hero__botoes">
+        <BotaoContato textos={cta} class="hero__cta" />
+        <a
+          class="botao botao--contorno hero__experimental"
+          href={experimental.href}
+          target="_blank"
+          rel="noopener"
+          data-whatsapp-experimental
+        >
+          <span>{experimental.rotulo}<span class="visualmente-oculto">{AVISO_NOVA_ABA}</span></span>
+        </a>
+      </div>
     </div>
 
     <div class="hero__visual">
@@ -139,6 +153,28 @@ const retrato = {
     inset-block-start: 25%;
     inset-inline-start: 20%;
     inline-size: 60%;
+  }
+
+  .hero__botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+  }
+
+  /* A aula experimental só aparece para quem escolhe "Para você", pelo mesmo data-publico da troca da foto. Sem escolha
+     e para a empresa, o topo fica com um botão só. No fundo escuro, o texto e o contorno são claros, e o hover clareia
+     o fundo, em vez da névoa. */
+  .hero__experimental {
+    display: none;
+    color: var(--papel);
+  }
+
+  :global(:root[data-publico='voce']) .hero__experimental {
+    display: inline-flex;
+  }
+
+  .hero__experimental:hover {
+    background-color: color-mix(in oklab, var(--papel) 14%, transparent);
   }
 
   /* Quem escolhe "Para você" vê a aluna no lugar da intérprete. Sem escolha e para a empresa, fica a intérprete.

@@ -4,6 +4,7 @@
 idioma: "portugues"
 # Completa desde 05/10/2026, com as respostas do Arthur (Idiomas 2 e 3): todos os níveis, turma para quem começa do
 # zero, professor nativo que explica sempre em português (imersão), online e presencial na empresa, e o CELPE-Bras.
+# O presencial é só em São Paulo: no Rio não há (resposta 6 da segunda rodada v2, 09/10/2026).
 # O curso também atende o brasileiro que quer aprimorar o próprio idioma.
 publicada: true
 # Mostra o bloco de realocação de funcionários, com o texto que está em content/curso-de-idiomas.md.
@@ -57,7 +58,7 @@ destaque:
       texto: "Conteúdo atualizado e atividades práticas, num caminho claro do básico à fluência."
     - titulo: "Ritmo das aulas"
       texto: "O professor conduz o ritmo pelo nível, pelas necessidades e pelos objetivos de cada aluno. Vale para o estrangeiro e também para o brasileiro que quer aprimorar o domínio do próprio idioma."
-  nota: "As aulas são online, particulares ou em grupo, e também presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro."
+  nota: "As aulas são online, particulares ou em grupo, e também presenciais, dentro da empresa, em São Paulo."
 
 faq:
   titulo: "Perguntas sobre o português para estrangeiros"
@@ -65,11 +66,13 @@ faq:
     - pergunta: "Preciso saber algum português para começar?"
       resposta: "Não. Há turma para quem começa do zero. O professor fala sempre em português, pelo método de imersão, e o diagnóstico do começo mostra o seu ponto de partida."
     - pergunta: "A empresa pode contratar as aulas para um funcionário estrangeiro?"
-      resposta: "Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro, e podem incluir a preparação para o CELPE-Bras."
+      resposta: "Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo, e podem incluir a preparação para o CELPE-Bras."
     - pergunta: "Quanto tempo leva cada nível?"
       resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "Sim, um certificado da 9vee com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame."
+      resposta: "Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame."
+    - pergunta: "Dá para fazer uma aula experimental?"
+      resposta: "Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 

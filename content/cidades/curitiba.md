@@ -1,20 +1,21 @@
 ---
 # A página de tradução em Curitiba (ticket 11). Aqui só a tradução é presencial, com intérpretes da cidade (pergunta
 # 15, respondida em 05/10/2026). O NR-1 vai até a empresa em qualquer cidade (pergunta 9), e entra como um bloco que
-# leva à página dele. Fica fora do site até a 9vee dizer que tipo de evento mais faz aqui (pergunta 47).
+# leva à página dele. O tipo de trabalho mais comum na cidade, visitas a fábricas e empresas, veio em 09/10/2026
+# (resposta 17 da segunda rodada v2, a pergunta 47). Com ela, a página entrou no site.
 cidade: "Curitiba"
 naCidade: "em Curitiba"
 tipo: "traducao"
-publicada: false
+publicada: true
 
 seo:
   titulo: "Tradução simultânea em Curitiba | 9vee"
-  descricao: "Intérpretes que moram em Curitiba, em 12 idiomas, para congressos, reuniões e visitas, com cabine e equipamento de empresas parceiras. Peça o orçamento."
+  descricao: "Intérpretes que moram em Curitiba, em 12 idiomas, para visitas a fábricas e empresas, com o equipamento de empresas parceiras. Peça o orçamento."
 
 hero:
   rotulo: "Para quem organiza evento em Curitiba"
   h1: "Tradução simultânea em Curitiba"
-  apoio: "Intérpretes que moram em Curitiba, em cabine nos congressos e ao lado de executivos em reuniões e visitas. São 12 idiomas, de Libras ao cantonês."
+  apoio: "Intérpretes que moram em Curitiba, ao lado de executivos nas visitas a fábricas e empresas. São 12 idiomas, de Libras ao cantonês."
   cta: "Pedir orçamento de tradução"
   imagem:
     id: "IMG-CIDADE-CURITIBA"
@@ -25,8 +26,8 @@ hero:
 # lê para ele aqui.
 servicos:
   - id: "traducao"
-    titulo: "Eventos em Curitiba"
-    texto: "[CONFIRMAR COM A DANIELLA: que tipo de evento a 9vee mais faz em Curitiba (pergunta 47)] A 9vee também tem intérpretes que viajam até o evento."
+    titulo: "Visitas a fábricas e empresas"
+    texto: "Em Curitiba, o trabalho mais comum são as visitas a fábricas e a empresas, com intérpretes que moram na cidade. A 9vee também tem intérpretes que viajam até o evento."
     link: { rotulo: "Como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     servico: { nome: "Tradução simultânea em Curitiba", tipo: "Interpretação simultânea, consecutiva e de acompanhamento" }
   - id: "nr1"
@@ -36,7 +37,7 @@ servicos:
     servico: { nome: "Treinamento de NR-1 em Curitiba", tipo: "Treinamento corporativo" }
 
 ctaFinal:
-  titulo: "Tem um evento em Curitiba?"
+  titulo: "Tem uma visita ou um evento em Curitiba?"
   texto: "Conte a data, os idiomas e quantas pessoas vão. A proposta costuma sair no mesmo dia."
   rotulo: "Pedir orçamento de tradução"
 ---

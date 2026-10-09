@@ -11,13 +11,13 @@ contato:
   whatsapp: "5511934661917"
   whatsappExibicao: "(11) 93466-1917"
   email: "contato@9vee.com.br"
-  # O endereço do Perfil da Empresa no Google, igual a ele, no rodapé e no JSON-LD. Sem "venha nos visitar".
+  # A cidade do Perfil da Empresa no Google, no rodapé e no JSON-LD. O endereço do Perfil é a casa de uma funcionária,
+  # e ninguém é recebido lá (resposta 4 da segunda rodada v2): o site fica só com a cidade e o link do Perfil, e a rua
+  # continua no Perfil, que é o que ajuda na busca (escolha do Maxwell em 09/10/2026).
   endereco:
-    rua: "R. Dona Teresa Margarida, 66"
-    bairro: "Vila Clementino"
     cidade: "São Paulo"
     uf: "SP"
-    cep: "04037-040"
+  perfilGoogle: "https://share.google/2l0jYMdugOo5em3DR"
 
 cidades:
   - "São Paulo"
@@ -323,6 +323,7 @@ rodape:
   atendimento: "Aulas online para todo o Brasil. NR-1 e tradução simultânea presenciais em qualquer cidade, com intérpretes que moram em São Paulo, no Rio de Janeiro, em Curitiba e em Brasília."
   tituloContato: "Contato"
   rotuloWhatsapp: "WhatsApp"
+  rotuloPerfil: "A 9vee no Google"
   tituloRedes: "A 9vee nas redes"
   rotuloRede: "9vee no {rede}"
   rotuloNavegacao: "Rodapé"

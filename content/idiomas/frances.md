@@ -56,7 +56,9 @@ faq:
     - pergunta: "Quanto tempo leva cada nível?"
       resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "Sim, um certificado da 9vee com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame."
+      resposta: "Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame."
+    - pergunta: "Dá para fazer uma aula experimental?"
+      resposta: "Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 

@@ -46,9 +46,11 @@ faq:
     - pergunta: "Para quem é o curso de alemão?"
       resposta: "Para quem estuda por conta própria e para empresas que precisam do alemão na equipe. No pedido, você diz o objetivo, e a aula parte dele."
     - pergunta: "Preciso saber o meu nível para começar?"
-      resposta: "Não. O diagnóstico do começo mostra onde você está e de onde a aula começa."
+      resposta: "Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "Sim, um certificado da 9vee com as horas cursadas. O TestDaF e o telc têm certificado próprio, de quem aplica o exame."
+      resposta: "Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O TestDaF e o telc têm certificado próprio, de quem aplica o exame."
+    - pergunta: "Dá para fazer uma aula experimental?"
+      resposta: "Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você."
     - pergunta: "Quanto custa?"
       resposta: "Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 

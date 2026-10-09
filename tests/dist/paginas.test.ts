@@ -7,6 +7,7 @@ import { linksQuebrados } from '../../scripts/trava-producao.ts';
 import {
   DIST,
   DOMINIO,
+  ESCRITAS_PELO_SITE,
   INTERPRETACAO_DE_MANDARIM,
   PAGINAS_DE_TEXTO,
   carregarPaginas,
@@ -132,20 +133,24 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(organizacao?.legalName).toBe('CLOUD9 LEARNING LTDA');
   });
 
-  // O endereço é o do Perfil da Empresa no Google, escrito igual a ele, como o rodapé mostra.
-  it('dá à organização o endereço do Perfil no Google, e diz onde ela atende e como falar com ela', () => {
+  // A cidade do Perfil da Empresa no Google, como o rodapé mostra. A rua é a casa de uma funcionária e fica só no
+  // Perfil (resposta 4 da segunda rodada v2), que o rodapé e o JSON-LD ligam.
+  it('dá à organização a cidade e o link do Perfil no Google, e diz onde ela atende e como falar com ela', () => {
     const organizacao = jsonLd(raiz).find((no) => no['@type'] === 'EducationalOrganization');
     expect(organizacao?.address).toEqual({
       '@type': 'PostalAddress',
-      streetAddress: 'R. Dona Teresa Margarida, 66, Vila Clementino',
       addressLocality: 'São Paulo',
       addressRegion: 'SP',
-      postalCode: '04037-040',
       addressCountry: 'BR',
     });
     const rodape = raiz.querySelector('footer address')?.text.replace(/\s+/g, ' ');
     expect(rodape).toContain('Novee Learning Solutions');
-    expect(rodape).toContain('R. Dona Teresa Margarida, 66');
+    expect(rodape).toContain('São Paulo, SP');
+    expect(raiz.querySelector('footer')?.text).not.toContain('Teresa Margarida');
+    const perfil = raiz.querySelectorAll('footer a').find((a) => a.text.includes('A 9vee no Google'));
+    expect(perfil?.getAttribute('href')).toBe('https://share.google/2l0jYMdugOo5em3DR');
+    expect(perfil?.getAttribute('target')).toBe('_blank');
+    expect(organizacao?.sameAs).toContain('https://share.google/2l0jYMdugOo5em3DR');
     expect(organizacao?.areaServed).toContainEqual({ '@type': 'Country', name: 'Brasil' });
     expect(organizacao?.contactPoint).toMatchObject({ '@type': 'ContactPoint', email: expect.stringContaining('@') });
     expect(organizacao?.sameAs).toEqual(expect.arrayContaining([expect.stringMatching(/^https:\/\//)]));
@@ -208,11 +213,12 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
     expect(textoComoNoJsonLd(raiz.querySelector('nav.trilha [aria-current="page"]')!)).toBe(nome);
   });
 
-  it('leva às seis redes do site atual no rodapé, as mesmas do sameAs da organização', () => {
+  // O sameAs também liga o Perfil no Google, que o rodapé mostra no contato (resposta 4 da segunda rodada v2).
+  it('leva às seis redes do site atual no rodapé, as mesmas do sameAs da organização, com o Perfil no Google', () => {
     const doRodape = raiz.querySelectorAll('footer .rodape__icone').map((link) => link.getAttribute('href') ?? '');
     const organizacao = jsonLd(raiz).find((no) => no['@type'] === 'EducationalOrganization');
     expect(doRodape.map((href) => new URL(href).hostname.replace(/^www\./, '')).sort()).toEqual(REDES);
-    expect(organizacao?.sameAs).toEqual(doRodape);
+    expect(organizacao?.sameAs).toEqual([...doRodape, 'https://share.google/2l0jYMdugOo5em3DR']);
   });
 
   it('fecha o rodapé com a frase do site atual, em caixa normal', () => {
@@ -235,7 +241,9 @@ describe.each(paginas)('página $rota', ({ arquivo, html, raiz, rota }) => {
   // para o que o site escreveu, as seções novas da mescla inclusive.
   it('não usa palavra proibida', () => {
     const pagina = parse(html);
-    for (const doCliente of pagina.querySelectorAll('.politica__secao:not(.politica__secao--nova)')) doCliente.remove();
+    for (const secao of pagina.querySelectorAll('.politica__secao')) {
+      if (!ESCRITAS_PELO_SITE.includes(secao.getAttribute('id') ?? '')) secao.remove();
+    }
     const copy = [textoVisivel(pagina), ...textosDeAtributo(pagina)].join(' \n ');
     for (const [palavra, padrao] of PROIBIDAS) {
       expect(copy, `"${palavra}" encontrada em ${rota}`).not.toMatch(padrao);

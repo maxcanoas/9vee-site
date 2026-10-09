@@ -41,10 +41,14 @@ describe('LMS', () => {
     expect(texto('#plataforma')).toMatch(/acompanhamento dos professores é contínuo/i);
   });
 
-  // O site atual só dá o nome dos três relatórios. O que cada um mostra continua na pergunta 21: a página não explica.
-  it('mostra os três relatórios que gestores e RH recebem, só com o nome de cada um', () => {
+  // Os nomes dos três relatórios são os do site atual. O que cada um mostra veio da resposta 20 da segunda rodada v2.
+  it('mostra os três relatórios que gestores e RH recebem, e o que cada um mostra', () => {
     expect(textos('#relatorios h3')).toEqual(['Desempenho', 'Frequência', 'Progresso']);
-    expect(lms.querySelectorAll('#relatorios li p')).toEqual([]);
+    expect(textos('#relatorios li p')).toEqual([
+      'O resultado dos nivelamentos de cada aluno.',
+      'A data de cada acesso e quanto tempo durou a sessão.',
+      'O que cada aluno aprendeu e que metas cumpriu.',
+    ]);
     expect(texto('#relatorios')).toMatch(/gestores/);
     expect(texto('#relatorios')).toMatch(/RH/);
     expect(texto('#relatorios')).toContain('mais estratégico e mensurável');

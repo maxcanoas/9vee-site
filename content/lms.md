@@ -35,7 +35,7 @@ oQueE:
   titulo: "O que é o LMS"
   paragrafos:
     - "LMS é a sigla de Learning Management System, o sistema de gestão de aprendizagem. É uma plataforma digital para a empresa organizar, acompanhar e melhorar o treinamento da equipe."
-    - "No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele."
+    - "No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele. Além dos cursos de idiomas, a plataforma recebe os treinamentos internos da empresa e a integração de novos colaboradores."
     - "O modelo virou padrão no desenvolvimento profissional porque junta horário flexível, acompanhamento pedagógico e eficiência no treinamento das equipes."
   imagem:
     id: "IMG-LMS-O-QUE-E"
@@ -56,15 +56,19 @@ plataforma:
     - titulo: "Uma trilha para cada pessoa"
       texto: "Com conteúdos interativos e trilhas de aprendizagem personalizadas, cada aluno avança de acordo com o nível e os objetivos profissionais dele."
 
-# O site atual só dá o nome dos três relatórios. O que cada um mostra, e as telas, continuam na pergunta 21 da
-# Daniella: por isso os itens não têm texto.
+# Os nomes dos três relatórios são os do site atual. O que cada um mostra veio da resposta 20 da segunda rodada v2
+# (09/10/2026): duração da sessão, data de acesso, o que o aluno aprendeu, as metas cumpridas e o resultado dos
+# nivelamentos. A plataforma é a LearnWorlds, mas a resposta não autoriza o nome nem as telas no site.
 relatorios:
   titulo: "O que o RH acompanha"
-  apoio: "A plataforma entrega relatórios detalhados, para os gestores e o RH acompanharem a evolução dos participantes."
+  apoio: "A plataforma entrega relatórios de uso, para os gestores e o RH acompanharem a evolução dos participantes."
   itens:
     - titulo: "Desempenho"
+      texto: "O resultado dos nivelamentos de cada aluno."
     - titulo: "Frequência"
+      texto: "A data de cada acesso e quanto tempo durou a sessão."
     - titulo: "Progresso"
+      texto: "O que cada aluno aprendeu e que metas cumpriu."
   nota: "Os relatórios facilitam a gestão do aprendizado e deixam o curso de inglês corporativo online mais estratégico e mensurável para o desenvolvimento da equipe. Valem também para os outros cursos de idiomas para empresas."
 
 chamada:

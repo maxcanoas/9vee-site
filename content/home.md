@@ -11,6 +11,12 @@ hero:
     empresa: "Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde mental no trabalho."
     voce: "Do inglês ao japonês, em aula online particular ou em grupo, com preparação para TOEFL, IELTS, DELE, DELF e CELPE-Bras."
   legendaPublico: "É para sua empresa ou para você?"
+  # O segundo botão do topo, só para quem escolhe "Para você": a aula experimental e o nivelamento são grátis e online,
+  # marcados pelo WhatsApp (resposta 11 da segunda rodada v2, 09/10/2026). O botão abre o WhatsApp com o pedido escrito,
+  # no modelo do botão flutuante (drawer.mensagens.flutuante, em content/site.md).
+  experimental:
+    rotulo: "Aula experimental grátis"
+    assunto: "quero agendar uma aula experimental grátis"
   opcoes:
     empresa: "Para sua empresa"
     voce: "Para você"

@@ -79,12 +79,22 @@ describe('treinamento de NR-1', () => {
     conferirServico(nr1, { nome: 'Treinamento de NR-1', caminho: '/treinamento-nr-1/' });
   });
 
-  // O formato, a carga horária e a turma foram respondidos em 05/10/2026 (perguntas 9 a 11). Seguem como pendência
-  // o plano de ação, o comprovante, a turma inteira e o regulamento da Lei 14.831, que ainda não foram à 9vee.
-  it('mostra as pendências que restam como etiqueta, e não como texto cru', () => {
+  // O formato, a carga horária e a turma foram respondidos em 05/10/2026 (perguntas 9 a 11), e o plano de ação, o
+  // comprovante e a turma inteira em 09/10/2026 (respostas 14 a 16 da segunda rodada v2). Segue como pendência só o
+  // regulamento da Lei 14.831, que é aviso: o Maxwell confere na semana do lançamento.
+  it('mostra a pendência que resta como etiqueta, e não como texto cru', () => {
     expect(nr1.querySelector('#formato mark.confirmar')).toBeNull();
-    expect(nr1.querySelectorAll('#o-que-recebe mark.confirmar')).toHaveLength(2);
-    expect(nr1.querySelectorAll('main mark.confirmar')).toHaveLength(4);
+    expect(nr1.querySelector('#o-que-recebe mark.confirmar')).toBeNull();
+    expect(nr1.querySelectorAll('main mark.confirmar')).toHaveLength(1);
+    expect(nr1.querySelector('main mark.confirmar')?.getAttribute('title')).toContain('Lei 14.831');
+  });
+
+  it('diz o que a empresa recebe: o roteiro de 90 dias do curso formativo e o certificado de participação', () => {
+    const recebe = nr1.querySelector('#o-que-recebe')?.text.replace(/\s+/g, ' ') ?? '';
+    for (const fato of ['roteiro de 90 dias', 'termômetro psicossocial aos 60', 'Certificado de participação', 'Quando a empresa pede']) {
+      expect(recebe, fato).toContain(fato);
+    }
+    expect(recebe).not.toContain('fiscalização');
   });
 
   it('descreve os dois treinamentos e o presencial em todo o Brasil', () => {

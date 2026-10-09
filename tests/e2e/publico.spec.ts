@@ -56,6 +56,24 @@ test.describe('escolha de público', () => {
     await expect(page.locator('.hero__apoio')).toContainText('intérpretes para eventos', { useInnerText: true });
   });
 
+  // A aula experimental grátis, marcada pelo WhatsApp (resposta 11 da segunda rodada v2): o segundo botão do topo, só
+  // para quem escolhe "Para você".
+  test('"Para você" mostra no topo o botão da aula experimental, que abre o WhatsApp com o pedido', async ({ page }) => {
+    await page.goto('/');
+    const experimental = page.locator('.hero__experimental');
+    await expect(experimental).toBeHidden();
+
+    await page.locator('.duas-metades__metade--voce').click();
+    await expect(experimental).toBeVisible();
+    await expect(experimental).toHaveAttribute('target', '_blank');
+    const mensagem = decodeURIComponent((await experimental.getAttribute('href')) ?? '');
+    expect(mensagem).toMatch(/^https:\/\/wa\.me\/5511934661917\?text=/);
+    expect(mensagem).toContain('Vim pela página inicial do site e quero agendar uma aula experimental grátis.');
+
+    await page.locator('.duas-metades__metade--empresa').click();
+    await expect(experimental).toBeHidden();
+  });
+
   test('"Para sua empresa" volta o CTA para o orçamento e mantém a ordem', async ({ page }) => {
     await page.goto('/');
     await page.locator('.duas-metades__metade--voce').click();

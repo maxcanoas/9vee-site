@@ -58,7 +58,7 @@ formatos:
     - id: "crianca"
       titulo: "Criança e adolescente"
       texto: "Inglês a partir de 9 anos. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press."
-  nota: "Aula presencial, só dentro de empresas, em São Paulo e no Rio de Janeiro. Veja as [turmas para empresas](#empresas)."
+  nota: "Aula presencial, dentro de empresas e faculdades, em São Paulo e no Rio de Janeiro. Veja as [turmas para empresas](#empresas)."
   cta: "Falar sobre as aulas"
 
 # Cada exame abre o texto completo do site atual: a linha curta fica à vista, e o detalhe, um parágrafo por item.
@@ -99,7 +99,7 @@ provas:
 
 equipe:
   titulo: "Para a sua equipe"
-  apoio: "Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 14 idiomas, para empresas de todo o Brasil. Inglês, espanhol e português para estrangeiros também têm aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro."
+  apoio: "Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 14 idiomas, para empresas de todo o Brasil. Inglês e espanhol também têm aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro, e o português para estrangeiros, em São Paulo."
   itens:
     - titulo: "Turma in company"
       texto: "O time estuda junto, na mesma turma e no mesmo nível, com material prático e aplicação imediata no trabalho."
@@ -121,11 +121,13 @@ realocacao:
     - "Documentação"
     - "Adaptação cultural"
 
-# O programa do flyer "Inglês Acessível", que continua (pergunta 26, respondida em 05/10/2026). O material só diz o
-# nome e o público: o bloco não diz mais do que isso.
+# O programa do flyer "Inglês Acessível", que continua (pergunta 26, respondida em 05/10/2026). A resposta 9 da segunda
+# rodada v2 (09/10/2026) diz o que ele é: aula presencial em grupo, de inglês e de espanhol, dentro da faculdade, para
+# centros acadêmicos universitários, com foco em São Paulo e no Rio. Os órgãos públicos do flyer não estão na resposta
+# e saíram do bloco.
 inglesAcessivel:
   titulo: "Inglês Acessível"
-  texto: "O programa de inglês da 9vee para faculdades e órgãos públicos. Conte no pedido quantas pessoas vão estudar."
+  texto: "Aulas presenciais em grupo, de inglês e de espanhol, dentro da faculdade. O programa é feito para centros acadêmicos universitários, com foco em São Paulo e no Rio de Janeiro. Conte no pedido quantas pessoas vão estudar."
   cta: "Pedir orçamento do programa"
 
 # A ponte para o LMS, que a página de cursos do site atual também faz.
@@ -141,7 +143,7 @@ como:
   apoio: "Três passos até a primeira aula. Depois dela, cada etapa do curso é planejada para o seu ritmo e os seus objetivos."
   etapas:
     - titulo: "Você diz o idioma e o objetivo"
-      texto: "Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção."
+      texto: "Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção. Se quiser conhecer antes, peça pelo WhatsApp uma aula experimental grátis."
     - titulo: "A 9vee manda a proposta"
       texto: "Costuma sair no mesmo dia. Se o pedido chega no fim do dia, ela sai no dia seguinte."
     - titulo: "A primeira aula acontece"
@@ -155,13 +157,15 @@ faq:
   titulo: "Perguntas de quem vai estudar"
   itens:
     - pergunta: "Não sei o meu nível. Tem problema?"
-      resposta: "Não. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele."
+      resposta: "Não. O nivelamento é grátis e online e mostra o seu ponto de partida. Nas primeiras aulas, a 9vee também faz um diagnóstico dos seus objetivos, e o plano do curso sai dele."
     - pergunta: "Quanto tempo leva para subir um nível?"
       resposta: "Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida e com quanto você pratica fora da aula."
     - pergunta: "Vocês atendem criança e adolescente?"
       resposta: "Sim, no inglês, a partir de 9 anos, com material da Cambridge. No pedido, diga a idade junto com o idioma."
     - pergunta: "No fim do curso eu recebo certificado?"
-      resposta: "Sim. No fim do curso, a 9vee emite um certificado com as horas cursadas. As provas de proficiência têm certificado próprio, emitido por quem aplica o exame."
+      resposta: "Sim. No fim do curso, é só pedir, e a 9vee emite um certificado com as horas cursadas. As provas de proficiência têm certificado próprio, emitido por quem aplica o exame."
+    - pergunta: "Dá para fazer uma aula experimental?"
+      resposta: "Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o idioma e o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você."
     - pergunta: "Quanto custa?"
       resposta: "Depende do idioma, do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia."
 

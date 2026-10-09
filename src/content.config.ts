@@ -76,14 +76,12 @@ const site = defineCollection({
       whatsapp: z.string().regex(/^55\d{10,11}$/),
       whatsappExibicao: z.string(),
       email: z.email(),
-      // O endereço do Perfil da Empresa no Google, escrito igual a ele.
+      // A cidade do Perfil da Empresa no Google, sem a rua, e o link do Perfil.
       endereco: z.object({
-        rua: z.string(),
-        bairro: z.string(),
         cidade: z.string(),
         uf: z.string().regex(/^[A-Z]{2}$/),
-        cep: z.string().regex(/^\d{5}-\d{3}$/),
       }),
+      perfilGoogle: z.url(),
     }),
     cidades: z.array(z.string()).min(1),
     familias: z.array(z.object({ id: z.string(), nome: z.string(), descricao: z.string() })).min(1),
@@ -264,6 +262,7 @@ const site = defineCollection({
       atendimento: z.string(),
       tituloContato: z.string(),
       rotuloWhatsapp: z.string(),
+      rotuloPerfil: z.string(),
       tituloRedes: z.string(),
       rotuloRede: z.string().includes('{rede}'),
       rotuloNavegacao: z.string(),
@@ -356,6 +355,8 @@ const home = defineCollection({
       apoio: porPublico,
       legendaPublico: z.string(),
       opcoes: z.object({ empresa: z.string(), voce: z.string() }),
+      // O botão da aula experimental, para quem escolhe "Para você": o rótulo e o pedido da mensagem do WhatsApp.
+      experimental: z.object({ rotulo: z.string(), assunto: z.string() }),
       imagemFundo: imagem,
       imagemFrente: imagem,
       // Quem escolhe "Para você" vê quem estuda no lugar da intérprete.
@@ -632,11 +633,11 @@ const lms = defineCollection({
       linhas: z.array(z.object({ grifo: z.string(), texto: z.string() })).min(1),
       ...sustentacaoDaMostra,
     }),
-    // Só o nome de cada relatório: o site atual não diz o que cada um mostra.
+    // O nome de cada relatório e o que ele mostra (resposta 20 da segunda rodada v2).
     relatorios: z.object({
       titulo: z.string(),
       apoio: z.string(),
-      itens: z.array(z.object({ titulo: z.string() })).min(2),
+      itens: z.array(z.object({ titulo: z.string(), texto: z.string() })).min(2),
       nota: z.string(),
     }),
     chamada: z.object({

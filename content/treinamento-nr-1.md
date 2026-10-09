@@ -43,9 +43,9 @@ entrega:
     - titulo: "Liderança que sabe conduzir a conversa"
       texto: "Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar terapeuta da equipe."
     - titulo: "Um plano de ação escrito pela sua equipe"
-      texto: "O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar [CONFIRMAR COM A DANIELLA: como a 9vee entrega o plano de ação no fim do treinamento]."
-    - titulo: "Registro da capacitação"
-      texto: "Numa fiscalização, a empresa precisa mostrar quem participou, quando e o conteúdo [CONFIRMAR COM A DANIELLA: que comprovante a empresa recebe no fim e se cada participante ganha certificado]."
+      texto: "O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar. No curso formativo, o plano vem com um roteiro de 90 dias: conversa de acompanhamento aos 30 dias, termômetro psicossocial aos 60 e, aos 90, os indicadores e o PGR."
+    - titulo: "Certificado de participação"
+      texto: "Quando a empresa pede, a 9vee emite um certificado de participação para cada pessoa da turma, com as horas cursadas. Vale para o workshop normativo e para o curso formativo."
   nota: "O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o SESMT. O treinamento cobre a capacitação e o plano de ação."
 
 # O objetivo e os seis temas do site atual, com a Comunicação Não Violenta.
@@ -126,7 +126,7 @@ faq:
     - pergunta: "O treinamento deixa a empresa em dia com a NR-1?"
       resposta: "Não sozinho. Ele cobre a capacitação sobre riscos psicossociais e termina com um plano de ação. A avaliação dos riscos e o PGR continuam com a empresa e o SESMT."
     - pergunta: "Quem precisa participar?"
-      resposta: "RH, SESMT e quem responde por equipe. O módulo 2 é escrito para quem chefia [CONFIRMAR COM A DANIELLA: se a 9vee também faz turma com a equipe inteira, e não só com a liderança]."
+      resposta: "Qualquer pessoa da empresa: os dois treinamentos servem para a equipe inteira, do RH e do SESMT a quem executa. O curso formativo costuma ser o escolhido para a liderança, porque trabalha temas como o feedback construtivo, e o módulo 2 é escrito para quem chefia."
     - pergunta: "Vocês já fizeram esse treinamento em alguma empresa?"
       resposta: "Sim. O Sicredi fez com a 9vee um programa de capacitação para gerentes de agência, em dois workshops."
     - pergunta: "Já temos um programa de saúde mental. O treinamento serve?"

@@ -1,20 +1,22 @@
 ---
 # A página de tradução em Brasília (ticket 11). Aqui só a tradução é presencial, com intérpretes da cidade (pergunta
 # 15, respondida em 05/10/2026). O NR-1 vai até a empresa em qualquer cidade (pergunta 9), e entra como um bloco que
-# leva à página dele. Fica fora do site até a 9vee dizer que tipo de evento mais faz aqui (pergunta 47).
+# leva à página dele. O tipo de trabalho mais comum na cidade, eventos internacionais e diplomáticos, visitas
+# institucionais e turismo, veio em 09/10/2026 (resposta 17 da segunda rodada v2, a pergunta 47). Com ela, a página
+# entrou no site.
 cidade: "Brasília"
 naCidade: "em Brasília"
 tipo: "traducao"
-publicada: false
+publicada: true
 
 seo:
   titulo: "Tradução simultânea em Brasília | 9vee"
-  descricao: "Intérpretes que moram em Brasília, em 12 idiomas, para congressos, reuniões e visitas, com cabine e equipamento de empresas parceiras. Peça o orçamento."
+  descricao: "Intérpretes que moram em Brasília, em 12 idiomas, para eventos internacionais e diplomáticos, visitas institucionais e turismo. Peça o orçamento."
 
 hero:
   rotulo: "Para quem organiza evento em Brasília"
   h1: "Tradução simultânea em Brasília"
-  apoio: "Intérpretes que moram em Brasília, em cabine nos congressos e ao lado de executivos em reuniões e visitas. São 12 idiomas, de Libras ao cantonês."
+  apoio: "Intérpretes que moram em Brasília, para eventos internacionais e diplomáticos, visitas institucionais e turismo. São 12 idiomas, de Libras ao cantonês."
   cta: "Pedir orçamento de tradução"
   imagem:
     id: "IMG-CIDADE-BRASILIA"
@@ -25,8 +27,8 @@ hero:
 # lê para ele aqui.
 servicos:
   - id: "traducao"
-    titulo: "Eventos em Brasília"
-    texto: "[CONFIRMAR COM A DANIELLA: que tipo de evento a 9vee mais faz em Brasília (pergunta 47)] A 9vee também tem intérpretes que viajam até o evento."
+    titulo: "Eventos internacionais e visitas institucionais"
+    texto: "Em Brasília, o trabalho mais comum são os eventos internacionais e diplomáticos, as visitas institucionais e o turismo, com intérpretes que moram na cidade. A 9vee também tem intérpretes que viajam até o evento."
     link: { rotulo: "Como funciona a tradução simultânea", href: "/traducao-simultanea/" }
     servico: { nome: "Tradução simultânea em Brasília", tipo: "Interpretação simultânea, consecutiva e de acompanhamento" }
   - id: "nr1"

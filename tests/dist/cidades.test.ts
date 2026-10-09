@@ -4,11 +4,12 @@ import {
   conferirFiguraEmArco,
   jsonLd,
   paginasDeCidadeNoConteudo,
+  textoDe,
   textosDe,
 } from './apoio';
 
 // As páginas de cidade (ticket 11): a de São Paulo e a do Rio na raiz, com os três serviços presenciais, e as de
-// Curitiba e Brasília dentro da Tradução Simultânea. Ficam fora da produção até o tipo de evento de cada cidade.
+// Curitiba e Brasília dentro da Tradução Simultânea. Entraram no site em 09/10/2026, com o tipo de evento de cada cidade.
 const cidades = paginasDeCidadeNoConteudo();
 const servicosDe = (raiz: ReturnType<typeof abrirPagina>) => jsonLd(raiz).filter((no) => no['@type'] === 'Service');
 const PAGINA_DO_SERVICO: Record<string, string> = {
@@ -68,20 +69,29 @@ describe('páginas de cidade', () => {
     });
   });
 
-  it('leva das páginas de São Paulo e do Rio aos três idiomas com aula na empresa', () => {
-    for (const rota of ['/sao-paulo/', '/rio-de-janeiro/']) {
-      const links = abrirPagina(rota)
-        .querySelectorAll('#idiomas .chamada__ponto a')
-        .map((link) => link.getAttribute('href'));
-      expect(links).toEqual([
-        '/curso-de-idiomas/ingles/',
-        '/curso-de-idiomas/espanhol/',
-        '/curso-de-idiomas/portugues-para-estrangeiros/',
-      ]);
-    }
+  // O português para estrangeiros tem aula na empresa só em São Paulo (resposta 6 da segunda rodada v2).
+  it.each([
+    ['/sao-paulo/', ['/curso-de-idiomas/ingles/', '/curso-de-idiomas/espanhol/', '/curso-de-idiomas/portugues-para-estrangeiros/']],
+    ['/rio-de-janeiro/', ['/curso-de-idiomas/ingles/', '/curso-de-idiomas/espanhol/']],
+  ])('leva da página de %s aos idiomas com aula na empresa na cidade', (rota, idiomas) => {
+    const links = abrirPagina(rota)
+      .querySelectorAll('#idiomas .chamada__ponto a')
+      .map((link) => link.getAttribute('href'));
+    expect(links).toEqual(idiomas);
   });
 
-  // Enquanto nenhuma está publicada, a Tradução e os idiomas só citam as cidades, sem link.
+  // O tipo de trabalho mais comum em cada cidade (resposta 17 da segunda rodada v2, a pergunta 47).
+  it.each([
+    ['/sao-paulo/', 'resultados do trimestre'],
+    ['/rio-de-janeiro/', 'tours'],
+    ['/traducao-simultanea/curitiba/', 'visitas a fábricas'],
+    ['/traducao-simultanea/brasilia/', 'eventos internacionais e diplomáticos'],
+  ])('diz na página de %s o trabalho mais comum na cidade', (rota, trabalho) => {
+    expect(textoDe(abrirPagina(rota), '#traducao')).toContain(trabalho);
+  });
+
+  // A Tradução, Cursos e os idiomas citam as cidades com link só para a publicada. Desde 09/10/2026 as quatro estão
+  // publicadas, e a Tradução leva a todas.
   it('só leva da Tradução, de Cursos e dos idiomas à cidade publicada', () => {
     const rotas = cidades.map(({ rota }) => rota);
     const publicadas = cidades.filter(({ publicada }) => publicada).map(({ rota }) => rota);
@@ -91,6 +101,7 @@ describe('páginas de cidade', () => {
         .map((link) => link.getAttribute('href') ?? '')
         .filter((href) => rotas.includes(href));
       for (const href of links) expect(publicadas).toContain(href);
+      if (origem === 'traducao-simultanea') expect(new Set(links)).toEqual(new Set(publicadas));
     }
   });
 });
