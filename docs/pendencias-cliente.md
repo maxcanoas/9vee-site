@@ -430,3 +430,35 @@ A Daniella mandou ao Maxwell três depoimentos, num arquivo de texto: dois do El
 No site: os seis depoimentos ficam em `content/site.md` (`depoimentos`), num lugar só. A home mostra todos, e a página de um idioma mostra os que citam aquele idioma. Cada fala aparece num trecho, com "(...)" onde foi cortada. Os três novos vão sem logo.
 
 Perguntas que foram na nota da 18ª leva: a autorização por escrito da fala, do nome e do logo; o sobrenome do Fabrício; e o serviço do depoimento do Elian sobre a parceria, que o cartão chama de "Cursos de idiomas".
+
+## A terceira rodada (09/10/2026)
+
+Montada em 09/10/2026, à noite, com tudo o que ainda falta pedir à 9vee: as perguntas que já estavam nas notas das levas 16 e 18, o que a 9vee prometeu mandar e os acessos que saíram do Word em 08/10. O arquivo é o `docs/Perguntas-9vee-terceira-rodada.docx`, no mesmo desenho do Word v2, com as perguntas de 1 a 13 (o Word v2 que foi usou de 1 a 20, por isso o documento avisa que a numeração vale só para ele). O Maxwell escolheu o Word, sem prazo de resposta.
+
+Vão juntos o Word, os quatro lotes de `docs/revisao-daniella/` e as notas das levas 16 a 19 (`docs/novidades-preview.md`, sem as notas para o Maxwell). Antes de mandar, o Maxwell pede a chave de produção na Web3Forms com o contato@9vee.com.br, para o e-mail com a chave já estar na caixa da 9vee quando eles lerem a pergunta 3.
+
+### A mensagem que acompanha o Word
+
+Daniella e Arthur, tudo bem?
+
+O preview está atualizado com as respostas de vocês e os depoimentos novos: https://9vee-preview.9vee-site.workers.dev
+
+Vão em anexo o Word da terceira rodada, com o que falta para o site ir ao ar, e os quatro arquivos com os textos do site, para a revisão da Daniella. As novidades vão logo abaixo.
+
+### De onde vem cada pergunta
+
+| Enviada | Assunto | Origem | Sem resposta |
+|---|---|---|---|
+| 1 | Acesso ao cPanel da HostGator | Nunca pedido (`docs/pendencias-decisao.md`, grupo 3) | O site fica pronto, mas não vai ao ar |
+| 2 | Search Console, permissão "Completo" | 53 (o GA4 chegou em 09/10) | O sitemap e as remoções esperam o acesso, depois do lançamento |
+| 3 | O e-mail da Web3Forms com a chave de produção | Ticket 20 e `docs/checklist-lancamento.md` | A trava barra o build de produção |
+| 4 | Aprovação dos quatro lotes e do preview | `docs/checklist-lancamento.md`, "Acessos e respostas" | O site não vai ao ar |
+| 5 | Autorização do Elian, do Fabrício, da PVH e da Embraer NL | Nota da 18ª leva | Fica como está (`docs/pendencias-decisao.md`, grupo 2) |
+| 6 | Sobrenome do Fabrício | Nota da 18ª leva | Só o primeiro nome |
+| 7 | Serviço do depoimento do Elian sobre a parceria | Nota da 18ª leva | "Cursos de idiomas" |
+| 8 | Depoimentos de aluno | 41 (resposta 12 do Word v2) | Fica sem |
+| 9 | Cidade da aula presencial de cantonês | Nota da 16ª leva | A página pede a cidade no pedido |
+| 10 | Órgãos públicos no Inglês Acessível | Nota da 16ª leva (o flyer) | Ficam fora |
+| 11 | A frase das crianças na política | Nota da 16ª leva | Fica como está |
+| 12 | Quem mexeu na zona DNS em 29/09 | 55 | Exportar a zona inteira antes de mexer |
+| 13 | GitHub em nome da 9vee | 54 | O Maxwell cria a organização e passa a propriedade depois |

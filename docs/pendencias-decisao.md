@@ -6,6 +6,8 @@ Montado em 07/10/2026 (ticket 17), com o site como está no preview da 14ª publ
 
 **Atualizado em 09/10/2026:** a 9vee respondeu as 20 perguntas do Word v2. O Word que foi numerou as perguntas de 1 a 20; o mapa para a numeração de 27 a 55 está em `docs/pendencias-cliente.md`, em "As respostas da segunda rodada v2". Todas foram para "Respondidas", no fim. Sobraram o aviso da Lei 14.831, os acessos e quatro pontos pequenos que as respostas abriram. Nenhum deles tem marca no site.
 
+**Atualizado em 09/10/2026, à noite:** tudo o que ainda falta pedir (os grupos 2 e 3, menos a Graded e a nota do Google, que ficam fora sem pergunta) foi para o Word da terceira rodada, `docs/Perguntas-9vee-terceira-rodada.docx`, com as perguntas de 1 a 13. O mapa está em `docs/pendencias-cliente.md`, em "A terceira rodada". As sugestões daqui continuam valendo para o que não for respondido.
+
 **Aprovado pelo Maxwell em 07/10/2026:** na semana 8, o que a 9vee não tiver respondido é aplicado como está aqui, sem nova rodada de perguntas. O que ela responder vale sobre a sugestão.
 
 Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier e por quê. Nenhuma sugestão inventa fato: quando falta a resposta, o trecho sai ou fica só com o que a 9vee já confirmou.
