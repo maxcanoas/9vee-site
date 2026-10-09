@@ -2,52 +2,17 @@
 
 Montado em 07/10/2026 (ticket 17), com o site como está no preview da 14ª publicação. É a lista para a decisão caso a caso que a spec e o cronograma marcam para a semana 8 (16/11 a 22/11): o que a 9vee não responder até lá é decidido pelo Maxwell, e aplicado no ticket 20. A numeração é a do Word da segunda rodada (`docs/Perguntas-9vee-segunda-rodada.docx`, perguntas 27 a 55). O texto completo de cada pergunta está em `docs/pendencias-cliente.md`.
 
-**Atualizado em 08/10/2026:** a 9vee respondeu a 30, a 31 e a 32, e o Maxwell tirou do Word a 43 e as de 51 a 55. O Word novo é o `docs/Perguntas-9vee-segunda-rodada-v2.docx`, com os mesmos números. A 30 foi para "Respondidas", no fim; nas outras, a resposta ou a saída do Word está marcada no próprio item.
+**Atualizado em 08/10/2026:** a 9vee respondeu a 30, a 31 e a 32, e o Maxwell tirou do Word a 43 e as de 51 a 55. O Word novo é o `docs/Perguntas-9vee-segunda-rodada-v2.docx`, com os mesmos números.
+
+**Atualizado em 09/10/2026:** a 9vee respondeu as 20 perguntas do Word v2. O Word que foi numerou as perguntas de 1 a 20; o mapa para a numeração de 27 a 55 está em `docs/pendencias-cliente.md`, em "As respostas da segunda rodada v2". Todas foram para "Respondidas", no fim. Sobraram o aviso da Lei 14.831, os acessos e quatro pontos pequenos que as respostas abriram. Nenhum deles tem marca no site.
 
 **Aprovado pelo Maxwell em 07/10/2026:** na semana 8, o que a 9vee não tiver respondido é aplicado como está aqui, sem nova rodada de perguntas. O que ela responder vale sobre a sugestão.
 
 Cada item diz o que o site mostra hoje, o que eu sugiro se a resposta não vier e por quê. Nenhuma sugestão inventa fato: quando falta a resposta, o trecho sai ou fica só com o que a 9vee já confirmou.
 
-## 1. Travam a produção
+## 1. Trava a produção
 
-Estas têm marca de pendência em `content/`, e a trava de produção não deixa o build passar com elas. Precisam de resposta ou de decisão.
-
-### 27. Aprovação da política de privacidade e a data da versão
-
-- **Hoje:** a política é o texto do Wix mesclado com o que a nova trazia, com as marcas para a 9vee ver: os trechos que entram (fundo menta), os que saem (riscados) e a etiqueta "Novo" nas seções inteiras. A data da versão espera a aprovação.
-- **Sugestão, sem resposta:** publicar a versão mesclada sem as marcas (fica o que entra, sai o que sai), datada do dia do lançamento, e mandar o texto final à 9vee por e-mail antes de subir.
-- **Por quê:** a política do Wix não fala do formulário novo, do aviso de cookies nem do Google Analytics só com o aceite. Publicar a antiga faria o site tratar dados que a política não descreve. A mesclada descreve o que o site faz.
-- **Atenção:** a spec pedia a revisão de um advogado da 9vee. A resposta 20 foi "a mesma", e a revisão não aconteceu. Vale registrar no e-mail que a 9vee recebeu o texto final.
-
-### 28. Dados de crianças na política
-
-- **Hoje:** a política diz que a 9vee não trata dados de crianças, e o curso de inglês atende a partir de 9 anos.
-- **Sugestão, sem resposta:** trocar a frase por uma que fale só do site: "O site não pede dados de crianças. Quem pede aula para uma criança é o pai, a mãe ou o responsável, e o pedido leva só os dados dele."
-- **Por quê:** a frase de hoje contradiz o próprio site, e a nova é verdade para o formulário (ele não pergunta nada da criança). O que a 9vee faz com os dados do aluno criança nas aulas fica fora do site e é assunto dela, com o advogado.
-
-### 29. Foro de Arapoti (PR)
-
-- **Hoje:** a cláusula elege o foro de Arapoti, como a política que a 9vee publica hoje.
-- **Sugestão, sem resposta:** fica como está.
-- **Por quê:** é o texto que a 9vee já publica, e trocar o foro é decisão jurídica dela. A mescla partiu do texto do Wix justamente para não mudar o que não foi pedido.
-
-### 44. O plano de ação no fim do NR-1
-
-- **Hoje:** "O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar", com a marca sobre como a 9vee entrega o plano.
-- **Sugestão, sem resposta:** tirar só a marca. A frase fica.
-- **Por quê:** o plano de ação no fim do último módulo vem do site atual. A pergunta pedia o detalhe (o roteiro de 90 dias do Sicredi), que fica fora sem a resposta.
-
-### 45. O comprovante do NR-1
-
-- **Hoje:** o item "Registro da capacitação" diz que, numa fiscalização, a empresa precisa mostrar quem participou, quando e o conteúdo, e a marca pergunta que comprovante a 9vee entrega.
-- **Sugestão, sem resposta:** o item sai do bloco "O que a sua empresa recebe", que fica com dois itens.
-- **Por quê:** o item promete, pelo lugar onde está, que a empresa recebe um registro. Sem saber o que a 9vee entrega, a promessa é inventada.
-
-### 46. Turma com a equipe inteira no NR-1
-
-- **Hoje:** o FAQ "Quem precisa participar?" responde "RH, SESMT e quem responde por equipe. O módulo 2 é escrito para quem chefia", com a marca sobre a turma com a equipe inteira.
-- **Sugestão, sem resposta:** tirar só a marca. A resposta fica como está.
-- **Por quê:** a resposta já é verdade sem o detalhe, e não promete a turma com todos.
+Com as respostas de 09/10, a trava de produção só acusa esta marca, além da chave do formulário e do ID do GA4, que são do ticket 20.
 
 ### Lei 14.831 (aviso, sem pergunta)
 
@@ -55,47 +20,20 @@ Estas têm marca de pendência em `content/`, e a trava de produção não deixa
 - **Sugestão:** na semana do lançamento, eu confiro no Diário Oficial. Se continuar sem regulamento, a frase fica e a marca sai. Se sair, a frase diz como pedir, com a fonte.
 - **Por quê:** é afirmação com data, que pode envelhecer entre hoje e o lançamento.
 
-## 2. Seguram uma página fora do site, sem travar o lançamento
+## 2. Abertas pelas respostas de 09/10, sem marca no site
 
-As páginas com estas marcas estão no preview e ficam fora do site definitivo. O site vai ao ar sem elas, e elas entram depois, quando a resposta chegar.
+O site já tem uma posição que não depende da resposta. A resposta só melhora o texto.
 
-### 47. O tipo de evento em cada cidade
-
-- **Hoje:** as quatro páginas de cidade (São Paulo, Rio de Janeiro, Curitiba e Brasília) estão prontas, com foto, e fora da produção.
-- **Sugestão, sem resposta:** o site vai ao ar sem elas. Os posts de tradução das cidades vão para a Tradução Simultânea, como o mapa já faz. Quando a resposta chegar, publicar é rápido: tirar a marca, marcar como publicada, gerar o build e o mapa de novo.
-- **Por quê:** sem o tipo de evento, as quatro diriam a mesma coisa com o nome da cidade trocado, e o Google trata página assim como cópia (a decisão de 07/10).
-
-### 34. A linha do cantonês
-
-- **Hoje:** a página do cantonês é um esqueleto, com a foto e as cinco perguntas, fora da produção. O cantonês aparece na grade de Cursos sem link para página própria.
-- **Sugestão, sem resposta:** o site vai ao ar sem a página, e ela entra quando o Arthur mandar a linha da tabela.
-- **Por quê:** sem níveis, formatos e provas, a página não tem o que dizer.
-
-## 3. Sem marca no site: o texto de hoje já vale sem a resposta
-
-Estas não travam nada. O site já tem uma posição que não depende da resposta, e a resposta só melhora o texto.
-
-| Pergunta | O site hoje | Sugestão, sem resposta |
+| Assunto | O site hoje | Sugestão, sem resposta |
 |---|---|---|
-| 31. Logos dos seis clientes liberados | Só os nomes, sem logo | **Respondida em 08/10:** as seis autorizaram o nome, e nenhuma o logo. Fica assim |
-| 32. "16 anos de experiência" | "Anos de experiência", e não "de empresa" | **Respondida em 08/10:** "Sim, está ótimo". Fica assim |
-| 33. Perfil no Google (visitas, link e nota) | O endereço no rodapé, sem convite para visita, sem link e sem nota | Fica assim. O link e a nota entram se vierem |
-| 35. Aula na empresa no Rio e em outros idiomas | São Paulo e Rio para inglês, espanhol e português | Fica assim. É a resposta Idiomas 3 |
-| 36. A prova do árabe ("AAPT") | Diz que há preparação, sem o nome da prova | Fica assim |
-| 37. O Bergenstesten no norueguês | Cita só o Norskprøven, a prova que vale hoje | Fica assim |
-| 38. O que é o Inglês Acessível | Um bloco em Cursos, só com o nome e o público | Fica assim. A 9vee confirmou que o programa continua (resposta 26) |
-| 39. Realocação de funcionários | Em Cursos e no português, com o texto do site atual | Fica assim. O site atual publica o serviço |
-| 40. Aula experimental ou teste de nível | Nada | Fica sem. O site não promete o que a 9vee não confirmou |
-| 41. Depoimento de aluno e avaliações no Google | Nada | Fica sem |
-| 42. Professores com foto e fotos de aula | As fotos do site são geradas, sem rosto de professor real | Fica assim |
-| 43. Vídeo de aula e os 14 áudios das saudações | Nada | **Saiu do Word em 08/10.** Fica sem |
-| 48. O texto da interpretação de mandarim | A página reescreve a landing do site atual | Fica assim. O site atual publica a landing |
-| 49. As versões em inglês e em chinês da landing | Os três endereços levam à página nova, em português | Fica assim, como a proposta prevê |
-| 50. LMS (EdApp, os três relatórios, o que a plataforma recebe) | A página com o que o site atual diz, sem a EdApp e sem telas | Fica assim |
-| 51. Parar de publicar no blog do Wix | O mapa cobre os 505 posts copiados em 06/10 | **Saiu do Word em 08/10.** Na semana do lançamento, copiar os posts novos e gerar o mapa de novo, haja resposta ou não |
-| 52. Linguae e Lenguae | Nada | **Saiu do Word em 08/10.** Fica sem. Não muda o site |
+| Cidade da aula presencial do cantonês (a linha diz "Online e Presencial", sem cidade) | "Também há aula presencial: conte no pedido a sua cidade." | Fica assim. A pergunta vai na nota da 16ª leva |
+| A frase das crianças na política, escrita com a resposta 2 | "O curso de inglês também atende crianças, a partir de 9 anos. Quando o aluno é menor de idade, quem contrata o curso e assina o contrato é o pai, a mãe ou o responsável legal, ou a escola..." | Fica assim. A frase vai na nota da leva, para a 9vee ver. Se ela pedir mudança, a data da versão muda junto |
+| 41. Depoimento de aluno | Nada | A 9vee vai mandar o material direto ao Maxwell. Sem ele, fica sem |
+| O programa na Graded, citado na resposta 2 | Não aparece | Fica fora. A resposta não diz se foi curso para os alunos ou treinamento da equipe da escola, e o nome não tem autorização |
+| A nota do Google (parte da 33) | O link do Perfil no rodapé, sem nota | Fica sem a nota |
+| Os órgãos públicos do Inglês Acessível (estavam no flyer) | Saíram do bloco, que segue a resposta 9: centros acadêmicos universitários | Ficam fora. Voltam se a 9vee disser que o programa também os atende |
 
-## 4. Acessos: sem eles, o site não vai ao ar
+## 3. Acessos: sem eles, o site não vai ao ar
 
 Estas não mudam texto, mas o lançamento depende delas.
 
@@ -125,3 +63,35 @@ Estas não mudam texto, mas o lançamento depende delas.
 
 - **Resposta:** "Sim". A 9vee tem a autorização por escrito de Eduardo Martins, Bruno Teixeira e Pedro Cavalcante para a fala e da Nissan, da General Motors e da Embraer para o logo, e as falas são deles, como estão no site.
 - **No site:** as três marcas saíram da home. A seção fica com fala, nome, cargo e logo, e não trava mais a produção.
+
+### 31 e 32 (respondidas em 08/10/2026)
+
+- **31:** as seis empresas autorizaram o nome, e nenhuma o logo. O site cita só os nomes.
+- **32:** "16 anos de experiência" aprovado. A home fica como está.
+
+### As respostas de 09/10/2026 (Word v2)
+
+O detalhe de cada uma, com o número do Word que foi, está em `docs/pendencias-cliente.md`.
+
+| Pergunta | Resposta | No site |
+|---|---|---|
+| 27. Política | Aprovada no formato da mescla | As marcas, a legenda e a etiqueta "Novo" saíram. Versão de 9 de outubro de 2026 |
+| 28. Crianças | Quem assina o contrato é o pai ou o responsável; também há aulas dentro de escolas | A frase nova, que fala só do que a resposta diz (escolha do Maxwell) |
+| 29. Foro | Fica Arapoti, o endereço fiscal | A marca saiu |
+| 33. Perfil no Google | O endereço é a casa de uma funcionária, mantido pela busca em São Paulo; o link é `share.google/2l0jYMdugOo5em3DR` | Rodapé e JSON-LD com a cidade, sem a rua, e o link do Perfil (escolha do Maxwell) |
+| 34. Cantonês | Todos os níveis, online e presencial, professor nativo, o COPE; executivos, importação e visitas a fábricas | Página escrita e publicada |
+| 35. Aula na empresa | No Rio não há português presencial | O português presencial ficou só em São Paulo, em Cursos, no português e no Rio |
+| 36. Árabe | É o APT | A página prepara para o APT, da Avant Assessment |
+| 37. Norueguês | Incluir a prova de cidadania | A statsborgerprøven entrou nas provas |
+| 38. Inglês Acessível | Aula presencial em grupo, de inglês e espanhol, dentro de faculdades, para centros acadêmicos, com foco em SP e RJ | O bloco diz isso |
+| 39. Realocação | Continua | Nada a mudar |
+| 40. Aula experimental | Nivelamento e aula experimental grátis, online, marcados pelo WhatsApp | Botão "Aula experimental grátis" no topo da home para quem escolhe "Para você" e uma pergunta nova no FAQ de Cursos e dos 14 idiomas (escolha do Maxwell) |
+| 41. Depoimento de aluno | Vão mandar ao Maxwell | Aberta, no grupo 2 |
+| 42. Fotos | As fotos geradas ficam | Nada a mudar |
+| 44. Plano de ação | O roteiro de 90 dias é do curso formativo, e pode ir ao site | O NR-1 descreve o roteiro |
+| 45. Comprovante | Certificado simples de participação e horas, quando pedem, em todos os cursos e workshops | "Certificado de participação" no NR-1, e "é só pedir" no certificado dos cursos |
+| 46. Para quem | Os dois servem a qualquer pessoa; o formativo costuma ir para a liderança | O FAQ "Quem precisa participar?" diz isso |
+| 47. Cidades | SP: dentro de empresas, reuniões periódicas e treinamentos de software em inglês. RJ: tours e visitas a empresas. Curitiba: visitas a fábricas e empresas. Brasília: eventos internacionais e diplomáticos, visitas institucionais e turismo | As quatro páginas publicadas, e o mapa de redirecionamentos leva os 14 posts de tradução por cidade a elas |
+| 48. Mandarim | Continua valendo | Nada a mudar |
+| 49. Versões em inglês e chinês | Só trouxeram cliente nas primeiras semanas | Ficam como a proposta prevê: os três endereços levam à página nova |
+| 50. LMS | A plataforma é a LearnWorlds; sem professora embaixadora; o que cada relatório mostra; recebe idiomas, treinamentos internos e integração | Os relatórios com texto e a plataforma com os treinamentos internos. O nome da LearnWorlds e as telas ficam fora, porque a resposta não autoriza |

@@ -1,6 +1,6 @@
 # Lote 3: páginas de idioma
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 09/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Inglês
 
@@ -119,7 +119,11 @@ Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida 
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O TOEFL, o IELTS e o TOEIC têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O TOEFL, o IELTS e o TOEIC têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -208,7 +212,11 @@ Para quem estuda por conta própria, online e ao vivo, de qualquer cidade. Para 
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O DELE, o SIELE e o CELU têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O DELE, o SIELE e o CELU têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -313,7 +321,11 @@ Preparam. O HSK é a prova oficial de proficiência em mandarim do governo chin�
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O HSK tem certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O HSK tem certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -394,7 +406,11 @@ O Inburgering é o exame de integração de quem vai morar no país. O NT2 compr
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O Inburgering e o NT2 têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O Inburgering e o NT2 têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -483,7 +499,11 @@ Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida 
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. As provas de francês têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -568,7 +588,7 @@ Conteúdo atualizado e atividades práticas, num caminho claro do básico à flu
 
 O professor conduz o ritmo pelo nível, pelas necessidades e pelos objetivos de cada aluno. Vale para o estrangeiro e também para o brasileiro que quer aprimorar o domínio do próprio idioma.
 
-As aulas são online, particulares ou em grupo, e também presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro.
+As aulas são online, particulares ou em grupo, e também presenciais, dentro da empresa, em São Paulo.
 
 #### Realocação de funcionários
 
@@ -587,7 +607,7 @@ Não. Há turma para quem começa do zero. O professor fala sempre em português
 
 ##### A empresa pode contratar as aulas para um funcionário estrangeiro?
 
-Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo e no Rio de Janeiro, e podem incluir a preparação para o CELPE-Bras.
+Pode. No pedido desta página, escolha que é para a sua empresa. As aulas podem ser online ou presenciais, dentro da empresa, em São Paulo, e podem incluir a preparação para o CELPE-Bras.
 
 ##### Quanto tempo leva cada nível?
 
@@ -595,7 +615,11 @@ Em média, 40 horas de aula por nível. O tempo muda com o seu ponto de partida 
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O CELPE-Bras tem certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -668,11 +692,15 @@ Para quem estuda por conta própria e para empresas que precisam do alemão na e
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O TestDaF e o telc têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O TestDaF e o telc têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -753,11 +781,15 @@ Serve para o pedido de cidadania por casamento ou por residência, que exige o n
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. As certificações de italiano têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. As certificações de italiano têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -834,11 +866,15 @@ Depende do que você vai fazer lá: o TISUS é para estudar numa universidade, e
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. As provas de sueco têm certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. As provas de sueco têm certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -854,7 +890,7 @@ Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e 
 
 - Endereço: https://www.9vee.com.br/curso-de-idiomas/noruegues/
 - Título no Google: Curso de norueguês com professor nativo | 9vee
-- Descrição no Google: Aulas de norueguês online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o Norskprøven, a prova oficial.
+- Descrição no Google: Aulas de norueguês online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o Norskprøven e a prova de cidadania.
 - Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Curso de norueguês do site e quero saber das aulas de norueguês."
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Curso de norueguês do site e quero aulas de norueguês para a minha equipe."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Curso de norueguês do site e quero aulas de norueguês para mim."
@@ -865,7 +901,7 @@ Hei
 
 ### Curso de norueguês
 
-Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o Norskprøven.
+Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o Norskprøven e a prova de cidadania.
 
 [Botão: Pedir aulas de norueguês (para sua empresa: Pedir orçamento de norueguês; para você: Quero estudar norueguês)]
 
@@ -891,13 +927,17 @@ Todos os níveis, a partir do diagnóstico do seu ponto de partida. Em média, c
 
 Para a equipe da sua empresa, veja as turmas para empresas.
 
-#### Preparação para o Norskprøven
+#### Preparação para as provas de norueguês
 
-A prova oficial de norueguês para adultos, pedida para morar, trabalhar e estudar na Noruega. O preparatório segue os critérios dela.
+Duas provas oficiais: a de norueguês para adultos e a de cidadania. O preparatório segue os critérios de cada uma.
 
 Norskprøven
 
-Avalia a leitura, a compreensão oral, a escrita e a conversa, cada parte com o seu nível, do A1 ao C1.
+A prova oficial de norueguês para adultos, pedida para morar, trabalhar e estudar na Noruega. Avalia a leitura, a compreensão oral, a escrita e a conversa, cada parte com o seu nível, do A1 ao C1.
+
+Statsborgerprøven
+
+A prova de cidadania: perguntas sobre a sociedade norueguesa, feitas em norueguês. Para a cidadania, a Noruega também pede o norueguês oral, e a parte oral do Norskprøven serve para isso.
 
 #### Perguntas sobre o norueguês
 
@@ -907,11 +947,15 @@ Para quem estuda por conta própria e para empresas que precisam do norueguês n
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O Norskprøven tem resultado próprio, de quem aplica a prova.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O Norskprøven e a prova de cidadania têm resultado próprio, de quem aplica a prova.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -980,11 +1024,15 @@ Para quem estuda por conta própria e para empresas que precisam do japonês na 
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O JLPT tem certificado próprio, de quem aplica a prova.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O JLPT tem certificado próprio, de quem aplica a prova.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -1000,7 +1048,7 @@ Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e 
 
 - Endereço: https://www.9vee.com.br/curso-de-idiomas/arabe/
 - Título no Google: Curso de árabe com professor nativo | 9vee
-- Descrição no Google: Aulas de árabe online com professor nativo, particulares ou em grupo, do básico ao avançado, para quem estuda por conta própria e para empresas.
+- Descrição no Google: Aulas de árabe online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o APT, a prova de árabe da Avant.
 - Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Curso de árabe do site e quero saber das aulas de árabe."
   - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Curso de árabe do site e quero aulas de árabe para a minha equipe."
   - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Curso de árabe do site e quero aulas de árabe para mim."
@@ -1011,7 +1059,7 @@ Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e 
 
 ### Curso de árabe
 
-Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para prova de proficiência.
+Aulas online com professor nativo, particulares ou em grupo, do básico ao avançado, e preparação para o APT.
 
 [Botão: Pedir aulas de árabe (para sua empresa: Pedir orçamento de árabe; para você: Quero estudar árabe)]
 
@@ -1037,23 +1085,31 @@ Todos os níveis, a partir do diagnóstico do seu ponto de partida. Em média, c
 
 Para a equipe da sua empresa, veja as turmas para empresas.
 
+#### Preparação para o APT
+
+O Arabic Proficiency Test, da Avant Assessment, avalia o árabe padrão moderno. O preparatório segue os critérios dele.
+
+APT
+
+São quatro partes, cada uma com o seu resultado: leitura, escrita, compreensão oral e fala.
+
 #### Perguntas sobre o árabe
 
 ##### Para quem é o curso de árabe?
 
 Para quem estuda por conta própria e para empresas que precisam do árabe na equipe. No pedido, você diz o objetivo, e a aula parte dele.
 
-##### Vocês preparam para prova de árabe?
-
-Preparam. Conte no pedido qual prova você vai fazer, e a aula segue os critérios dela.
-
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. A prova de proficiência tem certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O APT tem resultado próprio, de quem aplica a prova.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -1122,11 +1178,15 @@ Para quem estuda por conta própria e para empresas que precisam do russo na equ
 
 ##### Preciso saber o meu nível para começar?
 
-Não. O diagnóstico do começo mostra onde você está e de onde a aula começa.
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
 
 ##### No fim do curso eu recebo certificado?
 
-Sim, um certificado da 9vee com as horas cursadas. O TORFL tem certificado próprio, de quem aplica o exame.
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O TORFL tem certificado próprio, de quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -1137,3 +1197,84 @@ Depende do formato e de quantas pessoas estudam. O pedido desta página já leva
 Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
 
 [Botão: Pedir aulas de russo (para sua empresa: Pedir orçamento de russo; para você: Quero estudar russo)]
+
+## Cantonês
+
+- Endereço: https://www.9vee.com.br/curso-de-idiomas/cantones/
+- Título no Google: Curso de cantonês com professor nativo | 9vee
+- Descrição no Google: Aulas de cantonês com professor nativo, online ou presenciais, do básico ao avançado, para executivos e quem trabalha com importação, e preparação para o COPE.
+- Mensagem do botão do WhatsApp: "Olá, 9vee. Vim pela página Curso de cantonês do site e quero saber das aulas de cantonês."
+  - Para quem escolheu "Para sua empresa": "Olá, 9vee. Vim pela página Curso de cantonês do site e quero aulas de cantonês para a minha equipe."
+  - Para quem escolheu "Para você": "Olá, 9vee. Vim pela página Curso de cantonês do site e quero aulas de cantonês para mim."
+
+[Caminho: Início > Cursos de idiomas > Cantonês]
+
+哈囉
+
+### Curso de cantonês
+
+Aulas com professor nativo, online ou presenciais, do básico ao avançado, e preparação para o COPE, a prova oral de cantonês.
+
+[Botão: Pedir aulas de cantonês (para sua empresa: Pedir orçamento de cantonês; para você: Quero estudar cantonês)]
+
+[Imagem: Duas pessoas conversando no calçadão de Tsim Sha Tsui, com a baía Vitória e os prédios da ilha de Hong Kong ao fundo.]
+
+Hong Kong
+
+#### Como são as aulas
+
+Para executivos, para quem trabalha com importação e para quem faz visitas a fábricas.
+
+##### Professor nativo
+
+Todas as aulas de cantonês são dadas por professores nativos.
+
+##### Online ou presencial
+
+Online e ao vivo, de qualquer cidade do Brasil. Também há aula presencial: conte no pedido a sua cidade.
+
+##### Do básico ao avançado
+
+Todos os níveis, a partir do diagnóstico do seu ponto de partida. Em média, cada nível leva 40 horas de aula.
+
+Para a equipe da sua empresa, veja as turmas para empresas.
+
+#### Preparação para o COPE
+
+O Cantonese Oral Proficiency Examination é uma prova de cantonês falado, criada em Hong Kong. O preparatório segue os critérios dela.
+
+COPE
+
+Vai do A1 ao B1. A prova é uma conversa individual, por videochamada, e não cobra o chinês escrito nem o mandarim.
+
+#### Perguntas sobre o cantonês
+
+##### Para quem é o curso de cantonês?
+
+Quem mais procura são executivos, pessoas que trabalham com importação e quem faz visitas a fábricas. No pedido, você diz o objetivo, e a aula parte dele.
+
+##### As aulas são online ou presenciais?
+
+As duas coisas. Online e ao vivo, de qualquer cidade do Brasil, ou presencial. Para a aula presencial, conte no pedido a sua cidade.
+
+##### Preciso saber o meu nível para começar?
+
+Não. O nivelamento, grátis e online, mostra onde você está e de onde a aula começa.
+
+##### No fim do curso eu recebo certificado?
+
+Sim. É só pedir, e a 9vee emite um certificado com as horas cursadas. O COPE tem resultado próprio, de quem aplica a prova.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
+
+##### Quanto custa?
+
+Depende do formato e de quantas pessoas estudam. O pedido desta página já leva essas respostas, e a proposta costuma sair no mesmo dia.
+
+#### Quer estudar cantonês?
+
+Em quatro passos, quase todos de tocar numa opção, você conta o seu nível e o que procura. No fim, escolhe entre falar agora no WhatsApp ou receber o contato da equipe.
+
+[Botão: Pedir aulas de cantonês (para sua empresa: Pedir orçamento de cantonês; para você: Quero estudar cantonês)]

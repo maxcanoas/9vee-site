@@ -36,8 +36,8 @@ const LOTES: Record<number, Lote> = {
       ['Página de erro', '/404.html'],
     ],
   },
-  // Os idiomas com texto próprio. Os sete que eram esqueleto ganharam texto em 05/10/2026, com a tabela do Arthur. O
-  // cantonês, que só tem as perguntas ao cliente, entra quando ganhar texto.
+  // Os idiomas com texto próprio. Os sete que eram esqueleto ganharam texto em 05/10/2026, com a tabela do Arthur, e o
+  // cantonês em 09/10/2026, com a linha dele (resposta 5 da segunda rodada v2).
   3: {
     titulo: 'páginas de idioma',
     paginas: [
@@ -54,6 +54,7 @@ const LOTES: Record<number, Lote> = {
       ['Japonês', '/curso-de-idiomas/japones/'],
       ['Árabe', '/curso-de-idiomas/arabe/'],
       ['Russo', '/curso-de-idiomas/russo/'],
+      ['Cantonês', '/curso-de-idiomas/cantones/'],
     ],
   },
   // As cidades do presencial (ticket 11), na ordem da prioridade da pergunta 1: as duas com mais serviços primeiro.

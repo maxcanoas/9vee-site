@@ -1,6 +1,6 @@
 # Lote 2: tradução, interpretação de mandarim, LMS, Quem Somos, privacidade e página de erro
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 07/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 09/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Tradução Simultânea
 
@@ -279,7 +279,7 @@ A sua equipe estuda a qualquer hora, com conteúdo digital organizado e acompanh
 
 LMS é a sigla de Learning Management System, o sistema de gestão de aprendizagem. É uma plataforma digital para a empresa organizar, acompanhar e melhorar o treinamento da equipe.
 
-No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele.
+No treinamento corporativo de idiomas, a plataforma dá aos colaboradores cursos online, conteúdos interativos e trilhas de aprendizagem personalizadas. Cada um estuda no horário e no ritmo dele. Além dos cursos de idiomas, a plataforma recebe os treinamentos internos da empresa e a integração de novos colaboradores.
 
 O modelo virou padrão no desenvolvimento profissional porque junta horário flexível, acompanhamento pedagógico e eficiência no treinamento das equipes.
 
@@ -299,13 +299,19 @@ Com conteúdos interativos e trilhas de aprendizagem personalizadas, cada aluno 
 
 #### O que o RH acompanha
 
-A plataforma entrega relatórios detalhados, para os gestores e o RH acompanharem a evolução dos participantes.
+A plataforma entrega relatórios de uso, para os gestores e o RH acompanharem a evolução dos participantes.
 
 ##### Desempenho
 
+O resultado dos nivelamentos de cada aluno.
+
 ##### Frequência
 
+A data de cada acesso e quanto tempo durou a sessão.
+
 ##### Progresso
+
+O que cada aluno aprendeu e que metas cumpriu.
 
 Os relatórios facilitam a gestão do aprendizado e deixam o curso de inglês corporativo online mais estratégico e mensurável para o desenvolvimento da equipe. Valem também para os outros cursos de idiomas para empresas.
 
@@ -520,15 +526,11 @@ Você responde em quatro passos. No fim, decide se prefere conversar agora pelo 
 
 A 9vee respeita o direito à privacidade e zela pela segurança dos dados pessoais a que tem acesso em suas atividades.
 
-#### Para a revisão de vocês
-
-Esta é a política de privacidade atual de vocês, a do Wix, com o que a política escrita para o site novo traz de importante. As seções com a etiqueta “Novo” e os trechos [Entra: com fundo verde] vieram da política nova. Os trechos [Sai: riscados] saem do texto atual. A etiqueta “a confirmar” marca o que ainda precisa de resposta. Quando vocês aprovarem, as marcas saem, e a política vai ao ar como ficou.
-
 #### Da política de privacidade
 
 Apresentamos aqui nossa Política de Privacidade, aplicável a todas as atividades de coleta de dados promovidas, seja online ou offline, abrangendo os dados coletados por meio de nossos vários canais, tais como websites, aplicativos, ambientes virtuais de aprendizado e demais soluções e serviços, bem como todas as demais atividades que realizamos com dados pessoais no nosso dia a dia. Nessa Política, você saberá como coletamos, armazenamos e utilizamos dados pessoais de usuários de nossos websites, aplicativos, ambientes virtuais de aprendizado (“Plataforma”) e demais soluções e serviços digitais, bem como de alunos, colaboradores, parceiros comerciais, fornecedores e de todos com os quais nos relacionamos.
 
-#### Quem cuida dos seus dados [Novo]
+#### Quem cuida dos seus dados
 
 A 9vee é a CLOUD9 LEARNING LTDA, CNPJ 42.808.102/0001-88. É ela quem decide o que fazer com os dados pessoais de que trata esta política.
 
@@ -560,7 +562,7 @@ Dados adicionais de cadastro e preferências. Esses dados são coletados no cada
 
 - Escolaridade, faixa etária, estado, cidade, gênero, autodeclaração de cor/raça/etnia, faixa de renda familiar/mensal, deficiência (PcD), etc.
 
-Dados de identificação digital. São informações digitais, geralmente coletadas de forma automática, por meio de cookies, que identificam o usuário durante a navegação na Plataforma, utilizadas para melhorar a performance e qualidade dos serviços, garantir a segurança cibernética da Plataforma e cumprir exigências legais ([Sai: conheça nossa Política de Cookies, disponível em nosso site] [Entra: os cookies do site estão em A estatística de visitas e os cookies]). Os dados podem incluir:
+Dados de identificação digital. São informações digitais, geralmente coletadas de forma automática, por meio de cookies, que identificam o usuário durante a navegação na Plataforma, utilizadas para melhorar a performance e qualidade dos serviços, garantir a segurança cibernética da Plataforma e cumprir exigências legais (os cookies do site estão em A estatística de visitas e os cookies). Os dados podem incluir:
 
 - Endereço IP, informações sobre o dispositivo do usuário (sistema operacional, navegador, etc.), geolocalização, etc.
 
@@ -572,9 +574,9 @@ Dados oriundos de terceiros. São informações do usuário que recebemos por me
 
 Nosso servidor não coleta automaticamente nenhuma informação sobre o domínio ou endereço de e-mail de nossos visitantes.
 
-Nossos produtos e serviços são destinados ao público adolescente e adulto. Dessa forma, não coletamos, solicitamos ou, de qualquer outra forma, tratamos dados pessoalmente identificáveis de crianças. [A confirmar com a Daniella: o curso de inglês atende a partir de 9 anos, e esta frase diz que a 9vee não trata dados de crianças. Como ela fica?]
+O curso de inglês também atende crianças, a partir de 9 anos. Quando o aluno é menor de idade, quem contrata o curso e assina o contrato é o pai, a mãe ou o responsável legal, ou a escola, quando as aulas acontecem dentro dela. Os dados de crianças são tratados com o consentimento de um dos pais ou do responsável legal, como pede a LGPD. Pelo site, quem pede aula para uma criança é o adulto, com os dados dele.
 
-#### Quando você pede contato pelo site [Novo]
+#### Quando você pede contato pelo site
 
 Se você escolhe "Prefiro receber contato", o site manda o pedido à 9vee. Ele leva as suas respostas, o seu nome e o WhatsApp ou o e-mail que você deixou. A 9vee usa esses dados para responder e montar a proposta.
 
@@ -584,13 +586,13 @@ Quem entrega o pedido é a Web3Forms, um serviço de formulários da empresa ind
 
 Na caixa de e-mail da 9vee, o pedido fica guardado por 1 ano, quando não vira contrato, e por 5 anos, quando vira.
 
-#### Quando você fala pelo WhatsApp [Novo]
+#### Quando você fala pelo WhatsApp
 
 O botão do WhatsApp só abre o aplicativo com a mensagem escrita. Quem manda é você, do seu WhatsApp para o da 9vee, e a mensagem não passa pelo site.
 
 No WhatsApp da 9vee, a conversa fica guardada pelos mesmos prazos do pedido: 1 ano, quando não vira contrato, e 5 anos, quando vira. O WhatsApp é da Meta, que tem regras próprias para os dados de quem usa o aplicativo.
 
-#### A estatística de visitas e os cookies [Novo]
+#### A estatística de visitas e os cookies
 
 O site mede as visitas com o Google Analytics, mas só se você aceitar a estatística no aviso de cookies, que aparece na primeira visita, com "Aceitar", "Recusar" e "Preferências". Se você recusar ou não responder, ele nem carrega.
 
@@ -604,11 +606,11 @@ A 9vee usa esses números para saber que páginas e que serviços trazem pedidos
 
 Para mudar a sua escolha, use "Preferências de cookies", no rodapé. Se você recusar depois de ter aceitado, o site apaga os cookies do Google do seu navegador e para de medir.
 
-#### O que fica no seu navegador [Novo]
+#### O que fica no seu navegador
 
 O site guarda duas escolhas suas no navegador. Uma é a escolha entre "Para sua empresa" e "Para você", que muda os textos das páginas. A outra é a sua resposta ao aviso de cookies, com a data e a versão do aviso. Para apagar as duas, limpe os dados do site nas configurações do navegador.
 
-#### A hospedagem do site [Novo]
+#### A hospedagem do site
 
 O site e a caixa de e-mail da 9vee ficam na HostGator. Como todo servidor, o do site anota cada acesso: o endereço IP, a data e a hora, a página pedida e o navegador. A 9vee guarda esses registros por 6 meses, como pede o Marco Civil da Internet, para cuidar da segurança do site.
 
@@ -636,11 +638,11 @@ Os dados pessoais podem vir a ser armazenados em bancos de dados de terceiros, i
 
 Nós armazenamos os dados pessoais somente pelo período necessário para cumprir as finalidades informadas, para cumprir nossas obrigações legais, regulatórias ou para preservação de direitos. Terminado o prazo de armazenamento, os dados pessoais serão anonimizados ou excluídos, utilizando método seguro de descarte.
 
-[Entra: Os prazos de guarda são estes:]
+Os prazos de guarda são estes:
 
-- [Entra: pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;]
-- [Entra: conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;]
-- [Entra: registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet.]
+- pedidos de orçamento que chegam pelo site: 1 ano, quando não viram contrato, e 5 anos, quando viram;
+- conversas que começam pelo botão do WhatsApp: os mesmos prazos dos pedidos;
+- registros de acesso ao site: 6 meses, como pede o Marco Civil da Internet.
 
 Nos comprometemos a respeitar os direitos à privacidade, à proteção dos dados pessoais e dos registros dos seus usuários, e asseguramos que cuidará para que eventuais terceiros com quem referidos dados sejam compartilhados respeitem os termos desta Política de Privacidade.
 
@@ -652,7 +654,7 @@ Nós poderemos compartilhar seus dados pessoais nas circunstâncias abaixo, medi
 - Em caso de reestruturação societária, incorporação, fusão ou venda da Empresa, nos termos da legislação aplicável;
 - Para cumprir os Termos de Uso da Plataforma, inclusive para apuração de violações;
 - Para proteger os direitos dos usuários, nos termos da legislação aplicável;
-- Com terceiros proprietários de cookies que utilizamos em nossas páginas, conforme descrito em [Sai: nossa Política de Cookies] [Entra: A estatística de visitas e os cookies];
+- Com terceiros proprietários de cookies que utilizamos em nossas páginas, conforme descrito em A estatística de visitas e os cookies;
 - Com terceiros que atuem em áreas afins à educação e que sejam relacionados a áreas de interesse do nosso público-alvo, com quem venha a firmar contratos, onerosos ou não;
 
 Não compartilharemos os dados pessoais para qualquer finalidade que esteja em desacordo com a legislação vigente ou com esta Política de Privacidade.
@@ -708,7 +710,7 @@ Ainda que possa empregar tecnologias de machine learning para personalização o
 
 Reafirmamos nosso compromisso com a ética no uso de tecnologias emergentes, observando os limites legais e contratuais impostos por terceiros fornecedores, como os termos da Google API Services User Data Policy.
 
-#### Os seus direitos [Novo]
+#### Os seus direitos
 
 Pela LGPD, você pode pedir à 9vee, quando quiser:
 
@@ -737,15 +739,15 @@ A Política de Privacidade se aplica às informações coletadas através da Pla
 
 Caso algum ponto desta Política seja considerado inaplicável pela Autoridade Nacional de Proteção de Dados ou por alguma autoridade judicial, as demais condições permanecerão em pleno vigor.
 
-Esta Política será interpretada segundo a legislação brasileira, no idioma português, sendo eleito o foro da Comarca de Arapoti, Estado do Paraná, para resolver qualquer controvérsia que envolva este documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável. [A confirmar com a Daniella: se o foro continua o de Arapoti (PR), já que a 9vee fica em São Paulo]
+Esta Política será interpretada segundo a legislação brasileira, no idioma português, sendo eleito o foro da Comarca de Arapoti, Estado do Paraná, para resolver qualquer controvérsia que envolva este documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável.
 
 #### Contato
 
 Comentários, críticas e sugestões são sempre bem-vindos, pois entendemos que o diálogo transparente é parte essencial do compromisso com a proteção de dados e com a melhoria contínua de nossos serviços.
 
-Caso o usuário tenha qualquer dúvida, questionamento ou reclamação relacionada à nossa Política de Privacidade, ou ainda deseje exercer quaisquer dos direitos previstos na Lei Geral de Proteção de Dados (LGPD) [Sai: e indicados no item 6] [Entra: e listados em Os seus direitos], poderá entrar em contato por meio de nossos canais oficiais[Entra: , como o e-mail contato@9vee.com.br].
+Caso o usuário tenha qualquer dúvida, questionamento ou reclamação relacionada à nossa Política de Privacidade, ou ainda deseje exercer quaisquer dos direitos previstos na Lei Geral de Proteção de Dados (LGPD) e listados em Os seus direitos, poderá entrar em contato por meio de nossos canais oficiais, como o e-mail contato@9vee.com.br.
 
-[Sai: Atualizado em 5 de março de 2026.] [Entra: Atualizado em [A confirmar com a Daniella: a data em que vocês aprovarem esta versão]. Quando a política mudar, esta data muda junto.]
+Atualizado em 9 de outubro de 2026. Quando a política mudar, esta data muda junto.
 
 ## Página de erro
 

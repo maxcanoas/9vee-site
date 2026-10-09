@@ -2,6 +2,25 @@
 
 Cada vez que valer a pena publicar o preview, entra aqui, no topo, um resumo curto do que mudou desde a publicação anterior, em linguagem de cliente. É o texto que o Maxwell manda para a Daniella e o Arthur junto com o link: https://9vee-preview.9vee-site.workers.dev
 
+## Semana 2, décima sexta leva (09/10): as respostas do Word da segunda rodada, versão 2
+
+Obrigado pelas respostas. Tudo já está no preview:
+
+- **Política de privacidade:** aprovada por vocês, saiu sem as marcas de revisão e com a data de 9 de outubro de 2026. A frase sobre crianças mudou com a resposta de vocês e diz agora: "O curso de inglês também atende crianças, a partir de 9 anos. Quando o aluno é menor de idade, quem contrata o curso e assina o contrato é o pai, a mãe ou o responsável legal, ou a escola, quando as aulas acontecem dentro dela. Os dados de crianças são tratados com o consentimento de um dos pais ou do responsável legal, como pede a LGPD. Pelo site, quem pede aula para uma criança é o adulto, com os dados dele." Se quiserem outro texto, me avisem, e a data da versão muda junto.
+- **Rodapé:** mostra "Novee Learning Solutions, São Paulo, SP" e o link "A 9vee no Google", que abre o Perfil de vocês. A rua saiu do site, porque é a casa de uma funcionária e ninguém é recebido lá. Ela continua no Perfil no Google, que é o que ajuda na busca.
+- **Aula experimental:** na home, quem escolhe "Para você" vê um segundo botão, "Aula experimental grátis", que abre o WhatsApp com o pedido escrito. As perguntas frequentes de Cursos e de cada idioma explicam que o nivelamento e a aula experimental são grátis e online.
+- **Cantonês:** a página entrou no site, com professor nativo, aula online e presencial, todos os níveis e o preparatório do COPE: https://9vee-preview.9vee-site.workers.dev/curso-de-idiomas/cantones/ Uma dúvida: em que cidade é a aula presencial de cantonês? Por enquanto, a página pede que a pessoa diga a cidade no pedido.
+- **Cidades:** as quatro páginas entraram no site, cada uma com o trabalho que vocês mais fazem lá: https://9vee-preview.9vee-site.workers.dev/sao-paulo/, https://9vee-preview.9vee-site.workers.dev/rio-de-janeiro/, https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/curitiba/ e https://9vee-preview.9vee-site.workers.dev/traducao-simultanea/brasilia/
+- **Português para estrangeiros:** a aula presencial aparece só em São Paulo. A página do Rio fica com o inglês e o espanhol.
+- **Árabe e norueguês:** o árabe prepara para o APT, e o norueguês também para a prova de cidadania.
+- **Inglês Acessível:** o bloco em Cursos diz que são aulas presenciais em grupo, de inglês e de espanhol, dentro da faculdade, para centros acadêmicos, com foco em São Paulo e no Rio. O flyer falava também de órgãos públicos: se o programa os atende, me avisem.
+- **NR-1:** o plano de ação do curso formativo vem com o roteiro de 90 dias. O item "Certificado de participação" diz que a 9vee emite o certificado quando a empresa pede, nos dois formatos. A pergunta "Quem precisa participar?" diz que os dois treinamentos servem a qualquer pessoa, e que o formativo costuma ser escolhido para a liderança.
+- **LMS:** cada relatório diz o que mostra, e a página diz que a plataforma também recebe os treinamentos internos e a integração de novos colaboradores. O nome da plataforma não aparece no site.
+- **Certificado dos cursos:** as perguntas frequentes dizem que é só pedir, como vocês explicaram.
+- Os lotes 1 a 4 de revisão foram gerados de novo, e o lote 3 ganhou o cantonês.
+
+Nota para o Maxwell, não para o cliente: publique com `npm run deploy`. Mande junto os quatro lotes de `docs/revisao-daniella/`. Os depoimentos de aluno (resposta 12) chegam direto para você: quando vierem, entram numa leva própria.
+
 ## Semana 2, décima quinta leva (08/10): as respostas da segunda rodada
 
 - Os três depoimentos da home (Nissan, General Motors e Embraer) não mostram mais "Autorização de uso: a confirmar". Vocês confirmaram as autorizações, e a seção fica como está, com a fala, o nome, o cargo e o logo.

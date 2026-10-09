@@ -1,6 +1,6 @@
 # Lote 1: páginas principais
 
-Textos do site novo da 9vee para a revisão da Daniella, gerados em 08/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
+Textos do site novo da 9vee para a revisão da Daniella, gerados em 09/10/2026 a partir do preview. Cada página aparece na ordem da tela do computador, para quem ainda não escolheu entre "Para sua empresa" e "Para você"; o que muda para cada público vem entre parênteses. Botões, links e imagens aparecem entre colchetes, com o texto que a pessoa lê. O que está entre colchetes com "A confirmar" ainda falta responder, e diz com quem.
 
 ## Home
 
@@ -23,6 +23,8 @@ Aulas de idiomas, intérpretes para eventos e treinamento de NR-1 sobre saúde m
 - Para você
 
 [Botão: Quero conversar (para sua empresa: Pedir orçamento; para você: Quero estudar)]
+
+[Link: Aula experimental grátis]
 
 [Imagem: Intérprete com fone e microfone, concentrada, olhando para o palco.]
 
@@ -242,11 +244,11 @@ Quem chefia aprende a reconhecer sinais, abrir o assunto e encaminhar, sem virar
 
 ##### Um plano de ação escrito pela sua equipe
 
-O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar [A confirmar com a Daniella: como a 9vee entrega o plano de ação no fim do treinamento].
+O último módulo trabalha com estudos de caso e termina em plano de ação, decidido pelas pessoas que vão executar. No curso formativo, o plano vem com um roteiro de 90 dias: conversa de acompanhamento aos 30 dias, termômetro psicossocial aos 60 e, aos 90, os indicadores e o PGR.
 
-##### Registro da capacitação
+##### Certificado de participação
 
-Numa fiscalização, a empresa precisa mostrar quem participou, quando e o conteúdo [A confirmar com a Daniella: que comprovante a empresa recebe no fim e se cada participante ganha certificado].
+Quando a empresa pede, a 9vee emite um certificado de participação para cada pessoa da turma, com as horas cursadas. Vale para o workshop normativo e para o curso formativo.
 
 O que ele não faz: a avaliação dos riscos e o PGR continuam com a empresa e o SESMT. O treinamento cobre a capacitação e o plano de ação.
 
@@ -356,7 +358,7 @@ Não sozinho. Ele cobre a capacitação sobre riscos psicossociais e termina com
 
 ##### Quem precisa participar?
 
-RH, SESMT e quem responde por equipe. O módulo 2 é escrito para quem chefia [A confirmar com a Daniella: se a 9vee também faz turma com a equipe inteira, e não só com a liderança].
+Qualquer pessoa da empresa: os dois treinamentos servem para a equipe inteira, do RH e do SESMT a quem executa. O curso formativo costuma ser o escolhido para a liderança, porque trabalha temas como o feedback construtivo, e o módulo 2 é escrito para quem chefia.
 
 ##### Vocês já fizeram esse treinamento em alguma empresa?
 
@@ -429,9 +431,7 @@ Vieram do latim, como o português.
 Cada uma com a sua escrita.
 
 - [Link: 你好 · Mandarim]
-
-[Botão: 哈囉 · Cantonês]
-
+- [Link: 哈囉 · Cantonês]
 - [Link: こんにちは · Japonês]
 - [Link: مرحبا · Árabe]
 - [Link: Привет · Russo]
@@ -532,7 +532,7 @@ Uma turma online, ao vivo, de qualquer cidade do Brasil.
 
 Inglês a partir de 9 anos. As crianças aprendem com atividades lúdicas, e os adolescentes conversam sobre temas atuais. O material é da Cambridge University Press.
 
-Aula presencial, só dentro de empresas, em São Paulo e no Rio de Janeiro. Veja as turmas para empresas.
+Aula presencial, dentro de empresas e faculdades, em São Paulo e no Rio de Janeiro. Veja as turmas para empresas.
 
 [Botão: Falar sobre as aulas]
 
@@ -544,7 +544,7 @@ Três passos até a primeira aula. Depois dela, cada etapa do curso é planejada
 
 ##### Você diz o idioma e o objetivo
 
-Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção.
+Pelo formulário desta página ou pelo WhatsApp. São quatro passos, quase todos de tocar numa opção. Se quiser conhecer antes, peça pelo WhatsApp uma aula experimental grátis.
 
 ##### A 9vee manda a proposta
 
@@ -556,7 +556,7 @@ No formato que você escolheu. Nas primeiras aulas, a 9vee faz um diagnóstico d
 
 #### Para a sua equipe
 
-Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 14 idiomas, para empresas de todo o Brasil. Inglês, espanhol e português para estrangeiros também têm aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro.
+Idioma para a empresa que quer entrar em novos mercados e negociar com outros países. São cursos online em 14 idiomas, para empresas de todo o Brasil. Inglês e espanhol também têm aula presencial, dentro da empresa, em São Paulo e no Rio de Janeiro, e o português para estrangeiros, em São Paulo.
 
 ##### Turma in company
 
@@ -576,7 +576,7 @@ Pirelli, FGV, Sicredi e Bradesco já contrataram os cursos da 9vee. O pedido per
 
 #### Inglês Acessível
 
-O programa de inglês da 9vee para faculdades e órgãos públicos. Conte no pedido quantas pessoas vão estudar.
+Aulas presenciais em grupo, de inglês e de espanhol, dentro da faculdade. O programa é feito para centros acadêmicos universitários, com foco em São Paulo e no Rio de Janeiro. Conte no pedido quantas pessoas vão estudar.
 
 [Botão: Pedir orçamento do programa]
 
@@ -599,7 +599,7 @@ Com a plataforma da 9vee para cursos de idiomas, a empresa reduz o custo do trei
 
 ##### Não sei o meu nível. Tem problema?
 
-Não. Nas primeiras aulas, a 9vee faz um diagnóstico dos seus objetivos e do seu nível, e o plano do curso sai dele.
+Não. O nivelamento é grátis e online e mostra o seu ponto de partida. Nas primeiras aulas, a 9vee também faz um diagnóstico dos seus objetivos, e o plano do curso sai dele.
 
 ##### Quanto tempo leva para subir um nível?
 
@@ -611,7 +611,11 @@ Sim, no inglês, a partir de 9 anos, com material da Cambridge. No pedido, diga 
 
 ##### No fim do curso eu recebo certificado?
 
-Sim. No fim do curso, a 9vee emite um certificado com as horas cursadas. As provas de proficiência têm certificado próprio, emitido por quem aplica o exame.
+Sim. No fim do curso, é só pedir, e a 9vee emite um certificado com as horas cursadas. As provas de proficiência têm certificado próprio, emitido por quem aplica o exame.
+
+##### Dá para fazer uma aula experimental?
+
+Dá, e é grátis. A aula experimental e o nivelamento são online. Chame a 9vee no WhatsApp e diga o idioma e o que você quer: a equipe escolhe o professor mais indicado e marca o horário com você.
 
 ##### Quanto custa?
 
@@ -683,7 +687,9 @@ WhatsApp (11) 93466-1917
 
 [Link: contato@9vee.com.br]
 
-Novee Learning Solutions R. Dona Teresa Margarida, 66 Vila Clementino, São Paulo, SP 04037-040
+Novee Learning Solutions São Paulo, SP
+
+[Link: A 9vee no Google]
 
 [Link: Quem somos]
 

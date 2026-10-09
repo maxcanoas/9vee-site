@@ -6,7 +6,7 @@
 
 **Horas:** 4. **Semana:** 5 (adiantado: feito em 07/10/2026, na semana 2).
 
-**Situação:** feito em 07/10/2026, no processo curto. As quatro páginas estão no preview e fora da produção até a resposta da pergunta 47.
+**Situação:** feito em 07/10/2026, no processo curto. As quatro páginas estão no preview e fora da produção até a resposta da pergunta 47. **Publicadas em 09/10/2026:** a 9vee respondeu a 47 (resposta 17 da segunda rodada v2), cada página ganhou o trabalho mais comum na cidade e o mapa de redirecionamentos leva os 14 posts de tradução por cidade a elas. O Rio ficou com o inglês e o espanhol na aula presencial (resposta 6).
 
 - [x] Decisão registrada com o Maxwell, a partir da resposta do cliente: página de tradução por cidade ou página da cidade inteira, com o endereço de cada uma. **Decidido em 07/10/2026, pelas perguntas de escolha, com as respostas de 05/10:** São Paulo e Rio de Janeiro têm aula de idioma dentro da empresa além da tradução, e viram página da cidade (`/sao-paulo/` e `/rio-de-janeiro/`); em Curitiba e Brasília só a tradução é presencial, e elas viram "Tradução simultânea em <cidade>" (`/traducao-simultanea/curitiba/` e `/traducao-simultanea/brasilia/`). O NR-1 vai a qualquer cidade do Brasil, então não conta como fato local: entra nas quatro como um bloco que leva à página dele.
 - [x] Modelo e as cidades com fato local; as sem fato ficam não publicadas, e os posts delas vão para a página do serviço. As quatro ficam com `publicada: false` até a 9vee responder que tipo de evento mais faz em cada cidade (pergunta 47 do Word de 05/10): sem isso, o texto da tradução seria o mesmo nas quatro, só com o nome da cidade trocado. Escolha do Maxwell em 07/10/2026.

@@ -393,3 +393,32 @@ A 9vee respondeu três perguntas do Word de 05/10, e o Maxwell tirou outras seis
 | 43, 51 a 55 | Saíram do Word, a pedido do Maxwell | Nada. As sugestões de `docs/pendencias-decisao.md` para essas perguntas continuam valendo |
 
 Com isso, `node scripts/pendencias.ts` conta 16 marcações, contra as 19 de 07/10.
+
+### As respostas da segunda rodada v2 (09/10/2026)
+
+O Maxwell mandou o Word v2 à 9vee em 08/10/2026, renumerado de 1 a 20, e as respostas chegaram em 09/10/2026 (o arquivo exportado do Word, `Perguntas-9vee-segunda-rodada-v2.docx.md`, ficou na pasta Downloads dele). A 9vee respondeu as 20. Quatro decisões foram do Maxwell, pelas perguntas de escolha, todas na opção recomendada: o endereço, o botão da aula experimental, o presencial do cantonês e a frase das crianças.
+
+| Enviada | Interna | O que a 9vee respondeu | O que mudou no site |
+|---|---|---|---|
+| 1 | 27 | "Sim. Está aprovada nesse formato." | Política sem as marcas, sem a legenda "Para a revisão de vocês" e sem a etiqueta "Novo". Versão de 9 de outubro de 2026 |
+| 2 | 28 | Quem assina o contrato é o pai ou o responsável. Também há o serviço dentro de escolas, como o programa na Graded, em São Paulo | A frase das crianças reescrita: o inglês atende a partir de 9 anos, quem contrata é o responsável ou a escola, e os dados de crianças seguem o consentimento que a LGPD pede. A Graded fica fora (ver `docs/pendencias-decisao.md`) |
+| 3 | 29 | O foro fica em Arapoti, onde a empresa está constituída | A marca saiu |
+| 4 | 33 | O endereço do Perfil é a casa de uma funcionária, mantido porque o endereço em São Paulo ajuda na busca | O Maxwell decidiu: o rodapé mostra "Novee Learning Solutions, São Paulo, SP" e o link "A 9vee no Google"; o JSON-LD fica com a cidade e o estado, sem a rua, e o link entra no `sameAs` |
+| 5 | 34 | Todos os níveis; online e presencial; professor nativo; o COPE (Cantonese Oral Proficiency Examination); executivos, quem lida com importação e visitas a fábricas | Página do cantonês escrita e publicada. O COPE foi conferido (prova oral de Hong Kong, do A1 ao B1, por videochamada). O presencial sem cidade: a página pede a cidade no pedido (decisão do Maxwell) |
+| 6 | 35 | No Rio não há português para estrangeiros presencial, só em São Paulo | Cursos, a página de português e a do Rio, que fica com inglês e espanhol |
+| 7 | 36 | É o APT | O árabe prepara para o APT, o Arabic Proficiency Test da Avant Assessment, com as quatro partes |
+| 8 | 37 | O Test i norsk "agora é parte do teste de cidadania": pode incluir a prova de cidadania norueguesa | A statsborgerprøven entrou nas provas do norueguês. A frase da 9vee não é exata: o Bergenstesten é aceito como prova oral para a cidadania, que também pede a statsborgerprøven. A página diz o que vale hoje, conferido na UDI |
+| 9 | 38 | Aula presencial em grupo, de inglês e espanhol, dentro das faculdades, para centros acadêmicos universitários, com foco no Rio e em São Paulo | O bloco do Inglês Acessível diz isso, sem os órgãos públicos do flyer. A nota da aula presencial em Cursos passa a citar as faculdades |
+| 10 | 39 | Continua | Nada |
+| 11 | 40 | Nivelamento e aula experimental, online e grátis, marcados pelo WhatsApp, com o professor mais indicado | O Maxwell decidiu: botão "Aula experimental grátis" no topo da home, só para quem escolhe "Para você", que abre o WhatsApp com o pedido e conta como `whatsapp_click`. O FAQ de Cursos e dos 14 idiomas ganhou "Dá para fazer uma aula experimental?", e as respostas sobre o nível citam o nivelamento grátis |
+| 12 | 41 | "Vamos enviar o que temos direto para você" | Nada, até o material chegar |
+| 13 | 42 | Por enquanto não; as imagens geradas ficam | Nada |
+| 14 | 44 | O roteiro de 90 dias faz parte do curso formativo, e pode ir ao site | NR-1: o plano de ação do curso formativo vem com o roteiro (30, 60 e 90 dias) |
+| 15 | 45 | Certificado simples de participação e horas cursadas, sob demanda, em todos os cursos e workshops | NR-1: o item vira "Certificado de participação", e a frase da fiscalização sai. Cursos e idiomas: "é só pedir" no certificado |
+| 16 | 46 | Os dois servem a qualquer pessoa; o formativo costuma ser escolhido para a liderança, pelo feedback construtivo | NR-1: o FAQ "Quem precisa participar?" |
+| 17 | 47 | SP: interpretação dentro de empresas, reuniões periódicas (quarterly reports) de empresas com sede no exterior e treinamentos de software em inglês, como SAP. RJ: tours e visitas a empresas. Curitiba: visitas a fábricas e empresas. Brasília: eventos internacionais e diplomáticos, visitas institucionais e turismo | As quatro páginas de cidade com o trabalho de cada uma, publicadas. O mapa de redirecionamentos leva os 14 posts de tradução por cidade às páginas delas |
+| 18 | 48 | Continua | Nada |
+| 19 | 49 | Só trouxeram cliente nas primeiras semanas | Nada: os três endereços levam à página nova, como a proposta prevê |
+| 20 | 50 | A plataforma é a LearnWorlds (o print da EdApp é antigo, de um parceiro); não há mais professora embaixadora; os relatórios mostram duração da sessão, data de acesso, o que o aluno aprendeu, metas cumpridas e o resultado dos nivelamentos; recebe idiomas, treinamentos internos e integração | LMS: o texto de cada relatório e os treinamentos internos e a integração na plataforma. O nome da LearnWorlds e as telas ficam fora |
+
+Com isso, `node scripts/pendencias.ts` conta 1 marcação (a Lei 14.831, que é aviso), contra as 16 de 08/10. Os 14 idiomas e as 4 cidades estão publicados.

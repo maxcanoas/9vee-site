@@ -26,7 +26,7 @@ Todos levam só o serviço, o público e a página. O nome e o contato de quem p
 
 | Evento | O que quer dizer | Onde dispara | Parâmetros |
 |---|---|---|---|
-| `whatsapp_click` | Uma conversa aberta no WhatsApp | no atalho flutuante, em toda página; na saída "Falar agora no WhatsApp" do pedido; e na saída da tela de falha do envio. O "Abrir o WhatsApp de novo" não conta, porque é a mesma conversa | `servico`, `publico`, `pagina` |
+| `whatsapp_click` | Uma conversa aberta no WhatsApp | no atalho flutuante, em toda página; no botão "Aula experimental grátis", no topo da home para quem escolhe "Para você" (desde 09/10/2026, sempre com o serviço `idiomas`); na saída "Falar agora no WhatsApp" do pedido; e na saída da tela de falha do envio. O "Abrir o WhatsApp de novo" não conta, porque é a mesma conversa | `servico`, `publico`, `pagina` |
 | `lead_form_submit` | Um pedido que chegou à 9vee pelo "Prefiro receber contato" | só quando o serviço de formulário confirma a entrega. O envio que falha e o da isca contra robô não contam | `servico`, `publico`, `pagina` |
 | `drawer_open` | Um pedido aberto na tela | quando o drawer abre, por qualquer botão | `servico`, `pagina` |
 
@@ -53,7 +53,7 @@ Com o acesso de editor ao GA4 da 9vee (pergunta 53 da segunda rodada). Os mesmos
 2. `npm run dev`, abrir o site local e aceitar a estatística no aviso.
 3. Em Administrador, DebugView, da propriedade de teste, conferir:
    - o `drawer_open` ao abrir o pedido, com o serviço e a página;
-   - o `whatsapp_click` no atalho flutuante e na saída do pedido;
+   - o `whatsapp_click` no atalho flutuante, no botão da aula experimental e na saída do pedido;
    - o `lead_form_submit` só no envio que chega (o envio local vai para o e-mail de teste);
    - nenhum evento `click` com o endereço do WhatsApp (`link_url` com `wa.me`). Se aparecer, o passo 1 da configuração não pegou.
 4. Recusar pelo "Preferências de cookies" e conferir que nada mais chega.
