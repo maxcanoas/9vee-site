@@ -47,6 +47,16 @@ Com o acesso de editor ao GA4 da 9vee (pergunta 53 da segunda rodada). Os mesmos
 3. **Marcar os leads.** Em Administrador, Exibição de dados, Eventos: marcar `whatsapp_click` e `lead_form_submit` como eventos principais (Key events). Os eventos só aparecem nessa lista depois do primeiro disparo.
 4. **Criar as dimensões.** Em Administrador, Definições personalizadas, criar três dimensões personalizadas com escopo de evento: `servico`, `publico` e `pagina`, cada uma com o parâmetro de mesmo nome. Sem elas, os relatórios não mostram os parâmetros.
 
+### A propriedade da 9vee em 09/10/2026
+
+O Arthur deu ao Maxwell o acesso de administrador. Conferido pelo Chrome, e mudado só o que o Maxwell autorizou:
+
+- **O fluxo:** um fluxo da web, "Novee" (`https://9vee.com.br/`), com o ID `G-Y04K0CN1F9`, recebendo o tráfego do Wix.
+- **Feito em 09/10:** o passo 2 (o `text` na redação de dados, ao lado do e-mail, que já estava ligado) e o passo 4 (as três dimensões, com escopo de evento). A retenção dos dados de evento passou de 2 para 14 meses, para o relatório mensal de leads, que é uma exploração, conseguir olhar para trás. Os dados de usuário já ficavam 14 meses, o que a política promete.
+- **Fica para o dia da troca, logo antes do DNS:** o passo 1. Os "Cliques de saída" estão ligados, e o evento deles, o `click`, é hoje um evento principal da 9vee: é provavelmente assim que ela conta os cliques no WhatsApp do Wix. Desligar antes deixaria o Wix sem essa contagem até o lançamento. No mesmo dia, o passo 3, quando o `whatsapp_click` e o `lead_form_submit` aparecerem.
+- **Recomendado no dia da troca, sem bloquear:** desligar as "Interações com o formulário" da medição otimizada (no site novo, elas disparariam no pedido, que já tem eventos próprios) e os Google Signals (com o aviso de cookies do site novo, que nega os consentimentos de anúncio, eles não coletam nada, e desligar tira a dúvida).
+- **O que o Wix manda hoje:** `click`, `first_visit`, `form_start`, `generate_lead` (os pedidos do formulário do Wix, que não estão marcados como principais), `page_view`, `scroll`, `session_start` e `user_engagement`. Os eventos principais sem dado (`close_convert_lead`, `purchase` e `qualify_lead`) não atrapalham.
+
 ## Conferir no DebugView
 
 1. Pôr o ID da propriedade de teste em `GA4_ID`, no `.env.development`.

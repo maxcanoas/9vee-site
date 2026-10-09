@@ -44,6 +44,8 @@ Estas não mudam texto, mas o lançamento depende delas.
 
 ### 53. Acesso ao Google Analytics e ao Search Console da 9vee
 
+**O GA4 chegou em 09/10/2026:** o Arthur deu ao Maxwell acesso de administrador. O que foi feito e o que fica para o dia da troca está em `docs/medicao.md`. Falta o Search Console.
+
 - **Por que importa:** na propriedade do GA4 da 9vee é preciso desligar os "Cliques de saída" e pôr o `text` na redação de dados (`docs/medicao.md`). Sem isso, o nome e a empresa do texto do WhatsApp chegam ao Google, e a política promete que não chegam. No Search Console vão o sitemap novo e as 15 URLs que saem do ar (`docs/remocoes-search-console.txt`).
 - **Sugestão, sem resposta:** mandar ao Arthur os dois passos do GA4, com prints, para ele fazer, e pedir o print da tela depois. O Search Console continua verificado na troca, porque a meta tag é a mesma do Wix. O sitemap e as remoções podem esperar o acesso, alguns dias depois do lançamento.
 

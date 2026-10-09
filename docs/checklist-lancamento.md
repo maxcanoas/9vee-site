@@ -13,7 +13,8 @@ Duas regras valem do começo ao fim:
 
 - [ ] Acesso ao cPanel da HostGator.
 - [ ] A chave de produção da Web3Forms, criada com o contato@9vee.com.br. O e-mail com a chave chega na caixa da 9vee.
-- [ ] Acesso de editor ao GA4 da 9vee (`G-Y04K0CN1F9`) e acesso de usuário completo ao Search Console.
+- [x] Acesso de editor ao GA4 da 9vee (`G-Y04K0CN1F9`): o Arthur deu acesso de administrador em 09/10/2026.
+- [ ] Acesso de usuário completo ao Search Console.
 - [ ] A Daniella e o Arthur aprovaram o preview, e a Daniella aprovou os textos por escrito (os quatro lotes de `docs/revisao-daniella/`).
 - [ ] O que a 9vee não respondeu foi decidido pela lista de `docs/pendencias-decisao.md` e aplicado.
 - [ ] Perguntar quem mexeu na zona DNS em 29/09/2026 (o serial da zona mudou nesse dia).
@@ -32,7 +33,7 @@ Duas regras valem do começo ao fim:
 
 ### O GA4
 
-- [ ] Na propriedade da 9vee, os "Cliques de saída" desligados e o parâmetro `text` na redação de dados (`docs/medicao.md`, passos 1 e 2). **Sem isso, o site não vai ao ar:** o GA4 mandaria ao Google o texto da mensagem do WhatsApp, com o nome de quem escreveu, e a política promete que não manda.
+- [x] O parâmetro `text` na redação de dados, a retenção dos dados de evento em 14 meses e as três dimensões (`servico`, `publico` e `pagina`). Feito em 09/10/2026 (`docs/medicao.md`).
 - [ ] Os eventos conferidos no DebugView, com a propriedade de teste.
 
 ### A HostGator e o DNS
@@ -47,6 +48,7 @@ Duas regras valem do começo ao fim:
 - [ ] Subir o conteúdo de `dist-producao/` para a pasta do domínio no cPanel (em geral, `public_html`). Conferir que o `.htaccess` subiu: ele começa com ponto e alguns programas de FTP escondem esse arquivo.
 - [ ] **Testar o site novo antes de trocar o DNS,** apontando o endereço para o IP da HostGator só no teste: `curl -sI --resolve www.9vee.com.br:443:IP https://www.9vee.com.br/`, com o IP que o cPanel mostra. Tem que voltar 200.
   - Se voltar erro 500, a causa provável é a linha `Options -MultiViews -Indexes` do `.htaccess`, que alguns planos não aceitam. Ela sai de `scripts/htaccess.ts`, e o build de produção é gerado de novo.
+- [ ] No GA4 da 9vee, logo antes de trocar o DNS: desligar os "Cliques de saída" da medição otimizada. **Sem isso, o site não vai ao ar:** o GA4 mandaria ao Google o link do WhatsApp, com o nome de quem escreveu, e a política promete que não manda. Fica para o dia porque o `click` desses cliques é hoje o evento principal com que a 9vee conta os cliques no WhatsApp do Wix. Recomendado no mesmo passo: desligar as "Interações com o formulário" e os Google Signals.
 - [ ] Trocar **só** os dois registros do site:
   - `9vee.com.br`, tipo A: de `185.230.63.107` (o Wix) para o IP da HostGator;
   - `www`, tipo CNAME: de `pointing.wixdns.net` (o Wix) para `9vee.com.br`, ou para o que o cPanel indicar.
@@ -78,7 +80,7 @@ Duas regras valem do começo ao fim:
 - [ ] Enviar o sitemap novo: `https://www.9vee.com.br/sitemap.xml`.
 - [ ] Pedir a remoção temporária das 15 URLs que ficam 410 (`docs/remocoes-search-console.txt`).
 - [ ] No Bing Webmaster, importar o site do Search Console e enviar o mesmo sitemap.
-- [ ] No GA4, marcar `whatsapp_click` e `lead_form_submit` como eventos principais e criar as três dimensões (`docs/medicao.md`, passos 3 e 4).
+- [ ] No GA4, marcar `whatsapp_click` e `lead_form_submit` como eventos principais, assim que aparecerem na lista de eventos (`docs/medicao.md`, passo 3). Eles fazem o papel do `click`, que para de chegar.
 
 ## 4. Nas duas semanas seguintes
 
